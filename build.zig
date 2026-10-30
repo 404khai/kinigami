@@ -16,6 +16,10 @@ pub fn build(b: *std.Build) void {
     const core_tests = b.addTest(.{ .root_module = core });
     test_step.dependOn(&b.addRunArtifact(core_tests).step);
 
+    const purity = b.addSystemCommand(&.{"tools/check-core-purity.sh"});
+    purity.addFileInput(b.path("tools/check-core-purity.sh"));
+    test_step.dependOn(&purity.step);
+
     // Build tooling (not part of the simulation core).
     const tools_tests = b.addTest(.{
         .name = "tools",
