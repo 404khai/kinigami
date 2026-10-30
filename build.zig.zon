@@ -9,6 +9,7 @@
         "build.zig.zon",
         "src",
         "tests",
+        "tools",
     },
     .fingerprint = 0x5b88b31f76c58473,
 }

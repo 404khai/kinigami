@@ -16,6 +16,17 @@ pub fn build(b: *std.Build) void {
     const core_tests = b.addTest(.{ .root_module = core });
     test_step.dependOn(&b.addRunArtifact(core_tests).step);
 
+    // Build tooling (not part of the simulation core).
+    const tools_tests = b.addTest(.{
+        .name = "tools",
+        .root_module = b.createModule(.{
+            .root_source_file = b.path("tools/minisign.zig"),
+            .target = target,
+            .optimize = optimize,
+        }),
+    });
+    test_step.dependOn(&b.addRunArtifact(tools_tests).step);
+
     // Toolchain conformance (DAT-005, DAT-007..009, BLD-004): pins down the
     // behavior of the pinned compiler and standard library. Run under every
     // optimization mode, because floating-point contraction and parsing must
