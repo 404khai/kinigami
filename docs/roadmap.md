@@ -39,14 +39,14 @@ Candidate generation ──► Gate 1 (paper) ───────────�
 - **Objective:** a reproducible, pinned build with the std-only core boundary, plus verified parser and hash behavior on the pinned compiler.
 - **Deliverables:**
   - Zig pin with SHA-256 and a fetch/verify script
-  - `build.zig` with separate core and inspector roots (inspector empty for now)
+  - `build.zig` with the std-only core module (the inspector executable is added in R5, not as an empty placeholder)
   - SHA-256 file-hash utility
   - conformance tests for `std.json` strictness (unknown fields, duplicate keys, trailing content, types), integer bounds, non-finite handling, and correctly rounded decimal parsing
   - draft acceptance build profile, with optimization level left unresolved
 - **Depends on:** R0.
 - **Requirements:** BLD-001–004, BLD-006, DAT-003, DAT-005, DAT-007–009.
 - **Exit:** `zig build test` passes under the pinned compiler, the verify script confirms the compiler hash, and conformance results are recorded in traceability.
-- **Status:** in progress.
+- **Status:** tested. Finding: `std.json` is lenient in 7 documented ways, so R3 must add a strict JSON layer (see `docs/toolchain.md`).
 
 ### R2 — Slice 1 validation preregistration
 
@@ -56,7 +56,7 @@ Candidate generation ──► Gate 1 (paper) ───────────�
   - criteria JSON schema v1
   - strict criteria parser
   - slice 1 criteria file(s) committed, with SHA-256 recorded before solver work begins
-- **Depends on:** R1 (the parser and hashing must exist).
+- **Depends on:** R1 (hashing) and the strict JSON layer from R3. The owner's decisions can be gathered in parallel.
 - **Exit:** criteria committed and hashed. Optionally externally timestamped if the owner wants stronger preregistration evidence (Q39).
 
 ### R3 — Deterministic core infrastructure (parallel with R2)
@@ -66,6 +66,7 @@ Candidate generation ──► Gate 1 (paper) ───────────�
   - integer clock with overflow checks
   - event scheduler with explicit phase order and total ordering
   - seeded, recorded RNG
+  - strict JSON layer over `std.json` that rejects the 7 lenient behaviors recorded in `docs/toolchain.md`
   - run configuration JSON (strict, with resolved defaults)
   - canonical state encoding and checkpoint hash
   - binary recording format v1 (magic, version, little-endian, exact float bits) with a separate reader module
