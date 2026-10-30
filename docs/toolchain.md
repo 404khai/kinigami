@@ -16,7 +16,25 @@ Implements Q42 (BLD-001 to BLD-006).
 
 `tools/zig-toolchain.sh` downloads the tarball for the host into `.toolchain/` (gitignored). It verifies the SHA-256 **before** extraction, checks that `zig version` reports `0.17.0`, and records a verification stamp. `tools/zig` runs that verified compiler. Never use a system or Homebrew `zig` for recorded results: a Homebrew build is a different binary even when it reports the same version.
 
-**Known limitation:** the hashes come from the official index fetched over HTTPS. The release's minisign signature has not been verified, because `minisign` is not installed on the development host. Signature verification can be added later without changing the pin.
+### Authenticity and provenance
+
+Zig publishes a minisign signature (`<tarball>.minisig`) for every release artifact. These signatures use the `ED` algorithm: Ed25519 over a BLAKE2b-512 prehash. A signed trusted comment names the file and the signing timestamp.
+
+| Check | Method | Result (2026-10-30) |
+| --- | --- | --- |
+| Signing key | Fetched from `ziglang.org/download/` and from the `ziglang/www.ziglang.org` source repository on GitHub | Both match: `RWSGOq2NVecA2UPNdBUZykf1CCb147pkmdtYxgb3Ti+JO/wCYvhbAb/U` |
+| Pinned SHA-256 values | All four platform tarballs downloaded and hashed | All four match `tools/zig-toolchain.sh` |
+| Official signatures | `tools/minisign.zig` (std-only verifier) on all four tarballs | All four verify. The trusted comments name the correct files (timestamps 1790965431–1790965900) |
+| Tamper detection | One corrupted byte in a tarball copy | Rejected: `BadFileSignature` |
+| Fetch-script rejection | Script copy with a wrong expected SHA-256 | Exits 1 before extraction; no files left behind |
+
+The signatures are stored in `tools/zig-signatures/`. `tools/zig-verify-signature.sh` re-verifies the host's tarball.
+
+**Limitations:**
+
+- **Same trust anchor for the key.** Both key sources are controlled by the Zig project, so they protect against a compromised download mirror, not a compromised project.
+- **Self-hosted verifier.** `tools/minisign.zig` runs under the pinned compiler, so its signature check is only as trustworthy as the SHA-256 pin that admitted that compiler. The original verification ran on 2026-10-30, before the pin was relied on. For a fully independent check, use the reference `minisign` tool (not installed on the development host).
+- **No hosted check yet.** Signature verification is not yet part of the automated download path. It is a manual or scripted step.
 
 Upgrading the pin requires a decision record, then replay verification and reruns of affected validation cases (BLD-001).
 
@@ -24,8 +42,9 @@ Upgrading the pin requires a decision record, then replay verification and rerun
 
 ```sh
 tools/zig-toolchain.sh                 # fetch and verify; prints compiler path
-tools/zig build test                   # core unit tests + conformance (current optimize mode)
+tools/zig build test                   # core + tools unit tests + conformance (current optimize mode)
 tools/zig build conformance            # conformance under Debug, ReleaseSafe, ReleaseFast, ReleaseSmall
+tools/zig-verify-signature.sh          # verify the host tarball's official minisign signature
 ```
 
 ## Dependency policy in practice
@@ -52,6 +71,21 @@ tools/zig build conformance            # conformance under Debug, ReleaseSafe, R
 | Dependency lock | `build.zig.zon` content hash | fixed |
 
 Results from any other profile (including host-native test runs) stay exploratory until shown to match this profile across the relevant validation suite (BLD-006).
+
+## Test matrix (exact counts, fresh caches, 2026-10-30)
+
+Measured with a fresh `--cache-dir` per run, so no step was served from cache.
+
+| Command | Configuration | Test executables | Tests |
+| --- | --- | --- | --- |
+| `tools/zig build test` | native CPU, Debug | core 3, tools 4, conformance-debug 24 | **31** |
+| `tools/zig build test -Dtarget=aarch64-macos -Dcpu=baseline` | baseline CPU, Debug | core 3, tools 4, conformance-debug 24 | **31** |
+| `tools/zig build conformance` | native CPU | 24 × {Debug, ReleaseSafe, ReleaseFast, ReleaseSmall} | **96** |
+| `tools/zig build conformance -Dtarget=aarch64-macos -Dcpu=baseline` | baseline CPU | 24 × 4 modes | **96** |
+
+The core count of 3 is the two `identity` tests plus the aggregating `test {}` block in `src/core/root.zig`.
+
+**Correction:** an earlier report gave "72/72" for the conformance step. That run had served the Debug conformance results from the build cache, so only 3 × 24 tests actually executed. The complete count is 96 per CPU configuration, 192 across both.
 
 ## Conformance findings (Zig 0.17.0)
 

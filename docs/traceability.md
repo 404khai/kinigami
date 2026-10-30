@@ -12,7 +12,7 @@ Evidence status follows the roadmap vocabulary: planned, in progress, implemente
 | PRC-002 | `docs/requirements/` | Review | implemented | — | — |
 | PRC-004 | this file | Review | implemented | — | — |
 | PRC-008 | `docs/decisions/Q001-Q030-reference-only.md` | Review | implemented | — | Original Q1–Q30 text unavailable |
-| BLD-001 | `tools/zig-toolchain.sh`, `tools/zig`, `docs/toolchain.md` | Script verifies tarball SHA-256 and reported version | tested | Zig 0.17.0, `aarch64-macos` SHA-256 `b607e9b9…c536a` verified on download | Minisign signature not verified. Mismatch path not exercised by an automated test |
+| BLD-001 | `tools/zig-toolchain.sh`, `tools/zig`, `tools/minisign.zig`, `tools/zig-verify-signature.sh`, `tools/zig-signatures/`, `docs/toolchain.md` | SHA-256 before extraction; version check; official minisign signatures; tamper and mismatch tests | tested | All four pinned platform hashes match. All four official signatures verify. Corrupted tarball rejected. Wrong-hash script exits before extraction | Key sources share one trust anchor (the Zig project). The verifier runs under the pinned compiler. Signature check is not in the automatic fetch path |
 | BLD-002 | `build.zig`, `build.zig.zon` (no dependencies) | Build graph review | implemented | — | No automated dependency audit yet |
 | BLD-004 | `docs/toolchain.md` draft profile | `tests/conformance/float_contraction_test.zig` | in progress | No implicit FMA in all four optimize modes, native and `-Dcpu=baseline` | Profile not frozen. Optimization level unresolved (BLD-005). Verified on one host only |
 | DAT-003 | `src/core/identity.zig` | FIPS 180-2 vectors; no-normalization test | tested | `tools/zig build test` | No register tooling yet |
