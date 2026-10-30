@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Run the pinned, hash-verified Zig compiler (Q42). Use instead of a system zig.
+set -euo pipefail
+zig_bin="$("$(dirname "${BASH_SOURCE[0]}")/zig-toolchain.sh")"
+exec "${zig_bin}" "$@"
