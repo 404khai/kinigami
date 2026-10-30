@@ -51,7 +51,8 @@ Candidate generation ──► Gate 1 (paper) ───────────�
 ### R2 — Slice 1 validation preregistration
 
 - **Objective:** preregister slice 1's analytic validation cases **before any solver code exists** (Q40, Q41).
-- **Decision gate (owner):** analytic case list, reference conditions (fixture geometry and mass properties, tabletop contact and friction parameters, gravity), tolerances and uncertainty treatment, time unit, and physics timestep (BEN-008, ENV-002, TIM-012).
+- **Decided (Q46):** the five analytic cases, and validation-only fixture forces confined to `fixture_validation` runs.
+- **Remaining decision gates (owner), one at a time:** friction law and coefficients, fixture geometries and mass properties (including a separate tipping fixture if needed), gravity value, tolerances and uncertainty treatment, time unit, and physics timestep (BEN-014, ENV-002, TIM-012).
 - **Deliverables:**
   - criteria JSON schema v1
   - strict criteria parser
@@ -217,7 +218,7 @@ Candidate generation ──► Gate 1 (paper) ───────────�
 
 | Gate | Requirement IDs | Blocks | Needed when | Evidence to bring |
 | --- | --- | --- | --- | --- |
-| Slice 1 cases, conditions, tolerances, time unit, timestep | BEN-008, ENV-002, TIM-012 | R2 → R4 | **Next** | Analytic solutions, literature values for fixture contact and friction, sensitivity rationale |
+| Slice 1 reference conditions, tolerances, time unit, timestep (cases decided in Q46) | BEN-014, ENV-002, TIM-012 | R2 → R4 | **Next** | Analytic solutions, literature values for fixture contact and friction, sensitivity rationale |
 | Qualification checklist accuracy criteria | PHY-012, PHY-013 | R7 | After R4 | R4 results, reference-engine review |
 | Fixture coupler stand-in parameters | CPL-011 | R8 | After R7 | Mechanism sketch, component analogues |
 | Originality-review procedure | SEL-006 | R9 Gate 1 | Before candidate evaluation | Reference corpus, review method options |

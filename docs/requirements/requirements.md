@@ -168,7 +168,12 @@ See [README](README.md) for conventions. Evidence and limitations are in the [tr
 | BEN-005 | The first articulation benchmark requires an energy-isolated baseline. A power-sharing variant is reported separately. | Q34 | in_force | Benchmark definition |
 | BEN-006 | Through-chain propagation is a separate criterion. Contactless shortcuts don't count toward it. | Q33 | in_force | Benchmark definition |
 | BEN-007 | A future base-anchored cantilever benchmark. | Q31 | open | Later phase |
-| BEN-008 | Slice 1 analytic validation cases, reference conditions, and tolerances are decided and preregistered before solver code is written. | Q40, Q41 | unresolved | Gate: slice 1 validation cases |
+| BEN-008 | Slice 1 analytic validation cases, reference conditions, and tolerances are fully preregistered and hashed before production solver code is written. | Q40, Q41, Q46 | open | Criteria register entry precedes solver commits |
+| BEN-010 | Slice 1 validation comprises five analytic cases: rest and equilibrium, free fall before contact, static friction threshold and transition to sliding, sliding to a stop, and tipping threshold. | Q46 | in_force | Slice 1 criteria |
+| BEN-011 | Friction transition cases use below- and above-threshold loads. Never exact equality at the transition. | Q46 | in_force | Slice 1 criteria review |
+| BEN-012 | Sliding-to-stop expectations derive from the friction model once it is selected. | Q46 | in_force | Slice 1 criteria review |
+| BEN-013 | The tipping case defines support geometry, center of mass, and force application point explicitly, using a separate analytically defined fixture if rounded edges prevent a clean reference. No single fixture is assumed to serve all cases. | Q46 | in_force | Slice 1 criteria review |
+| BEN-014 | Slice 1 reference conditions are decided: fixture geometries and mass properties, friction law and coefficients, gravity value, and numerical tolerances. | Q46, Q21 | unresolved | Gate: slice 1 reference conditions |
 | BEN-009 | Benchmark acceptance is separate from candidate ranking. | Q38 | in_force | Process review |
 
 ## SEL — Candidate selection
@@ -200,3 +205,5 @@ See [README](README.md) for conventions. Evidence and limitations are in the [tr
 | PRC-009 | No push, public PR, or history rewrite without explicit owner authorization. | Q39 | in_force | Process |
 | PRC-010 | Project licensing is decided before public release. | — | unresolved | Gate: public release |
 | PRC-011 | CI and validation policy is decided before automated project-wide acceptance. | — | unresolved | Gate: CI |
+| PRC-012 | Every run declares a run class. Slice 1 analytic runs use `fixture_validation`, and their results are never benchmark or Kin-candidate evidence. | Q46 | in_force | Evaluator tests |
+| PRC-013 | Validation-only external force inputs (force, torque, application point, frame, timing; all recorded) are permitted only on neutral fixtures in `fixture_validation` runs. The evaluator rejects them in every other run class. | Q46 | in_force | Evaluator tests |

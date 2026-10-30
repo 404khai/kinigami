@@ -34,7 +34,7 @@ Append-only record of Kinigami's engineering decisions (Q39).
 ## Provenance of the current entries
 
 - **Q1–Q30:** the original question-and-answer text is not available in this repository. [`Q001-Q030-reference-only.md`](Q001-Q030-reference-only.md) records only what later decisions state about them. Verbatim archival requires the owner to supply the original thread.
-- **Q31–Q45:** condensed from the owner's accepted decision text in the design conversation, preserving every decision, constraint, and refinement. They are not verbatim transcripts. Decision dates were not captured separately. All were accepted on or before the recording date.
+- **Q31–Q46:** condensed from the owner's accepted decision text in the design conversation, preserving every decision, constraint, and refinement. They are not verbatim transcripts. Decision dates were not captured separately. All were accepted on or before the recording date.
 
 ## Index
 
@@ -56,3 +56,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q43 | [Simulated time representation and scheduling](Q043-simulated-time.md) | accepted |
 | Q44 | [Data formats and hashes](Q044-data-formats.md) | accepted |
 | Q45 | [Inspector architecture](Q045-inspector.md) | accepted |
+| Q46 | [Slice 1 analytic validation cases and validation-only forces](Q046-fixture-validation-cases.md) | accepted |
