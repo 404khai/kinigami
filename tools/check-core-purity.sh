@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Simulation-core purity check (BLD-002, TIM-007, TIM-009).
 #
-# The core may import only `std` and its own relative files, and must not
+# The core may import only `std`, `builtin`, and its own relative files, and must not
 # reach wall-clock time, ambient/OS randomness, threads, or the process
 # environment. This is a textual check: it catches accidental use, not a
 # determined bypass, and it does not replace review.
@@ -24,9 +24,9 @@ for pattern in "${forbidden[@]}"; do
   fi
 done
 
-# Imports: only "std" or relative .zig files.
+# Imports: only "std", the compiler-provided "builtin", or relative .zig files.
 if grep -rnoE '@import\("[^"]*"\)' "${core_dir}" --include='*.zig' \
-    | grep -vE '@import\("std"\)$|@import\("[A-Za-z0-9_./-]+\.zig"\)$'; then
+    | grep -vE '@import\("(std|builtin)"\)$|@import\("[A-Za-z0-9_./-]+\.zig"\)$'; then
   echo "core-purity: non-std, non-relative import in src/core" >&2
   status=1
 fi

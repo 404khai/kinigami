@@ -3,9 +3,11 @@
 pub const identity = @import("identity.zig");
 pub const time = @import("time.zig");
 pub const scheduler = @import("scheduler.zig");
+pub const rng = @import("rng.zig");
 
 test {
     _ = identity;
     _ = time;
     _ = scheduler;
+    _ = rng;
 }
