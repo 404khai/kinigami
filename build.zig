@@ -17,7 +17,7 @@ pub fn build(b: *std.Build) void {
     test_step.dependOn(&b.addRunArtifact(core_tests).step);
 
     const purity = b.addSystemCommand(&.{"tools/check-core-purity.sh"});
-    purity.addFileInput(b.path("tools/check-core-purity.sh"));
+    purity.has_side_effects = true; // always rescan src/core; never served from cache
     test_step.dependOn(&purity.step);
 
     // Build tooling (not part of the simulation core).
