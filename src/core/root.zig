@@ -5,6 +5,12 @@ pub const time = @import("time.zig");
 pub const scheduler = @import("scheduler.zig");
 pub const rng = @import("rng.zig");
 pub const strict_json = @import("strict_json.zig");
+pub const canonical = @import("canonical.zig");
+pub const recording = @import("recording.zig");
+pub const run = @import("run.zig");
+pub const backend = @import("backend.zig");
+pub const snapshot = @import("snapshot.zig");
+pub const driver = @import("driver.zig");
 
 test {
     _ = identity;
@@ -12,4 +18,10 @@ test {
     _ = scheduler;
     _ = rng;
     _ = strict_json;
+    _ = canonical;
+    _ = recording;
+    _ = run;
+    _ = backend;
+    _ = snapshot;
+    _ = driver;
 }

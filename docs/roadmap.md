@@ -52,7 +52,8 @@ Candidate generation ──► Gate 1 (paper) ───────────�
 
 - **Objective:** preregister slice 1's analytic validation cases **before any solver code exists** (Q40, Q41).
 - **Decided (Q46):** the five analytic cases, and validation-only fixture forces confined to `fixture_validation` runs.
-- **Remaining decision gates (owner), one at a time:** friction law and coefficients, fixture geometries and mass properties (including a separate tipping fixture if needed), gravity value, tolerances and uncertainty treatment, time unit, and physics timestep (BEN-014, ENV-002, TIM-012).
+- **Decided (Q47):** Coulomb friction with separate static and kinetic coefficients.
+- **Remaining decision gates (owner), one at a time:** friction coefficients, fixture geometries and mass properties (including a separate tipping fixture if needed), gravity value, tolerances and uncertainty treatment, time unit, and physics timestep (BEN-014, ENV-002, TIM-012).
 - **Deliverables:**
   - criteria JSON schema v1
   - strict criteria parser
@@ -78,7 +79,7 @@ Candidate generation ──► Gate 1 (paper) ───────────�
 - **Depends on:** R1. **Not blocked by** the R2 gate, because none of this is solver code.
 - **Requirements:** TIM-001–009, TIM-011, DAT-001–011, CTL-002, PHY-010, PRC-005, INS-006.
 - **Exit:** unit tests and round-trip tests pass, and replay of a physics-free scheduled run reproduces its checkpoint hashes.
-- **Status:** in progress. Done: integer clock, scheduler, RNG interface, strict JSON layer, core purity check. Remaining: canonical state encoding, recording container, run configuration and results schemas, evaluator scaffolding, backend interface, snapshot publication interface.
+- **Status:** tested (exit criterion met with a physics-free stand-in backend). Built: integer clock, scheduler, RNG interface, strict JSON layer, core purity check, canonical encoding and checkpoint hashing, recording container v1, run configuration and results schema v1 with run classes and labels, backend interface, snapshot ring, fixed-step driver with replay and capture-isolation tests. **Carried forward:** recording payload layouts and snapshot interval (open), RNG algorithm (open), event-phase order (open), Git revision and build-profile capture for result provenance, serialized effective configuration, inspector transport (R5).
 
 ### R4 — Slice 1 physics: neutral body and tabletop contact
 
