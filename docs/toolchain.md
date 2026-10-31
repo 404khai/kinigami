@@ -72,18 +72,19 @@ tools/zig-verify-signature.sh          # verify the host tarball's official mini
 
 Results from any other profile (including host-native test runs) stay exploratory until shown to match this profile across the relevant validation suite (BLD-006).
 
-## Test matrix (exact counts, fresh caches, 2026-10-30)
+## Test matrix (exact counts, fresh caches)
 
 Measured with a fresh `--cache-dir` per run, so no step was served from cache.
 
 | Command | Configuration | Test executables | Tests |
 | --- | --- | --- | --- |
-| `tools/zig build test` | native CPU, Debug | core 3, tools 4, conformance-debug 24 | **31** |
-| `tools/zig build test -Dtarget=aarch64-macos -Dcpu=baseline` | baseline CPU, Debug | core 3, tools 4, conformance-debug 24 | **31** |
+| `tools/zig build test` | native CPU, Debug | core 45, tools 4, conformance-debug 24, plus the core purity check | **73** (2026-10-31) |
+| `tools/zig build test -Dtarget=aarch64-macos -Dcpu=baseline` | baseline CPU, Debug | core 45, tools 4, conformance-debug 24, plus the purity check | **73** (2026-10-31) |
+| `tools/zig build test -Doptimize=ReleaseFast` | native CPU | core 45, tools 4, conformance-fast 24 | **73** (2026-10-31) |
 | `tools/zig build conformance` | native CPU | 24 × {Debug, ReleaseSafe, ReleaseFast, ReleaseSmall} | **96** |
 | `tools/zig build conformance -Dtarget=aarch64-macos -Dcpu=baseline` | baseline CPU | 24 × 4 modes | **96** |
 
-The core count of 3 is the two `identity` tests plus the aggregating `test {}` block in `src/core/root.zig`.
+Core test counts include the aggregating `test {}` block in `src/core/root.zig`. The 2026-10-30 baseline was 31 per `test` run (core 3).
 
 **Correction:** an earlier report gave "72/72" for the conformance step. That run had served the Debug conformance results from the build cache, so only 3 × 24 tests actually executed. The complete count is 96 per CPU configuration, 192 across both.
 
