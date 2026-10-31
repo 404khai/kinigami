@@ -7,6 +7,7 @@ pub const rng = @import("rng.zig");
 pub const strict_json = @import("strict_json.zig");
 pub const canonical = @import("canonical.zig");
 pub const recording = @import("recording.zig");
+pub const run = @import("run.zig");
 
 test {
     _ = identity;
@@ -16,4 +17,5 @@ test {
     _ = strict_json;
     _ = canonical;
     _ = recording;
+    _ = run;
 }
