@@ -305,3 +305,28 @@ test "identical worlds produce identical canonical state (determinism)" {
     try b.encodeState(sb.encoder());
     try testing.expectEqualSlices(u8, sa.list.items, sb.list.items);
 }
+
+test "capture isolation with the real solver: live publication leaves checkpoint hashes unchanged (INS-007)" {
+    const driver = @import("driver.zig");
+    const snapshot = @import("snapshot.zig");
+    const gpa = testing.allocator;
+    var ring = try snapshot.BoundedRing.init(gpa, 8, 4096);
+    defer ring.deinit(gpa);
+    var with: [200]driver.Checkpoint = undefined;
+    var without: [200]driver.Checkpoint = undefined;
+    inline for (.{ &with, &without }, 0..) |out, i| {
+        var w: World = .{ .gpa = gpa, .settings = test_settings, .friction = .{ .mu_static = 0.6, .mu_kinetic = 0.45 }, .gravity_m_s2 = .{ 0, 0, -9.80665 } };
+        defer w.deinit();
+        var body = cuboid(0.04, .{ 0.04, 0.04, 0.02 }, 0);
+        body.velocity_m_s = .{ 0.4, 0.1, 0 };
+        _ = try w.addBody(body);
+        try driver.run(gpa, w.backend(), .{
+            .unit = .{ .numerator = 1, .denominator = 1_000_000 },
+            .step = .{ .step = .{ .ticks = 1000 } },
+            .steps = 200,
+            .publisher = if (i == 0) ring.publisher() else null,
+        }, out);
+    }
+    try testing.expectEqualSlices(driver.Checkpoint, &without, &with);
+    try testing.expectEqual(@as(u64, 200), ring.published);
+}
