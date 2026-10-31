@@ -60,6 +60,7 @@ Candidate generation ──► Gate 1 (paper) ───────────�
   - slice 1 criteria file(s) committed, with SHA-256 recorded before solver work begins
 - **Depends on:** R1 (hashing) and the strict JSON layer from R3. The owner's decisions can be gathered in parallel.
 - **Exit:** criteria committed and hashed. Optionally externally timestamped if the owner wants stronger preregistration evidence (Q39).
+- **Status:** tested. Q48 decided the reference conditions under owner delegation. `criteria/fixture-validation/analytic-v1.json` is registered at `70b629a55a9c` (SHA-256 `565ef6b6…3e78`) and checked for byte identity and self-consistency on every build. **The R4 solver is now unblocked.**
 
 ### R3 — Deterministic core infrastructure (parallel with R2)
 
@@ -220,7 +221,7 @@ Candidate generation ──► Gate 1 (paper) ───────────�
 
 | Gate | Requirement IDs | Blocks | Needed when | Evidence to bring |
 | --- | --- | --- | --- | --- |
-| Slice 1 reference conditions, tolerances, time unit, timestep (cases decided in Q46) | BEN-014, ENV-002, TIM-012 | R2 → R4 | **Next** | Analytic solutions, literature values for fixture contact and friction, sensitivity rationale |
+| ~~Slice 1 reference conditions, tolerances, time unit, timestep~~ (decided: Q46–Q48) | BEN-014, ENV-002, TIM-012 | — | Done | Analytic solutions, literature values for fixture contact and friction, sensitivity rationale |
 | Qualification checklist accuracy criteria | PHY-012, PHY-013 | R7 | After R4 | R4 results, reference-engine review |
 | Fixture coupler stand-in parameters | CPL-011 | R8 | After R7 | Mechanism sketch, component analogues |
 | Originality-review procedure | SEL-006 | R9 Gate 1 | Before candidate evaluation | Reference corpus, review method options |

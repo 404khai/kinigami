@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "criteria_id": "fixture-validation-analytic",
+  "criteria_version": 1,
+  "run_class": "fixture_validation",
+  "decisions": ["Q35", "Q41", "Q43", "Q46", "Q47", "Q48"],
+  "rationale": "Analytic solver-validation cases on neutral fixtures. Values are solver-validation parameters, not material or Kin-candidate claims. Results are labeled fixture and qualify nothing beyond these declared conditions. Tolerance principles are recorded in docs/decisions/Q048-fixture-validation-reference-conditions.md.",
+  "time_unit": { "numerator_s": 1, "denominator_s": 1000000 },
+  "physics_step_ticks": [500, 1000, 2000],
+  "outcome_rule": "all_combinations_pass_else_uncertain_if_mixed",
+  "gravity": {
+    "magnitude_m_s2": 9.80665,
+    "direction_world": [0, 0, -1],
+    "source": "Standard acceleration of gravity g_n, an exact defined constant (3rd CGPM, 1901). Tabletop is the world plane z = 0."
+  },
+  "friction_law": "coulomb_static_kinetic",
+  "friction_grid": [
+    { "id": "mu_low", "mu_static": 0.3, "mu_kinetic": 0.2 },
+    { "id": "mu_mid", "mu_static": 0.6, "mu_kinetic": 0.45 },
+    { "id": "mu_high", "mu_static": 0.9, "mu_kinetic": 0.7 }
+  ],
+  "friction_grid_rationale": "Spans the order of magnitude typical of dry contacts so the solver is checked across conditions rather than at one tuned point. Every pair has mu_static > mu_kinetic so onset and sliding are distinguishable (Q47).",
+  "fixtures": [
+    { "id": "fixture_flat_block", "shape": "cuboid", "mass_distribution": "uniform", "size_m": [0.04, 0.04, 0.02], "mass_kg": 0.04 },
+    { "id": "fixture_tall_block", "shape": "cuboid", "mass_distribution": "uniform", "size_m": [0.02, 0.02, 0.06], "mass_kg": 0.03 }
+  ],
+  "rest": {
+    "id": "rest_equilibrium",
+    "fixture": "fixture_flat_block",
+    "duration_s": 2.0,
+    "window_start_s": 1.0,
+    "normal_force_rel_tol": 0.001,
+    "tangential_force_max_rel_weight": 0.000001,
+    "center_of_pressure_abs_tol_m": 0.0001,
+    "drift_translation_abs_tol_m": 0.000001,
+    "drift_rotation_abs_tol_rad": 0.000001,
+    "max_penetration_m": 0.0001
+  },
+  "free_fall": {
+    "id": "free_fall_before_contact",
+    "fixture": "fixture_flat_block",
+    "initial_clearance_m": 0.1,
+    "duration_s": 0.1,
+    "velocity_rel_tol": 0.000000001,
+    "velocity_abs_floor_m_s": 0.000000000001,
+    "position_tol_factor": 1.0
+  },
+  "friction_threshold": {
+    "id": "friction_threshold_transition",
+    "fixture": "fixture_flat_block",
+    "application": "center_of_mass",
+    "direction_world": [1, 0, 0],
+    "below_factor": 0.9,
+    "above_factor": 1.1,
+    "duration_s": 1.0,
+    "below_max_displacement_m": 0.00001,
+    "below_balance_window_start_s": 0.5,
+    "below_balance_rel_tol": 0.001,
+    "above_accel_window_start_s": 0.5,
+    "above_accel_window_end_s": 1.0,
+    "above_accel_rel_tol": 0.01,
+    "max_penetration_m": 0.0001
+  },
+  "slide_to_stop": {
+    "id": "slide_to_stop",
+    "fixture": "fixture_flat_block",
+    "initial_speed_m_s": 0.5,
+    "direction_world": [1, 0, 0],
+    "duration_s": 1.0,
+    "stop_speed_threshold_m_s": 0.000001,
+    "stop_time_tol_steps": 2.0,
+    "stop_distance_rel_tol": 0.01,
+    "stop_distance_tol_steps": 1.0,
+    "post_stop_drift_abs_tol_m": 0.000001
+  },
+  "tipping": {
+    "id": "tipping_threshold",
+    "fixture": "fixture_tall_block",
+    "force_frame": "body",
+    "force_direction_body": [1, 0, 0],
+    "application_point_body_m": [-0.01, 0, 0.02],
+    "below_factor": 0.9,
+    "above_factor": 1.1,
+    "duration_s": 1.0,
+    "below_max_tilt_rad": 0.001,
+    "above_min_tilt_rad": 0.1,
+    "no_slip_until_tilt_rad": 0.05,
+    "pivot_slip_abs_tol_m": 0.0001
+  }
+}

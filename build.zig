@@ -11,6 +11,12 @@ pub fn build(b: *std.Build) void {
         .optimize = optimize,
     });
 
+    // Preregistered criteria embedded into the core so their consistency is
+    // checked on every build (Q39, Q48).
+    core.addAnonymousImport("criteria_analytic_v1", .{
+        .root_source_file = b.path("criteria/fixture-validation/analytic-v1.json"),
+    });
+
     const test_step = b.step("test", "Run unit tests and toolchain conformance tests");
 
     const core_tests = b.addTest(.{ .root_module = core });

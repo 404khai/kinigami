@@ -58,3 +58,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q45 | [Inspector architecture](Q045-inspector.md) | accepted |
 | Q46 | [Slice 1 analytic validation cases and validation-only forces](Q046-fixture-validation-cases.md) | accepted |
 | Q47 | [Friction law for the first analytic validation cases](Q047-reference-friction-law.md) | accepted |
+| Q48 | [Fixture-validation reference conditions and tolerances](Q048-fixture-validation-reference-conditions.md) (agent decision under owner delegation) | accepted |

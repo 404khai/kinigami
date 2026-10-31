@@ -11,6 +11,8 @@ pub const run = @import("run.zig");
 pub const backend = @import("backend.zig");
 pub const snapshot = @import("snapshot.zig");
 pub const driver = @import("driver.zig");
+pub const analytic = @import("analytic.zig");
+pub const criteria = @import("criteria.zig");
 
 test {
     _ = identity;
@@ -24,4 +26,6 @@ test {
     _ = backend;
     _ = snapshot;
     _ = driver;
+    _ = analytic;
+    _ = criteria;
 }
