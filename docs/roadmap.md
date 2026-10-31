@@ -52,7 +52,8 @@ Candidate generation ──► Gate 1 (paper) ───────────�
 
 - **Objective:** preregister slice 1's analytic validation cases **before any solver code exists** (Q40, Q41).
 - **Decided (Q46):** the five analytic cases, and validation-only fixture forces confined to `fixture_validation` runs.
-- **Remaining decision gates (owner), one at a time:** friction law and coefficients, fixture geometries and mass properties (including a separate tipping fixture if needed), gravity value, tolerances and uncertainty treatment, time unit, and physics timestep (BEN-014, ENV-002, TIM-012).
+- **Decided (Q47):** Coulomb friction with separate static and kinetic coefficients.
+- **Remaining decision gates (owner), one at a time:** friction coefficients, fixture geometries and mass properties (including a separate tipping fixture if needed), gravity value, tolerances and uncertainty treatment, time unit, and physics timestep (BEN-014, ENV-002, TIM-012).
 - **Deliverables:**
   - criteria JSON schema v1
   - strict criteria parser

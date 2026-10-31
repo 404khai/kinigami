@@ -173,7 +173,8 @@ See [README](README.md) for conventions. Evidence and limitations are in the [tr
 | BEN-011 | Friction transition cases use below- and above-threshold loads. Never exact equality at the transition. | Q46 | in_force | Slice 1 criteria review |
 | BEN-012 | Sliding-to-stop expectations derive from the friction model once it is selected. | Q46 | in_force | Slice 1 criteria review |
 | BEN-013 | The tipping case defines support geometry, center of mass, and force application point explicitly, using a separate analytically defined fixture if rounded edges prevent a clean reference. No single fixture is assumed to serve all cases. | Q46 | in_force | Slice 1 criteria review |
-| BEN-014 | Slice 1 reference conditions are decided: fixture geometries and mass properties, friction law and coefficients, gravity value, and numerical tolerances. | Q46, Q21 | unresolved | Gate: slice 1 reference conditions |
+| BEN-014 | Slice 1 reference conditions are decided: fixture geometries and mass properties, friction coefficients, gravity value, and numerical tolerances. | Q46, Q21 | unresolved | Gate: slice 1 reference conditions |
+| BEN-015 | The reference friction law for the analytic fixture-validation cases is Coulomb friction with separate static and kinetic coefficients (μs ≥ μk). Coefficient values are a separate decision. | Q47 | in_force | Validation criteria review |
 | BEN-009 | Benchmark acceptance is separate from candidate ranking. | Q38 | in_force | Process review |
 
 ## SEL — Candidate selection
