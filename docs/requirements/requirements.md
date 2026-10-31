@@ -7,7 +7,7 @@ See [README](README.md) for conventions. Evidence and limitations are in the [tr
 | ID | Requirement | Sources | Status | Verification |
 | --- | --- | --- | --- | --- |
 | ENV-001 | The reference environment is an ordinary, passive, unpatterned, nonmagnetic, electrically insulating tabletop under Earth gravity. | Q21 | in_force | Configuration review |
-| ENV-002 | The tabletop's numerical physical properties (contact and friction parameters, gravity value used) are declared per experiment and justified. | Q21, Q37 | unresolved | Gate: slice 1 validation cases |
+| ENV-002 | The tabletop's numerical physical properties (contact and friction parameters, gravity value used) are declared per experiment and justified. | Q21, Q37, Q48 | in_force | Gate: slice 1 validation cases |
 | ENV-003 | Kins belong to the 30–60 mm reference size class. The class is a reference scale, not proof of feasibility. | Q1, Q37 | in_force | Gate 1 paper review |
 | ENV-004 | Every Kin fits within a common 60 mm diameter enclosing sphere in its mechanically achievable stowed configuration. | Q12, Q37 | in_force | Gate 1 paper review |
 | ENV-005 | Deployed geometry, swept volumes, mass, inertia, actuator reach, and clearances are evaluated independently of the size class. | Q37 | in_force | Gates 1–3 |
@@ -113,7 +113,7 @@ See [README](README.md) for conventions. Evidence and limitations are in the [tr
 | TIM-009 | Deterministic parallelism partitions work independently of worker count and uses fixed-order reductions, with no unordered floating-point atomic accumulation. The core stays single-threaded until this is verified. | Q42 | in_force | Code review; replay tests |
 | TIM-010 | Timestep-sensitivity studies measure changes in sensed-state age and actuator boundary delay. | Q43, Q35 | in_force | Sensitivity studies |
 | TIM-011 | Each run records its time unit, physics timestep, and scheduler configuration. | Q43 | in_force | Recording tests |
-| TIM-012 | The time unit and physics timestep for slice 1 validation are declared and justified. | Q43 | unresolved | Gate: slice 1 validation cases |
+| TIM-012 | Slice 1 validation uses a 1 µs time unit and a physics-step grid of 0.5, 1, and 2 ms. | Q43, Q48 | in_force | Gate: slice 1 validation cases |
 
 ## DAT — Data formats
 
@@ -168,12 +168,12 @@ See [README](README.md) for conventions. Evidence and limitations are in the [tr
 | BEN-005 | The first articulation benchmark requires an energy-isolated baseline. A power-sharing variant is reported separately. | Q34 | in_force | Benchmark definition |
 | BEN-006 | Through-chain propagation is a separate criterion. Contactless shortcuts don't count toward it. | Q33 | in_force | Benchmark definition |
 | BEN-007 | A future base-anchored cantilever benchmark. | Q31 | open | Later phase |
-| BEN-008 | Slice 1 analytic validation cases, reference conditions, and tolerances are fully preregistered and hashed before production solver code is written. | Q40, Q41, Q46 | open | Criteria register entry precedes solver commits |
+| BEN-008 | Slice 1 analytic validation cases, reference conditions, and tolerances are fully preregistered and hashed before production solver code is written. | Q40, Q41, Q46, Q48 | in_force | Criteria register entry precedes solver commits |
 | BEN-010 | Slice 1 validation comprises five analytic cases: rest and equilibrium, free fall before contact, static friction threshold and transition to sliding, sliding to a stop, and tipping threshold. | Q46 | in_force | Slice 1 criteria |
 | BEN-011 | Friction transition cases use below- and above-threshold loads. Never exact equality at the transition. | Q46 | in_force | Slice 1 criteria review |
 | BEN-012 | Sliding-to-stop expectations derive from the friction model once it is selected. | Q46 | in_force | Slice 1 criteria review |
 | BEN-013 | The tipping case defines support geometry, center of mass, and force application point explicitly, using a separate analytically defined fixture if rounded edges prevent a clean reference. No single fixture is assumed to serve all cases. | Q46 | in_force | Slice 1 criteria review |
-| BEN-014 | Slice 1 reference conditions are decided: fixture geometries and mass properties, friction coefficients, gravity value, and numerical tolerances. | Q46, Q21 | unresolved | Gate: slice 1 reference conditions |
+| BEN-014 | Slice 1 reference conditions: fixture geometries and mass properties, friction coefficient grid, gravity value, and numerical tolerances, as registered in `criteria/fixture-validation/analytic-v1.json`. | Q46, Q21, Q48 | in_force | Gate: slice 1 reference conditions |
 | BEN-015 | The reference friction law for the analytic fixture-validation cases is Coulomb friction with separate static and kinetic coefficients (μs ≥ μk). Coefficient values are a separate decision. | Q47 | in_force | Validation criteria review |
 | BEN-009 | Benchmark acceptance is separate from candidate ranking. | Q38 | in_force | Process review |
 

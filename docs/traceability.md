@@ -37,3 +37,9 @@ Evidence status follows the roadmap vocabulary: planned, in progress, implemente
 | INS-006 | `src/core/snapshot.zig` `BoundedRing` (preallocated, drop-oldest, counted drops and oversize) | Unit test | tested | — | In-process only. Transport to the separate inspector process not built |
 | INS-007 | `driver.run` publisher path | Capture-on vs capture-off checkpoint hashes identical over 64 steps; publisher has no RNG or scheduler access | tested | — | Demonstrated with a test-only stand-in backend, not real physics |
 | TIM-008 | `driver.run` | Two runs reproduce all 64 checkpoint hashes; perturbed initial state diverges | tested | — | Physics-free stand-in only. Same-process replay, not from a recording file yet |
+| BEN-008 | `criteria/fixture-validation/analytic-v1.json` registered at `70b629a55a9c` (SHA-256 `565ef6b6…3e78`) | Build-time byte-identity check against the registered hash; strict parse | tested | Registered before any production solver commit | Local commit only, not externally timestamped |
+| BEN-010 | All five cases in criteria v1; closed forms in `src/core/analytic.zig` | Analytic unit tests | implemented | — | Evaluators that compare solver output against these references are not built yet (they need the solver) |
+| BEN-011 | `below_factor` 0.9 / `above_factor` 1.1, enforced by `criteria.validate` | Consistency test rejects a factor of 1.0 | tested | — | — |
+| BEN-013 | Separate `fixture_tall_block` with exact pivot geometry | Consistency test: tipping precedes sliding at every friction pair | tested | — | — |
+| BEN-014 | Q48 values in criteria v1 | Strict parse and self-consistency validation | tested | — | Tolerances are agent-chosen under delegation, not derived from solver-convergence evidence. Revisable by a superseding decision and a new criteria version |
+| BEN-015 | `friction_law: coulomb_static_kinetic`; μs > μk enforced | Consistency test | tested | — | — |
