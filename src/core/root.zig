@@ -8,6 +8,9 @@ pub const strict_json = @import("strict_json.zig");
 pub const canonical = @import("canonical.zig");
 pub const recording = @import("recording.zig");
 pub const run = @import("run.zig");
+pub const backend = @import("backend.zig");
+pub const snapshot = @import("snapshot.zig");
+pub const driver = @import("driver.zig");
 
 test {
     _ = identity;
@@ -18,4 +21,7 @@ test {
     _ = canonical;
     _ = recording;
     _ = run;
+    _ = backend;
+    _ = snapshot;
+    _ = driver;
 }
