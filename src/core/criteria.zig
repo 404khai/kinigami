@@ -283,7 +283,16 @@ pub fn validate(c: Criteria) ValidationError!void {
 /// on every build. Its identity is the SHA-256 of these exact bytes.
 pub const analytic_v1_json = @embedFile("criteria_analytic_v1");
 
+/// SHA-256 recorded in criteria/REGISTER.md. Registered files are never
+/// edited in place; a revision is a new file and a new register entry.
+pub const analytic_v1_sha256 = "565ef6b62aeebe92aabf6dc2a4763aef02d9e4e51579985513c2cff4f9df3e78";
+
 const testing = std.testing;
+
+test "the embedded criteria file is byte-identical to its registered version" {
+    const identity = @import("identity.zig");
+    try testing.expectEqualStrings(analytic_v1_sha256, &identity.toHex(identity.fileIdentity(analytic_v1_json)));
+}
 
 test "the registered analytic criteria file parses and is self-consistent" {
     const p = try parse(testing.allocator, analytic_v1_json);
