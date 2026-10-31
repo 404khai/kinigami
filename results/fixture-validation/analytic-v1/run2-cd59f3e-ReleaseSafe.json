@@ -1,0 +1,2200 @@
+{
+  "code_revision": "cd59f3e1166b79e8684445918431037704960a85",
+  "working_tree_dirty": false,
+  "optimize_mode": "safe",
+  "target": "aarch64-macos.27.0...27.0-none",
+  "zig_version": "0.17.0",
+  "report": {
+    "schema_version": 1,
+    "run_class": "fixture_validation",
+    "label": "fixture",
+    "criteria_path": "criteria/fixture-validation/analytic-v1.json",
+    "criteria_sha256": "565ef6b62aeebe92aabf6dc2a4763aef02d9e4e51579985513c2cff4f9df3e78",
+    "protocol": "docs/validation/fixture-analytic-v1-protocol.md",
+    "protocol_revision": 2,
+    "preroll_s": 0.5,
+    "solver_name": "kinigami-rigid",
+    "solver_version": "0.1.0",
+    "solver_settings": {
+      "contact_stiffness_n_m": 100000,
+      "contact_damping_n_s_m": 50,
+      "static_slip_speed_m_s": 0.00001,
+      "iterations": 100,
+      "warm_start": true
+    },
+    "cases": [
+      {
+        "case_id": "rest_equilibrium",
+        "outcome": "pass",
+        "combinations": [
+          {
+            "friction_id": "mu_low",
+            "physics_step_ticks": 500,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "rest",
+                "steps": 4000,
+                "final_state_sha256": "9ee11221c6de60b29ee85ca1fa0085ba4e02bc49c040b3b937a0a52c6a547914",
+                "metrics": [
+                  {
+                    "name": "normal_force_rel_error",
+                    "value": 0.00000000000003537851306973956,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "tangential_force_rel_weight",
+                    "value": 0.00000000000000000884462826743489,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "center_of_pressure_offset_m",
+                    "value": 0.0000000000000000016110643982952038,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_translation_m",
+                    "value": 0.00000000000000000002710505431214034,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_rotation_rad",
+                    "value": 0.0000000000000000013010426069826546,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.0000009806649999988953,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_low",
+            "physics_step_ticks": 1000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "rest",
+                "steps": 2000,
+                "final_state_sha256": "35611462cd884fc4d8aa7715120117eef815db87103c4e0b6e44e7c4d2e6e6db",
+                "metrics": [
+                  {
+                    "name": "normal_force_rel_error",
+                    "value": 0.000000000000013585349018779989,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "tangential_force_rel_weight",
+                    "value": 0.0000000000000000537997734195694,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "center_of_pressure_offset_m",
+                    "value": 0.0000000000000000059718815690373735,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_translation_m",
+                    "value": 0.00000000000000000004591690574544364,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_rotation_rad",
+                    "value": 0.000000000000000002761979040817513,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.00000098066500000063,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_low",
+            "physics_step_ticks": 2000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "rest",
+                "steps": 1000,
+                "final_state_sha256": "a3a4a3518736ad0953dab4fc38175662892e27bcbf6f6426b2b25c8fb03b1329",
+                "metrics": [
+                  {
+                    "name": "normal_force_rel_error",
+                    "value": 0.000000000000010613553920921867,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "tangential_force_rel_weight",
+                    "value": 0.00000000000000005593834076520621,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "center_of_pressure_offset_m",
+                    "value": 0.000000000000000004911933661054527,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_translation_m",
+                    "value": 0.00000000000000000009927282858305127,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_rotation_rad",
+                    "value": 0.0000000000000000015656755159467243,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.00000098066500000063,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_mid",
+            "physics_step_ticks": 500,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "rest",
+                "steps": 4000,
+                "final_state_sha256": "341e59f3a193a156a56e6ad8d962ff0856f3835858451a63208ac795592b69ca",
+                "metrics": [
+                  {
+                    "name": "normal_force_rel_error",
+                    "value": 0.00000000000003537851306973956,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "tangential_force_rel_weight",
+                    "value": 0.00000000000000003537851306973956,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "center_of_pressure_offset_m",
+                    "value": 0.000000000000000001398063781974632,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_translation_m",
+                    "value": 0.00000000000000000015062474557623367,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_rotation_rad",
+                    "value": 0.000000000000000013891967881178405,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.0000009806649999988953,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_mid",
+            "physics_step_ticks": 1000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "rest",
+                "steps": 2000,
+                "final_state_sha256": "56acf1bb623767d43f13d15494466ce77f314ba9806fe9c6bde279db5484fafe",
+                "metrics": [
+                  {
+                    "name": "normal_force_rel_error",
+                    "value": 0.000000000000013585349018779989,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "tangential_force_rel_weight",
+                    "value": 0.00000000000000001768925653486978,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "center_of_pressure_offset_m",
+                    "value": 0.0000000000000000006876315936891109,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_translation_m",
+                    "value": 0.000000000000000000036146284655843144,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_rotation_rad",
+                    "value": 0.0000000000000000018807350431411687,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.00000098066500000063,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_mid",
+            "physics_step_ticks": 2000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "rest",
+                "steps": 1000,
+                "final_state_sha256": "9c0d85a4a6046b3d3d85c341e8d367ba10b16fb358066e1b088fcd16b13ef6fd",
+                "metrics": [
+                  {
+                    "name": "normal_force_rel_error",
+                    "value": 0.000000000000010613553920921867,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "tangential_force_rel_weight",
+                    "value": 0.00000000000000009019786425224967,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "center_of_pressure_offset_m",
+                    "value": 0.000000000000000005768330582689303,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_translation_m",
+                    "value": 0.000000000000000000048931000144730344,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_rotation_rad",
+                    "value": 0.0000000000000000024974090935012546,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.00000098066500000063,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_high",
+            "physics_step_ticks": 500,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "rest",
+                "steps": 4000,
+                "final_state_sha256": "97227efe564f2538a722921ca86a250ec7ac5a757b24b8a9f9adc119860211e7",
+                "metrics": [
+                  {
+                    "name": "normal_force_rel_error",
+                    "value": 0.00000000000003537851306973956,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "tangential_force_rel_weight",
+                    "value": 0.00000000000000001768925653486978,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "center_of_pressure_offset_m",
+                    "value": 0.000000000000000000021002460341074032,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_translation_m",
+                    "value": 0.000000000000000000007237684776051884,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_rotation_rad",
+                    "value": 0.00000000000000000040444419818472185,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.0000009806649999988953,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_high",
+            "physics_step_ticks": 1000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "rest",
+                "steps": 2000,
+                "final_state_sha256": "a7a208e2a71d91656743ce34808505989708d79b8bf8ff65a06885c107e908fd",
+                "metrics": [
+                  {
+                    "name": "normal_force_rel_error",
+                    "value": 0.000000000000013585349018779989,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "tangential_force_rel_weight",
+                    "value": 0.00000000000000002501638649990974,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "center_of_pressure_offset_m",
+                    "value": 0.0000000000000000026989095941888923,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_translation_m",
+                    "value": 0.00000000000000000000004256379951248845,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_rotation_rad",
+                    "value": 0.000000000000000000013158583226344684,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.00000098066500000063,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_high",
+            "physics_step_ticks": 2000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "rest",
+                "steps": 1000,
+                "final_state_sha256": "2cda721da323301e4eb7efac47da221a1fbd8d76732a113269b199a09cb66002",
+                "metrics": [
+                  {
+                    "name": "normal_force_rel_error",
+                    "value": 0.000000000000010613553920921867,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "tangential_force_rel_weight",
+                    "value": 0.00000000000000003955438008340121,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "center_of_pressure_offset_m",
+                    "value": 0.0000000000000000012943291211645213,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_translation_m",
+                    "value": 0.00000000000000000000027528574824732596,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "drift_rotation_rad",
+                    "value": 0.0000000000000000004115863171379764,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.00000098066500000063,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "case_id": "free_fall_before_contact",
+        "outcome": "pass",
+        "combinations": [
+          {
+            "friction_id": "mu_low",
+            "physics_step_ticks": 500,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "free_fall",
+                "steps": 200,
+                "final_state_sha256": "1b62dac66e3cd1b72801f86ed96356098fc154597fe2b4c8fed2b08d10519427",
+                "metrics": [
+                  {
+                    "name": "velocity_error_over_allowance",
+                    "value": 0.0000024982164219200068,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "position_error_over_allowance",
+                    "value": 0.5000000000001978,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "contact_during_fall",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_low",
+            "physics_step_ticks": 1000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "free_fall",
+                "steps": 100,
+                "final_state_sha256": "5b480eed173e0aee35e65e9d82048709022fc33a2dcd50b057a8c9c9de19d0d1",
+                "metrics": [
+                  {
+                    "name": "velocity_error_over_allowance",
+                    "value": 0.00000211256801224256,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "position_error_over_allowance",
+                    "value": 0.5000000000000662,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "contact_during_fall",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_low",
+            "physics_step_ticks": 2000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "free_fall",
+                "steps": 50,
+                "final_state_sha256": "5f448772de898407f4745bb522134bcfcbf200a2402f53c846203497cbbfc66c",
+                "metrics": [
+                  {
+                    "name": "velocity_error_over_allowance",
+                    "value": 0.0000012694175656959724,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "position_error_over_allowance",
+                    "value": 0.5000000000000558,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "contact_during_fall",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_mid",
+            "physics_step_ticks": 500,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "free_fall",
+                "steps": 200,
+                "final_state_sha256": "1b62dac66e3cd1b72801f86ed96356098fc154597fe2b4c8fed2b08d10519427",
+                "metrics": [
+                  {
+                    "name": "velocity_error_over_allowance",
+                    "value": 0.0000024982164219200068,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "position_error_over_allowance",
+                    "value": 0.5000000000001978,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "contact_during_fall",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_mid",
+            "physics_step_ticks": 1000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "free_fall",
+                "steps": 100,
+                "final_state_sha256": "5b480eed173e0aee35e65e9d82048709022fc33a2dcd50b057a8c9c9de19d0d1",
+                "metrics": [
+                  {
+                    "name": "velocity_error_over_allowance",
+                    "value": 0.00000211256801224256,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "position_error_over_allowance",
+                    "value": 0.5000000000000662,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "contact_during_fall",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_mid",
+            "physics_step_ticks": 2000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "free_fall",
+                "steps": 50,
+                "final_state_sha256": "5f448772de898407f4745bb522134bcfcbf200a2402f53c846203497cbbfc66c",
+                "metrics": [
+                  {
+                    "name": "velocity_error_over_allowance",
+                    "value": 0.0000012694175656959724,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "position_error_over_allowance",
+                    "value": 0.5000000000000558,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "contact_during_fall",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_high",
+            "physics_step_ticks": 500,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "free_fall",
+                "steps": 200,
+                "final_state_sha256": "1b62dac66e3cd1b72801f86ed96356098fc154597fe2b4c8fed2b08d10519427",
+                "metrics": [
+                  {
+                    "name": "velocity_error_over_allowance",
+                    "value": 0.0000024982164219200068,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "position_error_over_allowance",
+                    "value": 0.5000000000001978,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "contact_during_fall",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_high",
+            "physics_step_ticks": 1000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "free_fall",
+                "steps": 100,
+                "final_state_sha256": "5b480eed173e0aee35e65e9d82048709022fc33a2dcd50b057a8c9c9de19d0d1",
+                "metrics": [
+                  {
+                    "name": "velocity_error_over_allowance",
+                    "value": 0.00000211256801224256,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "position_error_over_allowance",
+                    "value": 0.5000000000000662,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "contact_during_fall",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_high",
+            "physics_step_ticks": 2000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "free_fall",
+                "steps": 50,
+                "final_state_sha256": "5f448772de898407f4745bb522134bcfcbf200a2402f53c846203497cbbfc66c",
+                "metrics": [
+                  {
+                    "name": "velocity_error_over_allowance",
+                    "value": 0.0000012694175656959724,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "position_error_over_allowance",
+                    "value": 0.5000000000000558,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "contact_during_fall",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "case_id": "friction_threshold_transition",
+        "outcome": "pass",
+        "combinations": [
+          {
+            "friction_id": "mu_low",
+            "physics_step_ticks": 500,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 2000,
+                "final_state_sha256": "0c9bbea192e40903787e86b2f0239cbcd554fe5d38c008549b571ba9a49e916f",
+                "metrics": [
+                  {
+                    "name": "max_displacement_m",
+                    "value": 0.00000006619701171595566,
+                    "limit": 0.00001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "friction_balance_rel_error",
+                    "value": 0.000000000000007468797203611684,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.0000011130581592157934,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 2000,
+                "final_state_sha256": "cd00a874a996ef43796b825da197491896b6e896a50bb3ef4cb7d07957e7c46a",
+                "metrics": [
+                  {
+                    "name": "acceleration_rel_error",
+                    "value": 0.000000000000002612567118996151,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.0000010787340004973778,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_low",
+            "physics_step_ticks": 1000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 1000,
+                "final_state_sha256": "8300e4da9706bc8a165390adc5527593a6f53dab72fbc5b0a3a8ac05258ae1d4",
+                "metrics": [
+                  {
+                    "name": "max_displacement_m",
+                    "value": 0.00000006619706965648098,
+                    "limit": 0.00001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "friction_balance_rel_error",
+                    "value": 0.0000000000000005241261195516972,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.0000011130581435755266,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 1000,
+                "final_state_sha256": "c8ea901107b7c93f1d014c244781d740af9f9184d534409a1627e9a1aa17392a",
+                "metrics": [
+                  {
+                    "name": "acceleration_rel_error",
+                    "value": 0.000000000000027519040320092794,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.00000108038023638804,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_low",
+            "physics_step_ticks": 2000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 500,
+                "final_state_sha256": "6a6c474ad6b3c92fe5664644568e11834cee505cfc25cb073b344aa385880765",
+                "metrics": [
+                  {
+                    "name": "max_displacement_m",
+                    "value": 0.00000006621012141862932,
+                    "limit": 0.00001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "friction_balance_rel_error",
+                    "value": 0.000000000000003799914366749804,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.000001113058238726844,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 500,
+                "final_state_sha256": "7831cf9cbbf98b3cccc0ddb9899f1280808ff12006bc0e203a47498044f3d2e0",
+                "metrics": [
+                  {
+                    "name": "acceleration_rel_error",
+                    "value": 0.00000000000001689460070284178,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.0000010973640015270875,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_mid",
+            "physics_step_ticks": 500,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 2000,
+                "final_state_sha256": "eb253ba9f9fcbbd7060c20c8598571ea4c03cbe0c0bcbc4e06570a4ab8ec93b6",
+                "metrics": [
+                  {
+                    "name": "max_displacement_m",
+                    "value": 0.00000013239543423419228,
+                    "limit": 0.00001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "friction_balance_rel_error",
+                    "value": 0.000000000000012054900749689034,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.0000012454528626332229,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 2000,
+                "final_state_sha256": "aa2179399428384697cf570729bc27f7bf7cdcbdfb7e6bfab65e8d04318d0946",
+                "metrics": [
+                  {
+                    "name": "acceleration_rel_error",
+                    "value": 0.00000000000007353339706990436,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.0000012013211302536186,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_mid",
+            "physics_step_ticks": 1000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 1000,
+                "final_state_sha256": "ed814eed4fe4770be1c302fdc2ecf9a1d86bad881b0a38fbd55fe039eb4c7c2a",
+                "metrics": [
+                  {
+                    "name": "max_displacement_m",
+                    "value": 0.0000001323951235513415,
+                    "limit": 0.00001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "friction_balance_rel_error",
+                    "value": 0.0000000000000011792837689913185,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.000001245452801341973,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 1000,
+                "final_state_sha256": "b87bc6dc42ea32805ed3ae563e553cd0e508a76d94c702d89882e72cddf9de42",
+                "metrics": [
+                  {
+                    "name": "acceleration_rel_error",
+                    "value": 0.000000000000011644584873239988,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.000001201321130257088,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_mid",
+            "physics_step_ticks": 2000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 500,
+                "final_state_sha256": "ecfae9ae1a33a63589d40443f9c7e46597382d1e8f8205e5c5d5bac369f6c205",
+                "metrics": [
+                  {
+                    "name": "max_displacement_m",
+                    "value": 0.0000001323889143306332,
+                    "limit": 0.00001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "friction_balance_rel_error",
+                    "value": 0.00000000000000183444141843094,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.0000012454528262526021,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 500,
+                "final_state_sha256": "8bdbc6cb7b2cb413e2471690f2d326d11fe2677ee93c4f2274acb46f4e29a981",
+                "metrics": [
+                  {
+                    "name": "acceleration_rel_error",
+                    "value": 0.000000000000000646921381846666,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.0000012140537443122018,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_high",
+            "physics_step_ticks": 500,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 2000,
+                "final_state_sha256": "686ec16fcb9cdcfbdb863defd90a3fffd314a6a51d2c0d0607272bb74ab297bd",
+                "metrics": [
+                  {
+                    "name": "max_displacement_m",
+                    "value": 0.00000019859605899372025,
+                    "limit": 0.00001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "friction_balance_rel_error",
+                    "value": 0.000000000000001921795771689556,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.0000013778512107098795,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 2000,
+                "final_state_sha256": "527e319df0974a0fdd3b7eb95570753c0df553c2029f7b925f20a9a738e98c0d",
+                "metrics": [
+                  {
+                    "name": "acceleration_rel_error",
+                    "value": 0.00000000000010399818904031569,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.0000013239102888348842,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_high",
+            "physics_step_ticks": 1000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 1000,
+                "final_state_sha256": "2da360c8223aeef19fd3a1e2f29020ebadc0c87edd64fca229d994f4a247a779",
+                "metrics": [
+                  {
+                    "name": "max_displacement_m",
+                    "value": 0.00000019859375390237087,
+                    "limit": 0.00001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "friction_balance_rel_error",
+                    "value": 0.0000000000000005241261195516971,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.0000013778510781596587,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 1000,
+                "final_state_sha256": "0d1cd5a21fff33f3d133dda16fe85a4750adec42d73eaa60f9e470ed01d3795f",
+                "metrics": [
+                  {
+                    "name": "acceleration_rel_error",
+                    "value": 0.000000000000010930740589822971,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.0000013239102888314147,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_high",
+            "physics_step_ticks": 2000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 500,
+                "final_state_sha256": "83c8608175bd24968b601774188eb9a944002fbb9d43d6ac6d78e48dafd93cc8",
+                "metrics": [
+                  {
+                    "name": "max_displacement_m",
+                    "value": 0.00000019817970585670485,
+                    "limit": 0.00001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "friction_balance_rel_error",
+                    "value": 0.00000000000000034941741303446474,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.0000013778513426355998,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 500,
+                "final_state_sha256": "06e49801c6b682975fec34b48a8c909fb31f6b0aeeb3eccab26f4252a6593408",
+                "metrics": [
+                  {
+                    "name": "acceleration_rel_error",
+                    "value": 0.0000000000000274830049115549,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "max_penetration_m",
+                    "value": 0.0000013307095290890358,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "case_id": "slide_to_stop",
+        "outcome": "pass",
+        "combinations": [
+          {
+            "friction_id": "mu_low",
+            "physics_step_ticks": 500,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "slide_to_stop",
+                "steps": 2000,
+                "final_state_sha256": "a4ae4715d3da4ad662602c7a8f7f742284ab597aca0ce7b2b4c45fe4a7822384",
+                "metrics": [
+                  {
+                    "name": "stop_time_error_s",
+                    "value": 0.00007094675551794216,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "stop_distance_error_m",
+                    "value": 0.00012497321805873818,
+                    "limit": 0.0008873226331112051,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "post_stop_drift_m",
+                    "value": 0.000000045965202741426196,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "rev1_com_speed_stop_time_error_s",
+                    "value": 0.003070946755517945,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_low",
+            "physics_step_ticks": 1000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "slide_to_stop",
+                "steps": 1000,
+                "final_state_sha256": "9ab0a0176921905b7d20703697a89583bfa6553ccdb05d45e2fbedd6946b8c72",
+                "metrics": [
+                  {
+                    "name": "stop_time_error_s",
+                    "value": 0.00007094675551794216,
+                    "limit": 0.002,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "stop_distance_error_m",
+                    "value": 0.00024993758154698287,
+                    "limit": 0.001137322633111205,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "post_stop_drift_m",
+                    "value": 0.00000004681310796427099,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "rev1_com_speed_stop_time_error_s",
+                    "value": 0.004070946755517946,
+                    "limit": 0.002,
+                    "at_least": false,
+                    "informational": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_low",
+            "physics_step_ticks": 2000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "slide_to_stop",
+                "steps": 500,
+                "final_state_sha256": "1bdb5a1358e32547ab85f0d01ddefb944249c9edee7747e1771b27d937e552b6",
+                "metrics": [
+                  {
+                    "name": "stop_time_error_s",
+                    "value": 0.001070946755517943,
+                    "limit": 0.004,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "stop_distance_error_m",
+                    "value": 0.0004990449810238079,
+                    "limit": 0.001637322633111205,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "post_stop_drift_m",
+                    "value": 0.000000028111834850447056,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "rev1_com_speed_stop_time_error_s",
+                    "value": 0.007070946755517948,
+                    "limit": 0.004,
+                    "at_least": false,
+                    "informational": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_mid",
+            "physics_step_ticks": 500,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "slide_to_stop",
+                "steps": 2000,
+                "final_state_sha256": "dc38291275fadc72396cf803b49a71e220fa0e4c4876bdbe2015ea80e1d6fd51",
+                "metrics": [
+                  {
+                    "name": "stop_time_error_s",
+                    "value": 0.00019819855800796982,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "stop_distance_error_m",
+                    "value": 0.0001248873085556261,
+                    "limit": 0.0005332545036049801,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "post_stop_drift_m",
+                    "value": 0.00000009103628222621506,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "rev1_com_speed_stop_time_error_s",
+                    "value": 0.003698198558007973,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_mid",
+            "physics_step_ticks": 1000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "slide_to_stop",
+                "steps": 1000,
+                "final_state_sha256": "43b210f63ab94b812659cbc82b611ea86b12037a085817c8c55e04861e24d9f8",
+                "metrics": [
+                  {
+                    "name": "stop_time_error_s",
+                    "value": 0.0006981985580079703,
+                    "limit": 0.002,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "stop_distance_error_m",
+                    "value": 0.0002495842208851268,
+                    "limit": 0.0007832545036049801,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "post_stop_drift_m",
+                    "value": 0.00000006116117369001892,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "rev1_com_speed_stop_time_error_s",
+                    "value": 0.005698198558007961,
+                    "limit": 0.002,
+                    "at_least": false,
+                    "informational": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_mid",
+            "physics_step_ticks": 2000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "slide_to_stop",
+                "steps": 500,
+                "final_state_sha256": "9e04716209769f304e68782aa14c6c538692e1b52386f76d585b978069bfe673",
+                "metrics": [
+                  {
+                    "name": "stop_time_error_s",
+                    "value": 0.0006981985580079703,
+                    "limit": 0.004,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "stop_distance_error_m",
+                    "value": 0.000498024924889668,
+                    "limit": 0.0012832545036049801,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "post_stop_drift_m",
+                    "value": 0.00000007941988861355444,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "rev1_com_speed_stop_time_error_s",
+                    "value": 0.008698198558007963,
+                    "limit": 0.004,
+                    "at_least": false,
+                    "informational": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_high",
+            "physics_step_ticks": 500,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "slide_to_stop",
+                "steps": 2000,
+                "final_state_sha256": "3ae76bc744b6fa60d00ba3cdb8a8999b9a72d526ee0ddfe9897bd2ad86dfb71c",
+                "metrics": [
+                  {
+                    "name": "stop_time_error_s",
+                    "value": 0.000163127644433686,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "stop_distance_error_m",
+                    "value": 0.00012483608397781051,
+                    "limit": 0.0004320921808889158,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "post_stop_drift_m",
+                    "value": 0.000000146925797126883,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "rev1_com_speed_stop_time_error_s",
+                    "value": 0.0041631276444336895,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_high",
+            "physics_step_ticks": 1000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "slide_to_stop",
+                "steps": 1000,
+                "final_state_sha256": "0663dd701a9516a1545ce0f44b1b00504eee4b0b028d49e8bf22d6ff7da11058",
+                "metrics": [
+                  {
+                    "name": "stop_time_error_s",
+                    "value": 0.000163127644433686,
+                    "limit": 0.002,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "stop_distance_error_m",
+                    "value": 0.00024954929775456575,
+                    "limit": 0.0006820921808889159,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "post_stop_drift_m",
+                    "value": 0.00000015375703585092974,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "rev1_com_speed_stop_time_error_s",
+                    "value": 0.00516312764443369,
+                    "limit": 0.002,
+                    "at_least": false,
+                    "informational": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_high",
+            "physics_step_ticks": 2000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "slide_to_stop",
+                "steps": 500,
+                "final_state_sha256": "12fb04d949cf940e4b87b4c1d9c87706a70adacdc810825daaaff8106f680c74",
+                "metrics": [
+                  {
+                    "name": "stop_time_error_s",
+                    "value": 0.0011631276444336869,
+                    "limit": 0.004,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "stop_distance_error_m",
+                    "value": 0.0004967378914267767,
+                    "limit": 0.0011820921808889159,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "post_stop_drift_m",
+                    "value": 0.00000009206871234979087,
+                    "limit": 0.000001,
+                    "at_least": false,
+                    "informational": false
+                  },
+                  {
+                    "name": "rev1_com_speed_stop_time_error_s",
+                    "value": 0.009163127644433694,
+                    "limit": 0.004,
+                    "at_least": false,
+                    "informational": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "case_id": "tipping_threshold",
+        "outcome": "pass",
+        "combinations": [
+          {
+            "friction_id": "mu_low",
+            "physics_step_ticks": 500,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 2000,
+                "final_state_sha256": "d6b16fbf27b4942fc3ab05775d84159e5a17f77afd29f29b3d5d248b6995f80d",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 0.00011318393187766728,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 2000,
+                "final_state_sha256": "5f4d3fea161b098fc19a1e914b8de0310566ec30ba69614979f4f7be1b13eee3",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 1.5809156088122747,
+                    "limit": 0.1,
+                    "at_least": true,
+                    "informational": false
+                  },
+                  {
+                    "name": "pivot_slip_m",
+                    "value": 0.00000007776292348469357,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_low",
+            "physics_step_ticks": 1000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 1000,
+                "final_state_sha256": "c249e30d1c27d6a245d21cfa5ea8e4dbcb51161ad923c1128c9a32e5157f655f",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 0.00008452668111445242,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 1000,
+                "final_state_sha256": "f53b1386e4f90b63b4e9bdbbf2d19ebeddab34ba894beea73ff5515035e9015c",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 1.7851948289420856,
+                    "limit": 0.1,
+                    "at_least": true,
+                    "informational": false
+                  },
+                  {
+                    "name": "pivot_slip_m",
+                    "value": 0.00000015134859106431808,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_low",
+            "physics_step_ticks": 2000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 500,
+                "final_state_sha256": "0cddf2fbc9465511eb6d64f1e6f0f439c90676d3be7916997250a5f39bf98402",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 0.00006956067370394153,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 500,
+                "final_state_sha256": "65f5bb618319aba456ea075afb027ce3f9e0850258e835645fa641e5815f5ac8",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 1.9856801763940093,
+                    "limit": 0.1,
+                    "at_least": true,
+                    "informational": false
+                  },
+                  {
+                    "name": "pivot_slip_m",
+                    "value": 0.00000030016016418545116,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_mid",
+            "physics_step_ticks": 500,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 2000,
+                "final_state_sha256": "f3d094f44873032429f118937643aeec5faff1c7c13eb51f6993517cfb21aee8",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 0.0001131840172152917,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 2000,
+                "final_state_sha256": "27a1f88bcd61ac70a2f9fb5ea161ae945cbbe8e6ce1a9b6217fc8b764f9da7ed",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 1.6272982882672242,
+                    "limit": 0.1,
+                    "at_least": true,
+                    "informational": false
+                  },
+                  {
+                    "name": "pivot_slip_m",
+                    "value": 0.00000007776292640943736,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_mid",
+            "physics_step_ticks": 1000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 1000,
+                "final_state_sha256": "0904662ed28405d2dc162f399f9490a9102da3a8f1d5c3f9ffbd13abb0a0c5a3",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 0.00008452671278116174,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 1000,
+                "final_state_sha256": "edaac7e76b8a4f65d3d1f9ddfd090166af7359d9c7fdcbfef35f57ed505e47e5",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 1.5813288631074673,
+                    "limit": 0.1,
+                    "at_least": true,
+                    "informational": false
+                  },
+                  {
+                    "name": "pivot_slip_m",
+                    "value": 0.0000001513485910660528,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_mid",
+            "physics_step_ticks": 2000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 500,
+                "final_state_sha256": "0091fb7905a2d758303171a90b5f8635da978f57a01af997121e0463929bd288",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 0.00006956047360436499,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 500,
+                "final_state_sha256": "c7e437bd6d7559d3b53f00f847dbc7834c9e3248ba87a6dcb97fe5e3bdfbbe63",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 1.59614483938703,
+                    "limit": 0.1,
+                    "at_least": true,
+                    "informational": false
+                  },
+                  {
+                    "name": "pivot_slip_m",
+                    "value": 0.00000030009739694612,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_high",
+            "physics_step_ticks": 500,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 2000,
+                "final_state_sha256": "26dca4b3ba7b23c2c4df8efa1d71449cb9e1a98944978f1c9df338cc92686d7d",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 0.00011318404289590114,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 2000,
+                "final_state_sha256": "d2d8b26b12249de65c688137eda2419a1332cfffc493a965cd2c800b82f7b1a4",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 1.5798867360328979,
+                    "limit": 0.1,
+                    "at_least": true,
+                    "informational": false
+                  },
+                  {
+                    "name": "pivot_slip_m",
+                    "value": 0.00000007776292640770264,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_high",
+            "physics_step_ticks": 1000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 1000,
+                "final_state_sha256": "92271b99eedf2d16a630156a44221fc28ab606173b14886e8ff940a5cad7a9c7",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 0.0000845267383865178,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 1000,
+                "final_state_sha256": "fbabd5fac2918784fe082d0c895f568b5b3b49573abd96f54655d98b2fc0542d",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 1.5822384982683886,
+                    "limit": 0.1,
+                    "at_least": true,
+                    "informational": false
+                  },
+                  {
+                    "name": "pivot_slip_m",
+                    "value": 0.00000015134859106431808,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "friction_id": "mu_high",
+            "physics_step_ticks": 2000,
+            "passed": true,
+            "sub_runs": [
+              {
+                "name": "below_threshold",
+                "steps": 500,
+                "final_state_sha256": "f6fabc3502a6e8d27cbd8ba2b7ab6912d7ae6c14b22fcf9933d0cc5e3a7a8b7c",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 0.00006956015969689777,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              },
+              {
+                "name": "above_threshold",
+                "steps": 500,
+                "final_state_sha256": "5f3740113809ed0f4476d1b91db8375b92894fecc3d4433bfa6354bf67d32ce5",
+                "metrics": [
+                  {
+                    "name": "max_tilt_rad",
+                    "value": 1.596574516118468,
+                    "limit": 0.1,
+                    "at_least": true,
+                    "informational": false
+                  },
+                  {
+                    "name": "pivot_slip_m",
+                    "value": 0.0000003000503742624852,
+                    "limit": 0.0001,
+                    "at_least": false,
+                    "informational": false
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
