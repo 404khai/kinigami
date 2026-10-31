@@ -1,0 +1,6 @@
+# Pinned toolchain download (tools/zig-toolchain.sh)
+/.toolchain/
+
+# Zig build outputs
+.zig-cache/
+zig-out/

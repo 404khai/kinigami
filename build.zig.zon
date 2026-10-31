@@ -1,0 +1,15 @@
+.{
+    .name = .kinigami,
+    .version = "0.0.0",
+    // Pinned exactly by tools/zig-toolchain.sh (Q42); this field only
+    // rejects older compilers.
+    .minimum_zig_version = "0.17.0",
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "tests",
+        "tools",
+    },
+    .fingerprint = 0x5b88b31f76c58473,
+}
