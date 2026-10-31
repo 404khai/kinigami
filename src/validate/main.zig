@@ -29,8 +29,8 @@ pub fn main(init: std.process.Init) !void {
     const report = try core.fixture_suite.run(arena, init.gpa, parsed.value);
 
     const out: Output = .{
-        .code_revision = build_info.code_revision,
-        .working_tree_dirty = build_info.working_tree_dirty,
+        .code_revision = std.mem.trim(u8, @embedFile("git_revision"), " \n\r"),
+        .working_tree_dirty = std.mem.trim(u8, @embedFile("git_status"), " \n\r").len != 0,
         .optimize_mode = @tagName(@import("builtin").mode),
         .target = build_info.target,
         .zig_version = @import("builtin").zig_version_string,
