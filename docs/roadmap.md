@@ -92,6 +92,7 @@ Candidate generation ──► Gate 1 (paper) ───────────�
   - capture-isolation test passes (INS-007)
   - envelope documented for what was validated
 - **Not claimed:** formulation validity in general, or compliant constraints.
+- **Status:** implemented and tested. All five analytic cases pass at all 9 combinations (run 2, `cd59f3e`, labeled `fixture`), full-suite replay is bit-identical, and capture isolation holds with the real solver. **Disclosed:** protocol revision 2 was made after run 1 and is flagged for owner review. **Open:** the minimal inspector (R5) for visual checks, and the qualification checklist (R6) before compliant links.
 
 ### R5 — Minimal inspector (review parallel with R2–R4)
 
