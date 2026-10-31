@@ -16,6 +16,10 @@ const time = @import("time.zig");
 
 /// Solver configuration fixed in docs/validation/fixture-analytic-v1-protocol.md
 /// before the first evaluation. Changing it requires a protocol revision entry.
+/// Protocol revision 2: fixtures that start on the table are first settled,
+/// unloaded, for this long; the evaluation clock starts afterwards.
+pub const preroll_s: f64 = 0.5;
+
 pub const protocol_settings: rigid.Settings = .{
     .contact_stiffness_n_m = 1.0e5,
     .contact_damping_n_s_m = 50,
@@ -52,6 +56,8 @@ pub const Report = struct {
     criteria_path: []const u8 = "criteria/fixture-validation/analytic-v1.json",
     criteria_sha256: []const u8 = criteria.analytic_v1_sha256,
     protocol: []const u8 = "docs/validation/fixture-analytic-v1-protocol.md",
+    protocol_revision: u32 = eval.protocol_revision,
+    preroll_s: f64 = preroll_s,
     solver_name: []const u8,
     solver_version: []const u8,
     solver_settings: rigid.Settings,
@@ -100,12 +106,18 @@ fn simulate(ctx: Ctx, spec: RunSpec, fr: criteria.FrictionPair, step_ticks: u64)
         .gravity_m_s2 = m3.scale(ctx.c.gravity.direction_world, ctx.g),
     };
     defer world.deinit();
-    var body = rigid.cuboid(spec.fixture.mass_kg, spec.fixture.size_m, spec.bottom_z_m);
-    body.velocity_m_s = spec.initial_velocity_m_s;
-    _ = try world.addBody(body);
+    _ = try world.addBody(rigid.cuboid(spec.fixture.mass_kg, spec.fixture.size_m, spec.bottom_z_m));
 
     const n = try stepsFor(ctx, spec.duration_s, step_ticks);
     const dt = ctx.unit.seconds(.{ .ticks = step_ticks });
+    // Settle unloaded on the table before t = 0 (protocol revision 2), so the
+    // run starts from the contact's own equilibrium rather than from an
+    // uncompressed contact.
+    if (spec.bottom_z_m == 0) {
+        const pre = try stepsFor(ctx, preroll_s, step_ticks);
+        for (0..pre) |_| try world.step(dt, .{});
+    }
+    world.bodies.items[0].velocity_m_s = m3.add(world.bodies.items[0].velocity_m_s, spec.initial_velocity_m_s);
     const samples = try ctx.scratch.alloc(eval.Sample, n + 1);
     samples[0] = sample(&world, 0);
     var loads: [1]backend.AppliedLoad = undefined;
@@ -157,6 +169,7 @@ fn sample(w: *rigid.World, t: f64) eval.Sample {
         .position_m = b.position_m,
         .orientation = b.orientation,
         .velocity_m_s = b.velocity_m_s,
+        .angular_velocity_rad_s = b.angular_velocity_rad_s,
         .normal_force_sum_n = fn_sum,
         .tangential_force_sum_n = ft,
         .center_of_pressure_m = if (fn_sum > 0) m3.scale(cop, 1.0 / fn_sum) else null,
@@ -208,7 +221,7 @@ fn runCombination(ctx: Ctx, kind: CaseKind, fr: criteria.FrictionPair, step_tick
             const s = c.slide_to_stop;
             const f = fixtureById(c, s.fixture);
             const r = try simulate(ctx, .{ .name = "slide", .fixture = f, .bottom_z_m = 0, .duration_s = s.duration_s, .initial_velocity_m_s = m3.scale(s.direction_world, s.initial_speed_m_s) }, fr, step_ticks);
-            try out.append(ctx.arena, try subRun(ctx, "slide_to_stop", r.steps, r.hash, eval.slideToStop(s, g, fr.mu_kinetic, dt, r.samples)));
+            try out.append(ctx.arena, try subRun(ctx, "slide_to_stop", r.steps, r.hash, eval.slideToStop(s, f, g, fr.mu_kinetic, dt, r.samples)));
         },
         .tipping => {
             const t = c.tipping;

@@ -25,6 +25,7 @@ pub const Sample = struct {
     position_m: m3.Vec3,
     orientation: m3.Quat,
     velocity_m_s: m3.Vec3,
+    angular_velocity_rad_s: m3.Vec3 = m3.zero,
     normal_force_sum_n: f64,
     tangential_force_sum_n: m3.Vec3,
     /// Null when no contact carries normal load.
@@ -38,14 +39,20 @@ pub const Metric = struct {
     limit: f64,
     /// `value ≤ limit` passes unless `at_least` (then `value ≥ limit`).
     at_least: bool = false,
+    /// Reported for transparency only; never affects the outcome.
+    informational: bool = false,
 
     pub fn passed(m: Metric) bool {
+        if (m.informational) return true;
         if (!std.math.isFinite(m.value)) return false;
         return if (m.at_least) m.value >= m.limit else m.value <= m.limit;
     }
 };
 
 pub const max_metrics = 8;
+
+/// Protocol revision implemented here (see the revision log).
+pub const protocol_revision: u32 = 2;
 
 pub const Evaluation = struct {
     metrics: [max_metrics]Metric = undefined,
@@ -177,20 +184,33 @@ fn nearest(samples: []const Sample, t: f64) Sample {
     return best;
 }
 
-/// Sliding to a stop: the stop is the first sample whose horizontal speed is
-/// ≤ the threshold; distance is horizontal displacement from t = 0 to the
-/// stop; drift is the largest horizontal displacement after the stop.
-pub fn slideToStop(c: criteria.SlideToStopCase, g: f64, mu_k: f64, dt_s: f64, samples: []const Sample) Evaluation {
+/// Sliding to a stop (protocol revision 2): the stop is the first sample
+/// whose bottom-face-centre horizontal speed (the sliding contact patch,
+/// v + ω × r with r from the centre of mass to the bottom-face centre) is ≤
+/// the threshold. Distance is horizontal CoM displacement from t = 0 to the
+/// stop. Drift is the largest horizontal CoM displacement after the stop.
+///
+/// The revision-1 definition (CoM speed) is still reported as an
+/// informational metric. It also captures post-stop rocking on the compliant
+/// contact (v_com = ω·h), which is contact relaxation, not sliding.
+pub fn slideToStop(c: criteria.SlideToStopCase, f: criteria.Fixture, g: f64, mu_k: f64, dt_s: f64, samples: []const Sample) Evaluation {
     var e: Evaluation = .{};
     const t_ref = analytic.stopTime(g, mu_k, c.initial_speed_m_s);
     const d_ref = analytic.stopDistance(g, mu_k, c.initial_speed_m_s);
     const x0 = samples[0].position_m;
+    const bottom: m3.Vec3 = .{ 0, 0, -f.size_m[2] / 2.0 };
     var stop: ?Sample = null;
+    var com_stop: ?Sample = null;
     var drift: f64 = 0;
     for (samples[1..]) |s| {
+        if (com_stop == null and m3.horizontalLength(s.velocity_m_s) <= c.stop_speed_threshold_m_s) com_stop = s;
         if (stop) |st| {
             drift = @max(drift, m3.horizontalLength(m3.sub(s.position_m, st.position_m)));
-        } else if (m3.horizontalLength(s.velocity_m_s) <= c.stop_speed_threshold_m_s) stop = s;
+        } else {
+            const r = s.orientation.rotate(bottom);
+            const v_patch = m3.add(s.velocity_m_s, m3.cross(s.angular_velocity_rad_s, r));
+            if (m3.horizontalLength(v_patch) <= c.stop_speed_threshold_m_s) stop = s;
+        }
     }
     if (stop) |st| {
         const d = m3.horizontalLength(m3.sub(st.position_m, x0));
@@ -200,6 +220,12 @@ pub fn slideToStop(c: criteria.SlideToStopCase, g: f64, mu_k: f64, dt_s: f64, sa
     } else {
         e.add(.{ .name = "stopped", .value = 0, .limit = 1, .at_least = true });
     }
+    e.add(.{
+        .name = "rev1_com_speed_stop_time_error_s",
+        .value = if (com_stop) |cs| @abs(cs.t_s - t_ref) else std.math.inf(f64),
+        .limit = c.stop_time_tol_steps * dt_s,
+        .informational = true,
+    });
     return e;
 }
 

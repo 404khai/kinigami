@@ -19,7 +19,7 @@ Implemented in `src/core/fixture_eval.zig`, which also documents them inline.
 | Friction, below (0.9·μs·m·g at the CoM) | displacement | max horizontal CoM displacement from t = 0 | `below_max_displacement_m` |
 | | balance | \|mean \|ΣFt\| over window − push\| / push | `below_balance_rel_tol` |
 | Friction, above (1.1·μs·m·g) | acceleration | (v·d at the sample nearest window end − v·d at the sample nearest window start) / Δt, vs (F − μk·m·g)/m, relative | `above_accel_rel_tol` |
-| Slide to stop | stop | first sample with horizontal speed ≤ threshold, else fail | — |
+| Slide to stop | stop | **rev 2:** first sample whose bottom-face-centre horizontal speed (v + ω × r) is ≤ threshold, else fail. The rev-1 CoM-speed definition is still reported as an informational metric | — |
 | | time | \|t_stop − v0/(μk·g)\| | `stop_time_tol_steps`·Δt |
 | | distance | \|d − v0²/(2μk·g)\| | rel·d* + steps·v0·Δt |
 | | post-stop drift | max horizontal displacement after the stop | `post_stop_drift_abs_tol_m` |
@@ -40,9 +40,9 @@ Sample n is the state after step n (t = n·Δt). Sample 0 is the initial state. 
 
 | Case | Fixture | Initial state |
 | --- | --- | --- |
-| Rest, friction, slide | flat block | bottom face on z = 0, axis-aligned, at rest. Slide: velocity v0 along `direction_world` |
+| Rest, friction, slide | flat block | bottom face on z = 0, axis-aligned, at rest, **then settled unloaded for 0.5 s (rev 2)**. t = 0 starts after settling. Slide: v0 along `direction_world` added at t = 0 |
 | Free fall | flat block | bottom face at z = `initial_clearance_m`, at rest |
-| Tipping | tall block | bottom face on z = 0, axis-aligned, at rest. Load applied in the body frame at `application_point_body_m` |
+| Tipping | tall block | bottom face on z = 0, axis-aligned, at rest, then settled unloaded for 0.5 s (rev 2). Load applied in the body frame at `application_point_body_m` from t = 0 |
 
 Validation loads act for the whole run. They are recorded as run inputs and are present only in `fixture_validation` runs (Q46, PRC-013).
 
@@ -65,4 +65,5 @@ These are solver settings, not criteria (Q48). They are recorded with every resu
 
 | Date | Change | Reason | Results affected |
 | --- | --- | --- | --- |
-| 2026-10-31 | Initial protocol | — | — |
+| 2026-10-31 | Initial protocol (revision 1) | — | — |
+| 2026-10-31 | **Revision 2. Post-hoc: made after observing run 1** (`results/fixture-validation/analytic-v1/run1-7c7581f-ReleaseSafe.json`, preserved). (a) Fixtures starting on the table are settled unloaded for 0.5 s before t = 0. (b) Slide-to-stop detects the stop on the bottom-face-centre speed instead of CoM speed. Criteria thresholds are unchanged. Solver settings are unchanged | (a) Rev 1 started runs on an uncompressed contact. At Δt = 0.5 ms the first step carried only 0.83·m·g, so friction capacity fell below the 0.9·μs push and the block slipped, an artifact of the initial condition, not of the threshold. (b) Run 1 shows sliding stops within one step of v0/(μk·g) (stop distance within 0.5 mm). The CoM speed then reflects a decaying post-stop rock on the compliant contact (v_com = ω·h_com) for about 3 ms, which is not sliding. The rev-1 metric is still reported as informational | Run 1: friction `uncertain` (6/9), slide `fail` (0/9), others `pass`. Run 2 replaces it as the reported result. Both are kept. **Flagged for owner review because this was post-hoc** |
