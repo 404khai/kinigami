@@ -5,6 +5,7 @@ pub const time = @import("time.zig");
 pub const scheduler = @import("scheduler.zig");
 pub const rng = @import("rng.zig");
 pub const strict_json = @import("strict_json.zig");
+pub const canonical = @import("canonical.zig");
 
 test {
     _ = identity;
@@ -12,4 +13,5 @@ test {
     _ = scheduler;
     _ = rng;
     _ = strict_json;
+    _ = canonical;
 }
