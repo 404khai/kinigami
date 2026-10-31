@@ -16,6 +16,7 @@ pub const criteria = @import("criteria.zig");
 pub const math3 = @import("math3.zig");
 pub const fixture_eval = @import("fixture_eval.zig");
 pub const rigid = @import("rigid.zig");
+pub const fixture_suite = @import("fixture_suite.zig");
 
 test {
     _ = identity;
@@ -34,4 +35,5 @@ test {
     _ = math3;
     _ = fixture_eval;
     _ = rigid;
+    _ = fixture_suite;
 }

@@ -37,6 +37,33 @@ pub fn build(b: *std.Build) void {
     });
     test_step.dependOn(&b.addRunArtifact(tools_tests).step);
 
+    // Analytic fixture-validation runner (Q46-Q48). Results are labeled
+    // `fixture`; provenance (revision, dirty tree, target) is baked in.
+    const build_info = b.addOptions();
+    var exit_code: u8 = 0;
+    const rev = b.runAllowFail(&.{ "git", "rev-parse", "HEAD" }, &exit_code, .ignore) catch "unknown";
+    const status = b.runAllowFail(&.{ "git", "status", "--porcelain" }, &exit_code, .ignore) catch "unknown";
+    build_info.addOption([]const u8, "code_revision", std.mem.trim(u8, rev, " \n\r"));
+    build_info.addOption(bool, "working_tree_dirty", std.mem.trim(u8, status, " \n\r").len != 0);
+    build_info.addOption([]const u8, "target", target.result.zigTriple(b.allocator) catch "unknown");
+    const validate_exe = b.addExecutable(.{
+        .name = "kinigami-validate",
+        .root_module = b.createModule(.{
+            .root_source_file = b.path("src/validate/main.zig"),
+            .target = target,
+            .optimize = optimize,
+            .imports = &.{
+                .{ .name = "kinigami_core", .module = core },
+                .{ .name = "build_info", .module = build_info.createModule() },
+            },
+        }),
+    });
+    b.installArtifact(validate_exe);
+    const validate_run = b.addRunArtifact(validate_exe);
+    validate_run.addArgs(&.{"zig-out/fixture-validation-report.json"});
+    validate_run.has_side_effects = true;
+    b.step("validate", "Run the analytic fixture-validation suite (results labeled fixture)").dependOn(&validate_run.step);
+
     // Toolchain conformance (DAT-005, DAT-007..009, BLD-004): pins down the
     // behavior of the pinned compiler and standard library. Run under every
     // optimization mode, because floating-point contraction and parsing must
