@@ -1,5 +1,8 @@
 //! `kinigami-validate`: runs the analytic fixture-validation suite and writes
-//! a JSON report. Usage: kinigami-validate <report.json>
+//! a JSON report. Usage: kinigami-validate <report.json> [--recordings <dir>]
+//!
+//! With `--recordings`, every run also writes a format-v2 recording (Q51)
+//! into <dir> for the inspector. Recording never changes results (INS-007).
 //!
 //! Results are labeled `fixture` (Q46). They qualify nothing beyond the
 //! declared conditions and are never benchmark or Kin-candidate evidence.
@@ -17,16 +20,38 @@ const Output = struct {
     report: core.fixture_suite.Report,
 };
 
+const RecordingWriter = struct {
+    io: std.Io,
+    dir: std.Io.Dir,
+    count: usize = 0,
+
+    fn emit(ptr: *anyopaque, name: []const u8, bytes: []const u8) anyerror!void {
+        const self: *RecordingWriter = @ptrCast(@alignCast(ptr));
+        try self.dir.writeFile(self.io, .{ .sub_path = name, .data = bytes });
+        self.count += 1;
+    }
+};
+
 pub fn main(init: std.process.Init) !void {
     const arena = init.arena.allocator();
     const args = try init.minimal.args.toSlice(arena);
-    if (args.len != 2) {
-        std.debug.print("usage: kinigami-validate <report.json>\n", .{});
+    const usage = "usage: kinigami-validate <report.json> [--recordings <dir>]\n";
+    if (args.len != 2 and !(args.len == 4 and std.mem.eql(u8, args[2], "--recordings"))) {
+        std.debug.print(usage, .{});
         std.process.exit(2);
     }
 
+    var writer: RecordingWriter = .{ .io = init.io, .dir = undefined };
+    var recorder: ?core.fixture_suite.Recorder = null;
+    if (args.len == 4) {
+        try std.Io.Dir.cwd().createDirPath(init.io, args[3]);
+        writer.dir = try std.Io.Dir.cwd().openDir(init.io, args[3], .{});
+        recorder = .{ .ptr = &writer, .emit = RecordingWriter.emit };
+    }
+
     const parsed = try core.criteria.parse(arena, core.criteria.analytic_v1_json);
-    const report = try core.fixture_suite.run(arena, init.gpa, parsed.value);
+    const report = try core.fixture_suite.run(arena, init.gpa, parsed.value, recorder);
+    if (recorder != null) std.debug.print("{d} recordings written to {s}\n", .{ writer.count, args[3] });
 
     const out: Output = .{
         .code_revision = std.mem.trim(u8, @embedFile("git_revision"), " \n\r"),
