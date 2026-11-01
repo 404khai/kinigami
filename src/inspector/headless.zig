@@ -14,7 +14,7 @@ pub fn render(gpa: std.mem.Allocator, m: *ui.Model, w: u32, h: u32) !zigui.Frame
     defer arena.deinit();
     zigui.setThemeTokens(theme);
     zigui.beginBuild(arena.allocator());
-    const root = ui.body(m);
+    const root = ui.body(m, null);
     zigui.endBuild();
     var hits: std.ArrayList(zigui.HitRegion) = .empty;
     var ctx = zigui.Context.init(theme, &cache, arena.allocator(), &hits);
@@ -72,9 +72,12 @@ fn testFrame() scene_view.SceneFrame {
     return .{ .tick = 0, .time_s = 0, .bodies = &S.bodies, .contacts = &S.contacts };
 }
 
+/// Counts matching pixels in the left part of the frame (the 3D view),
+/// excluding the readout panel whose legend uses the same colors.
 fn countColor(fb: *const zigui.Framebuffer, r: u8, g: u8, b: u8) usize {
     var n: usize = 0;
-    for (fb.pixels) |c| {
+    for (fb.pixels, 0..) |c, i| {
+        if (i % fb.width >= fb.width / 2) continue;
         if (@abs(@as(i32, to8(c.r)) - r) < 25 and @abs(@as(i32, to8(c.g)) - g) < 25 and @abs(@as(i32, to8(c.b)) - b) < 25) n += 1;
     }
     return n;

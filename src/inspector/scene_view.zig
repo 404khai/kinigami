@@ -46,11 +46,13 @@ pub const SceneFrame = struct {
     time_s: f64,
     bodies: []const Body,
     contacts: ?[]const Contact,
+    /// Recorded linear velocity per body, or null if not recorded.
+    velocities_m_s: ?[]const Vec3 = null,
 };
 
 pub const Style = struct {
     /// Screen length of a force arrow per newton.
-    px_per_newton: f64 = 120,
+    px_per_newton: f64 = 300,
     grid_spacing_m: f64 = 0.01,
     grid_half_extent_m: f64 = 0.08,
 };
@@ -70,12 +72,15 @@ pub const View = struct {
         const friction_c = zigui.Color.fromRgba8(235, 140, 50, 255);
         const point_c = zigui.Color.fromRgba8(230, 70, 70, 255);
 
-        // Tabletop grid (z = 0).
+        // Tabletop grid (z = 0), centred on the grid cell under the camera
+        // target so it stays in view when the camera follows a body.
         const s = self.style;
+        const cx = @round(self.camera.target[0] / s.grid_spacing_m) * s.grid_spacing_m;
+        const cy = @round(self.camera.target[1] / s.grid_spacing_m) * s.grid_spacing_m;
         var g: f64 = -s.grid_half_extent_m;
         while (g <= s.grid_half_extent_m + 1e-12) : (g += s.grid_spacing_m) {
-            try self.segment(pen, rect, .{ g, -s.grid_half_extent_m, 0 }, .{ g, s.grid_half_extent_m, 0 }, 1, grid, w, h);
-            try self.segment(pen, rect, .{ -s.grid_half_extent_m, g, 0 }, .{ s.grid_half_extent_m, g, 0 }, 1, grid, w, h);
+            try self.segment(pen, rect, .{ cx + g, cy - s.grid_half_extent_m, 0 }, .{ cx + g, cy + s.grid_half_extent_m, 0 }, 1, grid, w, h);
+            try self.segment(pen, rect, .{ cx - s.grid_half_extent_m, cy + g, 0 }, .{ cx + s.grid_half_extent_m, cy + g, 0 }, 1, grid, w, h);
         }
 
         // Bodies: the 12 edges of each cuboid at its recorded pose.

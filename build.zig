@@ -75,7 +75,10 @@ pub fn build(b: *std.Build) void {
         .root_source_file = b.path("src/inspector/root.zig"),
         .target = target,
         .optimize = optimize,
-        .imports = &.{.{ .name = "zigui", .module = zigui_mod }},
+        .imports = &.{
+            .{ .name = "zigui", .module = zigui_mod },
+            .{ .name = "kinigami_core", .module = core },
+        },
     });
     const inspector_tests = b.addTest(.{ .name = "inspector", .root_module = inspector_mod });
     test_step.dependOn(&b.addRunArtifact(inspector_tests).step);
