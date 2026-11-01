@@ -136,7 +136,7 @@ See [README](README.md) for conventions. Evidence and limitations are in the [tr
 | ID | Requirement | Sources | Status | Verification |
 | --- | --- | --- | --- | --- |
 | INS-001 | The inspector is a separate native Zig executable. Its graphics library belongs only to the inspector. | Q45 | in_force | Build graph review |
-| INS-002 | The graphics library is selected only after a license, maintenance, platform, and technical-fit review. | Q45, Q42 | open | Library review record |
+| INS-002 | The graphics library is selected only after a license, maintenance, platform, and technical-fit review. **Selected: zigui (Q50)**, with a wireframe 3D view first and no browser build in v1. | Q45, Q42, Q50 | in_force | `docs/inspector/library-review.md` |
 | INS-003 | The recording reader is reusable Zig code, separate from rendering. | Q45 | in_force | Code review |
 | INS-004 | The inspector is read-only. It cannot access mutable simulation state, command Kins, or affect the evaluator. | Q42, Q45 | in_force | Architecture review |
 | INS-005 | It displays only solver-produced or recorded values. Unrecorded values are shown as unavailable, never estimated. | Q45 | in_force | Inspector tests |

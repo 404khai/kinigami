@@ -103,6 +103,7 @@ Candidate generation ──► Gate 1 (paper) ───────────�
   - build the viewer
 - **Depends on:** the R3 reader and stream for implementation. The review can start now.
 - **Exit:** viewer shows only recorded values, unavailable values are marked, interpolation is labeled, and the capture-isolation test is green.
+- **Status:** implemented. zigui desktop inspector (Q50) plays back format-v2 recordings (Q51) with a timeline, playback, and camera controls, showing recorded poses and solver contact forces. The fixture suite writes one recording per run. **Open:** live streaming to the inspector (file playback only so far), SDL3 pinning, and interpolated display (not offered).
 
 ### R6 — Backend qualification checklist
 

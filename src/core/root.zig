@@ -7,6 +7,7 @@ pub const rng = @import("rng.zig");
 pub const strict_json = @import("strict_json.zig");
 pub const canonical = @import("canonical.zig");
 pub const recording = @import("recording.zig");
+pub const scene_record = @import("scene_record.zig");
 pub const run = @import("run.zig");
 pub const backend = @import("backend.zig");
 pub const snapshot = @import("snapshot.zig");
@@ -26,6 +27,7 @@ test {
     _ = strict_json;
     _ = canonical;
     _ = recording;
+    _ = scene_record;
     _ = run;
     _ = backend;
     _ = snapshot;

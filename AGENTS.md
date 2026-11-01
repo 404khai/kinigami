@@ -22,7 +22,7 @@ Read these before implementing or evaluating anything:
 
 | Document | Purpose |
 | --- | --- |
-| [`docs/decisions/`](docs/decisions/README.md) | Append-only decision log (Q1–Q49). **Decisions govern.** Q1–Q30 are known only by reference |
+| [`docs/decisions/`](docs/decisions/README.md) | Append-only decision log (Q1–Q51). **Decisions govern.** Q1–Q30 are known only by reference |
 | [`docs/requirements/`](docs/requirements/README.md) | Current requirements with stable IDs (`ENV-`, `PHY-`, `CPL-`, `CTL-`, `COM-`, `PWR-`, `TIM-`, `DAT-`, `INS-`, `BLD-`, `BEN-`, `SEL-`, `PRC-`) and status |
 | [`criteria/`](criteria/README.md) | Machine-readable, preregistered, hash-linked criteria |
 | [`docs/traceability.md`](docs/traceability.md) | What is implemented, tested, validated, and qualified, and what is not |
@@ -52,6 +52,9 @@ The toolchain is pinned to one Zig release. See [`docs/toolchain.md`](docs/toolc
 tools/zig-toolchain.sh          # download (if needed) and verify the pinned compiler by SHA-256
 tools/zig build test            # run all tests with the pinned compiler
 tools/zig-verify-signature.sh   # verify the pinned tarball's official minisign signature
+tools/zig build inspector       # build the read-only inspector (needs SDL3; see docs/toolchain.md)
+tools/zig build -Doptimize=ReleaseSafe && zig-out/bin/kinigami-validate report.json --recordings recs/
+zig-out/bin/kinigami-inspector recs/<run>.kgrec   # play back a recording
 ```
 
 Never use a system or Homebrew `zig` for recorded results.
