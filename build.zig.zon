@@ -4,6 +4,13 @@
     // Pinned exactly by tools/zig-toolchain.sh (Q42); this field only
     // rejects older compilers.
     .minimum_zig_version = "0.17.0",
+    // Inspector-only (Q50). Pinned by commit and content hash (BLD-003).
+    .dependencies = .{
+        .zigui = .{
+            .url = "git+https://github.com/404khai/zigui#ad0481f21faa6209d7f04a527996d345e3b7293e",
+            .hash = "zigui-0.2.0-fjyMjSyxbwCWx_KlUH0W8zwi2lJTFuc-VY9O8RXLYssn",
+        },
+    },
     .paths = .{
         "build.zig",
         "build.zig.zon",

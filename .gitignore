@@ -4,3 +4,6 @@
 # Zig build outputs
 .zig-cache/
 zig-out/
+
+# Packages extracted by the Zig package manager (reproducible from build.zig.zon hashes)
+/zig-pkg/

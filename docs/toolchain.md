@@ -52,7 +52,7 @@ tools/zig-verify-signature.sh          # verify the host tarball's official mini
 | Area | Policy | Current dependencies |
 | --- | --- | --- |
 | Simulation core (`src/core`) | Zig standard library only | none |
-| Inspector | Vetted, hash-pinned, license recorded | none yet. Library review pending (INS-002) |
+| Inspector | Vetted, hash-pinned, license recorded | **zigui** `404khai/zigui@ad0481f` (MIT; fonts OFL 1.1; Lucide icons ISC), pinned by content hash in `build.zig.zon` (Q50). **SDL3** is a system library, **not pinned**: Homebrew `sdl3` 3.4.10 on the development host, overridable with `-Dsdl3-prefix`. A documented BLD-003 limitation |
 | Validation tooling | Validation-only external engines after review (Q41) | none yet |
 
 `build.zig.zon` declares no dependencies. Any future dependency is pinned by its content hash in `build.zig.zon` (direct and transitive), and its license is recorded here.
