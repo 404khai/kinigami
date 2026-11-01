@@ -37,6 +37,36 @@ pub fn build(b: *std.Build) void {
     });
     test_step.dependOn(&b.addRunArtifact(tools_tests).step);
 
+    // Analytic fixture-validation runner (Q46-Q48). Results are labeled
+    // `fixture`; provenance (revision, dirty tree, target) is baked in.
+    // Provenance is captured by steps that rerun on every build, never by the
+    // cached build configuration, so a report can't carry a stale revision.
+    const build_info = b.addOptions();
+    build_info.addOption([]const u8, "target", target.result.zigTriple(b.allocator) catch "unknown");
+    const rev_cmd = b.addSystemCommand(&.{ "git", "rev-parse", "HEAD" });
+    rev_cmd.has_side_effects = true;
+    const status_cmd = b.addSystemCommand(&.{ "git", "status", "--porcelain" });
+    status_cmd.has_side_effects = true;
+    const validate_exe = b.addExecutable(.{
+        .name = "kinigami-validate",
+        .root_module = b.createModule(.{
+            .root_source_file = b.path("src/validate/main.zig"),
+            .target = target,
+            .optimize = optimize,
+            .imports = &.{
+                .{ .name = "kinigami_core", .module = core },
+                .{ .name = "build_info", .module = build_info.createModule() },
+            },
+        }),
+    });
+    validate_exe.root_module.addAnonymousImport("git_revision", .{ .root_source_file = rev_cmd.captureStdOut(.{}) });
+    validate_exe.root_module.addAnonymousImport("git_status", .{ .root_source_file = status_cmd.captureStdOut(.{}) });
+    b.installArtifact(validate_exe);
+    const validate_run = b.addRunArtifact(validate_exe);
+    validate_run.addArgs(&.{"zig-out/fixture-validation-report.json"});
+    validate_run.has_side_effects = true;
+    b.step("validate", "Run the analytic fixture-validation suite (results labeled fixture)").dependOn(&validate_run.step);
+
     // Toolchain conformance (DAT-005, DAT-007..009, BLD-004): pins down the
     // behavior of the pinned compiler and standard library. Run under every
     // optimization mode, because floating-point contraction and parsing must

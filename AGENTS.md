@@ -22,7 +22,7 @@ Read these before implementing or evaluating anything:
 
 | Document | Purpose |
 | --- | --- |
-| [`docs/decisions/`](docs/decisions/README.md) | Append-only decision log (Q1–Q48). **Decisions govern.** Q1–Q30 are known only by reference |
+| [`docs/decisions/`](docs/decisions/README.md) | Append-only decision log (Q1–Q49). **Decisions govern.** Q1–Q30 are known only by reference |
 | [`docs/requirements/`](docs/requirements/README.md) | Current requirements with stable IDs (`ENV-`, `PHY-`, `CPL-`, `CTL-`, `COM-`, `PWR-`, `TIM-`, `DAT-`, `INS-`, `BLD-`, `BEN-`, `SEL-`, `PRC-`) and status |
 | [`criteria/`](criteria/README.md) | Machine-readable, preregistered, hash-linked criteria |
 | [`docs/traceability.md`](docs/traceability.md) | What is implemented, tested, validated, and qualified, and what is not |
