@@ -60,3 +60,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q47 | [Friction law for the first analytic validation cases](Q047-reference-friction-law.md) | accepted |
 | Q48 | [Fixture-validation reference conditions and tolerances](Q048-fixture-validation-reference-conditions.md) (agent decision under owner delegation) | accepted |
 | Q49 | [Acceptance of evaluation protocol revision 2](Q049-accept-evaluation-protocol-revision-2.md) (agent decision under owner delegation) | accepted |
+| Q50 | [Inspector UI library and first 3D view](Q050-inspector-ui-library.md) | accepted |
