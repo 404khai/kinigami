@@ -51,3 +51,8 @@ Evidence status follows the roadmap vocabulary: planned, in progress, implemente
 | PHY-011 | `rigid.zig` labeled not qualified | — | in progress | Fixture validation passed. Qualification checklist (PHY-012) not yet written | **Not qualified** |
 | PHY-016 | Timestep sensitivity: 3 steps × 3 friction pairs; worst-margin table | `results/fixture-validation/analytic-v1/run2-cd59f3e-ReleaseSafe.json` | in progress | Sensitivity across Δt reported per metric | No convergence-order study or iteration-count sensitivity yet |
 | DAT-011 | `src/validate/main.zig` adds code revision, dirty flag, optimize mode, target, and Zig version to each report | Embedded-revision check before and after a commit | tested | — | Run 1 used the earlier cached mechanism (documented) |
+| INS-001 | `src/inspector/` (`kinigami-inspector`), zigui and SDL3 linked only into the inspector | Build graph: core module has no zigui import; purity check passes | implemented | — | — |
+| INS-002 | `docs/inspector/library-review.md`, Q50 | Review document | implemented | zigui `ad0481f` builds with Zig 0.17.0 | SDL3 unpinned (BLD-003 limitation) |
+| INS-003 | Inspector validates recordings with `core.recording.Recording.parse` | Manual: valid container accepted, invalid rejected | implemented | — | Snapshot payloads not yet defined, so nothing is rendered from recordings |
+| INS-005 | `scene_view.zig` draws only `SceneFrame` contents. Missing contact data is labeled unavailable | Headless tests: unavailable contacts draw no contact markers | tested | — | — |
+| INS-009 | Header shows result label and run class | Headless render | implemented | — | Label source is the recording, once payloads exist |
