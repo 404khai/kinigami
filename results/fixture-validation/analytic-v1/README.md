@@ -9,7 +9,7 @@ Every result here is labeled **`fixture`** (Q46). These results are not benchmar
 | [run 1](run1-7c7581f-ReleaseSafe.json) | `7c7581f` (clean) | 1 | ReleaseSafe, aarch64-macos | pass 9/9 | pass 9/9 | **uncertain 6/9** | **fail 0/9** | pass 9/9 |
 | [run 2](run2-cd59f3e-ReleaseSafe.json) | `cd59f3e` (clean) | 2 | ReleaseSafe, aarch64-macos | pass 9/9 | pass 9/9 | pass 9/9 | pass 9/9 | pass 9/9 |
 
-**Revision 2 was made after observing run 1.** The protocol revision log gives the reasons (an uncompressed initial contact, and centre-of-mass rocking counted as sliding) and flags the change for owner review. Criteria thresholds and solver settings are identical across both runs.
+**Revision 2 was made after observing run 1, and was accepted by [Q49](../../../docs/decisions/Q049-accept-evaluation-protocol-revision-2.md). Run 2 is the official result. Run 1 is kept as superseded evidence.** The protocol revision log gives the reasons (an uncompressed initial contact, and centre-of-mass rocking counted as sliding) and Q49 records the ruling and its safeguards. Criteria thresholds and solver settings are identical across both runs.
 
 **Run 1 provenance caveat:** at the time of run 1, the code revision was read from the cached build configuration, a defect fixed in `cd59f3e`. Run 1's recorded revision matches the session's commit sequence, but it was not captured by the corrected mechanism. A later report from the old mechanism carried a stale revision and was discarded, not kept.
 
