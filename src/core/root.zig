@@ -15,6 +15,7 @@ pub const driver = @import("driver.zig");
 pub const analytic = @import("analytic.zig");
 pub const criteria = @import("criteria.zig");
 pub const link_criteria = @import("link_criteria.zig");
+pub const coupler_criteria = @import("coupler_criteria.zig");
 pub const math3 = @import("math3.zig");
 pub const fixture_eval = @import("fixture_eval.zig");
 pub const link_eval = @import("link_eval.zig");
@@ -38,6 +39,7 @@ test {
     _ = analytic;
     _ = criteria;
     _ = link_criteria;
+    _ = coupler_criteria;
     _ = math3;
     _ = fixture_eval;
     _ = link_eval;
