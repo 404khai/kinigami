@@ -29,15 +29,20 @@ pub fn body(m: *Model, controls: ?zigui.View) zigui.View {
         return zigui.VStack(.{
             zigui.Text("Kinigami inspector").font(.title),
             zigui.Text(if (m.source) |s| s else "No recording loaded").foreground(t.secondary_label),
-            zigui.Text("Open a format-v2 recording: kinigami-inspector <file.kgrec>").foreground(t.secondary_label),
+            zigui.Text("Open a format-v2 or v3 recording: kinigami-inspector <file.kgrec>").foreground(t.secondary_label),
         }).spacing(10).padding(24);
     }
     const i = @min(m.index, m.frames.len - 1);
     const f = &m.frames[i];
-    // Presentation only: the camera follows the first body horizontally so a
-    // sliding fixture stays in view. Recorded values are never changed.
+    // Presentation only: the camera follows the first dynamic body so a
+    // sliding fixture stays in view horizontally; it follows height too for
+    // bodies well above the tabletop (hanging or free-falling link fixtures,
+    // Q55). Recorded values are never changed.
     var cam = m.camera;
-    if (f.bodies.len > 0) cam.target = .{ f.bodies[0].position_m[0], f.bodies[0].position_m[1], m.camera.target[2] };
+    if (f.bodies.len > 0) {
+        const p = f.bodies[scene_view.followedBody(f.*)].position_m;
+        cam.target = .{ p[0], p[1], if (p[2] > 0.1) p[2] else m.camera.target[2] };
+    }
     m.view = .{ .frame = f, .camera = cam, .theme_text = t.label };
 
     return zigui.VStack(.{
@@ -61,7 +66,8 @@ pub fn body(m: *Model, controls: ?zigui.View) zigui.View {
 fn readout(f: *const scene_view.SceneFrame) zigui.View {
     const t = zigui.default_theme.colors;
     const fmt = zigui.components.fmt;
-    const b = f.bodies[0];
+    const fi = scene_view.followedBody(f.*);
+    const b = f.bodies[fi];
     var fn_sum: f64 = 0;
     var ft: [3]f64 = .{ 0, 0, 0 };
     var n_contacts: usize = 0;
@@ -72,7 +78,7 @@ fn readout(f: *const scene_view.SceneFrame) zigui.View {
             for (&ft, c.tangential_force_n) |*a, x| a.* += x;
         }
     }
-    const v = if (f.velocities_m_s) |vs| fmt("{d:.5}, {d:.5}, {d:.5} m/s", .{ vs[0][0], vs[0][1], vs[0][2] }) else "unavailable";
+    const v = if (f.velocities_m_s) |vs| fmt("{d:.5}, {d:.5}, {d:.5} m/s", .{ vs[fi][0], vs[fi][1], vs[fi][2] }) else "unavailable";
     return zigui.VStack(.{
         zigui.Text("Recorded state").font(.headline),
         zigui.Text(fmt("t = {d:.4} s  (tick {d})", .{ f.time_s, f.tick })),

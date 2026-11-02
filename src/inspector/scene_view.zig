@@ -30,7 +30,16 @@ pub const Body = struct {
     half_extents_m: Vec3,
     /// Q40/INS-009: fixtures are labeled as fixtures, never as Kins.
     is_fixture: bool,
+    /// Static (infinite-mass) fixture body (Q55). Never followed by the camera.
+    is_static: bool = false,
 };
+
+/// Index of the body the camera and the state panel follow: the first
+/// non-static body, else body 0. Presentation only.
+pub fn followedBody(frame: SceneFrame) usize {
+    for (frame.bodies, 0..) |b, i| if (!b.is_static) return i;
+    return 0;
+}
 
 pub const Contact = struct {
     point_m: Vec3,

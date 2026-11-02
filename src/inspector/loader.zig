@@ -45,6 +45,7 @@ pub fn load(arena: std.mem.Allocator, bytes: []const u8) LoadError!Loaded {
             .orientation = .{ .w = st.orientation[0], .x = st.orientation[1], .y = st.orientation[2], .z = st.orientation[3] },
             .half_extents_m = info.half_extents_m,
             .is_fixture = info.kind != .kin_candidate,
+            .is_static = info.kind == .static_fixture,
         };
         const contacts = try arena.alloc(scene_view.Contact, s.contacts.len);
         for (contacts, s.contacts) |*c, r| c.* = .{
@@ -183,6 +184,7 @@ test "loads v3 link records: anchors from recorded poses, force rotated by recor
     try std.testing.expectEqual(@as(f64, 0.196), link.force_on_b_world_n[2]); // up, on B
     try std.testing.expectEqual(@as(f64, 0.196), link.tension_n);
     try std.testing.expect(l.frames[0].bodies[0].is_fixture);
+    try std.testing.expectEqual(@as(usize, 1), scene_view.followedBody(l.frames[0]));
 }
 
 test "version-1 recordings are rejected with a clear error, not misread" {
