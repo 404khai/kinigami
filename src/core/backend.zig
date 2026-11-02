@@ -28,8 +28,39 @@ pub const AppliedLoad = struct {
     world_point_m: Vec3,
 };
 
+/// Pawl command for a reduced coupler (Q56 §6), supplied per step by the run
+/// harness. A missing entry means `hold`.
+pub const Command = enum { hold, engage, release };
+
 pub const StepInputs = struct {
     validation_loads: []const AppliedLoad = &.{},
+    /// Indexed by coupler. Missing entries are `hold`.
+    coupler_commands: []const Command = &.{},
+};
+
+/// Why a coupler link separated (Q56 §7). `none` until a separation occurs.
+pub const SeparationKind = enum { none, released_under_load, separated_overload };
+
+/// Solver-native reduced-coupler output for one step, produced after that
+/// step's pawl update (Q56 §6, §7). Loads are the latch link's own reported
+/// loads of the step (zero if the link had no rows in the step).
+pub const CouplerReport = struct {
+    u_m: f64,
+    e_during: f64,
+    e_after: f64,
+    active_during: bool,
+    active_after: bool,
+    armed: bool,
+    /// Latched; persists until the pawl returns to zero travel.
+    separation: SeparationKind,
+    separated_this_step: bool,
+    pawl_stalled: bool,
+    /// Energy added to the link potential by the pawl this step.
+    pawl_work_j: f64,
+    tension_n: f64,
+    shear_n: f64,
+    bending_nm: f64,
+    torsion_nm: f64,
 };
 
 /// A solver-native contact output (PHY-005). Loads come from the solver, never
