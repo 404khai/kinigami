@@ -55,7 +55,7 @@ See [README](README.md) for conventions. Evidence and limitations are in the [tr
 | CPL-008 | Release is a physical process under the current load. It may take time, fail, or be blocked. | Q36 | in_force | Slice 3 tests |
 | CPL-009 | Structural retention is passive when unpowered. Bounded independent release remains possible. Passive retention is evaluated under declared loads. | Q11, Q31 | in_force | Retention benchmark |
 | CPL-010 | Partial engagement, incomplete release, jamming, damage, and permanent failure are distinguished where the mechanism supports them. Unsupported failure physics is not invented. | Q36 | in_force | Slice 3 and later tests |
-| CPL-011 | Coupler geometry and physical parameters are decided and justified. | Q36, Q38 | unresolved | Gate: reduced coupler implementation |
+| CPL-011 | Coupler geometry and physical parameters are decided and justified. | Q36, Q38, Q56 | unresolved | Fixture stand-in decided by Q56 (provisional, not a Kin candidate). Kin coupler geometry and parameters remain unresolved until the Q38 gates |
 
 ## CTL — Sensing and control
 
