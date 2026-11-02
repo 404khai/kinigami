@@ -103,7 +103,7 @@ Candidate generation ──► Gate 1 (paper) ───────────�
   - build the viewer
 - **Depends on:** the R3 reader and stream for implementation. The review can start now.
 - **Exit:** viewer shows only recorded values, unavailable values are marked, interpolation is labeled, and the capture-isolation test is green.
-- **Status:** implemented. zigui desktop inspector (Q50) plays back format-v2 recordings (Q51) with a timeline, playback, and camera controls, showing recorded poses and solver contact forces. The fixture suite writes one recording per run. **Open:** live streaming to the inspector (file playback only so far), SDL3 pinning, and interpolated display (not offered).
+- **Status:** implemented. zigui desktop inspector (Q50) plays back format-v2 and v3 recordings (Q51, Q55) with a timeline, playback, and camera controls, showing recorded poses and solver contact forces. The fixture and compliant-link suites write one recording per run; links are drawn with their recorded force. **Open:** live streaming to the inspector (file playback only so far), SDL3 pinning, and interpolated display (not offered).
 
 ### R6 — Backend qualification checklist
 
@@ -117,12 +117,12 @@ Candidate generation ──► Gate 1 (paper) ───────────�
 ### R7 — Slice 2: compliant connection
 
 - **Objective:**
-  - fixture-only compliant constraints with per-axis compliance, damping, limits, and solver-native loads
+  - fixture-only compliant constraints with per-axis compliance, damping, limits (moved to R8 by Q54), and solver-native loads
   - analytic statics cases plus an independent reference comparison
   - stabilization kept separate from physical damping
 - **Depends on:** R6.
 - **Exit:** the qualification checklist items for these capabilities are evaluated, and the envelope is documented.
-- **Status:** qualified for fixture links within the declared envelope (`results/qualification/compliant-link-v1/`, run 2 at `5f04229`, criteria v2): 10/10 checks pass. Run 1 (v1) failed L2 because its reference ignored the tension lever. Q53 replaced it with the exact statics and kept the tolerances. **Open:** link limits and failure behavior; the independent reference comparison for chains of three or more bodies (PHY-009); stiff-link dynamics (outside the ω·Δt rule); link data in recordings (needs a decision).
+- **Status:** **qualified for fixture links within the declared envelope. R7 is closed (Q54).** Run 2 (`5f04229`, criteria v2) passes 10/10. Run 1 (v1) failed L2 because its reference ignored the tension lever; Q53 replaced it with the exact statics and kept the tolerances. The solver-settings sensitivity study (Q54, PHY-016) shows no dependence on sweeps or warm start, and a backward-Euler control that L7 rejects. Links are recorded (format v3, Q55) and drawn by the inspector. The closed-form references are the two-body independent reference (Q54). **Moved to later phases:** link load limits and failure (R8, Q54); the joint-coordinate reference for chains of three or more bodies (PHY-009); stiff-link dynamics, which need a finer-Δt criteria version once a coupler stiffness is declared (R8, CPL-011).
 
 ### R8 — Slice 3: reduced coupler engagement (fixture)
 

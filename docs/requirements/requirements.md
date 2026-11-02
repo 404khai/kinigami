@@ -22,9 +22,9 @@ See [README](README.md) for conventions. Evidence and limitations are in the [tr
 | ID | Requirement | Sources | Status | Verification |
 | --- | --- | --- | --- | --- |
 | PHY-001 | Full 3D rigid-body dynamics with mass, inertia, gravity, and collision geometry. No production 2D mode and no artificial planar constraints. | Q31, Q35, Q40, Q41 | in_force | Slice 1 validation cases |
-| PHY-002 | Each Kin (and fixture) is a separate rigid body. Links are implicitly solved compliant constraints with declared compliance, damping, limits, and failure behavior. | Q35 | in_force | Slice 2 qualification |
+| PHY-002 | Each Kin (and fixture) is a separate rigid body. Links are implicitly solved compliant constraints with declared compliance, damping, limits, and failure behavior. | Q35 | in_force | Slice 2 qualification (compliance, damping, solver-native loads: qualified for fixture links); limits and failure in slice 3 (Q54) |
 | PHY-003 | The formulation supports dynamic link creation, release, failure, changing topology, and closed loops. | Q35, Q41 | in_force | Later qualification cases |
-| PHY-004 | Compliance and load limits are modeled per axis (tension, compression, shear, bending, torsion) where the coupler supports them. Rigid behavior is only an explicitly declared limit. | Q35 | in_force | Slice 2 qualification |
+| PHY-004 | Compliance and load limits are modeled per axis (tension, compression, shear, bending, torsion) where the coupler supports them. Rigid behavior is only an explicitly declared limit. | Q35 | in_force | Slice 2 qualification (compliance, damping, solver-native loads: qualified for fixture links); limits and failure in slice 3 (Q54) |
 | PHY-005 | Loads used for acceptance (break/detach, retention, stress view, benchmark limits) come from solver-native constraint and contact outputs with documented accuracy. Post-hoc estimates are diagnostic only. | Q35, Q41 | in_force | Qualification checklist |
 | PHY-006 | Numerical stabilization is distinguishable from, and never presented as, physical damping or compliance. | Q35, Q36, Q41 | in_force | Qualification checklist |
 | PHY-007 | Contact, friction, and link constraints are solved consistently, so loads transfer coherently between tabletop, bodies, and couplers. | Q35, Q41 | in_force | Slices 1–2 validation |

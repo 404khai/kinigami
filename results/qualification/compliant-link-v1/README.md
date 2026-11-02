@@ -141,4 +141,7 @@ Not covered:
 - the stiff grid point's dynamics (outside the resolution rule)
 - chains of three or more bodies, link creation, release or failure, closed loops, couplers
 - large relative rotations (small-angle rotational Jacobian) and frame-rotation coupling
-- any Kin geometry; recordings of links (the recording format has no link representation)
+- link load limits and failure (deferred to the coupler slice, Q54)
+- any Kin geometry
+
+Recordings: `kinigami-qualify <report> --recordings <dir>` writes one format-v3 recording per evaluated run (Q55), with no effect on results (hashes verified identical to run 2). Recordings are reproducible from the code revision and are not committed.
