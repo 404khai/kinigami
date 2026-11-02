@@ -16,7 +16,7 @@ const time = @import("time.zig");
 const recording = @import("recording.zig");
 const scene_record = @import("scene_record.zig");
 
-/// Receives each run's finished recording (format v2, Q51). The core never
+/// Receives each run's finished recording (format v3, Q51, Q55). The core never
 /// performs file I/O; the caller decides where recordings go. Recording only
 /// reads simulation state and never feeds back into it (INS-007).
 pub const Recorder = struct {
@@ -431,9 +431,9 @@ test "recording leaves results unchanged and captures every step (INS-007, Q51)"
     try std.testing.expectEqualStrings(a[0].final_state_sha256, b[0].final_state_sha256);
 
     const rec = try recording.Recording.parse(col.bytes.?);
-    try std.testing.expectEqual(@as(u16, 2), rec.version);
+    try std.testing.expectEqual(@as(u16, 3), rec.version);
     try std.testing.expectEqual(@as(usize, a[0].steps + 1), rec.snapshot_count);
-    const header = try scene_record.decodeHeader(arena.allocator(), rec.scene_header.?);
+    const header = try scene_record.decodeHeader(arena.allocator(), rec.scene_header.?, rec.version);
     var it = rec.snapshots();
     var prev: ?u64 = null;
     while (it.next()) |p| {

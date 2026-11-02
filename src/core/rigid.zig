@@ -222,6 +222,14 @@ pub const World = struct {
         return @intCast(self.links.items.len - 1);
     }
 
+    /// Anchor-A frame axes (axial, shear 1, shear 2) in body A's frame, as
+    /// the link rows use them. For recording (Q55).
+    pub fn linkAxesBodyA(self: *const World, li: usize) [3]m3.Vec3 {
+        const a = self.links.items[li].spec.axis_a;
+        const p = perpendiculars(a);
+        return .{ a, p[0], p[1] };
+    }
+
     /// Unit vectors perpendicular to `a` and to each other, deterministic:
     /// s1 = normalize(a × t) with t the world axis of smallest |a_i| (lowest
     /// index on ties), s2 = a × s1.

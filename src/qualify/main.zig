@@ -1,5 +1,7 @@
 //! `kinigami-qualify`: runs the compliant-link qualification suite (Q52) and
-//! writes a JSON report. Usage: kinigami-qualify <report.json>
+//! writes a JSON report. Usage: kinigami-qualify <report.json> [--recordings <dir>]
+//! With `--recordings`, every evaluated run writes a format-v3 recording
+//! with link records (Q55) for the inspector. Recording never changes results.
 //!
 //! Results are labeled `fixture` (Q46). They qualify nothing beyond the
 //! declared envelope and are never benchmark or Kin-candidate evidence.
@@ -17,19 +19,41 @@ const Output = struct {
     report: core.link_suite.Report,
 };
 
+const RecordingWriter = struct {
+    io: std.Io,
+    dir: std.Io.Dir,
+    count: usize = 0,
+
+    fn emit(ptr: *anyopaque, name: []const u8, bytes: []const u8) anyerror!void {
+        const self: *RecordingWriter = @ptrCast(@alignCast(ptr));
+        try self.dir.writeFile(self.io, .{ .sub_path = name, .data = bytes });
+        self.count += 1;
+    }
+};
+
 pub fn main(init: std.process.Init) !void {
     const arena = init.arena.allocator();
     const args = try init.minimal.args.toSlice(arena);
-    const usage = "usage: kinigami-qualify <report.json>\n       kinigami-qualify --sensitivity <dir>   (exploratory, Q54)\n";
-    if (args.len != 2 and !(args.len == 3 and std.mem.eql(u8, args[1], "--sensitivity"))) {
+    const usage = "usage: kinigami-qualify <report.json> [--recordings <dir>]\n       kinigami-qualify --sensitivity <dir>   (exploratory, Q54)\n";
+    const with_recordings = args.len == 4 and std.mem.eql(u8, args[2], "--recordings");
+    if (args.len != 2 and !with_recordings and !(args.len == 3 and std.mem.eql(u8, args[1], "--sensitivity"))) {
         std.debug.print(usage, .{});
         std.process.exit(2);
     }
     if (args.len == 3) return sensitivity(init, arena, args[2]);
 
+    var writer: RecordingWriter = .{ .io = init.io, .dir = undefined };
+    var recorder: ?core.link_suite.Recorder = null;
+    if (with_recordings) {
+        try std.Io.Dir.cwd().createDirPath(init.io, args[3]);
+        writer.dir = try std.Io.Dir.cwd().openDir(init.io, args[3], .{});
+        recorder = .{ .ptr = &writer, .emit = RecordingWriter.emit };
+    }
+
     // Official criteria: v2 (Q53). v1 run 1 is preserved as superseded evidence.
     const parsed = try core.link_criteria.parse(arena, core.link_criteria.link_v2_json);
-    const report = try core.link_suite.run(arena, init.gpa, parsed.value, core.link_suite.official_criteria);
+    const report = try core.link_suite.run(arena, init.gpa, parsed.value, core.link_suite.official_criteria, recorder);
+    if (recorder != null) std.debug.print("{d} recordings written to {s}\n", .{ writer.count, args[3] });
 
     const json = try std.json.Stringify.valueAlloc(arena, provenance(report), .{ .whitespace = .indent_2 });
     try std.Io.Dir.cwd().writeFile(init.io, .{ .sub_path = args[1], .data = json });
@@ -64,7 +88,7 @@ fn sensitivity(init: std.process.Init, arena: std.mem.Allocator, dir_path: []con
     var dir = try std.Io.Dir.cwd().openDir(init.io, dir_path, .{});
     defer dir.close(init.io);
     for (core.link_suite.sensitivity_variants) |v| {
-        const report = try core.link_suite.runWith(arena, init.gpa, parsed.value, core.link_suite.official_criteria, v.config, if (std.meta.eql(v.config, core.link_suite.protocol_config)) "fixture" else "exploratory");
+        const report = try core.link_suite.runWith(arena, init.gpa, parsed.value, core.link_suite.official_criteria, v.config, if (std.meta.eql(v.config, core.link_suite.protocol_config)) "fixture" else "exploratory", null);
         const json = try std.json.Stringify.valueAlloc(arena, provenance(report), .{ .whitespace = .indent_2 });
         const name = try std.fmt.allocPrint(arena, "{s}.json", .{v.name});
         try dir.writeFile(init.io, .{ .sub_path = name, .data = json });

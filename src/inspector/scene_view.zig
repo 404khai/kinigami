@@ -38,6 +38,16 @@ pub const Contact = struct {
     tangential_force_n: Vec3,
 };
 
+/// A recorded fixture link (Q55): anchor points in world coordinates and the
+/// recorded force on body B rotated into the world frame by the recorded
+/// anchor-A axes and pose. Display transforms only (INS-005).
+pub const Link = struct {
+    anchor_a_m: Vec3,
+    anchor_b_m: Vec3,
+    force_on_b_world_n: Vec3,
+    tension_n: f64,
+};
+
 /// One recorded instant. `contacts == null` means contact data was not
 /// recorded for this frame (shown as unavailable), which is different from
 /// an empty list (recorded: no contacts).
@@ -48,6 +58,8 @@ pub const SceneFrame = struct {
     contacts: ?[]const Contact,
     /// Recorded linear velocity per body, or null if not recorded.
     velocities_m_s: ?[]const Vec3 = null,
+    /// Recorded links; null when the recording has no link data (v2).
+    links: ?[]const Link = null,
 };
 
 pub const Style = struct {
@@ -110,6 +122,18 @@ pub const View = struct {
             }
         } else {
             try pen.text("contact data: unavailable (not recorded)", 12, self.theme_text, .{ .x = rect.x + 10, .y = rect.y + rect.height - 22 });
+        }
+
+        // Links: anchor-to-anchor segment (violet), force on B at anchor B (magenta).
+        if (self.frame.links) |links| {
+            const link_c = zigui.Color.fromRgba8(150, 110, 230, 255);
+            const lforce_c = zigui.Color.fromRgba8(220, 70, 200, 255);
+            for (links, 0..) |l, i| {
+                try self.segment(pen, rect, l.anchor_a_m, l.anchor_b_m, 3, link_c, w, h);
+                const scale_m = s.px_per_newton / pxPerMetreAt(self.camera, l.anchor_b_m, h);
+                try self.segment(pen, rect, l.anchor_b_m, add(l.anchor_b_m, scale(l.force_on_b_world_n, scale_m)), 2, lforce_c, w, h);
+                try pen.text(pen.fmt("link {d}: tension {d:.5} N (recorded)", .{ i, l.tension_n }), 12, self.theme_text, .{ .x = rect.x + 10, .y = rect.y + 28 + 16 * @as(f32, @floatFromInt(i)) });
+            }
         }
 
         try pen.text(pen.fmt("t = {d:.4} s   (tick {d})", .{ self.frame.time_s, self.frame.tick }), 13, self.theme_text, .{ .x = rect.x + 10, .y = rect.y + 8 });

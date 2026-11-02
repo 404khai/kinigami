@@ -4,8 +4,9 @@
 //! docs/validation/compliant-link-v1-protocol.md). Results are labeled
 //! `fixture` and qualify only the declared envelope (Q40, Q46).
 //!
-//! Recording: the recording format has no link representation yet (a later
-//! decision), so this suite writes no recordings.
+//! Recording (Q55): with a recorder, each evaluated run (not its replay)
+//! writes a format-v3 recording with link records. Recording only reads
+//! simulation state and never feeds back (INS-007).
 
 const std = @import("std");
 const m3 = @import("math3.zig");
@@ -15,6 +16,32 @@ const rigid = @import("rigid.zig");
 const backend = @import("backend.zig");
 const canonical = @import("canonical.zig");
 const time = @import("time.zig");
+const recording = @import("recording.zig");
+const scene_record = @import("scene_record.zig");
+const fixture_suite = @import("fixture_suite.zig");
+
+pub const Recorder = fixture_suite.Recorder;
+
+/// Effective configuration stored as each recording's first chunk.
+const LinkRunConfig = struct {
+    schema: []const u8 = "kinigami.link-run.v1",
+    run_class: []const u8 = "fixture_validation",
+    label: []const u8,
+    criteria_sha256: []const u8,
+    protocol_revision: u32 = eval.protocol_revision,
+    case_id: []const u8,
+    sub_run: []const u8,
+    grid_id: []const u8,
+    time_unit_numerator_s: u64,
+    time_unit_denominator_s: u64,
+    physics_step_ticks: u64,
+    steps: u64,
+    link: rigid.LinkSpec,
+    load_kind: []const u8,
+    load_force_n: m3.Vec3,
+    load_torque_nm: m3.Vec3,
+    solver: SolverConfig,
+};
 
 /// Contact settings are those of the analytic protocol; the link
 /// prediction coefficient and the sweep count are fixed in the protocol
@@ -122,7 +149,39 @@ const Ctx = struct {
     c: lc.Criteria,
     unit: time.TimeUnit,
     solver: SolverConfig = protocol_config,
+    recorder: ?Recorder = null,
+    label: []const u8 = "fixture",
+    criteria_sha256: []const u8 = "",
 };
+
+/// What to record for one run, if anything.
+const RecordAs = struct { case_id: []const u8, sub_run: []const u8 };
+
+fn recordSnapshot(rec: *recording.Writer, buf: *canonical.BufferSink, w: *const rigid.World, tick: u64, stepped: bool) !void {
+    var bodies: [2]scene_record.BodyState = undefined;
+    for (&bodies, w.bodies.items) |*o, b| o.* = .{
+        .position_m = b.position_m,
+        .orientation = .{ b.orientation.w, b.orientation.x, b.orientation.y, b.orientation.z },
+        .velocity_m_s = b.velocity_m_s,
+        .angular_velocity_rad_s = b.angular_velocity_rad_s,
+    };
+    var contacts: [8]scene_record.ContactRecord = undefined;
+    const reports = if (stepped) w.reports.items else &.{};
+    std.debug.assert(reports.len <= contacts.len);
+    for (reports, 0..) |r, i| contacts[i] = .{
+        .body_a = r.body_a,
+        .body_b = r.body_b orelse scene_record.tabletop,
+        .point_m = r.world_point_m,
+        .normal = r.world_normal,
+        .normal_force_n = r.normal_force_n,
+        .tangential_force_n = r.tangential_force_n,
+    };
+    const lr = if (stepped) w.link_reports.items[0] else w.linkGeometryReport(0);
+    const links = [1]scene_record.LinkRecord{.{ .force_on_b_n = lr.force_on_b_n, .moment_on_b_nm = lr.moment_on_b_nm, .extension_m = lr.extension_m, .rotation_rad = lr.rotation_rad }};
+    buf.list.clearRetainingCapacity();
+    try scene_record.encodeSnapshot(buf.encoder(), .{ .tick = tick, .bodies = &bodies, .contacts = contacts[0..reports.len], .links = &links });
+    try rec.snapshot(buf.list.items);
+}
 
 const HangLoad = enum { none, shear, torque };
 
@@ -165,7 +224,7 @@ fn sample(w: *const rigid.World, t: f64, stepped: bool, body_b: u32) eval.Sample
 const Run = struct { samples: []eval.Sample, hash: []const u8, steps: u64 };
 
 /// Simulates one run. Samples are owned by `ctx.scratch`, the hash by `ctx.arena`.
-fn simulate(ctx: Ctx, sc: Scenario, gp: lc.GridPoint, step_ticks: u64) !Run {
+fn simulate(ctx: Ctx, sc: Scenario, gp: lc.GridPoint, step_ticks: u64, record_as: ?RecordAs) !Run {
     const c = ctx.c;
     const g = c.gravity.magnitude_m_s2;
     const edge = c.fixture.size_m[0];
@@ -244,6 +303,60 @@ fn simulate(ctx: Ctx, sc: Scenario, gp: lc.GridPoint, step_ticks: u64) !Run {
     const n = try stepsFor(ctx, duration_s, step_ticks);
     const samples = try ctx.scratch.alloc(eval.Sample, n + 1);
     samples[0] = sample(&world, 0, false, 1);
+
+    var rec: ?recording.Writer = null;
+    defer if (rec) |*r| r.deinit();
+    var snap_buf: canonical.BufferSink = .{ .gpa = ctx.scratch };
+    defer snap_buf.deinit();
+    if (ctx.recorder != null) if (record_as) |ra| {
+        const load_kind: []const u8, const lf: m3.Vec3, const lt: m3.Vec3 = switch (sc) {
+            .hang => |hl| switch (hl) {
+                .none => .{ "none", m3.zero, m3.zero },
+                .shear => .{ "world_force_at_center_of_mass_b", m3.scale(c.static_cases.shear_bending.load_world_direction, c.static_cases.shear_bending.load_over_weight * m * g), m3.zero },
+                .torque => .{ "world_torque_on_b", m3.zero, m3.scale(axis, c.static_cases.torsion.torque_about_link_axis_nm) },
+            },
+            else => .{ "none", m3.zero, m3.zero },
+        };
+        const cfg_json = try std.json.Stringify.valueAlloc(ctx.scratch, LinkRunConfig{
+            .label = ctx.label,
+            .criteria_sha256 = ctx.criteria_sha256,
+            .case_id = ra.case_id,
+            .sub_run = ra.sub_run,
+            .grid_id = gp.id,
+            .time_unit_numerator_s = ctx.unit.numerator,
+            .time_unit_denominator_s = ctx.unit.denominator,
+            .physics_step_ticks = step_ticks,
+            .steps = n,
+            .link = world.links.items[0].spec,
+            .load_kind = load_kind,
+            .load_force_n = lf,
+            .load_torque_nm = lt,
+            .solver = ctx.solver,
+        }, .{});
+        rec = try recording.Writer.init(ctx.scratch, cfg_json);
+        var infos: [2]scene_record.BodyInfo = undefined;
+        for (&infos, world.bodies.items, [_][]const u8{ "fixture_link_cube_a", "fixture_link_cube_b" }) |*o, b, id| o.* = .{
+            .id = id,
+            .kind = if (b.is_static) .static_fixture else .fixture,
+            .shape = .cuboid,
+            .half_extents_m = b.half_extents_m,
+            .mass_kg = if (b.is_static) 0 else b.mass_kg,
+        };
+        const sp = world.links.items[0].spec;
+        const link_infos = [1]scene_record.LinkInfo{.{ .body_a = sp.body_a, .body_b = sp.body_b, .axes_a = world.linkAxesBodyA(0), .anchor_a_m = sp.anchor_a_m, .anchor_b_m = sp.anchor_b_m, .rest_length_m = sp.rest_length_m }};
+        var hb: canonical.BufferSink = .{ .gpa = ctx.scratch };
+        defer hb.deinit();
+        try scene_record.encodeHeader(hb.encoder(), .{
+            .time_unit_numerator_s = ctx.unit.numerator,
+            .time_unit_denominator_s = ctx.unit.denominator,
+            .physics_step_ticks = step_ticks,
+            .snapshot_interval_steps = 1,
+            .bodies = &infos,
+            .links = &link_infos,
+        });
+        try rec.?.sceneHeader(hb.list.items);
+        try recordSnapshot(&rec.?, &snap_buf, &world, 0, false);
+    };
     var loads: [1]backend.AppliedLoad = undefined;
     for (1..n + 1) |i| {
         var inputs: backend.StepInputs = .{};
@@ -264,6 +377,13 @@ fn simulate(ctx: Ctx, sc: Scenario, gp: lc.GridPoint, step_ticks: u64) !Run {
         }
         try world.step(dt, inputs);
         samples[i] = sample(&world, ctx.unit.seconds(.{ .ticks = i * step_ticks }), true, 1);
+        if (rec) |*r| try recordSnapshot(r, &snap_buf, &world, i * step_ticks, true);
+    }
+    if (rec) |*r| {
+        const bytes = try r.finish();
+        defer ctx.scratch.free(bytes);
+        const name = try std.fmt.allocPrint(ctx.scratch, "{s}__{s}__dt{d}us.kgrec", .{ record_as.?.case_id, gp.id, step_ticks });
+        try ctx.recorder.?.emit(ctx.recorder.?.ptr, name, bytes);
     }
 
     var sink: canonical.BufferSink = .{ .gpa = ctx.scratch };
@@ -290,7 +410,7 @@ fn subRun(ctx: Ctx, name: []const u8, run1: Run, replay_hash: []const u8, e: eva
 
 const CaseKind = enum { l1, l2, l3, l4, l5, l6, l7, l8, l9 };
 
-fn runCombination(ctx: Ctx, kind: CaseKind, gp: lc.GridPoint, step_ticks: u64) !Combination {
+fn runCombination(ctx: Ctx, kind: CaseKind, case_id: []const u8, gp: lc.GridPoint, step_ticks: u64) !Combination {
     const c = ctx.c;
     const dyn = c.dynamic_cases;
     const g = c.gravity.magnitude_m_s2;
@@ -332,8 +452,8 @@ fn runCombination(ctx: Ctx, kind: CaseKind, gp: lc.GridPoint, step_ticks: u64) !
         .l7 => .{ .free = .{ .stretch_m = dyn.numerical_dissipation.initial_stretch_m, .twist_rad = 0, .zeta = dyn.numerical_dissipation.damping_ratio } },
         .l9 => .table,
     };
-    const r = try simulate(ctx, scenario, gp, step_ticks);
-    const replay = try simulate(ctx, scenario, gp, step_ticks);
+    const r = try simulate(ctx, scenario, gp, step_ticks, .{ .case_id = case_id, .sub_run = @tagName(kind) });
+    const replay = try simulate(ctx, scenario, gp, step_ticks, null);
     const e: eval.Evaluation = switch (kind) {
         .l1 => eval.axialStatics(c.static_cases.axial, setup, r.samples),
         .l2 => eval.shearBendingStatics(c.static_cases.shear_bending, setup, r.samples),
@@ -370,16 +490,16 @@ pub const CriteriaIdentity = struct { path: []const u8, sha256: []const u8 };
 pub const official_criteria: CriteriaIdentity = .{ .path = "criteria/qualification/compliant-link-v2.json", .sha256 = lc.link_v2_sha256 };
 
 /// Official run: protocol settings, labeled `fixture`.
-pub fn run(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: lc.Criteria, identity: CriteriaIdentity) !Report {
-    return runWith(arena, scratch, c, identity, protocol_config, "fixture");
+pub fn run(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: lc.Criteria, identity: CriteriaIdentity, recorder: ?Recorder) !Report {
+    return runWith(arena, scratch, c, identity, protocol_config, "fixture", recorder);
 }
 
 /// Any solver configuration. Non-protocol configurations must be labeled
 /// `exploratory` (Q54); this is enforced.
-pub fn runWith(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: lc.Criteria, identity: CriteriaIdentity, solver: SolverConfig, label: []const u8) !Report {
+pub fn runWith(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: lc.Criteria, identity: CriteriaIdentity, solver: SolverConfig, label: []const u8, recorder: ?Recorder) !Report {
     const is_protocol = std.meta.eql(solver, protocol_config);
     if (!is_protocol and !std.mem.eql(u8, label, "exploratory")) return error.NonProtocolRunMustBeExploratory;
-    const ctx: Ctx = .{ .arena = arena, .scratch = scratch, .c = c, .unit = .{ .numerator = c.time_unit.numerator_s, .denominator = c.time_unit.denominator_s }, .solver = solver };
+    const ctx: Ctx = .{ .arena = arena, .scratch = scratch, .c = c, .unit = .{ .numerator = c.time_unit.numerator_s, .denominator = c.time_unit.denominator_s }, .solver = solver, .recorder = recorder, .label = label, .criteria_sha256 = identity.sha256 };
     const kinds = [_]struct { CaseKind, []const u8 }{
         .{ .l1, c.static_cases.axial.id },
         .{ .l2, c.static_cases.shear_bending.id },
@@ -400,7 +520,7 @@ pub fn runWith(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: lc.Crite
             defer sc.deinit();
             var sub_ctx = ctx;
             sub_ctx.scratch = sc.allocator();
-            const cb = try runCombination(sub_ctx, k[0], gp, st);
+            const cb = try runCombination(sub_ctx, k[0], k[1], gp, st);
             try combos.append(arena, cb);
             try all.append(arena, cb);
         };
@@ -437,13 +557,49 @@ pub fn runWith(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: lc.Crite
 
 const testing = std.testing;
 
+test "recording leaves link results unchanged and stores every step with link records (INS-007, Q55)" {
+    const gpa = testing.allocator;
+    const parsed = try lc.parse(gpa, lc.link_v2_json);
+    defer parsed.deinit();
+    var arena = std.heap.ArenaAllocator.init(gpa);
+    defer arena.deinit();
+    const Collect = struct {
+        gpa: std.mem.Allocator,
+        bytes: ?[]u8 = null,
+        fn emit(ptr: *anyopaque, _: []const u8, b: []const u8) anyerror!void {
+            const self: *@This() = @ptrCast(@alignCast(ptr));
+            self.bytes = try self.gpa.dupe(u8, b);
+        }
+    };
+    var col: Collect = .{ .gpa = gpa };
+    defer if (col.bytes) |b| gpa.free(b);
+    const base: Ctx = .{ .arena = arena.allocator(), .scratch = arena.allocator(), .c = parsed.value, .unit = .{ .numerator = 1, .denominator = 1_000_000 } };
+    var with = base;
+    with.recorder = .{ .ptr = &col, .emit = Collect.emit };
+    const gp = parsed.value.stiffness_grid[1];
+    const a = try runCombination(base, .l2, "L2", gp, 2000);
+    const b = try runCombination(with, .l2, "L2", gp, 2000);
+    try testing.expectEqualStrings(a.sub_runs[0].final_state_sha256, b.sub_runs[0].final_state_sha256);
+    const rec = try recording.Recording.parse(col.bytes.?);
+    try testing.expectEqual(@as(u16, 3), rec.version);
+    try testing.expectEqual(@as(usize, a.sub_runs[0].steps + 1), rec.snapshot_count);
+    const header = try scene_record.decodeHeader(arena.allocator(), rec.scene_header.?, rec.version);
+    try testing.expectEqual(scene_record.BodyKind.static_fixture, header.bodies[0].kind);
+    try testing.expectEqual(@as(usize, 1), header.links.len);
+    var it = rec.snapshots();
+    var last: ?scene_record.Snapshot = null;
+    while (it.next()) |p| last = try scene_record.decodeSnapshot(arena.allocator(), header, p);
+    // The last recorded link force is the solver's: tension ≈ m·g.
+    try testing.expectApproxEqRel(@as(f64, 0.02 * 9.80665), -last.?.links[0].force_on_b_n[0], 1e-6);
+}
+
 test "non-protocol solver settings cannot be labeled fixture" {
     const gpa = testing.allocator;
     const parsed = try lc.parse(gpa, lc.link_v2_json);
     defer parsed.deinit();
     var arena = std.heap.ArenaAllocator.init(gpa);
     defer arena.deinit();
-    try testing.expectError(error.NonProtocolRunMustBeExploratory, runWith(arena.allocator(), gpa, parsed.value, official_criteria, sensitivity_variants[1].config, "fixture"));
+    try testing.expectError(error.NonProtocolRunMustBeExploratory, runWith(arena.allocator(), gpa, parsed.value, official_criteria, sensitivity_variants[1].config, "fixture", null));
 }
 
 test "the backward-Euler control dissipates where the protocol link does not (L7 discriminates)" {
@@ -454,10 +610,10 @@ test "the backward-Euler control dissipates where the protocol link does not (L7
     defer arena.deinit();
     var ctx: Ctx = .{ .arena = arena.allocator(), .scratch = arena.allocator(), .c = parsed.value, .unit = .{ .numerator = 1, .denominator = 1_000_000 } };
     const soft = parsed.value.stiffness_grid[0];
-    const proto = try runCombination(ctx, .l7, soft, 2000);
+    const proto = try runCombination(ctx, .l7, "L7", soft, 2000);
     try testing.expectEqual(eval.Status.pass, proto.status);
     ctx.solver = sensitivity_variants[8].config;
-    const be = try runCombination(ctx, .l7, soft, 2000);
+    const be = try runCombination(ctx, .l7, "L7", soft, 2000);
     try testing.expectEqual(eval.Status.fail, be.status);
 }
 
@@ -468,7 +624,7 @@ test "the suite wiring yields the registered case list, and statics at one combi
     var arena = std.heap.ArenaAllocator.init(gpa);
     defer arena.deinit();
     const ctx: Ctx = .{ .arena = arena.allocator(), .scratch = arena.allocator(), .c = parsed.value, .unit = .{ .numerator = 1, .denominator = 1_000_000 } };
-    const cb = try runCombination(ctx, .l1, parsed.value.stiffness_grid[1], 2000);
+    const cb = try runCombination(ctx, .l1, "L1", parsed.value.stiffness_grid[1], 2000);
     try testing.expectEqual(@as(usize, 1), cb.sub_runs.len);
     try testing.expect(cb.sub_runs[0].replay_identical);
     try testing.expectEqual(@as(usize, 64), cb.sub_runs[0].final_state_sha256.len);
@@ -482,10 +638,10 @@ test "unresolved dynamic combinations are outside the envelope and run nothing" 
     defer arena.deinit();
     const ctx: Ctx = .{ .arena = arena.allocator(), .scratch = arena.allocator(), .c = parsed.value, .unit = .{ .numerator = 1, .denominator = 1_000_000 } };
     const stiff = parsed.value.stiffness_grid[2];
-    const cb = try runCombination(ctx, .l4, stiff, 500);
+    const cb = try runCombination(ctx, .l4, "L4", stiff, 500);
     try testing.expectEqual(eval.Status.outside_envelope, cb.status);
     try testing.expectEqual(@as(usize, 0), cb.sub_runs.len);
     // The soft-axial 2 ms combination sits exactly on the limit and is evaluated.
-    const soft = try runCombination(ctx, .l8, parsed.value.stiffness_grid[0], 2000);
+    const soft = try runCombination(ctx, .l8, "L8", parsed.value.stiffness_grid[0], 2000);
     try testing.expect(soft.status != .outside_envelope);
 }
