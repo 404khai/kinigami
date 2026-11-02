@@ -17,6 +17,11 @@ pub const Model = struct {
     frames: []const scene_view.SceneFrame,
     index: usize = 0,
     camera: projection.Camera = .{},
+    /// Camera pan from the orientation gizmo (shift/right drag), added to the
+    /// followed target. Presentation only.
+    pan_m: projection.Vec3 = .{ 0, 0, 0 },
+    /// Canvas rectangle from the last draw, for gizmo hit tests.
+    canvas: zigui.Rect = .{ .x = 0, .y = 0, .width = 0, .height = 0 },
     /// Built per frame by `body`; must outlive the paint pass.
     view: scene_view.View = undefined,
 };
@@ -43,7 +48,8 @@ pub fn body(m: *Model, controls: ?zigui.View) zigui.View {
         const p = f.bodies[scene_view.followedBody(f.*)].position_m;
         cam.target = .{ p[0], p[1], if (p[2] > 0.1) p[2] else m.camera.target[2] };
     }
-    m.view = .{ .frame = f, .camera = cam, .theme_text = t.label };
+    for (&cam.target, m.pan_m) |*x, d| x.* += d;
+    m.view = .{ .frame = f, .camera = cam, .theme_text = t.label, .canvas_out = &m.canvas };
 
     return zigui.VStack(.{
         zigui.HStack(.{

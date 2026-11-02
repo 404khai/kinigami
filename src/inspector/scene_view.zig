@@ -8,6 +8,7 @@
 const std = @import("std");
 const zigui = @import("zigui");
 const projection = @import("projection.zig");
+const gizmo = @import("gizmo.zig");
 
 pub const Vec3 = projection.Vec3;
 
@@ -83,6 +84,9 @@ pub const View = struct {
     camera: projection.Camera,
     style: Style = .{},
     theme_text: zigui.Color,
+    /// Receives the canvas rectangle on every draw, so the windowed app can
+    /// hit-test the orientation gizmo. Presentation only.
+    canvas_out: ?*zigui.Rect = null,
 
     pub fn draw(self: *const View, pen: *zigui.view.Pen, rect: zigui.Rect) std.mem.Allocator.Error!void {
         const w: f64 = rect.width;
@@ -145,7 +149,37 @@ pub const View = struct {
             }
         }
 
+        try self.drawGizmo(pen, rect);
+        if (self.canvas_out) |out| out.* = rect;
+
         try pen.text(pen.fmt("t = {d:.4} s   (tick {d})", .{ self.frame.time_s, self.frame.tick }), 13, self.theme_text, .{ .x = rect.x + 10, .y = rect.y + 8 });
+    }
+
+    /// Orientation sphere in the top-right corner (see `gizmo.zig`).
+    fn drawGizmo(self: *const View, pen: *zigui.view.Pen, rect: zigui.Rect) !void {
+        const lay = gizmo.layout(rect.x, rect.y, rect.width, rect.height);
+        const cx: f32 = @floatCast(lay.cx);
+        const cy: f32 = @floatCast(lay.cy);
+        const r: f32 = @floatCast(lay.r);
+        try pen.fill(.{ .x = cx - r, .y = cy - r, .width = 2 * r, .height = 2 * r }, r, zigui.Color.fromRgba8(228, 232, 240, 170));
+        const ring = zigui.Color.fromRgba8(150, 158, 172, 200);
+        const n = 48;
+        for (0..n) |i| {
+            const a0 = 2.0 * std.math.pi * @as(f32, @floatFromInt(i)) / n;
+            const a1 = 2.0 * std.math.pi * @as(f32, @floatFromInt(i + 1)) / n;
+            try pen.line(.{ .x = cx + r * @cos(a0), .y = cy + r * @sin(a0) }, .{ .x = cx + r * @cos(a1), .y = cy + r * @sin(a1) }, 1, ring);
+        }
+        for (gizmo.balls(self.camera, lay)) |b| {
+            const base = axisColor(b.axis);
+            const c = if (b.axis.positive()) base else base.withAlpha(0.45);
+            const bx: f32 = @floatCast(b.x);
+            const by: f32 = @floatCast(b.y);
+            if (b.axis.positive()) try pen.line(.{ .x = cx, .y = cy }, .{ .x = bx, .y = by }, 2, base);
+            const br: f32 = @floatCast(lay.ballRadius(b.axis));
+            try pen.fill(.{ .x = bx - br, .y = by - br, .width = 2 * br, .height = 2 * br }, br, c);
+            if (b.axis.positive()) try pen.text(b.axis.label(), 11, zigui.Color.fromRgba8(255, 255, 255, 255), .{ .x = bx - 3.5, .y = by - 7 });
+        }
+        try pen.text("click an axis · drag to orbit · shift-drag to pan · scroll to zoom", 10, self.theme_text.withAlpha(0.6), .{ .x = cx - 2 * r - 150, .y = cy + r + 6 });
     }
 
     fn segment(self: *const View, pen: *zigui.view.Pen, rect: zigui.Rect, a: Vec3, b: Vec3, width: f32, color: zigui.Color, w: f64, h: f64) !void {
@@ -167,6 +201,14 @@ fn pxPerMetreAt(cam: projection.Camera, p: Vec3, h: f64) f64 {
     const b = cam.project(add(p, .{ 0, 0, 0.001 }), 1, h) orelse return 1;
     const d = @sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
     return if (d > 0) d / 0.001 else 1;
+}
+
+fn axisColor(a: gizmo.Axis) zigui.Color {
+    return switch (a) {
+        .px, .nx => zigui.Color.fromRgba8(214, 64, 64, 255),
+        .py, .ny => zigui.Color.fromRgba8(64, 160, 80, 255),
+        .pz, .nz => zigui.Color.fromRgba8(58, 108, 214, 255),
+    };
 }
 
 fn add(a: Vec3, b: Vec3) Vec3 {

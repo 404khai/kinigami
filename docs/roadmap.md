@@ -103,7 +103,7 @@ Candidate generation ──► Gate 1 (paper) ───────────�
   - build the viewer
 - **Depends on:** the R3 reader and stream for implementation. The review can start now.
 - **Exit:** viewer shows only recorded values, unavailable values are marked, interpolation is labeled, and the capture-isolation test is green.
-- **Status:** implemented. zigui desktop inspector (Q50) plays back format-v2 and v3 recordings (Q51, Q55) with a timeline, playback, and camera controls, showing recorded poses and solver contact forces. The fixture and compliant-link suites write one recording per run; links are drawn with their recorded force. **Open:** live streaming to the inspector (file playback only so far), SDL3 pinning, and interpolated display (not offered).
+- **Status:** implemented. zigui desktop inspector (Q50) plays back format-v2 and v3 recordings (Q51, Q55) with a timeline, playback, and camera controls (an orientation gizmo: click an axis to look along ±X/±Y/±Z, drag to orbit, shift- or right-drag to pan, scroll to zoom, double-click to reset), showing recorded poses and solver contact forces. The fixture and compliant-link suites write one recording per run; links are drawn with their recorded force. **Open:** live streaming to the inspector (file playback only so far), SDL3 pinning, and interpolated display (not offered).
 
 ### R6 — Backend qualification checklist
 
