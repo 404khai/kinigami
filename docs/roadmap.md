@@ -122,6 +122,7 @@ Candidate generation ──► Gate 1 (paper) ───────────�
   - stabilization kept separate from physical damping
 - **Depends on:** R6.
 - **Exit:** the qualification checklist items for these capabilities are evaluated, and the envelope is documented.
+- **Status:** implemented and evaluated, **not qualified**. Q52 criteria registered before link code. The 6-DOF fixture link (implicit compliant rows, zero numerical damping by construction) is evaluated in `results/qualification/compliant-link-v1/` (run 1, `77bc3ca`): 9 of 10 checks pass, **L2 bending fails** because the registered reference neglects the tension lever. **Open:** an owner decision on revising L2 (criteria v2) or accepting it as a documented fail; the independent reference comparison (needed for chains of three or more bodies); limits and failure behavior.
 
 ### R8 — Slice 3: reduced coupler engagement (fixture)
 
@@ -224,7 +225,7 @@ Candidate generation ──► Gate 1 (paper) ───────────�
 | Gate | Requirement IDs | Blocks | Needed when | Evidence to bring |
 | --- | --- | --- | --- | --- |
 | ~~Slice 1 reference conditions, tolerances, time unit, timestep~~ (decided: Q46–Q48) | BEN-014, ENV-002, TIM-012 | — | Done | Analytic solutions, literature values for fixture contact and friction, sensitivity rationale |
-| Qualification checklist accuracy criteria | PHY-012, PHY-013 | R7 | After R4 | R4 results, reference-engine review |
+| ~~Qualification checklist accuracy criteria~~ (decided: Q52; L2 reference under review after run 1) | PHY-012, PHY-013 | — | Done | R4 results, reference-engine review |
 | Fixture coupler stand-in parameters | CPL-011 | R8 | After R7 | Mechanism sketch, component analogues |
 | Originality-review procedure | SEL-006 | R9 Gate 1 | Before candidate evaluation | Reference corpus, review method options |
 | Sensor inventory and parameters | CTL-006 | R10 | After Gate 1 | Candidate component datasheets |
