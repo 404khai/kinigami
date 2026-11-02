@@ -17,6 +17,7 @@ pub const criteria = @import("criteria.zig");
 pub const link_criteria = @import("link_criteria.zig");
 pub const coupler_criteria = @import("coupler_criteria.zig");
 pub const math3 = @import("math3.zig");
+pub const coupler_geometry = @import("coupler_geometry.zig");
 pub const fixture_eval = @import("fixture_eval.zig");
 pub const link_eval = @import("link_eval.zig");
 pub const rigid = @import("rigid.zig");
@@ -41,6 +42,7 @@ test {
     _ = link_criteria;
     _ = coupler_criteria;
     _ = math3;
+    _ = coupler_geometry;
     _ = fixture_eval;
     _ = link_eval;
     _ = rigid;
