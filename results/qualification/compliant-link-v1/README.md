@@ -88,6 +88,31 @@ Cause: the registered reference `F·h` ignores the vertical tension acting throu
 
 L7 is the check the criteria were designed around: measured numerical damping is at most 1.9e-7, five orders under the bound, so the link integrator does not masquerade as physical damping (PHY-006). The signed value changes sign across combinations, consistent with round-off-scale phase error rather than dissipation.
 
+## Solver-settings sensitivity (PHY-016, Q54): [`sensitivity-f634692/`](sensitivity-f634692/)
+
+Exploratory study at `f634692` (clean tree, ReleaseSafe), declared in [Q54](../../../docs/decisions/Q054-compliant-link-slice-closure.md) before it ran. It is the full L1–L10 suite under criteria v2 for each variant, changing one setting at a time. Non-baseline variants are labeled **`exploratory`** and gate nothing. The baseline is the protocol configuration, and its 60 hashes and metrics equal run 2's.
+
+Worst margin used (value ÷ limit) over evaluated combinations:
+
+| Variant | Outcomes | L1 tension | L2 bending | L3 torque | L4 period | L5 period | L6 zeta | L7 abs | L8 momentum | L9 load |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `baseline` (fixture) | 10/10 pass | 1.4e-11 | 2.3e-11 | 1.8e-11 | 0.33 | 0.31 | 0.041 | 1.9e-05 | 1.7e-05 | 1.2e-11 |
+| `iterations_10` (exploratory) | 10/10 pass | 1.4e-11 | 2.3e-11 | 1.8e-11 | 0.33 | 0.31 | 0.041 | 1.9e-05 | 1.7e-05 | 1.4e-11 |
+| `iterations_25` (exploratory) | 10/10 pass | 1.4e-11 | 2.3e-11 | 1.8e-11 | 0.33 | 0.31 | 0.041 | 1.9e-05 | 1.7e-05 | 1.2e-11 |
+| `iterations_50` (exploratory) | 10/10 pass | 1.4e-11 | 2.3e-11 | 1.8e-11 | 0.33 | 0.31 | 0.041 | 1.9e-05 | 1.7e-05 | 1.2e-11 |
+| `iterations_200` (exploratory) | 10/10 pass | 1.4e-11 | 2.3e-11 | 1.8e-11 | 0.33 | 0.31 | 0.041 | 1.9e-05 | 1.7e-05 | 1.2e-11 |
+| `no_warm_start` (exploratory) | 10/10 pass | 1.4e-11 | 2.3e-11 | 1.8e-11 | 0.33 | 0.31 | 0.041 | 1.9e-05 | 1.7e-05 | 1.4e-11 |
+| `q_0` (exploratory) | 10/10 pass | 1.4e-11 | 2.3e-11 | 1.8e-11 | 0.17 | 0.16 | 0.021 | 3.6e-06 | 1.7e-05 | 1.2e-11 |
+| `q_0.5` (exploratory) | 10/10 pass | 1.4e-11 | 2.3e-11 | 1.8e-11 | 0.83 | 0.78 | 0.06 | 1.7e-05 | 1.7e-05 | 1.2e-11 |
+| `backward_euler` (exploratory) | 6/10 pass | 1.4e-11 | 2.3e-11 | 1.8e-11 | 1.3 | 1.2 | 7.9 | 9.9 | 1.7e-05 | 1.2e-11 |
+
+Findings:
+
+- **Sweep count and warm start do not matter** for these fixtures (10–200 sweeps, warm start on or off): margins agree to the digits shown. The six link rows are nearly decoupled in two-body fixtures, so Gauss–Seidel converges in about one sweep. **Limitation:** this says nothing about strongly coupled systems such as chains and closed loops, which must repeat the study when qualified.
+- **q changes only the phase error,** as the analysis predicts. Period error at ω·Δt = 0.2 is 0.17 % (q = 0), 0.33 % (q = 1/4, protocol), and 0.83 % (q = 1/2). Numerical damping stays at round-off level for every q. q = 0 has a smaller phase error but is only conditionally stable (ω·Δt < 2), whereas q = 1/4 is unconditionally stable. The protocol value stands. Changing it would need a decision and a rerun, and none is warranted.
+- **The backward-Euler control fails L6 and L7** at every resolved combination: ζ_num = 0.025, 0.050, 0.099 at ω·Δt = 0.05, 0.1, 0.2, which is ω·Δt/2 to within 1 % (Q52's prediction). Its declared ζ = 0.05 is measured up to 2–3× too high. So L7 discriminates. A conventional soft constraint would have presented numerical damping as physics, and this protocol catches it (PHY-006). Its period errors also exceed the limit at ω·Δt ≥ 0.19 (L4, L5 `uncertain`).
+- **Timestep sensitivity:** under the protocol settings the period error follows (ω·Δt)²/12 (2.1e-4, 8.3e-4, 3.3e-3 at ω·Δt = 0.05, 0.1, 0.2): second order, as expected.
+
 ## `outside_envelope` combinations (runs 1 and 2) (neither pass nor fail, not counted)
 
 | Case | Combinations (grid, Δt, ω·Δt) |
