@@ -19,6 +19,9 @@ pub fn build(b: *std.Build) void {
     core.addAnonymousImport("criteria_link_v1", .{
         .root_source_file = b.path("criteria/qualification/compliant-link-v1.json"),
     });
+    core.addAnonymousImport("criteria_link_v2", .{
+        .root_source_file = b.path("criteria/qualification/compliant-link-v2.json"),
+    });
 
     const test_step = b.step("test", "Run unit tests and toolchain conformance tests");
 

@@ -25,8 +25,9 @@ pub fn main(init: std.process.Init) !void {
         std.process.exit(2);
     }
 
-    const parsed = try core.link_criteria.parse(arena, core.link_criteria.link_v1_json);
-    const report = try core.link_suite.run(arena, init.gpa, parsed.value);
+    // Official criteria: v2 (Q53). v1 run 1 is preserved as superseded evidence.
+    const parsed = try core.link_criteria.parse(arena, core.link_criteria.link_v2_json);
+    const report = try core.link_suite.run(arena, init.gpa, parsed.value, core.link_suite.official_criteria);
 
     const out: Output = .{
         .code_revision = std.mem.trim(u8, @embedFile("git_revision"), " \n\r"),

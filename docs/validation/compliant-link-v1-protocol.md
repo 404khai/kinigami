@@ -1,6 +1,6 @@
 # Evaluation protocol: compliant-link qualification criteria v1
 
-Governs evaluation against `criteria/qualification/compliant-link-v1.json` (SHA-256 `7e147a9d…eb77f8`, Q52). Committed **before any link solver code**, together with its implementation `src/core/link_eval.zig` and the strict parser `src/core/link_criteria.zig`.
+Governs evaluation against `criteria/qualification/compliant-link-v2.json` (SHA-256 `8cfe7c42…0c6e`, Q52 and Q53) from **revision 2**. Revision 1 governed `compliant-link-v1.json` (SHA-256 `7e147a9d…eb77f8`). Revision 1 was committed **before any link solver code**, together with its implementation `src/core/link_eval.zig` and the strict parser `src/core/link_criteria.zig`.
 
 Results are labeled **`fixture`**. They qualify only the declared envelope and say nothing about couplers or Kin candidates (Q40).
 
@@ -33,7 +33,7 @@ Static metrics average each component over the window first, then take magnitude
 | Check | Metric | Reference | Limit (criteria) |
 | --- | --- | --- | --- |
 | L1 | \|tension − m·g\| / m·g; \|elongation − m·g/k_axial\| / (m·g/k_axial) | closed form | 1e-3; 1e-2 |
-| L2 | shear force vs F; bending moment vs F·h; shear displacement vs F/k_shear; bending angle vs (F·h)/k_bend. F = 0.1·m·g, h = half the cube edge | closed form | 1e-3; 1e-3; 2e-2; 2e-2 |
+| L2 | shear force vs F; shear displacement vs F/k_shear; bending angle vs φ_ref; bending moment vs k_bend·φ_ref. F = 0.1·m·g, h = half the cube edge. **Rev 2 (Q53, criteria v2):** φ_ref is the root on [0, π/2] of k_bend·φ = h·(F·cos φ − m·g·sin φ), the exact torque balance of B including the tension lever, by 200 bisection halvings. Rev 1 (v1): φ_ref = F·h/k_bend | closed form | 1e-3; 2e-2; 2e-2; 1e-3 |
 | L3 | −moment[0] vs τ; twist vs τ/k_torsion (both signed) | closed form | 1e-3; 1e-2 |
 | L4 | Mean period vs 2π/√(k_axial/μ), μ = m/2 | see below | 1e-2 |
 | L5 | Mean period of twist vs 2π/√(k_torsion/I_red), I_red = I/2, I = m·a²/6 | see below | 1e-2 |
@@ -43,7 +43,7 @@ Static metrics average each component over the window first, then take magnitude
 | L9 | \|Σ normal + tension − m·g\| / m·g (window mean); every window sample has normal > 0 and tension > 0 | closed form | 1e-3 |
 | L10 | Replay reproduces every run's final-state SHA-256 | bit-identical | exact |
 
-**Informational metrics** (prefix `info_`) are reported but never gate. They exist because the closed-form L2 moment `F·h` neglects the vertical tension acting through the rotated anchor lever. Statics give M = h·(S + T·φ). Expected size: about 2.4 % (soft), 2.0 % (mid), 0.2 % (stiff), against a 1e-3 limit. **This is recorded before any result so it can't be mistaken for a post-hoc excuse.** The gated references stay exactly as registered.
+**Informational metrics** (prefix `info_`) are reported but never gate. **Rev 2:** `info_moment_rel_deviation_from_load_times_half_size` reports the moment's deviation from F·h (the size of the lever effect), and `info_angle_rel_error_vs_measured_moment` checks the solver's moment and angle against each other. Rev 1's `info_moment_rel_error_with_axial_lever` had the wrong sign (the tension lever **reduces** the moment, like a pendulum) and is removed. Rev 1's text here, written before run 1, said the lever term adds about 2.4 % / 2.0 % / 0.2 %. The correct deviations are −16.4 % / −1.92 % / −0.196 % (Q53).
 
 ### Zero-crossing period
 
@@ -97,12 +97,14 @@ The validation load and torque are fixture-validation inputs (Q46) and are recor
 
 - L4/L5 period error ≈ 0.33 % at ωΔt = 0.2 (limit 1 %).
 - L7: |ζ_num| near zero (finite-sweep convergence is the only other source).
-- L2 moment and bending-angle checks are expected to **fail** at all grid points because of the neglected lever term above, unless the registered criteria are revised by a new decision record.
+- (Rev 1, kept as written) L2 moment and bending-angle checks are expected to **fail** at all grid points because of the neglected lever term above, unless the registered criteria are revised by a new decision record.
+- (Rev 2, before run 2) Under criteria v2 the L2 references are the model's exact statics, so the errors should be at the convergence level of L1 and L3 (≤ 1e-9).
 
 ## Revision log
 
 | Date | Change | Reason | Results affected |
 | --- | --- | --- | --- |
 | 2026-11-02 | Initial protocol (revision 1) | — | — |
+| 2026-11-02 | **Revision 2. Post-hoc: made after observing run 1** (`results/qualification/compliant-link-v1/run1-77bc3ca-ReleaseSafe.json`, preserved). Governs criteria v2. The L2 bending angle and moment references become the exact torque balance with the tension lever. The wrong-sign informational metric is replaced by the deviation from F·h. Solver settings, tolerances, and every other definition are unchanged | Run 1: L2 failed 9/9 because `F·h` is not the statics of the setup. The reference was wrong, not the solver (Q53) | Run 1: 9 of 10 checks pass, L2 fail. Run 2 replaces it as the reported result. Both are kept. **Ruled by Q53 before the rerun** |
 
 Any change after observing results requires its own decision record before the rerun counts as official (Q49 safeguard).

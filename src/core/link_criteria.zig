@@ -37,11 +37,17 @@ pub const ShearBendingStatics = struct {
     load_world_direction: [3]f64,
     load_over_weight: f64,
     application: enum { center_of_mass_b },
+    /// Reference for the bending moment and angle. Schema default (v1, Q52):
+    /// F·h. Criteria v2 (Q53): the exact torque balance of body B including
+    /// the tension lever, k_bend·φ = h·(F·cos φ − m·g·sin φ).
+    moment_reference: MomentReference = .load_times_half_size,
     force_rel_tol: f64,
     moment_rel_tol: f64,
     displacement_rel_tol: f64,
     angle_rel_tol: f64,
 };
+
+pub const MomentReference = enum { load_times_half_size, torque_balance_with_tension_lever };
 
 pub const TorsionStatics = struct { id: []const u8, torque_about_link_axis_nm: f64, torque_rel_tol: f64, twist_rel_tol: f64 };
 
@@ -308,7 +314,27 @@ pub const link_v1_json = @embedFile("criteria_link_v1");
 /// edited in place; a revision is a new file and a new register entry.
 pub const link_v1_sha256 = "7e147a9dda34caf73932b1734b41cccb70f0574cb3211b640624785312eb77f8";
 
+/// Criteria v2 (Q53): supersedes v1's L2 bending references. v1 stays
+/// embedded and checked so run 1 remains reproducible.
+pub const link_v2_json = @embedFile("criteria_link_v2");
+pub const link_v2_sha256 = "8cfe7c42b6829f4d90694e3b35378b45abe902fc1ecc221d30076e702b7e0c6e";
+
 const testing = std.testing;
+
+test "the embedded link criteria v2 file is byte-identical to its registered version" {
+    const identity = @import("identity.zig");
+    try testing.expectEqualStrings(link_v2_sha256, &identity.toHex(identity.fileIdentity(link_v2_json)));
+}
+
+test "criteria v2 selects the tension-lever bending reference; v1 keeps the schema default" {
+    const v2 = try parse(testing.allocator, link_v2_json);
+    defer v2.deinit();
+    try testing.expectEqual(@as(u32, 2), v2.value.criteria_version);
+    try testing.expectEqual(MomentReference.torque_balance_with_tension_lever, v2.value.static_cases.shear_bending.moment_reference);
+    const v1 = try parse(testing.allocator, link_v1_json);
+    defer v1.deinit();
+    try testing.expectEqual(MomentReference.load_times_half_size, v1.value.static_cases.shear_bending.moment_reference);
+}
 
 test "the embedded link criteria file is byte-identical to its registered version" {
     const identity = @import("identity.zig");

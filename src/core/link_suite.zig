@@ -73,8 +73,8 @@ pub const Report = struct {
     schema_version: u32 = 1,
     run_class: []const u8 = "fixture_validation",
     label: []const u8 = "fixture",
-    criteria_path: []const u8 = "criteria/qualification/compliant-link-v1.json",
-    criteria_sha256: []const u8 = lc.link_v1_sha256,
+    criteria_path: []const u8,
+    criteria_sha256: []const u8,
     protocol: []const u8 = "docs/validation/compliant-link-v1-protocol.md",
     protocol_revision: u32 = eval.protocol_revision,
     solver_name: []const u8,
@@ -331,7 +331,13 @@ fn caseReport(arena: std.mem.Allocator, id: []const u8, combos: []const Combinat
 
 /// Runs the whole suite. Report memory is owned by `arena`; per-run sample
 /// buffers use `scratch` and are freed as each run completes.
-pub fn run(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: lc.Criteria) !Report {
+/// Criteria file identity recorded in the report (DAT-011).
+pub const CriteriaIdentity = struct { path: []const u8, sha256: []const u8 };
+
+/// The official criteria (Q53): v2.
+pub const official_criteria: CriteriaIdentity = .{ .path = "criteria/qualification/compliant-link-v2.json", .sha256 = lc.link_v2_sha256 };
+
+pub fn run(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: lc.Criteria, identity: CriteriaIdentity) !Report {
     const ctx: Ctx = .{ .arena = arena, .scratch = scratch, .c = c, .unit = .{ .numerator = c.time_unit.numerator_s, .denominator = c.time_unit.denominator_s } };
     const kinds = [_]struct { CaseKind, []const u8 }{
         .{ .l1, c.static_cases.axial.id },
@@ -377,6 +383,8 @@ pub fn run(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: lc.Criteria)
     try cases.append(arena, try caseReport(arena, c.determinism.id, try l10.toOwnedSlice(arena)));
 
     return .{
+        .criteria_path = identity.path,
+        .criteria_sha256 = identity.sha256,
         .solver_name = "kinigami-rigid",
         .solver_version = "0.1.0",
         .solver_settings = protocol_settings,
@@ -389,7 +397,7 @@ const testing = std.testing;
 
 test "the suite wiring yields the registered case list, and statics at one combination run" {
     const gpa = testing.allocator;
-    const parsed = try lc.parse(gpa, lc.link_v1_json);
+    const parsed = try lc.parse(gpa, lc.link_v2_json);
     defer parsed.deinit();
     var arena = std.heap.ArenaAllocator.init(gpa);
     defer arena.deinit();
@@ -402,7 +410,7 @@ test "the suite wiring yields the registered case list, and statics at one combi
 
 test "unresolved dynamic combinations are outside the envelope and run nothing" {
     const gpa = testing.allocator;
-    const parsed = try lc.parse(gpa, lc.link_v1_json);
+    const parsed = try lc.parse(gpa, lc.link_v2_json);
     defer parsed.deinit();
     var arena = std.heap.ArenaAllocator.init(gpa);
     defer arena.deinit();

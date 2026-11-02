@@ -31,7 +31,7 @@ pub const CaseOutcome = fixture_eval.CaseOutcome;
 
 /// Protocol revision implemented here (see the revision log in the protocol
 /// document).
-pub const protocol_revision: u32 = 1;
+pub const protocol_revision: u32 = 2;
 
 pub const max_metrics = 12;
 
@@ -194,16 +194,30 @@ pub fn axialStatics(c: lc.AxialStatics, s: StaticSetup, samples: []const Sample)
     return e;
 }
 
-/// L2: with a horizontal load F at B's centre of mass.
-/// Gated references are the closed forms of the criteria: shear force F,
-/// bending moment F·h (h = half the cube edge), shear displacement F/k_shear,
-/// bending angle (F·h)/k_bend.
+/// Exact static bending angle of the L2 setup (Q53): the root φ ∈ [0, π/2]
+/// of k_bend·φ = h·(F·cos φ − T·sin φ), by 200 bisection halvings. The left
+/// side increases and the right side decreases on the interval, so the root
+/// is unique. T is the closed-form tension m·g.
+pub fn bendingAngleWithTensionLever(k_bend: f64, half_size_m: f64, load_n: f64, tension_n: f64) f64 {
+    var lo: f64 = 0;
+    var hi: f64 = std.math.pi / 2.0;
+    for (0..200) |_| {
+        const mid = 0.5 * (lo + hi);
+        if (k_bend * mid - half_size_m * (load_n * @cos(mid) - tension_n * @sin(mid)) > 0) hi = mid else lo = mid;
+    }
+    return 0.5 * (lo + hi);
+}
+
+/// L2: with a horizontal load F at B's centre of mass. Gated references:
+/// shear force F, shear displacement F/k_shear, and the bending moment and
+/// angle selected by `moment_reference`:
+/// - `load_times_half_size` (v1, Q52): M = F·h, φ = M/k_bend;
+/// - `torque_balance_with_tension_lever` (v2, Q53): φ from
+///   `bendingAngleWithTensionLever`, M = k_bend·φ.
 ///
-/// Informational (does not gate; recorded because the closed-form moment
-/// neglects the vertical tension acting through the rotated anchor lever):
-/// - the moment against the statics with that lever included,
-///   h·(S + T·φ), with measured shear S, tension T, and bending angle φ;
-/// - the bending angle against the solver's own measured moment / k_bend.
+/// Informational (never gates): the moment's deviation from F·h, so the
+/// size of the lever effect stays visible, and the bending angle against
+/// the solver's own measured moment / k_bend (report self-consistency).
 pub fn shearBendingStatics(c: lc.ShearBendingStatics, s: StaticSetup, samples: []const Sample) Evaluation {
     var e: Evaluation = .{};
     const f = c.load_over_weight * s.mass_kg * s.g_m_s2;
@@ -212,13 +226,17 @@ pub fn shearBendingStatics(c: lc.ShearBendingStatics, s: StaticSetup, samples: [
     const moment = perp(mean.moment);
     const disp = perp(mean.extension);
     const angle = perp(mean.rotation);
-    const m_ref = f * s.half_size_m;
+    const m_simple = f * s.half_size_m;
+    const angle_ref = switch (c.moment_reference) {
+        .load_times_half_size => m_simple / s.k_bend_nm_rad,
+        .torque_balance_with_tension_lever => bendingAngleWithTensionLever(s.k_bend_nm_rad, s.half_size_m, f, s.mass_kg * s.g_m_s2),
+    };
+    const m_ref = s.k_bend_nm_rad * angle_ref;
     e.add(.{ .name = "shear_force_rel_error", .value = relErr(shear, f), .limit = c.force_rel_tol });
     e.add(.{ .name = "bending_moment_rel_error", .value = relErr(moment, m_ref), .limit = c.moment_rel_tol });
     e.add(.{ .name = "shear_displacement_rel_error", .value = relErr(disp, f / s.k_shear_n_m), .limit = c.displacement_rel_tol });
-    e.add(.{ .name = "bending_angle_rel_error", .value = relErr(angle, m_ref / s.k_bend_nm_rad), .limit = c.angle_rel_tol });
-    const tension = -mean.force[0];
-    e.add(.{ .name = "info_moment_rel_error_with_axial_lever", .value = relErr(moment, s.half_size_m * (shear + tension * angle)), .limit = c.moment_rel_tol, .informational = true });
+    e.add(.{ .name = "bending_angle_rel_error", .value = relErr(angle, angle_ref), .limit = c.angle_rel_tol });
+    e.add(.{ .name = "info_moment_rel_deviation_from_load_times_half_size", .value = relErr(moment, m_simple), .limit = c.moment_rel_tol, .informational = true });
     e.add(.{ .name = "info_angle_rel_error_vs_measured_moment", .value = relErr(angle, moment / s.k_bend_nm_rad), .limit = c.angle_rel_tol, .informational = true });
     return e;
 }
@@ -502,11 +520,24 @@ test "shear and bending statics: closed-form values pass; the informational leve
     s[1].t_s = 2.0;
     var ev = shearBendingStatics(c, test_static, &s);
     try testing.expect(ev.passed());
-    // A moment off by 2.4 % (the size of the neglected lever term at the soft grid point) fails the gate.
+    // A moment 2.4 % off its reference fails the 1e-3 gate.
     s[0].moment_b_nm[1] = m * 1.024;
     s[1].moment_b_nm[1] = m * 1.024;
     ev = shearBendingStatics(c, test_static, &s);
     try testing.expect(!ev.passed());
+}
+
+test "the tension-lever bending angle solves the exact torque balance and reduces the moment" {
+    const m = 0.02;
+    const g = 9.80665;
+    const f = 0.1 * m * g;
+    // Independent values (hand-solved torque balance, Q53): deviation of M from F·h.
+    const expected = [_]f64{ 0.164078787944781, 0.019237821095197, 0.001957509823605 };
+    for ([_]f64{ 0.01, 0.1, 1.0 }, expected) |kb, dev| {
+        const phi = bendingAngleWithTensionLever(kb, 0.01, f, m * g);
+        try testing.expectApproxEqAbs(@as(f64, 0), kb * phi - 0.01 * (f * @cos(phi) - m * g * @sin(phi)), 1e-18);
+        try testing.expectApproxEqAbs(dev, 1.0 - kb * phi / (f * 0.01), 1e-12);
+    }
 }
 
 test "torsion statics are signed: a twist of the wrong sign fails" {
