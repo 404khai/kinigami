@@ -63,3 +63,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q50 | [Inspector UI library and first 3D view](Q050-inspector-ui-library.md) | accepted |
 | Q51 | [Recording snapshot payload and interval](Q051-recording-snapshot-payload.md) | accepted |
 | Q52 | [Compliant-link qualification criteria](Q052-compliant-link-qualification-criteria.md) (agent decision under owner delegation) | accepted |
+| Q53 | [Compliant-link L2 bending reference: exact statics with the tension lever](Q053-compliant-link-l2-bending-reference.md) (agent decision under owner delegation) | accepted |
