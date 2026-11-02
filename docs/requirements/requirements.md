@@ -33,7 +33,7 @@ See [README](README.md) for conventions. Evidence and limitations are in the [tr
 | PHY-010 | The production backend is custom Zig behind the replaceable, project-owned backend interface. | Q15, Q41 | in_force | Code review |
 | PHY-011 | Any backend (custom or alternative) is held to the same qualification checklist and stays unqualified until it passes. | Q41 | in_force | Qualification records |
 | PHY-012 | The backend qualification checklist is preregistered before slice 2 compliant constraints are implemented. | Q41, Q52 | in_force | Registered in Q52 before link code (tested) |
-| PHY-013 | Quantitative accuracy criteria for the qualification checklist are justified by evidence. | Q41, Q52 | open | Q52 values are agent-chosen under delegation. Run 1 found L2's moment reference incomplete |
+| PHY-013 | Quantitative accuracy criteria for the qualification checklist are justified by evidence. | Q41, Q52, Q53 | open | Q52 values are agent-chosen under delegation; Q53 corrected the L2 reference to exact statics. Tolerances still lack solver-convergence evidence |
 | PHY-014 | External physics engines are validation-only, adopted after license and technical-fit review, and never enter production builds. | Q41, Q42 | in_force | Dependency audit |
 | PHY-015 | Capabilities are qualified one at a time. An untested capability is never treated as qualified because the interface supports it. | Q41 | in_force | Qualification records |
 | PHY-016 | Convergence, constraint error, load accuracy, energy behavior, and sensitivity to timestep and solver settings are documented for each qualified capability. | Q35, Q41 | in_force | Qualification records |

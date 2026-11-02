@@ -1,10 +1,41 @@
-# Compliant-link qualification results (criteria v1)
+# Compliant-link qualification results
 
-Criteria: `criteria/qualification/compliant-link-v1.json` (SHA-256 `7e147a9d…eb77f8`, Q52).
-Protocol: `docs/validation/compliant-link-v1-protocol.md` (revision 1, unchanged).
+Official criteria: `criteria/qualification/compliant-link-v2.json` (SHA-256 `8cfe7c42…0c6e`, Q52 + Q53). Superseded: `compliant-link-v1.json` (SHA-256 `7e147a9d…eb77f8`, Q52).
+Protocol: `docs/validation/compliant-link-v1-protocol.md`. Revision 2 governs v2; revision 1 governed v1. The folder keeps the protocol's name.
 Every result is labeled **`fixture`**. These results are not coupler, benchmark, or Kin-candidate evidence, and they qualify nothing beyond the declared envelope.
 
-## Run 1: [`run1-77bc3ca-ReleaseSafe.json`](run1-77bc3ca-ReleaseSafe.json)
+| Run | Code revision | Criteria | Protocol rev | Build | L1 | L2 | L3 | L4 | L5 | L6 | L7 | L8 | L9 | L10 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| [run 1](run1-77bc3ca-ReleaseSafe.json) | `77bc3ca` (clean) | v1 | 1 | ReleaseSafe, aarch64-macos | pass 9/9 | **fail 0/9** | pass 9/9 | pass 4/4 | pass 3/3 | pass 4/4 | pass 4/4 | pass 9/9 | pass 9/9 | pass 9/9 |
+| [run 2](run2-5f04229-ReleaseSafe.json) | `5f04229` (clean) | **v2** | 2 | ReleaseSafe, aarch64-macos | pass 9/9 | **pass 9/9** | pass 9/9 | pass 4/4 | pass 3/3 | pass 4/4 | pass 4/4 | pass 9/9 | pass 9/9 | pass 9/9 |
+
+(L4–L7: evaluated combinations only; the rest are `outside_envelope`.)
+
+**Run 2 is the official result.** Criteria v2 and protocol revision 2 were made **after observing run 1**. They were ruled by [Q53](../../../docs/decisions/Q053-compliant-link-l2-bending-reference.md) and registered before run 2 (Q49 safeguard). They change only the L2 bending moment and angle reference, from `F·h` to the exact torque balance including the tension lever. No tolerance, solver setting, grid point, timestep, or other case changed. Run 1 is kept as superseded evidence.
+
+## Run 2
+
+- **Solver unchanged:** all 60 run-2 final-state hashes are identical to run 1's. Only the evaluation of L2 differs.
+- **Replay:** a second process run on the same binary reproduced all 60 final-state hashes and every metric value bit-exactly. Every run also replayed in-process (L10).
+- **L2 under v2:** bending moment error ≤ 2.3e-14 and bending angle error ≤ 1.9e-14 at every combination, at the convergence level of L1 and L3. The informational deviation from `F·h` is 0.164 / 0.0192 / 0.00196 (soft/mid/stiff), matching the hand-solved statics of Q53 to 13 digits.
+
+#### Run 1 margins
+
+| Metric | Margin used | Where |
+| --- | --- | --- |
+| L1 tension, elongation | 1.4e-11, 6.0e-10 | |
+| L2 shear force, moment, displacement, angle | 1.5e-11, 2.3e-11, 1.0e-12, 9.5e-13 | |
+| L3 torque, twist | 1.8e-11, 1.8e-12 | |
+| L4 period error | 0.33 (3.3e-3 of 1e-2) | soft, 2 ms (ω·Δt = 0.2) |
+| L5 period error | 0.31 | mid, 0.5 ms |
+| L6 ζ error | 0.041 | soft, 2 ms |
+| L7 \|ζ_num\| (limit 0.01) | 1.9e-5 (1.9e-7 absolute) | soft, 2 ms |
+| L8 momentum | 1.7e-5 | soft, 0.5 ms |
+| L9 load sum | 1.2e-11 | |
+
+The dynamic margins are the integrator's honest error budget. The period error grows as (ω·Δt)²/12, which is the implicit-midpoint phase error of the q = 1/4 link step. The numerical damping is at round-off level. The `outside_envelope` combinations are the same as in run 1 (table below).
+
+## Run 1 (superseded): [`run1-77bc3ca-ReleaseSafe.json`](run1-77bc3ca-ReleaseSafe.json)
 
 Code revision `77bc3ca` (clean tree), ReleaseSafe, aarch64-macos, Zig 0.17.0. Solver settings as fixed in the protocol (100 sweeps, contact k = 1e5 N/m and c = 50 N·s/m, link prediction q = 1/4). No solver, protocol, or criteria change was made after the run was observed.
 
@@ -21,7 +52,7 @@ Code revision `77bc3ca` (clean tree), ReleaseSafe, aarch64-macos, Zig 0.17.0. So
 | L9 contact–link consistency | **pass** | 9 | 0 |
 | L10 determinism | **pass** | 9 | 0 |
 
-**The compliant-link capability is therefore not qualified.** L2 fails at all nine combinations under the registered criteria.
+Under v1, L2 failed at all nine combinations. The diagnosis below led to Q53.
 
 ## L2 failure and diagnosis
 
@@ -39,7 +70,7 @@ Cause: the registered reference `F·h` ignores the vertical tension acting throu
 
 **Options (need a new decision record; none taken here):** (a) revise L2's moment and angle references to include the lever term and issue criteria v2; (b) keep v1 and accept L2 as a documented fail with the diagnosis above.
 
-## Margins (worst over evaluated combinations; value ÷ limit)
+### Run 1 margins
 
 | Metric | Margin used | Where |
 | --- | --- | --- |
@@ -57,7 +88,7 @@ Cause: the registered reference `F·h` ignores the vertical tension acting throu
 
 L7 is the check the criteria were designed around: measured numerical damping is at most 1.9e-7, five orders under the bound, so the link integrator does not masquerade as physical damping (PHY-006). The signed value changes sign across combinations, consistent with round-off-scale phase error rather than dissipation.
 
-## `outside_envelope` combinations (neither pass nor fail, not counted)
+## `outside_envelope` combinations (runs 1 and 2) (neither pass nor fail, not counted)
 
 | Case | Combinations (grid, Δt, ω·Δt) |
 | --- | --- |
@@ -66,23 +97,22 @@ L7 is the check the criteria were designed around: measured numerical damping is
 
 Soft-axial at 2 ms sits exactly on the limit (ω·Δt = 0.2) and is evaluated (protocol slack 1e-12 relative).
 
-## Replay check
+### Run 1 replay check
 
 The binary was rerun on the same tree. All 60 sub-run final-state SHA-256 hashes and every metric value were identical (bit-exact JSON equality). Each run also replayed in-process during the suite, which is L10.
 
-## Validated envelope (what these results cover)
+## Validated envelope (run 2: what these results cover)
 
 Only:
 
 - two uniform 20 mm / 0.020 kg cubes joined by one fixture link (L₀ = 10 mm, anchors at facing face centres), or one static cube and one dynamic cube
 - stiffness grid soft/mid/stiff (k_axial = k_shear 1e2/1e3/1e4 N/m; k_torsion = k_bend 1e-2/1e-1/1 N·m/rad), Δt = 0.5, 1, 2 ms
-- statics: axial tension and elongation, shear force and displacement, torsion (all with ζ = 1 settling)
+- statics: axial tension and elongation, shear force and displacement, bending moment and angle under a lateral load at the centre of mass (with the tension lever), torsion (all with ζ = 1 settling)
 - dynamics: axial and torsional oscillation and damping at ω·Δt ≤ 0.2 only; the **stiff** grid point is never dynamically validated
 - the protocol's solver settings
 
-Not covered, or failed:
+Not covered:
 
-- **bending moment and angle under a lateral load (L2) failed** at the soft point, and fail the moment limit at every point
 - the stiff grid point's dynamics (outside the resolution rule)
 - chains of three or more bodies, link creation, release or failure, closed loops, couplers
 - large relative rotations (small-angle rotational Jacobian) and frame-rotation coupling

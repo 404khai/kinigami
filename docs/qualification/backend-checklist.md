@@ -2,7 +2,7 @@
 
 Implements Q41's requirement that a qualification checklist be **preregistered before any compliant-link code** (PHY-012). The checklist applies to every production backend equally, the custom Zig solver or any alternative (PHY-011). Capabilities qualify one at a time (PHY-015).
 
-> **Status: registered.** Acceptance values are decided in [Q52](../decisions/Q052-compliant-link-qualification-criteria.md). The machine-readable criteria are in `criteria/qualification/compliant-link-v1.json`, hashed in `criteria/REGISTER.md` before any compliant-link code.
+> **Status: registered.** Acceptance values are decided in [Q52](../decisions/Q052-compliant-link-qualification-criteria.md), with L2's references revised by [Q53](../decisions/Q053-compliant-link-l2-bending-reference.md) (criteria v2). The machine-readable criteria are in `criteria/qualification/compliant-link-v1.json`, hashed in `criteria/REGISTER.md` before any compliant-link code.
 
 ## Scope of this registration: compliant links between two fixture bodies (slice 2)
 
@@ -13,7 +13,7 @@ A **fixture link** joins two neutral fixture bodies at declared anchor points wi
 | # | Capability | Reference case (closed form) | Measured quantity | Acceptance value |
 | --- | --- | --- | --- | --- |
 | L1 | Static axial load | Body A anchored to the world, body B hanging from the link in gravity | Solver-reported link axial force vs m·g; elongation vs m·g/k_axial | Q52 |
-| L2 | Static shear and bending | Same anchor, with a declared horizontal validation load on B | Solver shear force and bending moment vs statics; deflection vs F/k | Q52 |
+| L2 | Static shear and bending | Same anchor, with a declared horizontal validation load on B | Solver shear force and bending moment vs statics (including the tension lever, Q53); deflection vs F/k | Q52, Q53 |
 | L3 | Static torsion | Declared validation torque about the link axis | Solver torque vs applied torque; twist vs τ/k_torsion | Q52 |
 | L4 | Axial dynamics | Free two-body oscillator (no contact, in free fall) | Oscillation frequency vs √(k/μ), where μ is the reduced mass | Q52 |
 | L5 | Torsional dynamics | Free two-body torsional oscillator | Frequency vs √(k_t/I_reduced) | Q52 |
