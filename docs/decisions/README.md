@@ -62,3 +62,7 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q49 | [Acceptance of evaluation protocol revision 2](Q049-accept-evaluation-protocol-revision-2.md) (agent decision under owner delegation) | accepted |
 | Q50 | [Inspector UI library and first 3D view](Q050-inspector-ui-library.md) | accepted |
 | Q51 | [Recording snapshot payload and interval](Q051-recording-snapshot-payload.md) | accepted |
+| Q52 | [Compliant-link qualification criteria](Q052-compliant-link-qualification-criteria.md) (agent decision under owner delegation) | accepted |
+| Q53 | [Compliant-link L2 bending reference: exact statics with the tension lever](Q053-compliant-link-l2-bending-reference.md) (agent decision under owner delegation) | accepted |
+| Q54 | [Closing the compliant-link slice: solver-settings sensitivity, limits, reference, envelope](Q054-compliant-link-slice-closure.md) (agent decision under owner delegation) | accepted |
+| Q55 | [Links in recordings: format version 3](Q055-recording-links-format-v3.md) (agent decision under owner delegation) | accepted |

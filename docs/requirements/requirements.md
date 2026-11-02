@@ -22,9 +22,9 @@ See [README](README.md) for conventions. Evidence and limitations are in the [tr
 | ID | Requirement | Sources | Status | Verification |
 | --- | --- | --- | --- | --- |
 | PHY-001 | Full 3D rigid-body dynamics with mass, inertia, gravity, and collision geometry. No production 2D mode and no artificial planar constraints. | Q31, Q35, Q40, Q41 | in_force | Slice 1 validation cases |
-| PHY-002 | Each Kin (and fixture) is a separate rigid body. Links are implicitly solved compliant constraints with declared compliance, damping, limits, and failure behavior. | Q35 | in_force | Slice 2 qualification |
+| PHY-002 | Each Kin (and fixture) is a separate rigid body. Links are implicitly solved compliant constraints with declared compliance, damping, limits, and failure behavior. | Q35 | in_force | Slice 2 qualification (compliance, damping, solver-native loads: qualified for fixture links); limits and failure in slice 3 (Q54) |
 | PHY-003 | The formulation supports dynamic link creation, release, failure, changing topology, and closed loops. | Q35, Q41 | in_force | Later qualification cases |
-| PHY-004 | Compliance and load limits are modeled per axis (tension, compression, shear, bending, torsion) where the coupler supports them. Rigid behavior is only an explicitly declared limit. | Q35 | in_force | Slice 2 qualification |
+| PHY-004 | Compliance and load limits are modeled per axis (tension, compression, shear, bending, torsion) where the coupler supports them. Rigid behavior is only an explicitly declared limit. | Q35 | in_force | Slice 2 qualification (compliance, damping, solver-native loads: qualified for fixture links); limits and failure in slice 3 (Q54) |
 | PHY-005 | Loads used for acceptance (break/detach, retention, stress view, benchmark limits) come from solver-native constraint and contact outputs with documented accuracy. Post-hoc estimates are diagnostic only. | Q35, Q41 | in_force | Qualification checklist |
 | PHY-006 | Numerical stabilization is distinguishable from, and never presented as, physical damping or compliance. | Q35, Q36, Q41 | in_force | Qualification checklist |
 | PHY-007 | Contact, friction, and link constraints are solved consistently, so loads transfer coherently between tabletop, bodies, and couplers. | Q35, Q41 | in_force | Slices 1–2 validation |
@@ -32,8 +32,8 @@ See [README](README.md) for conventions. Evidence and limitations are in the [tr
 | PHY-009 | A reference-validation suite exists, with analytic statics and a joint-coordinate reference for suitable open chains. Gaps are documented. References are never production paths. | Q35, Q41 | open | Validation suite |
 | PHY-010 | The production backend is custom Zig behind the replaceable, project-owned backend interface. | Q15, Q41 | in_force | Code review |
 | PHY-011 | Any backend (custom or alternative) is held to the same qualification checklist and stays unqualified until it passes. | Q41 | in_force | Qualification records |
-| PHY-012 | The backend qualification checklist is preregistered before slice 2 compliant constraints are implemented. | Q41 | open | Gate: before slice 2 |
-| PHY-013 | Quantitative accuracy criteria for the qualification checklist are justified by evidence. | Q41 | unresolved | Gate: before slice 2 |
+| PHY-012 | The backend qualification checklist is preregistered before slice 2 compliant constraints are implemented. | Q41, Q52 | in_force | Registered in Q52 before link code (tested) |
+| PHY-013 | Quantitative accuracy criteria for the qualification checklist are justified by evidence. | Q41, Q52, Q53 | open | Q52 values are agent-chosen under delegation; Q53 corrected the L2 reference to exact statics. Tolerances still lack solver-convergence evidence |
 | PHY-014 | External physics engines are validation-only, adopted after license and technical-fit review, and never enter production builds. | Q41, Q42 | in_force | Dependency audit |
 | PHY-015 | Capabilities are qualified one at a time. An untested capability is never treated as qualified because the interface supports it. | Q41 | in_force | Qualification records |
 | PHY-016 | Convergence, constraint error, load accuracy, energy behavior, and sensitivity to timestep and solver settings are documented for each qualified capability. | Q35, Q41 | in_force | Qualification records |

@@ -1,0 +1,2574 @@
+{
+  "code_revision": "f6346927e5a27195ec12a6719aba8b990f38bcea",
+  "working_tree_dirty": false,
+  "optimize_mode": "safe",
+  "target": "aarch64-macos.27.0...27.0-none",
+  "zig_version": "0.17.0",
+  "report": {
+    "schema_version": 1,
+    "run_class": "fixture_validation",
+    "label": "exploratory",
+    "criteria_path": "criteria/qualification/compliant-link-v2.json",
+    "criteria_sha256": "8cfe7c42b6829f4d90694e3b35378b45abe902fc1ecc221d30076e702b7e0c6e",
+    "protocol": "docs/validation/compliant-link-v1-protocol.md",
+    "protocol_revision": 2,
+    "solver_name": "kinigami-rigid",
+    "solver_version": "0.1.0",
+    "solver_settings": {
+      "contact_stiffness_n_m": 100000,
+      "contact_damping_n_s_m": 50,
+      "static_slip_speed_m_s": 0.00001,
+      "iterations": 100,
+      "warm_start": true
+    },
+    "link_settings": {
+      "form": "midpoint_prediction",
+      "prediction_q": 0.5
+    },
+    "free_fall_height_m": 10,
+    "cases": [
+      {
+        "case_id": "L1_axial_statics",
+        "outcome": "pass",
+        "evaluated": 9,
+        "outside_envelope": 0,
+        "combinations": [
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l1",
+                "steps": 4000,
+                "final_state_sha256": "00b8ccd2b30417e6dcc91714f4b926e9309a075fa3f0f18dbff0ebb7dd18f41d",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "tension_rel_error",
+                    "value": 0.000000000000013585349018779989,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "elongation_rel_error",
+                    "value": 0.000000000000472524265187709,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "tension_window_spread_over_weight",
+                    "value": 0,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l1",
+                "steps": 2000,
+                "final_state_sha256": "7ea3b8101d0bcdb9d91319a8ed0732aa25ddf01954a41fbe2da58276d98b893c",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "tension_rel_error",
+                    "value": 0.000000000000010613553920921867,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "elongation_rel_error",
+                    "value": 0.000000000000290767154291922,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "tension_window_spread_over_weight",
+                    "value": 0,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l1",
+                "steps": 1000,
+                "final_state_sha256": "da8afbec7fc4eb16a2ce14d58ec0a101f3d7c54151f736601a80ff26e7acfeb9",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "tension_rel_error",
+                    "value": 0.00000000000000481147777748458,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "elongation_rel_error",
+                    "value": 0.00000000000010613553920921868,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "tension_window_spread_over_weight",
+                    "value": 0,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l1",
+                "steps": 4000,
+                "final_state_sha256": "21c46ff4f6aa4c5126103a4113053d65be7766a70eb7b5b780ea8cafe999a395",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "tension_rel_error",
+                    "value": 0.000000000000013585349018779989,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "elongation_rel_error",
+                    "value": 0.0000000000005355146021298468,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "tension_window_spread_over_weight",
+                    "value": 0,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l1",
+                "steps": 2000,
+                "final_state_sha256": "60f395c0d83f61f8361a52bb2231f40a93db7ad6cb69d8107c10218b10437ccd",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "tension_rel_error",
+                    "value": 0.000000000000010613553920921867,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "elongation_rel_error",
+                    "value": 0.0000000000011475905176996768,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "tension_window_spread_over_weight",
+                    "value": 0,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l1",
+                "steps": 1000,
+                "final_state_sha256": "53416a4960f1aae00e86d2d1b6956b685d65115780f1687b410341d3b9512a99",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "tension_rel_error",
+                    "value": 0.00000000000000481147777748458,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "elongation_rel_error",
+                    "value": 0.0000000000005930046858681736,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "tension_window_spread_over_weight",
+                    "value": 0,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l1",
+                "steps": 4000,
+                "final_state_sha256": "f723e26eb8b59adb2f16b6c18ed60727985f6253a0b363430a99342b3037f986",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "tension_rel_error",
+                    "value": 0.000000000000013585349018779989,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "elongation_rel_error",
+                    "value": 0.000000000011680091712389503,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "tension_window_spread_over_weight",
+                    "value": 0,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l1",
+                "steps": 2000,
+                "final_state_sha256": "878ac35ffe3b910aa77eabafbb4503f66c20317810d2ed82a1699d0631946ec5",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "tension_rel_error",
+                    "value": 0.000000000000010613553920921867,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "elongation_rel_error",
+                    "value": 0.000000000005283456163271408,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "tension_window_spread_over_weight",
+                    "value": 0,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l1",
+                "steps": 1000,
+                "final_state_sha256": "9fe31f273319d867394e94d0325670e6e4d2e387efe8f098ea4a9674b0d64a0b",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "tension_rel_error",
+                    "value": 0.00000000000000481147777748458,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "elongation_rel_error",
+                    "value": 0.00000000000037710592788692114,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "tension_window_spread_over_weight",
+                    "value": 0,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "case_id": "L2_shear_bending_statics",
+        "outcome": "pass",
+        "evaluated": 9,
+        "outside_envelope": 0,
+        "combinations": [
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l2",
+                "steps": 4000,
+                "final_state_sha256": "86b247a0f4c4327655894a12696879af3764383e244d67d1b4e533596b5ae7c2",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "shear_force_rel_error",
+                    "value": 0.00000000000001521276061998801,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_moment_rel_error",
+                    "value": 0.00000000000000595164152875149,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "shear_displacement_rel_error",
+                    "value": 0.00000000000002059140018512185,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_angle_rel_error",
+                    "value": 0.000000000000019045252892004766,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_moment_rel_deviation_from_load_times_half_size",
+                    "value": 0.16407878794478542,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_angle_rel_error_vs_measured_moment",
+                    "value": 0.00000000000002497044268062862,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l2",
+                "steps": 2000,
+                "final_state_sha256": "cdc963cbe02f61cb88b8ab1e96f657a540710865614ef9fc61ce7a8616ec1bea",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "shear_force_rel_error",
+                    "value": 0.000000000000010790446486270565,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_moment_rel_error",
+                    "value": 0.00000000000000132258700638922,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "shear_displacement_rel_error",
+                    "value": 0.000000000000005113300717110795,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_angle_rel_error",
+                    "value": 0.000000000000005501961946579155,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_moment_rel_deviation_from_load_times_half_size",
+                    "value": 0.16407878794477931,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_angle_rel_error_vs_measured_moment",
+                    "value": 0.0000000000000067716454727127975,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l2",
+                "steps": 1000,
+                "final_state_sha256": "0c98be1f0aa428a52f9545cc93c1dae14071248c0f5a1c041ef73e973e05349c",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "shear_force_rel_error",
+                    "value": 0.0000000000000017689256534869777,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_moment_rel_error",
+                    "value": 0.000000000000002314527261181135,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "shear_displacement_rel_error",
+                    "value": 0.0000000000000034549329169667535,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_angle_rel_error",
+                    "value": 0.000000000000004867120183512329,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_moment_rel_deviation_from_load_times_half_size",
+                    "value": 0.16407878794478237,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_angle_rel_error_vs_measured_moment",
+                    "value": 0.000000000000002539367052267308,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l2",
+                "steps": 4000,
+                "final_state_sha256": "9f1cef58d917cdbdb474848a214791aac2e07221d3ff46cc010f73d7863368d0",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "shear_force_rel_error",
+                    "value": 0.00000000000001521276061998801,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_moment_rel_error",
+                    "value": 0.000000000000022686201062638602,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "shear_displacement_rel_error",
+                    "value": 0.000000000000008119092354871871,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_angle_rel_error",
+                    "value": 0.000000000000011272646490752102,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_moment_rel_deviation_from_load_times_half_size",
+                    "value": 0.01923782109521927,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_angle_rel_error_vs_measured_moment",
+                    "value": 0.00000000000001138537295565988,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l2",
+                "steps": 2000,
+                "final_state_sha256": "5a74e143882253a0dbeac78c4823afc98a42b9e5c7746c778962e426a0e0fb69",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "shear_force_rel_error",
+                    "value": 0.000000000000010790446486270565,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_moment_rel_error",
+                    "value": 0.0000000000000112726464907521,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "shear_displacement_rel_error",
+                    "value": 0.000000000000014337971605412025,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_angle_rel_error",
+                    "value": 0.000000000000009356296587324245,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_moment_rel_deviation_from_load_times_half_size",
+                    "value": 0.019237821095208076,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_angle_rel_error_vs_measured_moment",
+                    "value": 0.000000000000020516216613169055,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l2",
+                "steps": 1000,
+                "final_state_sha256": "1aae4e5a4347318d6c9b4446f82f9b5b7516b6abe49bf5f70c0ad588b1d2628b",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "shear_force_rel_error",
+                    "value": 0.0000000000000017689256534869777,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_moment_rel_error",
+                    "value": 0.0000000000000015499888924784138,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "shear_displacement_rel_error",
+                    "value": 0.0000000000000034549329169667535,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_angle_rel_error",
+                    "value": 0.0000000000000037199733419481935,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_moment_rel_deviation_from_load_times_half_size",
+                    "value": 0.0192378210951955,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_angle_rel_error_vs_measured_moment",
+                    "value": 0.0000000000000052981438506534796,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l2",
+                "steps": 4000,
+                "final_state_sha256": "02c478211555bd2495342c42bb3a56055511599ab89074d35182e742590f5ab4",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "shear_force_rel_error",
+                    "value": 0.00000000000001521276061998801,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_moment_rel_error",
+                    "value": 0.000000000000009692785891106853,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "shear_displacement_rel_error",
+                    "value": 0.00000000000001446753158979828,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_angle_rel_error",
+                    "value": 0.000000000000009692785891106853,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_moment_rel_deviation_from_load_times_half_size",
+                    "value": 0.001957509823614915,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_angle_rel_error_vs_measured_moment",
+                    "value": 0,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l2",
+                "steps": 2000,
+                "final_state_sha256": "f3e9633f367466fcbde012169876515c4cb5635787acc9a3849b749514a7f951",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "shear_force_rel_error",
+                    "value": 0.000000000000010790446486270565,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_moment_rel_error",
+                    "value": 0.000000000000007338823603266618,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "shear_displacement_rel_error",
+                    "value": 0.000000000000008205465677796039,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_angle_rel_error",
+                    "value": 0.000000000000007338823603266618,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_moment_rel_deviation_from_load_times_half_size",
+                    "value": 0.001957509823612566,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_angle_rel_error_vs_measured_moment",
+                    "value": 0,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l2",
+                "steps": 1000,
+                "final_state_sha256": "e0517803929cc87130758c7e059c84577b10fb4f2c7186266359890c508e7b6d",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "shear_force_rel_error",
+                    "value": 0.0000000000000017689256534869777,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_moment_rel_error",
+                    "value": 0.000000000000002907835767332056,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "shear_displacement_rel_error",
+                    "value": 0.000000000000004534599453518864,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "bending_angle_rel_error",
+                    "value": 0.000000000000002907835767332056,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_moment_rel_deviation_from_load_times_half_size",
+                    "value": 0.0019575098236081436,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_angle_rel_error_vs_measured_moment",
+                    "value": 0,
+                    "limit": 0.02,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "case_id": "L3_torsion_statics",
+        "outcome": "pass",
+        "evaluated": 9,
+        "outside_envelope": 0,
+        "combinations": [
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l3",
+                "steps": 4000,
+                "final_state_sha256": "08a09617b273179f64758495826a98185c89ee82c285f824b0d45c463fc686c6",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "torque_rel_error",
+                    "value": 0.000000000000018295911660692887,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "twist_rel_error",
+                    "value": 0.00000000000001682681771697503,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l3",
+                "steps": 2000,
+                "final_state_sha256": "bfcc9ff9224334265360232d66bb1a621d5f90621c8137f00022e8306ba32bb0",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "torque_rel_error",
+                    "value": 0.000000000000007995991022080595,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "twist_rel_error",
+                    "value": 0.000000000000012490009027033011,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l3",
+                "steps": 1000,
+                "final_state_sha256": "4c80d65eab0ccfe750a01013e7b16ba833241c6e9438c29b690148ca1bdf720f",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "torque_rel_error",
+                    "value": 0.0000000000000039302328752599536,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "twist_rel_error",
+                    "value": 0.000000000000003816391647148976,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l3",
+                "steps": 4000,
+                "final_state_sha256": "85b4b7b2f828b506097a97600a065dbe9fb5df24c49b6b4dd9c9cc666c9d2b1e",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "torque_rel_error",
+                    "value": 0.000000000000018295911660692887,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "twist_rel_error",
+                    "value": 0.00000000000000043368086899420177,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l3",
+                "steps": 2000,
+                "final_state_sha256": "719b439bcf17b2d4097ff05b643da9ebab047663c7affe5b9be5fc53c591b188",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "torque_rel_error",
+                    "value": 0.000000000000007995991022080595,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "twist_rel_error",
+                    "value": 0.0000000000000006505213034913027,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l3",
+                "steps": 1000,
+                "final_state_sha256": "f69667d634f4d24eec0ffecea3d60eaf71c81a3cb7127a52142a2905ac89737c",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "torque_rel_error",
+                    "value": 0.0000000000000039302328752599536,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "twist_rel_error",
+                    "value": 0.0000000000000006505213034913027,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l3",
+                "steps": 4000,
+                "final_state_sha256": "bc297ec6d0a9e628b5c77af4acf2b3db91f7273580484c1dc26a55b87aeec11b",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "torque_rel_error",
+                    "value": 0.000000000000018295911660692887,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "twist_rel_error",
+                    "value": 0.000000000000018295911660692887,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l3",
+                "steps": 2000,
+                "final_state_sha256": "3826e4c5264446456138ca11dcbed847fac03b0747637ced37e004c8f7984b6c",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "torque_rel_error",
+                    "value": 0.000000000000007995991022080595,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "twist_rel_error",
+                    "value": 0.000000000000007995991022080595,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l3",
+                "steps": 1000,
+                "final_state_sha256": "7184ec710a04fc7bbacb291121ad351ce1f4e33afa6cd9604756423a40e9b283",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "torque_rel_error",
+                    "value": 0.0000000000000039302328752599536,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "twist_rel_error",
+                    "value": 0.0000000000000039302328752599536,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "case_id": "L4_axial_dynamics",
+        "outcome": "pass",
+        "evaluated": 4,
+        "outside_envelope": 5,
+        "combinations": [
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": 0.05,
+            "sub_runs": [
+              {
+                "name": "l4",
+                "steps": 2000,
+                "final_state_sha256": "54408c5f801a8e716755609773a153deacb6f7ceefe1d38e38f1641f2a6ece44",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "period_rel_error",
+                    "value": 0.0005206820553239662,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": 0.1,
+            "sub_runs": [
+              {
+                "name": "l4",
+                "steps": 1000,
+                "final_state_sha256": "a3a7c7ea6b5d80db8c93e14cd9569be67eff4920d4f1b2549f44951a757d3b0b",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "period_rel_error",
+                    "value": 0.002080967352095965,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": 0.2,
+            "sub_runs": [
+              {
+                "name": "l4",
+                "steps": 500,
+                "final_state_sha256": "626c36111b84b1db08c3f712316bc7bff066121f9b0a2e4709c451f94fc4fc22",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "period_rel_error",
+                    "value": 0.008294807445072144,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": 0.15811388300841897,
+            "sub_runs": [
+              {
+                "name": "l4",
+                "steps": 2000,
+                "final_state_sha256": "f3efb167a607eeb09ebfd737f801207789425d22b7369d0a07adfdd42574823c",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "period_rel_error",
+                    "value": 0.0051933264976732636,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 1000,
+            "status": "outside_envelope",
+            "omega_dt": 0.31622776601683794,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 2000,
+            "status": "outside_envelope",
+            "omega_dt": 0.6324555320336759,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 500,
+            "status": "outside_envelope",
+            "omega_dt": 0.5,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 1000,
+            "status": "outside_envelope",
+            "omega_dt": 1,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 2000,
+            "status": "outside_envelope",
+            "omega_dt": 2,
+            "sub_runs": []
+          }
+        ]
+      },
+      {
+        "case_id": "L5_torsion_dynamics",
+        "outcome": "pass",
+        "evaluated": 3,
+        "outside_envelope": 6,
+        "combinations": [
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": 0.06123724356957945,
+            "sub_runs": [
+              {
+                "name": "l5",
+                "steps": 2000,
+                "final_state_sha256": "f2870d138f151a0512518b7d5e224b7007c18010438a1e4960c32e9a33232e45",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "period_rel_error",
+                    "value": 0.0007809747364151651,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": 0.1224744871391589,
+            "sub_runs": [
+              {
+                "name": "l5",
+                "steps": 1000,
+                "final_state_sha256": "9c2148c9acd6ee1f22ba1e35ef2e6e59867c53142df139481f73118448af73a9",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "period_rel_error",
+                    "value": 0.0031199570621257117,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 2000,
+            "status": "outside_envelope",
+            "omega_dt": 0.2449489742783178,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": 0.19364916731037082,
+            "sub_runs": [
+              {
+                "name": "l5",
+                "steps": 2000,
+                "final_state_sha256": "a6d5c9669bac42ad5a718abe11b3dcd0d8cb368fe432bee115a06a0e45344f84",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "period_rel_error",
+                    "value": 0.007780024727446651,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 1000,
+            "status": "outside_envelope",
+            "omega_dt": 0.38729833462074165,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 2000,
+            "status": "outside_envelope",
+            "omega_dt": 0.7745966692414833,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 500,
+            "status": "outside_envelope",
+            "omega_dt": 0.6123724356957945,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 1000,
+            "status": "outside_envelope",
+            "omega_dt": 1.224744871391589,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 2000,
+            "status": "outside_envelope",
+            "omega_dt": 2.449489742783178,
+            "sub_runs": []
+          }
+        ]
+      },
+      {
+        "case_id": "L6_physical_damping",
+        "outcome": "pass",
+        "evaluated": 4,
+        "outside_envelope": 5,
+        "combinations": [
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": 0.05,
+            "sub_runs": [
+              {
+                "name": "l6",
+                "steps": 2000,
+                "final_state_sha256": "1222103e23713de11e4d44635f2abfc934643fa0bda15be00c83a9ed0f48fa3e",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "zeta_rel_error",
+                    "value": 0.0007276307485386269,
+                    "limit": 0.25,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": 0.1,
+            "sub_runs": [
+              {
+                "name": "l6",
+                "steps": 1000,
+                "final_state_sha256": "1a4c3144467edb509fff99c734aa314eacac397c46910ced13e9cccca2cc9213",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "zeta_rel_error",
+                    "value": 0.004139409976384872,
+                    "limit": 0.25,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": 0.2,
+            "sub_runs": [
+              {
+                "name": "l6",
+                "steps": 500,
+                "final_state_sha256": "5a222dae3e7f9733ee35e570634964a8912f0cfef9176b598e7f4316c8279472",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "zeta_rel_error",
+                    "value": 0.015040747656653725,
+                    "limit": 0.25,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": 0.15811388300841897,
+            "sub_runs": [
+              {
+                "name": "l6",
+                "steps": 2000,
+                "final_state_sha256": "e2180c71a4797c4a5d65bff803ae764bf88a6374dd9da88d8c94de362f9c51d4",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "zeta_rel_error",
+                    "value": 0.009841475954622814,
+                    "limit": 0.25,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 1000,
+            "status": "outside_envelope",
+            "omega_dt": 0.31622776601683794,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 2000,
+            "status": "outside_envelope",
+            "omega_dt": 0.6324555320336759,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 500,
+            "status": "outside_envelope",
+            "omega_dt": 0.5,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 1000,
+            "status": "outside_envelope",
+            "omega_dt": 1,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 2000,
+            "status": "outside_envelope",
+            "omega_dt": 2,
+            "sub_runs": []
+          }
+        ]
+      },
+      {
+        "case_id": "L7_numerical_dissipation",
+        "outcome": "pass",
+        "evaluated": 4,
+        "outside_envelope": 5,
+        "combinations": [
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": 0.05,
+            "sub_runs": [
+              {
+                "name": "l7",
+                "steps": 2000,
+                "final_state_sha256": "54408c5f801a8e716755609773a153deacb6f7ceefe1d38e38f1641f2a6ece44",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "abs_zeta_num",
+                    "value": 0.000000000928520228891967,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_zeta_num_signed",
+                    "value": 0.000000000928520228891967,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": 0.1,
+            "sub_runs": [
+              {
+                "name": "l7",
+                "steps": 1000,
+                "final_state_sha256": "a3a7c7ea6b5d80db8c93e14cd9569be67eff4920d4f1b2549f44951a757d3b0b",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "abs_zeta_num",
+                    "value": 0.000000023164546626206892,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_zeta_num_signed",
+                    "value": -0.000000023164546626206892,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": 0.2,
+            "sub_runs": [
+              {
+                "name": "l7",
+                "steps": 500,
+                "final_state_sha256": "626c36111b84b1db08c3f712316bc7bff066121f9b0a2e4709c451f94fc4fc22",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "abs_zeta_num",
+                    "value": 0.00000017170339643218405,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_zeta_num_signed",
+                    "value": 0.00000017170339643218405,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": 0.15811388300841897,
+            "sub_runs": [
+              {
+                "name": "l7",
+                "steps": 2000,
+                "final_state_sha256": "f3efb167a607eeb09ebfd737f801207789425d22b7369d0a07adfdd42574823c",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "abs_zeta_num",
+                    "value": 0.000000023369001345597082,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "info_zeta_num_signed",
+                    "value": -0.000000023369001345597082,
+                    "limit": 0.01,
+                    "at_least": false,
+                    "informational": true,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 1000,
+            "status": "outside_envelope",
+            "omega_dt": 0.31622776601683794,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 2000,
+            "status": "outside_envelope",
+            "omega_dt": 0.6324555320336759,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 500,
+            "status": "outside_envelope",
+            "omega_dt": 0.5,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 1000,
+            "status": "outside_envelope",
+            "omega_dt": 1,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 2000,
+            "status": "outside_envelope",
+            "omega_dt": 2,
+            "sub_runs": []
+          }
+        ]
+      },
+      {
+        "case_id": "L8_momentum",
+        "outcome": "pass",
+        "evaluated": 9,
+        "outside_envelope": 0,
+        "combinations": [
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l8",
+                "steps": 2000,
+                "final_state_sha256": "54408c5f801a8e716755609773a153deacb6f7ceefe1d38e38f1641f2a6ece44",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "momentum_error_over_allowance",
+                    "value": 0.000017067736425257693,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l8",
+                "steps": 1000,
+                "final_state_sha256": "a3a7c7ea6b5d80db8c93e14cd9569be67eff4920d4f1b2549f44951a757d3b0b",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "momentum_error_over_allowance",
+                    "value": 0.000015244654592504426,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l8",
+                "steps": 500,
+                "final_state_sha256": "626c36111b84b1db08c3f712316bc7bff066121f9b0a2e4709c451f94fc4fc22",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "momentum_error_over_allowance",
+                    "value": 0.00001072771989842904,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l8",
+                "steps": 2000,
+                "final_state_sha256": "f3efb167a607eeb09ebfd737f801207789425d22b7369d0a07adfdd42574823c",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "momentum_error_over_allowance",
+                    "value": 0.000017067736425257693,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l8",
+                "steps": 1000,
+                "final_state_sha256": "96a4813fbd1da22a2b45ccf7d6318df7cac0760844ea190f47ec15a323fb3710",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "momentum_error_over_allowance",
+                    "value": 0.000015244654592504426,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l8",
+                "steps": 500,
+                "final_state_sha256": "8699602fd5da4e8fa03c668f58437aa7058666af38e2a5d5cdeffde021d2b7e9",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "momentum_error_over_allowance",
+                    "value": 0.00001072771989842904,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l8",
+                "steps": 2000,
+                "final_state_sha256": "abf12169cf17771e0ec4bc55a5355c7c1d3b9ba35b7246e67204f610d1df8505",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "momentum_error_over_allowance",
+                    "value": 0.000017067736425257693,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l8",
+                "steps": 1000,
+                "final_state_sha256": "45560726436bc0e3ca803023abc857f50d914741ff5351a7563b7c5cbbb1fca4",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "momentum_error_over_allowance",
+                    "value": 0.000015244654592504426,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l8",
+                "steps": 500,
+                "final_state_sha256": "9bec1702971ad139f52509fbd0b7479e81b1a1efda167a05c26c7a9a43705d7d",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "momentum_error_over_allowance",
+                    "value": 0.00001072771989842904,
+                    "limit": 1,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "case_id": "L9_contact_link_consistency",
+        "outcome": "pass",
+        "evaluated": 9,
+        "outside_envelope": 0,
+        "combinations": [
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l9",
+                "steps": 4000,
+                "final_state_sha256": "04aca03b7315db6af9a7885e44bc6ea0f45a4d97a0a0c2a7b476c2de76ad3f0f",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "load_sum_rel_error",
+                    "value": 0.000000000000011604152286874575,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "contact_normal_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "link_tension_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l9",
+                "steps": 2000,
+                "final_state_sha256": "611d4d13538ea04cfa7abd04af41f594e6c720bff17053fc81b961cd96d24a94",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "load_sum_rel_error",
+                    "value": 0.000000000000010613553920921867,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "contact_normal_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "link_tension_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l9",
+                "steps": 1000,
+                "final_state_sha256": "96b6033da628a032367ef055452dcb4d69c18fb4ad74a625617e6a23db6d4fb6",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "load_sum_rel_error",
+                    "value": 0.0000000000000014151405227895822,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "contact_normal_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "link_tension_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l9",
+                "steps": 4000,
+                "final_state_sha256": "f96464957107bdb53d068e725cb35baa92a447f2bdcbc4c6c79029eaaa3184eb",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "load_sum_rel_error",
+                    "value": 0.0000000000000008490843136737493,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "contact_normal_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "link_tension_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l9",
+                "steps": 2000,
+                "final_state_sha256": "6b989c059dc227cc937403718ba45a58391f958f62a6e8364b693055b236b781",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "load_sum_rel_error",
+                    "value": 0.000000000000006792674509389994,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "contact_normal_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "link_tension_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l9",
+                "steps": 1000,
+                "final_state_sha256": "114e3508d9b6706518376b3763ba1b858527c65d9696d67bf893f6b10fda3922",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "load_sum_rel_error",
+                    "value": 0.0000000000000014151405227895822,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "contact_normal_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "link_tension_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l9",
+                "steps": 4000,
+                "final_state_sha256": "c6e8db096acca2b37998401ebdef3c21b0f8176427bbaed0dcb859de4aea6e7f",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "load_sum_rel_error",
+                    "value": 0.00000000000000028302810455791646,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "contact_normal_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "link_tension_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l9",
+                "steps": 2000,
+                "final_state_sha256": "25ced755680a52526b9fa21617b732ad2fabdf3085811497ab2d6777985b404d",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "load_sum_rel_error",
+                    "value": 0.000000000000007783272875342703,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "contact_normal_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "link_tension_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": [
+              {
+                "name": "l9",
+                "steps": 1000,
+                "final_state_sha256": "529f39ab1e5d217132546468d2992adac3c73d24e3cb6cf49c4c1fdaae3d9d31",
+                "replay_identical": true,
+                "metrics": [
+                  {
+                    "name": "load_sum_rel_error",
+                    "value": 0.000000000000001273626470510624,
+                    "limit": 0.001,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "contact_normal_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  },
+                  {
+                    "name": "link_tension_not_positive",
+                    "value": 0,
+                    "limit": 0,
+                    "at_least": false,
+                    "informational": false,
+                    "passed": true
+                  }
+                ],
+                "passed": true
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "case_id": "L10_determinism",
+        "outcome": "pass",
+        "evaluated": 9,
+        "outside_envelope": 0,
+        "combinations": [
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "soft",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "mid",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 500,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 1000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": []
+          },
+          {
+            "grid_id": "stiff",
+            "physics_step_ticks": 2000,
+            "status": "pass",
+            "omega_dt": null,
+            "sub_runs": []
+          }
+        ]
+      }
+    ]
+  }
+}

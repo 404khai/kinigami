@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "criteria_id": "qualification-compliant-link",
+  "criteria_version": 1,
+  "run_class": "fixture_validation",
+  "decisions": ["Q35", "Q41", "Q43", "Q46", "Q48", "Q52"],
+  "rationale": "Backend qualification of a 6-DOF compliant link between neutral fixture bodies (Q52). Solver-qualification parameters only; not coupler or Kin-candidate claims. Results are labeled fixture and qualify only the declared envelope.",
+  "time_unit": { "numerator_s": 1, "denominator_s": 1000000 },
+  "physics_step_ticks": [500, 1000, 2000],
+  "outcome_rule": "evaluated_combinations_all_pass_else_uncertain_if_mixed",
+  "resolution": {
+    "max_omega_dt": 0.2,
+    "applies_to": "dynamic_checks",
+    "beyond_limit": "outside_envelope_not_counted"
+  },
+  "gravity": { "magnitude_m_s2": 9.80665, "direction_world": [0, 0, -1] },
+  "fixture": { "id": "fixture_link_cube", "shape": "cuboid", "mass_distribution": "uniform", "size_m": [0.02, 0.02, 0.02], "mass_kg": 0.02 },
+  "link": {
+    "model": "six_dof_spring_damper_between_anchor_frames",
+    "rest_length_m": 0.01,
+    "anchors": "facing_face_centres",
+    "rotation_measure": "relative_rotation_vector_in_anchor_a_frame",
+    "solve": "implicit_compliant_constraint_same_pass_as_contact"
+  },
+  "stiffness_grid": [
+    { "id": "soft", "k_axial_n_m": 100.0, "k_shear_n_m": 100.0, "k_torsion_nm_rad": 0.01, "k_bend_nm_rad": 0.01 },
+    { "id": "mid", "k_axial_n_m": 1000.0, "k_shear_n_m": 1000.0, "k_torsion_nm_rad": 0.1, "k_bend_nm_rad": 0.1 },
+    { "id": "stiff", "k_axial_n_m": 10000.0, "k_shear_n_m": 10000.0, "k_torsion_nm_rad": 1.0, "k_bend_nm_rad": 1.0 }
+  ],
+  "static_cases": {
+    "setup": "body_a_static_above_body_b_hanging_link_axis_world_minus_z",
+    "damping_ratio_on_body_b": 1.0,
+    "duration_s": 2.0,
+    "window_start_s": 1.5,
+    "axial": { "id": "L1_axial_statics", "force_rel_tol": 0.001, "elongation_rel_tol": 0.01 },
+    "shear_bending": { "id": "L2_shear_bending_statics", "load_world_direction": [1, 0, 0], "load_over_weight": 0.1, "application": "center_of_mass_b", "force_rel_tol": 0.001, "moment_rel_tol": 0.001, "displacement_rel_tol": 0.02, "angle_rel_tol": 0.02 },
+    "torsion": { "id": "L3_torsion_statics", "torque_about_link_axis_nm": 0.0001, "torque_rel_tol": 0.001, "twist_rel_tol": 0.01 }
+  },
+  "dynamic_cases": {
+    "setup": "two_free_bodies_in_free_fall_no_contact_link_axis_world_x",
+    "duration_s": 1.0,
+    "axial": { "id": "L4_axial_dynamics", "initial_stretch_m": 0.0005, "damping_ratio": 0.0, "period_measure": "mean_of_full_periods_from_linear_interpolated_zero_crossings_of_axial_extension", "period_rel_tol": 0.01 },
+    "torsion": { "id": "L5_torsion_dynamics", "initial_twist_rad": 0.05, "damping_ratio": 0.0, "period_measure": "mean_of_full_periods_from_linear_interpolated_zero_crossings_of_twist", "period_rel_tol": 0.01 },
+    "physical_damping": { "id": "L6_physical_damping", "initial_stretch_m": 0.0005, "damping_ratio": 0.05, "zeta_measure": "log_of_ratio_of_first_and_last_positive_peaks_over_full_periods_divided_by_2pi_n", "zeta_rel_tol": 0.25 },
+    "numerical_dissipation": { "id": "L7_numerical_dissipation", "initial_stretch_m": 0.0005, "damping_ratio": 0.0, "zeta_measure": "log_of_ratio_of_first_and_last_positive_peaks_over_full_periods_divided_by_2pi_n", "zeta_num_max": 0.01 },
+    "momentum": { "id": "L8_momentum", "rel_tol_of_m_g_t": 0.000000001, "abs_floor_kg_m_s": 0.000000000001 }
+  },
+  "consistency_case": {
+    "id": "L9_contact_link_consistency",
+    "setup": "body_b_resting_on_tabletop_vertical_link_to_static_body_a_above",
+    "pretension_over_weight": 0.5,
+    "damping_ratio_on_body_b": 1.0,
+    "friction_pair": { "mu_static": 0.6, "mu_kinetic": 0.45 },
+    "duration_s": 2.0,
+    "window_start_s": 1.5,
+    "sum_rel_tol": 0.001
+  },
+  "determinism": { "id": "L10_determinism", "requirement": "bit_identical_final_state_hash_on_replay" },
+  "reference_conventions": {
+    "reduced_mass": "m_a*m_b/(m_a+m_b)",
+    "reduced_inertia_about_link_axis": "i_a*i_b/(i_a+i_b) for uniform cubes about a face-normal axis through the centre",
+    "damping_coefficient_from_ratio": "c = 2*zeta*sqrt(k*mass_or_inertia) with body-b mass for static cases and reduced mass for dynamic cases",
+    "omega_for_resolution": "sqrt(k_axial/reduced_mass) for axial cases, sqrt(k_torsion/reduced_inertia) for torsion"
+  }
+}

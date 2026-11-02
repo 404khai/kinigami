@@ -14,10 +14,13 @@ pub const snapshot = @import("snapshot.zig");
 pub const driver = @import("driver.zig");
 pub const analytic = @import("analytic.zig");
 pub const criteria = @import("criteria.zig");
+pub const link_criteria = @import("link_criteria.zig");
 pub const math3 = @import("math3.zig");
 pub const fixture_eval = @import("fixture_eval.zig");
+pub const link_eval = @import("link_eval.zig");
 pub const rigid = @import("rigid.zig");
 pub const fixture_suite = @import("fixture_suite.zig");
+pub const link_suite = @import("link_suite.zig");
 
 test {
     _ = identity;
@@ -34,8 +37,11 @@ test {
     _ = driver;
     _ = analytic;
     _ = criteria;
+    _ = link_criteria;
     _ = math3;
     _ = fixture_eval;
+    _ = link_eval;
     _ = rigid;
     _ = fixture_suite;
+    _ = link_suite;
 }

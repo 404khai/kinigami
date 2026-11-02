@@ -83,6 +83,16 @@ pub const Quat = struct {
         return 2.0 * std.math.atan2(s, @abs(q.w));
     }
 
+    /// Rotation vector (axis × angle, angle in [0, π]) of this unit quaternion.
+    pub fn rotationVector(q: Quat) Vec3 {
+        const sign: f64 = if (q.w < 0) -1.0 else 1.0;
+        const v: Vec3 = .{ sign * q.x, sign * q.y, sign * q.z };
+        const w = sign * q.w;
+        const sn = length(v);
+        const factor = if (sn < 1e-8) 2.0 / w else 2.0 * std.math.atan2(sn, w) / sn;
+        return scale(v, factor);
+    }
+
     /// Relative rotation taking `from` to `self`: self * conj(from).
     pub fn relativeTo(q: Quat, from: Quat) Quat {
         return q.mul(.{ .w = from.w, .x = -from.x, .y = -from.y, .z = -from.z });
@@ -106,6 +116,20 @@ test "rotation round trip and quarter turn" {
     const back = q.rotateInverse(v);
     try testing.expectApproxEqAbs(@as(f64, 1), back[0], 1e-15);
     try testing.expectApproxEqAbs(std.math.pi / 2.0, q.angle(), 1e-15);
+}
+
+test "rotation vector recovers axis and angle, and takes the shortest way round" {
+    const a: f64 = 0.3;
+    const q: Quat = .{ .w = @cos(a / 2), .x = 0, .y = @sin(a / 2), .z = 0 };
+    const v = q.rotationVector();
+    try testing.expectApproxEqAbs(a, v[1], 1e-15);
+    const neg: Quat = .{ .w = -q.w, .x = -q.x, .y = -q.y, .z = -q.z };
+    try testing.expectApproxEqAbs(a, neg.rotationVector()[1], 1e-15);
+    try testing.expectEqual(m3zero(), Quat.identity.rotationVector());
+}
+
+fn m3zero() Vec3 {
+    return zero;
 }
 
 test "tilt of a rotation about y" {

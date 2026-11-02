@@ -43,6 +43,19 @@ pub const ContactReport = struct {
     tangential_force_n: Vec3,
 };
 
+/// A solver-native fixture-link output (PHY-005). Components are resolved in
+/// anchor A's frame: translation as [axial, shear 1, shear 2], rotation as
+/// [torsion, bend 1, bend 2]. Force and moment act on body B; extension and
+/// rotation vector are measured after the step from the rest geometry.
+pub const LinkReport = struct {
+    body_a: u32,
+    body_b: u32,
+    force_on_b_n: Vec3,
+    moment_on_b_nm: Vec3,
+    extension_m: Vec3,
+    rotation_rad: Vec3,
+};
+
 pub const StepError = error{ NumericalFailure, InvalidInput, OutOfMemory };
 pub const EncodeError = canonical.BufferEncoder.WriteError;
 

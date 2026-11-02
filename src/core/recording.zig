@@ -14,7 +14,7 @@
 //! The reader enforces, failing closed:
 //! - the first chunk is `effective_config`, holding the exact bytes of the
 //!   effective run configuration JSON;
-//! - v2 only: `scene_header` comes second and exactly once, then snapshots;
+//! - v2 and v3: `scene_header` comes second and exactly once, then snapshots;
 //! - the last chunk is `end` with an empty payload, and nothing follows it;
 //! - unknown or version-inappropriate chunk types, unsupported versions, and
 //!   nonzero flags are rejected, never skipped or reinterpreted.
@@ -26,7 +26,7 @@ const std = @import("std");
 const canonical = @import("canonical.zig");
 
 pub const magic = "KINIGREC";
-pub const format_version: u16 = 2;
+pub const format_version: u16 = 3;
 
 pub const ChunkType = enum(u32) {
     effective_config = 1,
@@ -111,7 +111,7 @@ pub const Recording = struct {
         var d: canonical.Decoder = .{ .bytes = bytes };
         if (!std.mem.eql(u8, try d.take(magic.len), magic)) return error.BadMagic;
         const version = try d.int(u16);
-        if (version != 1 and version != 2) return error.UnsupportedVersion;
+        if (version < 1 or version > 3) return error.UnsupportedVersion;
         if (try d.int(u16) != 0) return error.UnsupportedFlags;
 
         var r: Recording = .{ .version = version, .effective_config = undefined, .scene_header = null, .snapshot_count = 0, .snapshot_region = &.{} };
@@ -133,7 +133,7 @@ pub const Recording = struct {
                 },
                 .end => {
                     if (!have_config) return error.MissingEffectiveConfig;
-                    if (version == 2 and r.scene_header == null) return error.MissingSceneHeader;
+                    if (version >= 2 and r.scene_header == null) return error.MissingSceneHeader;
                     if (payload.len != 0) return error.NonEmptyEnd;
                     if (!d.done()) return error.TrailingBytes;
                     break;
@@ -201,7 +201,7 @@ test "v2 round trip with snapshots in order" {
     const bytes = try sample(testing.allocator);
     defer testing.allocator.free(bytes);
     const r = try Recording.parse(bytes);
-    try testing.expectEqual(@as(u16, 2), r.version);
+    try testing.expectEqual(@as(u16, 3), r.version);
     try testing.expectEqualStrings("H", r.scene_header.?);
     try testing.expectEqual(@as(usize, 2), r.snapshot_count);
     var it = r.snapshots();
@@ -236,7 +236,7 @@ test "rejects bad magic, version, flags, trailing bytes" {
     copy[0] = 'X';
     try testing.expectError(error.BadMagic, Recording.parse(copy));
     @memcpy(copy, bytes);
-    copy[8] = 3;
+    copy[8] = 4;
     try testing.expectError(error.UnsupportedVersion, Recording.parse(copy));
     @memcpy(copy, bytes);
     copy[10] = 1;
