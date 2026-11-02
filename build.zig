@@ -62,13 +62,36 @@ pub fn build(b: *std.Build) void {
             },
         }),
     });
-    validate_exe.root_module.addAnonymousImport("git_revision", .{ .root_source_file = rev_cmd.captureStdOut(.{}) });
-    validate_exe.root_module.addAnonymousImport("git_status", .{ .root_source_file = status_cmd.captureStdOut(.{}) });
     b.installArtifact(validate_exe);
+    const git_revision = rev_cmd.captureStdOut(.{});
+    const git_status = status_cmd.captureStdOut(.{});
+    validate_exe.root_module.addAnonymousImport("git_revision", .{ .root_source_file = git_revision });
+    validate_exe.root_module.addAnonymousImport("git_status", .{ .root_source_file = git_status });
     const validate_run = b.addRunArtifact(validate_exe);
     validate_run.addArgs(&.{"zig-out/fixture-validation-report.json"});
     validate_run.has_side_effects = true;
     b.step("validate", "Run the analytic fixture-validation suite (results labeled fixture)").dependOn(&validate_run.step);
+
+    // Compliant-link qualification runner (Q52); same provenance capture.
+    const qualify_exe = b.addExecutable(.{
+        .name = "kinigami-qualify",
+        .root_module = b.createModule(.{
+            .root_source_file = b.path("src/qualify/main.zig"),
+            .target = target,
+            .optimize = optimize,
+            .imports = &.{
+                .{ .name = "kinigami_core", .module = core },
+                .{ .name = "build_info", .module = build_info.createModule() },
+            },
+        }),
+    });
+    qualify_exe.root_module.addAnonymousImport("git_revision", .{ .root_source_file = git_revision });
+    qualify_exe.root_module.addAnonymousImport("git_status", .{ .root_source_file = git_status });
+    b.installArtifact(qualify_exe);
+    const qualify_run = b.addRunArtifact(qualify_exe);
+    qualify_run.addArgs(&.{"zig-out/compliant-link-report.json"});
+    qualify_run.has_side_effects = true;
+    b.step("qualify", "Run the compliant-link qualification suite (results labeled fixture)").dependOn(&qualify_run.step);
 
     // Inspector (Q45, Q50): read-only viewer on zigui. zigui and SDL3 are
     // inspector-only dependencies; the simulation core never imports them.

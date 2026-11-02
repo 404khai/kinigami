@@ -20,6 +20,7 @@ pub const fixture_eval = @import("fixture_eval.zig");
 pub const link_eval = @import("link_eval.zig");
 pub const rigid = @import("rigid.zig");
 pub const fixture_suite = @import("fixture_suite.zig");
+pub const link_suite = @import("link_suite.zig");
 
 test {
     _ = identity;
@@ -42,4 +43,5 @@ test {
     _ = link_eval;
     _ = rigid;
     _ = fixture_suite;
+    _ = link_suite;
 }
