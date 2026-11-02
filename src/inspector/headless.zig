@@ -73,11 +73,16 @@ fn testFrame() scene_view.SceneFrame {
 }
 
 /// Counts matching pixels in the left part of the frame (the 3D view),
-/// excluding the readout panel whose legend uses the same colors.
-fn countColor(fb: *const zigui.Framebuffer, r: u8, g: u8, b: u8) usize {
+/// excluding the readout panel whose legend uses the same colors and the
+/// orientation gizmo (its red X axis resembles the contact-point marker).
+fn countColor(fb: *const zigui.Framebuffer, m: *const ui.Model, r: u8, g: u8, b: u8) usize {
+    const gz = @import("gizmo.zig").layout(m.canvas.x, m.canvas.y, m.canvas.width, m.canvas.height);
     var n: usize = 0;
     for (fb.pixels, 0..) |c, i| {
         if (i % fb.width >= fb.width / 2) continue;
+        const px: f64 = @floatFromInt(i % fb.width);
+        const py: f64 = @floatFromInt(i / fb.width);
+        if (@abs(px - gz.cx) <= gz.r + 2 and @abs(py - gz.cy) <= gz.r + 2) continue;
         if (@abs(@as(i32, to8(c.r)) - r) < 25 and @abs(@as(i32, to8(c.g)) - g) < 25 and @abs(@as(i32, to8(c.b)) - b) < 25) n += 1;
     }
     return n;
@@ -89,8 +94,8 @@ test "headless render draws fixture edges and contact markers" {
     var m: ui.Model = .{ .source = "test", .label = "FIXTURE", .run_class = "fixture_validation", .frames = &frames };
     var fb = try render(gpa, &m, 640, 420);
     defer fb.deinit();
-    try std.testing.expect(countColor(&fb, 70, 150, 230) > 50); // body edges
-    try std.testing.expect(countColor(&fb, 230, 70, 70) > 5); // contact point
+    try std.testing.expect(countColor(&fb, &m, 70, 150, 230) > 50); // body edges
+    try std.testing.expect(countColor(&fb, &m, 230, 70, 70) > 5); // contact point
 }
 
 test "missing contact data is shown as unavailable, not drawn" {
@@ -101,5 +106,29 @@ test "missing contact data is shown as unavailable, not drawn" {
     var m: ui.Model = .{ .source = "test", .label = "FIXTURE", .run_class = "fixture_validation", .frames = &frames };
     var fb = try render(gpa, &m, 640, 420);
     defer fb.deinit();
-    try std.testing.expectEqual(@as(usize, 0), countColor(&fb, 230, 70, 70));
+    try std.testing.expectEqual(@as(usize, 0), countColor(&fb, &m, 230, 70, 70));
+}
+
+test "the orientation gizmo is drawn with its three axis colours" {
+    const gpa = std.testing.allocator;
+    const frames = [_]scene_view.SceneFrame{testFrame()};
+    var m: ui.Model = .{ .source = "test", .label = "FIXTURE", .run_class = "fixture_validation", .frames = &frames };
+    var fb = try render(gpa, &m, 1100, 640);
+    defer fb.deinit();
+    const gz = @import("gizmo.zig").layout(m.canvas.x, m.canvas.y, m.canvas.width, m.canvas.height);
+    var red: usize = 0;
+    var green: usize = 0;
+    var blue: usize = 0;
+    for (fb.pixels, 0..) |c, i| {
+        const px: f64 = @floatFromInt(i % fb.width);
+        const py: f64 = @floatFromInt(i / fb.width);
+        if (@abs(px - gz.cx) > gz.r or @abs(py - gz.cy) > gz.r) continue;
+        const r8: i32 = to8(c.r);
+        const g8: i32 = to8(c.g);
+        const b8: i32 = to8(c.b);
+        if (@abs(r8 - 214) < 20 and @abs(g8 - 64) < 20 and @abs(b8 - 64) < 20) red += 1;
+        if (@abs(r8 - 64) < 20 and @abs(g8 - 160) < 20 and @abs(b8 - 80) < 20) green += 1;
+        if (@abs(r8 - 58) < 20 and @abs(g8 - 108) < 20 and @abs(b8 - 214) < 20) blue += 1;
+    }
+    try std.testing.expect(red > 20 and green > 20 and blue > 20);
 }
