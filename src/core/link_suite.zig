@@ -27,7 +27,38 @@ pub const protocol_settings: rigid.Settings = .{
     .iterations = 100,
     .warm_start = true,
 };
-pub const protocol_link_settings: rigid.LinkSettings = .{ .prediction_q = 0.25 };
+pub const protocol_link_settings: rigid.LinkSettings = .{ .form = .midpoint_prediction, .prediction_q = 0.25 };
+
+/// Solver configuration of one suite run.
+pub const SolverConfig = struct { settings: rigid.Settings, link_settings: rigid.LinkSettings };
+pub const protocol_config: SolverConfig = .{ .settings = protocol_settings, .link_settings = protocol_link_settings };
+
+/// The exploratory solver-settings sensitivity grid declared in Q54 (PHY-016),
+/// each a one-setting change from the protocol baseline.
+pub const Variant = struct { name: []const u8, config: SolverConfig };
+pub const sensitivity_variants = blk: {
+    const base = protocol_config;
+    var v: [9]Variant = undefined;
+    v[0] = .{ .name = "baseline", .config = base };
+    for (.{ 10, 25, 50, 200 }, 1..) |n, i| {
+        var c = base;
+        c.settings.iterations = n;
+        v[i] = .{ .name = std.fmt.comptimePrint("iterations_{d}", .{n}), .config = c };
+    }
+    var nw = base;
+    nw.settings.warm_start = false;
+    v[5] = .{ .name = "no_warm_start", .config = nw };
+    var q0 = base;
+    q0.link_settings.prediction_q = 0;
+    v[6] = .{ .name = "q_0", .config = q0 };
+    var q5 = base;
+    q5.link_settings.prediction_q = 0.5;
+    v[7] = .{ .name = "q_0.5", .config = q5 };
+    var be = base;
+    be.link_settings = .{ .form = .backward_euler, .prediction_q = 1.0 };
+    v[8] = .{ .name = "backward_euler", .config = be };
+    break :blk v;
+};
 
 /// Free-fall cases start with both centres at this height (protocol).
 pub const free_fall_height_m: f64 = 10.0;
@@ -90,6 +121,7 @@ const Ctx = struct {
     scratch: std.mem.Allocator,
     c: lc.Criteria,
     unit: time.TimeUnit,
+    solver: SolverConfig = protocol_config,
 };
 
 const HangLoad = enum { none, shear, torque };
@@ -145,8 +177,8 @@ fn simulate(ctx: Ctx, sc: Scenario, gp: lc.GridPoint, step_ticks: u64) !Run {
 
     var world: rigid.World = .{
         .gpa = ctx.scratch,
-        .settings = protocol_settings,
-        .link_settings = protocol_link_settings,
+        .settings = ctx.solver.settings,
+        .link_settings = ctx.solver.link_settings,
         .friction = .{ .mu_static = c.consistency_case.friction_pair.mu_static, .mu_kinetic = c.consistency_case.friction_pair.mu_kinetic },
         .gravity_m_s2 = m3.scale(c.gravity.direction_world, g),
         .allow_static_bodies = true,
@@ -337,8 +369,17 @@ pub const CriteriaIdentity = struct { path: []const u8, sha256: []const u8 };
 /// The official criteria (Q53): v2.
 pub const official_criteria: CriteriaIdentity = .{ .path = "criteria/qualification/compliant-link-v2.json", .sha256 = lc.link_v2_sha256 };
 
+/// Official run: protocol settings, labeled `fixture`.
 pub fn run(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: lc.Criteria, identity: CriteriaIdentity) !Report {
-    const ctx: Ctx = .{ .arena = arena, .scratch = scratch, .c = c, .unit = .{ .numerator = c.time_unit.numerator_s, .denominator = c.time_unit.denominator_s } };
+    return runWith(arena, scratch, c, identity, protocol_config, "fixture");
+}
+
+/// Any solver configuration. Non-protocol configurations must be labeled
+/// `exploratory` (Q54); this is enforced.
+pub fn runWith(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: lc.Criteria, identity: CriteriaIdentity, solver: SolverConfig, label: []const u8) !Report {
+    const is_protocol = std.meta.eql(solver, protocol_config);
+    if (!is_protocol and !std.mem.eql(u8, label, "exploratory")) return error.NonProtocolRunMustBeExploratory;
+    const ctx: Ctx = .{ .arena = arena, .scratch = scratch, .c = c, .unit = .{ .numerator = c.time_unit.numerator_s, .denominator = c.time_unit.denominator_s }, .solver = solver };
     const kinds = [_]struct { CaseKind, []const u8 }{
         .{ .l1, c.static_cases.axial.id },
         .{ .l2, c.static_cases.shear_bending.id },
@@ -387,13 +428,38 @@ pub fn run(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: lc.Criteria,
         .criteria_sha256 = identity.sha256,
         .solver_name = "kinigami-rigid",
         .solver_version = "0.1.0",
-        .solver_settings = protocol_settings,
-        .link_settings = protocol_link_settings,
+        .label = label,
+        .solver_settings = solver.settings,
+        .link_settings = solver.link_settings,
         .cases = try cases.toOwnedSlice(arena),
     };
 }
 
 const testing = std.testing;
+
+test "non-protocol solver settings cannot be labeled fixture" {
+    const gpa = testing.allocator;
+    const parsed = try lc.parse(gpa, lc.link_v2_json);
+    defer parsed.deinit();
+    var arena = std.heap.ArenaAllocator.init(gpa);
+    defer arena.deinit();
+    try testing.expectError(error.NonProtocolRunMustBeExploratory, runWith(arena.allocator(), gpa, parsed.value, official_criteria, sensitivity_variants[1].config, "fixture"));
+}
+
+test "the backward-Euler control dissipates where the protocol link does not (L7 discriminates)" {
+    const gpa = testing.allocator;
+    const parsed = try lc.parse(gpa, lc.link_v2_json);
+    defer parsed.deinit();
+    var arena = std.heap.ArenaAllocator.init(gpa);
+    defer arena.deinit();
+    var ctx: Ctx = .{ .arena = arena.allocator(), .scratch = arena.allocator(), .c = parsed.value, .unit = .{ .numerator = 1, .denominator = 1_000_000 } };
+    const soft = parsed.value.stiffness_grid[0];
+    const proto = try runCombination(ctx, .l7, soft, 2000);
+    try testing.expectEqual(eval.Status.pass, proto.status);
+    ctx.solver = sensitivity_variants[8].config;
+    const be = try runCombination(ctx, .l7, soft, 2000);
+    try testing.expectEqual(eval.Status.fail, be.status);
+}
 
 test "the suite wiring yields the registered case list, and statics at one combination run" {
     const gpa = testing.allocator;

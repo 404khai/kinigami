@@ -162,7 +162,16 @@ const LinkRow = struct {
     p: f64,
 };
 
+pub const LinkForm = enum {
+    /// C̃ = C_n + q·h·(Jv′ − Jv₀): zero numerical damping (protocol).
+    midpoint_prediction,
+    /// C̃ = C_n + h·Jv′: the conventional backward-Euler soft constraint,
+    /// which dissipates about ζ ≈ ω·h/2. A sensitivity control only (Q54).
+    backward_euler,
+};
+
 pub const LinkSettings = struct {
+    form: LinkForm,
     /// Coefficient q of the spring-term prediction C̃ = C_n + q·h·(Jv′ − Jv₀).
     prediction_q: f64,
 };
@@ -180,7 +189,7 @@ pub const World = struct {
     bodies: std.ArrayList(Body) = .empty,
     contacts: std.ArrayList(Contact) = .empty,
     reports: std.ArrayList(backend_mod.ContactReport) = .empty,
-    link_settings: LinkSettings = .{ .prediction_q = 0.25 },
+    link_settings: LinkSettings = .{ .form = .midpoint_prediction, .prediction_q = 0.25 },
     /// Set only by fixture-validation harness code (Q52 §1).
     allow_static_bodies: bool = false,
     links: std.ArrayList(Link) = .empty,
@@ -380,10 +389,19 @@ pub const World = struct {
                 c.p[1] = pt[0];
                 c.p[2] = pt[1];
             }
-            const q = self.link_settings.prediction_q;
+            const ls = self.link_settings;
             for (self.link_rows.items) |*row| {
-                const gamma = q * h * h * row.k + h * row.c;
-                const dp = -(gamma * self.rowRate(row.*) + h * row.k * row.c_coord - q * h * h * row.k * row.jv0 + row.p) / (1.0 + gamma * row.kin);
+                const dp = switch (ls.form) {
+                    .midpoint_prediction => blk: {
+                        const q = ls.prediction_q;
+                        const gamma = q * h * h * row.k + h * row.c;
+                        break :blk -(gamma * self.rowRate(row.*) + h * row.k * row.c_coord - q * h * h * row.k * row.jv0 + row.p) / (1.0 + gamma * row.kin);
+                    },
+                    .backward_euler => blk: {
+                        const gamma = h * h * row.k + h * row.c;
+                        break :blk -(gamma * self.rowRate(row.*) + h * row.k * row.c_coord + row.p) / (1.0 + gamma * row.kin);
+                    },
+                };
                 self.applyRowImpulse(row.*, dp);
                 row.p += dp;
             }
