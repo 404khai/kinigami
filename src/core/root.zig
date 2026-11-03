@@ -20,6 +20,7 @@ pub const math3 = @import("math3.zig");
 pub const coupler_geometry = @import("coupler_geometry.zig");
 pub const fixture_eval = @import("fixture_eval.zig");
 pub const link_eval = @import("link_eval.zig");
+pub const coupler_eval = @import("coupler_eval.zig");
 pub const rigid = @import("rigid.zig");
 pub const fixture_suite = @import("fixture_suite.zig");
 pub const link_suite = @import("link_suite.zig");
@@ -45,6 +46,7 @@ test {
     _ = coupler_geometry;
     _ = fixture_eval;
     _ = link_eval;
+    _ = coupler_eval;
     _ = rigid;
     _ = fixture_suite;
     _ = link_suite;

@@ -68,3 +68,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q55 | [Links in recordings: format version 3](Q055-recording-links-format-v3.md) (agent decision under owner delegation) | accepted |
 | Q56 | [Fixture coupler stand-in: geometry, reduced latch model, and parameters](Q056-fixture-coupler-stand-in.md) (agent decision under owner delegation) | accepted |
 | Q57 | [Coupler-engagement qualification criteria](Q057-coupler-engagement-qualification-criteria.md) (agent decision under owner delegation) | accepted |
+| Q58 | [Coupler protocol revision 2: indexing of the energy audit's pawl work](Q058-coupler-protocol-energy-work-index.md) (agent decision under owner delegation) | accepted |

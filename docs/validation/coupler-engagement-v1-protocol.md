@@ -1,6 +1,6 @@
 # Evaluation protocol: coupler-engagement qualification criteria v1
 
-Governs evaluation against `criteria/qualification/coupler-engagement-v1.json` (Q56 stand-in, Q57 criteria), from **revision 1**. Revision 1 is committed **before any coupler solver code** (no guide contact, latch, or engagement code exists at this commit).
+Governs evaluation (revision 2, Q58) against `criteria/qualification/coupler-engagement-v1.json` (Q56 stand-in, Q57 criteria), from **revision 1**. Revision 1 is committed **before any coupler solver code** (no guide contact, latch, or engagement code exists at this commit).
 
 Results are labeled **`fixture`**. They qualify only the declared envelope and say nothing about any Kin coupler or candidate (Q40).
 
@@ -94,7 +94,7 @@ Notation: k = k_axial_full, δ = preload offset, α = atan(w/D), k_s = 4·k_cont
   - E_n = Σ ½·m·\|v − v_cm\|² + ½·I·\|ω\|² + V_link + V_contact
   - V_link = ½·Σᵢ e_during·k_i,full·C_i², with C the six reported coordinates of step n
   - V_contact = 0 at samples whose step reported no guide contact. At the final sample it is Σ f_n²/(2·k_contact).
-  - Energy is evaluated at contact-free samples and at the final sample. W_n is the sum of link-potential changes made by coupler updates (pawl travel and removal) up to sample n: at each update, ½·Σ k_i,full·C_i²·(e_after − e_during), counting e_after as 0 when the link is removed.
+  - Energy is evaluated at contact-free samples and at the final sample. W_n is the sum of link-potential changes made by coupler updates (pawl travel and removal) **made before step n** (those of steps 1..n−1; revision 2, Q58), so that it pairs with V_link's e_during at sample n: at each update, ½·Σ k_i,full·C_i²·(e_after − e_during), counting e_after as 0 when the link is removed.
   - Metric: max over evaluated samples of (E_n − E_0 − W_n) / (0.02·E_ref + 1e-12 J) ≤ 1, with E_ref = KE_rel(0) + max V_link + max \|W\|.
   - The 2e-2 comes from the shadow-energy oscillation of the q = 1/4 link step, (ω·Δt)²/4 ≤ 1e-2 at the resolution limit, with a factor of 2. The check is one-sided: dissipation is allowed, creation is not.
 
@@ -119,5 +119,6 @@ As Q48 and Q52: per case, over evaluated combinations (sub-run × Δt, or sweep 
 | Date | Change | Reason | Results affected |
 | --- | --- | --- | --- |
 | 2026-11-02 | Initial protocol (revision 1), before any coupler solver code | — | — |
+| 2026-11-03 | **Revision 2. Pre-run clarification, made before any coupler suite run existed** (no results observed). The energy audit's W_n sums the coupler updates of steps 1..n−1, not 1..n. Nothing else changes | Revision 1's "up to sample n" was ambiguous. V_link at sample n uses e_during (the engagement the step ran at), so the matching work excludes step n's own update. Found while testing the evaluator on synthetic data | None. Ruled by Q58 |
 
 Any change after observing results requires its own decision record before the rerun counts as official (Q49 safeguard).
