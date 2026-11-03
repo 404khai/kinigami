@@ -1,5 +1,7 @@
 //! `kinigami-qualify`: runs the compliant-link qualification suite (Q52) and
 //! writes a JSON report. Usage: kinigami-qualify <report.json> [--recordings <dir>]
+//! `kinigami-qualify --coupler <report.json>` runs the coupler-engagement
+//! suite (Q56, Q57) instead; its recordings are not yet implemented.
 //! With `--recordings`, every evaluated run writes a format-v3 recording
 //! with link records (Q55) for the inspector. Recording never changes results.
 //!
@@ -19,6 +21,15 @@ const Output = struct {
     report: core.link_suite.Report,
 };
 
+const CouplerOutput = struct {
+    code_revision: []const u8,
+    working_tree_dirty: bool,
+    optimize_mode: []const u8,
+    target: []const u8,
+    zig_version: []const u8,
+    report: core.coupler_suite.Report,
+};
+
 const RecordingWriter = struct {
     io: std.Io,
     dir: std.Io.Dir,
@@ -34,7 +45,18 @@ const RecordingWriter = struct {
 pub fn main(init: std.process.Init) !void {
     const arena = init.arena.allocator();
     const args = try init.minimal.args.toSlice(arena);
-    const usage = "usage: kinigami-qualify <report.json> [--recordings <dir>]\n       kinigami-qualify --sensitivity <dir>   (exploratory, Q54)\n";
+    const usage = "usage: kinigami-qualify <report.json> [--recordings <dir>]\n       kinigami-qualify --sensitivity <dir>   (exploratory, Q54)\n       kinigami-qualify --coupler <report.json>   (coupler engagement, Q56/Q57)\n";
+    if (args.len >= 3 and std.mem.eql(u8, args[1], "--coupler")) {
+        if (args.len == 5 and std.mem.eql(u8, args[3], "--recordings")) {
+            std.debug.print("error: --coupler --recordings is not yet implemented (recordings for the coupler suite are a later package)\n", .{});
+            std.process.exit(2);
+        }
+        if (args.len != 3) {
+            std.debug.print(usage, .{});
+            std.process.exit(2);
+        }
+        return coupler(init, arena, args[2]);
+    }
     const with_recordings = args.len == 4 and std.mem.eql(u8, args[2], "--recordings");
     if (args.len != 2 and !with_recordings and !(args.len == 3 and std.mem.eql(u8, args[1], "--sensitivity"))) {
         std.debug.print(usage, .{});
@@ -61,6 +83,41 @@ pub fn main(init: std.process.Init) !void {
     _ = printSummary(report);
     std.debug.print("report written to {s}\n", .{args[1]});
     if (!allPass(report)) std.process.exit(1);
+}
+
+fn coupler(init: std.process.Init, arena: std.mem.Allocator, out_path: []const u8) !void {
+    const parsed = try core.coupler_criteria.parse(arena, core.coupler_criteria.coupler_v1_json);
+    const report = try core.coupler_suite.run(arena, init.gpa, parsed.value, core.coupler_suite.official_criteria, null);
+    const out: CouplerOutput = .{
+        .code_revision = std.mem.trim(u8, @embedFile("git_revision"), " \n\r"),
+        .working_tree_dirty = std.mem.trim(u8, @embedFile("git_status"), " \n\r").len != 0,
+        .optimize_mode = @tagName(@import("builtin").mode),
+        .target = build_info.target,
+        .zig_version = @import("builtin").zig_version_string,
+        .report = report,
+    };
+    const json = try std.json.Stringify.valueAlloc(arena, out, .{ .whitespace = .indent_2 });
+    try std.Io.Dir.cwd().writeFile(init.io, .{ .sub_path = out_path, .data = json });
+    const ok = printCouplerSummary(report);
+    std.debug.print("report written to {s}\n", .{out_path});
+    if (!ok) std.process.exit(1);
+}
+
+fn printCouplerSummary(report: core.coupler_suite.Report) bool {
+    var all_pass = true;
+    std.debug.print("coupler-engagement qualification (label: {s}), criteria {s}\n", .{ report.label, report.criteria_sha256[0..12] });
+    for (report.cases) |c| {
+        std.debug.print("  {s:<32} {s:<10} (evaluated {d}, outside envelope {d})\n", .{ c.case_id, @tagName(c.outcome), c.evaluated, c.outside_envelope });
+        for (c.combinations) |cb| {
+            if (cb.status != .fail) continue;
+            for (cb.sub_runs) |s| for (s.metrics) |m| if (!m.passed) {
+                std.debug.print("      {s} dt={d}us {s}: {?e} (limit {s} {e})\n", .{ cb.grid_id, cb.physics_step_ticks, m.name, m.value, if (m.at_least) ">=" else "<=", m.limit });
+            };
+            if (cb.sub_runs.len == 0) std.debug.print("      {s} dt={d}us failed\n", .{ cb.grid_id, cb.physics_step_ticks });
+        }
+        if (c.outcome != .pass) all_pass = false;
+    }
+    return all_pass;
 }
 
 fn provenance(report: core.link_suite.Report) Output {

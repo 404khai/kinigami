@@ -24,6 +24,7 @@ pub const coupler_eval = @import("coupler_eval.zig");
 pub const rigid = @import("rigid.zig");
 pub const fixture_suite = @import("fixture_suite.zig");
 pub const link_suite = @import("link_suite.zig");
+pub const coupler_suite = @import("coupler_suite.zig");
 
 test {
     _ = identity;
@@ -50,4 +51,5 @@ test {
     _ = rigid;
     _ = fixture_suite;
     _ = link_suite;
+    _ = coupler_suite;
 }
