@@ -70,3 +70,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q57 | [Coupler-engagement qualification criteria](Q057-coupler-engagement-qualification-criteria.md) (agent decision under owner delegation) | accepted |
 | Q58 | [Coupler protocol revision 2: indexing of the energy audit's pawl work](Q058-coupler-protocol-energy-work-index.md) (agent decision under owner delegation) | accepted |
 | Q59 | [Coupler-engagement slice: interim status, findings, and open rulings](Q059-coupler-engagement-interim-status.md) (agent decision under owner delegation) | accepted |
+| Q60 | [Coupler-engagement criteria v2: energy audit, activation accounting, capture-zone consistency](Q060-coupler-engagement-criteria-v2.md) (agent decision under owner delegation) | accepted |

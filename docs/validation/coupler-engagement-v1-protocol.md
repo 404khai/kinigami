@@ -114,11 +114,21 @@ Notation: k = k_axial_full, δ = preload offset, α = atan(w/D), k_s = 4·k_cont
 
 As Q48 and Q52: per case, over evaluated combinations (sub-run × Δt, or sweep run), all pass → `pass`, all fail → `fail`, mixed → `uncertain`. `outside_envelope` (C7 resolution) and `outside_model` (C8 validity) are listed and not counted. If nothing is evaluated the case fails. Every metric must be finite; a non-finite value fails.
 
+## Revision 3 amendments (governs `coupler-engagement-v2.json`, Q60)
+
+Revision 1 and 2 text above governs criteria v1 (run 1). For criteria v2 these amendments replace the named rules; everything else is unchanged.
+
+- **Energy allowance.** `allowance = (creation_rel_tol + first_order_omega_dt_coefficient · ω_ref · Δt) · E_ref + abs_floor_j`. ω_ref = √(k_axial,full/μ_red) if every evaluated sample is contact-free; otherwise max(that, √(k_seat/μ_red)) with k_seat = 4·k_contact·sin²α. The metric stays `creation / allowance ≤ 1`, one-sided.
+- **Pawl work at activation.** At the update where the link goes from no rows to rows, the pawl work is ½·Σ k_i,full·C_i²·e_after, with C the six coordinates reported by that step. W includes it (and Q58's one-step lag applies).
+- **Capture-zone rule** (parser, v ≥ 2): capture_axial + δ < limit_tension/k_axial; capture_radial < limit_shear/k_shear; √(capture_radial² + (capture_axial + δ)²) < limit_tension/k_axial.
+- **Sweep.** Misalignments {0, 0.005, 0.15} rad.
+
 ## Revision log
 
 | Date | Change | Reason | Results affected |
 | --- | --- | --- | --- |
 | 2026-11-02 | Initial protocol (revision 1), before any coupler solver code | — | — |
 | 2026-11-03 | **Revision 2. Pre-run clarification, made before any coupler suite run existed** (no results observed). The energy audit's W_n sums the coupler updates of steps 1..n−1, not 1..n. Nothing else changes | Revision 1's "up to sample n" was ambiguous. V_link at sample n uses e_during (the engagement the step ran at), so the matching work excludes step n's own update. Found while testing the evaluator on synthetic data | None. Ruled by Q58 |
+| 2026-11-03 | **Revision 3. Post-hoc: made after observing run 1** (`results/qualification/coupler-engagement-v1/run1-f4b8e0f-ReleaseSafe.json`, preserved). Governs criteria v2: energy allowance first-order term, pawl work at activation, capture-zone consistency rule, sweep misalignments | Run 1: C7 and C8 `uncertain` on the energy audit alone; the Q57 energy rationale was wrong and the Q56 capture zone was inconsistent with the link's load-limit stretch (Q60) | Run 1 kept as superseded evidence. Run 2 replaces it. **Ruled by Q60 before the code change and rerun** |
 
 Any change after observing results requires its own decision record before the rerun counts as official (Q49 safeguard).
