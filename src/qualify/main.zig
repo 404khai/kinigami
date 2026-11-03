@@ -117,7 +117,7 @@ fn printCouplerSummary(report: core.coupler_suite.Report) bool {
         for (c.combinations) |cb| {
             if (cb.status != .fail) continue;
             for (cb.sub_runs) |s| for (s.metrics) |m| if (!m.passed) {
-                std.debug.print("      {s} dt={d}us {s}: {?e} (limit {s} {e})\n", .{ cb.grid_id, cb.physics_step_ticks, m.name, m.value, if (m.at_least) ">=" else "<=", m.limit });
+                std.debug.print("      {s}{s}{s} dt={d}us {s}: {?e} (limit {s} {e})\n", .{ cb.grid_id, if (std.mem.eql(u8, cb.grid_id, "sweep_failing_audit_runs")) " " else "", if (std.mem.eql(u8, cb.grid_id, "sweep_failing_audit_runs")) s.name else "", cb.physics_step_ticks, m.name, m.value, if (m.at_least) ">=" else "<=", m.limit });
             };
             if (cb.sub_runs.len == 0) std.debug.print("      {s} dt={d}us failed\n", .{ cb.grid_id, cb.physics_step_ticks });
         }
