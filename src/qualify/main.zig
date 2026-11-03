@@ -1,9 +1,10 @@
 //! `kinigami-qualify`: runs the compliant-link qualification suite (Q52) and
 //! writes a JSON report. Usage: kinigami-qualify <report.json> [--recordings <dir>]
-//! `kinigami-qualify --coupler <report.json>` runs the coupler-engagement
-//! suite (Q56, Q57) instead; its recordings are not yet implemented.
+//! `kinigami-qualify --coupler <report.json> [--recordings <dir>]` runs the
+//! coupler-engagement suite (Q56, Q57) instead.
 //! With `--recordings`, every evaluated run writes a format-v3 recording
-//! with link records (Q55) for the inspector. Recording never changes results.
+//! with link records (Q55) for the inspector (the coupler suite: every run of
+//! C1-C9, including each capture-sweep run). Recording never changes results.
 //!
 //! Results are labeled `fixture` (Q46). They qualify nothing beyond the
 //! declared envelope and are never benchmark or Kin-candidate evidence.
@@ -45,17 +46,14 @@ const RecordingWriter = struct {
 pub fn main(init: std.process.Init) !void {
     const arena = init.arena.allocator();
     const args = try init.minimal.args.toSlice(arena);
-    const usage = "usage: kinigami-qualify <report.json> [--recordings <dir>]\n       kinigami-qualify --sensitivity <dir>   (exploratory, Q54)\n       kinigami-qualify --coupler <report.json>   (coupler engagement, Q56/Q57)\n";
+    const usage = "usage: kinigami-qualify <report.json> [--recordings <dir>]\n       kinigami-qualify --sensitivity <dir>   (exploratory, Q54)\n       kinigami-qualify --coupler <report.json>   (coupler engagement, Q56/Q57)\n       kinigami-qualify --coupler <report.json> --recordings <dir>\n";
     if (args.len >= 3 and std.mem.eql(u8, args[1], "--coupler")) {
-        if (args.len == 5 and std.mem.eql(u8, args[3], "--recordings")) {
-            std.debug.print("error: --coupler --recordings is not yet implemented (recordings for the coupler suite are a later package)\n", .{});
-            std.process.exit(2);
-        }
+        if (args.len == 5 and std.mem.eql(u8, args[3], "--recordings")) return coupler(init, arena, args[2], args[4]);
         if (args.len != 3) {
             std.debug.print(usage, .{});
             std.process.exit(2);
         }
-        return coupler(init, arena, args[2]);
+        return coupler(init, arena, args[2], null);
     }
     const with_recordings = args.len == 4 and std.mem.eql(u8, args[2], "--recordings");
     if (args.len != 2 and !with_recordings and !(args.len == 3 and std.mem.eql(u8, args[1], "--sensitivity"))) {
@@ -85,9 +83,17 @@ pub fn main(init: std.process.Init) !void {
     if (!allPass(report)) std.process.exit(1);
 }
 
-fn coupler(init: std.process.Init, arena: std.mem.Allocator, out_path: []const u8) !void {
+fn coupler(init: std.process.Init, arena: std.mem.Allocator, out_path: []const u8, recordings_dir: ?[]const u8) !void {
     const parsed = try core.coupler_criteria.parse(arena, core.coupler_criteria.coupler_v1_json);
-    const report = try core.coupler_suite.run(arena, init.gpa, parsed.value, core.coupler_suite.official_criteria, null);
+    var writer: RecordingWriter = .{ .io = init.io, .dir = undefined };
+    var recorder: ?core.coupler_suite.Recorder = null;
+    if (recordings_dir) |d| {
+        try std.Io.Dir.cwd().createDirPath(init.io, d);
+        writer.dir = try std.Io.Dir.cwd().openDir(init.io, d, .{});
+        recorder = .{ .ptr = &writer, .emit = RecordingWriter.emit };
+    }
+    const report = try core.coupler_suite.run(arena, init.gpa, parsed.value, core.coupler_suite.official_criteria, recorder);
+    if (recordings_dir) |d| std.debug.print("{d} recordings written to {s}\n", .{ writer.count, d });
     const out: CouplerOutput = .{
         .code_revision = std.mem.trim(u8, @embedFile("git_revision"), " \n\r"),
         .working_tree_dirty = std.mem.trim(u8, @embedFile("git_status"), " \n\r").len != 0,
@@ -117,7 +123,45 @@ fn printCouplerSummary(report: core.coupler_suite.Report) bool {
         }
         if (c.outcome != .pass) all_pass = false;
     }
+    printCaptureSummary(report);
+    printAuditDiscrimination(report);
     return all_pass;
+}
+
+/// C8 is reported, never gated on its class: capture radii per
+/// (pair, direction, theta0, v) at each timestep, with the counts.
+fn printCaptureSummary(report: core.coupler_suite.Report) void {
+    const s = report.capture_summary;
+    std.debug.print("  C8 capture sweep: {d} runs, {d} evaluated, {d} outside_model (listed, not counted), {d} with failing audits, {d} offsets with dt_disagreement\n", .{ s.runs, s.evaluated, s.outside_model, s.audit_failed_runs, s.dt_disagreement_offsets });
+    std.debug.print("      classes (valid runs): captured {d}, partial {d}, separated {d}, latch_blocked {d}, missed {d}; {d} runs replayed for C10\n", .{ s.captured, s.partial, s.separated, s.latch_blocked, s.missed, s.replayed_runs });
+    std.debug.print("      capture radius [mm] per pair / direction / theta0 [rad] / v [m/s]; columns are timesteps (- = none captured; * = dt_disagreement)\n", .{});
+    var i: usize = 0;
+    while (i < report.capture_sweep.len) {
+        const first = report.capture_sweep[i];
+        std.debug.print("      {s:<7} {s:<13} th={d:<5} v={d:<5}", .{ first.friction_pair, first.offset_direction, first.misalignment_rad, first.approach_speed_m_s });
+        var j = i;
+        while (j < report.capture_sweep.len) : (j += 1) {
+            const e = report.capture_sweep[j];
+            if (!std.mem.eql(u8, e.friction_pair, first.friction_pair) or !std.mem.eql(u8, e.offset_direction, first.offset_direction) or e.misalignment_rad != first.misalignment_rad or e.approach_speed_m_s != first.approach_speed_m_s) break;
+            if (e.capture_radius_m) |r| {
+                std.debug.print("  {d}us: {d:.0}{s}", .{ e.physics_step_ticks, r * 1000.0, if (e.dt_disagreement) "*" else "" });
+            } else {
+                std.debug.print("  {d}us: -{s}", .{ e.physics_step_ticks, if (e.dt_disagreement) "*" else "" });
+            }
+        }
+        std.debug.print("\n", .{});
+        i = j;
+    }
+}
+
+fn printAuditDiscrimination(report: core.coupler_suite.Report) void {
+    std.debug.print("  C9 audit discrimination (controls are labeled `control`, never counted in C8):\n", .{});
+    for (report.audit_discrimination) |e| {
+        std.debug.print("      {s:<8} {s:<36} dt={d}us named audit {s:<18} requirement {s}; tripped:", .{ e.label, e.control, e.physics_step_ticks, e.named_audit, if (e.requirement_met) "met" else "NOT MET" });
+        if (e.audits_tripped.len == 0) std.debug.print(" none", .{});
+        for (e.audits_tripped) |a| std.debug.print(" {s}", .{a});
+        std.debug.print("\n", .{});
+    }
 }
 
 fn provenance(report: core.link_suite.Report) Output {

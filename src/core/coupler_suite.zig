@@ -5,9 +5,11 @@
 //! every C1-C7 run as gating metrics of that run. Results are labeled
 //! `fixture` and qualify only the declared envelope for this stand-in (Q40).
 //!
-//! Part 1 covers C1-C7 and C10. C8 (capture sweep) and C9 (audit
-//! discrimination) are part 2: the report already carries their sections,
-//! empty for now.
+//! C8 (capture sweep) is reported and classified, never gated on its class;
+//! only its audits gate each run. C9 runs the audit-discrimination controls
+//! (`rigid.AuditControl`), which are labeled `control` and never counted in
+//! C8. With a recorder, every run (not its replay) writes a format-v3
+//! recording with link records (Q55); recording only reads simulation state.
 //!
 //! Scenarios are built from the parsed criteria only. The few constants the
 //! protocol's Setups table fixes (hang position, free-fall height, axes) are
@@ -25,6 +27,8 @@ const time = @import("time.zig");
 const geometry = @import("coupler_geometry.zig");
 const link_suite = @import("link_suite.zig");
 const fixture_suite = @import("fixture_suite.zig");
+const recording = @import("recording.zig");
+const scene_record = @import("scene_record.zig");
 
 pub const Recorder = fixture_suite.Recorder;
 
@@ -46,24 +50,70 @@ pub const Combination = link_suite.Combination;
 pub const CaseReport = link_suite.CaseReport;
 pub const CriteriaIdentity = link_suite.CriteriaIdentity;
 
-/// Part 2 shape of one capture-sweep line (C8): reported, not gated.
+/// One run of the capture sweep (C8) at one lateral offset.
+pub const CaptureRun = struct {
+    lateral_offset_m: f64,
+    /// Final-sample classification (reported even for `outside_model` runs).
+    class: []const u8,
+    /// "valid" or "outside_model" (listed, not counted).
+    validity: []const u8,
+    audits_passed: bool,
+    failed_audits: []const []const u8,
+    /// The class (or validity) of this offset differs across timesteps.
+    dt_disagreement: bool,
+    final_state_sha256: []const u8,
+    /// This run was replayed in-process for C10 (deterministic subset).
+    replayed: bool,
+    replay_identical: ?bool,
+};
+
+/// One (friction pair, direction, theta0, v, dt) line of the capture sweep (C8):
+/// reported, not gated.
 pub const CaptureSweepEntry = struct {
     friction_pair: []const u8,
     offset_direction: []const u8,
     misalignment_rad: f64,
     approach_speed_m_s: f64,
     physics_step_ticks: u64,
+    runs: []const CaptureRun,
+    /// Offsets of valid runs classified `captured`.
     captured_offsets_m: []const f64,
+    /// Largest grid offset at and below which every offset is captured
+    /// (`outside_model` runs count as not captured). The true boundary lies
+    /// within one grid step above it.
     capture_radius_m: ?f64,
+    /// Any offset of this (pair, direction, theta0, v) differs across timesteps.
     dt_disagreement: bool,
 };
 
-/// Part 2 shape of one audit-discrimination line (C9).
+pub const CaptureSummary = struct {
+    runs: usize = 0,
+    evaluated: usize = 0,
+    outside_model: usize = 0,
+    audit_failed_runs: usize = 0,
+    /// Offsets (per pair, direction, theta0, v) whose class differs across timesteps.
+    dt_disagreement_offsets: usize = 0,
+    captured: usize = 0,
+    partial: usize = 0,
+    separated: usize = 0,
+    latch_blocked: usize = 0,
+    missed: usize = 0,
+    replayed_runs: usize = 0,
+    replay_subset: []const u8 = "every timestep of the C9 sweep point, and of the first run (toward_facet, first theta0, first v, offset 0) of each friction pair",
+};
+
+/// One audit-discrimination line (C9). Controls are labeled `control` and are
+/// never counted in C8; the un-controlled sweep-point run is the `baseline`.
 pub const AuditDiscriminationEntry = struct {
     control: []const u8,
+    /// "control" or "baseline".
+    label: []const u8,
     physics_step_ticks: u64,
-    audit: []const u8,
-    caught: bool,
+    /// The audit this control must trip ("all" for the baseline: none may trip).
+    named_audit: []const u8,
+    audits_tripped: []const []const u8,
+    /// Control: the named audit failed. Baseline: every audit passed.
+    requirement_met: bool,
 };
 
 pub const Report = struct {
@@ -79,7 +129,7 @@ pub const Report = struct {
     solver_settings: rigid.Settings,
     link_settings: rigid.LinkSettings,
     cases: []const CaseReport,
-    // part 2: filled by the capture sweep and the audit-discrimination controls.
+    capture_summary: CaptureSummary = .{},
     capture_sweep: []const CaptureSweepEntry = &.{},
     audit_discrimination: []const AuditDiscriminationEntry = &.{},
 };
@@ -92,8 +142,12 @@ const Ctx = struct {
     c: cc.Criteria,
     unit: time.TimeUnit,
     solver: link_suite.SolverConfig = link_suite.protocol_config,
-    /// part 2: recordings. Unused in part 1.
     recorder: ?Recorder = null,
+    /// Case id and criteria hash stored in each recording's configuration.
+    case_id: []const u8 = "",
+    criteria_sha256: []const u8 = "",
+    /// Sub-run name used for the recording's file name; set per run.
+    record_name: []const u8 = "",
     /// Criteria the scenario is *built* from. Null: `c`. Only the wrong-spec
     /// test sets it, to prove the evaluators are not vacuous.
     build_c: ?cc.Criteria = null,
@@ -137,6 +191,21 @@ const Scenario = struct {
     /// Step starts at or after this time use `command_then`; null: never.
     switch_s: ?f64 = null,
     load: LoadSpec = .none,
+    /// C8/C9 approach placement (overrides `offset_axial_m`).
+    approach: ?Approach = null,
+    /// AUDIT CONTROL ONLY (C9).
+    control: rigid.AuditControl = .none,
+};
+
+/// Protocol "C8": B rotated by theta0 about a x d (about s2 for zero offset),
+/// ball centre at x = initial_axial_m with lateral offset y0*d, velocity -v*a.
+const Approach = struct {
+    speed_m_s: f64,
+    offset_m: f64,
+    /// Unit offset direction, A-frame.
+    dir: m3.Vec3,
+    theta_rad: f64,
+    initial_axial_m: f64,
 };
 
 fn axisOf(g: Geometry) m3.Vec3 {
@@ -362,6 +431,112 @@ fn stepLoads(c: cc.Criteria, sc: Scenario, world: *const rigid.World, axes0: [3]
     return out;
 }
 
+// --- Recording (format v3, Q55) ---
+
+/// Effective configuration stored as each recording's first chunk.
+const CouplerRunConfig = struct {
+    schema: []const u8 = "kinigami.coupler-run.v1",
+    run_class: []const u8 = "fixture_validation",
+    /// "fixture", or "control" for the C9 audit controls.
+    label: []const u8,
+    criteria_sha256: []const u8,
+    protocol_revision: u32 = protocol_revision,
+    case_id: []const u8,
+    sub_run: []const u8,
+    time_unit_numerator_s: u64,
+    time_unit_denominator_s: u64,
+    physics_step_ticks: u64,
+    steps: u64,
+    coupler: rigid.CouplerSpec,
+    audit_control: []const u8,
+    command_first: []const u8,
+    command_then: []const u8,
+    switch_s: ?f64,
+    initial_pawl_fraction: f64,
+    link_initially_active: bool,
+    approach_speed_m_s: ?f64,
+    lateral_offset_m: ?f64,
+    misalignment_rad: ?f64,
+    solver: link_suite.SolverConfig,
+};
+
+fn beginRecording(ctx: Ctx, sc: Scenario, world: *const rigid.World, step_ticks: u64, steps: u64) !recording.Writer {
+    const cfg_json = try std.json.Stringify.valueAlloc(ctx.scratch, CouplerRunConfig{
+        .label = if (sc.control != .none) "control" else "fixture",
+        .criteria_sha256 = ctx.criteria_sha256,
+        .case_id = ctx.case_id,
+        .sub_run = ctx.record_name,
+        .time_unit_numerator_s = ctx.unit.numerator,
+        .time_unit_denominator_s = ctx.unit.denominator,
+        .physics_step_ticks = step_ticks,
+        .steps = steps,
+        .coupler = world.couplers.items[0].spec,
+        .audit_control = @tagName(sc.control),
+        .command_first = @tagName(sc.command_first),
+        .command_then = @tagName(sc.command_then),
+        .switch_s = sc.switch_s,
+        .initial_pawl_fraction = sc.e0,
+        .link_initially_active = sc.link_active,
+        .approach_speed_m_s = if (sc.approach) |ap| ap.speed_m_s else null,
+        .lateral_offset_m = if (sc.approach) |ap| ap.offset_m else null,
+        .misalignment_rad = if (sc.approach) |ap| ap.theta_rad else null,
+        .solver = ctx.solver,
+    }, .{});
+    defer ctx.scratch.free(cfg_json);
+    var rec = try recording.Writer.init(ctx.scratch, cfg_json);
+    errdefer rec.deinit();
+    var infos: [2]scene_record.BodyInfo = undefined;
+    for (&infos, world.bodies.items, [_][]const u8{ "fixture_coupler_cube_a", "fixture_coupler_cube_b" }) |*o, b, id| o.* = .{
+        .id = id,
+        .kind = if (b.is_static) .static_fixture else .fixture,
+        .shape = .cuboid,
+        .half_extents_m = b.half_extents_m,
+        .mass_kg = if (b.is_static) 0 else b.mass_kg,
+    };
+    const sp = world.links.items[0].spec;
+    const link_infos = [1]scene_record.LinkInfo{.{ .body_a = sp.body_a, .body_b = sp.body_b, .axes_a = world.linkAxesBodyA(0), .anchor_a_m = sp.anchor_a_m, .anchor_b_m = sp.anchor_b_m, .rest_length_m = sp.rest_length_m }};
+    var hb: canonical.BufferSink = .{ .gpa = ctx.scratch };
+    defer hb.deinit();
+    try scene_record.encodeHeader(hb.encoder(), .{
+        .time_unit_numerator_s = ctx.unit.numerator,
+        .time_unit_denominator_s = ctx.unit.denominator,
+        .physics_step_ticks = step_ticks,
+        .snapshot_interval_steps = 1,
+        .bodies = &infos,
+        .links = &link_infos,
+    });
+    try rec.sceneHeader(hb.list.items);
+    return rec;
+}
+
+/// One snapshot: both bodies, every solver contact report (tabletop and guide,
+/// up to 16), and the latch-link report.
+fn recordSnapshot(rec: *recording.Writer, buf: *canonical.BufferSink, w: *const rigid.World, tick: u64, stepped: bool) !void {
+    var bodies: [2]scene_record.BodyState = undefined;
+    for (&bodies, w.bodies.items) |*o, b| o.* = .{
+        .position_m = b.position_m,
+        .orientation = .{ b.orientation.w, b.orientation.x, b.orientation.y, b.orientation.z },
+        .velocity_m_s = b.velocity_m_s,
+        .angular_velocity_rad_s = b.angular_velocity_rad_s,
+    };
+    var contacts: [ce.max_contacts]scene_record.ContactRecord = undefined;
+    const reports = if (stepped) w.reports.items else &.{};
+    if (reports.len > contacts.len) return error.SampleCapacityExceeded;
+    for (reports, 0..) |r, i| contacts[i] = .{
+        .body_a = r.body_a,
+        .body_b = r.body_b orelse scene_record.tabletop,
+        .point_m = r.world_point_m,
+        .normal = r.world_normal,
+        .normal_force_n = r.normal_force_n,
+        .tangential_force_n = r.tangential_force_n,
+    };
+    const lr = if (stepped) w.link_reports.items[0] else w.linkGeometryReport(0);
+    const links = [1]scene_record.LinkRecord{.{ .force_on_b_n = lr.force_on_b_n, .moment_on_b_nm = lr.moment_on_b_nm, .extension_m = lr.extension_m, .rotation_rad = lr.rotation_rad }};
+    buf.list.clearRetainingCapacity();
+    try scene_record.encodeSnapshot(buf.encoder(), .{ .tick = tick, .bodies = &bodies, .contacts = contacts[0..reports.len], .links = &links });
+    try rec.snapshot(buf.list.items);
+}
+
 const RunResult = struct {
     samples: []ce.Sample,
     /// L(t_n) applied per sample (C3), zero elsewhere; `samples.len` long.
@@ -405,10 +580,19 @@ fn simulate(ctx: Ctx, sc: Scenario, step_ticks: u64, collect: bool) !RunResult {
         const h = 0.5 * sc.twist_rad;
         b.orientation = .{ .w = @cos(h), .x = axis[0] * @sin(h), .y = axis[1] * @sin(h), .z = axis[2] * @sin(h) };
     }
+    if (sc.approach) |ap| {
+        const rot_axis = if (ap.offset_m == 0) ce.couplerAxes(axis)[2] else m3.cross(axis, ap.dir);
+        const h = 0.5 * ap.theta_rad;
+        b.orientation = .{ .w = @cos(h), .x = rot_axis[0] * @sin(h), .y = rot_axis[1] * @sin(h), .z = rot_axis[2] * @sin(h) };
+        const target = m3.add(m3.add(pa, m3.scale(axis, half + ap.initial_axial_m)), m3.scale(ap.dir, ap.offset_m));
+        b.position_m = m3.sub(target, b.orientation.rotate(spec.ball_centre_b_m));
+        b.velocity_m_s = m3.scale(axis, -ap.speed_m_s);
+    }
     _ = try world.addBody(a);
     _ = try world.addBody(b);
     _ = try world.addCoupler(spec);
     world.setCoupler(0, sc.e0 * spec.travel_m, sc.link_active);
+    world.audit_control = sc.control;
 
     const n = try stepsFor(ctx, sc.duration_s, step_ticks);
     const switch_ticks: ?u64 = if (sc.switch_s) |s| try ticksOf(ctx, s) else null;
@@ -419,10 +603,15 @@ fn simulate(ctx: Ctx, sc: Scenario, step_ticks: u64, collect: bool) !RunResult {
 
     const samples: []ce.Sample = if (collect) try ctx.scratch.alloc(ce.Sample, n + 1) else &.{};
     const load_n: []f64 = if (collect) try ctx.scratch.alloc(f64, n + 1) else &.{};
+    var rec: ?recording.Writer = null;
+    defer if (rec) |*r| r.deinit();
+    var snap_buf: canonical.BufferSink = .{ .gpa = ctx.scratch };
+    defer snap_buf.deinit();
+    if (collect and ctx.recorder != null) rec = try beginRecording(ctx, sc, &world, step_ticks, n);
     if (collect) {
         samples[0] = try takeSample(&world, 0, false, .hold, &.{});
         load_n[0] = 0;
-        // part 2: recorder hook, initial snapshot.
+        if (rec) |*r| try recordSnapshot(r, &snap_buf, &world, 0, false);
     }
     for (1..n + 1) |i| {
         const t_s = ctx.unit.seconds(.{ .ticks = i * step_ticks });
@@ -434,8 +623,15 @@ fn simulate(ctx: Ctx, sc: Scenario, step_ticks: u64, collect: bool) !RunResult {
         if (collect) {
             samples[i] = try takeSample(&world, t_s, true, cmd, loads.recSlice());
             load_n[i] = loads.magnitude;
-            // part 2: recorder hook, per-step snapshot.
+            if (rec) |*r| try recordSnapshot(r, &snap_buf, &world, i * step_ticks, true);
         }
+    }
+    if (rec) |*r| {
+        const bytes = try r.finish();
+        defer ctx.scratch.free(bytes);
+        const name = try std.fmt.allocPrint(ctx.scratch, "{s}__{s}__dt{d}us.kgrec", .{ ctx.case_id, ctx.record_name, step_ticks });
+        defer ctx.scratch.free(name);
+        try ctx.recorder.?.emit(ctx.recorder.?.ptr, name, bytes);
     }
 
     var sink: canonical.BufferSink = .{ .gpa = ctx.scratch };
@@ -507,8 +703,10 @@ fn combination(ctx: Ctx, label: []const u8, step_ticks: u64, omega_dt: ?f64, sub
 /// `evaluate` fills the evaluation list from the run.
 fn execute(ctx: Ctx, label: []const u8, sc: Scenario, step_ticks: u64, omega_dt: ?f64, comptime Evaluate: type, args: Evaluate) !Combination {
     const dt = ctx.unit.seconds(.{ .ticks = step_ticks });
-    const r = try simulate(ctx, sc, step_ticks, true);
-    const replay = try simulate(ctx, sc, step_ticks, false);
+    var rctx = ctx;
+    rctx.record_name = label;
+    const r = try simulate(rctx, sc, step_ticks, true);
+    const replay = try simulate(rctx, sc, step_ticks, false);
     const b = bodiesFor(ctx.built(), sc, dt);
     var evs: EvalList = .{};
     try args.fill(ctx, b, r, &evs);
@@ -727,8 +925,8 @@ fn caseReport(arena: std.mem.Allocator, id: []const u8, combos: []const Combinat
     return .{ .case_id = id, .outcome = le.combine(statuses), .evaluated = evaluated, .outside_envelope = outside, .combinations = combos };
 }
 
-/// The case ids this part of the suite reports, in report order.
-pub fn caseIds(c: cc.Criteria) [8][]const u8 {
+/// The case ids the suite reports, in report order.
+pub fn caseIds(c: cc.Criteria) [10][]const u8 {
     return .{
         c.statics.seated_preload.id,
         c.statics.seat_separation.id,
@@ -737,6 +935,8 @@ pub fn caseIds(c: cc.Criteria) [8][]const u8 {
         c.release_under_load.id,
         c.unloaded_release.id,
         c.stiff_dynamics.id,
+        c.capture_sweep.id,
+        c.audit_discrimination.id,
         c.determinism.id,
     };
 }
@@ -773,6 +973,284 @@ fn runJob(ctx: Ctx, job: Job, step_ticks: u64, out: *std.ArrayList(Combination))
     }
 }
 
+// --- C8 capture sweep and C9 audit discrimination ---
+
+fn directionOf(d: cc.OffsetDirection) m3.Vec3 {
+    return switch (d) {
+        .toward_facet => .{ 0, 1, 0 },
+        .toward_corner => .{ 0, 1.0 / @sqrt(2.0), 1.0 / @sqrt(2.0) },
+    };
+}
+
+fn sweepScenario(c: cc.Criteria, pair: cc.FrictionPair, dir: cc.OffsetDirection, theta_rad: f64, speed: f64, offset_m: f64, control: rigid.AuditControl) Scenario {
+    return .{
+        .geometry = .free,
+        .guide = true,
+        .friction = .{ .mu_static = pair.mu_static, .mu_kinetic = pair.mu_kinetic },
+        .e0 = 0,
+        .link_active = false,
+        .zeta = c.stand_in.latch_link.full_damping_ratio,
+        .duration_s = c.capture_sweep.duration_s,
+        .command_first = .engage,
+        .command_then = .engage,
+        .approach = .{ .speed_m_s = speed, .offset_m = offset_m, .dir = directionOf(dir), .theta_rad = theta_rad, .initial_axial_m = c.capture_sweep.initial_axial_m },
+        .control = control,
+    };
+}
+
+const audit_names = [4][]const u8{ "momentum", "impulse_accounting", "pose_integration", "energy" };
+
+/// One C8/C9 run: the four audits, the validity, the classification.
+const SweepOut = struct {
+    run: RunResult,
+    evs: EvalList,
+    class: ce.Class,
+    validity: ce.Validity,
+    replay_hash: ?[]const u8,
+
+    fn auditPassed(self: *const SweepOut, i: usize) bool {
+        return self.evs.items[i].passed();
+    }
+
+    fn allAuditsPassed(self: *const SweepOut) bool {
+        for (0..4) |i| if (!self.auditPassed(i)) return false;
+        return true;
+    }
+
+    fn tripped(self: *const SweepOut, arena: std.mem.Allocator) ![]const []const u8 {
+        var list: std.ArrayList([]const u8) = .empty;
+        for (0..4) |i| if (!self.auditPassed(i)) try list.append(arena, audit_names[i]);
+        return list.toOwnedSlice(arena);
+    }
+
+    fn replayIdentical(self: *const SweepOut) ?bool {
+        const h = self.replay_hash orelse return null;
+        return std.mem.eql(u8, h, self.run.hash);
+    }
+};
+
+fn runSweepScenario(ctx: Ctx, sc: Scenario, step_ticks: u64, replay: bool) !SweepOut {
+    const c = ctx.built();
+    const dt = ctx.unit.seconds(.{ .ticks = step_ticks });
+    const r = try simulate(ctx, sc, step_ticks, true);
+    const b = bodiesFor(c, sc, dt);
+    var evs: EvalList = .{};
+    evs.addAudits(ctx.c, b, r.samples, true);
+    const replay_hash: ?[]const u8 = if (replay) (try simulate(ctx, sc, step_ticks, false)).hash else null;
+    return .{
+        .run = r,
+        .evs = evs,
+        .class = ce.classify(ctx.c, b, r.samples),
+        .validity = ce.validity(b, r.samples),
+        .replay_hash = replay_hash,
+    };
+}
+
+const ReplayOk = struct { ticks: u64, ok: bool };
+
+const Capture = struct {
+    entries: []const CaptureSweepEntry,
+    summary: CaptureSummary,
+    case: CaseReport,
+};
+
+fn runCapture(base: Ctx, replays: *std.ArrayList(ReplayOk)) !Capture {
+    const c = base.c;
+    const sw = c.capture_sweep;
+    const arena = base.arena;
+    const n_dt = c.physics_step_ticks.len;
+    const n_off = sw.lateral_offsets_m.len;
+    const sp = c.audit_discrimination.sweep_point;
+
+    var entries: std.ArrayList(CaptureSweepEntry) = .empty;
+    var summary: CaptureSummary = .{};
+    var statuses: std.ArrayList(le.Status) = .empty;
+    // Failing runs per timestep, for the case report.
+    const dt_fail = try arena.alloc(std.ArrayList(SubRun), n_dt);
+    for (dt_fail) |*f| f.* = .empty;
+    const dt_pass = try arena.alloc(usize, n_dt);
+    @memset(dt_pass, 0);
+
+    for (sw.friction_pairs) |pair| for (sw.offset_directions, 0..) |dir, di| for (sw.misalignments_rad, 0..) |theta, ti| for (sw.approach_speeds_m_s, 0..) |speed, vi| {
+        const runs = try arena.alloc(CaptureRun, n_dt * n_off);
+        const classes = try arena.alloc(ce.Class, n_dt * n_off);
+        const outside = try arena.alloc(bool, n_dt * n_off);
+        for (c.physics_step_ticks, 0..) |st, dti| for (sw.lateral_offsets_m, 0..) |y, oi| {
+            const k = dti * n_off + oi;
+            var run_arena = std.heap.ArenaAllocator.init(base.scratch);
+            defer run_arena.deinit();
+            var ctx = base;
+            ctx.scratch = run_arena.allocator();
+            ctx.case_id = sw.id;
+            const name = try std.fmt.allocPrint(arena, "{s}_{s}_th{d}_v{d}_y{d}", .{ pair.id, @tagName(dir), theta, speed, y });
+            ctx.record_name = name;
+            const is_point = std.mem.eql(u8, pair.id, sp.friction_pair) and dir == sp.offset_direction and theta == sp.misalignment_rad and speed == sp.approach_speed_m_s and y == sp.lateral_offset_m;
+            const is_first = di == 0 and ti == 0 and vi == 0 and oi == 0;
+            const replay = is_point or is_first;
+            const out = try runSweepScenario(ctx, sweepScenario(c, pair, dir, theta, speed, y, .none), st, replay);
+            const audits_ok = out.allAuditsPassed();
+            classes[k] = out.class;
+            outside[k] = out.validity == .outside_model;
+            runs[k] = .{
+                .lateral_offset_m = y,
+                .class = @tagName(out.class),
+                .validity = @tagName(out.validity),
+                .audits_passed = audits_ok,
+                .failed_audits = try out.tripped(arena),
+                .dt_disagreement = false,
+                .final_state_sha256 = out.run.hash,
+                .replayed = replay,
+                .replay_identical = out.replayIdentical(),
+            };
+            summary.runs += 1;
+            if (replay) {
+                summary.replayed_runs += 1;
+                try replays.append(arena, .{ .ticks = st, .ok = out.replayIdentical().? });
+            }
+            if (out.validity == .outside_model) {
+                summary.outside_model += 1;
+                try statuses.append(arena, .outside_envelope);
+                continue;
+            }
+            summary.evaluated += 1;
+            switch (out.class) {
+                .captured => summary.captured += 1,
+                .partial => summary.partial += 1,
+                .separated => summary.separated += 1,
+                .latch_blocked => summary.latch_blocked += 1,
+                .missed => summary.missed += 1,
+            }
+            if (audits_ok) {
+                dt_pass[dti] += 1;
+                try statuses.append(arena, .pass);
+            } else {
+                summary.audit_failed_runs += 1;
+                try statuses.append(arena, .fail);
+                var sr = try subRun(ctx, name, out.run, out.run.hash, out.evs.slice());
+                sr.replay_identical = out.replayIdentical() orelse false;
+                try dt_fail[dti].append(arena, sr);
+            }
+        };
+        // dt_disagreement per offset: the class (or validity) differs across timesteps.
+        var group_disagree = false;
+        for (0..n_off) |oi| {
+            const across = try arena.alloc(ce.Class, n_dt);
+            var validity_differs = false;
+            for (0..n_dt) |dti| {
+                across[dti] = classes[dti * n_off + oi];
+                if (outside[dti * n_off + oi] != outside[oi]) validity_differs = true;
+            }
+            if (ce.dtDisagreement(across) or validity_differs) {
+                group_disagree = true;
+                summary.dt_disagreement_offsets += 1;
+                for (0..n_dt) |dti| runs[dti * n_off + oi].dt_disagreement = true;
+            }
+        }
+        for (c.physics_step_ticks, 0..) |st, dti| {
+            const g_classes = try arena.alloc(ce.Class, n_off);
+            var captured: std.ArrayList(f64) = .empty;
+            for (0..n_off) |oi| {
+                const k = dti * n_off + oi;
+                // An outside_model run is never counted as captured.
+                g_classes[oi] = if (outside[k]) .missed else classes[k];
+                if (g_classes[oi] == .captured) try captured.append(arena, sw.lateral_offsets_m[oi]);
+            }
+            try entries.append(arena, .{
+                .friction_pair = pair.id,
+                .offset_direction = @tagName(dir),
+                .misalignment_rad = theta,
+                .approach_speed_m_s = speed,
+                .physics_step_ticks = st,
+                .runs = runs[dti * n_off .. (dti + 1) * n_off],
+                .captured_offsets_m = try captured.toOwnedSlice(arena),
+                .capture_radius_m = ce.captureRadius(sw.lateral_offsets_m, g_classes),
+                .dt_disagreement = group_disagree,
+            });
+        }
+    };
+
+    const combos = try arena.alloc(Combination, n_dt);
+    for (c.physics_step_ticks, combos, 0..) |st, *cb, dti| {
+        const fails = try dt_fail[dti].toOwnedSlice(arena);
+        const status: le.Status = if (fails.len > 0) .fail else if (dt_pass[dti] > 0) .pass else .outside_envelope;
+        cb.* = .{ .grid_id = "sweep_failing_audit_runs", .physics_step_ticks = st, .status = status, .omega_dt = null, .sub_runs = fails };
+    }
+    return .{
+        .entries = try entries.toOwnedSlice(arena),
+        .summary = summary,
+        // Case outcome: over runs, not timestep groups. `outside_envelope`
+        // counts the C8 `outside_model` runs (listed, not counted).
+        .case = .{
+            .case_id = sw.id,
+            .outcome = le.combine(statuses.items),
+            .evaluated = summary.evaluated,
+            .outside_envelope = summary.outside_model,
+            .combinations = combos,
+        },
+    };
+}
+
+fn controlOf(k: cc.Control) rigid.AuditControl {
+    return switch (k) {
+        .velocity_snap_on_link_activation => .velocity_snap_on_activation,
+        .pose_snap_on_link_activation => .pose_snap_on_activation,
+    };
+}
+
+/// The audit each control must trip (protocol C9): the impulse audit for the
+/// velocity snap, the pose audit for the pose snap.
+fn namedAudit(k: cc.Control) usize {
+    return switch (k) {
+        .velocity_snap_on_link_activation => 1,
+        .pose_snap_on_link_activation => 2,
+    };
+}
+
+fn runAuditDiscrimination(base: Ctx, entries: *std.ArrayList(AuditDiscriminationEntry), all: *std.ArrayList(Combination)) !CaseReport {
+    const c = base.c;
+    const ad = c.audit_discrimination;
+    const sp = ad.sweep_point;
+    const arena = base.arena;
+    const pair: cc.FrictionPair = for (c.capture_sweep.friction_pairs) |p| {
+        if (std.mem.eql(u8, p.id, sp.friction_pair)) break p;
+    } else return error.SweepPointPairNotFound;
+    var combos: std.ArrayList(Combination) = .empty;
+    for (c.physics_step_ticks) |st| {
+        var subs: std.ArrayList(SubRun) = .empty;
+        var ok_all = true;
+        for (0..ad.controls.len + 1) |ci| {
+            var run_arena = std.heap.ArenaAllocator.init(base.scratch);
+            defer run_arena.deinit();
+            var ctx = base;
+            ctx.scratch = run_arena.allocator();
+            ctx.case_id = ad.id;
+            const control: ?cc.Control = if (ci == 0) null else ad.controls[ci - 1];
+            const cname: []const u8 = if (control) |k| @tagName(k) else "none";
+            ctx.record_name = if (control == null) "baseline" else cname;
+            const sc = sweepScenario(c, pair, sp.offset_direction, sp.misalignment_rad, sp.approach_speed_m_s, sp.lateral_offset_m, if (control) |k| controlOf(k) else .none);
+            const out = try runSweepScenario(ctx, sc, st, true);
+            // Control: the named audit fails. Baseline: every audit passes.
+            const met = if (control) |k| !out.auditPassed(namedAudit(k)) else out.allAuditsPassed();
+            ok_all = ok_all and met;
+            try entries.append(arena, .{
+                .control = cname,
+                .label = if (control == null) "baseline" else "control",
+                .physics_step_ticks = st,
+                .named_audit = if (control) |k| audit_names[namedAudit(k)] else "all",
+                .audits_tripped = try out.tripped(arena),
+                .requirement_met = met,
+            });
+            var sr = try subRun(ctx, ctx.record_name, out.run, out.replay_hash.?, out.evs.slice());
+            sr.passed = met;
+            try subs.append(arena, sr);
+        }
+        try combos.append(arena, .{ .grid_id = "sweep_point", .physics_step_ticks = st, .status = if (ok_all) .pass else .fail, .omega_dt = null, .sub_runs = try subs.toOwnedSlice(arena) });
+    }
+    const owned = try combos.toOwnedSlice(arena);
+    try all.appendSlice(arena, owned);
+    return caseReport(arena, ad.id, owned);
+}
+
 /// Official run: protocol settings, labeled `fixture`.
 /// Report memory is owned by `arena`; per-run sample buffers use `scratch`
 /// and are freed as each combination completes.
@@ -783,6 +1261,7 @@ pub fn run(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: cc.Criteria,
         .c = c,
         .unit = .{ .numerator = c.time_unit.numerator_s, .denominator = c.time_unit.denominator_s },
         .recorder = recorder,
+        .criteria_sha256 = identity.sha256,
     };
     const ids = caseIds(c);
     var cases: std.ArrayList(CaseReport) = .empty;
@@ -794,6 +1273,7 @@ pub fn run(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: cc.Criteria,
             defer sc.deinit();
             var sub_ctx = base;
             sub_ctx.scratch = sc.allocator();
+            sub_ctx.case_id = ids[ji];
             const before = combos.items.len;
             try runJob(sub_ctx, job, st, &combos);
             try all.appendSlice(arena, combos.items[before..]);
@@ -801,9 +1281,17 @@ pub fn run(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: cc.Criteria,
         try cases.append(arena, try caseReport(arena, ids[ji], try combos.toOwnedSlice(arena)));
     }
 
-    // part 2: C8 capture sweep and C9 audit-discrimination controls run here.
+    // C8: capture sweep (classified, not gated); only its audits gate each run.
+    var replays: std.ArrayList(ReplayOk) = .empty;
+    const capture = try runCapture(base, &replays);
+    try cases.append(arena, capture.case);
 
-    // C10: per physics step, every executed run replayed bit-identically.
+    // C9: audit-discrimination controls (labeled `control`, never counted in C8).
+    var discrimination: std.ArrayList(AuditDiscriminationEntry) = .empty;
+    try cases.append(arena, try runAuditDiscrimination(base, &discrimination, &all));
+
+    // C10: per physics step, every executed run replayed bit-identically
+    // (C1-C7 and C9 every run; C8 the documented subset).
     var c10: std.ArrayList(Combination) = .empty;
     for (c.physics_step_ticks) |st| {
         var ok = true;
@@ -815,9 +1303,14 @@ pub fn run(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: cc.Criteria,
                 ok = ok and s.replay_identical;
             }
         }
+        for (replays.items) |rp| {
+            if (rp.ticks != st) continue;
+            any = true;
+            ok = ok and rp.ok;
+        }
         try c10.append(arena, .{ .grid_id = "all_runs", .physics_step_ticks = st, .status = if (any and ok) .pass else .fail, .omega_dt = null, .sub_runs = &.{} });
     }
-    try cases.append(arena, try caseReport(arena, ids[7], try c10.toOwnedSlice(arena)));
+    try cases.append(arena, try caseReport(arena, ids[9], try c10.toOwnedSlice(arena)));
 
     return .{
         .criteria_path = identity.path,
@@ -827,6 +1320,9 @@ pub fn run(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: cc.Criteria,
         .solver_settings = base.solver.settings,
         .link_settings = base.solver.link_settings,
         .cases = try cases.toOwnedSlice(arena),
+        .capture_summary = capture.summary,
+        .capture_sweep = capture.entries,
+        .audit_discrimination = try discrimination.toOwnedSlice(arena),
     };
 }
 
@@ -838,7 +1334,7 @@ fn testCtx(arena: std.mem.Allocator, c: cc.Criteria) Ctx {
     return .{ .arena = arena, .scratch = arena, .c = c, .unit = .{ .numerator = c.time_unit.numerator_s, .denominator = c.time_unit.denominator_s } };
 }
 
-test "wiring: the suite's case list equals the criteria ids, in order, C8 and C9 left to part 2" {
+test "wiring: the suite's case list equals the criteria ids, in order, C8 and C9 included" {
     const parsed = try cc.parse(testing.allocator, cc.coupler_v1_json);
     defer parsed.deinit();
     const c = parsed.value;
@@ -850,14 +1346,11 @@ test "wiring: the suite's case list equals the criteria ids, in order, C8 and C9
     try testing.expectEqualStrings(c.release_under_load.id, ids[4]);
     try testing.expectEqualStrings(c.unloaded_release.id, ids[5]);
     try testing.expectEqualStrings(c.stiff_dynamics.id, ids[6]);
-    try testing.expectEqualStrings(c.determinism.id, ids[7]);
-    const prefixes = [_][]const u8{ "C1_", "C2_", "C3_", "C4_", "C5_", "C6_", "C7_", "C10_" };
+    try testing.expectEqualStrings(c.capture_sweep.id, ids[7]);
+    try testing.expectEqualStrings(c.audit_discrimination.id, ids[8]);
+    try testing.expectEqualStrings(c.determinism.id, ids[9]);
+    const prefixes = [_][]const u8{ "C1_", "C2_", "C3_", "C4_", "C5_", "C6_", "C7_", "C8_", "C9_", "C10_" };
     for (ids, prefixes) |id, p| try testing.expect(std.mem.startsWith(u8, id, p));
-    // The ids exclude the part 2 cases.
-    for (ids) |id| {
-        try testing.expect(!std.mem.eql(u8, id, c.capture_sweep.id));
-        try testing.expect(!std.mem.eql(u8, id, c.audit_discrimination.id));
-    }
 }
 
 test "C1 at 200 us runs, audits included, and passes" {
@@ -924,4 +1417,102 @@ test "determinism: two runs of the same scenario give the same hashes" {
     try testing.expectEqualStrings(a.sub_runs[0].final_state_sha256, b.sub_runs[0].final_state_sha256);
     try testing.expectEqual(@as(usize, 64), a.sub_runs[0].final_state_sha256.len);
     try testing.expect(a.sub_runs[0].replay_identical and b.sub_runs[0].replay_identical);
+}
+
+const Collect = struct {
+    gpa: std.mem.Allocator,
+    bytes: ?[]u8 = null,
+    name: ?[]u8 = null,
+    fn emit(ptr: *anyopaque, name: []const u8, b: []const u8) anyerror!void {
+        const self: *@This() = @ptrCast(@alignCast(ptr));
+        if (self.bytes) |old| self.gpa.free(old);
+        if (self.name) |old| self.gpa.free(old);
+        self.bytes = try self.gpa.dupe(u8, b);
+        self.name = try self.gpa.dupe(u8, name);
+    }
+    fn deinit(self: *@This()) void {
+        if (self.bytes) |b| self.gpa.free(b);
+        if (self.name) |b| self.gpa.free(b);
+    }
+};
+
+/// Runs one sweep scenario at one timestep and prints/returns its outcome.
+fn miniRun(ctx: Ctx, pair: cc.FrictionPair, speed: f64, y: f64, st: u64, control: rigid.AuditControl) !SweepOut {
+    return runSweepScenario(ctx, sweepScenario(ctx.c, pair, .toward_facet, 0, speed, y, control), st, false);
+}
+
+test "miniature capture sweep: one pair, one speed, offsets {0, 5 mm}, 200 us" {
+    const parsed = try cc.parse(testing.allocator, cc.coupler_v1_json);
+    defer parsed.deinit();
+    var arena = std.heap.ArenaAllocator.init(testing.allocator);
+    defer arena.deinit();
+    const ctx = testCtx(arena.allocator(), parsed.value);
+    const pair = parsed.value.capture_sweep.friction_pairs[0];
+    const v = parsed.value.capture_sweep.approach_speeds_m_s[1];
+    const o0 = try miniRun(ctx, pair, v, 0.0, 200, .none);
+    const o5 = try miniRun(ctx, pair, v, 0.005, 200, .none);
+    std.debug.print("mini sweep: offset 0 -> {s} ({s}), audits {}; offset 5 mm -> {s} ({s}), audits {}\n", .{ @tagName(o0.class), @tagName(o0.validity), o0.allAuditsPassed(), @tagName(o5.class), @tagName(o5.validity), o5.allAuditsPassed() });
+    // The class is reported, never gated (protocol C8): this test pins only
+    // that 5 mm is not captured and that the audits pass.
+    try testing.expect(o5.class != .captured);
+    try testing.expect(o0.allAuditsPassed() and o5.allAuditsPassed());
+}
+
+test "C9 controls: each control fails its named audit at 200 us and the baseline passes every audit" {
+    const parsed = try cc.parse(testing.allocator, cc.coupler_v1_json);
+    defer parsed.deinit();
+    var arena = std.heap.ArenaAllocator.init(testing.allocator);
+    defer arena.deinit();
+    const ctx = testCtx(arena.allocator(), parsed.value);
+    const c = parsed.value;
+    const sp = c.audit_discrimination.sweep_point;
+    const pair = c.capture_sweep.friction_pairs[0];
+    try testing.expectEqualStrings(sp.friction_pair, pair.id);
+    const base = try runSweepScenario(ctx, sweepScenario(c, pair, sp.offset_direction, sp.misalignment_rad, sp.approach_speed_m_s, sp.lateral_offset_m, .none), 200, false);
+    for (0..4) |i| if (!base.auditPassed(i)) std.debug.print("baseline audit {s} failed\n", .{audit_names[i]});
+    try testing.expect(base.allAuditsPassed());
+    for (c.audit_discrimination.controls) |k| {
+        const o = try runSweepScenario(ctx, sweepScenario(c, pair, sp.offset_direction, sp.misalignment_rad, sp.approach_speed_m_s, sp.lateral_offset_m, controlOf(k)), 200, false);
+        std.debug.print("control {s} tripped:", .{@tagName(k)});
+        for (0..4) |i| if (!o.auditPassed(i)) std.debug.print(" {s}", .{audit_names[i]});
+        std.debug.print("\n", .{});
+        try testing.expect(!o.auditPassed(namedAudit(k)));
+    }
+}
+
+test "recording leaves coupler results unchanged, stores every step with link records and guide contacts (INS-007, Q55)" {
+    const gpa = testing.allocator;
+    const parsed = try cc.parse(gpa, cc.coupler_v1_json);
+    defer parsed.deinit();
+    var arena = std.heap.ArenaAllocator.init(gpa);
+    defer arena.deinit();
+    var col: Collect = .{ .gpa = gpa };
+    defer col.deinit();
+    const base = testCtx(arena.allocator(), parsed.value);
+    var with = base;
+    with.recorder = .{ .ptr = &col, .emit = Collect.emit };
+    with.case_id = "C4_engagement";
+    const a = try runC4(base, 200, false);
+    const b = try runC4(with, 200, false);
+    try testing.expectEqualStrings(a.sub_runs[0].final_state_sha256, b.sub_runs[0].final_state_sha256);
+    try testing.expectEqualStrings("C4_engagement__engage__dt200us.kgrec", col.name.?);
+    const rec = try recording.Recording.parse(col.bytes.?);
+    try testing.expectEqual(@as(u16, 3), rec.version);
+    try testing.expectEqual(@as(usize, a.sub_runs[0].steps + 1), rec.snapshot_count);
+    const header = try scene_record.decodeHeader(arena.allocator(), rec.scene_header.?, rec.version);
+    try testing.expectEqual(@as(usize, 1), header.links.len);
+    try testing.expectEqual(@as(usize, 2), header.bodies.len);
+    var it = rec.snapshots();
+    var last: ?scene_record.Snapshot = null;
+    var guide_seen = false;
+    while (it.next()) |p| {
+        const snap = try scene_record.decodeSnapshot(arena.allocator(), header, p);
+        for (snap.contacts) |ct| if (ct.body_b != scene_record.tabletop) {
+            guide_seen = true;
+        };
+        last = snap;
+    }
+    // C4 ends engaged at the seat: the last snapshot carries the preload tension P.
+    try testing.expect(guide_seen);
+    try testing.expectApproxEqRel(ce.preload(parsed.value, 1.0), -last.?.links[0].force_on_b_n[0], 1e-2);
 }
