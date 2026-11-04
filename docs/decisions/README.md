@@ -66,3 +66,8 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q53 | [Compliant-link L2 bending reference: exact statics with the tension lever](Q053-compliant-link-l2-bending-reference.md) (agent decision under owner delegation) | accepted |
 | Q54 | [Closing the compliant-link slice: solver-settings sensitivity, limits, reference, envelope](Q054-compliant-link-slice-closure.md) (agent decision under owner delegation) | accepted |
 | Q55 | [Links in recordings: format version 3](Q055-recording-links-format-v3.md) (agent decision under owner delegation) | accepted |
+| Q56 | [Fixture coupler stand-in: geometry, reduced latch model, and parameters](Q056-fixture-coupler-stand-in.md) (agent decision under owner delegation) | accepted |
+| Q57 | [Coupler-engagement qualification criteria](Q057-coupler-engagement-qualification-criteria.md) (agent decision under owner delegation) | accepted |
+| Q58 | [Coupler protocol revision 2: indexing of the energy audit's pawl work](Q058-coupler-protocol-energy-work-index.md) (agent decision under owner delegation) | accepted |
+| Q59 | [Coupler-engagement slice: interim status, findings, and open rulings](Q059-coupler-engagement-interim-status.md) (agent decision under owner delegation) | accepted |
+| Q60 | [Coupler-engagement criteria v2: energy audit, activation accounting, capture-zone consistency](Q060-coupler-engagement-criteria-v2.md) (agent decision under owner delegation) | accepted |

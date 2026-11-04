@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "criteria_id": "qualification-coupler-engagement",
+  "criteria_version": 2,
+  "run_class": "fixture_validation",
+  "decisions": ["Q35", "Q36", "Q40", "Q41", "Q43", "Q46", "Q47", "Q48", "Q52", "Q53", "Q54", "Q56", "Q57", "Q58", "Q59", "Q60"],
+  "rationale": "Backend qualification of the reduced coupler engagement fixture (Q56): body-body guide contact, a continuous pawl latch variable, engagement-scaled link stiffness, damping and limits, separation (topology change) from solver-native loads, release under load, stiff-link dynamics at a resolving timestep, capture sweeps, and audits that every velocity and pose change is accounted for by modeled forces. Solver-qualification parameters on neutral fixtures only; not coupler or Kin-candidate claims. Results are labeled fixture and qualify only the declared envelope. Version 2 (Q60): the capture zone is narrowed to satisfy the activation self-consistency rule (stretch at activation inside the load-limit stretch), the energy audit allowance adds the first-order semi-implicit term and credits pawl work at link activation, and the sweep gains a 0.005 rad misalignment; every other value is unchanged.",
+  "time_unit": { "numerator_s": 1, "denominator_s": 1000000 },
+  "physics_step_ticks": [50, 100, 200],
+  "outcome_rule": "evaluated_combinations_all_pass_else_uncertain_if_mixed",
+  "resolution": {
+    "max_omega_dt": 0.2,
+    "applies_to": "dynamic_checks",
+    "beyond_limit": "outside_envelope_not_counted"
+  },
+  "gravity": { "magnitude_m_s2": 9.80665, "direction_world": [0, 0, -1] },
+  "fixture": { "id": "fixture_link_cube", "shape": "cuboid", "mass_distribution": "uniform", "size_m": [0.02, 0.02, 0.02], "mass_kg": 0.02 },
+  "stand_in": {
+    "id": "fixture_coupler_probe_socket",
+    "socket": { "shape": "square_pyramid_recess_edges_along_body_axes", "apex_depth_m": 0.004, "mouth_half_width_m": 0.004 },
+    "probe": { "shape": "sphere_on_massless_noncolliding_stem", "radius_m": 0.002, "stem_length_m": 0.004 },
+    "guide_contact": { "features": "facets_face_rim_edges_rim_corners_voronoi_gated", "normal_law": "tabletop_protocol_compliant_normal", "contact_stiffness_n_m": 100000.0, "contact_damping_n_s_m": 50.0, "static_slip_speed_m_s": 0.00001 },
+    "latch_link": {
+      "model": "six_dof_spring_damper_between_anchor_frames",
+      "anchor_b": "probe_centre",
+      "anchor_a": "seat_point_moved_inward_by_preload_offset",
+      "preload_offset_m": 0.00005,
+      "rest_length_m": 0.0,
+      "full_stiffness": { "k_axial_n_m": 10000.0, "k_shear_n_m": 10000.0, "k_torsion_nm_rad": 1.0, "k_bend_nm_rad": 1.0 },
+      "full_damping_ratio": 0.2,
+      "full_limits": { "tension_n": 2.0, "shear_n": 1.0, "bending_nm": 0.01, "torsion_nm": 0.005 },
+      "compression": "no_link_limit_carried_by_seat",
+      "combined_loading": "independent_per_axis",
+      "engagement_law": "linear_in_pawl_travel_for_stiffness_damping_and_limits"
+    },
+    "pawl": {
+      "travel_m": 0.001,
+      "speed_limit_m_s": 0.01,
+      "actuator_force_limit_n": 0.3,
+      "friction_coefficient": 0.3,
+      "normal_load": "reported_link_tension_if_positive",
+      "cam_out_force": "minus_half_sum_k_full_times_reported_coordinate_squared_over_travel",
+      "unpowered": "self_locking_no_motion",
+      "capture_zone": { "radial_m": 0.00005, "axial_m": 0.0001 },
+      "update": "after_each_step_from_that_steps_solver_report"
+    },
+    "separation": { "rule": "any_axis_solver_load_above_engagement_scaled_limit_removes_link_before_next_step", "damage_model": "none", "rearm": "after_pawl_returns_to_zero_travel" }
+  },
+  "solver_reference": "compliant_link_protocol_settings",
+  "statics": {
+    "setup": "body_a_static_above_body_b_hanging_coupler_axis_world_minus_z_seated_fully_engaged",
+    "guide_friction": { "mu_static": 0.0, "mu_kinetic": 0.0 },
+    "duration_s": 0.5,
+    "window_start_s": 0.4,
+    "seated_preload": { "id": "C1_seated_preload_statics", "force_rel_tol": 0.001 },
+    "seat_separation": { "id": "C2_seat_separation_threshold", "below_factor": 0.9, "above_factor": 1.1, "force_rel_tol": 0.001, "open_seat_normal_max_n": 1e-9 }
+  },
+  "link_limits": {
+    "id": "C3_link_limits_and_separation",
+    "setup": "link_only_two_free_bodies_in_free_fall_equal_and_opposite_loads_at_anchors",
+    "engagements": [1.0, 0.5],
+    "axes": ["tension", "shear", "bending", "torsion"],
+    "below_factor": 0.9,
+    "above_factor": 1.1,
+    "ramp_duration_s": 0.5,
+    "duration_s": 0.6,
+    "hold_window_start_s": 0.55,
+    "separation_load_rel_tol": 0.01,
+    "hold_deflection_rel_tol": 0.01
+  },
+  "engagement": {
+    "id": "C4_engagement",
+    "setup": "two_free_bodies_in_free_fall_ball_at_seat_point_zero_travel_engage_from_t0",
+    "guide_friction": { "mu_static": 0.0, "mu_kinetic": 0.0 },
+    "duration_s": 0.4,
+    "window_start_s": 0.3,
+    "blocked_axial_offset_m": 0.001,
+    "completion_time_tol_steps": 2,
+    "preload_rel_tol": 0.001
+  },
+  "release_under_load": {
+    "id": "C5_release_under_load",
+    "setup": "body_a_static_above_body_b_hanging_seated_fully_engaged_axial_load_on_b_release_from_t_release",
+    "guide_friction": { "mu_static": 0.0, "mu_kinetic": 0.0 },
+    "release_start_s": 0.5,
+    "duration_s": 0.7,
+    "below_factor": 0.9,
+    "above_factor": 1.1,
+    "reference": "rk4_one_dof_axial_link_only_model_step_1us",
+    "separation_time_tol_steps": 2
+  },
+  "unloaded_release": {
+    "id": "C6_unloaded_release",
+    "setup": "two_free_bodies_in_free_fall_seated_fully_engaged_release_from_t_release",
+    "guide_friction": { "mu_static": 0.0, "mu_kinetic": 0.0 },
+    "release_start_s": 0.2,
+    "duration_s": 0.4,
+    "removal_time_tol_steps": 2,
+    "max_tension_step_change_over_quasi_static": 2.0
+  },
+  "stiff_dynamics": {
+    "id": "C7_stiff_link_dynamics",
+    "setup": "link_only_two_free_bodies_in_free_fall_pawl_held",
+    "engagements": [1.0, 0.5],
+    "duration_s": 0.1,
+    "initial_stretch_m": 0.00005,
+    "initial_twist_rad": 0.002,
+    "physical_damping_ratio": 0.05,
+    "period_measure": "mean_of_full_periods_from_linear_interpolated_zero_crossings",
+    "zeta_measure": "log_of_ratio_of_first_and_last_positive_peaks_over_full_periods_divided_by_2pi_n",
+    "period_rel_tol": 0.01,
+    "zeta_rel_tol": 0.25,
+    "zeta_num_max": 0.01
+  },
+  "capture_sweep": {
+    "id": "C8_capture_sweep",
+    "setup": "two_free_bodies_in_free_fall_b_approaches_along_minus_axis_engage_from_t0",
+    "duration_s": 0.5,
+    "initial_axial_m": 0.003,
+    "approach_speeds_m_s": [0.02, 0.1, 0.3],
+    "lateral_offsets_m": [0.0, 0.001, 0.002, 0.003, 0.004, 0.005],
+    "misalignments_rad": [0.0, 0.005, 0.15],
+    "offset_directions": ["toward_facet", "toward_corner"],
+    "friction_pairs": [
+      { "id": "mu_low", "mu_static": 0.3, "mu_kinetic": 0.2 },
+      { "id": "mu_mid", "mu_static": 0.6, "mu_kinetic": 0.45 }
+    ],
+    "outcomes": "classified_from_final_state_reported_not_gated",
+    "validity": "no_cube_cube_overlap_and_probe_over_face_else_outside_model"
+  },
+  "audits": {
+    "applies_to": "every_run_of_c1_to_c8",
+    "momentum": { "rel_tol_of_m_g_t": 0.000000001, "abs_floor_kg_m_s": 0.000000000001 },
+    "impulse_accounting": { "rel_tol_of_step_impulse_sum": 0.000000001, "abs_floor_n_s": 0.000000000000001 },
+    "pose_integration": "bit_identical_to_semi_implicit_update",
+    "energy": { "applies_to": "free_fall_runs_without_validation_loads", "frame": "centre_of_mass", "creation_rel_tol": 0.02, "first_order_omega_dt_coefficient": 1.0, "abs_floor_j": 0.000000000001 }
+  },
+  "audit_discrimination": {
+    "id": "C9_audit_discrimination",
+    "controls": ["velocity_snap_on_link_activation", "pose_snap_on_link_activation"],
+    "sweep_point": { "approach_speed_m_s": 0.1, "lateral_offset_m": 0.002, "misalignment_rad": 0.0, "offset_direction": "toward_facet", "friction_pair": "mu_low" },
+    "requirement": "each_control_fails_its_audit_at_every_timestep"
+  },
+  "determinism": { "id": "C10_determinism", "requirement": "bit_identical_final_state_hash_on_replay" },
+  "reference_conventions": {
+    "reduced_mass": "m_a*m_b/(m_a+m_b)",
+    "reduced_inertia_about_link_axis": "i_a*i_b/(i_a+i_b) for uniform cubes about a face-normal axis through the centre",
+    "damping_coefficient_from_ratio": "c_full = 2*zeta*sqrt(k_full*reduced_mass_or_inertia); rows use e*c_full",
+    "omega_for_resolution": "sqrt(e*k_axial_full/reduced_mass) for axial runs, sqrt(e*k_torsion_full/reduced_inertia) for torsion runs",
+    "seat_stiffness": "k_s = 4*k_contact*sin(alpha)^2, alpha = atan(mouth_half_width/apex_depth)",
+    "preload": "P = e*k_axial_full*preload_offset*k_s/(e*k_axial_full + k_s)",
+    "seat_separation_pull": "F_sep = e*k_axial_full*preload_offset",
+    "release_block_tension": "T_block = k*u*mu_p - sqrt((k*u*mu_p)^2 - 2*k*u*F_act), k = k_axial_full, u = travel, at e = 1"
+  }
+}
