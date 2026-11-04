@@ -134,7 +134,7 @@ Candidate generation ──► Gate 1 (paper) ───────────�
   - no assist
 - **Depends on:** R7.
 - **Exit:** sweeps and qualification items recorded, plus an energy-audit test showing no unmodeled forces.
-- **Status:** **partially qualified; R8 is not closed (Q59).** Criteria (Q57, hash registered) and the stand-in (Q56) were fixed before any solver code. Run 1 (`f4b8e0f`) passes C1–C6, C9, C10. C7 and C8 are `uncertain` on one metric, the energy audit; the momentum, impulse, and pose audits pass on every run, and the C9 controls prove they trip. Q57's energy allowance assumed second-order energy error, but the step's is first-order (Q59). The capture sweep finds capture rare with the provisional parameters. Open: an energy-audit ruling with a superseding criteria version, and whether to change the stand-in or sweep range.
+- **Status:** **qualified for the fixture stand-in within the declared envelope (run 2, `afd29a8`, criteria v2, Q60): 10/10 cases pass.** Run 1 (v1) was `uncertain` on the energy audit. Q60 corrected the allowance rationale and the capture-zone consistency before the rerun. Limits: no cube-cube contact model (256 of 648 sweep runs `outside_model`), Δt-sensitive capture boundary, no coupler recordings committed, coupler solver-settings sensitivity not studied.
 
 ### R9 — Candidate generation and Gate 1 (paper) — parallel track
 

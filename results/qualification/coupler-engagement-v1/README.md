@@ -1,11 +1,14 @@
 # Coupler-engagement qualification results (fixture stand-in)
 
-Criteria: `criteria/qualification/coupler-engagement-v1.json` (SHA-256 `1f07a24b…e8bdc`, Q56, Q57). Protocol: `docs/validation/coupler-engagement-v1-protocol.md`, revision 2 (Q58).
+**Official result: run 2, criteria v2** (`coupler-engagement-v2.json`, SHA-256 `72307066…8a02`, Q60, protocol revision 3). Run 1 below used the superseded v1.
+
+Criteria (run 1): `criteria/qualification/coupler-engagement-v1.json` (SHA-256 `1f07a24b…e8bdc`, Q56, Q57). Protocol: `docs/validation/coupler-engagement-v1-protocol.md`, revision 2 (Q58).
 Every result is labeled **`fixture`**. These results say nothing about any Kin coupler, and they qualify nothing beyond the declared envelope.
 
 | Run | Code revision | Build | C1 | C2 | C3 | C4 | C5 | C6 | C7 | C8 | C9 | C10 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [run 1](run1-f4b8e0f-ReleaseSafe.json) | `f4b8e0f` (clean) | ReleaseSafe, aarch64-macos | pass 3/3 | pass 6/6 | pass 48/48 | pass 6/6 | pass 6/6 | pass 3/3 | **uncertain** (7 of 17 pass, 1 outside envelope) | **uncertain** (sweep runs fail the energy audit, see below) | pass 3/3 | pass 3/3 |
+| [run 2](run2-afd29a8-ReleaseSafe.json) | `afd29a8` (clean) | ReleaseSafe, aarch64-macos | pass 3/3 | pass 6/6 | pass 48/48 | pass 6/6 | pass 6/6 | pass 3/3 | **pass** (17, 1 outside envelope) | **pass** (392 evaluated, 0 audit failures) | pass 3/3 | pass 3/3 |
 
 Run time about 2 minutes. No criteria, protocol, solver, or evaluator value was changed after observing this run. Nothing here is hidden by a ruling: the open items below stay open.
 
@@ -44,3 +47,13 @@ This is a measured property of the provisional stand-in, not a defect of the sol
 - **Damping mass.** Rows use the reduced-mass c_full in every run, as the protocol states, including hang runs.
 - **Recordings.** 530 format-v3 recordings (1.0 GB) can be produced with `--coupler <report.json> --recordings <dir>`. They are not committed.
 - **Regression gates.** The analytic suite (63/63) and compliant-link suite (60/60) final-state hashes still equal their run 2 results.
+
+## Run 2 (official, criteria v2)
+
+All ten cases pass. Q60 was ruled and v2 was registered **after run 1 and before any code change or rerun** (Q49). Run 1 is kept as superseded evidence.
+
+- **C7:** the energy audit passes with the first-order allowance. Period, damping, and numerical dissipation are unchanged from run 1.
+- **C8:** 648 runs. 392 are evaluated with 0 audit failures, and 256 are `outside_model` (listed, not counted). The `outside_model` runs are dominated by the 0.15 rad misalignment, where the cubes overlap. Cube-cube contact is not modeled (Q56).
+- **Capture classes** of valid runs: captured 107, separated 108, latch_blocked 68, missed 109. 65 offsets disagree across Δt: the capture boundary is Δt-sensitive at this resolution.
+- **C9:** both snap controls trip their audits at every Δt, and the baseline trips none.
+- **Regression gates:** 63/63 analytic and 60/60 compliant-link hashes are unchanged.
