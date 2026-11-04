@@ -25,6 +25,9 @@ pub fn build(b: *std.Build) void {
     core.addAnonymousImport("criteria_coupler_v1", .{
         .root_source_file = b.path("criteria/qualification/coupler-engagement-v1.json"),
     });
+    core.addAnonymousImport("criteria_coupler_v2", .{
+        .root_source_file = b.path("criteria/qualification/coupler-engagement-v2.json"),
+    });
 
     const test_step = b.step("test", "Run unit tests and toolchain conformance tests");
 

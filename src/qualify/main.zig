@@ -46,14 +46,21 @@ const RecordingWriter = struct {
 pub fn main(init: std.process.Init) !void {
     const arena = init.arena.allocator();
     const args = try init.minimal.args.toSlice(arena);
-    const usage = "usage: kinigami-qualify <report.json> [--recordings <dir>]\n       kinigami-qualify --sensitivity <dir>   (exploratory, Q54)\n       kinigami-qualify --coupler <report.json>   (coupler engagement, Q56/Q57)\n       kinigami-qualify --coupler <report.json> --recordings <dir>\n";
+    const usage = "usage: kinigami-qualify <report.json> [--recordings <dir>]\n       kinigami-qualify --sensitivity <dir>   (exploratory, Q54)\n       kinigami-qualify --coupler <report.json>   (coupler engagement, Q56/Q57)\n       kinigami-qualify --coupler <report.json> --recordings <dir>\n       (coupler: add --criteria-v1 to run superseded criteria v1, labeled exploratory)\n";
     if (args.len >= 3 and std.mem.eql(u8, args[1], "--coupler")) {
-        if (args.len == 5 and std.mem.eql(u8, args[3], "--recordings")) return coupler(init, arena, args[2], args[4]);
-        if (args.len != 3) {
+        // `--criteria-v1` (anywhere after the report path) runs the superseded
+        // criteria v1, labeled `exploratory`; the default is v2 (Q60).
+        var v1 = false;
+        var rest: std.ArrayList([]const u8) = .empty;
+        for (args[3..]) |a| {
+            if (std.mem.eql(u8, a, "--criteria-v1")) v1 = true else try rest.append(arena, a);
+        }
+        if (rest.items.len == 2 and std.mem.eql(u8, rest.items[0], "--recordings")) return coupler(init, arena, args[2], rest.items[1], v1);
+        if (rest.items.len != 0) {
             std.debug.print(usage, .{});
             std.process.exit(2);
         }
-        return coupler(init, arena, args[2], null);
+        return coupler(init, arena, args[2], null, v1);
     }
     const with_recordings = args.len == 4 and std.mem.eql(u8, args[2], "--recordings");
     if (args.len != 2 and !with_recordings and !(args.len == 3 and std.mem.eql(u8, args[1], "--sensitivity"))) {
@@ -83,8 +90,8 @@ pub fn main(init: std.process.Init) !void {
     if (!allPass(report)) std.process.exit(1);
 }
 
-fn coupler(init: std.process.Init, arena: std.mem.Allocator, out_path: []const u8, recordings_dir: ?[]const u8) !void {
-    const parsed = try core.coupler_criteria.parse(arena, core.coupler_criteria.coupler_v1_json);
+fn coupler(init: std.process.Init, arena: std.mem.Allocator, out_path: []const u8, recordings_dir: ?[]const u8, v1: bool) !void {
+    const parsed = try core.coupler_criteria.parse(arena, if (v1) core.coupler_criteria.coupler_v1_json else core.coupler_criteria.coupler_v2_json);
     var writer: RecordingWriter = .{ .io = init.io, .dir = undefined };
     var recorder: ?core.coupler_suite.Recorder = null;
     if (recordings_dir) |d| {
@@ -92,7 +99,10 @@ fn coupler(init: std.process.Init, arena: std.mem.Allocator, out_path: []const u
         writer.dir = try std.Io.Dir.cwd().openDir(init.io, d, .{});
         recorder = .{ .ptr = &writer, .emit = RecordingWriter.emit };
     }
-    const report = try core.coupler_suite.run(arena, init.gpa, parsed.value, core.coupler_suite.official_criteria, recorder);
+    const report = if (v1)
+        try core.coupler_suite.runLabeled(arena, init.gpa, parsed.value, core.coupler_suite.superseded_criteria_v1, recorder, "exploratory")
+    else
+        try core.coupler_suite.run(arena, init.gpa, parsed.value, core.coupler_suite.official_criteria, recorder);
     if (recordings_dir) |d| std.debug.print("{d} recordings written to {s}\n", .{ writer.count, d });
     const out: CouplerOutput = .{
         .code_revision = std.mem.trim(u8, @embedFile("git_revision"), " \n\r"),

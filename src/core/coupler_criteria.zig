@@ -202,6 +202,9 @@ pub const Audits = struct {
         applies_to: enum { free_fall_runs_without_validation_loads },
         frame: enum { centre_of_mass },
         creation_rel_tol: f64,
+        /// Q60: coefficient of the first-order omega*dt term of the
+        /// allowance. Absent in criteria v1, where it is 0.
+        first_order_omega_dt_coefficient: f64 = 0.0,
         abs_floor_j: f64,
     },
 };
@@ -289,6 +292,7 @@ pub const ValidationError = error{
     SweepPointNotInCaptureSweep,
     ConventionMismatch,
     NonDiscreteSteps,
+    CaptureZoneInconsistent,
 } || time.Error;
 
 pub fn parse(gpa: std.mem.Allocator, text: []const u8) (strict_json.Error || ValidationError)!strict_json.Parsed(Criteria) {
@@ -435,6 +439,17 @@ pub fn validate(c: Criteria) ValidationError!void {
     if (!(pw.friction_coefficient > 0 and pw.friction_coefficient < 1)) return error.FrictionCoefficientOutOfRange;
     try positive(pw.capture_zone.radial_m);
     try positive(pw.capture_zone.axial_m);
+    if (c.criteria_version >= 2) {
+        // Q60 item 3: the stretch at activation must lie inside the
+        // load-limit stretch, which is independent of engagement.
+        const delta = ll.preload_offset_m;
+        const lim_ax = ll.full_limits.tension_n / ll.full_stiffness.k_axial_n_m;
+        const lim_sh = ll.full_limits.shear_n / ll.full_stiffness.k_shear_n_m;
+        const ax = pw.capture_zone.axial_m + delta;
+        const rad = pw.capture_zone.radial_m;
+        if (!(ax < lim_ax) or !(rad < lim_sh) or !(@sqrt(rad * rad + ax * ax) < lim_ax))
+            return error.CaptureZoneInconsistent;
+    }
 
     // Statics (C1, C2).
     {
@@ -550,6 +565,8 @@ pub fn validate(c: Criteria) ValidationError!void {
         try relTol(a.impulse_accounting.rel_tol_of_step_impulse_sum);
         try positive(a.impulse_accounting.abs_floor_n_s);
         try relTol(a.energy.creation_rel_tol);
+        try nonNegative(a.energy.first_order_omega_dt_coefficient);
+        if (c.criteria_version >= 2 and !(a.energy.first_order_omega_dt_coefficient > 0)) return error.NonPositiveValue;
         try positive(a.energy.abs_floor_j);
     }
 
@@ -595,6 +612,10 @@ pub const coupler_v1_json = @embedFile("criteria_coupler_v1");
 /// SHA-256 recorded in criteria/REGISTER.md. Registered files are never
 /// edited in place; a revision is a new file and a new register entry.
 pub const coupler_v1_sha256 = "1f07a24b1b3de9cd5da825b9ef5153bb8f693f0cf399484b14921f5f6e0e8bdc";
+
+/// Criteria v2 (Q60), registered before the code that consumes it.
+pub const coupler_v2_json = @embedFile("criteria_coupler_v2");
+pub const coupler_v2_sha256 = "72307066686fdd54c15e4052a12cdf3cdde785569d4bdb0e466e91d33dc58a02";
 
 const testing = std.testing;
 
@@ -682,4 +703,53 @@ test "strict parsing still applies to the coupler criteria file" {
     try expectInvalid(error.InvalidEnumTag, "\"shape\": \"cuboid\"", "\"shape\": \"sphere\"");
     try expectInvalid(error.InvalidEnumTag, "\"velocity_snap_on_link_activation\"", "\"velocity_snap\"");
     try expectInvalid(error.MissingField, "\"completion_time_tol_steps\": 2,\n    ", "");
+}
+
+test "the embedded coupler criteria v2 file is byte-identical to its registered version" {
+    const identity = @import("identity.zig");
+    try testing.expectEqualStrings(coupler_v2_sha256, &identity.toHex(identity.fileIdentity(coupler_v2_json)));
+}
+
+test "criteria v2 parses with its key values and v1 still parses with a zero coefficient" {
+    const p = try parse(testing.allocator, coupler_v2_json);
+    defer p.deinit();
+    const v = p.value;
+    try testing.expectEqual(@as(u32, 2), v.criteria_version);
+    try testing.expectEqual(@as(f64, 5e-5), v.stand_in.pawl.capture_zone.radial_m);
+    try testing.expectEqual(@as(f64, 1e-4), v.stand_in.pawl.capture_zone.axial_m);
+    try testing.expectEqualSlices(f64, &.{ 0.0, 0.005, 0.15 }, v.capture_sweep.misalignments_rad);
+    try testing.expectEqual(@as(f64, 1.0), v.audits.energy.first_order_omega_dt_coefficient);
+    const p1 = try parse(testing.allocator, coupler_v1_json);
+    defer p1.deinit();
+    try testing.expectEqual(@as(f64, 0.0), p1.value.audits.energy.first_order_omega_dt_coefficient);
+    try testing.expectEqual(@as(f64, 2e-4), p1.value.stand_in.pawl.capture_zone.radial_m);
+}
+
+fn expectInvalidV2(expected: anyerror, needle: []const u8, replacement: []const u8) !void {
+    const gpa = testing.allocator;
+    const at = std.mem.indexOf(u8, coupler_v2_json, needle) orelse return error.TestNeedleNotFound;
+    const text = try std.mem.concat(gpa, u8, &.{ coupler_v2_json[0..at], replacement, coupler_v2_json[at + needle.len ..] });
+    defer gpa.free(text);
+    if (parse(gpa, text)) |p| {
+        p.deinit();
+        return error.TestUnexpectedSuccess;
+    } else |err| try testing.expectEqual(expected, err);
+}
+
+test "v2 capture-zone consistency rule and energy coefficient are enforced" {
+    const zone = "\"capture_zone\": { \"radial_m\": 0.00005, \"axial_m\": 0.0001 }";
+    // v1's zone (0.2 mm / 0.2 mm) violates the rule under version 2.
+    try expectInvalidV2(error.CaptureZoneInconsistent, zone, "\"capture_zone\": { \"radial_m\": 0.0002, \"axial_m\": 0.0002 }");
+    // Radial alone at the shear-limit stretch (0.1 mm) is rejected.
+    try expectInvalidV2(error.CaptureZoneInconsistent, zone, "\"capture_zone\": { \"radial_m\": 0.0002, \"axial_m\": 0.0001 }");
+    try expectInvalidV2(error.CaptureZoneInconsistent, zone, "\"capture_zone\": { \"radial_m\": 0.0001, \"axial_m\": 0.0001 }");
+    // Axial plus preload offset at the tension-limit stretch is rejected.
+    try expectInvalidV2(error.CaptureZoneInconsistent, zone, "\"capture_zone\": { \"radial_m\": 0.00005, \"axial_m\": 0.00015 }");
+    // Combined: each inside its own limit, the norm outside (0.09 mm, 0.19 mm total axial).
+    try expectInvalidV2(error.CaptureZoneInconsistent, zone, "\"capture_zone\": { \"radial_m\": 0.00009, \"axial_m\": 0.00014 }");
+    // Coefficient: negative and zero are rejected for v2.
+    try expectInvalidV2(error.NonPositiveValue, "\"first_order_omega_dt_coefficient\": 1.0", "\"first_order_omega_dt_coefficient\": -1.0");
+    try expectInvalidV2(error.NonPositiveValue, "\"first_order_omega_dt_coefficient\": 1.0", "\"first_order_omega_dt_coefficient\": 0.0");
+    // The v2 text still passes the other v2-aware mutations of v1 tests.
+    try expectInvalidV2(error.ToleranceOutOfRange, "\"creation_rel_tol\": 0.02", "\"creation_rel_tol\": 1.5");
 }

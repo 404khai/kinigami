@@ -32,8 +32,9 @@ const scene_record = @import("scene_record.zig");
 
 pub const Recorder = fixture_suite.Recorder;
 
-/// Protocol revision implemented by the suite (Q58 made it revision 2).
-pub const protocol_revision: u32 = 2;
+/// Protocol revision implemented by the suite (Q58 made it revision 2; Q60
+/// made it revision 3). Criteria v1 can only be re-run as `exploratory`.
+pub const protocol_revision: u32 = 3;
 
 pub const protocol_settings = link_suite.protocol_settings;
 pub const protocol_link_settings = link_suite.protocol_link_settings;
@@ -134,7 +135,10 @@ pub const Report = struct {
     audit_discrimination: []const AuditDiscriminationEntry = &.{},
 };
 
-pub const official_criteria: CriteriaIdentity = .{ .path = "criteria/qualification/coupler-engagement-v1.json", .sha256 = cc.coupler_v1_sha256 };
+/// Official criteria: v2 (Q60). v1 (run 1) is superseded evidence.
+pub const official_criteria: CriteriaIdentity = .{ .path = "criteria/qualification/coupler-engagement-v2.json", .sha256 = cc.coupler_v2_sha256 };
+/// Superseded criteria v1; its re-run is labeled `exploratory`.
+pub const superseded_criteria_v1: CriteriaIdentity = .{ .path = "criteria/qualification/coupler-engagement-v1.json", .sha256 = cc.coupler_v1_sha256 };
 
 const Ctx = struct {
     arena: std.mem.Allocator,
@@ -143,6 +147,8 @@ const Ctx = struct {
     unit: time.TimeUnit,
     solver: link_suite.SolverConfig = link_suite.protocol_config,
     recorder: ?Recorder = null,
+    /// Result label of non-control runs: `fixture`, or `exploratory` for superseded criteria.
+    label: []const u8 = "fixture",
     /// Case id and criteria hash stored in each recording's configuration.
     case_id: []const u8 = "",
     criteria_sha256: []const u8 = "",
@@ -462,7 +468,7 @@ const CouplerRunConfig = struct {
 
 fn beginRecording(ctx: Ctx, sc: Scenario, world: *const rigid.World, step_ticks: u64, steps: u64) !recording.Writer {
     const cfg_json = try std.json.Stringify.valueAlloc(ctx.scratch, CouplerRunConfig{
-        .label = if (sc.control != .none) "control" else "fixture",
+        .label = if (sc.control != .none) "control" else ctx.label,
         .criteria_sha256 = ctx.criteria_sha256,
         .case_id = ctx.case_id,
         .sub_run = ctx.record_name,
@@ -1255,7 +1261,13 @@ fn runAuditDiscrimination(base: Ctx, entries: *std.ArrayList(AuditDiscrimination
 /// Report memory is owned by `arena`; per-run sample buffers use `scratch`
 /// and are freed as each combination completes.
 pub fn run(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: cc.Criteria, identity: CriteriaIdentity, recorder: ?Recorder) !Report {
+    return runLabeled(arena, scratch, c, identity, recorder, "fixture");
+}
+
+/// As `run`, with the result label (`exploratory` for the superseded v1).
+pub fn runLabeled(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: cc.Criteria, identity: CriteriaIdentity, recorder: ?Recorder, label: []const u8) !Report {
     const base: Ctx = .{
+        .label = label,
         .arena = arena,
         .scratch = scratch,
         .c = c,
@@ -1313,6 +1325,7 @@ pub fn run(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: cc.Criteria,
     try cases.append(arena, try caseReport(arena, ids[9], try c10.toOwnedSlice(arena)));
 
     return .{
+        .label = label,
         .criteria_path = identity.path,
         .criteria_sha256 = identity.sha256,
         .solver_name = "kinigami-rigid",
@@ -1335,7 +1348,7 @@ fn testCtx(arena: std.mem.Allocator, c: cc.Criteria) Ctx {
 }
 
 test "wiring: the suite's case list equals the criteria ids, in order, C8 and C9 included" {
-    const parsed = try cc.parse(testing.allocator, cc.coupler_v1_json);
+    const parsed = try cc.parse(testing.allocator, cc.coupler_v2_json);
     defer parsed.deinit();
     const c = parsed.value;
     const ids = caseIds(c);
@@ -1354,7 +1367,7 @@ test "wiring: the suite's case list equals the criteria ids, in order, C8 and C9
 }
 
 test "C1 at 200 us runs, audits included, and passes" {
-    const parsed = try cc.parse(testing.allocator, cc.coupler_v1_json);
+    const parsed = try cc.parse(testing.allocator, cc.coupler_v2_json);
     defer parsed.deinit();
     var arena = std.heap.ArenaAllocator.init(testing.allocator);
     defer arena.deinit();
@@ -1368,7 +1381,7 @@ test "C1 at 200 us runs, audits included, and passes" {
 }
 
 test "C7 axial at 50 us (e = 1, zeta = 0): period, numerical dissipation and every audit but energy pass" {
-    const parsed = try cc.parse(testing.allocator, cc.coupler_v1_json);
+    const parsed = try cc.parse(testing.allocator, cc.coupler_v2_json);
     defer parsed.deinit();
     var arena = std.heap.ArenaAllocator.init(testing.allocator);
     defer arena.deinit();
@@ -1394,7 +1407,7 @@ test "C7 axial at 50 us (e = 1, zeta = 0): period, numerical dissipation and eve
 }
 
 test "a deliberately wrong spec (halved preload offset) fails C1: the evaluators are not vacuous" {
-    const parsed = try cc.parse(testing.allocator, cc.coupler_v1_json);
+    const parsed = try cc.parse(testing.allocator, cc.coupler_v2_json);
     defer parsed.deinit();
     var arena = std.heap.ArenaAllocator.init(testing.allocator);
     defer arena.deinit();
@@ -1407,7 +1420,7 @@ test "a deliberately wrong spec (halved preload offset) fails C1: the evaluators
 }
 
 test "determinism: two runs of the same scenario give the same hashes" {
-    const parsed = try cc.parse(testing.allocator, cc.coupler_v1_json);
+    const parsed = try cc.parse(testing.allocator, cc.coupler_v2_json);
     defer parsed.deinit();
     var arena = std.heap.ArenaAllocator.init(testing.allocator);
     defer arena.deinit();
@@ -1442,7 +1455,7 @@ fn miniRun(ctx: Ctx, pair: cc.FrictionPair, speed: f64, y: f64, st: u64, control
 }
 
 test "miniature capture sweep: one pair, one speed, offsets {0, 5 mm}, 200 us" {
-    const parsed = try cc.parse(testing.allocator, cc.coupler_v1_json);
+    const parsed = try cc.parse(testing.allocator, cc.coupler_v2_json);
     defer parsed.deinit();
     var arena = std.heap.ArenaAllocator.init(testing.allocator);
     defer arena.deinit();
@@ -1459,7 +1472,7 @@ test "miniature capture sweep: one pair, one speed, offsets {0, 5 mm}, 200 us" {
 }
 
 test "C9 controls: each control fails its named audit at 200 us and the baseline passes every audit" {
-    const parsed = try cc.parse(testing.allocator, cc.coupler_v1_json);
+    const parsed = try cc.parse(testing.allocator, cc.coupler_v2_json);
     defer parsed.deinit();
     var arena = std.heap.ArenaAllocator.init(testing.allocator);
     defer arena.deinit();
@@ -1482,7 +1495,7 @@ test "C9 controls: each control fails its named audit at 200 us and the baseline
 
 test "recording leaves coupler results unchanged, stores every step with link records and guide contacts (INS-007, Q55)" {
     const gpa = testing.allocator;
-    const parsed = try cc.parse(gpa, cc.coupler_v1_json);
+    const parsed = try cc.parse(gpa, cc.coupler_v2_json);
     defer parsed.deinit();
     var arena = std.heap.ArenaAllocator.init(gpa);
     defer arena.deinit();

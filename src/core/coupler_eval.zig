@@ -34,7 +34,13 @@ pub const Status = link_eval.Status;
 pub const combine = link_eval.combine;
 
 /// Protocol revision implemented here.
-pub const protocol_revision: u32 = 1;
+///
+/// Revision 3 (Q60): the energy allowance gains the first-order
+/// omega*dt term, and pawl work at link activation is credited in W. Criteria
+/// v1 (coefficient 0) can still be evaluated here, but only as exploratory
+/// re-evaluation: the activation credit is an accounting correction that
+/// applies to both versions, so run 1's published numbers are not reproduced.
+pub const protocol_revision: u32 = 3;
 
 pub const Vec3 = m3.Vec3;
 
@@ -936,9 +942,11 @@ fn linkPotential(c: Criteria, s: *const Sample) f64 {
 
 /// W increment of the coupler update after step n: ½·Σ k·C²·(e_after − e_during),
 /// with e_after counted as 0 when the link is removed. Zero when the link had
-/// no rows in the step. Link activation is deliberately not credited.
+/// no rows in the step. At activation (no rows during, rows after) the pawl
+/// supplies the new link's stored potential, ½·Σ k·C²·e_after, with C from
+/// that step's report (Q60 item 2; the solver reports the same formula).
 fn workIncrement(c: Criteria, s: *const Sample) f64 {
-    if (!s.active_during) return 0;
+    if (!s.active_during) return if (s.active_after) linkPotentialFull(c, s) * s.e_after else 0;
     const e_after = if (s.active_after) s.e_after else 0.0;
     return linkPotentialFull(c, s) * (e_after - s.e_during);
 }
@@ -997,7 +1005,11 @@ pub fn auditEnergy(c: Criteria, b: Bodies, samples: []const Sample) Evaluation {
     }
     max_w = @max(max_w, @abs(w));
     const e_ref = kineticComFrame(b, &samples[0]) + max_v + max_w;
-    const allowance = e.creation_rel_tol * e_ref + e.abs_floor_j;
+    // Q60 item 1: allowance = (rel_tol + coefficient * omega_ref * dt) * E_ref + floor.
+    const mu = link_eval.reducedMass(b.body[0].mass_kg, b.body[1].mass_kg);
+    var omega_ref = @sqrt(c.stand_in.latch_link.full_stiffness.k_axial_n_m / mu);
+    if (samples[samples.len - 1].n_contacts > 0) omega_ref = @max(omega_ref, @sqrt(seatStiffness(c) / mu));
+    const allowance = (e.creation_rel_tol + e.first_order_omega_dt_coefficient * omega_ref * b.dt_s) * e_ref + e.abs_floor_j;
     // Pass 2.
     var worst: f64 = -inf();
     var worst_j: f64 = -inf();
@@ -1021,6 +1033,8 @@ pub fn auditEnergy(c: Criteria, b: Bodies, samples: []const Sample) Evaluation {
     push(&ev, "energy_creation_over_allowance", worst, 1);
     pushInfo(&ev, "info_max_energy_creation_j", worst_j, 0);
     pushInfo(&ev, "info_e_ref_j", e_ref, 0);
+    pushInfo(&ev, "info_omega_ref_rad_s", omega_ref, 0);
+    pushInfo(&ev, "info_allowance_j", allowance, 0);
     pushInfo(&ev, "info_reported_pawl_work_vs_w_max_gap_j", work_gap, 0);
     return ev;
 }
@@ -1876,6 +1890,57 @@ test "energy audit: link potential changes must be declared by the pawl update" 
         s.e_during = 1;
         s.e_after = 1;
     }
+    try testing.expect(!auditEnergy(c, b, &samples).passed());
+}
+
+fn loadV2() !strict_json.Parsed(Criteria) {
+    return cc.parse(testing.allocator, cc.coupler_v2_json);
+}
+
+test "energy audit (Q60): the first-order allowance admits omega*dt-sized fluctuation, not created energy" {
+    const p1 = try load();
+    defer p1.deinit();
+    const p2 = try loadV2();
+    defer p2.deinit();
+    var b = testBodies(p2.value);
+    b.dt_s = 1e-4; // omega_ref = 1000 rad/s, omega*dt = 0.1
+    var samples: [201]Sample = undefined;
+    energySeries(p2.value, b, &samples, 0);
+    // Relative velocities 4% too large at the last sample: a first-order-sized
+    // deviation (about 0.07 E_ref), inside v2's 0.12 E_ref and outside v1's 0.02 E_ref.
+    for (&samples[200].vel) |*v| v.* = m3.add(m3.scale(m3.sub(v.*, .{ 0, 0, v[2] }), 1.04), .{ 0, 0, v[2] });
+    try testing.expect(auditEnergy(p2.value, b, &samples).passed());
+    try testing.expect(!auditEnergy(p1.value, b, &samples).passed());
+    // Five times the relative velocity is created energy and still fails.
+    energySeries(p2.value, b, &samples, 0);
+    for (&samples[200].vel) |*v| v.* = m3.add(m3.scale(m3.sub(v.*, .{ 0, 0, v[2] }), 5.0), .{ 0, 0, v[2] });
+    try testing.expect(!auditEnergy(p2.value, b, &samples).passed());
+}
+
+test "energy audit (Q60): stored potential at link activation passes only with the pawl-work credit" {
+    const p = try loadV2();
+    defer p.deinit();
+    const c = p.value;
+    var b = testBodies(c);
+    b.dt_s = 1e-4;
+    var samples: [30]Sample = undefined;
+    for (&samples, 0..) |*s, i| {
+        s.* = .{ .t_s = tAt(i, b.dt_s) };
+        if (i >= 10) s.extension_m[0] = 5e-5;
+        if (i == 10) {
+            s.active_after = true;
+            s.e_after = 1;
+        } else if (i > 10) {
+            s.active_during = true;
+            s.active_after = true;
+            s.e_during = 1;
+            s.e_after = 1;
+        }
+    }
+    try testing.expect(auditEnergy(c, b, &samples).passed());
+    // Without the credit (the new link reports no engagement after the update)
+    // the rise to e = 1 is undeclared and the stored potential is created energy.
+    samples[10].e_after = 0;
     try testing.expect(!auditEnergy(c, b, &samples).passed());
 }
 

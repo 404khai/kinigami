@@ -780,7 +780,9 @@ pub const World = struct {
 
         // Link lifecycle.
         var removed = separated_now;
+        var activated_now = false;
         if (cp.u_m > 0 and !lk.active and cp.armed and cp.separation == .none) {
+            activated_now = true;
             lk.active = true;
             lk.p = @splat(0);
             switch (self.audit_control) {
@@ -802,7 +804,15 @@ pub const World = struct {
         }
         const e_after = cp.u_m / sp.travel_m;
         const e_after_eff: f64 = if (removed) 0 else e_after;
-        const work: f64 = if (was_active) 0.5 * twice_v * (e_after_eff - e_d) else 0;
+        // At activation the pawl supplies the stored potential of the new
+        // link, 1/2 Σ k_i,full C_i² e_after, with C from this step's report
+        // (which holds geometry for an inactive link). Q60 item 2.
+        var work: f64 = if (was_active) 0.5 * twice_v * (e_after_eff - e_d) else 0;
+        if (activated_now) {
+            var act_twice_v: f64 = 0;
+            for (0..6) |i| act_twice_v += ks[i] * coords[i] * coords[i];
+            work = 0.5 * act_twice_v * e_after;
+        }
         try self.coupler_reports.append(self.gpa, .{
             .u_m = cp.u_m,
             .e_during = e_d,
@@ -1273,6 +1283,33 @@ test "coupler T3: engagement ramps continuously in free fall and the preload set
     try testing.expect(!rec.items[0].active_during);
     try testing.expect(rec.items[3].active_during);
     try testing.expectApproxEqAbs(p_ref, t_sum / cnt, 1e-3);
+}
+
+test "coupler T3b: pawl work at activation is 1/2 Σ k C² e_after from that step's report (Q60)" {
+    var w = linkWorld(testing.allocator);
+    defer w.deinit();
+    const axis: m3.Vec3 = .{ 1, 0, 0 };
+    // Ball slightly off the seat so the coordinates are nonzero at activation.
+    try couplerPair(&w, false, .{ 0, 0, 10 }, axis, true, 1e-4);
+    var seen = false;
+    for (0..20) |_| {
+        try w.step(cp_dt, .{ .coupler_commands = &.{.engage} });
+        const r = w.coupler_reports.items[0];
+        if (!r.active_during and r.active_after) {
+            const rep = w.link_reports.items[0];
+            const c = [6]f64{ rep.extension_m[0], rep.extension_m[1], rep.extension_m[2], rep.rotation_rad[0], rep.rotation_rad[1], rep.rotation_rad[2] };
+            const k = [6]f64{ cp_k, cp_k, cp_k, 1.0, 1.0, 1.0 };
+            var sum: f64 = 0;
+            for (0..6) |i| sum += k[i] * c[i] * c[i];
+            const expect = 0.5 * sum * r.e_after;
+            try testing.expect(expect > 0);
+            try testing.expectApproxEqRel(expect, r.pawl_work_j, 1e-12);
+            seen = true;
+            break;
+        }
+        try testing.expectEqual(@as(f64, 0), r.pawl_work_j);
+    }
+    try testing.expect(seen);
 }
 
 test "coupler T4: engage is blocked outside the capture zone" {
