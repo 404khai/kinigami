@@ -309,3 +309,21 @@ These are named in scope but not listed above with usable descriptors, or listed
 | Reference DOIs for C2, C12, C13, C14, C16, C18 | Bibliographic records were confirmed, but no DOI was returned. |
 | B1–B4 primary works | Only a secondary overview page (Wikipedia) was used. The original works were not re-checked. |
 | M-TRAN descriptors | The ~65 mm module size and magnetic coupling in C1 come from general knowledge of the system, not from text of the cited paper. |
+
+## Additions from the Gate 1 independent reviews (Q64)
+
+Added by Q64 after run 1. These entries come from the independent reviews, which read **search summaries and one project page, not primary papers**. Their ratings and any descriptors are provisional until a reviewer reads the primary source (see the review records). They are appended, not renumbered, so earlier review records stay valid.
+
+| ID | Entry | Why it matters | Source (as found by the review) |
+| --- | --- | --- | --- |
+| C21 | CONRO (USC/ISI) | Spring-closed latch released by an SMA wire, holds unpowered, gendered connector. Rated high on coupler concept against cand-b | https://robots.isi.edu/conro/proto2H.html (read); Shen et al. 2001 "Docking in self-reconfigurable robots" (not read) |
+| C22 | Hexagonal electrohydraulic modules (Keplinger group, Science Robotics, 2024) | Closest published hexagonal rolling body | Search summary only |
+| C23 | Hinged Pixels (Demaine et al., SoCG 2021) | Hexagon modules pivoting about shared vertices (theory) | Search summary only |
+| C24 | Rolling cylindrical modules on a hexagonal lattice | Rolling modular lattice | https://hal.archives-ouvertes.fr/hal-02300456 |
+| C25 | PenduMorph | Pendulum-actuated sphere that docks magnetically | https://arxiv.org/pdf/2606.22491 |
+| C26 | Rotundus GroundBot | Pendulum-driven sphere; may rate high on silhouette and actuation against cand-c | https://orionrobots.co.uk/wiki/rotundus ; US 8,099,189 |
+| C27 | Sphero / BB-8 toy | Commercial internal-drive sphere | https://newatlas.com/sphero-bb-8-droid/39269/ |
+| C28 | MOPARAS | Modular parallel spherical robot | https://research.polyu.edu.hk/en/publications/moparas-a-modular-parallel-spherical-robot-with-position-adjustab/ |
+| C29 | Pendulum-driven spherical robot literature | Prior art for the pendulum-in-sphere drive | https://ar5iv.labs.arxiv.org/html/2302.08932 |
+
+Still unsearched: spherical cage drones and tensegrity rollers.

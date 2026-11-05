@@ -74,3 +74,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q61 | [Originality-review procedure](Q061-originality-review-procedure.md) (agent decision under owner delegation) | accepted |
 | Q62 | [Gate 1 paper-feasibility criteria and candidate-family distinctness](Q062-gate1-paper-criteria.md) (agent decision under owner delegation) | accepted |
 | Q63 | [Gate 1 paper-gate protocol clarifications](Q063-gate1-protocol-clarifications.md) (agent decision under owner delegation) | accepted |
+| Q64 | [Gate 1 run 1 disposition: corpus additions, candidate fate, evaluator note](Q064-gate1-run1-disposition.md) (agent decision under owner delegation) | accepted |
