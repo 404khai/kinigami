@@ -146,6 +146,8 @@ Let S be the energy source component.
 2. **Peak power.** `P_peak_mW = Σ peak_power_mw` over all components other than S. The rated limit `P_lim_mW = nominal_voltage_v · rated_continuous_discharge_a · 1000`, computed in double precision and compared as `P_peak_mW ≤ P_lim_mW`. A greater peak is a `fail`. If `rated_continuous_discharge_a` is null, the item is `unresolved`. No credit for non-simultaneous peaks is given at Gate 1 (worst case).
 3. **Endurance (reported only).** `P_avg_mW = Σ average_power_mw` over components other than S, `endurance_s = energy_mj · 1000 / P_avg_mW` stated with the `P_avg_mW` it assumes (infinite endurance is reported as `not_applicable` when `P_avg_mW = 0`). No threshold is compared (the criteria mark it `unresolved`, Q31 task duration undecided). The report states that the endurance figure does not enter the outcome.
 
+**Revision 2 clarification (Q63).** `mJ / mW` is seconds, so the factor 1000 above is wrong: the correct figure is `endurance_s = energy_mj / P_avg_mW`. Endurance is reported only and never gates. The evaluator prints both the correct value and the literal formula above, and neither enters the outcome.
+
 Outcome: `fail` if mass or peak power fails, `unresolved` if a budget input is missing or the discharge rating is null, else `pass`. The endurance report never changes the outcome.
 
 ## 7. G5 — tabletop chain
@@ -208,3 +210,10 @@ The report lists every item's outcome, the computed values (D, Welzl radius, pac
 - The chain test is static, uses three units, and uses nominal mass positions.
 - Several tolerances are provisional (see the criteria file). They are numerical margins, not physical claims.
 - Independence of reviewers (Q61 §4) and the sampling of cited sources are procedural. The evaluator cannot verify them beyond recorded fields.
+
+## Revision log
+
+| Revision | Date | Change |
+| --- | --- | --- |
+| 1 | 2026-11-04 | Initial protocol (Q61, Q62) |
+| 2 | 2026-11-05 | Clarification only (Q63): endurance units in section 6. No criterion, threshold, or gating behavior changes |

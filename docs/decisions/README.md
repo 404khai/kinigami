@@ -73,3 +73,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q60 | [Coupler-engagement criteria v2: energy audit, activation accounting, capture-zone consistency](Q060-coupler-engagement-criteria-v2.md) (agent decision under owner delegation) | accepted |
 | Q61 | [Originality-review procedure](Q061-originality-review-procedure.md) (agent decision under owner delegation) | accepted |
 | Q62 | [Gate 1 paper-feasibility criteria and candidate-family distinctness](Q062-gate1-paper-criteria.md) (agent decision under owner delegation) | accepted |
+| Q63 | [Gate 1 paper-gate protocol clarifications](Q063-gate1-protocol-clarifications.md) (agent decision under owner delegation) | accepted |
