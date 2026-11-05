@@ -1,0 +1,766 @@
+{
+  "schema_version": 1,
+  "candidate_id": "cand-c",
+  "candidate_version": 1,
+  "family": "C",
+  "declared_on": "2026-11-04",
+  "author": "agent task-6 (cand-c dossier author)",
+  "summary": "Spherical PA12 shell (59 mm outside diameter) that rolls about its own chain axis, driven by a hanging chassis acting as a motorized pendulum. Ball-and-socket couplers sit on the roll axis: a retractable 6 mm steel ball on the head pole, a spring-jaw socket on the tail pole, so units join head to tail in a chain.",
+  "stowed_geometry": {
+    "primitives": [
+      {
+        "id": "shell-outer",
+        "kind": "sphere",
+        "radius_um": 29500,
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            0
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "role": "body"
+      },
+      {
+        "id": "shell-cavity",
+        "kind": "sphere",
+        "radius_um": 28000,
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            0
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "role": "cavity"
+      },
+      {
+        "id": "head-ball-stowed",
+        "kind": "sphere",
+        "radius_um": 3000,
+        "pose": {
+          "position_um": [
+            22000,
+            0,
+            0
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "role": "coupler"
+      },
+      {
+        "id": "tail-socket-stowed",
+        "kind": "cylinder",
+        "radius_um": 4500,
+        "half_height_um": 3000,
+        "pose": {
+          "position_um": [
+            -25000,
+            0,
+            0
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.0,
+            0.7071067811865476,
+            0.0
+          ]
+        },
+        "role": "coupler"
+      }
+    ]
+  },
+  "chain_geometry": {
+    "primitives": [
+      {
+        "id": "shell-outer",
+        "kind": "sphere",
+        "radius_um": 29500,
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            0
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "role": "body"
+      },
+      {
+        "id": "head-ball-deployed",
+        "kind": "sphere",
+        "radius_um": 3000,
+        "pose": {
+          "position_um": [
+            31000,
+            0,
+            0
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        },
+        "role": "coupler"
+      },
+      {
+        "id": "tail-socket",
+        "kind": "cylinder",
+        "radius_um": 4500,
+        "half_height_um": 3000,
+        "pose": {
+          "position_um": [
+            -27000,
+            0,
+            0
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.0,
+            0.7071067811865476,
+            0.0
+          ]
+        },
+        "role": "coupler"
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "shell-half-head",
+      "kind": "structure",
+      "description": "Head-side spherical shell half (PA 2200 laser sintered). Ideal spherical-shell volume minus a 5 mm radius polar aperture; ring gear, bosses and fasteners are separate components. Box is a schema placeholder with no packaging meaning (the shell lies outside the cavity).",
+      "mass_mg": 7137,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.674125454556467e-06
+      },
+      "box": {
+        "half_extent_um": [
+          1,
+          1,
+          1
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            24000,
+            0
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "source",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.shapeways.com/wp-content/uploads/sites/3/2021/10/Material-Data-sheet-Nylon-12-PA2200.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 (Nylon 12) material data sheet, hosted by Shapeways"
+      }
+    },
+    {
+      "id": "shell-half-tail",
+      "kind": "structure",
+      "description": "Tail-side spherical shell half, identical to the head half. Box is a schema placeholder with no packaging meaning.",
+      "mass_mg": 7137,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.674125454556467e-06
+      },
+      "box": {
+        "half_extent_um": [
+          1,
+          1,
+          1
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            -24000,
+            0
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "source",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.shapeways.com/wp-content/uploads/sites/3/2021/10/Material-Data-sheet-Nylon-12-PA2200.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 (Nylon 12) material data sheet, hosted by Shapeways"
+      }
+    },
+    {
+      "id": "battery",
+      "kind": "energy_source",
+      "description": "Turnigy Nano-Tech 300 mAh 1S LiPo, 45C constant / 90C burst. Energy is nominal (capacity x nominal voltage), not usable.",
+      "mass_mg": 8000,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          8500,
+          21500,
+          3000
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            -12000
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "source",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://speedyfpv.com/products/turnigy-nano-tech-300mah-1s-lipo-battery-pack-3-7v-45c-90c-nine-eagles-solo-pro",
+        "accessed": "2026-11-04",
+        "title": "Turnigy Nano-Tech 300mAh 1S 45C/90C LiPo pack (retailer listing of the manufacturer's spec)"
+      },
+      "nominal_voltage_v": 3.7,
+      "rated_continuous_discharge_a": 13.5,
+      "energy_mj": 3996000
+    },
+    {
+      "id": "controller",
+      "kind": "controller",
+      "description": "Adafruit ItsyBitsy nRF52840 Express (controller and 2.4 GHz radio). Peak assumes +8 dBm radio TX at 16.4 mA x 3.3 V; average assumes CPU only at 52 uA/MHz x 64 MHz x 3.3 V. Current figures come from a search summary of the Nordic specification, not from the cited page.",
+      "mass_mg": 3000,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          2650,
+          18000,
+          8800
+        ],
+        "pose": {
+          "position_um": [
+            -9000,
+            0,
+            0
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 54,
+      "average_power_mw": 11,
+      "power_basis": "estimate",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.adafruit.com/product/4481",
+        "accessed": "2026-11-04",
+        "title": "Adafruit ItsyBitsy nRF52840 Express product page"
+      }
+    },
+    {
+      "id": "imu",
+      "kind": "sensor",
+      "description": "Adafruit BNO055 9-DOF orientation breakout. Power is the Bosch datasheet figure of 12.3 mA typical (normal mode, VDD 3 V) at 3.7 V, https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bno055-ds000.pdf, accessed 2026-11-04.",
+      "mass_mg": 3000,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          13500,
+          10000,
+          2000
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            -20000
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 46,
+      "average_power_mw": 46,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.adafruit.com/product/2472",
+        "accessed": "2026-11-04",
+        "title": "Adafruit BNO055 9-DOF absolute orientation IMU breakout product page"
+      }
+    },
+    {
+      "id": "drive-motor",
+      "kind": "actuator",
+      "description": "Pololu 75:1 micro metal gearmotor HPCB 6V, run at 3.7 V: pendulum drive between chassis and shell. Peak is stall current scaled linearly with voltage (1.5 A x 3.7/6 x 3.7 V). Average is no-load current scaled the same way (0.15 A x 3.7/6 x 3.7 V), a conservative continuous-run figure. Box excludes the output and rear shafts.",
+      "mass_mg": 9500,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          6000,
+          12500,
+          5000
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            -4000
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 3423,
+      "average_power_mw": 342,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.pololu.com/product/3074/specs",
+        "accessed": "2026-11-04",
+        "title": "Pololu 75:1 Micro Metal Gearmotor HPCB 6V with extended motor shaft, specifications"
+      }
+    },
+    {
+      "id": "motor-driver",
+      "kind": "actuator",
+      "description": "Pololu DRV8833 dual motor driver carrier. Box thickness 3 mm is not stated by the source. Own consumption is not stated and is not budgeted.",
+      "mass_mg": 1000,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          1500,
+          10160,
+          6350
+        ],
+        "pose": {
+          "position_um": [
+            -15000,
+            0,
+            -12000
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "estimate",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.pololu.com/product/2130/specs",
+        "accessed": "2026-11-04",
+        "title": "Pololu DRV8833 Dual Motor Driver Carrier, specifications"
+      }
+    },
+    {
+      "id": "head-servo",
+      "kind": "actuator",
+      "description": "TowerPro SG92R micro servo drives the head ram through a horn linkage (linkage undeclared). Stall current is not stated on the cited page; 750 mA at 3.7 V is taken from conflicting secondary figures (560 to 750 mA). Idle 10 mA is likewise secondary. Box excludes horn.",
+      "mass_mg": 9000,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          11500,
+          14500,
+          5500
+        ],
+        "pose": {
+          "position_um": [
+            6000,
+            0,
+            10000
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 2775,
+      "average_power_mw": 37,
+      "power_basis": "estimate",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.adafruit.com/product/169",
+        "accessed": "2026-11-04",
+        "title": "Adafruit Micro servo TowerPro SG92R product page"
+      }
+    },
+    {
+      "id": "head-ram-cartridge",
+      "kind": "coupler_mechanism",
+      "description": "Head coupler cartridge: ram sleeve, guide, return spring and wiring for the ball stud. Mass and size are design allowances, not sourced.",
+      "mass_mg": 2500,
+      "mass_basis": "estimate",
+      "box": {
+        "half_extent_um": [
+          3250,
+          4500,
+          4500
+        ],
+        "pose": {
+          "position_um": [
+            15750,
+            0,
+            0
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "estimate",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.shapeways.com/wp-content/uploads/sites/3/2021/10/Material-Data-sheet-Nylon-12-PA2200.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 (Nylon 12) material data sheet, hosted by Shapeways"
+      }
+    },
+    {
+      "id": "head-ball-stud",
+      "kind": "coupler_mechanism",
+      "description": "6 mm chrome-steel ball on the ram: stowed inside the shell, deployed it forms the head site. Mass is the stated per-ball mass of 0.88183 g.",
+      "mass_mg": 882,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          3000,
+          3000,
+          3000
+        ],
+        "pose": {
+          "position_um": [
+            22000,
+            0,
+            0
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "source",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://m.reach.dog/shop/pgn-bearings/products/6mm-chrome-steel-grinding-media-balls-1kg-g25-precision",
+        "accessed": "2026-11-04",
+        "title": "6 mm chrome steel (AISI 52100) balls, grade 25 (retailer listing)"
+      }
+    },
+    {
+      "id": "tail-socket-cartridge",
+      "kind": "coupler_mechanism",
+      "description": "Tail socket: funnel, seat and two spring-preloaded capture jaws for the 6 mm ball. Mass and size are design allowances, not sourced.",
+      "mass_mg": 2500,
+      "mass_basis": "estimate",
+      "box": {
+        "half_extent_um": [
+          6500,
+          4500,
+          4500
+        ],
+        "pose": {
+          "position_um": [
+            -19000,
+            0,
+            0
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "estimate",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.shapeways.com/wp-content/uploads/sites/3/2021/10/Material-Data-sheet-Nylon-12-PA2200.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 (Nylon 12) material data sheet, hosted by Shapeways"
+      }
+    },
+    {
+      "id": "chassis-frame",
+      "kind": "structure",
+      "description": "Chassis frame carrying every component above; modelled as a floor plate, real frame geometry undesigned. Mass is an allowance.",
+      "mass_mg": 4000,
+      "mass_basis": "estimate",
+      "box": {
+        "half_extent_um": [
+          10000,
+          10000,
+          1000
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            -23000
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "estimate",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.shapeways.com/wp-content/uploads/sites/3/2021/10/Material-Data-sheet-Nylon-12-PA2200.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 (Nylon 12) material data sheet, hosted by Shapeways"
+      }
+    },
+    {
+      "id": "pole-hardware-head",
+      "kind": "other",
+      "description": "Head pole bearing, ring gear segment and fasteners; allowance only, bearing part not selected.",
+      "mass_mg": 1500,
+      "mass_basis": "estimate",
+      "box": {
+        "half_extent_um": [
+          1000,
+          3000,
+          3000
+        ],
+        "pose": {
+          "position_um": [
+            26600,
+            0,
+            0
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "estimate",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.shapeways.com/wp-content/uploads/sites/3/2021/10/Material-Data-sheet-Nylon-12-PA2200.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 (Nylon 12) material data sheet, hosted by Shapeways"
+      }
+    },
+    {
+      "id": "pole-hardware-tail",
+      "kind": "other",
+      "description": "Tail pole bearing, ring gear segment and fasteners; allowance only, bearing part not selected.",
+      "mass_mg": 1500,
+      "mass_basis": "estimate",
+      "box": {
+        "half_extent_um": [
+          1000,
+          3000,
+          3000
+        ],
+        "pose": {
+          "position_um": [
+            -26600,
+            0,
+            0
+          ],
+          "orientation": [
+            1,
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "estimate",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.shapeways.com/wp-content/uploads/sites/3/2021/10/Material-Data-sheet-Nylon-12-PA2200.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 (Nylon 12) material data sheet, hosted by Shapeways"
+      }
+    }
+  ],
+  "mass_budget": {
+    "total_mass_mg": 60656
+  },
+  "assembly_access": {
+    "statement": "Two shell halves split on the plane perpendicular to the chain axis. The chassis is built outside the shell, each half is slid over its pole cartridge with its pole bearing, and the halves are joined at the equatorial rim by screws. No assembly tooling or fixture has been designed; the screw count and rim geometry are undefined."
+  },
+  "coupler_sites": [
+    {
+      "id": "head",
+      "position_um": [
+        31000,
+        0,
+        0
+      ],
+      "normal": [
+        1,
+        0,
+        0
+      ],
+      "mount": "head-ram-cartridge"
+    },
+    {
+      "id": "tail",
+      "position_um": [
+        -29000,
+        0,
+        0
+      ],
+      "normal": [
+        -1,
+        0,
+        0
+      ],
+      "mount": "tail-socket-cartridge"
+    }
+  ],
+  "chain": {
+    "head_site": "head",
+    "tail_site": "tail",
+    "rest_orientation": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "mating_roll_deg": [
+      0,
+      90,
+      180,
+      270
+    ]
+  },
+  "retention": {
+    "requires_power_to_hold": false,
+    "mechanism_kind": "spring_preload",
+    "mechanism": "Two spring-preloaded jaws in the tail socket close behind the 6 mm ball once it passes the throat and hold it with no power. The ball remains free to swivel against jaw friction, so shape is not locked.",
+    "component_ids": [
+      "tail-socket-cartridge",
+      "head-ball-stud"
+    ],
+    "release": {
+      "bounded_independent_release": true,
+      "means": "The head unit retracts its ram with the head servo, pulling the ball out against the jaw spring force (bounded by the spring). A unit cannot release its own tail socket; a separate pull beyond the detent also separates the pair."
+    }
+  },
+  "alignment": [
+    {
+      "kind": "geometric_guide",
+      "description": "Conical funnel in the tail socket guides the ball onto the socket axis.",
+      "justification": "The funnel walls act on the ball through contact while the units close by rolling; no magnetic force is assumed. Funnel half angle and depth are undefined.",
+      "component_ids": [
+        "tail-socket-cartridge"
+      ]
+    }
+  ],
+  "limitations": [
+    "Component boxes of the two shell halves are schema placeholders: the shell lies outside the cavity by definition.",
+    "Several masses and sizes are design allowances (chassis frame, cartridges, pole hardware, driver thickness) with estimate basis.",
+    "Servo stall current and MCU current are not taken from the cited pages.",
+    "Servo-to-ram linkage, jaw geometry, funnel angle, bearings and ring gear are undesigned.",
+    "A sphere rests on one point; the gate-1 static-support test needs three table-contact points and is expected to fail.",
+    "Ram stroke of 9 mm is not produced by a declared mechanism."
+  ]
+}

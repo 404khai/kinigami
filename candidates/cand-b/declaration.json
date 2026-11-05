@@ -1,0 +1,739 @@
+{
+  "schema_version": 1,
+  "candidate_id": "cand-b",
+  "candidate_version": 1,
+  "family": "B",
+  "declared_on": "2026-11-04",
+  "author": "Claude Sonnet 5.5 (agent task-5)",
+  "summary": "Z-link two-segment body: two PA12 segments offset by one segment width, joined at a mid-body servo pivot; folds 180 degrees to stow as a side-by-side pair. Plug on one segment end, spring-latched socket on the other.",
+  "stowed_geometry": {
+    "primitives": [
+      {
+        "id": "seg-a",
+        "kind": "box",
+        "half_extent_um": [
+          17000,
+          8000,
+          15000
+        ],
+        "pose": {
+          "position_um": [
+            9000,
+            0,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "body"
+      },
+      {
+        "id": "seg-b",
+        "kind": "box",
+        "half_extent_um": [
+          17000,
+          8000,
+          15000
+        ],
+        "pose": {
+          "position_um": [
+            9000,
+            -16000,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "body"
+      },
+      {
+        "id": "plug",
+        "kind": "cylinder",
+        "radius_um": 4000,
+        "half_height_um": 2500,
+        "pose": {
+          "position_um": [
+            28500,
+            -16000,
+            0
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.0,
+            0.7071067811865476,
+            0.0
+          ]
+        },
+        "role": "coupler"
+      },
+      {
+        "id": "cavity-a",
+        "kind": "box",
+        "half_extent_um": [
+          15500,
+          6500,
+          13500
+        ],
+        "pose": {
+          "position_um": [
+            9000,
+            0,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "cavity"
+      },
+      {
+        "id": "cavity-b",
+        "kind": "box",
+        "half_extent_um": [
+          15500,
+          6500,
+          13500
+        ],
+        "pose": {
+          "position_um": [
+            9000,
+            -16000,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "cavity"
+      }
+    ]
+  },
+  "chain_geometry": {
+    "primitives": [
+      {
+        "id": "seg-a",
+        "kind": "box",
+        "half_extent_um": [
+          17000,
+          8000,
+          15000
+        ],
+        "pose": {
+          "position_um": [
+            9000,
+            0,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "body"
+      },
+      {
+        "id": "seg-b",
+        "kind": "box",
+        "half_extent_um": [
+          17000,
+          8000,
+          15000
+        ],
+        "pose": {
+          "position_um": [
+            -9000,
+            16000,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "body"
+      },
+      {
+        "id": "plug",
+        "kind": "cylinder",
+        "radius_um": 4000,
+        "half_height_um": 2500,
+        "pose": {
+          "position_um": [
+            -28500,
+            16000,
+            0
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.0,
+            0.7071067811865476,
+            0.0
+          ]
+        },
+        "role": "coupler"
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "servo",
+      "kind": "actuator",
+      "description": "Feetech SCS0009 serial-bus micro servo, 10-bit magnetic encoder, 300 deg range; hinge actuator. Output axis along the 25.25 mm dimension is ASSUMED (unresolved). Peak = 5 V x 1.0 A stall bound on the output side; boost-converter losses are not included.",
+      "mass_mg": 13200,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          11600,
+          6050,
+          12625
+        ],
+        "pose": {
+          "position_um": [
+            5800,
+            0,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 5000,
+      "average_power_mw": 150,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://partsbaba.com/products/scs0009-6v-2-3kg-300deg-serial-bus-servo-motor",
+        "accessed": "2026-11-04",
+        "title": "SCS0009 retailer spec page: 13.2 +/- 1 g, 23.2x12.1x25.25 mm, 4-7.4 V, stall 2.3 kg.cm and 1.0 A at 6 V (manufacturer datasheet not located; other listings say 9 g)"
+      }
+    },
+    {
+      "id": "latch-mech",
+      "kind": "coupler_mechanism",
+      "description": "Spring-preloaded hook latch ring in the socket (custom part). Mass, dimensions and power are placeholders.",
+      "mass_mg": 600,
+      "mass_basis": "estimate",
+      "box": {
+        "half_extent_um": [
+          1700,
+          6000,
+          8000
+        ],
+        "pose": {
+          "position_um": [
+            19300,
+            0,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "estimate",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://invalid.example/uncited",
+        "accessed": "2026-11-04",
+        "title": "UNCITED: no source located"
+      }
+    },
+    {
+      "id": "sma-wire",
+      "kind": "actuator",
+      "description": "Flexinol 0.10 mm SMA wire, 20 mm routed length, releases the latch against the hook spring. Peak = derived fault case (switch stuck on).",
+      "mass_mg": 1,
+      "mass_basis": "estimate",
+      "box": {
+        "half_extent_um": [
+          50,
+          50,
+          10000
+        ],
+        "pose": {
+          "position_um": [
+            17500,
+            5500,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 4534,
+      "average_power_mw": 20,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.dynalloy.com/tech_data_wire.php",
+        "accessed": "2026-11-04",
+        "title": "Flexinol wire data, 0.004 in (0.10 mm): 3.2 ohm/in, 200 mA for 1 s contraction"
+      }
+    },
+    {
+      "id": "mosfet",
+      "kind": "other",
+      "description": "Diodes DMG1012T N-MOSFET (SOT523) switching the SMA wire by PWM.",
+      "mass_mg": 2,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          800,
+          400,
+          400
+        ],
+        "pose": {
+          "position_um": [
+            21000,
+            -5500,
+            -11000
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.diodes.com/assets/Datasheets/DMG1012T.pdf",
+        "accessed": "2026-11-04",
+        "title": "DMG1012T datasheet: SOT523, 0.002 g, RDS(on) 0.5 ohm max at 2.5 V"
+      }
+    },
+    {
+      "id": "pogo-block",
+      "kind": "communication",
+      "description": "Four Mill-Max 0906-series spring-loaded pins in the socket floor (GND, TX, RX, engagement sense). Pin mass, barrel size and block size are placeholders.",
+      "mass_mg": 100,
+      "mass_basis": "estimate",
+      "box": {
+        "half_extent_um": [
+          1750,
+          3000,
+          3000
+        ],
+        "pose": {
+          "position_um": [
+            22750,
+            0,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "estimate",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.mouser.com/new/mill-max/millmax_0900_0906/",
+        "accessed": "2026-11-04",
+        "title": "Mill-Max 0900/0906 spring-loaded pins: 2 A continuous, 3 A peak, pin heights 3.48-5.99 mm (search-result values; page text not re-read)"
+      }
+    },
+    {
+      "id": "battery",
+      "kind": "energy_source",
+      "description": "Bitcraze 250 mAh 1S LiPo, 'Discharge: 15C'.",
+      "mass_mg": 7100,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          15000,
+          3500,
+          10000
+        ],
+        "pose": {
+          "position_um": [
+            9000,
+            -18500,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "source",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.bitcraze.io/documentation/hardware/250mah_battery/250mah_battery-datasheet.pdf",
+        "accessed": "2026-11-04",
+        "title": "250mAh LiPo battery datasheet Rev 1: 7.1 g, 20x7x30 mm, 3.7 V, 15C"
+      },
+      "nominal_voltage_v": 3.7,
+      "rated_continuous_discharge_a": 3.75,
+      "energy_mj": 3330000
+    },
+    {
+      "id": "controller",
+      "kind": "controller",
+      "description": "Seeed XIAO nRF52840 Sense: nRF52840, BLE, LSM6DS3TR-C IMU, LiPo charger. Mass, thickness and power are placeholders.",
+      "mass_mg": 1500,
+      "mass_basis": "estimate",
+      "box": {
+        "half_extent_um": [
+          10500,
+          2000,
+          8900
+        ],
+        "pose": {
+          "position_um": [
+            4500,
+            -12500,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 60,
+      "average_power_mw": 25,
+      "power_basis": "estimate",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://wiki.seeedstudio.com/XIAO_BLE/",
+        "accessed": "2026-11-04",
+        "title": "Seeed XIAO nRF52840 series wiki: 21 x 17.8 mm"
+      }
+    },
+    {
+      "id": "boost",
+      "kind": "other",
+      "description": "Pololu U1V10F5 5 V step-up converter for the servo. Mass is a placeholder; its losses are folded into the servo peak bound.",
+      "mass_mg": 400,
+      "mass_basis": "estimate",
+      "box": {
+        "half_extent_um": [
+          4500,
+          1250,
+          5750
+        ],
+        "pose": {
+          "position_um": [
+            20000,
+            -11000,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.pololu.com/product/2564",
+        "accessed": "2026-11-04",
+        "title": "Pololu 5V Step-Up Voltage Regulator U1V10F5: 9 x 11.5 x 2.5 mm"
+      }
+    },
+    {
+      "id": "hinge-arm",
+      "kind": "structure",
+      "description": "PA12 printed arm joining the servo horn to segment B (plate 12x12x0.8 mm in the hinge zone; remainder counted in shell-b).",
+      "mass_mg": 116,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 1010.0,
+        "volume_m3": 1.1520000000000001e-07
+      },
+      "box": {
+        "half_extent_um": [
+          6000,
+          6000,
+          400
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            13100
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://weerg.com/hubfs/Datasheets/Datasheets%202024/ENG/EN_NylonPA12.pdf",
+        "accessed": "2026-11-04",
+        "title": "Weerg Nylon PA12 datasheet: density 1.01 g/cm3"
+      }
+    },
+    {
+      "id": "shell-a",
+      "kind": "structure",
+      "description": "PA12 shell of segment A, solid-wall bound (outer box minus cavity). Lumped placeholder box in a cavity corner: the shell cannot lie inside its own cavity.",
+      "mass_mg": 5493,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 1010.0,
+        "volume_m3": 5.439e-06
+      },
+      "box": {
+        "half_extent_um": [
+          500,
+          500,
+          500
+        ],
+        "pose": {
+          "position_um": [
+            23000,
+            -6000,
+            13000
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://weerg.com/hubfs/Datasheets/Datasheets%202024/ENG/EN_NylonPA12.pdf",
+        "accessed": "2026-11-04",
+        "title": "Weerg Nylon PA12 datasheet: density 1.01 g/cm3"
+      }
+    },
+    {
+      "id": "shell-b",
+      "kind": "structure",
+      "description": "PA12 shell of segment B plus plug cylinder, same bound. Lumped placeholder box in a cavity corner.",
+      "mass_mg": 5747,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 1010.0,
+        "volume_m3": 5.690327412287184e-06
+      },
+      "box": {
+        "half_extent_um": [
+          500,
+          500,
+          500
+        ],
+        "pose": {
+          "position_um": [
+            23000,
+            -22000,
+            13000
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://weerg.com/hubfs/Datasheets/Datasheets%202024/ENG/EN_NylonPA12.pdf",
+        "accessed": "2026-11-04",
+        "title": "Weerg Nylon PA12 datasheet: density 1.01 g/cm3"
+      }
+    },
+    {
+      "id": "wiring",
+      "kind": "other",
+      "description": "Internal wiring, solder, fasteners, hook spring-steel and servo-horn screw. All values are placeholders.",
+      "mass_mg": 300,
+      "mass_basis": "estimate",
+      "box": {
+        "half_extent_um": [
+          300,
+          500,
+          500
+        ],
+        "pose": {
+          "position_um": [
+            -6200,
+            0,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "estimate",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://invalid.example/uncited",
+        "accessed": "2026-11-04",
+        "title": "UNCITED: no source located"
+      }
+    }
+  ],
+  "mass_budget": {
+    "total_mass_mg": 34559
+  },
+  "assembly_access": {
+    "statement": "Each shell is a two-part clamshell split on the plane y = centre of the segment. Components load from the open half before the halves are screwed together. The hinge arm is fitted to the servo horn through the open end of segment A before segment B is joined. Fit and access have not been prototyped."
+  },
+  "coupler_sites": [
+    {
+      "id": "head-socket",
+      "position_um": [
+        26000,
+        0,
+        0
+      ],
+      "normal": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "mount": "Socket recess in the +x end face of segment A"
+    },
+    {
+      "id": "tail-plug",
+      "position_um": [
+        -26000,
+        16000,
+        0
+      ],
+      "normal": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "mount": "Plug at the -x end of segment B, seated plane at its base"
+    }
+  ],
+  "chain": {
+    "head_site": "head-socket",
+    "tail_site": "tail-plug",
+    "rest_orientation": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "mating_roll_deg": [
+      180.0,
+      0.0
+    ]
+  },
+  "retention": {
+    "requires_power_to_hold": false,
+    "mechanism_kind": "geometric_interlock",
+    "mechanism": "Spring-preloaded hooks seat in a groove on the plug neck. The hook shoulder is perpendicular to the pull direction, so tension is carried by the interlock and holds with no power.",
+    "component_ids": [
+      "latch-mech",
+      "shell-a",
+      "shell-b"
+    ],
+    "release": {
+      "bounded_independent_release": true,
+      "means": "Powering the SMA wire through the MOSFET pulls the hooks radially out of the groove against the spring. Release stroke is limited by the hook ring stop, and the unit releases without help from its neighbour."
+    }
+  },
+  "alignment": [
+    {
+      "kind": "geometric_guide",
+      "description": "Conical funnel in the socket mouth, taper on the plug tip, and two flats on the plug keying roll to 0 or 180 degrees.",
+      "justification": "The approach push of the moving unit presses the plug taper on the funnel wall. The wall reaction has a component that centres the plug, and the flats allow only two roll angles. No magnet is used. Capture window not yet measured (Q36).",
+      "component_ids": [
+        "shell-a",
+        "shell-b",
+        "pogo-block"
+      ]
+    }
+  ],
+  "limitations": [
+    "Several masses, dimensions and powers are placeholders (basis estimate). G3 is unresolved until each is replaced by a cited value.",
+    "Component poses are the stowed layout. The G5 centre-of-mass test therefore uses stowed positions for segment B's contents, which differ from the straight-chain positions.",
+    "Shell and plug masses are solid-wall upper bounds. Their lumped boxes are placeholders because a shell cannot sit inside its own cavity.",
+    "Servo output-axis direction and the SMA wire density are unverified.",
+    "The G6 independent retention review record does not exist."
+  ]
+}

@@ -1,0 +1,1058 @@
+{
+  "schema_version": 1,
+  "candidate_id": "cand-a",
+  "candidate_version": 1,
+  "family": "A",
+  "declared_on": "2026-11-04",
+  "author": "Claude Sonnet 5.5 (task-4 agent)",
+  "summary": "Hexagonal-prism tumbler: one rigid body that pivots over its hexagon edges, axial couplers on the two hexagonal end faces (ball-lock plus hex key), SMA unlatch. Locomotion mechanism is a reservation only.",
+  "stowed_geometry": {
+    "primitives": [
+      {
+        "id": "hex-0",
+        "kind": "box",
+        "half_extent_um": [
+          13000,
+          14000,
+          22517
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "body"
+      },
+      {
+        "id": "hex-60",
+        "kind": "box",
+        "half_extent_um": [
+          13000,
+          14000,
+          22517
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            0
+          ],
+          "orientation": [
+            0.8660254037844387,
+            0.0,
+            0.49999999999999994,
+            0.0
+          ]
+        },
+        "role": "body"
+      },
+      {
+        "id": "hex-120",
+        "kind": "box",
+        "half_extent_um": [
+          13000,
+          14000,
+          22517
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            0
+          ],
+          "orientation": [
+            0.5000000000000001,
+            0.0,
+            0.8660254037844386,
+            0.0
+          ]
+        },
+        "role": "body"
+      },
+      {
+        "id": "cpl-head-stowed",
+        "kind": "cylinder",
+        "radius_um": 3000,
+        "half_height_um": 1000,
+        "pose": {
+          "position_um": [
+            0,
+            13000,
+            0
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.7071067811865476,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "coupler"
+      },
+      {
+        "id": "cpl-tail-stowed",
+        "kind": "cylinder",
+        "radius_um": 3000,
+        "half_height_um": 1000,
+        "pose": {
+          "position_um": [
+            0,
+            -13000,
+            0
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.7071067811865476,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "coupler"
+      },
+      {
+        "id": "cavity-envelope",
+        "kind": "cylinder",
+        "radius_um": 26001,
+        "half_height_um": 14000,
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            0
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.7071067811865476,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "cavity"
+      }
+    ]
+  },
+  "chain_geometry": {
+    "primitives": [
+      {
+        "id": "hex-0",
+        "kind": "box",
+        "half_extent_um": [
+          13000,
+          14000,
+          22517
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "body"
+      },
+      {
+        "id": "hex-60",
+        "kind": "box",
+        "half_extent_um": [
+          13000,
+          14000,
+          22517
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            0
+          ],
+          "orientation": [
+            0.8660254037844387,
+            0.0,
+            0.49999999999999994,
+            0.0
+          ]
+        },
+        "role": "body"
+      },
+      {
+        "id": "hex-120",
+        "kind": "box",
+        "half_extent_um": [
+          13000,
+          14000,
+          22517
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            0
+          ],
+          "orientation": [
+            0.5000000000000001,
+            0.0,
+            0.8660254037844386,
+            0.0
+          ]
+        },
+        "role": "body"
+      },
+      {
+        "id": "cpl-head-deployed",
+        "kind": "cylinder",
+        "radius_um": 3000,
+        "half_height_um": 2000,
+        "pose": {
+          "position_um": [
+            0,
+            16000,
+            0
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.7071067811865476,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "coupler"
+      },
+      {
+        "id": "cpl-tail-socket",
+        "kind": "cylinder",
+        "radius_um": 3200,
+        "half_height_um": 2000,
+        "pose": {
+          "position_um": [
+            0,
+            -12000,
+            0
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.7071067811865476,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "coupler"
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "wall-0",
+      "kind": "structure",
+      "description": "hex wall slab 0 (PA12 laser-sintered; mass = one sixth of the true wall volume, box is the slab core)",
+      "mass_mg": 1859,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 1.9986498297556974e-06
+      },
+      "box": {
+        "half_extent_um": [
+          1258,
+          12000,
+          11000
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            21258
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.0,
+            -0.7071067811865475,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+      }
+    },
+    {
+      "id": "wall-1",
+      "kind": "structure",
+      "description": "hex wall slab 1 (PA12 laser-sintered; mass = one sixth of the true wall volume, box is the slab core)",
+      "mass_mg": 1859,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 1.9986498297556974e-06
+      },
+      "box": {
+        "half_extent_um": [
+          1258,
+          12000,
+          11000
+        ],
+        "pose": {
+          "position_um": [
+            18410,
+            0,
+            10629
+          ],
+          "orientation": [
+            0.9659258262890683,
+            0.0,
+            -0.25881904510252074,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+      }
+    },
+    {
+      "id": "wall-2",
+      "kind": "structure",
+      "description": "hex wall slab 2 (PA12 laser-sintered; mass = one sixth of the true wall volume, box is the slab core)",
+      "mass_mg": 1859,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 1.9986498297556974e-06
+      },
+      "box": {
+        "half_extent_um": [
+          1258,
+          12000,
+          11000
+        ],
+        "pose": {
+          "position_um": [
+            18410,
+            0,
+            -10629
+          ],
+          "orientation": [
+            0.9659258262890683,
+            0.0,
+            0.25881904510252074,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+      }
+    },
+    {
+      "id": "wall-3",
+      "kind": "structure",
+      "description": "hex wall slab 3 (PA12 laser-sintered; mass = one sixth of the true wall volume, box is the slab core)",
+      "mass_mg": 1859,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 1.9986498297556974e-06
+      },
+      "box": {
+        "half_extent_um": [
+          1258,
+          12000,
+          11000
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            -21258
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.0,
+            0.7071067811865475,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+      }
+    },
+    {
+      "id": "wall-4",
+      "kind": "structure",
+      "description": "hex wall slab 4 (PA12 laser-sintered; mass = one sixth of the true wall volume, box is the slab core)",
+      "mass_mg": 1859,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 1.9986498297556974e-06
+      },
+      "box": {
+        "half_extent_um": [
+          1258,
+          12000,
+          11000
+        ],
+        "pose": {
+          "position_um": [
+            -18410,
+            0,
+            -10629
+          ],
+          "orientation": [
+            0.25881904510252074,
+            0.0,
+            0.9659258262890683,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+      }
+    },
+    {
+      "id": "wall-5",
+      "kind": "structure",
+      "description": "hex wall slab 5 (PA12 laser-sintered; mass = one sixth of the true wall volume, box is the slab core)",
+      "mass_mg": 1859,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 1.9986498297556974e-06
+      },
+      "box": {
+        "half_extent_um": [
+          1258,
+          12000,
+          11000
+        ],
+        "pose": {
+          "position_um": [
+            -18410,
+            0,
+            10629
+          ],
+          "orientation": [
+            0.25881904510252074,
+            0.0,
+            -0.9659258262890683,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+      }
+    },
+    {
+      "id": "endplate-a",
+      "kind": "structure",
+      "description": "hexagonal end plate a (solid; true hexagon volume x 2 mm; box is the inscribed rectangle)",
+      "mass_mg": 3267,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 3.5125990377496833e-06
+      },
+      "box": {
+        "half_extent_um": [
+          13000,
+          1000,
+          22517
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            13000,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+      }
+    },
+    {
+      "id": "endplate-b",
+      "kind": "structure",
+      "description": "hexagonal end plate b (solid; true hexagon volume x 2 mm; box is the inscribed rectangle)",
+      "mass_mg": 3267,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 3.5125990377496833e-06
+      },
+      "box": {
+        "half_extent_um": [
+          13000,
+          1000,
+          22517
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            -13000,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+      }
+    },
+    {
+      "id": "cell",
+      "kind": "energy_source",
+      "description": "Grepow GRP8020030 1S LiPo, 350 mAh, 15C, 31x20x7.5 mm nominal, stood on edge",
+      "mass_mg": 8000,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          15500,
+          3750,
+          10000
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            -5000,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.grepow.com/high-discharge-rate-battery/15c-high-power-lipo.html",
+        "accessed": "2026-11-04",
+        "title": "Grepow high-discharge LiPo table, row GRP8020030 (350 mAh, 15C)"
+      },
+      "nominal_voltage_v": 3.7,
+      "rated_continuous_discharge_a": 5.25,
+      "energy_mj": 4662000
+    },
+    {
+      "id": "controller",
+      "kind": "controller",
+      "description": "Seeed XIAO nRF52840 Sense: nRF52840 MCU + BLE radio + LSM6DS3TR-C IMU. Mass is reseller-reported (not manufacturer), thickness and power not stated: UNRESOLVED",
+      "mass_mg": 4000,
+      "mass_basis": "estimate",
+      "box": {
+        "half_extent_um": [
+          10500,
+          8750,
+          2000
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            12200
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "estimate",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://wiki.seeedstudio.com/XIAO_BLE/",
+        "accessed": "2026-11-04",
+        "title": "Seeed Studio XIAO nRF52840 Sense wiki (dimensions); TDS https://media.distrelec.com/Web/Downloads/_t/ds/102010469_eng_tds.pdf"
+      }
+    },
+    {
+      "id": "kick-motor",
+      "kind": "actuator",
+      "description": "Pololu 150:1 micro metal gearmotor MP 6V, run from the 3.7 V cell; box includes the 10 mm shaft (35 mm along x)",
+      "mass_mg": 9500,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          17500,
+          5000,
+          6000
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            3800,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 1529,
+      "average_power_mw": 160,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.pololu.com/product/2368",
+        "accessed": "2026-11-04",
+        "title": "Pololu 150:1 Micro Metal Gearmotor MP 6V"
+      }
+    },
+    {
+      "id": "kick-driver",
+      "kind": "other",
+      "description": "Pololu DRV8838 carrier (12.7x10.2 mm); mass and thickness not stated: UNRESOLVED",
+      "mass_mg": 0,
+      "mass_basis": "estimate",
+      "box": {
+        "half_extent_um": [
+          5100,
+          6350,
+          1500
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            -12000
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "estimate",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.pololu.com/product/2990",
+        "accessed": "2026-11-04",
+        "title": "Pololu DRV8838 Single Brushed DC Motor Driver Carrier"
+      }
+    },
+    {
+      "id": "release-sma-a",
+      "kind": "actuator",
+      "description": "Flexinol 0.004 in (0.10 mm) wire ~25 mm, coupler A unlatch; wire mass and strain not stated in the cited sheet: UNRESOLVED",
+      "mass_mg": 0,
+      "mass_basis": "estimate",
+      "box": {
+        "half_extent_um": [
+          500,
+          9000,
+          500
+        ],
+        "pose": {
+          "position_um": [
+            -17000,
+            0,
+            -8000
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 666,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://cdn.robotshop.com/media/d/dyn/rb-dyn-01/pdf/flexinol-technical-data.pdf",
+        "accessed": "2026-11-04",
+        "title": "Dynalloy Flexinol Technical Data (0.004 in wire row)"
+      }
+    },
+    {
+      "id": "release-sma-b",
+      "kind": "actuator",
+      "description": "Flexinol 0.004 in (0.10 mm) wire ~25 mm, coupler B unlatch; wire mass and strain not stated in the cited sheet: UNRESOLVED",
+      "mass_mg": 0,
+      "mass_basis": "estimate",
+      "box": {
+        "half_extent_um": [
+          500,
+          9000,
+          500
+        ],
+        "pose": {
+          "position_um": [
+            17000,
+            0,
+            -8000
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 666,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://cdn.robotshop.com/media/d/dyn/rb-dyn-01/pdf/flexinol-technical-data.pdf",
+        "accessed": "2026-11-04",
+        "title": "Dynalloy Flexinol Technical Data (0.004 in wire row)"
+      }
+    },
+    {
+      "id": "coupler-head",
+      "kind": "coupler_mechanism",
+      "description": "head end coupler body: hex key + conical lead-in + ball-lock bore (solid-fill PA12 upper bound for the housing; balls, spring and sleeve UNRESOLVED)",
+      "mass_mg": 179,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 1.9200000000000003e-07
+      },
+      "box": {
+        "half_extent_um": [
+          4000,
+          1500,
+          4000
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            10500,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+      }
+    },
+    {
+      "id": "coupler-tail",
+      "kind": "coupler_mechanism",
+      "description": "tail end coupler body: hex key + conical lead-in + ball-lock bore (solid-fill PA12 upper bound for the housing; balls, spring and sleeve UNRESOLVED)",
+      "mass_mg": 179,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 1.9200000000000003e-07
+      },
+      "box": {
+        "half_extent_um": [
+          4000,
+          1500,
+          4000
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            -10500,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+      }
+    },
+    {
+      "id": "kick-mechanism-reserve",
+      "kind": "structure",
+      "description": "RESERVED VOLUME ONLY for the strut/cam kick mechanism (not designed; solid-fill upper bound; likely too small)",
+      "mass_mg": 268,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 2.8800000000000004e-07
+      },
+      "box": {
+        "half_extent_um": [
+          4000,
+          3000,
+          3000
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            4000,
+            -16500
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+      }
+    },
+    {
+      "id": "unresolved-bucket",
+      "kind": "other",
+      "description": "PLACEHOLDER for PCB interconnect, wiring, fasteners, springs, balls, SMA switch, cam position sensor: mass and power UNRESOLVED (0 recorded, not a measurement)",
+      "mass_mg": 0,
+      "mass_basis": "estimate",
+      "box": {
+        "half_extent_um": [
+          500,
+          500,
+          500
+        ],
+        "pose": {
+          "position_um": [
+            -10000,
+            0,
+            -13000
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "estimate",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "estimate",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-04",
+        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+      }
+    }
+  ],
+  "mass_budget": {
+    "total_mass_mg": 39814
+  },
+  "assembly_access": {
+    "statement": "Walls and end plates are separate PA12 parts joined by fasteners (UNRESOLVED: fastener type not selected). One end plate is removed to load the cell, controller, motor and driver as a stack along the axis; couplers install from the end plates. No assembly sequence has been verified."
+  },
+  "coupler_sites": [
+    {
+      "id": "site-head",
+      "position_um": [
+        0,
+        14000,
+        0
+      ],
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "mount": "coupler-head on end plate a"
+    },
+    {
+      "id": "site-tail",
+      "position_um": [
+        0,
+        -14000,
+        0
+      ],
+      "normal": [
+        0.0,
+        -1.0,
+        0.0
+      ],
+      "mount": "coupler-tail on end plate b"
+    }
+  ],
+  "chain": {
+    "head_site": "site-head",
+    "tail_site": "site-tail",
+    "rest_orientation": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "mating_roll_deg": [
+      0.0,
+      60.0,
+      120.0,
+      180.0,
+      240.0,
+      300.0
+    ]
+  },
+  "retention": {
+    "requires_power_to_hold": false,
+    "mechanism_kind": "spring_preload",
+    "mechanism": "Spring-preloaded ball-lock: balls in the head pin are pressed into a groove in the tail bore by a sprung sleeve. The hex key bears compression, bending and torsion. Nothing is powered to hold.",
+    "component_ids": [
+      "coupler-head",
+      "coupler-tail"
+    ],
+    "release": {
+      "bounded_independent_release": true,
+      "means": "A powered Flexinol wire pulls the sleeve back against its spring, freeing the balls. It acts on the unit's own coupler and needs no help from the neighbour. Stroke, force and heat are UNRESOLVED."
+    }
+  },
+  "alignment": [
+    {
+      "kind": "geometric_guide",
+      "description": "Conical lead-in on the pin and bore, plus a hexagonal key on the end plate outline giving six 60 degree roll positions.",
+      "justification": "Passive geometry only: the lead-in converts lateral misalignment into centring by sliding contact, and the hex key fixes roll. No magnet is used. Capture range is not claimed and must be measured (Q36).",
+      "component_ids": [
+        "coupler-head",
+        "coupler-tail",
+        "endplate-a",
+        "endplate-b"
+      ]
+    }
+  ],
+  "limitations": [
+    "Kick-strut/cam locomotion mechanism is only a reserved volume; its geometry, stroke and drive are not designed.",
+    "Controller, motor driver, SMA wires and a bucket of wiring, fasteners, springs, balls, switch and cam sensor have estimate bases with 0 recorded where no value was cited, so the mass and power sums are lower bounds.",
+    "Vendor product pages are classed as datasheet for the schema; the cell's continuous rating is read from its 15C label.",
+    "Only two axial couplers are declared; no lateral side-face couplers, so no branching or lattices.",
+    "No through-coupler data or power contacts are declared; power transfer is not provided.",
+    "Box positions are a hand layout checked by the author with a SAT script only; shaft routing and wiring are not modelled."
+  ]
+}
