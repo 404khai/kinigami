@@ -138,7 +138,7 @@ Candidate generation ──► Gate 1 (paper) ───────────�
 
 ### R9 — Candidate generation and Gate 1 (paper) — parallel track
 
-- **Decision gate (owner):** originality-review procedure (SEL-006).
+- ~~**Decision gate (owner):** originality-review procedure (SEL-006).~~ Decided by Q61 (under owner delegation).
 - **Objective:** 2–4 structurally distinct candidates with:
   - Q12 packaging
   - evidence-backed component lists
@@ -147,6 +147,7 @@ Candidate generation ──► Gate 1 (paper) ───────────�
   - originality review
 - **Depends on:** R0 only, so it can run alongside R1–R8.
 - **Exit:** Gate 1 criteria preregistered, then evaluated, with rejected candidates preserved.
+- **Status:** **evaluated (paper), run 1 (`b1d0a81`, criteria `gate1-v1` per Q62, protocol clarified by Q63, label exploratory): no survivor.** cand-a (family A) is `unresolved`; cand-b (family B) and cand-c (family C) `fail` on G5 (no statically supported 3-unit chain). G3 (estimate bases) and G6 (retention not sized) are `unresolved` for all three. Limits: a paper gate screens declarations and validates no mechanism, solver, or behaviour; independent reviews used corpus summaries and search results for some references, so ratings are provisional; the report prints protocol revision 1 although revision 2 is current. Rejected and unresolved candidates are preserved with revision needs (`results/gates/gate1-v1/README.md`). Next: owner chooses between revising candidates (new versions, same criteria) and abandoning a family.
 
 ### R10 — Kin subsystem models
 
@@ -228,7 +229,7 @@ Candidate generation ──► Gate 1 (paper) ───────────�
 | ~~Slice 1 reference conditions, tolerances, time unit, timestep~~ (decided: Q46–Q48) | BEN-014, ENV-002, TIM-012 | — | Done | Analytic solutions, literature values for fixture contact and friction, sensitivity rationale |
 | ~~Qualification checklist accuracy criteria~~ (decided: Q52, L2 reference revised by Q53) | PHY-012, PHY-013 | — | Done | R4 results, reference-engine review |
 | Fixture coupler stand-in parameters | CPL-011 | R8 | After R7 | Mechanism sketch, component analogues |
-| Originality-review procedure | SEL-006 | R9 Gate 1 | Before candidate evaluation | Reference corpus, review method options |
+| ~~Originality-review procedure~~ (decided: Q61) | SEL-006 | — | Done | Reference corpus, review method options |
 | Sensor inventory and parameters | CTL-006 | R10 | After Gate 1 | Candidate component datasheets |
 | Actuator and thermal fidelity | PWR-008 | R10 | After Gate 1 | Actuator datasheets, thermal estimates |
 | Communication parameters | COM-007, COM-008 | R10, R12 | After Gate 1 | Channel hardware evidence |
