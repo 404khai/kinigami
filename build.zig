@@ -29,6 +29,10 @@ pub fn build(b: *std.Build) void {
         .root_source_file = b.path("criteria/qualification/coupler-engagement-v2.json"),
     });
 
+    core.addAnonymousImport("criteria_gate1_v1", .{
+        .root_source_file = b.path("criteria/gates/gate1-v1.json"),
+    });
+
     const test_step = b.step("test", "Run unit tests and toolchain conformance tests");
 
     const core_tests = b.addTest(.{ .root_module = core });
@@ -101,6 +105,23 @@ pub fn build(b: *std.Build) void {
     qualify_run.addArgs(&.{"zig-out/compliant-link-report.json"});
     qualify_run.has_side_effects = true;
     b.step("qualify", "Run the compliant-link qualification suite (results labeled fixture)").dependOn(&qualify_run.step);
+
+    // Gate 1 paper-gate evaluator (Q38, Q61, Q62); results are labeled `exploratory`.
+    const gate1_exe = b.addExecutable(.{
+        .name = "kinigami-gate1",
+        .root_module = b.createModule(.{
+            .root_source_file = b.path("src/gate1/main.zig"),
+            .target = target,
+            .optimize = optimize,
+            .imports = &.{
+                .{ .name = "kinigami_core", .module = core },
+                .{ .name = "build_info", .module = build_info.createModule() },
+            },
+        }),
+    });
+    gate1_exe.root_module.addAnonymousImport("git_revision", .{ .root_source_file = git_revision });
+    gate1_exe.root_module.addAnonymousImport("git_status", .{ .root_source_file = git_status });
+    b.installArtifact(gate1_exe);
 
     // Inspector (Q45, Q50): read-only viewer on zigui. zigui and SDL3 are
     // inspector-only dependencies; the simulation core never imports them.

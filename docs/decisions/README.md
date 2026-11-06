@@ -71,3 +71,7 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q58 | [Coupler protocol revision 2: indexing of the energy audit's pawl work](Q058-coupler-protocol-energy-work-index.md) (agent decision under owner delegation) | accepted |
 | Q59 | [Coupler-engagement slice: interim status, findings, and open rulings](Q059-coupler-engagement-interim-status.md) (agent decision under owner delegation) | accepted |
 | Q60 | [Coupler-engagement criteria v2: energy audit, activation accounting, capture-zone consistency](Q060-coupler-engagement-criteria-v2.md) (agent decision under owner delegation) | accepted |
+| Q61 | [Originality-review procedure](Q061-originality-review-procedure.md) (agent decision under owner delegation) | accepted |
+| Q62 | [Gate 1 paper-feasibility criteria and candidate-family distinctness](Q062-gate1-paper-criteria.md) (agent decision under owner delegation) | accepted |
+| Q63 | [Gate 1 paper-gate protocol clarifications](Q063-gate1-protocol-clarifications.md) (agent decision under owner delegation) | accepted |
+| Q64 | [Gate 1 run 1 disposition: corpus additions, candidate fate, evaluator note](Q064-gate1-run1-disposition.md) (agent decision under owner delegation) | accepted |

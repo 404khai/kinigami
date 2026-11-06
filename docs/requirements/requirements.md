@@ -186,10 +186,11 @@ See [README](README.md) for conventions. Evidence and limitations are in the [tr
 | SEL-003 | Gates are hard pass/fail. Ranking among survivors follows the priority order originality → plausibility → connection clarity → scalability → visual quality, with the scoring method documented before scoring. | Q38, Charter | in_force | Selection record |
 | SEL-004 | Gate criteria are preregistered. Changes record the original and revised versions, reason, date, and reruns. Criteria without sufficient evidence are marked unresolved. | Q38, Q39 | in_force | Criteria history |
 | SEL-005 | Originality is reviewed at Gate 1 and at final visuals, recording the references reviewed, the reasoning, and the changes made. No claim of absolute originality. | Q38 | in_force | Review records |
-| SEL-006 | The originality-review procedure is defined. | Q38 | unresolved | Gate: candidate generation |
+| SEL-006 | The originality-review procedure is defined: reference corpus, five-dimension similarity matrix, fail rules, reviewer independence, versioned re-review, and repetition at final visuals. | Q38, Q61 | in_force | Review records |
 | SEL-007 | Rejected candidates and failure reasons are preserved. Revisions are versioned and retested against the same criteria. Candidates get equivalent conditions. | Q38 | in_force | Selection record |
 | SEL-008 | No exhaustive parameter optimization until the models and benchmarks are validated. | Q38 | in_force | Process review |
 | SEL-009 | No copying of Big Hero 6 microbots or any other existing fictional or real robot design. | Charter | in_force | Originality reviews |
+| SEL-010 | Gate 1 paper criteria G1–G8 are preregistered (`criteria/gates/gate1-v1.json`). A candidate passes only if every item passes. `unresolved` is not a pass. Results are labeled exploratory. Candidates belong to distinct architecture families A, B, or C. | Q38, Q62 | in_force | Gate 1 records |
 
 ## PRC — Process and provenance
 

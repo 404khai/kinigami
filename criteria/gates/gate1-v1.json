@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "criteria_id": "gate1-paper",
+  "criteria_version": 1,
+  "run_class": "paper_gate",
+  "result_label": "exploratory",
+  "decisions": ["Q11", "Q12", "Q31", "Q36", "Q37", "Q38", "Q39", "Q61", "Q62"],
+  "requirements": ["ENV-003", "ENV-004", "ENV-005", "CPL-005", "CPL-009", "SEL-001", "SEL-004", "SEL-005", "SEL-006", "SEL-007", "SEL-009"],
+  "protocol": { "path": "docs/validation/gate1-v1-protocol.md", "revision": 1 },
+  "rationale": "Gate 1 paper-feasibility criteria (Q38, Q62) for candidate declarations. Hard pass/fail items only; no scoring. Every numeric value is either exact from a prior decision (status evidence) or a numerical tolerance or count labeled provisional. Thresholds that lack evidence are marked unresolved and carry no number. Results are labeled exploratory and never validated_acceptance.",
+  "declaration": {
+    "schema_version": 1,
+    "path_pattern": "candidates/<candidate_id>/declaration.json",
+    "length_unit": "micrometre_integer_positions_and_extents",
+    "mass_unit": "milligram_integer",
+    "power_unit": "milliwatt_integer",
+    "families": ["A", "B", "C"]
+  },
+  "outcome_rule": "fail_if_any_item_fail_else_unresolved_if_any_item_unresolved_else_pass",
+  "item_outcomes": ["pass", "fail", "unresolved"],
+  "items": [
+    {
+      "id": "G1",
+      "title": "Stowed enclosing-sphere diameter",
+      "requirements": ["ENV-004"],
+      "check": "enclosing_sphere_of_stowed_primitives_certified_upper_bound",
+      "params": {
+        "max_diameter_um": { "value": 60000, "status": "evidence", "basis": "Q12: common 60 mm enclosing sphere in the mechanically achievable stowed configuration (exact)" },
+        "uncertain_band_um": { "value": 0.001, "status": "provisional", "basis": "double-precision rounding margin only; a computed diameter within this band of the limit is unresolved" },
+        "round_rim_points": { "value": 64, "status": "provisional", "basis": "Welzl seed points per cylinder rim; the certified radius is computed exactly, so this affects only the seed centre" },
+        "sphere_seed_directions": { "value": 26, "status": "provisional", "basis": "Welzl seed points per sphere primitive (face, edge and corner directions); certification is exact" }
+      },
+      "unresolved_when": ["no_stowed_primitives", "within_uncertain_band", "computation_not_completed"]
+    },
+    {
+      "id": "G2",
+      "title": "Packaging and assembly access",
+      "requirements": ["ENV-005"],
+      "check": "no_pairwise_component_box_interference_all_boxes_inside_one_cavity_primitive_assembly_access_present",
+      "params": {
+        "interference_erosion_um": { "value": 1.0, "status": "provisional", "basis": "each convex shape is eroded by this amount before the intersection test, so touching surfaces and rounding do not count as interference" },
+        "min_clearance_um": { "value": 0, "status": "provisional", "basis": "pure geometric non-overlap; no clearance requirement is invented here" },
+        "containment_tolerance_um": { "value": 0.001, "status": "provisional", "basis": "double-precision rounding margin for the inside test" },
+        "intersection_algorithm": { "value": "gjk_boolean", "status": "evidence", "basis": "protocol section 4; deterministic fixed start direction and iteration cap" },
+        "gjk_iteration_cap": { "value": 64, "status": "provisional", "basis": "reaching the cap makes the item unresolved" },
+        "assembly_access_statement_min_chars": { "value": 1, "status": "evidence", "basis": "the requirement is presence of a statement; its substance is reviewed at the gate record, not computed" }
+      },
+      "unresolved_when": ["component_boxes_or_poses_missing", "cavity_missing", "intersection_cap_reached"]
+    },
+    {
+      "id": "G3",
+      "title": "Evidence-backed component list",
+      "requirements": ["SEL-004"],
+      "check": "every_component_cites_source_and_no_estimate_basis",
+      "params": {
+        "allowed_source_kinds": { "value": ["datasheet", "publication"], "status": "evidence", "basis": "Q62 G3" },
+        "allowed_bases": { "value": ["source", "derived"], "status": "evidence", "basis": "estimate is not allowed to pass; it makes the item unresolved" },
+        "access_date_format": { "value": "YYYY-MM-DD", "status": "evidence", "basis": "protocol section 5" }
+      },
+      "unresolved_when": ["any_component_without_source", "any_basis_estimate", "no_components"]
+    },
+    {
+      "id": "G4",
+      "title": "Mass, peak power, endurance report",
+      "requirements": ["ENV-005"],
+      "check": "mass_sum_exact_peak_power_not_above_rated_continuous_discharge_endurance_reported_only",
+      "params": {
+        "mass_sum_tolerance_mg": { "value": 0, "status": "evidence", "basis": "integer milligram arithmetic, so the sum is exact" },
+        "derived_mass_tolerance_mg": { "value": 1, "status": "provisional", "basis": "allows the rounding of density times volume to an integer milligram" },
+        "peak_power_rule": { "value": "sum_of_component_peak_power_not_above_nominal_voltage_times_rated_continuous_discharge_current", "status": "evidence", "basis": "worst case, all components at peak at once; no exclusivity credit is given at Gate 1" },
+        "exactly_one_energy_source": { "value": true, "status": "provisional", "basis": "Gate 1 budgets a single declared source; multi-source layouts need a superseding record" }
+      },
+      "endurance": {
+        "reported": true,
+        "threshold": { "status": "unresolved", "reason": "Q31 task duration is not decided, so no endurance threshold exists; the value is reported and never gates" }
+      },
+      "unresolved_when": ["budget_input_missing", "source_without_rated_continuous_discharge"]
+    },
+    {
+      "id": "G5",
+      "title": "Coupler layout supports a connected tabletop chain",
+      "requirements": ["ENV-001"],
+      "check": "at_least_two_coupler_sites_and_three_unit_chain_all_supported_on_tabletop",
+      "params": {
+        "min_coupler_sites": { "value": 2, "status": "evidence", "basis": "a chain unit needs a distinct site on each side (Q31)" },
+        "chain_units": { "value": 3, "status": "provisional", "basis": "minimal chain with an interior unit using both sites; Q31's benchmark uses five" },
+        "contact_tolerance_um": { "value": 1.0, "status": "provisional", "basis": "a point within this height of the tabletop plane counts as touching it" },
+        "support_rule": { "value": "centre_of_mass_projection_inside_convex_hull_of_contact_points_with_nonzero_area", "status": "evidence", "basis": "static support on a flat tabletop (Q21); zero-area contact cannot pass" },
+        "interference_erosion_um": { "value": 1.0, "status": "provisional", "basis": "as in G2" },
+        "tabletop_penetration_tolerance_um": { "value": 1.0, "status": "provisional", "basis": "same value as the contact tolerance" }
+      },
+      "unresolved_when": ["coupler_sites_missing", "chain_declaration_missing", "rest_orientation_missing", "intersection_cap_reached"]
+    },
+    {
+      "id": "G6",
+      "title": "Passive retention and justified pre-alignment",
+      "requirements": ["CPL-005", "CPL-009"],
+      "check": "declaration_consistency_and_independent_justification_record",
+      "params": {
+        "requires_power_to_hold": { "value": false, "status": "evidence", "basis": "Q11, CPL-009: structural retention is passive when unpowered" },
+        "bounded_independent_release_declared": { "value": true, "status": "evidence", "basis": "Q11, CPL-009" },
+        "magnetism_requires_declared_component": { "value": true, "status": "evidence", "basis": "Q36, CPL-005: magnetic attraction is not assumed" },
+        "justification_record_path_pattern": { "value": "candidates/<candidate_id>/retention-review-v<candidate_version>-r<n>.md", "status": "evidence", "basis": "protocol section 8; independent reviewer, outcome pass, fail or unresolved" }
+      },
+      "unresolved_when": ["retention_or_alignment_statement_missing", "justification_record_missing_or_incomplete"]
+    },
+    {
+      "id": "G7",
+      "title": "Originality review passes",
+      "requirements": ["SEL-005", "SEL-006"],
+      "check": "q61_gate1_review_complete_independent_and_not_failing",
+      "params": {
+        "review_stage": { "value": "gate1", "status": "evidence", "basis": "Q61 section 6" },
+        "reviewer_must_differ_from_author": { "value": true, "status": "evidence", "basis": "Q61 section 4" },
+        "review_path_pattern": { "value": "candidates/<candidate_id>/originality-review-gate1-v<candidate_version>-r<n>.md", "status": "evidence", "basis": "Q61 section 6" }
+      },
+      "unresolved_when": ["review_record_missing", "review_incomplete"]
+    },
+    {
+      "id": "G8",
+      "title": "No copying (SEL-009)",
+      "requirements": ["SEL-009"],
+      "check": "no_high_rating_against_f1_or_f2_references_and_both_family_exclusions_not_present",
+      "params": {
+        "forbidden_reference_classes": { "value": ["F1", "F2"], "status": "evidence", "basis": "Q61 section 1; F1 is the Big Hero 6 microbots" },
+        "exclusions": { "value": ["cube_with_internal_flywheel", "needle_or_particle_like_silhouette"], "status": "evidence", "basis": "Q62 section 3" }
+      },
+      "unresolved_when": ["review_record_missing", "exclusion_check_not_recorded"]
+    }
+  ],
+  "result_labels_allowed": ["exploratory"]
+}
