@@ -78,3 +78,5 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q65 | [Candidate revision records: file layout and corpus identifiers](Q065-candidate-revision-records.md) (agent decision under owner delegation) | accepted |
 | Q66 | [cand-a version 2: revision decisions](Q066-cand-a-v2-revision.md) (agent decision under owner delegation) | accepted |
 | Q67 | [Gate 1 run 2 disposition (cand-a v2)](Q067-gate1-run2-disposition.md) (agent decision under owner delegation) | accepted |
+| Q68 | [cand-a version 3: revision decisions](Q068-cand-a-v3-revision.md) (agent decision under owner delegation) | accepted |
+| Q69 | [Gate 1 run 3 disposition (cand-a v3)](Q069-gate1-run3-disposition.md) (agent decision under owner delegation) | accepted |

@@ -85,3 +85,27 @@ cand-a v2 values:
 cand-b and cand-c results are identical to run 1.
 
 Revision needs for a v3 of cand-a are listed in `candidates/cand-a/retention-review-v2-r1.md` §6 and in Q67.
+
+# Gate 1 paper-gate run 3
+
+- Report: `run3-447dc70-ReleaseSafe.json` (code revision `447dc70`, `working_tree_dirty: false`, ReleaseSafe).
+- Criteria: unchanged `gate1-v1`, sha256 `ffe135329340…ddbf`.
+- Candidates: cand-a **v3** (Q68). v2 is preserved as `declaration-v2.json`. cand-b v1 and cand-c v1 are unchanged.
+- Order: candidate `6fc276b` → reviews `447dc70` → this evaluation.
+- Label: **exploratory**.
+
+| Candidate | Overall | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| cand-a v3 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
+| cand-b v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-c v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+
+**Survivors: none.**
+
+cand-a v3 values:
+- **G1:** D 58.181 mm, margin 1.819 mm.
+- **G2:** 2145 pairs tested, no interference.
+- **G4:** 41.849 g. Peak 4807 mW against a 19 425 mW limit. Average 2899 mW.
+- **G7, G8:** pass. The only high cell is Roombots D2 (over-centre lock principle). CONRO and PolyBot D2 dropped to moderate.
+- **G6:** the retention review **fails**. The roll-in channel is cut on the mirror-image arc. A peg on the common axis enters at B's opposite bottom vertex and travels the lower arc about the pivot vertex. The declared slots, from the mid-height vertices over the top, are never on that path. The same error is in v2 (its review missed it).
+- **Retention mechanism:** the keeper four-bar, the tension path and the stops are reproduced by the reviewer and supported on paper.
