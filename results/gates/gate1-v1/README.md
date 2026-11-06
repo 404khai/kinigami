@@ -54,3 +54,34 @@ Revision would need: (1) a geometry where a chain is supported at some roll; (2)
 
 - The report states protocol revision 1 although Q63 made revision 2 current.
 - Reviews for cand-a use corpus summaries and search results for some references; primary sources were not all read, so some ratings are provisional.
+
+# Gate 1 paper-gate run 2
+
+- Report: `run2-3e3d63b-ReleaseSafe.json` (code revision `3e3d63b`, `working_tree_dirty: false`, ReleaseSafe, Zig 0.17.0, aarch64-macos)
+- Criteria: unchanged `criteria/gates/gate1-v1.json`, sha256 `ffe135329340…ddbf`. Protocol rev. 2 (Q63); the report still prints `protocol_revision 1` (Q64 §4).
+- Candidates: cand-a **v2** (Q66; v1 kept as `declaration-v1.json`, Q65). cand-b v1 and cand-c v1 are re-evaluated unchanged.
+- Order: candidate `5624161` → reviews `3e3d63b` → this evaluation. Label: **exploratory**. This is not feasibility evidence.
+
+| Candidate | Overall | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| cand-a v2 | **unresolved** | pass | pass | pass | pass | pass | unresolved | pass | pass |
+| cand-b v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-c v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+
+**Survivors: none.**
+
+cand-a v2 values:
+
+| Item | Value |
+| --- | --- |
+| G1 | D = 58.181 mm against the 60 mm limit, margin 1.819 mm (v1: 0.94 mm). The sphere is set by the hexagon corners |
+| G2 | 1326 pairs tested, no interference |
+| G3 | every component cited, no estimate basis (v1: 13 flags) |
+| G4 | mass 36.550 g. Peak 8899 mW against a 19 425 mW limit, margin 10 526 mW. Average 2684 mW. Endurance 1737 s, reported only |
+| G5 | supported at roll 0° |
+| G7, G8 | originality pass with two single highs, both D2: CONRO (Q64-C21) and PolyBot (C12), for SMA-released latches on grooved pins |
+| G6 | retention review **unresolved**. The toggle's over-centre geometry and spring direction are not defined, and whether it is bistable or monostable is not settled. The tension path leaves about 0.1 mm of PA12 wall. The puck bearing is not declared |
+
+cand-b and cand-c results are identical to run 1.
+
+Revision needs for a v3 of cand-a are listed in `candidates/cand-a/retention-review-v2-r1.md` §6 and in Q67.
