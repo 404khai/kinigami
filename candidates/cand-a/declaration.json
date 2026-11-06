@@ -1,20 +1,20 @@
 {
   "schema_version": 1,
   "candidate_id": "cand-a",
-  "candidate_version": 1,
+  "candidate_version": 2,
   "family": "A",
-  "declared_on": "2026-11-04",
-  "author": "Claude Sonnet 5.5 (task-4 agent)",
-  "summary": "Hexagonal-prism tumbler: one rigid body that pivots over its hexagon edges, axial couplers on the two hexagonal end faces (ball-lock plus hex key), SMA unlatch. Locomotion mechanism is a reservation only.",
+  "declared_on": "2026-11-06",
+  "author": "Claude Opus 5.5 (engineering lead) with Claude Sonnet 5.5 (cand-a v2 implementation agent)",
+  "summary": "Hexagonal-prism tumbler, version 2: one rigid hexagonal body (circumradius 25.5 mm) that rolls over its hexagon edges, driven by an internal lift ring with one lobe (geared from a 6 mm gearmotor); axial couplers on the two end faces: a fixed hex peg on the head, and a tail receiver with roll-in channel, yaw turntable, dead-centre toggle keeper and SMA pulse release. BLE only, no power transfer.",
   "stowed_geometry": {
     "primitives": [
       {
         "id": "hex-0",
         "kind": "box",
         "half_extent_um": [
-          13000,
+          12750,
           14000,
-          22517
+          22084
         ],
         "pose": {
           "position_um": [
@@ -35,9 +35,9 @@
         "id": "hex-60",
         "kind": "box",
         "half_extent_um": [
-          13000,
+          12750,
           14000,
-          22517
+          22084
         ],
         "pose": {
           "position_um": [
@@ -58,9 +58,9 @@
         "id": "hex-120",
         "kind": "box",
         "half_extent_um": [
-          13000,
+          12750,
           14000,
-          22517
+          22084
         ],
         "pose": {
           "position_um": [
@@ -78,14 +78,37 @@
         "role": "body"
       },
       {
-        "id": "cpl-head-stowed",
-        "kind": "cylinder",
-        "radius_um": 3000,
-        "half_height_um": 1000,
+        "id": "lift-lobe",
+        "kind": "box",
+        "half_extent_um": [
+          2000,
+          1500,
+          3300
+        ],
         "pose": {
           "position_um": [
             0,
-            13000,
+            0,
+            25200
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "body"
+      },
+      {
+        "id": "head-peg",
+        "kind": "cylinder",
+        "radius_um": 2310,
+        "half_height_um": 6500,
+        "pose": {
+          "position_um": [
+            0,
+            20500,
             0
           ],
           "orientation": [
@@ -98,34 +121,54 @@
         "role": "coupler"
       },
       {
-        "id": "cpl-tail-stowed",
+        "id": "cavity-main",
         "kind": "cylinder",
-        "radius_um": 3000,
-        "half_height_um": 1000,
-        "pose": {
-          "position_um": [
-            0,
-            -13000,
-            0
-          ],
-          "orientation": [
-            0.7071067811865476,
-            0.7071067811865476,
-            0.0,
-            0.0
-          ]
-        },
-        "role": "coupler"
-      },
-      {
-        "id": "cavity-envelope",
-        "kind": "cylinder",
-        "radius_um": 26001,
+        "radius_um": 25501,
         "half_height_um": 14000,
         "pose": {
           "position_um": [
             0,
             0,
+            0
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.7071067811865476,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "cavity"
+      },
+      {
+        "id": "cavity-girdle",
+        "kind": "cylinder",
+        "radius_um": 29000,
+        "half_height_um": 1750,
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            0
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.7071067811865476,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "cavity"
+      },
+      {
+        "id": "peg-envelope",
+        "kind": "cylinder",
+        "radius_um": 3100,
+        "half_height_um": 6600,
+        "pose": {
+          "position_um": [
+            0,
+            20500,
             0
           ],
           "orientation": [
@@ -145,9 +188,9 @@
         "id": "hex-0",
         "kind": "box",
         "half_extent_um": [
-          13000,
+          12750,
           14000,
-          22517
+          22084
         ],
         "pose": {
           "position_um": [
@@ -168,9 +211,9 @@
         "id": "hex-60",
         "kind": "box",
         "half_extent_um": [
-          13000,
+          12750,
           14000,
-          22517
+          22084
         ],
         "pose": {
           "position_um": [
@@ -191,9 +234,9 @@
         "id": "hex-120",
         "kind": "box",
         "half_extent_um": [
-          13000,
+          12750,
           14000,
-          22517
+          22084
         ],
         "pose": {
           "position_um": [
@@ -211,34 +254,37 @@
         "role": "body"
       },
       {
-        "id": "cpl-head-deployed",
-        "kind": "cylinder",
-        "radius_um": 3000,
-        "half_height_um": 2000,
+        "id": "lift-lobe",
+        "kind": "box",
+        "half_extent_um": [
+          2000,
+          1500,
+          3300
+        ],
         "pose": {
           "position_um": [
             0,
-            16000,
-            0
+            0,
+            25200
           ],
           "orientation": [
-            0.7071067811865476,
-            0.7071067811865476,
+            1.0,
+            0.0,
             0.0,
             0.0
           ]
         },
-        "role": "coupler"
+        "role": "body"
       },
       {
-        "id": "cpl-tail-socket",
+        "id": "head-peg",
         "kind": "cylinder",
-        "radius_um": 3200,
-        "half_height_um": 2000,
+        "radius_um": 2310,
+        "half_height_um": 6500,
         "pose": {
           "position_um": [
             0,
-            -12000,
+            20500,
             0
           ],
           "orientation": [
@@ -254,26 +300,26 @@
   },
   "components": [
     {
-      "id": "wall-0",
+      "id": "wall-h0",
       "kind": "structure",
-      "description": "hex wall slab 0 (PA12 laser-sintered; mass = one sixth of the true wall volume, box is the slab core)",
-      "mass_mg": 1859,
+      "description": "hex wall slab 0 of the head half (PA12, y 1.75 to 12 mm; mass = one sixth of the half-wall volume, hexagon area minus the r 20 mm cavity; box is the slab core)",
+      "mass_mg": 688,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 930.0,
-        "volume_m3": 1.9986498297556974e-06
+        "volume_m3": 7.393017414524849e-07
       },
       "box": {
         "half_extent_um": [
-          1258,
-          12000,
+          1042,
+          5125,
           11000
         ],
         "pose": {
           "position_um": [
             0,
-            0,
-            21258
+            6875,
+            21042
           ],
           "orientation": [
             0.7071067811865476,
@@ -290,31 +336,31 @@
       "source": {
         "kind": "datasheet",
         "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
-        "accessed": "2026-11-04",
-        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
       }
     },
     {
-      "id": "wall-1",
+      "id": "wall-h1",
       "kind": "structure",
-      "description": "hex wall slab 1 (PA12 laser-sintered; mass = one sixth of the true wall volume, box is the slab core)",
-      "mass_mg": 1859,
+      "description": "hex wall slab 1 of the head half (PA12, y 1.75 to 12 mm; mass = one sixth of the half-wall volume, hexagon area minus the r 20 mm cavity; box is the slab core)",
+      "mass_mg": 688,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 930.0,
-        "volume_m3": 1.9986498297556974e-06
+        "volume_m3": 7.393017414524849e-07
       },
       "box": {
         "half_extent_um": [
-          1258,
-          12000,
+          1042,
+          5125,
           11000
         ],
         "pose": {
           "position_um": [
-            18410,
-            0,
-            10629
+            18223,
+            6875,
+            10521
           ],
           "orientation": [
             0.9659258262890683,
@@ -331,31 +377,31 @@
       "source": {
         "kind": "datasheet",
         "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
-        "accessed": "2026-11-04",
-        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
       }
     },
     {
-      "id": "wall-2",
+      "id": "wall-h2",
       "kind": "structure",
-      "description": "hex wall slab 2 (PA12 laser-sintered; mass = one sixth of the true wall volume, box is the slab core)",
-      "mass_mg": 1859,
+      "description": "hex wall slab 2 of the head half (PA12, y 1.75 to 12 mm; mass = one sixth of the half-wall volume, hexagon area minus the r 20 mm cavity; box is the slab core)",
+      "mass_mg": 688,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 930.0,
-        "volume_m3": 1.9986498297556974e-06
+        "volume_m3": 7.393017414524849e-07
       },
       "box": {
         "half_extent_um": [
-          1258,
-          12000,
+          1042,
+          5125,
           11000
         ],
         "pose": {
           "position_um": [
-            18410,
-            0,
-            -10629
+            18223,
+            6875,
+            -10521
           ],
           "orientation": [
             0.9659258262890683,
@@ -372,31 +418,31 @@
       "source": {
         "kind": "datasheet",
         "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
-        "accessed": "2026-11-04",
-        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
       }
     },
     {
-      "id": "wall-3",
+      "id": "wall-h3",
       "kind": "structure",
-      "description": "hex wall slab 3 (PA12 laser-sintered; mass = one sixth of the true wall volume, box is the slab core)",
-      "mass_mg": 1859,
+      "description": "hex wall slab 3 of the head half (PA12, y 1.75 to 12 mm; mass = one sixth of the half-wall volume, hexagon area minus the r 20 mm cavity; box is the slab core)",
+      "mass_mg": 688,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 930.0,
-        "volume_m3": 1.9986498297556974e-06
+        "volume_m3": 7.393017414524849e-07
       },
       "box": {
         "half_extent_um": [
-          1258,
-          12000,
+          1042,
+          5125,
           11000
         ],
         "pose": {
           "position_um": [
             0,
-            0,
-            -21258
+            6875,
+            -21042
           ],
           "orientation": [
             0.7071067811865476,
@@ -413,31 +459,31 @@
       "source": {
         "kind": "datasheet",
         "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
-        "accessed": "2026-11-04",
-        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
       }
     },
     {
-      "id": "wall-4",
+      "id": "wall-h4",
       "kind": "structure",
-      "description": "hex wall slab 4 (PA12 laser-sintered; mass = one sixth of the true wall volume, box is the slab core)",
-      "mass_mg": 1859,
+      "description": "hex wall slab 4 of the head half (PA12, y 1.75 to 12 mm; mass = one sixth of the half-wall volume, hexagon area minus the r 20 mm cavity; box is the slab core)",
+      "mass_mg": 688,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 930.0,
-        "volume_m3": 1.9986498297556974e-06
+        "volume_m3": 7.393017414524849e-07
       },
       "box": {
         "half_extent_um": [
-          1258,
-          12000,
+          1042,
+          5125,
           11000
         ],
         "pose": {
           "position_um": [
-            -18410,
-            0,
-            -10629
+            -18223,
+            6875,
+            -10521
           ],
           "orientation": [
             0.25881904510252074,
@@ -454,36 +500,36 @@
       "source": {
         "kind": "datasheet",
         "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
-        "accessed": "2026-11-04",
-        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
       }
     },
     {
-      "id": "wall-5",
+      "id": "wall-h5",
       "kind": "structure",
-      "description": "hex wall slab 5 (PA12 laser-sintered; mass = one sixth of the true wall volume, box is the slab core)",
-      "mass_mg": 1859,
+      "description": "hex wall slab 5 of the head half (PA12, y 1.75 to 12 mm; mass = one sixth of the half-wall volume, hexagon area minus the r 20 mm cavity; box is the slab core)",
+      "mass_mg": 688,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 930.0,
-        "volume_m3": 1.9986498297556974e-06
+        "volume_m3": 7.393017414524849e-07
       },
       "box": {
         "half_extent_um": [
-          1258,
-          12000,
+          1042,
+          5125,
           11000
         ],
         "pose": {
           "position_um": [
-            -18410,
-            0,
-            10629
+            -18223,
+            6875,
+            10521
           ],
           "orientation": [
-            0.25881904510252074,
+            -0.25881904510252085,
             0.0,
-            -0.9659258262890683,
+            0.9659258262890683,
             0.0
           ]
         }
@@ -495,25 +541,271 @@
       "source": {
         "kind": "datasheet",
         "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
-        "accessed": "2026-11-04",
-        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "wall-t0",
+      "kind": "structure",
+      "description": "hex wall slab 0 of the tail half (PA12, y -12 to -1.75 mm; mass = one sixth of the half-wall volume, hexagon area minus the r 20 mm cavity; box is the slab core)",
+      "mass_mg": 688,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.393017414524849e-07
+      },
+      "box": {
+        "half_extent_um": [
+          1042,
+          5125,
+          11000
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            -6875,
+            21042
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.0,
+            -0.7071067811865475,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "wall-t1",
+      "kind": "structure",
+      "description": "hex wall slab 1 of the tail half (PA12, y -12 to -1.75 mm; mass = one sixth of the half-wall volume, hexagon area minus the r 20 mm cavity; box is the slab core)",
+      "mass_mg": 688,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.393017414524849e-07
+      },
+      "box": {
+        "half_extent_um": [
+          1042,
+          5125,
+          11000
+        ],
+        "pose": {
+          "position_um": [
+            18223,
+            -6875,
+            10521
+          ],
+          "orientation": [
+            0.9659258262890683,
+            0.0,
+            -0.25881904510252074,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "wall-t2",
+      "kind": "structure",
+      "description": "hex wall slab 2 of the tail half (PA12, y -12 to -1.75 mm; mass = one sixth of the half-wall volume, hexagon area minus the r 20 mm cavity; box is the slab core)",
+      "mass_mg": 688,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.393017414524849e-07
+      },
+      "box": {
+        "half_extent_um": [
+          1042,
+          5125,
+          11000
+        ],
+        "pose": {
+          "position_um": [
+            18223,
+            -6875,
+            -10521
+          ],
+          "orientation": [
+            0.9659258262890683,
+            0.0,
+            0.25881904510252074,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "wall-t3",
+      "kind": "structure",
+      "description": "hex wall slab 3 of the tail half (PA12, y -12 to -1.75 mm; mass = one sixth of the half-wall volume, hexagon area minus the r 20 mm cavity; box is the slab core)",
+      "mass_mg": 688,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.393017414524849e-07
+      },
+      "box": {
+        "half_extent_um": [
+          1042,
+          5125,
+          11000
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            -6875,
+            -21042
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.0,
+            0.7071067811865475,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "wall-t4",
+      "kind": "structure",
+      "description": "hex wall slab 4 of the tail half (PA12, y -12 to -1.75 mm; mass = one sixth of the half-wall volume, hexagon area minus the r 20 mm cavity; box is the slab core)",
+      "mass_mg": 688,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.393017414524849e-07
+      },
+      "box": {
+        "half_extent_um": [
+          1042,
+          5125,
+          11000
+        ],
+        "pose": {
+          "position_um": [
+            -18223,
+            -6875,
+            -10521
+          ],
+          "orientation": [
+            0.25881904510252074,
+            0.0,
+            0.9659258262890683,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "wall-t5",
+      "kind": "structure",
+      "description": "hex wall slab 5 of the tail half (PA12, y -12 to -1.75 mm; mass = one sixth of the half-wall volume, hexagon area minus the r 20 mm cavity; box is the slab core)",
+      "mass_mg": 688,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.393017414524849e-07
+      },
+      "box": {
+        "half_extent_um": [
+          1042,
+          5125,
+          11000
+        ],
+        "pose": {
+          "position_um": [
+            -18223,
+            -6875,
+            10521
+          ],
+          "orientation": [
+            -0.25881904510252085,
+            0.0,
+            0.9659258262890683,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
       }
     },
     {
       "id": "endplate-a",
       "kind": "structure",
-      "description": "hexagonal end plate a (solid; true hexagon volume x 2 mm; box is the inscribed rectangle)",
-      "mass_mg": 3267,
+      "description": "hexagonal end plate a (PA12, 2 mm; solid hexagon area x 2 mm, so an upper bound: peg hole and receiver relief ignored; box is the inscribed rectangle)",
+      "mass_mg": 3142,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 930.0,
-        "volume_m3": 3.5125990377496833e-06
+        "volume_m3": 3.378798112864988e-06
       },
       "box": {
         "half_extent_um": [
-          13000,
+          12750,
           1000,
-          22517
+          22084
         ],
         "pose": {
           "position_um": [
@@ -536,25 +828,25 @@
       "source": {
         "kind": "datasheet",
         "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
-        "accessed": "2026-11-04",
-        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
       }
     },
     {
       "id": "endplate-b",
       "kind": "structure",
-      "description": "hexagonal end plate b (solid; true hexagon volume x 2 mm; box is the inscribed rectangle)",
-      "mass_mg": 3267,
+      "description": "hexagonal end plate b (PA12, 2 mm; solid hexagon area x 2 mm, so an upper bound: peg hole and receiver relief ignored; box is the inscribed rectangle)",
+      "mass_mg": 3142,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 930.0,
-        "volume_m3": 3.5125990377496833e-06
+        "volume_m3": 3.378798112864988e-06
       },
       "box": {
         "half_extent_um": [
-          13000,
+          12750,
           1000,
-          22517
+          22084
         ],
         "pose": {
           "position_um": [
@@ -577,250 +869,763 @@
       "source": {
         "kind": "datasheet",
         "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
-        "accessed": "2026-11-04",
-        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
       }
     },
     {
-      "id": "cell",
-      "kind": "energy_source",
-      "description": "Grepow GRP8020030 1S LiPo, 350 mAh, 15C, 31x20x7.5 mm nominal, stood on edge",
-      "mass_mg": 8000,
-      "mass_basis": "source",
-      "box": {
-        "half_extent_um": [
-          15500,
-          3750,
-          10000
-        ],
-        "pose": {
-          "position_um": [
-            0,
-            -5000,
-            0
-          ],
-          "orientation": [
-            1.0,
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "dimension_basis": "source",
-      "peak_power_mw": 0,
-      "average_power_mw": 0,
-      "power_basis": "derived",
-      "source": {
-        "kind": "datasheet",
-        "url": "https://www.grepow.com/high-discharge-rate-battery/15c-high-power-lipo.html",
-        "accessed": "2026-11-04",
-        "title": "Grepow high-discharge LiPo table, row GRP8020030 (350 mAh, 15C)"
-      },
-      "nominal_voltage_v": 3.7,
-      "rated_continuous_discharge_a": 5.25,
-      "energy_mj": 4662000
-    },
-    {
-      "id": "controller",
-      "kind": "controller",
-      "description": "Seeed XIAO nRF52840 Sense: nRF52840 MCU + BLE radio + LSM6DS3TR-C IMU. Mass is reseller-reported (not manufacturer), thickness and power not stated: UNRESOLVED",
-      "mass_mg": 4000,
-      "mass_basis": "estimate",
-      "box": {
-        "half_extent_um": [
-          10500,
-          8750,
-          2000
-        ],
-        "pose": {
-          "position_um": [
-            0,
-            0,
-            12200
-          ],
-          "orientation": [
-            1.0,
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "dimension_basis": "estimate",
-      "peak_power_mw": 0,
-      "average_power_mw": 0,
-      "power_basis": "estimate",
-      "source": {
-        "kind": "datasheet",
-        "url": "https://wiki.seeedstudio.com/XIAO_BLE/",
-        "accessed": "2026-11-04",
-        "title": "Seeed Studio XIAO nRF52840 Sense wiki (dimensions); TDS https://media.distrelec.com/Web/Downloads/_t/ds/102010469_eng_tds.pdf"
-      }
-    },
-    {
-      "id": "kick-motor",
-      "kind": "actuator",
-      "description": "Pololu 150:1 micro metal gearmotor MP 6V, run from the 3.7 V cell; box includes the 10 mm shaft (35 mm along x)",
-      "mass_mg": 9500,
-      "mass_basis": "source",
-      "box": {
-        "half_extent_um": [
-          17500,
-          5000,
-          6000
-        ],
-        "pose": {
-          "position_um": [
-            0,
-            3800,
-            0
-          ],
-          "orientation": [
-            1.0,
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "dimension_basis": "source",
-      "peak_power_mw": 1529,
-      "average_power_mw": 160,
-      "power_basis": "derived",
-      "source": {
-        "kind": "datasheet",
-        "url": "https://www.pololu.com/product/2368",
-        "accessed": "2026-11-04",
-        "title": "Pololu 150:1 Micro Metal Gearmotor MP 6V"
-      }
-    },
-    {
-      "id": "kick-driver",
-      "kind": "other",
-      "description": "Pololu DRV8838 carrier (12.7x10.2 mm); mass and thickness not stated: UNRESOLVED",
-      "mass_mg": 0,
-      "mass_basis": "estimate",
-      "box": {
-        "half_extent_um": [
-          5100,
-          6350,
-          1500
-        ],
-        "pose": {
-          "position_um": [
-            0,
-            0,
-            -12000
-          ],
-          "orientation": [
-            1.0,
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "dimension_basis": "estimate",
-      "peak_power_mw": 0,
-      "average_power_mw": 0,
-      "power_basis": "estimate",
-      "source": {
-        "kind": "datasheet",
-        "url": "https://www.pololu.com/product/2990",
-        "accessed": "2026-11-04",
-        "title": "Pololu DRV8838 Single Brushed DC Motor Driver Carrier"
-      }
-    },
-    {
-      "id": "release-sma-a",
-      "kind": "actuator",
-      "description": "Flexinol 0.004 in (0.10 mm) wire ~25 mm, coupler A unlatch; wire mass and strain not stated in the cited sheet: UNRESOLVED",
-      "mass_mg": 0,
-      "mass_basis": "estimate",
-      "box": {
-        "half_extent_um": [
-          500,
-          9000,
-          500
-        ],
-        "pose": {
-          "position_um": [
-            -17000,
-            0,
-            -8000
-          ],
-          "orientation": [
-            1.0,
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "dimension_basis": "estimate",
-      "peak_power_mw": 666,
-      "average_power_mw": 0,
-      "power_basis": "derived",
-      "source": {
-        "kind": "datasheet",
-        "url": "https://cdn.robotshop.com/media/d/dyn/rb-dyn-01/pdf/flexinol-technical-data.pdf",
-        "accessed": "2026-11-04",
-        "title": "Dynalloy Flexinol Technical Data (0.004 in wire row)"
-      }
-    },
-    {
-      "id": "release-sma-b",
-      "kind": "actuator",
-      "description": "Flexinol 0.004 in (0.10 mm) wire ~25 mm, coupler B unlatch; wire mass and strain not stated in the cited sheet: UNRESOLVED",
-      "mass_mg": 0,
-      "mass_basis": "estimate",
-      "box": {
-        "half_extent_um": [
-          500,
-          9000,
-          500
-        ],
-        "pose": {
-          "position_um": [
-            17000,
-            0,
-            -8000
-          ],
-          "orientation": [
-            1.0,
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "dimension_basis": "estimate",
-      "peak_power_mw": 666,
-      "average_power_mw": 0,
-      "power_basis": "derived",
-      "source": {
-        "kind": "datasheet",
-        "url": "https://cdn.robotshop.com/media/d/dyn/rb-dyn-01/pdf/flexinol-technical-data.pdf",
-        "accessed": "2026-11-04",
-        "title": "Dynalloy Flexinol Technical Data (0.004 in wire row)"
-      }
-    },
-    {
-      "id": "coupler-head",
-      "kind": "coupler_mechanism",
-      "description": "head end coupler body: hex key + conical lead-in + ball-lock bore (solid-fill PA12 upper bound for the housing; balls, spring and sleeve UNRESOLVED)",
-      "mass_mg": 179,
+      "id": "ring-s0",
+      "kind": "structure",
+      "description": "lift ring segment 0 of 12 (PA12 annulus r 19.5 to 21.9 mm, axial |y|<=1.5, internal spur teeth module 0.3, 133 T, pitch r 19.95 mm (tips 19.65, roots 20.325); mass is one twelfth of the annulus; box covers r 20.6 to 21.9 so the teeth zone is left to the pinion)",
+      "mass_mg": 73,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 930.0,
-        "volume_m3": 1.9200000000000003e-07
+        "volume_m3": 7.803716151517043e-08
       },
       "box": {
         "half_extent_um": [
-          4000,
+          650,
           1500,
-          4000
+          5520
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            21250
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.0,
+            -0.7071067811865475,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "ring-s1",
+      "kind": "structure",
+      "description": "lift ring segment 1 of 12 (PA12 annulus r 19.5 to 21.9 mm, axial |y|<=1.5, internal spur teeth module 0.3, 133 T, pitch r 19.95 mm (tips 19.65, roots 20.325); mass is one twelfth of the annulus; box covers r 20.6 to 21.9 so the teeth zone is left to the pinion)",
+      "mass_mg": 73,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.803716151517043e-08
+      },
+      "box": {
+        "half_extent_um": [
+          650,
+          1500,
+          5520
+        ],
+        "pose": {
+          "position_um": [
+            10625,
+            0,
+            18403
+          ],
+          "orientation": [
+            0.8660254037844387,
+            0.0,
+            -0.49999999999999994,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "ring-s2",
+      "kind": "structure",
+      "description": "lift ring segment 2 of 12 (PA12 annulus r 19.5 to 21.9 mm, axial |y|<=1.5, internal spur teeth module 0.3, 133 T, pitch r 19.95 mm (tips 19.65, roots 20.325); mass is one twelfth of the annulus; box covers r 20.6 to 21.9 so the teeth zone is left to the pinion)",
+      "mass_mg": 73,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.803716151517043e-08
+      },
+      "box": {
+        "half_extent_um": [
+          650,
+          1500,
+          5520
+        ],
+        "pose": {
+          "position_um": [
+            18403,
+            0,
+            10625
+          ],
+          "orientation": [
+            0.9659258262890683,
+            0.0,
+            -0.25881904510252074,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "ring-s3",
+      "kind": "structure",
+      "description": "lift ring segment 3 of 12 (PA12 annulus r 19.5 to 21.9 mm, axial |y|<=1.5, internal spur teeth module 0.3, 133 T, pitch r 19.95 mm (tips 19.65, roots 20.325); mass is one twelfth of the annulus; box covers r 20.6 to 21.9 so the teeth zone is left to the pinion)",
+      "mass_mg": 73,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.803716151517043e-08
+      },
+      "box": {
+        "half_extent_um": [
+          650,
+          1500,
+          5520
+        ],
+        "pose": {
+          "position_um": [
+            21250,
+            0,
+            0
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "ring-s4",
+      "kind": "structure",
+      "description": "lift ring segment 4 of 12 (PA12 annulus r 19.5 to 21.9 mm, axial |y|<=1.5, internal spur teeth module 0.3, 133 T, pitch r 19.95 mm (tips 19.65, roots 20.325); mass is one twelfth of the annulus; box covers r 20.6 to 21.9 so the teeth zone is left to the pinion)",
+      "mass_mg": 73,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.803716151517043e-08
+      },
+      "box": {
+        "half_extent_um": [
+          650,
+          1500,
+          5520
+        ],
+        "pose": {
+          "position_um": [
+            18403,
+            0,
+            -10625
+          ],
+          "orientation": [
+            0.9659258262890683,
+            0.0,
+            0.25881904510252074,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "ring-s5",
+      "kind": "structure",
+      "description": "lift ring segment 5 of 12 (PA12 annulus r 19.5 to 21.9 mm, axial |y|<=1.5, internal spur teeth module 0.3, 133 T, pitch r 19.95 mm (tips 19.65, roots 20.325); mass is one twelfth of the annulus; box covers r 20.6 to 21.9 so the teeth zone is left to the pinion)",
+      "mass_mg": 73,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.803716151517043e-08
+      },
+      "box": {
+        "half_extent_um": [
+          650,
+          1500,
+          5520
+        ],
+        "pose": {
+          "position_um": [
+            10625,
+            0,
+            -18403
+          ],
+          "orientation": [
+            0.8660254037844387,
+            0.0,
+            0.49999999999999994,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "ring-s6",
+      "kind": "structure",
+      "description": "lift ring segment 6 of 12 (PA12 annulus r 19.5 to 21.9 mm, axial |y|<=1.5, internal spur teeth module 0.3, 133 T, pitch r 19.95 mm (tips 19.65, roots 20.325); mass is one twelfth of the annulus; box covers r 20.6 to 21.9 so the teeth zone is left to the pinion)",
+      "mass_mg": 73,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.803716151517043e-08
+      },
+      "box": {
+        "half_extent_um": [
+          650,
+          1500,
+          5520
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            -21250
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.0,
+            0.7071067811865475,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "ring-s7",
+      "kind": "structure",
+      "description": "lift ring segment 7 of 12 (PA12 annulus r 19.5 to 21.9 mm, axial |y|<=1.5, internal spur teeth module 0.3, 133 T, pitch r 19.95 mm (tips 19.65, roots 20.325); mass is one twelfth of the annulus; box covers r 20.6 to 21.9 so the teeth zone is left to the pinion)",
+      "mass_mg": 73,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.803716151517043e-08
+      },
+      "box": {
+        "half_extent_um": [
+          650,
+          1500,
+          5520
+        ],
+        "pose": {
+          "position_um": [
+            -10625,
+            0,
+            -18403
+          ],
+          "orientation": [
+            0.5000000000000001,
+            0.0,
+            0.8660254037844386,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "ring-s8",
+      "kind": "structure",
+      "description": "lift ring segment 8 of 12 (PA12 annulus r 19.5 to 21.9 mm, axial |y|<=1.5, internal spur teeth module 0.3, 133 T, pitch r 19.95 mm (tips 19.65, roots 20.325); mass is one twelfth of the annulus; box covers r 20.6 to 21.9 so the teeth zone is left to the pinion)",
+      "mass_mg": 73,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.803716151517043e-08
+      },
+      "box": {
+        "half_extent_um": [
+          650,
+          1500,
+          5520
+        ],
+        "pose": {
+          "position_um": [
+            -18403,
+            0,
+            -10625
+          ],
+          "orientation": [
+            0.25881904510252074,
+            0.0,
+            0.9659258262890683,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "ring-s9",
+      "kind": "structure",
+      "description": "lift ring segment 9 of 12 (PA12 annulus r 19.5 to 21.9 mm, axial |y|<=1.5, internal spur teeth module 0.3, 133 T, pitch r 19.95 mm (tips 19.65, roots 20.325); mass is one twelfth of the annulus; box covers r 20.6 to 21.9 so the teeth zone is left to the pinion)",
+      "mass_mg": 73,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.803716151517043e-08
+      },
+      "box": {
+        "half_extent_um": [
+          650,
+          1500,
+          5520
+        ],
+        "pose": {
+          "position_um": [
+            -21250,
+            0,
+            0
+          ],
+          "orientation": [
+            6.123233995736766e-17,
+            0.0,
+            1.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "ring-s10",
+      "kind": "structure",
+      "description": "lift ring segment 10 of 12 (PA12 annulus r 19.5 to 21.9 mm, axial |y|<=1.5, internal spur teeth module 0.3, 133 T, pitch r 19.95 mm (tips 19.65, roots 20.325); mass is one twelfth of the annulus; box covers r 20.6 to 21.9 so the teeth zone is left to the pinion)",
+      "mass_mg": 73,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.803716151517043e-08
+      },
+      "box": {
+        "half_extent_um": [
+          650,
+          1500,
+          5520
+        ],
+        "pose": {
+          "position_um": [
+            -18403,
+            0,
+            10625
+          ],
+          "orientation": [
+            -0.25881904510252085,
+            0.0,
+            0.9659258262890683,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "ring-s11",
+      "kind": "structure",
+      "description": "lift ring segment 11 of 12 (PA12 annulus r 19.5 to 21.9 mm, axial |y|<=1.5, internal spur teeth module 0.3, 133 T, pitch r 19.95 mm (tips 19.65, roots 20.325); mass is one twelfth of the annulus; box covers r 20.6 to 21.9 so the teeth zone is left to the pinion)",
+      "mass_mg": 73,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.803716151517043e-08
+      },
+      "box": {
+        "half_extent_um": [
+          650,
+          1500,
+          5520
+        ],
+        "pose": {
+          "position_um": [
+            -10625,
+            0,
+            18403
+          ],
+          "orientation": [
+            -0.49999999999999983,
+            0.0,
+            0.8660254037844387,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "lift-lobe",
+      "kind": "structure",
+      "description": "lift lobe on the ring (PA12, 4.0 x 3.0 x 6.6 mm, radial r 21.9 to 28.5 mm, tip rounded r 2 mm; solid box volume is an upper bound); parked pointing +z",
+      "mass_mg": 74,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 7.92e-08
+      },
+      "box": {
+        "half_extent_um": [
+          2000,
+          1500,
+          3300
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            0,
+            25200
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "cap-l",
+      "kind": "coupler_mechanism",
+      "description": "tail receiver cap half l (PA12) carrying the roll-in channel arc slots; solid box volume is an upper bound",
+      "mass_mg": 362,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 3.8955000000000004e-07
+      },
+      "box": {
+        "half_extent_um": [
+          5300,
+          1750,
+          5250
+        ],
+        "pose": {
+          "position_um": [
+            -9200,
+            -10250,
+            1650
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "cap-r",
+      "kind": "coupler_mechanism",
+      "description": "tail receiver cap half r (PA12) carrying the roll-in channel arc slots; solid box volume is an upper bound",
+      "mass_mg": 362,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 3.8955000000000004e-07
+      },
+      "box": {
+        "half_extent_um": [
+          5300,
+          1750,
+          5250
+        ],
+        "pose": {
+          "position_um": [
+            9200,
+            -10250,
+            1650
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "yaw-puck",
+      "kind": "coupler_mechanism",
+      "description": "yaw turntable puck (PA12), cylinder r 3.8 mm, axis z through (x 0, y -8.2), z -3.5 to 6.9 mm, with half-hex cup, V-notch and keeper cage; solid cylinder volume is an upper bound; box is the lower part (keeper metal occupies the upper box)",
+      "mass_mg": 439,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 4.7179181834550076e-07
+      },
+      "box": {
+        "half_extent_um": [
+          3800,
+          3800,
+          3050
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            -8200,
+            -450
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "yaw-shaft",
+      "kind": "structure",
+      "description": "yaw shaft (PA12) carrying the sector, dia 2 mm x 2.1 mm, hollow bore for the SMA run ignored (upper bound)",
+      "mass_mg": 6,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 6.597344572538566e-09
+      },
+      "box": {
+        "half_extent_um": [
+          1000,
+          1000,
+          1050
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            -8200,
+            7950
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "yaw-sector",
+      "kind": "coupler_mechanism",
+      "description": "worm-wheel sector (304 stainless; lead change from PA12 after a crude tooth-stress flag), pitch r 4.05 mm, module 0.3 (27:1 with the single-start worm), +-21.5 deg about +x, 2 mm thick, plus hub r 1 mm (20.2 mm3)",
+      "mass_mg": 160,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 2.02e-08
+      },
+      "box": {
+        "half_extent_um": [
+          2338,
+          1470,
+          1000
+        ],
+        "pose": {
+          "position_um": [
+            1338,
+            -8200,
+            10000
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-06",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa)"
+      }
+    },
+    {
+      "id": "peg-boss",
+      "kind": "structure",
+      "description": "peg boss on end plate a (PA12, 6 x 3 x 6 mm = 108 mm3) carrying the head peg root",
+      "mass_mg": 100,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 1.08e-07
+      },
+      "box": {
+        "half_extent_um": [
+          3000,
+          1500,
+          3000
         ],
         "pose": {
           "position_um": [
@@ -843,30 +1648,112 @@
       "source": {
         "kind": "datasheet",
         "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
-        "accessed": "2026-11-04",
-        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
       }
     },
     {
-      "id": "coupler-tail",
-      "kind": "coupler_mechanism",
-      "description": "tail end coupler body: hex key + conical lead-in + ball-lock bore (solid-fill PA12 upper bound for the housing; balls, spring and sleeve UNRESOLVED)",
-      "mass_mg": 179,
+      "id": "post-1",
+      "kind": "structure",
+      "description": "axial post 1 (PA12, 2.5 x 24 x 2.5 mm) joining both end plates and the wall halves",
+      "mass_mg": 140,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 930.0,
-        "volume_m3": 1.9200000000000003e-07
+        "volume_m3": 1.5000000000000002e-07
       },
       "box": {
         "half_extent_um": [
-          4000,
-          1500,
-          4000
+          1250,
+          12000,
+          1250
+        ],
+        "pose": {
+          "position_um": [
+            7250,
+            0,
+            15500
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "post-2",
+      "kind": "structure",
+      "description": "axial post 2 (PA12, 2.5 x 20.4 x 2.5 mm) from the tail cap to the head end plate",
+      "mass_mg": 119,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 930.0,
+        "volume_m3": 1.275e-07
+      },
+      "box": {
+        "half_extent_um": [
+          1250,
+          10200,
+          1250
+        ],
+        "pose": {
+          "position_um": [
+            -13500,
+            1800,
+            1000
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "accessed": "2026-11-06",
+        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+      }
+    },
+    {
+      "id": "head-peg",
+      "kind": "coupler_mechanism",
+      "description": "head peg (304 stainless): hex 4.0 mm across flats (4.619 across corners), 18 mm long (root y 9 inside the boss to tip y 27), annular groove dia 3.0 x 1.6 wide centred y 24.5, tip chamfer 0.5 x 45 deg; volume is hex x length with the groove ignored (upper bound); box is the protruding part y 14 to 27, mass is the whole peg",
+      "mass_mg": 1970,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 2.49408e-07
+      },
+      "box": {
+        "half_extent_um": [
+          2310,
+          6500,
+          2000
         ],
         "pose": {
           "position_um": [
             0,
-            -10500,
+            20500,
             0
           ],
           "orientation": [
@@ -883,32 +1770,32 @@
       "power_basis": "derived",
       "source": {
         "kind": "datasheet",
-        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
-        "accessed": "2026-11-04",
-        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-06",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa)"
       }
     },
     {
-      "id": "kick-mechanism-reserve",
-      "kind": "structure",
-      "description": "RESERVED VOLUME ONLY for the strut/cam kick mechanism (not designed; solid-fill upper bound; likely too small)",
-      "mass_mg": 268,
+      "id": "keeper",
+      "kind": "coupler_mechanism",
+      "description": "dead-centre keeper (304): tongue 0.8 x 7 x 6 mm (33.6 mm3), two toggle links 0.8 x 1.5 x 5 mm (12 mm3), three pins dia 1 x 4 mm (9.42 mm3), plus Lee LC 014A 01 S spring wire (5.28 mm3, ASTM A313 stainless, 304 density assumed). Total 60.3 mm3",
+      "mass_mg": 476,
       "mass_basis": "derived",
       "derivation": {
-        "density_kg_m3": 930.0,
-        "volume_m3": 2.8800000000000004e-07
+        "density_kg_m3": 7900.0,
+        "volume_m3": 6.030388657012226e-08
       },
       "box": {
         "half_extent_um": [
-          4000,
-          3000,
-          3000
+          3800,
+          3800,
+          2150
         ],
         "pose": {
           "position_um": [
             0,
-            4000,
-            -16500
+            -8200,
+            4750
           ],
           "orientation": [
             1.0,
@@ -924,28 +1811,32 @@
       "power_basis": "derived",
       "source": {
         "kind": "datasheet",
-        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
-        "accessed": "2026-11-04",
-        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-06",
+        "title": "ATI 304 density 7.90 g/cm3; spring data from Lee Spring LC 014A 01 S https://www.leespring.com/product/compression-spring-lc014a01s-stainless-steel (OD 0.12 in, wire 0.014 in, rate 9.4 lb/in, 6.29 coils)"
       }
     },
     {
-      "id": "unresolved-bucket",
-      "kind": "other",
-      "description": "PLACEHOLDER for PCB interconnect, wiring, fasteners, springs, balls, SMA switch, cam position sensor: mass and power UNRESOLVED (0 recorded, not a measurement)",
-      "mass_mg": 0,
-      "mass_basis": "estimate",
+      "id": "yaw-worm",
+      "kind": "actuator",
+      "description": "yaw worm (304): single start, module 0.3, OD 3.0, pitch dia 2.4, length 3.6 mm on the M2 shaft; lead angle 7.1 deg",
+      "mass_mg": 201,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 2.5446900494077326e-08
+      },
       "box": {
         "half_extent_um": [
-          500,
-          500,
-          500
+          1500,
+          1800,
+          1500
         ],
         "pose": {
           "position_um": [
-            -10000,
-            0,
-            -13000
+            5250,
+            -8500,
+            10000
           ],
           "orientation": [
             1.0,
@@ -955,30 +1846,579 @@
           ]
         }
       },
-      "dimension_basis": "estimate",
+      "dimension_basis": "derived",
       "peak_power_mw": 0,
       "average_power_mw": 0,
-      "power_basis": "estimate",
+      "power_basis": "derived",
       "source": {
         "kind": "datasheet",
-        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
-        "accessed": "2026-11-04",
-        "title": "EOS PA 2200 Performance 1.0 material data sheet (density, laser-sintered, 930 kg/m3)"
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-06",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa)"
+      }
+    },
+    {
+      "id": "m1-spur",
+      "kind": "actuator",
+      "description": "M1 motor spur (304): module 0.2, 41 T, pitch r 4.1 mm, 1.5 mm wide at y 9.6 to 11.1, on the M1 output shaft; oriented box rotated 15.4208 deg about y so its local z points at the layshaft spur",
+      "mass_mg": 626,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 7.921525876026663e-08
+      },
+      "box": {
+        "half_extent_um": [
+          4100,
+          750,
+          4100
+        ],
+        "pose": {
+          "position_um": [
+            -4000,
+            10350,
+            12180
+          ],
+          "orientation": [
+            0.9909588629888875,
+            0.0,
+            0.13416606077459126,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-06",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa)"
+      }
+    },
+    {
+      "id": "lift-spur",
+      "kind": "actuator",
+      "description": "layshaft spur (304): module 0.2, 16 T, pitch r 1.6 mm, 1.5 mm wide at y 9.6 to 11.1 (centre distance to the motor spur 5.70 mm); oriented box as the motor spur; pitch faces touch by design",
+      "mass_mg": 95,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 1.2063715789784808e-08
+      },
+      "box": {
+        "half_extent_um": [
+          1600,
+          750,
+          1600
+        ],
+        "pose": {
+          "position_um": [
+            -2484,
+            10350,
+            17676
+          ],
+          "orientation": [
+            0.9909588629888875,
+            0.0,
+            0.13416606077459126,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-06",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa)"
+      }
+    },
+    {
+      "id": "lift-layshaft",
+      "kind": "actuator",
+      "description": "lift layshaft (304), dia 1.5 x 7.8 mm at (x -2.484, z 17.676)",
+      "mass_mg": 109,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 1.3783737767625218e-08
+      },
+      "box": {
+        "half_extent_um": [
+          750,
+          3900,
+          750
+        ],
+        "pose": {
+          "position_um": [
+            -2484,
+            5700,
+            17676
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-06",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa)"
+      }
+    },
+    {
+      "id": "lift-pinion",
+      "kind": "actuator",
+      "description": "lift pinion (304): 14 T, module 0.3, pitch r 2.1, tip r 2.4 mm, 3 mm wide, centre (x -2.484, z 17.676), centre distance 17.85 mm to the ring axis (at -8 deg from +z); meshes the ring's 133 internal teeth by design; box is the square around the tip circle",
+      "mass_mg": 429,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 5.428672105403163e-08
+      },
+      "box": {
+        "half_extent_um": [
+          2400,
+          1500,
+          2400
+        ],
+        "pose": {
+          "position_um": [
+            -2484,
+            0,
+            17676
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-06",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa)"
+      }
+    },
+    {
+      "id": "fasteners",
+      "kind": "structure",
+      "description": "4x M1.6 x 4 A2 pan head screws (dk 3.2, k 1.3); bounding volume pi*1.6^2*1.3 + pi*0.8^2*4 = 18.50 mm3 each (upper bound), 304 density assumed for A2; LUMPED box, not at the real screw positions",
+      "mass_mg": 585,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 7.4e-08
+      },
+      "box": {
+        "half_extent_um": [
+          1600,
+          4000,
+          1600
+        ],
+        "pose": {
+          "position_um": [
+            -500,
+            2500,
+            -1500
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-06",
+        "title": "ATI 304 density 7.90 g/cm3 (A2 = 18/8 304 family, assumption); screw dimensions from https://www.westfieldfasteners.co.uk/A2-ScrewBolt-PoziPan-M1.6.html"
+      }
+    },
+    {
+      "id": "release-sma",
+      "kind": "actuator",
+      "description": "release SMA wire: Flexinol 0.004 in (0.1016 mm) HT, 22 mm; runs along the yaw axis from the keeper knee up through the hollow yaw shaft to an anchor at z 19; resistance 22 mm = 0.866 in x 3.2 ohm/in = 2.77 ohm; 3.7 V gives 1.336 A, 4943 mW for a pulse of about 1 s (bound), average 0",
+      "mass_mg": 1,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 6450.0,
+        "volume_m3": 1.7836103264231918e-10
+      },
+      "box": {
+        "half_extent_um": [
+          500,
+          500,
+          4000
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            -8200,
+            15000
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 4943,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://cdn.sparkfun.com/datasheets/Components/General/TCF1140.pdf",
+        "accessed": "2026-11-06",
+        "title": "Dynalloy Flexinol TCF1140 Rev H (SparkFun-hosted copy): NiTi 6.45 g/cm3, 0.004 in wire 3.2 ohm/in, 143 g pull, about 200 mA"
+      }
+    },
+    {
+      "id": "harness",
+      "kind": "other",
+      "description": "harness lump: 300 mm Alpha Wire 2841/7 30 AWG 7/38 PTFE, OD 0.024 in (0.61 mm); bounding volume pi*0.305^2*300 = 87.67 mm3 at copper density (upper bound); lumped box, no routing",
+      "mass_mg": 780,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 8900.0,
+        "volume_m3": 8.767399698005716e-08
+      },
+      "box": {
+        "half_extent_um": [
+          5000,
+          1500,
+          1500
+        ],
+        "pose": {
+          "position_um": [
+            3000,
+            10500,
+            -7000
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://aurubis.com/dam/jcr:ec116d17-1541-419a-a897-ad31b4fa6c93/c11000-cu-etp-us.pdf",
+        "accessed": "2026-11-06",
+        "title": "Aurubis C11000 density 8.9 g/cm3; wire dimensions from https://www.digikey.ca/en/products/detail/alpha-wire/2841-7-YL001/3708252 (distributor page of manufacturer data)"
+      }
+    },
+    {
+      "id": "cell",
+      "kind": "energy_source",
+      "description": "Grepow GRP8020030 1S LiPo, 350 mAh, 15C, 3.7 V, 7.5 x 20.0 x 31.0 mm, 8.0 g; lies flat (31 mm along x, 20 along y, 7.5 along z). The page also has a series '45C' statement that contradicts the row's 15C; the row is used",
+      "mass_mg": 8000,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          15500,
+          10000,
+          3750
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            -1900,
+            -7450
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.grepow.com/high-discharge-rate-battery/15c-high-power-lipo.html",
+        "accessed": "2026-11-06",
+        "title": "Grepow 15C high-power LiPo table, row GRP8020030 (350 mAh, 3.7 V, Max. Cont. Discharge Current 5.25 A, 7.5 x 20.0 x 31.0 mm, 8.0 g)"
+      },
+      "nominal_voltage_v": 3.7,
+      "rated_continuous_discharge_a": 5.25,
+      "energy_mj": 4662000
+    },
+    {
+      "id": "controller",
+      "kind": "controller",
+      "description": "Adafruit QT Py ESP32-C3 (product 5405), 22.0 x 17.8 x 5.7 mm, 2.1 g, ESP32-C3FN4 (Wi-Fi + BLE); 22 mm along y. Power derived: 3.3 V regulator '600mA peak output' x 3.7 V = 2220 mW, used as both peak and average bound (everything on the 3.3 V rail incl. IMU is behind it)",
+      "mass_mg": 2100,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          8900,
+          11000,
+          2850
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            -500,
+            -14500
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 2220,
+      "average_power_mw": 2220,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.adafruit.com/product/5405",
+        "accessed": "2026-11-06",
+        "title": "Adafruit QT Py ESP32-C3 product page (22.0 x 17.8 x 5.7 mm, 2.1 g, 600 mA peak 3.3 V regulator)"
+      }
+    },
+    {
+      "id": "imu",
+      "kind": "sensor",
+      "description": "Pololu LSM6DSO carrier (product 2798), 0.5 x 0.9 x 0.1 in (12.7 x 22.86 x 2.54 mm), 0.6 g, supply current 1 mA; 1 mA x 3.7 V = 4 mW (powered from the controller 3.3 V rail, counted separately: conservative)",
+      "mass_mg": 600,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          11430,
+          6350,
+          1270
+        ],
+        "pose": {
+          "position_um": [
+            1500,
+            2500,
+            3500
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 4,
+      "average_power_mw": 4,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.pololu.com/product/2798/specs",
+        "accessed": "2026-11-06",
+        "title": "Pololu LSM6DSO carrier specs (size 0.5 x 0.9 x 0.1 in, 0.6 g, 1 mA)"
+      }
+    },
+    {
+      "id": "driver-1",
+      "kind": "other",
+      "description": "Pololu DRV8835 dual driver carrier for M1 and M2, 17.8 x 10.2 x 1.8 mm, 0.5 g; quiescent 15 mW bound; box 1.8 along x, 17.8 along y, 10.2 along z",
+      "mass_mg": 500,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          900,
+          8900,
+          5100
+        ],
+        "pose": {
+          "position_um": [
+            -16500,
+            -2000,
+            1500
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 15,
+      "average_power_mw": 15,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.pololu.com/product/2135/specs",
+        "accessed": "2026-11-06",
+        "title": "Pololu DRV8835 dual carrier specs (0.4 x 0.7 in, 0.5 g, 1.2 A continuous, 1.5 A peak); profile height 1.8 mm from https://www.pololu.com/file/0J1536/drv8835-dual-motor-driver-carrier-dimensions.pdf; quiescent from TI DRV8835 datasheet https://www.ti.com/lit/ds/symlink/drv8835.pdf (IVM 2000 uA max + IVCC 2000 uA max = 4 mA x 3.7 V = 15 mW)"
+      }
+    },
+    {
+      "id": "driver-2",
+      "kind": "other",
+      "description": "Pololu DRV8835 dual driver carrier for the release SMA (one channel at 1.336 A peak, above the 1.2 A continuous rating, pulsed only), 17.8 x 10.2 x 1.8 mm, 0.5 g; quiescent 15 mW bound; box 1.8 along x, 17.8 along y, 10.2 along z",
+      "mass_mg": 500,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          900,
+          8900,
+          5100
+        ],
+        "pose": {
+          "position_um": [
+            15500,
+            -500,
+            2000
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 15,
+      "average_power_mw": 15,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.pololu.com/product/2135/specs",
+        "accessed": "2026-11-06",
+        "title": "Pololu DRV8835 dual carrier specs (0.4 x 0.7 in, 0.5 g, 1.2 A continuous, 1.5 A peak); profile height 1.8 mm from https://www.pololu.com/file/0J1536/drv8835-dual-motor-driver-carrier-dimensions.pdf; quiescent from TI DRV8835 datasheet https://www.ti.com/lit/ds/symlink/drv8835.pdf (IVM 2000 uA max + IVCC 2000 uA max = 4 mA x 3.7 V = 15 mW)"
+      }
+    },
+    {
+      "id": "lift-motor",
+      "kind": "actuator",
+      "description": "M1: Precision Microdrives 206-109, 6 mm planetary 136:1, body dia 6 x 18.7 mm + shaft dia 2 x 3.6 mm, 1.2 g (incl. 100 mm lead); axis along y at x -4.0, z 12.18, output +y (body y -11.15 to 7.55, shaft to 11.15; the shaft part in the spur plane lies inside the spur box). Peak = max start current 230 mA x 3.7 V = 851 mW (bound); average = datasheet typical rated-load power 215 mW (continuous rated load, conservative). Run by PWM limited to 3.0 V effective (max 3.6 V): a control constraint",
+      "mass_mg": 1200,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          3000,
+          10375,
+          3000
+        ],
+        "pose": {
+          "position_um": [
+            -4000,
+            -775,
+            12180
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 851,
+      "average_power_mw": 215,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.precisionmicrodrives.com/datasheets/206-109-V0.pdf",
+        "accessed": "2026-11-06",
+        "title": "Precision Microdrives 206-109 6 mm planetary gearmotor 136:1 (headed sampling/target specification): 1.2 g, 3 V rated, 3.6 V max, rated 3 mN m at 140 rpm, stall 9 mN m, start current 230 mA, typical rated-load power 215 mW"
+      }
+    },
+    {
+      "id": "yaw-motor",
+      "kind": "actuator",
+      "description": "M2: Precision Microdrives 206-109 (as M1); axis along y at x 5.25, z 10 (worm centre distance 5.25 to the sector), output end -y carrying the yaw worm on y -10.3 to -6.7. Peak 851 mW, average 215 mW (same bounds); PWM limited to 3.0 V effective",
+      "mass_mg": 1200,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          3000,
+          9350,
+          3000
+        ],
+        "pose": {
+          "position_um": [
+            5250,
+            2650,
+            10000
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "source",
+      "peak_power_mw": 851,
+      "average_power_mw": 215,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.precisionmicrodrives.com/datasheets/206-109-V0.pdf",
+        "accessed": "2026-11-06",
+        "title": "Precision Microdrives 206-109 6 mm planetary gearmotor 136:1 (headed sampling/target specification): 1.2 g, 3 V rated, 3.6 V max, rated 3 mN m at 140 rpm, stall 9 mN m, start current 230 mA, typical rated-load power 215 mW"
       }
     }
   ],
   "mass_budget": {
-    "total_mass_mg": 39814
+    "total_mass_mg": 36550
   },
   "assembly_access": {
-    "statement": "Walls and end plates are separate PA12 parts joined by fasteners (UNRESOLVED: fastener type not selected). One end plate is removed to load the cell, controller, motor and driver as a stack along the axis; couplers install from the end plates. No assembly sequence has been verified."
+    "statement": "Walls and end plates are separate PA12 parts joined by two PA12 axial posts and four M1.6 screws (screw positions are a lumped stand-in). Each wall half (head and tail) is a separate part so the lift ring can be dropped into the girdle slot between them. The cell, controller and boards load as a stack along the axis with one end plate removed; the head peg installs from the head end plate and the tail receiver cap halves, yaw puck and keeper install from the tail end. No assembly sequence has been verified, and the gear train, yaw worm and SMA routing are not shown to be assemblable."
   },
   "coupler_sites": [
     {
       "id": "site-head",
       "position_um": [
         0,
-        14000,
+        22000,
         0
       ],
       "normal": [
@@ -986,7 +2426,7 @@
         1.0,
         0.0
       ],
-      "mount": "coupler-head on end plate a"
+      "mount": "datum on the head peg axis where a neighbour's tail face sits when docked (gap g = 8 mm from the head end face at y = 14 mm, 5 mm peg engagement)"
     },
     {
       "id": "site-tail",
@@ -1000,7 +2440,7 @@
         -1.0,
         0.0
       ],
-      "mount": "coupler-tail on end plate b"
+      "mount": "tail receiver on end plate b (tail face)"
     }
   ],
   "chain": {
@@ -1014,45 +2454,68 @@
     ],
     "mating_roll_deg": [
       0.0,
-      60.0,
-      120.0,
-      180.0,
-      240.0,
-      300.0
+      180.0
     ]
   },
   "retention": {
     "requires_power_to_hold": false,
-    "mechanism_kind": "spring_preload",
-    "mechanism": "Spring-preloaded ball-lock: balls in the head pin are pressed into a groove in the tail bore by a sprung sleeve. The hex key bears compression, bending and torsion. Nothing is powered to hold.",
+    "mechanism_kind": "geometric_interlock",
+    "mechanism": "The head peg's annular groove (dia 3.0 x 1.6 wide) is closed by a 0.8 mm 304 keeper tongue driven by a two-link dead-centre toggle in the tail yaw puck. In the closed state the toggle links lie on or just past dead centre, biased closed by a Lee LC 014A 01 S spring at 0.2 mm installed compression (0.33 N), so axial pull on the peg bears on the tongue and the puck wall and its load line passes through the link pins and cannot back-drive the toggle. Torsion about the axis is carried by the hex peg in the half-hex cup. Nothing is powered to hold. Closing is passive: the arriving peg trips the toggle past centre (trip energy fraction UNRESOLVED).",
     "component_ids": [
-      "coupler-head",
-      "coupler-tail"
+      "keeper",
+      "yaw-puck",
+      "head-peg",
+      "release-sma"
     ],
     "release": {
       "bounded_independent_release": true,
-      "means": "A powered Flexinol wire pulls the sleeve back against its spring, freeing the balls. It acts on the unit's own coupler and needs no help from the neighbour. Stroke, force and heat are UNRESOLVED."
+      "means": "A one-second pulse in the unit's own 0.004 in Flexinol wire pulls the toggle knee 0.3 mm past dead centre; the spring then snaps the keeper open and it stays open unpowered. Needs 0.82 N at the knee against 1.40 N recommended pull (1.7x) and 0.3 mm against 0.88 mm stroke at 4% strain. It acts only on this unit's own receiver and needs no help from the neighbour, which can also roll away about the same edge. Heat, cycle life and the pulse current limit are UNRESOLVED."
     }
   },
   "alignment": [
     {
       "kind": "geometric_guide",
-      "description": "Conical lead-in on the pin and bore, plus a hexagonal key on the end plate outline giving six 60 degree roll positions.",
-      "justification": "Passive geometry only: the lead-in converts lateral misalignment into centring by sliding contact, and the hex key fixes roll. No magnet is used. Capture range is not claimed and must be measured (Q36).",
+      "description": "Roll-in channel: two circular-arc slots in the tail cap halves, radius 25.5 mm, centred on the two bottom vertices, from the mid-height vertices to the face centre, 5.4 mm wide, 5.5 mm deep, 45 deg x 1.5 mm flared mouths.",
+      "justification": "When unit B rolls one step about its leading bottom edge, a neighbour's peg lying on the common axis moves in B's frame along exactly this arc, keeps its direction (parallel to y) and turns 60 deg about its own axis (hex symmetry), so B can roll into a docked pose using its own lift drive and gravity. Slot width 5.4 mm against the 4.619 mm across-corner peg gives 0.39 mm per side, plus 1.5 mm of flare: lateral +-1.89 mm at the mouth, height +-0.39 mm, heading +-atan(0.39/5) = +-4.5 deg, roll any multiple of 60 deg. Axial error must be inside the keeper lane (+-0.8 mm). These are nominal geometric estimates; the capture window is not claimed (CPL-006) and SLS tolerance is UNRESOLVED. No magnet and no cone.",
       "component_ids": [
-        "coupler-head",
-        "coupler-tail",
-        "endplate-a",
+        "cap-l",
+        "cap-r",
+        "head-peg",
         "endplate-b"
+      ]
+    },
+    {
+      "kind": "geometric_guide",
+      "description": "Tongue V-notch seating: the keeper tongue has a V-notch (3.1 mm for the 3.0 mm groove, 6.0 mm mouth, 30 deg half-angle) that centres the peg in the half-hex cup as the toggle closes.",
+      "justification": "The notch mouth (6.0 - 3.1)/2 = +-1.45 mm laterally pulls the peg into the cup as the tongue closes; the toggle snap force (0.33 N to 0.82 N) must exceed the head-end friction of the other unit, mu W/2 (0.18 N at mu = 1 for the declared 36.6 g mass), a margin of 1.9x at the low end of the spring range, UNRESOLVED dynamically. The tongue (0.8 mm) enters the 1.6 mm groove with 0.4 x 45 deg chamfers. Passive geometry and a spring only.",
+      "component_ids": [
+        "keeper",
+        "yaw-puck",
+        "head-peg"
+      ]
+    },
+    {
+      "kind": "geometric_guide",
+      "description": "Hex peg in half-hex cup with 0.5 x 45 deg tip chamfer on the peg.",
+      "justification": "The hexagonal peg (4.0 mm across flats) has six equivalent roll positions every 60 deg and is guided into the cup by its 0.5 mm chamfer; the flats carry torsion. No attractive force acts: a unit that is not driven does not self-dock.",
+      "component_ids": [
+        "head-peg",
+        "yaw-puck"
       ]
     }
   ],
   "limitations": [
-    "Kick-strut/cam locomotion mechanism is only a reserved volume; its geometry, stroke and drive are not designed.",
-    "Controller, motor driver, SMA wires and a bucket of wiring, fasteners, springs, balls, switch and cam sensor have estimate bases with 0 recorded where no value was cited, so the mass and power sums are lower bounds.",
-    "Vendor product pages are classed as datasheet for the schema; the cell's continuous rating is read from its 15C label.",
-    "Only two axial couplers are declared; no lateral side-face couplers, so no branching or lattices.",
-    "No through-coupler data or power contacts are declared; power transfer is not provided.",
-    "Box positions are a hand layout checked by the author with a SAT script only; shaft routing and wiring are not modelled."
+    "Roll-in docking was checked on paper only; the dynamics (impact, whether the ring-driven roll closes the trip), the trip energy fraction and the capture window are UNRESOLVED and belong to later gates.",
+    "No steering or axial locomotion is provided: the body rolls only perpendicular to its axis.",
+    "Yaw bending works only while the chain rests on a face with a vertical yaw axis. The worm self-locks only if the worm/sector friction coefficient is at least 0.125 (UNRESOLVED), so a bend angle is treated as actively maintained.",
+    "Many masses are upper bounds from solid volumes (walls, end plates, caps, puck, peg, lobe); the placement of the screws and the harness is a lumped stand-in; the peg root box, keeper-in-puck volume and meshing gears are box approximations.",
+    "Gear teeth are integer: ring 133 T pitch r 19.95 and pinion 14 T pitch r 2.1 (module 0.3, centre distance 17.85); spurs 41 T and 16 T at module 0.2 (centre distance 5.70); yaw worm 1 start into 27 teeth per turn at module 0.3. Tooth strength, backlash, profile and contact ratio are not assessed.",
+    "SLS PA12 dimensional tolerance is not cited; all fit and window numbers are nominal. PA12 strength is not assessed beyond the coupler bearing checks; heat is not assessed.",
+    "The release SMA peak is computed at the full 3.7 V (1.336 A); the datasheet gives about 200 mA for a 1 s pulse, so a real driver would limit the current and the peak is a conservative bound.",
+    "The Precision Microdrives 206-109 datasheet is headed as a sampling/target specification; the motors run from 3.7 V by PWM limited to 3.0 V effective, a control constraint.",
+    "The QT Py regulator is rated 600 mA peak; the 2220 mW term is a bound; later board revisions may use a different regulator. The board has no LiPo charger, and regulator dropout limits use near the end of charge.",
+    "Vendor product pages (Grepow, Adafruit, Pololu) are classed datasheet because the schema allows only datasheet or publication. Cited values were read on 2026-11-06 and are checked by sampling at the gate record.",
+    "Spring wire (ASTM A313) and A2 screws are costed at 304 density (assumption).",
+    "Only two axial couplers are declared; no lateral side-face couplers, no branching or lattices. No through-coupler data or power contacts; power transfer is not provided."
   ]
 }
