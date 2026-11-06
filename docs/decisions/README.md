@@ -76,3 +76,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q63 | [Gate 1 paper-gate protocol clarifications](Q063-gate1-protocol-clarifications.md) (agent decision under owner delegation) | accepted |
 | Q64 | [Gate 1 run 1 disposition: corpus additions, candidate fate, evaluator note](Q064-gate1-run1-disposition.md) (agent decision under owner delegation) | accepted |
 | Q65 | [Candidate revision records: file layout and corpus identifiers](Q065-candidate-revision-records.md) (agent decision under owner delegation) | accepted |
+| Q66 | [cand-a version 2: revision decisions](Q066-cand-a-v2-revision.md) (agent decision under owner delegation) | accepted |
