@@ -327,3 +327,7 @@ Added by Q64 after run 1. These entries come from the independent reviews, which
 | C29 | Pendulum-driven spherical robot literature | Prior art for the pendulum-in-sphere drive | https://ar5iv.labs.arxiv.org/html/2302.08932 |
 
 Still unsearched: spherical cage drones and tensegrity rollers.
+
+## Identifier note (Q65)
+
+The entries in the table above, added by Q64, are cited as **Q64-C21 … Q64-C29**. Section C already contained C21 (Swarm-bot), C22 (Sambot) and C23 (Blinky Blocks), and those keep their plain identifiers. Earlier review records are not edited. In them, C21–C23 next to Swarm-bot, Sambot or Blinky Blocks means the section-C entries.
