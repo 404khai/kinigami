@@ -109,3 +109,58 @@ cand-a v3 values:
 - **G7, G8:** pass. The only high cell is Roombots D2 (over-centre lock principle). CONRO and PolyBot D2 dropped to moderate.
 - **G6:** the retention review **fails**. The roll-in channel is cut on the mirror-image arc. A peg on the common axis enters at B's opposite bottom vertex and travels the lower arc about the pivot vertex. The declared slots, from the mid-height vertices over the top, are never on that path. The same error is in v2 (its review missed it).
 - **Retention mechanism:** the keeper four-bar, the tension path and the stops are reproduced by the reviewer and supported on paper.
+
+# Gate 1 paper-gate run 4
+
+- Report: `run4-e5c6521-ReleaseSafe.json` (code revision `e5c6521`, `working_tree_dirty: false`, ReleaseSafe).
+- Criteria: unchanged `gate1-v1`, sha256 `ffe135329340…ddbf`.
+- Candidates: cand-a **v4** (Q70). v3 is preserved as `declaration-v3.json`. cand-b and cand-c are unchanged.
+- Order: candidate `b03ffbd` → reviews `e5c6521` → this evaluation.
+- Label: **exploratory**.
+
+| Candidate | Overall | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| cand-a v4 | **unresolved** | pass | pass | pass | pass | pass | unresolved | pass | pass |
+| cand-b v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-c v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+
+**Survivors: none.**
+
+cand-a v4 values:
+- **G1:** D 58.181 mm, margin 1.819 mm.
+- **G2:** 2775 pairs tested, no interference.
+- **G4:** 41.741 g. Peak 4807 mW against a 19 425 mW limit.
+- **G5:** supported at evaluator roll 180°, which is a physical relative roll of 0 under the shortest-arc mating convention (Q70 §3).
+- **G7, G8:** pass. The single high is Roombots D2.
+- **G6:** the retention review is **unresolved**, not fail.
+  - **Corrected and reproduced:** the roll-in kinematics are correct, and the four-bar, torsion and release figures were reproduced by the reviewer.
+  - **Unsupported:** class f is applied to a pivot, stops and crank axis that sit in PA12; at ±0.3 mm the stroke falls to 4.41 mm against 4.6 mm needed.
+  - **Unsupported:** closure depends on a 0.05 mm vertical stack that ignores the SLS height tolerance of both units.
+  - **Unsupported:** the windows are stated at the slot, not at the jaw.
+  - **Unsupported:** the flat thrust washer allows only about 3° of yaw under tension.
+
+# Gate 1 paper-gate run 5
+
+- Report: `run5-93b3aa3-ReleaseSafe.json` (clean tree `93b3aa3`, ReleaseSafe).
+- Criteria: unchanged `gate1-v1`, sha256 `ffe135329340…ddbf`.
+- Candidates: cand-a **v5** (Q72). v4 is preserved as `declaration-v4.json`. cand-b and cand-c are unchanged.
+- Order: candidate `f13f8b8` → reviews `93b3aa3` → this evaluation.
+- Label: **exploratory**.
+
+| Candidate | Overall | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| cand-a v5 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
+| cand-b v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-c v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+
+**Survivors: none.**
+
+cand-a v5 values:
+- **G1:** D 58.181 mm.
+- **G2:** 2926 pairs tested, no interference.
+- **G4:** 42.905 g. Peak 4807 mW against a 19 425 mW limit.
+- **G7, G8:** pass, with the single high Roombots D2.
+- **G6:** the retention review **fails**.
+  - **Torsion has no carrier:** once the vertical free play exceeds 0.62 mm (43% of the declared 0.05–1.05 mm), the declared torsion load is carried by nothing.
+  - **Jaw window too small:** the open-jaw window at the class-f minimum stroke is 0.087 mm (the dossier said 0.104), below the declared ±0.35 mm stack.
+  - **What still holds:** tension retention, the machined frame, the four-bar margins and the cylindrical thrust are supported.
