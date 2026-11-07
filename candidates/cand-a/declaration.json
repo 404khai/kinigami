@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "candidate_id": "cand-a",
-  "candidate_version": 4,
+  "candidate_version": 5,
   "family": "A",
   "declared_on": "2026-11-07",
-  "author": "Claude Opus 5.5 (engineering lead) with Claude Sonnet 5.5 (cand-a v4 implementation agent)",
-  "summary": "Hexagonal-prism tumbler, version 4: one rigid hexagonal body (circumradius 25.5 mm) that rolls over its hexagon edges onto face F3 (rest orientation 180 deg about y, lobe parked at body -z), driven by an internal lift ring with one lobe (geared from a 6 mm gearmotor, 304 internal-gear band in a PA12 carrier); axial couplers on the two end faces: a machined 304 hex peg on the head (6.5 mm engagement), and a tail receiver with a roll-in channel re-derived from the corrected roll kinematics (two arcs through the F3 bottom vertices), a yaw turntable, a flat 304 seat and 304 three-flat jaw roll lock, a 304 thrust washer, and a motor-driven over-centre four-bar keeper with an outrigger bushing (third gearmotor, no SMA, no spring). BLE only, no power transfer.",
+  "author": "Claude Opus 5.5 (engineering lead) with Claude Sonnet 5.5 (cand-a v5 implementation agent)",
+  "summary": "Hexagonal-prism tumbler, version 5: one rigid hexagonal body (circumradius 25.5 mm) that rolls over its hexagon edges onto face F3 (rest orientation 180 deg about y, lobe parked at body -z), driven by an internal lift ring with one lobe (geared from a 6 mm gearmotor, 304 internal-gear band in a PA12 carrier); axial couplers on the two end faces: a machined 304 hex peg on the head (6.5 mm engagement), and a tail receiver with a roll-in channel (two arcs through the F3 bottom vertices), a yaw turntable whose 304 collar bears on a concave 304 saddle (cylindrical thrust face coaxial with the yaw axis), a flat 304 seat and a 304 three-flat jaw that closes to a fixed height with a declared vertical gap, and a motor-driven over-centre four-bar keeper whose pivot, crank stops, M3 bearing, saddle and base are one machined 304 frame (third gearmotor, no SMA, no spring). BLE only, no power transfer.",
   "stowed_geometry": {
     "primitives": [
       {
@@ -1983,7 +1983,7 @@
     {
       "id": "yaw-puck",
       "kind": "coupler_mechanism",
-      "description": "yaw turntable puck (PA12), the rear web of the receiver: cylinder dia 7.6 (r 3.8) about the z axis through (x 0, y -8.2); the box is the part behind the channel, x +-3.6, y -7.0 to -4.4, z -3.5 to 6.9 (solid cylinder volume pi*3.8^2*10.4 kept as the mass, an upper bound). It holds the 304 seat web (cantilevered forward from its front face y -7.0), guides the keeper stem and presses on the 304 thrust washer. It is retained in a bore of the cap region by a dia 8.8 bore (0.6 mm radial clearance rule); the bore and the puck-to-yaw-shaft joint are not designed. Torsion and yaw torque pass through the yaw shaft only",
+      "description": "yaw turntable puck (PA12), the rear web of the receiver: it turns about the z axis through (x 0, y -8.2); the box is the part behind the channel, x +-3.6, y -7.0 to -4.4, z -3.5 to 6.9 (solid cylinder volume pi*3.8^2*10.4 kept as the mass, an upper bound). It carries the PA12 seat web (cantilevered forward from its front face y -7.0) and the keeper stem guide. v5: it no longer presses a flat washer; the tension goes up the puck column into the 304 puck collar (joint not designed), which bears on the 304 saddle of the frame. Torsion and yaw torque pass through the yaw shaft only. SLS accuracy: https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls",
       "mass_mg": 439,
       "mass_basis": "derived",
       "derivation": {
@@ -2024,24 +2024,24 @@
     {
       "id": "puck-column",
       "kind": "coupler_mechanism",
-      "description": "puck column (PA12): upper part of the puck, x +-2.2, y -7.0 to -4.4, z 6.9 to 8.6, carrying the keeper stem guide slot; sits below the yaw shaft base (z 8.7) and beside M2 (x >= 2.25)",
-      "mass_mg": 18,
+      "description": "puck column (PA12): upper part of the puck, x +-1.4, y -7.0 to -4.4, z 6.9 to 10.2 (v4: x +-2.2, z 6.9 to 8.6), carrying the keeper stem guide slot and joining the 304 puck collar above the jaw envelope; stays x >= -1.4 clear of the M3 box (x <= -1.5, z >= 9.27) and x <= 1.4 clear of M2 (x >= 2.25)",
+      "mass_mg": 22,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 930.0,
-        "volume_m3": 1.9448000000000003e-08
+        "volume_m3": 2.4023999999999997e-08
       },
       "box": {
         "half_extent_um": [
-          2200,
+          1400,
           1300,
-          850
+          1650
         ],
         "pose": {
           "position_um": [
             0,
             -5700,
-            7750
+            8550
           ],
           "orientation": [
             1.0,
@@ -2065,7 +2065,7 @@
     {
       "id": "yaw-shaft",
       "kind": "structure",
-      "description": "yaw shaft (304 stainless, machined ISO 2768-1 class f), hollow OD 2.0 mm, ID 1.0 mm (the dia 0.8 push rod passes through), 4.0 mm long from z 8.7 to 12.7 (the box is the exposed part z 8.7 to 10.7; the rest is the hub inside the sector); volume pi*(1.0^2-0.5^2)*4.0",
+      "description": "yaw shaft (304 stainless, machined ISO 2768-1 class f), hollow OD 2.0 mm, ID 1.0 mm (the dia 0.8 push rod passes through and is guided by the bore), 4.0 mm long from z 8.7 to 12.7 (the box is the exposed part z 8.7 to 9.3 below the collar; the collar z 9.3 to 10.7 and the sector z 10.7 to 12.7 sit on the rest); volume pi*(1.0^2-0.5^2)*4.0",
       "mass_mg": 74,
       "mass_basis": "derived",
       "derivation": {
@@ -2076,13 +2076,13 @@
         "half_extent_um": [
           1000,
           1000,
-          1000
+          300
         ],
         "pose": {
           "position_um": [
             0,
             -8200,
-            9700
+            9000
           ],
           "orientation": [
             1.0,
@@ -2147,24 +2147,24 @@
     {
       "id": "seat",
       "kind": "coupler_mechanism",
-      "description": "peg seat (304, machined ISO 2768-1 class f), replaces the v3 lower half-hex cup insert: a flat bottom seat, top at z -2.05 (0.05 below the peg flat), 4.8 mm wide (x +-2.4), y -11.0 to -7.5 (the first 1.4 mm, y -11.0 to -9.6, lies under the peg hex section; the rest is a cantilever web that bolts to the thrust washer). The slanted side walls of a cup cannot exist: a rotating-hex swept-volume check of the corrected arrival path puts both 0.6 mm walls entirely inside the swept peg (penetration 0.60 mm). Box x -2.4..2.4, y -11.0..-7.5, z -3.3..-2.05; solid block 4.8 x 3.5 x 1.25 mm3 is an upper bound",
-      "mass_mg": 166,
+      "description": "peg seat (304, machined ISO 2768-1 class f): a flat seat, top at nominal z -2.45 (v4 -2.05), 4.8 mm wide (x +-2.4), y -11.0 to -7.5 (the first 1.4 mm, y -11.0 to -9.6, lies under the peg hex section; the rest is a cantilever web fixed to the PA12 puck web, NOT registered to the frame: the seat stays on its end-plate/puck piece). The seat top is 0.55 mm (nominal) below the peg flat plane of the jaw cavity so that the closed receiver has a declared vertical free play P (0.05 to 1.05 mm over the tolerance stack, see retention). Slanted side walls of a cup cannot exist (swept-volume check, v4). Box x -2.4..2.4, y -11.0..-7.5, z -3.3..-2.45; solid block 4.8 x 3.5 x 0.85 mm3 is an upper bound",
+      "mass_mg": 113,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 7900.0,
-        "volume_m3": 2.1000000000000003e-08
+        "volume_m3": 1.428e-08
       },
       "box": {
         "half_extent_um": [
           2400,
           1750,
-          625
+          425
         ],
         "pose": {
           "position_um": [
             0,
             -9250,
-            -2675
+            -2875
           ],
           "orientation": [
             1.0,
@@ -2186,26 +2186,108 @@
       }
     },
     {
-      "id": "thrust-washer",
+      "id": "frame-saddle",
       "kind": "coupler_mechanism",
-      "description": "thrust washer (304, ISO 2768-1 class f), 12.0 x 0.5 x 1.8 mm plate, x +-6.0, y -7.5 to -7.0, z -3.5 to -1.7. It is the flat thrust face for the puck: the puck's flat front face (y -7.0) presses on its +y side and it bears in -y on the top faces (y = -7.5) of the two cap strips (|x| 3.9 to 6.0 on each side, 2 x 2.1 x 1.8 = 7.6 mm2) and carries the seat web. Replaces the v3 PA12 annulus on end plate b (the V cut and the +-4.545 x +-2.6 end-plate slot leave 4.28 mm2 of the annulus, below the 5 mm2 rule)",
-      "mass_mg": 85,
+      "description": "concave 304 saddle of the keeper frame (machined ISO 2768-1 class f): cylindrical bore r 4.2 (4.15 to 4.25) coaxial with the yaw axis (x 0, y -8.2), height 1.4 (z 9.3 to 10.7), half-width x +-2.6 (covers +-38 deg about -y), the thrust face of the puck collar. The bore bottom is at y -12.4, 0.4 mm below the end plate b inner face (y -12): the saddle is an insert in a window of end plate b, flush with its outer face y -14 (insert thickness 1.6 at the bottom of the bore; it does not leave a PA12 wall below the rule because it replaces the plate there). The box is only the part in the cavity (flanks, x +-2.15, y -12.0 to -11.5, z 9.3 to 10.7), mostly bore void: the insert material (area 9.81 mm2 x 1.4 = 13.7 mm3, mass counted) lies in the plate window y -14 to -12 which the end plate b box already covers. It is limited to |x| <= 2.6 so it clears the M3 frame block physically",
+      "mass_mg": 108,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 7900.0,
-        "volume_m3": 1.08e-08
+        "volume_m3": 1.3732209989166221e-08
       },
       "box": {
         "half_extent_um": [
-          6000,
+          2150,
           250,
-          900
+          700
         ],
         "pose": {
           "position_um": [
             0,
-            -7250,
-            -2600
+            -11750,
+            10000
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-06",
+        "title": "ATI 304 density 7.90 g/cm3, yield 205 MPa; tolerance class from ISO 2768-1 table https://amesweb.info/fits-tolerances/iso-2768-linear-dimensions-tolerances.aspx"
+      }
+    },
+    {
+      "id": "puck-collar",
+      "kind": "coupler_mechanism",
+      "description": "puck collar (304, machined ISO 2768-1 class f): disc r 3.8 (3.75 to 3.85) about the yaw axis (0, -8.2), z 9.3 to 10.7 (1.4 high), on the yaw shaft above the jaw and tongue envelope (their boxes reach z 8.63 nominal, 9.16 at the largest class-f stroke), bore dia 2.0; its convex cylindrical face bears on the saddle through +-15 deg of yaw because it is coaxial with the yaw axis. Box is the inscribed rectangle x +-2.1, y -11.3 to -7.4, z 9.3 to 10.7 (disc area stand-in; y -7.4 keeps it off the link plane). Volume pi*(3.8^2-1^2)*1.4 = 58.9 mm3. The collar-to-puck-column joint is not designed",
+      "mass_mg": 467,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 5.911220736994554e-08
+      },
+      "box": {
+        "half_extent_um": [
+          2100,
+          1950,
+          700
+        ],
+        "pose": {
+          "position_um": [
+            0,
+            -9350,
+            10000
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-06",
+        "title": "ATI 304 density 7.90 g/cm3, yield 205 MPa; tolerance class from ISO 2768-1 table https://amesweb.info/fits-tolerances/iso-2768-linear-dimensions-tolerances.aspx"
+      }
+    },
+    {
+      "id": "frame-base",
+      "kind": "structure",
+      "description": "base of the keeper frame (304, machined ISO 2768-1 class f), plate 0.6 mm on the cap-region inner face of the middle triangle piece of end plate b (the piece between the two arms of the V cut, hanging on the F3 wall), x -2.2 to 6.3, y -12.0 to -11.4, z 10.7 to 14.32; it ties the M3 bearing block, the saddle insert and the rocker post into ONE machined part. 3.31 mm from the nearest arc centreline (wall 2.9). Volume 8.5*0.6*3.62 = 18.5 mm3",
+      "mass_mg": 146,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 1.8462e-08
+      },
+      "box": {
+        "half_extent_um": [
+          4250,
+          300,
+          1810
+        ],
+        "pose": {
+          "position_um": [
+            2050,
+            -11700,
+            12510
           ],
           "orientation": [
             1.0,
@@ -2393,7 +2475,7 @@
     {
       "id": "jaw",
       "kind": "coupler_mechanism",
-      "description": "upper half-hex jaw (304, ISO 2768-1 class f): upper three flats (30, 90, 150 deg) of the 4.10 mm across-flats hex, y -11.0 to -9.6, block 5.8 wide (x +-2.9) with a 2 x 2 bridge to the keeper stem; closed z 0.0 to 3.05, open +5.582 mm; the box is the envelope over the stroke (z 0.0 to 8.632). It is clear of the swept peg at the open stop by 0.449 mm (hex AF 4.0 rotating during entry; 0.420 mm with AF 4.05). Volume 5.8*1.4*3.05 + bridge 2*2*2.6 = 35.2 mm3 (upper bound)",
+      "description": "upper half-hex jaw (304, ISO 2768-1 class f): two legs and a ceiling around an upper-half-hex pocket of 4.20 mm across flats (4.15 to 4.25; v4 4.10), pocket flat 2.10 above the peg axis, legs x 2.425 to 2.9 at the lower edge, ceiling to z 3.05, 0.6 x 30 deg entry chamfer on the leg inner lower edges as a SEATING LEAD-IN only; y -11.0 to -9.6; closed lower edge z 0.0 to 3.05, open +5.582 mm. v5: the jaw closes to a FIXED height set by the crank stop on the 304 frame; it does not seat on the seat and need not touch the peg (the vertical gap is declared, see retention). The box is the envelope over the stroke (z 0.0 to 8.632); open clearance to the swept peg (hex AF 4.0, jaw outer rectangle x +-2.9) is 0.448 mm at the nominal stroke, 0.104 mm at the size-rule class-f minimum stroke 5.088 mm (0.052 at 5.035, 0.000 at the frame-plus-play minimum 4.631): a reduced-margin item. Volume 5.8*1.4*3.05 + bridge 2*2*2.6 = 35.2 mm3 (upper bound)",
       "mass_mg": 278,
       "mass_basis": "derived",
       "derivation": {
@@ -2434,7 +2516,7 @@
     {
       "id": "keeper-tongue",
       "kind": "coupler_mechanism",
-      "description": "keeper tongue and stem (304, ISO 2768-1 class f): tongue 1.0 mm thick (y -9.4 to -8.4), x +-2.05, closed lower edge z 0.0 with a SEMICIRCULAR notch r 1.55 on the peg axis (the V-notch is dropped as a pre-alignment means; a 3.1 mm notch remains only as a seating feature, 0.05 mm per side to the 3.0 mm groove root) and a 30 deg half-angle lead-in wedge 0.3 mm per side (tip face 0.4 mm), height 2.55; 2 x 2 stem 0.45 above it; open +5.582 mm. Box is the envelope over the stroke, x +-2.05, z 0.0 to 8.582; open clearance to the swept peg 1.026 mm nominal, 0.58 to 0.65 mm at the class-f stroke corners. Volume 4.1*1.0*2.55 + 2*2*0.45 = 12.3 mm3 (upper bound, notch ignored)",
+      "description": "keeper tongue and stem (304, ISO 2768-1 class f): tongue 1.0 mm thick (y -9.4 to -8.4), x +-2.05, closed lower edge z 0.0 with a SEMICIRCULAR notch r 1.55 on the peg axis (the V-notch is dropped as a pre-alignment means; a 3.1 mm notch remains only as a seating feature, 0.05 mm per side to the 3.0 mm groove root) and a 30 deg half-angle lead-in wedge 0.3 mm per side (tip face 0.4 mm), height 2.55; 2 x 2 stem 0.45 above it; open +5.582 mm. Box is the envelope over the stroke, x +-2.05, z 0.0 to 8.582; open clearance to the swept peg 1.025 mm nominal, 0.654 mm at the size-rule minimum stroke 5.088, 0.318 mm at the frame-plus-play minimum 4.631. Volume 4.1*1.0*2.55 + 2*2*0.45 = 12.3 mm3 (upper bound, notch ignored)",
       "mass_mg": 97,
       "mass_basis": "derived",
       "derivation": {
@@ -2475,7 +2557,7 @@
     {
       "id": "keeper-rod",
       "kind": "coupler_mechanism",
-      "description": "keeper push rod and yoke bar (304): dia 0.8 rod on the yaw axis from the stem top through the hollow yaw shaft and the sector hub (nested, not boxed) to the yoke bar above the hub; the bar (x 0 to 3.5, y -8.9 to -7.8, 0.8 high) carries a horizontal slot for the rocker output pin, which moves 2.42 mm in x. Box is the exposed part and the bar envelope over the stroke, x -0.4..3.5, z 12.7..19.72 (its physical outer point is r 19.96, the box corner r 20.02). Volume pi*0.4^2*16.7 + 3.5*1.1*0.8 = 11.5 mm3",
+      "description": "keeper push rod and yoke bar (304, rigid, no flexure in v5): dia 0.8 rod on the yaw axis from the stem top through the hollow yaw shaft and the sector hub (nested, not boxed) to the yoke bar above the hub; the bar (x 0 to 3.5, y -8.9 to -7.8, 0.8 high) carries a horizontal slot for the rocker output pin, which moves 2.42 mm in x. Box is the exposed part and the bar envelope over the stroke, x -0.4..3.5, z 12.7..19.72 (its physical outer point is r 19.96, the box corner r 20.02). Volume pi*0.4^2*16.7 + 3.5*1.1*0.8 = 11.5 mm3",
       "mass_mg": 91,
       "mass_basis": "derived",
       "derivation": {
@@ -2516,7 +2598,7 @@
     {
       "id": "keeper-crank",
       "kind": "coupler_mechanism",
-      "description": "keeper crank (304, 0.5 mm plate), r 2.0 on the M3 shaft at C = (-4.500, 12.272), boss r 2.4, y -7.8 to -7.3, immediately inboard of the outrigger bushing; box is the bounding square of the boss. Volume pi*2.4^2*0.5 = 9.0 mm3 (upper bound)",
+      "description": "keeper crank (304, 0.5 mm plate), r 2.0 on the M3 shaft at C = (-4.500, 12.272), boss r 2.4, y -7.8 to -7.3, immediately inboard of the frame bearing block (arm 1.0 wide from a boss r 1.5 to the crank pin, the stop lugs of the frame touch the arm sides; the box stays the bounding square of r 2.4); box is the bounding square of the boss. Volume pi*2.4^2*0.5 = 9.0 mm3 (upper bound)",
       "mass_mg": 71,
       "mass_basis": "derived",
       "derivation": {
@@ -2598,7 +2680,7 @@
     {
       "id": "keeper-rocker",
       "kind": "coupler_mechanism",
-      "description": "keeper rocker (bell crank, 304, 0.5 mm plate, y -7.3 to -6.8): pivot Pv = (5.250, 15.322) carried by the PA12 rocker boss on M2, link-side arm b = 3.0, output arm a = 4.5 at +46 deg from it (mirror of the v3 -46), branch mirrored. Box is the swept envelope of the link and rocker for x -1.0..3.7, z 12.9..19.99 (0.2 mm above the sector; the capsule envelope top 20.06 is clipped at the wall inner face z 20.0 - the arm is narrower there). Volume 0.5*1.5*(3.0+4.5+1.25) = 6.6 mm3",
+      "description": "keeper rocker (bell crank, 304, 0.5 mm plate, y -7.3 to -6.8): pivot Pv = (5.250, 15.322) carried by the 304 rocker post of the keeper frame (cantilever pin 0.5 mm beyond the post), link-side arm b = 3.0, output arm a = 4.5 at +46 deg from it (mirror of the v3 -46), branch mirrored. Box is the swept envelope of the link and rocker for x -1.0..3.7, z 12.9..19.99 (0.2 mm above the sector; the capsule envelope top 20.06 is clipped at the wall inner face z 20.0 - the arm is narrower there). Volume 0.5*1.5*(3.0+4.5+1.25) = 6.6 mm3",
       "mass_mg": 52,
       "mass_basis": "derived",
       "derivation": {
@@ -2639,7 +2721,7 @@
     {
       "id": "keeper-rocker-tip",
       "kind": "coupler_mechanism",
-      "description": "swept envelope of the link end and rocker for x 3.7..6.95, z 13.9..19.69 (0.7 mm above the worm), with the four dia 0.8 pins (7.54 mm3, as budgeted by the lead) and two hard stops 1 x 1 x 2 (4 mm3); the stops are carried by the outrigger post at crank angles 18.86 and 221.39 deg. Volume 11.54 mm3",
+      "description": "swept envelope of the link end and rocker for x 3.7..6.95, z 13.9..19.69 (0.7 mm above the worm), with the four dia 0.8 pins (7.54 mm3, as budgeted by the lead) and two hard stops 1 x 1 x 2 (4 mm3); the two stop lugs (counted here) are carried by the 304 frame-m3 block, lug centres at crank angles -9 and 249 deg, r 2.1, each 1 x 1 x 0.6, touching the crank arm sides at the stop angles 18.86 and 221.39 deg; the 249 deg lug is 3.29 mm from the arc centreline (0.39 mm clear of the 2.9 wall); the lugs are not separately boxed (inside the crank envelope box). Volume 11.54 mm3",
       "mass_mg": 91,
       "mass_basis": "derived",
       "derivation": {
@@ -2678,14 +2760,14 @@
       }
     },
     {
-      "id": "m3-post",
+      "id": "frame-m3",
       "kind": "structure",
-      "description": "M3 outrigger post (PA12): cylinder OD 4.6 on end plate b inner face, y -12.0 to -7.9, axis (-4.500, 12.272), bore 2.6 mm (0.3 mm radial clearance, the 0.6 mm rule) over the last 2.6 mm; the M3 shaft tip (y -10.3) runs in the bore, bushing length 1.3 mm at y -9.2 to -7.9. It carries the crank load next to the crank so that it does not go into the gearbox. Volume pi*2.3^2*4.1 - pi*1.3^2*2.6 = 54.3 mm3. SLS accuracy: https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls",
-      "mass_mg": 51,
+      "description": "M3 bearing block of the keeper frame (304, machined ISO 2768-1 class f; replaces the v4 PA12 outrigger post): cylinder OD 4.6 on end plate b inner face, y -12.0 to -7.9, axis (-4.500, 12.272), bore dia 2.0 over y -10.3 to -7.9 (M3 shaft dia 2.0 +-0.05 in a bore +-0.05: radial play at most 0.05 mm beyond a class-f fit, included in the frame-plus-play tolerance case), 2.4 mm long bearing next to the crank; it carries the two crank stop lugs. Volume pi*(2.3^2*4.1-1.0^2*2.4) + 1.2 = 61.8 mm3",
+      "mass_mg": 488,
       "mass_basis": "derived",
       "derivation": {
-        "density_kg_m3": 930.0,
-        "volume_m3": 5.4333844943835464e-08
+        "density_kg_m3": 7900.0,
+        "volume_m3": 6.179818069509351e-08
       },
       "box": {
         "half_extent_um": [
@@ -2713,32 +2795,32 @@
       "power_basis": "derived",
       "source": {
         "kind": "datasheet",
-        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
         "accessed": "2026-11-06",
-        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+        "title": "ATI 304 density 7.90 g/cm3, yield 205 MPa; tolerance class from ISO 2768-1 table https://amesweb.info/fits-tolerances/iso-2768-linear-dimensions-tolerances.aspx"
       }
     },
     {
-      "id": "rocker-boss",
+      "id": "frame-rocker-post",
       "kind": "structure",
-      "description": "rocker boss (PA12) clipped to the top of M2, carrying the rocker pivot pin (dia 1.0, 304 pin counted in keeper-rocker-tip), x 4.15..6.35, y -6.8..-4.7, z 14.7..16.72. Volume 9.2 mm3",
-      "mass_mg": 9,
+      "description": "rocker post of the keeper frame (304, machined ISO 2768-1 class f; replaces the PA12 rocker boss on M2): 2 x 2 post x 4.25..6.25, y -12.0 to -7.3, z 14.32 to 16.32 on the frame base, carrying the dia 1.0 rocker pivot pin at (5.25, 15.322); 4.98 mm from the nearest arc centreline. Volume 2*2*4.7 = 18.8 mm3",
+      "mass_mg": 149,
       "mass_basis": "derived",
       "derivation": {
-        "density_kg_m3": 930.0,
-        "volume_m3": 9.240000000000002e-09
+        "density_kg_m3": 7900.0,
+        "volume_m3": 1.8800000000000003e-08
       },
       "box": {
         "half_extent_um": [
-          1100,
-          1050,
-          1010
+          1000,
+          2350,
+          1000
         ],
         "pose": {
           "position_um": [
             5250,
-            -5750,
-            15710
+            -9650,
+            15320
           ],
           "orientation": [
             1.0,
@@ -2754,9 +2836,9 @@
       "power_basis": "derived",
       "source": {
         "kind": "datasheet",
-        "url": "https://3dprinting.com/wp-content/uploads/2019/05/EOS-pa2200-white-datasheet-TDS.pdf",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
         "accessed": "2026-11-06",
-        "title": "EOS PA 2200 material data sheet (density 930 kg/m3, tensile strength 50 MPa, modulus 1700 MPa)"
+        "title": "ATI 304 density 7.90 g/cm3, yield 205 MPa; tolerance class from ISO 2768-1 table https://amesweb.info/fits-tolerances/iso-2768-linear-dimensions-tolerances.aspx"
       }
     },
     {
@@ -3347,10 +3429,10 @@
     }
   ],
   "mass_budget": {
-    "total_mass_mg": 41741
+    "total_mass_mg": 42905
   },
   "assembly_access": {
-    "statement": "Walls and end plates are separate PA12 parts joined by two PA12 axial posts (from y -6.9 to the head end plate) and four M1.6 screws (screw positions are a lumped stand-in). The V-shaped roll-in channel cuts end plate b and the tail cap into three pieces that are each fixed to the wall ring and to the cap strips by the thrust washer and screws (not designed). Each wall half (head and tail) is a separate part so the lift ring can be dropped into the girdle slot between them. The cell, controller and boards load as a stack along the axis with one end plate removed; the head peg installs from the head end plate and the tail receiver parts (puck, seat web with thrust washer, keeper tongue, jaw and rod) install from the tail end. M3 is a column in the vacated left interior slot with its outrigger post standing on end plate b; M2 is the right interior column. No assembly sequence has been verified; the gear train, yaw worm, four-bar routing and the press fits are not shown to be assemblable."
+    "statement": "Walls and end plates are separate PA12 parts joined by two PA12 axial posts (from y -6.9 to the head end plate) and four M1.6 screws (screw positions are a lumped stand-in). The V-shaped roll-in channel cuts end plate b and the tail cap into three pieces; the keeper frame (304) is fixed to the middle triangle piece and its saddle insert sits in a window of that piece. Each wall half (head and tail) is a separate part so the lift ring can be dropped into the girdle slot between them. The cell, controller and boards load as a stack along the axis with one end plate removed; the head peg installs from the head end plate and the tail receiver parts (puck, collar, seat web, keeper tongue, jaw and rod) install from the tail end. M3 is a column in the vacated left interior slot with its frame bearing block standing on end plate b; M2 is the right interior column. No assembly sequence has been verified; the gear train, yaw worm, four-bar routing, the puck-to-collar joint and the press fits are not shown to be assemblable."
   },
   "coupler_sites": [
     {
@@ -3399,7 +3481,7 @@
   "retention": {
     "requires_power_to_hold": false,
     "mechanism_kind": "geometric_interlock",
-    "mechanism": "The head peg's annular groove (dia 3.0 x 1.4 wide, groove centre at A-frame y 27.1 = 5.1 mm inside the neighbour's face; engagement 6.5 mm, tip y 28.5) is closed from above (body +z) by a 1.0 mm 304 keeper tongue (B frame y -9.4 to -8.4) whose closed lower edge is on the peg axis (z 0.0) with a semicircular notch r 1.55 that rests on the upper half of the groove root (dia 3.0). Groove engagement: the tongue overlaps the upper half of the peg shoulder between the groove root (r 1.5) and the hex, area 3.39 mm2 (v3: 1.5 mm2 as two prongs). Tension path (design tension 4 mu W = 1.637 N, mu 1 provisional): peg tip-side shoulder, tongue, stem (2 x 2) in the PA12 guide slot of the puck column, puck web (y -7.0 to -4.4), 304 thrust washer (flat thrust face, 7.6 mm2 bearing on the cap strips), cap strips, tail wall ring. The tongue is moved by a motor-driven over-centre four-bar: crank r 2.0 on the M3 axis (-4.500, 12.272), link 10.216 mm, rocker pivot (5.250, 15.322) (link-side arm 3.0, output arm 4.5), push rod on the yaw axis through the hollow yaw shaft, pin-in-slot yoke bar. Two stable geometric states: CLOSED = crank 10 deg past the folded dead centre against a hard stop, OPEN = 10 deg past the extended dead centre against a second stop (the crank travels 202.5 deg, the rocker 82.6 deg, the rod 5.58 mm for 4.6 mm needed). The link line passes on the stop side of the crank axis (by 0.277 mm closed, 0.422 mm open): any load that tries to change the state pushes the crank into its stop; a load in the other sense pulls the crank 10 deg back to the dead centre (pin moves 0.04 mm) where the state still holds, and a later reversal there needs pin friction mu_j of at least 0.10 (closed) to 0.14 (open) for an assumed 0.05 mm play. With ISO 2768-1 class f the worst-case margin past the dead centre is at least 5.19 deg (all coordinates +-0.1 bound) and 5.64 deg (size rule). Roll lock: peg hex enclosed over 1.4 mm by the jaw (upper three flats) and the flat seat, 4.10 mm across flats, 0.05 mm per side, free roll +-2.58 deg. Nothing is powered to hold.",
+    "mechanism": "The head peg's annular groove (dia 3.0 x 1.4 wide, groove centre at A-frame y 27.1 = 5.1 mm inside the neighbour's face; engagement 6.5 mm, tip y 28.5) is closed from above (body +z) by a 1.0 mm 304 keeper tongue (B frame y -9.4 to -8.4) whose closed lower edge is on the receiver axis (z 0.0) with a semicircular notch r 1.55. Groove engagement (single value, corrected hexagon test): the plate overlaps the peg shoulder between the groove root (r 1.5) and the hex over 3.04 mm2 with the peg axis on the tongue axis; the area falls to 0.14 mm2 if the peg sits 0.9 mm low in the vertical free play (3.41 mm2 at +0.15). Tension path (design tension 4 mu W = 1.683 N, mu 1 provisional): peg shoulder, tongue, stem (2 x 2) in the PA12 guide slot of the puck column, puck column, 304 puck collar (joint not designed), concave 304 saddle insert of the keeper frame (cylindrical thrust face, collar r 3.8 on saddle r 4.2, line contact 1.4 mm), end plate b middle piece, F3 wall. v5 has no washer. The tongue is moved by a motor-driven over-centre four-bar: crank r 2.0 on the M3 axis (-4.500, 12.272), link 10.216 mm, rocker pivot (5.250, 15.322) (link-side arm 3.0, output arm 4.5), push rod on the yaw axis through the hollow yaw shaft, pin-in-slot yoke bar. The pivot post, the two stop lugs, the M3 bearing block, the saddle and the rod guide (the shaft bore) are on ONE machined 304 frame part (base plate 0.6 mm on the middle triangle piece), so the lock geometry carries only class-f machining tolerance (ISO 2768-1 f: +-0.05 mm to 6 mm, +-0.1 mm 6 to 30 mm). Two stable geometric states: CLOSED = crank 10 deg past the folded dead centre against a hard stop, OPEN = 10 deg past the extended dead centre against a second stop (the crank travels 202.5 deg, the rocker 82.6 deg, the rod 5.58 mm for 4.6 mm needed). Link line offset from the crank axis 0.277 mm closed, 0.422 mm open. Declared tolerance basis (size rule, 1 024 corners): margin past the dead centre at least 5.64 deg open / 6.09 deg closed, rod stroke 5.088 to 6.068 mm; with every frame coordinate +-0.1: 5.19 / 5.41 deg, 5.035 to 6.113 mm; frame plus bearing and pin play (C and Pv +-0.15, L +-0.2, r b a +-0.1): 1.73 / 3.59 deg, 4.631 to 6.613 mm (margins stay positive, stroke stays at least 4.6 mm). Vertical stack: the jaw closes to a FIXED height set by the crank stop on the frame; it does not seat on the seat and no jaw-to-peg contact is required (no flexure; the jaw entry chamfer 0.6 x 30 deg is a seating lead-in only). Vertical gap (free play P between the seat top and the jaw top flat, less the peg across-flats): nominal 0.55 mm; worst case 0.05 to 1.05 mm = nominal +-0.35 (unit-to-unit stack: both units' SLS +-0.3 plus the PA12 chain frame-end plate-puck-seat, stated by the lead) +-0.05 jaw flat, +-0.05 seat top, +-0.05 peg across flats (class f, arithmetic sum). Lateral clearance per flat 0.10 nominal (pocket AF 4.20 +-0.05 against peg AF 4.00 +-0.05: 0.05 to 0.15). Jaw and seat modelled as exact polygons, peg hex AF 4.0, configuration space (x, z, roll) searched on a 0.05 mm / 1 deg grid (0.01 mm / 0.5 deg for the tight corner) from the seated pose: tight corner (P 0.05): z span 0.05, x +-0.05, roll lash +-0.5 deg; nominal (P 0.55): z -0.45 to +0.10, x +-0.35, roll lash +-12 deg; loose corner (P 1.05): z -0.90 to +0.15, x +-0.65, roll free over the full +-30 deg (the 60 deg hex period), i.e. NO roll lock at the loose corner. No state reachable in any of the three cases leaves |x| or |z| > 7 mm: with the jaw closed the peg cannot leave along either arc or sideways or up or down (the lower sides are open but the 4.0 mm hex does not fit the 2.45 mm opening between the seat top and the leg lower edge unless it is rolled 30 deg, which needs P > 0.62 and then the legs and ceiling still block it). Only the jaw and seat are in this model; the tongue additionally blocks the pull-out in y. Load-reversal at the dead centre as in v4 (pin friction bound recomputed in the dossier). Nothing is powered to hold.",
     "component_ids": [
       "keeper-tongue",
       "jaw",
@@ -3409,22 +3491,25 @@
       "keeper-rocker",
       "keeper-rocker-tip",
       "keeper-motor",
-      "m3-post",
+      "frame-m3",
+      "frame-base",
+      "frame-rocker-post",
+      "frame-saddle",
+      "puck-collar",
       "seat",
-      "thrust-washer",
       "yaw-puck",
       "head-peg"
     ],
     "release": {
       "bounded_independent_release": true,
-      "means": "The unit's own keeper motor M3 (Precision Microdrives 206-109 via driver-2) drives the crank over the dead centres: 203 deg from the closed stop to the open stop, retracting the tongue by 5.58 mm (4.6 mm needed with the tongue closing at z 0.0; open lower edge >= 4.6). The open state is held geometrically by the second stop. Release torque: with tongue friction at the full design tension (steel on steel, mu bound 1.0, provisional) the design tension is 4 mu W = 1.637 N for the declared 41.741 g mass and the peak crank torque over the stroke is 1.637 N x 2.871 mm = 4.70 mN m against M3 rated 3 mN m (0.64x of the requirement) and stall 9 mN m (1.91x). Release under the full mu = 1 bound tension therefore needs more than the rated torque (rated covers tongue friction up to 1.04 N, 64% of the bound); release is specified at low tension (the controller relaxes the tension first, chain yaw 0). Docking sequence: open keeper (M3), roll in, IMU detects landing, close keeper (M3). It acts only on this unit's own receiver. Crank stop wear, M3 heat and cycle life are UNRESOLVED."
+      "means": "The unit's own keeper motor M3 (Precision Microdrives 206-109 via driver-2) drives the crank over the dead centres: 203 deg from the closed stop to the open stop, retracting the tongue by 5.58 mm (4.6 mm needed with the tongue closing at z 0.0). The open state is held geometrically by the second stop. Release friction counts both faces under the chain tension T: the peg shoulder on the tongue and the stem on the guide slot wall, each normal force T at the friction bound mu 1 (provisional), so the force on the rod is 2 mu T and the crank torque is 2 mu T x 2.871 mm/rad (peak lever). Operating rule: release only when the chain tension is at most T_rel = 3 mN m / (2 mu x 2.871) = 0.522 N (1.24 W, 31% of the design tension 4 mu W = 1.683 N), so that the M3 rated torque suffices (stall: 1.567 N). At the full mu = 1 bound tension 1.683 N release needs 9.66 mN m = 1.07 x M3 stall (9 mN m): release is blocked at that bound (CPL-008 allows blocked release); the controller relaxes the chain tension first. Docking sequence: open keeper (M3), roll in, IMU detects landing, close keeper (M3). It acts only on this unit's own receiver. Crank stop wear, M3 heat and cycle life are UNRESOLVED."
     }
   },
   "alignment": [
     {
       "kind": "geometric_guide",
       "description": "Roll-in channel from the corrected roll kinematics: two circular-arc slots, radius 25.5 mm, centred on the two F3 bottom vertices (+-12.75, +22.084), running from the vertices to the face centre (a V opening toward +z), 5.8 mm wide, 7.0 mm deep from the tail face, 45 deg x 1.5 mm flared mouths; end plate b slot +-4.545 x +-2.6 mm at the centre.",
-      "justification": "Verified with the table-height condition (world frame, A fixed, B resting on F3 and rolling from one step to the side about the shared bottom edge P): the peg point lies in B's frame on the circle of radius 25.5 about B's bottom vertex, from B's other bottom vertex to the face centre; B's lowest vertex stays on the table, its centre rises to 25.5 mm at 30 deg of roll; the peg hex turns 60 deg relative to B (hex symmetry). The final approach is along 30 deg from the body x axis (nearly sideways), not from the vertical. Slot width 5.8 mm (4.619 + 2 x 0.59) gives 0.59 mm per side nominal; SLS accuracy +-0.3% with a lower limit of +-0.3 mm (Materialise PA12 SLS, https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls) gives a minimum width 5.5 mm and 0.44 mm per side. Windows: lateral at the mouth +-(0.59+1.5) = +-2.09 mm (min +-1.94); height +-0.59 (min +-0.44); heading (two-point jam, engagement 6.5 mm) 11.3 deg nominal, 8.2 deg at the SLS minimum slot and 7.6 deg with the peg at the class-f upper limit; roll any multiple of 60 deg; axial +-0.5 mm (groove play +-0.2 plus slot play +-0.3). THERE IS NO AXIAL OR HEADING PRE-ALIGNMENT MEANS other than these windows, and a free approach cannot start a roll-in: docking needs B one roll step to the side in a common lane on the face adjacent to F3 (axial inside +-0.5 mm, heading inside the window, the peg already engaged 6.5 mm), which is only reachable by rolling out of a previous dock. After docking the relative roll is 0 (B ends on F3) and the 60 deg relative turn during entry is absorbed by the hex symmetry. Nominal geometric estimates; the capture window is not claimed (CPL-006). No magnet and no cone.",
+      "justification": "Table-height condition (world frame, A fixed, B resting on F3 and rolling from one step to the side about the shared bottom edge P): the peg point lies in B's frame on the circle of radius 25.5 about B's bottom vertex, from B's other bottom vertex (roll 0) to the face centre (roll 60 deg); B's lowest vertex stays on the table, its centre rises to 25.5 mm at 30 deg of roll; the peg hex turns 60 deg relative to B. The final approach is along 30 deg from the body x axis. Slot width 5.8 mm (4.619 + 2 x 0.59) gives 0.59 mm per side nominal, minimum slot 5.5 mm (SLS +-0.3% with a lower limit of +-0.3 mm, Materialise PA12 SLS, https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls) 0.44 mm per side. Windows AT THE SLOT: lateral at the mouth +-(0.59+1.5) = +-2.09 mm (min +-1.94); height +-0.59 (min +-0.44); heading (two-point jam, engagement 6.5 mm) 11.3 deg nominal, 8.2 deg at the SLS minimum slot and 7.6 deg with the peg at the class-f upper limit; roll any multiple of 60 deg; axial +-0.5 mm. WINDOWS AT THE JAW (open jaw, swept hex AF 4.0, jaw outer block x +-2.9): height margin toward the jaw 0.448 mm at the nominal stroke 5.582, 0.104 mm at the size-rule class-f minimum stroke 5.088, 0.052 mm at 5.035 (every coordinate +-0.1), 0.000 mm at the frame-plus-play minimum 4.631; for the tongue 1.025 / 0.654 / 0.614 / 0.318 mm. These are for a peg at the nominal height: they take no allowance for the peg-height offset (up to +-0.6 mm, both units' SLS +-0.3) and no allowance for the +-0.35 mm stack between the seat and the frame, so the jaw window toward the jaw is REDUCED-MARGIN and is not closed. THERE IS NO AXIAL OR HEADING PRE-ALIGNMENT MEANS other than these windows, and a free approach cannot start a roll-in: docking needs B one roll step to the side in a common lane (axial inside +-0.5 mm, heading inside the window, the peg already engaged 6.5 mm), only reachable by rolling out of a previous dock. Nominal geometric estimates; the capture window is not claimed (CPL-006). No magnet and no cone.",
       "component_ids": [
         "cap-l",
         "cap-r",
@@ -3435,7 +3520,7 @@
     {
       "kind": "geometric_guide",
       "description": "Tongue seating feature (not a pre-alignment means): semicircular notch r 1.55 with a 30 deg half-angle lead-in wedge (0.3 mm each side, tip face 0.4 mm) that seats the groove root as the crank closes.",
-      "justification": "The V-notch of v3 is dropped as a declared pre-alignment means: with flank friction 0.15 the lateral push fraction is 0.393 (it is negative at flank friction 1), so the rated closing force 1.04 N gives 0.41 N against the neighbour's full-weight drag mu W = 0.409 N at mu 1: a ratio of 1.00 (stall 3.01), below the 1.5 rule. The notch seats a peg already inside the +-0.44 mm channel window; axial capture +-0.5 mm. The tongue is driven by M3 through the four-bar, not by a spring.",
+      "justification": "The V-notch of v3 is not a declared pre-alignment means: with flank friction 0.15 the lateral push fraction is 0.393, so the rated closing force 1.04 N gives 0.41 N against mu W = 0.421 N at mu 1: ratio 0.98 (stall 2.93), below the 1.5 rule. The notch seats a peg already inside the channel window; with the vertical free play the peg may sit up to 0.9 mm low and then the notch does not wrap the groove root at all (overlap 0.14 mm2); the tongue retains the peg by the shoulder overlap only. The tongue is driven by M3 through the four-bar, not by a spring.",
       "component_ids": [
         "keeper-tongue",
         "keeper-rod",
@@ -3446,30 +3531,33 @@
     },
     {
       "kind": "geometric_guide",
-      "description": "Hex peg on a flat seat under a three-flat jaw, with a 0.5 x 45 deg tip chamfer on the peg.",
-      "justification": "The hexagonal peg (4.0 mm across flats) has six equivalent roll positions; the receiver cannot be a closed lower half-hex cup: both slanted side walls of such a cup lie entirely inside the peg's swept volume along the corrected arrival (0.60 mm penetration over the 0.6 mm wall), so only the flat bottom seat (top 0.05 mm below the peg flat) exists below the peg and the jaw closes the upper flats (30, 90, 150 deg) from above after landing. The jaw and the keeper tongue stay out of the swept peg when open: clearance to the rotating hex 0.449 mm (jaw) and 1.026 mm (tongue) at the nominal stroke, 0.58 to 0.65 mm for the tongue at the class-f stroke corners. Free roll +-2.58 deg. Torsion is carried by the top flat (jaw) and bottom flat (seat) corner contacts as a pure couple with arm 1.063 mm: 2.45 N per contact for one idle neighbour tipped (5.22 mN m) and 4.91 N for two (10.44 mN m); with the pitch couple (W/2 x 36 = 7.37 N mm over 1.4 mm = 5.26 N) the tongue-axis force is up to 10.17 N, carried by the over-centre stop. No attractive force acts: a unit that is not driven does not self-dock.",
+      "description": "Hex peg in a flat seat and a three-flat jaw that closes to a fixed height, with the vertical free play declared; 0.5 x 45 deg tip chamfer on the peg and a 0.6 x 30 deg lead-in chamfer on the jaw.",
+      "justification": "The hexagonal peg (4.0 mm across flats) has six equivalent roll positions; the receiver is a flat seat (top at nominal z -2.45) below the peg and a jaw (pocket AF 4.20, upper flat at z +2.10) that closes from above after landing to a height fixed by the crank stop on the frame. The seat is NOT registered to the frame (it stays on the PA12 puck web / end plate piece), so the free play is a declared quantity: Vertical gap (free play P between the seat top and the jaw top flat, less the peg across-flats): nominal 0.55 mm; worst case 0.05 to 1.05 mm = nominal +-0.35 (unit-to-unit stack: both units' SLS +-0.3 plus the PA12 chain frame-end plate-puck-seat, stated by the lead) +-0.05 jaw flat, +-0.05 seat top, +-0.05 peg across flats (class f, arithmetic sum). Lateral clearance per flat 0.10 nominal (pocket AF 4.20 +-0.05 against peg AF 4.00 +-0.05: 0.05 to 0.15). Jaw and seat modelled as exact polygons, peg hex AF 4.0, configuration space (x, z, roll) searched on a 0.05 mm / 1 deg grid (0.01 mm / 0.5 deg for the tight corner) from the seated pose: tight corner (P 0.05): z span 0.05, x +-0.05, roll lash +-0.5 deg; nominal (P 0.55): z -0.45 to +0.10, x +-0.35, roll lash +-12 deg; loose corner (P 1.05): z -0.90 to +0.15, x +-0.65, roll free over the full +-30 deg (the 60 deg hex period), i.e. NO roll lock at the loose corner. No state reachable in any of the three cases leaves |x| or |z| > 7 mm: with the jaw closed the peg cannot leave along either arc or sideways or up or down (the lower sides are open but the 4.0 mm hex does not fit the 2.45 mm opening between the seat top and the leg lower edge unless it is rolled 30 deg, which needs P > 0.62 and then the legs and ceiling still block it). Only the jaw and seat are in this model; the tongue additionally blocks the pull-out in y. Roll lash and torsion with the gap: at the nominal gap the peg turns +-12 deg before three corner contacts (the two jaw inclined flats and the seat) lock it; equal normal forces F, torque = 2.141 mm x F, so one idle neighbour tipped (5.36 mN m) gives F = 2.51 N and two (10.73 mN m) F = 5.01 N; at the tight corner the pair is top-flat corner and seat corner with arm 2.302 mm (F = 2.33 / 4.66 N); at the loose corner (P 1.05) the peg turns freely and carries no roll torque. Cam-out on the jaw z axis = F (5.01 N for two neighbours) plus the pitch couple W/2 x 36 over 1.4 mm = 5.41 N (modelling assumption), combined 10.42 N, carried by the over-centre stop. Hertz p0 at the contacts (assumed 0.1 mm corner radius, line load F/1.4 mm): 791 MPa (one neighbour) and 1119 MPa (two) against the 342 MPa first-yield rule of thumb. No attractive force acts: a unit that is not driven does not self-dock.",
       "component_ids": [
         "head-peg",
         "seat",
         "jaw",
         "keeper-tongue",
-        "yaw-puck"
+        "yaw-puck",
+        "frame-m3"
       ]
     }
   ],
   "limitations": [
-    "Roll-in docking was checked on paper only (kinematics re-derived with the table-height condition and a swept-volume check); the dynamics (impact, whether the ring-driven roll lands inside the windows) and the capture window are UNRESOLVED and belong to later gates. There is no axial or heading pre-alignment means, and a free approach cannot start a roll-in.",
+    "Roll-in docking was checked on paper only (kinematics with the table-height condition and a swept-volume check); the dynamics (impact, whether the ring-driven roll lands inside the windows) and the capture window are UNRESOLVED. There is no axial or heading pre-alignment means, and a free approach cannot start a roll-in.",
     "No steering or axial locomotion is provided: the body rolls only perpendicular to its axis.",
-    "Yaw bending works only while the chain rests on a face with a vertical yaw axis. Yaw torque margin at table mu = 1 is 0.96 at rated motor torque for the declared 41.741 g mass (27 T sector unchanged): bending at rated torque holds only for table mu <= about 0.96. The worm self-locks only if the worm/sector friction coefficient is at least 0.125 (UNRESOLVED).",
-    "Release under the full mu = 1 design tension needs more than the rated M3 torque (rated 0.64x, stall 1.91x); release is specified at low tension. Rod stroke 5.58 mm nominal; at the class-f corners 5.04 to 6.11 mm, which meets the 4.6 mm requirement of the z 0.0 tongue closing but not the 5.4 mm floor set for the old z -1.0 closing. Pin and yoke-bar envelope corners exceed the r <= 20 packing rule by about 0.02 mm nominal (physical outer point 19.96 mm) and by about 0.2 mm at the stroke corners (N = 25 sector would remove it).",
-    "Load reversal of the over-centre lock: the lock is passive for single-sign loads and for any load that tries to change the state; if a load pushes the crank to the dead centre (0.04 mm of pin travel) and then reverses, the dead centre is an unstable equilibrium and holds only with pin friction mu_j >= 0.10 to 0.14 (derived bound for an assumed 0.05 mm play; real friction not cited). M3 radial load = link force, up to 11.0 N (open) and 16.8 N (closed) at the combined tongue force 10.2 N; outrigger bushing pressure (d 2.0 x L 1.3) 4.3 and 6.5 MPa taking the whole link force, no PA12 bearing allowable cited (UNRESOLVED). The M2 worm shaft has no outrigger (the worm is 4.7 mm from the channel).",
-    "Thrust washer: declared as the flat thrust face of the puck, 7.6 mm2 of bearing on the cap strips. The yaw rotation (+-15 deg about z) against a y-normal face tilts a flat face; the kinematic compatibility of the flat washer with the rotating puck is UNRESOLVED. The puck-to-yaw-shaft joint, the cap bore and the cut of end plate b into three pieces are not designed.",
-    "Many masses are upper bounds from solid volumes (walls, end plates, caps, puck, peg, lobe, gear band); end plate b is the full hexagon although the V cut and slot remove material; the placement of screws and harness is a lumped stand-in; boxes of the link, rocker, rod and yoke are envelopes of swept parts; the M3 shaft stub is not boxed. Hertz contact stress at the peg corners on the 304 flats with an assumed 0.1 mm edge radius exceeds the first-yield rule of thumb (local indentation expected); the torsion contacts are the top-flat/bottom-flat pair, as in v3.",
-    "Gear teeth are integer: ring 133 T pitch r 19.95 (304 band) and pinion 14 T pitch r 2.1 (module 0.3, centre distance 17.85); spurs 41 T and 16 T at module 0.2 (centre distance 5.70); yaw worm 1 start into 27 teeth per turn at module 0.3. Tooth strength, backlash, profile and contact ratio are not assessed. No PA12 gear teeth remain. The M1 group is rotated 60 deg about the ring axis from its v3 position; the lobe analysis was redone for the new centre of mass.",
-    "Tolerances: SLS PA12 accuracy is cited from Materialise (https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls) as +-0.3% with a lower limit of +-0.3 mm and minimum wall 1 mm; machined 304 parts are specified ISO 2768-1 class f (https://amesweb.info/fits-tolerances/iso-2768-linear-dimensions-tolerances.aspx), +-0.05 mm for 0.5 to 6 mm and +-0.1 mm for 6 to 30 mm. Materialise is a service-provider page, not EOS PA 2200 material data. PA12 strength is not assessed beyond the coupler checks; heat is not assessed.",
+    "Yaw bending works only while the chain rests on a face with a vertical yaw axis. Yaw torque margin at table mu = 1 is 0.94 at rated motor torque for the declared 42.905 g mass (27 T sector unchanged). The worm self-locks only if the worm/sector friction coefficient is at least 0.125 (UNRESOLVED).",
+    "Release: both friction faces counted (shoulder and stem slot, 2 mu T). At the full mu = 1 design tension 1.683 N it needs 9.66 mN m, 1.07 x M3 stall: blocked at that bound (CPL-008); the operating rule is release at tension <= T_rel = 0.522 N (1.24 W). Rod stroke 5.58 mm nominal, 5.088 to 6.068 mm in the size-rule corners. Pin and yoke-bar envelope corners exceed the r <= 20 packing rule by about 0.02 mm nominal and about 0.2 mm at the stroke corners.",
+    "Vertical stack: the +-0.35 mm stack (stated by the lead, not derived here) is not absorbed by any compliance (a 304 flexure was found infeasible: 0.7 mm range at 0.41 N stores 0.6 mJ, 50 to 130 mm3 of fully stressed spring); it becomes the declared free play P = 0.05 to 1.05 mm. Consequences: roll lash +-0.5 deg (tight) to +-12 deg (nominal) to none (loose, P > 0.62); the roll lock is therefore not a qualified function; the open-jaw clearance to the swept peg is 0.104 mm at the size-rule minimum stroke (0.052 and 0.000 mm in the wider cases) with no allowance for the peg height offset; the tongue overlap falls to 0.14 mm2 at 0.9 mm low. The seat is not registered to the frame. The escape check models the jaw and seat only.",
+    "Load reversal of the over-centre lock as in v4 (passive for single-sign loads; reversal at the dead centre needs pin friction, bound in the dossier; real friction not cited). M3 radial load = link force, up to 11.3 N (open) and 17.1 N (closed) at the combined tongue force 10.4 N; frame bearing (304, d 2.0 x L 2.4 = 4.8 mm2) pressure 2.3 and 3.6 MPa taking the whole link force; the M3 shaft material and the gearbox radial rating are not cited (UNRESOLVED). M3 body to frame alignment (the shaft is located by the frame bearing and by the gearbox bearings) is not designed. Remaining PA12 contacts (stem in the guide slot, seat web on the puck, rocker pin hole, puck column) have pressures listed in the dossier with no allowable claimed.",
+    "Thrust: 304 collar r 3.8 (3.75 to 3.85) on 304 saddle r 4.2 (4.15 to 4.25), line contact 1.4 mm, tension 1.683 N: Hertz p0 28 to 36 MPa (E* 109.9 GPa), against 304 yield 205 MPa (no PA12 in this contact). The collar-to-puck-column joint, the moment between the stem plane and the collar plane, the +y radial restraint of the collar (no rear ring: the layout has no room) and the saddle insert window in end plate b are not designed or are UNRESOLVED.",
+    "The frame is one machined 304 part only for the features on the middle triangle piece (M3 block, rocker post, saddle, base). The seat and the lower cap strips are on another end-plate piece and are NOT registered to it. The hardware that joins the middle triangle piece to the F3 wall and the screws are not designed.",
+    "Many masses are upper bounds from solid volumes (walls, end plates, caps, puck, peg, lobe, gear band, saddle insert partly in the end plate b box); end plate b is the full hexagon although the V cut, window and slot remove material; the placement of screws and harness is a lumped stand-in; boxes of the link, rocker, rod and yoke are envelopes of swept parts; the M3 shaft stub and the crank stop lugs are not boxed; the saddle and collar boxes are stand-ins for round parts. Hertz contact stress at the peg corners exceeds the first-yield rule of thumb (local indentation expected).",
+    "Gear teeth are integer: ring 133 T pitch r 19.95 (304 band) and pinion 14 T pitch r 2.1 (module 0.3, centre distance 17.85); spurs 41 T and 16 T at module 0.2; yaw worm 1 start into 27 teeth per turn at module 0.3. Tooth strength, backlash, profile and contact ratio are not assessed. The M1 group is rotated 60 deg about the ring axis from its v3 position.",
+    "Tolerances: SLS PA12 accuracy is cited from Materialise (https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls) as +-0.3% with a lower limit of +-0.3 mm and minimum wall 1 mm; machined 304 parts are specified ISO 2768-1 class f (https://amesweb.info/fits-tolerances/iso-2768-linear-dimensions-tolerances.aspx), +-0.05 mm for 0.5 to 6 mm and +-0.1 mm for 6 to 30 mm. Materialise is a service-provider page, not EOS PA 2200 material data. Thin features below 0.5 mm are outside the cited table. Heat is not assessed.",
     "The Precision Microdrives 206-109 datasheet is headed as a sampling/target specification; the three motors run from 3.7 V by PWM limited to 3.0 V effective, a control constraint. The datasheet gives no radial shaft load rating, which the crank link and the worm load.",
     "The QT Py regulator is rated 600 mA peak; the 2220 mW term is a bound; later board revisions may use a different regulator. The board has no LiPo charger, and regulator dropout limits use near the end of charge.",
-    "Vendor product pages (Grepow, Adafruit, Pololu, Materialise, amesweb) are classed datasheet because the schema allows only datasheet or publication. Cited values were read on 2026-11-06 and are checked by sampling at the gate record; the ATI 304 sheet cited for the thrust washer and the new 304 parts is the same document read on 2026-11-06.",
+    "Vendor product pages (Grepow, Adafruit, Pololu, Materialise, amesweb) are classed datasheet because the schema allows only datasheet or publication. Cited values were read on 2026-11-06 and are checked by sampling at the gate record; the ATI 304 sheet cited for the 304 parts is the same document read on 2026-11-06.",
     "A2 screws are costed at 304 density (assumption).",
     "Only two axial couplers are declared; no lateral side-face couplers, no branching or lattices. No through-coupler data or power contacts; power transfer is not provided."
   ]
