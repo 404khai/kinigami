@@ -83,3 +83,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q70 | [cand-a version 4: revision decisions](Q070-cand-a-v4-revision.md) (agent decision under owner delegation) | accepted |
 | Q71 | [Gate 1 run 4 disposition (cand-a v4)](Q071-gate1-run4-disposition.md) (agent decision under owner delegation) | accepted |
 | Q72 | [cand-a version 5: revision decisions](Q072-cand-a-v5-revision.md) (agent decision under owner delegation) | accepted |
+| Q73 | [Gate 1 run 5 disposition (cand-a v5)](Q073-gate1-run5-disposition.md) (agent decision under owner delegation) | accepted |

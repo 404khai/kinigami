@@ -1,0 +1,453 @@
+{
+  "code_revision": "93b3aa3cf3ecd4fd56235c6e3dc83b5f24808dd4",
+  "working_tree_dirty": false,
+  "optimize_mode": "safe",
+  "target": "aarch64-macos.27.0...27.0-none",
+  "zig_version": "0.17.0",
+  "label": "exploratory",
+  "criteria_path": "criteria/gates/gate1-v1.json",
+  "criteria_sha256": "ffe135329340ca7d3f630a1f14c0dd91616d8ab91e64f0985585eeabb532ddbf",
+  "protocol_path": "docs/validation/gate1-v1-protocol.md",
+  "protocol_revision": 1,
+  "candidates": [
+    {
+      "directory": "candidates/cand-a",
+      "declaration_sha256": "c1a3adceedfb3201676891c769c3e0b27667ee5c0330e7c3a5ab8a9e350ad169",
+      "status": "evaluated",
+      "rejection": null,
+      "report": {
+        "candidate_id": "cand-a",
+        "candidate_version": 5,
+        "family": "A",
+        "label": "exploratory",
+        "declaration_sha256": "c1a3adceedfb3201676891c769c3e0b27667ee5c0330e7c3a5ab8a9e350ad169",
+        "outcome": "fail",
+        "failed_items": [
+          "G6"
+        ],
+        "unresolved_items": [],
+        "items": [
+          {
+            "id": "G1",
+            "outcome": "pass",
+            "reasons": []
+          },
+          {
+            "id": "G2",
+            "outcome": "pass",
+            "reasons": []
+          },
+          {
+            "id": "G3",
+            "outcome": "pass",
+            "reasons": []
+          },
+          {
+            "id": "G4",
+            "outcome": "pass",
+            "reasons": []
+          },
+          {
+            "id": "G5",
+            "outcome": "pass",
+            "reasons": []
+          },
+          {
+            "id": "G6",
+            "outcome": "fail",
+            "reasons": [
+              "fail: retention_review_outcome_fail"
+            ]
+          },
+          {
+            "id": "G7",
+            "outcome": "pass",
+            "reasons": []
+          },
+          {
+            "id": "G8",
+            "outcome": "pass",
+            "reasons": []
+          }
+        ],
+        "g1": {
+          "primitives_considered": 5,
+          "seed_points": 162,
+          "welzl_centre_um": [
+            0,
+            0,
+            0
+          ],
+          "welzl_radius_um": 29090.64378799479,
+          "certified_radius_um": 29090.643787994795,
+          "diameter_um": 58181.28757598959,
+          "limit_um": 60000,
+          "band_um": 0.001
+        },
+        "g2": {
+          "pairs_tested": 2926,
+          "interfering_pairs": [],
+          "capped_pairs": [],
+          "boxes_outside_shell": [],
+          "cavity_primitives": 3,
+          "assembly_access_statement_present": true
+        },
+        "g4": {
+          "declared_total_mass_mg": 42905,
+          "summed_mass_mg": 42905,
+          "p_peak_mw": 4807,
+          "p_lim_mw": 19425,
+          "p_avg_mw": 2899,
+          "endurance_status": "reported",
+          "endurance_s": 1608.1407381855813,
+          "endurance_s_protocol_literal": 1608140.7381855813,
+          "endurance_enters_outcome": false,
+          "endurance_threshold": "unresolved"
+        },
+        "g5": {
+          "coupler_sites": 2,
+          "rolls": [
+            {
+              "roll_deg": 0,
+              "status": "fail",
+              "table_contact": false,
+              "static_support": true,
+              "no_interference": true,
+              "sites_meet": true,
+              "detail": ""
+            },
+            {
+              "roll_deg": 180,
+              "status": "pass",
+              "table_contact": true,
+              "static_support": true,
+              "no_interference": true,
+              "sites_meet": true,
+              "detail": ""
+            }
+          ],
+          "roll_deg_used": 180
+        }
+      }
+    },
+    {
+      "directory": "candidates/cand-b",
+      "declaration_sha256": "d973b4cc57b45381b0be9b7e35bdf4508aa3ef449e5fb613c648834454f69a5a",
+      "status": "evaluated",
+      "rejection": null,
+      "report": {
+        "candidate_id": "cand-b",
+        "candidate_version": 1,
+        "family": "B",
+        "label": "exploratory",
+        "declaration_sha256": "d973b4cc57b45381b0be9b7e35bdf4508aa3ef449e5fb613c648834454f69a5a",
+        "outcome": "fail",
+        "failed_items": [
+          "G5"
+        ],
+        "unresolved_items": [
+          "G3",
+          "G6",
+          "G7",
+          "G8"
+        ],
+        "items": [
+          {
+            "id": "G1",
+            "outcome": "pass",
+            "reasons": []
+          },
+          {
+            "id": "G2",
+            "outcome": "pass",
+            "reasons": []
+          },
+          {
+            "id": "G3",
+            "outcome": "unresolved",
+            "reasons": [
+              "unresolved: mass_basis_estimate:latch-mech",
+              "unresolved: dimension_basis_estimate:latch-mech",
+              "unresolved: power_basis_estimate:latch-mech",
+              "unresolved: mass_basis_estimate:sma-wire",
+              "unresolved: mass_basis_estimate:pogo-block",
+              "unresolved: dimension_basis_estimate:pogo-block",
+              "unresolved: power_basis_estimate:pogo-block",
+              "unresolved: mass_basis_estimate:controller",
+              "unresolved: dimension_basis_estimate:controller",
+              "unresolved: power_basis_estimate:controller",
+              "unresolved: mass_basis_estimate:boost",
+              "unresolved: dimension_basis_estimate:shell-a",
+              "unresolved: dimension_basis_estimate:shell-b",
+              "unresolved: mass_basis_estimate:wiring",
+              "unresolved: dimension_basis_estimate:wiring",
+              "unresolved: power_basis_estimate:wiring"
+            ]
+          },
+          {
+            "id": "G4",
+            "outcome": "pass",
+            "reasons": []
+          },
+          {
+            "id": "G5",
+            "outcome": "fail",
+            "reasons": [
+              "fail: no_mating_roll_gives_a_supported_chain"
+            ]
+          },
+          {
+            "id": "G6",
+            "outcome": "unresolved",
+            "reasons": [
+              "unresolved: retention_review_outcome_unresolved"
+            ]
+          },
+          {
+            "id": "G7",
+            "outcome": "unresolved",
+            "reasons": [
+              "unresolved: originality_review_outcome_unresolved"
+            ]
+          },
+          {
+            "id": "G8",
+            "outcome": "unresolved",
+            "reasons": [
+              "unresolved: review_incomplete"
+            ]
+          }
+        ],
+        "g1": {
+          "primitives_considered": 3,
+          "seed_points": 142,
+          "welzl_centre_um": [
+            9000,
+            -8000,
+            0
+          ],
+          "welzl_radius_um": 27748.873851023214,
+          "certified_radius_um": 27748.873851023214,
+          "diameter_um": 55497.74770204643,
+          "limit_um": 60000,
+          "band_um": 0.001
+        },
+        "g2": {
+          "pairs_tested": 66,
+          "interfering_pairs": [],
+          "capped_pairs": [],
+          "boxes_outside_shell": [],
+          "cavity_primitives": 2,
+          "assembly_access_statement_present": true
+        },
+        "g4": {
+          "declared_total_mass_mg": 34559,
+          "summed_mass_mg": 34559,
+          "p_peak_mw": 9594,
+          "p_lim_mw": 13875,
+          "p_avg_mw": 195,
+          "endurance_status": "reported",
+          "endurance_s": 17076.923076923078,
+          "endurance_s_protocol_literal": 17076923.076923076,
+          "endurance_enters_outcome": false,
+          "endurance_threshold": "unresolved"
+        },
+        "g5": {
+          "coupler_sites": 2,
+          "rolls": [
+            {
+              "roll_deg": 180,
+              "status": "fail",
+              "table_contact": true,
+              "static_support": false,
+              "no_interference": true,
+              "sites_meet": true,
+              "detail": ""
+            },
+            {
+              "roll_deg": 0,
+              "status": "fail",
+              "table_contact": true,
+              "static_support": false,
+              "no_interference": true,
+              "sites_meet": true,
+              "detail": ""
+            }
+          ],
+          "roll_deg_used": null
+        }
+      }
+    },
+    {
+      "directory": "candidates/cand-c",
+      "declaration_sha256": "33843995036c6a5eca97d9de7a47686598c5faf9eda20f4dd356ab301bddb517",
+      "status": "evaluated",
+      "rejection": null,
+      "report": {
+        "candidate_id": "cand-c",
+        "candidate_version": 1,
+        "family": "C",
+        "label": "exploratory",
+        "declaration_sha256": "33843995036c6a5eca97d9de7a47686598c5faf9eda20f4dd356ab301bddb517",
+        "outcome": "fail",
+        "failed_items": [
+          "G5"
+        ],
+        "unresolved_items": [
+          "G3",
+          "G6",
+          "G7",
+          "G8"
+        ],
+        "items": [
+          {
+            "id": "G1",
+            "outcome": "pass",
+            "reasons": []
+          },
+          {
+            "id": "G2",
+            "outcome": "pass",
+            "reasons": []
+          },
+          {
+            "id": "G3",
+            "outcome": "unresolved",
+            "reasons": [
+              "unresolved: dimension_basis_estimate:shell-half-head",
+              "unresolved: dimension_basis_estimate:shell-half-tail",
+              "unresolved: power_basis_estimate:controller",
+              "unresolved: dimension_basis_estimate:motor-driver",
+              "unresolved: power_basis_estimate:motor-driver",
+              "unresolved: power_basis_estimate:head-servo",
+              "unresolved: mass_basis_estimate:head-ram-cartridge",
+              "unresolved: dimension_basis_estimate:head-ram-cartridge",
+              "unresolved: power_basis_estimate:head-ram-cartridge",
+              "unresolved: mass_basis_estimate:tail-socket-cartridge",
+              "unresolved: dimension_basis_estimate:tail-socket-cartridge",
+              "unresolved: power_basis_estimate:tail-socket-cartridge",
+              "unresolved: mass_basis_estimate:chassis-frame",
+              "unresolved: dimension_basis_estimate:chassis-frame",
+              "unresolved: power_basis_estimate:chassis-frame",
+              "unresolved: mass_basis_estimate:pole-hardware-head",
+              "unresolved: dimension_basis_estimate:pole-hardware-head",
+              "unresolved: power_basis_estimate:pole-hardware-head",
+              "unresolved: mass_basis_estimate:pole-hardware-tail",
+              "unresolved: dimension_basis_estimate:pole-hardware-tail",
+              "unresolved: power_basis_estimate:pole-hardware-tail"
+            ]
+          },
+          {
+            "id": "G4",
+            "outcome": "pass",
+            "reasons": []
+          },
+          {
+            "id": "G5",
+            "outcome": "fail",
+            "reasons": [
+              "fail: no_mating_roll_gives_a_supported_chain"
+            ]
+          },
+          {
+            "id": "G6",
+            "outcome": "unresolved",
+            "reasons": [
+              "unresolved: retention_review_outcome_unresolved"
+            ]
+          },
+          {
+            "id": "G7",
+            "outcome": "unresolved",
+            "reasons": [
+              "unresolved: originality_review_outcome_unresolved"
+            ]
+          },
+          {
+            "id": "G8",
+            "outcome": "unresolved",
+            "reasons": [
+              "unresolved: review_incomplete"
+            ]
+          }
+        ],
+        "g1": {
+          "primitives_considered": 3,
+          "seed_points": 184,
+          "welzl_centre_um": [
+            0,
+            0,
+            0
+          ],
+          "welzl_radius_um": 29500,
+          "certified_radius_um": 29500,
+          "diameter_um": 59000,
+          "limit_um": 60000,
+          "band_um": 0.001
+        },
+        "g2": {
+          "pairs_tested": 91,
+          "interfering_pairs": [],
+          "capped_pairs": [],
+          "boxes_outside_shell": [],
+          "cavity_primitives": 1,
+          "assembly_access_statement_present": true
+        },
+        "g4": {
+          "declared_total_mass_mg": 60656,
+          "summed_mass_mg": 60656,
+          "p_peak_mw": 6298,
+          "p_lim_mw": 49950,
+          "p_avg_mw": 436,
+          "endurance_status": "reported",
+          "endurance_s": 9165.137614678899,
+          "endurance_s_protocol_literal": 9165137.614678899,
+          "endurance_enters_outcome": false,
+          "endurance_threshold": "unresolved"
+        },
+        "g5": {
+          "coupler_sites": 2,
+          "rolls": [
+            {
+              "roll_deg": 0,
+              "status": "fail",
+              "table_contact": true,
+              "static_support": false,
+              "no_interference": true,
+              "sites_meet": true,
+              "detail": ""
+            },
+            {
+              "roll_deg": 90,
+              "status": "fail",
+              "table_contact": true,
+              "static_support": false,
+              "no_interference": true,
+              "sites_meet": true,
+              "detail": ""
+            },
+            {
+              "roll_deg": 180,
+              "status": "fail",
+              "table_contact": true,
+              "static_support": false,
+              "no_interference": true,
+              "sites_meet": true,
+              "detail": ""
+            },
+            {
+              "roll_deg": 270,
+              "status": "fail",
+              "table_contact": true,
+              "static_support": false,
+              "no_interference": true,
+              "sites_meet": true,
+              "detail": ""
+            }
+          ],
+          "roll_deg_used": null
+        }
+      }
+    }
+  ]
+}

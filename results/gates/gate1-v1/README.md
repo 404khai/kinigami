@@ -138,3 +138,29 @@ cand-a v4 values:
   - **Unsupported:** closure depends on a 0.05 mm vertical stack that ignores the SLS height tolerance of both units.
   - **Unsupported:** the windows are stated at the slot, not at the jaw.
   - **Unsupported:** the flat thrust washer allows only about 3° of yaw under tension.
+
+# Gate 1 paper-gate run 5
+
+- Report: `run5-93b3aa3-ReleaseSafe.json` (clean tree `93b3aa3`, ReleaseSafe).
+- Criteria: unchanged `gate1-v1`, sha256 `ffe135329340…ddbf`.
+- Candidates: cand-a **v5** (Q72). v4 is preserved as `declaration-v4.json`. cand-b and cand-c are unchanged.
+- Order: candidate `f13f8b8` → reviews `93b3aa3` → this evaluation.
+- Label: **exploratory**.
+
+| Candidate | Overall | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| cand-a v5 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
+| cand-b v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-c v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+
+**Survivors: none.**
+
+cand-a v5 values:
+- **G1:** D 58.181 mm.
+- **G2:** 2926 pairs tested, no interference.
+- **G4:** 42.905 g. Peak 4807 mW against a 19 425 mW limit.
+- **G7, G8:** pass, with the single high Roombots D2.
+- **G6:** the retention review **fails**.
+  - **Torsion has no carrier:** once the vertical free play exceeds 0.62 mm (43% of the declared 0.05–1.05 mm), the declared torsion load is carried by nothing.
+  - **Jaw window too small:** the open-jaw window at the class-f minimum stroke is 0.087 mm (the dossier said 0.104), below the declared ±0.35 mm stack.
+  - **What still holds:** tension retention, the machined frame, the four-bar margins and the cylindrical thrust are supported.
