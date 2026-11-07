@@ -46,7 +46,8 @@ const RecordingWriter = struct {
 pub fn main(init: std.process.Init) !void {
     const arena = init.arena.allocator();
     const args = try init.minimal.args.toSlice(arena);
-    const usage = "usage: kinigami-qualify <report.json> [--recordings <dir>]\n       kinigami-qualify --sensitivity <dir>   (exploratory, Q54)\n       kinigami-qualify --coupler <report.json>   (coupler engagement, Q56/Q57)\n       kinigami-qualify --coupler <report.json> --recordings <dir>\n       (coupler: add --criteria-v1 to run superseded criteria v1, labeled exploratory)\n";
+    const usage = "usage: kinigami-qualify <report.json> [--recordings <dir>]\n       kinigami-qualify --sensitivity <dir>   (exploratory, Q54)\n       kinigami-qualify --coupler <report.json>   (coupler engagement, Q56/Q57)\n       kinigami-qualify --coupler-sensitivity <dir>   (exploratory, Q75)\n       kinigami-qualify --coupler <report.json> --recordings <dir>\n       (coupler: add --criteria-v1 to run superseded criteria v1, labeled exploratory)\n";
+    if (args.len == 3 and std.mem.eql(u8, args[1], "--coupler-sensitivity")) return couplerSensitivity(init, arena, args[2]);
     if (args.len >= 3 and std.mem.eql(u8, args[1], "--coupler")) {
         // `--criteria-v1` (anywhere after the report path) runs the superseded
         // criteria v1, labeled `exploratory`; the default is v2 (Q60).
@@ -205,6 +206,32 @@ fn sensitivity(init: std.process.Init, arena: std.mem.Allocator, dir_path: []con
         try dir.writeFile(init.io, .{ .sub_path = name, .data = json });
         std.debug.print("== {s} ({s})\n", .{ v.name, report.label });
         _ = printSummary(report);
+    }
+}
+
+/// Q75: the coupler-engagement suite (criteria v2) once per Q54 variant,
+/// labeled `exploratory`, one report per variant in `dir`. Never sets the
+/// exit status from outcomes.
+fn couplerSensitivity(init: std.process.Init, arena: std.mem.Allocator, dir_path: []const u8) !void {
+    const parsed = try core.coupler_criteria.parse(arena, core.coupler_criteria.coupler_v2_json);
+    try std.Io.Dir.cwd().createDirPath(init.io, dir_path);
+    var dir = try std.Io.Dir.cwd().openDir(init.io, dir_path, .{});
+    defer dir.close(init.io);
+    for (core.link_suite.sensitivity_variants) |v| {
+        const report = try core.coupler_suite.runWith(arena, init.gpa, parsed.value, core.coupler_suite.official_criteria, v.config, null, "exploratory");
+        const out: CouplerOutput = .{
+            .code_revision = std.mem.trim(u8, @embedFile("git_revision"), " \n\r"),
+            .working_tree_dirty = std.mem.trim(u8, @embedFile("git_status"), " \n\r").len != 0,
+            .optimize_mode = @tagName(@import("builtin").mode),
+            .target = build_info.target,
+            .zig_version = @import("builtin").zig_version_string,
+            .report = report,
+        };
+        const json = try std.json.Stringify.valueAlloc(arena, out, .{ .whitespace = .indent_2 });
+        const name = try std.fmt.allocPrint(arena, "{s}.json", .{v.name});
+        try dir.writeFile(init.io, .{ .sub_path = name, .data = json });
+        std.debug.print("== {s} ({s})\n", .{ v.name, report.label });
+        _ = printCouplerSummary(report);
     }
 }
 
