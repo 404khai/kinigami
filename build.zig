@@ -29,6 +29,9 @@ pub fn build(b: *std.Build) void {
         .root_source_file = b.path("criteria/qualification/coupler-engagement-v2.json"),
     });
 
+    core.addAnonymousImport("criteria_body_contact_v1", .{
+        .root_source_file = b.path("criteria/fixture-validation/body-contact-v1.json"),
+    });
     core.addAnonymousImport("criteria_gate1_v1", .{
         .root_source_file = b.path("criteria/gates/gate1-v1.json"),
     });

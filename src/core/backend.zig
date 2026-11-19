@@ -72,6 +72,9 @@ pub const ContactReport = struct {
     world_normal: Vec3,
     normal_force_n: f64,
     tangential_force_n: Vec3,
+    /// Penetration depth along the normal, reported by body-body contacts
+    /// (`body_b != null`); zero where the point's own height is the depth.
+    penetration_m: f64 = 0,
 };
 
 /// A solver-native fixture-link output (PHY-005). Components are resolved in
