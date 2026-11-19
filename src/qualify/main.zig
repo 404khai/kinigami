@@ -46,7 +46,8 @@ const RecordingWriter = struct {
 pub fn main(init: std.process.Init) !void {
     const arena = init.arena.allocator();
     const args = try init.minimal.args.toSlice(arena);
-    const usage = "usage: kinigami-qualify <report.json> [--recordings <dir>]\n       kinigami-qualify --sensitivity <dir>   (exploratory, Q54)\n       kinigami-qualify --coupler <report.json>   (coupler engagement, Q56/Q57)\n       kinigami-qualify --coupler-sensitivity <dir>   (exploratory, Q75)\n       kinigami-qualify --coupler <report.json> --recordings <dir>\n       (coupler: add --criteria-v1 to run superseded criteria v1, labeled exploratory)\n";
+    const usage = "usage: kinigami-qualify <report.json> [--recordings <dir>]\n       kinigami-qualify --sensitivity <dir>   (exploratory, Q54)\n       kinigami-qualify --coupler <report.json>   (coupler engagement, Q56/Q57)\n       kinigami-qualify --coupler-sensitivity <dir>   (exploratory, Q75)\n       kinigami-qualify --coupler-capture-dt <dir>   (exploratory, Q81)\n       kinigami-qualify --coupler <report.json> --recordings <dir>\n       (coupler: add --criteria-v1 to run superseded criteria v1, labeled exploratory)\n";
+    if (args.len == 3 and std.mem.eql(u8, args[1], "--coupler-capture-dt")) return couplerCaptureDt(init, arena, args[2]);
     if (args.len == 3 and std.mem.eql(u8, args[1], "--coupler-sensitivity")) return couplerSensitivity(init, arena, args[2]);
     if (args.len >= 3 and std.mem.eql(u8, args[1], "--coupler")) {
         // `--criteria-v1` (anywhere after the report path) runs the superseded
@@ -232,6 +233,47 @@ fn couplerSensitivity(init: std.process.Init, arena: std.mem.Allocator, dir_path
         try dir.writeFile(init.io, .{ .sub_path = name, .data = json });
         std.debug.print("== {s} ({s})\n", .{ v.name, report.label });
         _ = printCouplerSummary(report);
+    }
+}
+
+const CaptureDtOutput = struct {
+    code_revision: []const u8,
+    working_tree_dirty: bool,
+    optimize_mode: []const u8,
+    target: []const u8,
+    zig_version: []const u8,
+    report: core.coupler_suite.DtStudyReport,
+};
+
+/// Q81: capture boundary vs physics timestep, labeled `exploratory`, one
+/// report `capture-dt.json` in `dir`. Official criteria v2, protocol settings;
+/// never touches the official `--coupler` path or the exit status.
+fn couplerCaptureDt(init: std.process.Init, arena: std.mem.Allocator, dir_path: []const u8) !void {
+    const parsed = try core.coupler_criteria.parse(arena, core.coupler_criteria.coupler_v2_json);
+    try std.Io.Dir.cwd().createDirPath(init.io, dir_path);
+    var dir = try std.Io.Dir.cwd().openDir(init.io, dir_path, .{});
+    defer dir.close(init.io);
+    const report = try core.coupler_suite.runCaptureDtStudy(arena, init.gpa, parsed.value, core.coupler_suite.official_criteria);
+    const out: CaptureDtOutput = .{
+        .code_revision = std.mem.trim(u8, @embedFile("git_revision"), " \n\r"),
+        .working_tree_dirty = std.mem.trim(u8, @embedFile("git_status"), " \n\r").len != 0,
+        .optimize_mode = @tagName(@import("builtin").mode),
+        .target = build_info.target,
+        .zig_version = @import("builtin").zig_version_string,
+        .report = report,
+    };
+    const json = try std.json.Stringify.valueAlloc(arena, out, .{ .whitespace = .indent_2 });
+    try dir.writeFile(init.io, .{ .sub_path = "capture-dt.json", .data = json });
+    std.debug.print("capture boundary vs dt (label: {s}, Q81): {d} axes, {d} analysed, {d} converged, verdict {s}, candidate max dt {?d} us, {d} runs\n", .{ report.label, report.axes_total, report.axes_analysed, report.axes_converged, report.verdict, report.candidate_max_dt_ticks, report.total_runs });
+    std.debug.print("  boundary [um] at dt 25/50/100/200 us; order p; extrapolation (fitted)\n", .{});
+    for (report.axes) |a| {
+        std.debug.print("  {s:<7} {s:<13} th={d:<5} v={d:<5}", .{ a.friction_pair, a.offset_direction, a.misalignment_rad, a.approach_speed_m_s });
+        for (a.boundaries) |b| {
+            if (b.boundary_m) |m| std.debug.print(" {d:>6.0}{s}", .{ m * 1e6, if (std.mem.eql(u8, b.kind, "censored")) ">" else " " }) else std.debug.print("   none ", .{});
+        }
+        if (a.fit) |f| {
+            std.debug.print("  p={?d:.2} ({s}) b0={?d:.0} um {s}\n", .{ f.order, f.order_status, if (f.extrapolation_fitted_m) |e| e * 1e6 else null, if (f.converged) "converged" else "not converged" });
+        } else std.debug.print("  not analysed\n", .{});
     }
 }
 

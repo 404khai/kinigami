@@ -1348,6 +1348,142 @@ pub fn runWith(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: cc.Crite
     };
 }
 
+// --- Capture boundary vs timestep study (Q81), exploratory ---
+
+pub const DtBoundary = struct {
+    physics_step_ticks: u64,
+    kind: []const u8,
+    /// Lower end of the final bracket (a captured offset); null for `none`.
+    boundary_m: ?f64,
+    /// Upper end of the final bracket (not captured); null if `none` or `censored`.
+    bracket_upper_m: ?f64,
+    runs: usize,
+};
+
+pub const DtAxis = struct {
+    friction_pair: []const u8,
+    offset_direction: []const u8,
+    misalignment_rad: f64,
+    approach_speed_m_s: f64,
+    boundaries: []const DtBoundary,
+    /// True when every study Δt has a bounded boundary, so a fit is made.
+    analysed: bool,
+    fit: ?ce.DtFit,
+};
+
+pub const DtStudyReport = struct {
+    label: []const u8,
+    decision: []const u8 = "Q81",
+    criteria_path: []const u8,
+    criteria_sha256: []const u8,
+    study_step_ticks: [4]u64 = ce.dt_study_ticks,
+    resolution_m: f64 = ce.dt_study_resolution_m,
+    converged_tol_m: f64 = ce.dt_study_converged_tol_m,
+    solver_settings: link_suite.SolverConfig,
+    axes: []const DtAxis,
+    axes_total: usize,
+    axes_analysed: usize,
+    axes_converged: usize,
+    verdict: []const u8,
+    candidate_max_dt_ticks: ?u64,
+    total_runs: usize,
+};
+
+const CapturePred = struct {
+    base: Ctx,
+    pair: cc.FrictionPair,
+    dir: cc.OffsetDirection,
+    theta: f64,
+    speed: f64,
+    ticks: u64,
+    runs: *usize,
+};
+
+fn isCaptured(p: CapturePred, y: f64) anyerror!bool {
+    var run_arena = std.heap.ArenaAllocator.init(p.base.scratch);
+    defer run_arena.deinit();
+    var ctx = p.base;
+    ctx.scratch = run_arena.allocator();
+    ctx.recorder = null;
+    const out = try runSweepScenario(ctx, sweepScenario(p.base.c, p.pair, p.dir, p.theta, p.speed, y, .none), p.ticks, false);
+    p.runs.* += 1;
+    return out.validity == .valid and out.class == .captured;
+}
+
+/// The capture boundary of one axis at one Δt: the criteria's offset grid up
+/// to the first offset that is not captured, then bisection (Q81 item 4).
+fn studyBoundary(base: Ctx, pair: cc.FrictionPair, dir: cc.OffsetDirection, theta: f64, speed: f64, ticks: u64) !DtBoundary {
+    var runs: usize = 0;
+    const p: CapturePred = .{ .base = base, .pair = pair, .dir = dir, .theta = theta, .speed = speed, .ticks = ticks, .runs = &runs };
+    const offsets = base.c.capture_sweep.lateral_offsets_m;
+    var first_bad: usize = offsets.len;
+    for (offsets, 0..) |y, i| {
+        if (!try isCaptured(p, y)) {
+            first_bad = i;
+            break;
+        }
+    }
+    if (first_bad == 0) return .{ .physics_step_ticks = ticks, .kind = "none", .boundary_m = null, .bracket_upper_m = null, .runs = runs };
+    if (first_bad == offsets.len) return .{ .physics_step_ticks = ticks, .kind = "censored", .boundary_m = offsets[offsets.len - 1], .bracket_upper_m = null, .runs = runs };
+    const lo = try ce.bisect(p, isCaptured, offsets[first_bad - 1], offsets[first_bad], ce.dt_study_resolution_m);
+    return .{ .physics_step_ticks = ticks, .kind = "bounded", .boundary_m = lo, .bracket_upper_m = lo + ce.dt_study_resolution_m, .runs = runs };
+}
+
+/// Q81: the capture boundary of every C8 axis at each study Δt, with the fit
+/// and the verdict. Always labeled `exploratory`; never gates anything.
+pub fn runCaptureDtStudy(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: cc.Criteria, identity: CriteriaIdentity) !DtStudyReport {
+    const base: Ctx = .{
+        .solver = link_suite.protocol_config,
+        .label = "exploratory",
+        .arena = arena,
+        .scratch = scratch,
+        .c = c,
+        .unit = .{ .numerator = c.time_unit.numerator_s, .denominator = c.time_unit.denominator_s },
+        .recorder = null,
+        .criteria_sha256 = identity.sha256,
+    };
+    const sw = c.capture_sweep;
+    var axes: std.ArrayList(DtAxis) = .empty;
+    var bounds: std.ArrayList([4]f64) = .empty;
+    var conv: std.ArrayList(bool) = .empty;
+    var total: usize = 0;
+    var analysed: usize = 0;
+    var converged: usize = 0;
+    for (sw.friction_pairs) |pair| for (sw.offset_directions) |dir| for (sw.misalignments_rad) |theta| for (sw.approach_speeds_m_s) |speed| {
+        const bs = try arena.alloc(DtBoundary, ce.dt_study_ticks.len);
+        var values: [4]f64 = undefined;
+        var all_bounded = true;
+        for (ce.dt_study_ticks, 0..) |st, i| {
+            bs[i] = try studyBoundary(base, pair, dir, theta, speed, st);
+            total += bs[i].runs;
+            if (std.mem.eql(u8, bs[i].kind, "bounded")) values[i] = bs[i].boundary_m.? else all_bounded = false;
+        }
+        var fit: ?ce.DtFit = null;
+        if (all_bounded) {
+            fit = ce.fitBoundaries(values);
+            analysed += 1;
+            if (fit.?.converged) converged += 1;
+            try bounds.append(arena, values);
+            try conv.append(arena, fit.?.converged);
+        }
+        try axes.append(arena, .{ .friction_pair = pair.id, .offset_direction = @tagName(dir), .misalignment_rad = theta, .approach_speed_m_s = speed, .boundaries = bs, .analysed = all_bounded, .fit = fit });
+    };
+    const verdict = ce.studyVerdict(analysed, converged);
+    return .{
+        .label = "exploratory",
+        .criteria_path = identity.path,
+        .criteria_sha256 = identity.sha256,
+        .solver_settings = link_suite.protocol_config,
+        .axes = try axes.toOwnedSlice(arena),
+        .axes_total = sw.friction_pairs.len * sw.offset_directions.len * sw.misalignments_rad.len * sw.approach_speeds_m_s.len,
+        .axes_analysed = analysed,
+        .axes_converged = converged,
+        .verdict = verdict,
+        .candidate_max_dt_ticks = if (std.mem.eql(u8, verdict, "not converged") or analysed == 0) null else ce.candidateMaxDt(bounds.items, conv.items),
+        .total_runs = total,
+    };
+}
+
 // --- Tests ---
 
 const testing = std.testing;
@@ -1546,4 +1682,22 @@ test "recording leaves coupler results unchanged, stores every step with link re
     // C4 ends engaged at the seat: the last snapshot carries the preload tension P.
     try testing.expect(guide_seen);
     try testing.expectApproxEqRel(ce.preload(parsed.value, 1.0), -last.?.links[0].force_on_b_n[0], 1e-2);
+}
+
+test "dt study: one axis at 200 us brackets its boundary within the declared resolution" {
+    var arena_state = std.heap.ArenaAllocator.init(testing.allocator);
+    defer arena_state.deinit();
+    const arena = arena_state.allocator();
+    const parsed = try cc.parse(arena, cc.coupler_v2_json);
+    const c = parsed.value;
+    const base = testCtx(arena, c);
+    // Highest approach speed, zero misalignment, toward facet: the likeliest to capture.
+    const sw = c.capture_sweep;
+    const b = try studyBoundary(base, sw.friction_pairs[0], .toward_facet, 0, sw.approach_speeds_m_s[2], 200);
+    try testing.expect(b.runs > 0);
+    if (std.mem.eql(u8, b.kind, "bounded")) {
+        try testing.expect(b.bracket_upper_m.? - b.boundary_m.? <= ce.dt_study_resolution_m * (1 + 1e-9));
+    } else {
+        try testing.expect(std.mem.eql(u8, b.kind, "none") or std.mem.eql(u8, b.kind, "censored"));
+    }
 }

@@ -1147,6 +1147,92 @@ pub fn dtDisagreement(classes_across_dt: []const Class) bool {
     return false;
 }
 
+// --- Capture boundary vs timestep study (Q81): pure analysis ---
+
+/// Study grid, ascending, microseconds (Q81 item 3).
+pub const dt_study_ticks = [4]u64{ 25, 50, 100, 200 };
+/// Bisection resolution, metres (Q81 item 4).
+pub const dt_study_resolution_m: f64 = 1e-5;
+/// Provisional convergence bound, metres (Q81 item 6); no physical evidence.
+pub const dt_study_converged_tol_m: f64 = 1e-4;
+
+/// Bisection between `lo` (satisfies `pred`) and `hi` (does not) until the
+/// bracket is at most `resolution` wide. Returns the final bracket's lower
+/// end. Assumes one transition inside the bracket (Q81 item 4).
+pub fn bisect(ctx: anytype, comptime pred: fn (@TypeOf(ctx), f64) anyerror!bool, lo_in: f64, hi_in: f64, resolution: f64) !f64 {
+    var lo = lo_in;
+    var hi = hi_in;
+    while (hi - lo > resolution) {
+        const mid = 0.5 * (lo + hi);
+        if (try pred(ctx, mid)) lo = mid else hi = mid;
+    }
+    return lo;
+}
+
+pub const BoundaryKind = enum { none, bounded, censored };
+
+pub const DtFit = struct {
+    /// Observed order from the three finest steps; null if not defined.
+    order: ?f64,
+    order_status: []const u8,
+    /// Richardson extrapolation at the observed order, when 0.5 <= p <= 4.
+    extrapolation_fitted_m: ?f64,
+    extrapolation_p1_m: f64,
+    extrapolation_p2_m: f64,
+    converged: bool,
+};
+
+/// Q81 items 5 and 6 on boundaries ordered by `dt_study_ticks` (25, 50, 100, 200).
+pub fn fitBoundaries(b: [4]f64) DtFit {
+    const d1 = b[1] - b[0]; // b(50) - b(25)
+    const d2 = b[2] - b[1]; // b(100) - b(50)
+    var order: ?f64 = null;
+    var status: []const u8 = "not_monotone";
+    var fitted: ?f64 = null;
+    if (d1 != 0 and d2 / d1 > 0) {
+        const p = @log2(d2 / d1);
+        order = p;
+        status = "defined";
+        if (p >= 0.5 and p <= 4.0) {
+            fitted = b[0] - d1 / (std.math.pow(f64, 2.0, p) - 1.0);
+        } else status = "outside_0.5_4";
+    } else if (d1 == 0 and d2 == 0) {
+        status = "flat";
+    }
+    const conv = @abs(d1) <= dt_study_converged_tol_m and @abs(d1) <= @abs(d2);
+    return .{
+        .order = order,
+        .order_status = status,
+        .extrapolation_fitted_m = fitted,
+        .extrapolation_p1_m = b[0] - d1,
+        .extrapolation_p2_m = b[0] - d1 / 3.0,
+        .converged = conv,
+    };
+}
+
+/// Q81 item 6: "converged" if every analysed axis converged, "partially
+/// converged" if at least half did, else "not converged"; "no_analysed_axes" if none.
+pub fn studyVerdict(analysed: usize, converged: usize) []const u8 {
+    if (analysed == 0) return "no_analysed_axes";
+    if (converged == analysed) return "converged";
+    if (2 * converged >= analysed) return "partially converged";
+    return "not converged";
+}
+
+/// Q81 item 7: the largest study Δt for which every converged axis stays
+/// within the bound of its own b(25); null if none qualifies.
+pub fn candidateMaxDt(boundaries: []const [4]f64, converged: []const bool) ?u64 {
+    var best: ?u64 = null;
+    for (dt_study_ticks, 0..) |t, i| {
+        var ok = true;
+        for (boundaries, converged) |b, c| {
+            if (c and @abs(b[i] - b[0]) > dt_study_converged_tol_m) ok = false;
+        }
+        if (ok) best = t;
+    }
+    return best;
+}
+
 // --- Tests on synthetic data (no solver) ---
 
 const testing = std.testing;
@@ -2072,4 +2158,38 @@ test "outcome aggregation reuses link_eval and non-finite evaluations never pass
     try testing.expect(!auditEnergy(c, b, &.{}).passed());
     try testing.expectEqual(Status.pass, statusOf(c4Blocked(&.{.{ .t_s = 0 }})));
     try testing.expectEqual(Status.fail, statusOf(c4Blocked(&.{})));
+}
+
+test "dt study: bisection, fit, verdict and candidate max dt on synthetic data" {
+    const P = struct {
+        fn pred(edge: f64, y: f64) anyerror!bool {
+            return y <= edge;
+        }
+    };
+    const b = try bisect(@as(f64, 0.00137), P.pred, 0.001, 0.002, 1e-5);
+    try testing.expect(b <= 0.00137 and 0.00137 - b <= 1e-5);
+    // Exact first order: b(dt) = b0 + a dt, in metres, dt in microseconds.
+    const first = fitBoundaries(.{ 1.0e-3 + 25e-7, 1.0e-3 + 50e-7, 1.0e-3 + 100e-7, 1.0e-3 + 200e-7 });
+    try testing.expectApproxEqAbs(@as(f64, 1.0), first.order.?, 1e-9);
+    try testing.expectApproxEqAbs(@as(f64, 1.0e-3), first.extrapolation_fitted_m.?, 1e-12);
+    try testing.expectApproxEqAbs(@as(f64, 1.0e-3), first.extrapolation_p1_m, 1e-12);
+    try testing.expect(first.converged);
+    // Second order.
+    const sq = fitBoundaries(.{ 2e-3 + 625e-8, 2e-3 + 2500e-8, 2e-3 + 10000e-8, 2e-3 + 40000e-8 });
+    try testing.expectApproxEqAbs(@as(f64, 2.0), sq.order.?, 1e-9);
+    try testing.expectApproxEqAbs(@as(f64, 2e-3), sq.extrapolation_fitted_m.?, 1e-12);
+    try testing.expectApproxEqAbs(@as(f64, 2e-3), sq.extrapolation_p2_m, 1e-12);
+    // Non-monotone and large steps are not converged.
+    const wob = fitBoundaries(.{ 1e-3, 2e-3, 1.5e-3, 1.5e-3 });
+    try testing.expectEqualStrings("not_monotone", wob.order_status);
+    try testing.expect(!wob.converged);
+    try testing.expect(!fitBoundaries(.{ 1e-3, 2e-3, 4e-3, 8e-3 }).converged);
+    try testing.expectEqualStrings("flat", fitBoundaries(.{ 1e-3, 1e-3, 1e-3, 1e-3 }).order_status);
+    try testing.expectEqualStrings("converged", studyVerdict(4, 4));
+    try testing.expectEqualStrings("partially converged", studyVerdict(4, 2));
+    try testing.expectEqualStrings("not converged", studyVerdict(4, 1));
+    try testing.expectEqualStrings("no_analysed_axes", studyVerdict(0, 0));
+    const bs = [_][4]f64{ .{ 1e-3, 1.05e-3, 1.5e-3, 3e-3 }, .{ 2e-3, 2e-3, 2e-3, 2e-3 } };
+    try testing.expectEqual(@as(?u64, 50), candidateMaxDt(&bs, &.{ true, true }));
+    try testing.expectEqual(@as(?u64, 200), candidateMaxDt(&bs, &.{ false, true }));
 }
