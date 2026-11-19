@@ -89,3 +89,5 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q76 | [Body-body (box-box) contact slice: scope, formulation and validation cases](Q076-body-body-contact-slice.md) (agent decision under owner delegation) | accepted |
 | Q77 | [Body-contact BB7 invariance tolerance](Q077-body-contact-bb7-tolerance.md) (agent decision under owner delegation) | accepted |
 | Q78 | [Body-contact protocol revision 2: axis-selection hysteresis and the angular snap control](Q078-body-contact-protocol-rev2.md) (agent decision under owner delegation) | accepted |
+| Q79 | [Body-contact criteria v2 (BB6 swap) and the gyroscopic term (BB8)](Q079-body-contact-v2-bb6-swap-bb8-gyroscopic.md) (agent decision under owner delegation) | accepted |
+| Q80 | [Body-contact criteria v3: BB6 swap check on the contact midplane](Q080-body-contact-v3-bb6-midplane.md) (agent decision under owner delegation) | accepted |

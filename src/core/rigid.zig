@@ -112,6 +112,43 @@ pub const Body = struct {
         return self.orientation.rotate(.{ b[0] / self.inertia_kg_m2[0], b[1] / self.inertia_kg_m2[1], b[2] / self.inertia_kg_m2[2] });
     }
 
+    /// Implicit gyroscopic term (Q79): one Newton step in the body frame on
+    /// I(w2 - w1) + h w2 x (I w2) = 0, starting from w1. Returns the new world
+    /// angular velocity. Unchanged bitwise when w1 x (I w1) is exactly zero.
+    fn gyroscopicStep(self: Body, h: f64) m3.Vec3 {
+        const w1 = self.angular_velocity_rad_s;
+        const w = self.orientation.rotateInverse(w1);
+        const i = self.inertia_kg_m2;
+        const iw: m3.Vec3 = .{ i[0] * w[0], i[1] * w[1], i[2] * w[2] };
+        const c = m3.cross(w, iw);
+        if (c[0] == 0 and c[1] == 0 and c[2] == 0) return w1;
+        const f = m3.scale(c, h);
+        // J = I + h (S(w) I - S(I w)), S(a) v = a x v.
+        const sw = skew(w);
+        const siw = skew(iw);
+        var j: [3][3]f64 = undefined;
+        for (0..3) |r| for (0..3) |k| {
+            j[r][k] = (if (r == k) i[r] else 0) + h * (sw[r][k] * i[k] - siw[r][k]);
+        };
+        const d = solve3(j, f) orelse return w1;
+        return self.orientation.rotate(m3.sub(w, d));
+    }
+
+    fn skew(a: m3.Vec3) [3][3]f64 {
+        return .{ .{ 0, -a[2], a[1] }, .{ a[2], 0, -a[0] }, .{ -a[1], a[0], 0 } };
+    }
+
+    /// Cramer's rule; null for a (numerically) singular matrix.
+    fn solve3(m: [3][3]f64, b: m3.Vec3) ?m3.Vec3 {
+        const c0 = m3.cross(m[1], m[2]);
+        const det = m3.dot(m[0], c0);
+        if (!(@abs(det) > 0) or !std.math.isFinite(det)) return null;
+        const c1 = m3.cross(m[2], m[0]);
+        const c2 = m3.cross(m[0], m[1]);
+        // Rows of the inverse are the cross products of rows, so x = M^-1 b.
+        return .{ m3.dot(.{ c0[0], c1[0], c2[0] }, b) / det, m3.dot(.{ c0[1], c1[1], c2[1] }, b) / det, m3.dot(.{ c0[2], c1[2], c2[2] }, b) / det };
+    }
+
     fn applyImpulse(self: *Body, r: m3.Vec3, p: m3.Vec3) void {
         if (self.is_static) return;
         self.velocity_m_s = m3.add(self.velocity_m_s, m3.scale(p, 1.0 / self.mass_kg));
@@ -746,6 +783,7 @@ pub const World = struct {
         for (self.bodies.items) |*b| {
             if (b.is_static) continue;
             b.position_m = m3.add(b.position_m, m3.scale(b.velocity_m_s, h));
+            b.angular_velocity_rad_s = b.gyroscopicStep(h);
             b.orientation = b.orientation.integrate(b.angular_velocity_rad_s, h);
             inline for (.{ b.position_m, b.velocity_m_s, b.angular_velocity_rad_s }) |v|
                 for (v) |x| if (!std.math.isFinite(x)) return error.NumericalFailure;
@@ -1670,4 +1708,42 @@ test "one body-body row impulse conserves linear and angular momentum about the 
     const after = l(&w);
     try testing.expect(m3.length(m3.sub(after[0], before[0])) < 1e-12);
     try testing.expect(m3.length(m3.sub(after[1], before[1])) < 1e-12);
+}
+
+test "gyroscopic step: torque-free asymmetric spin conserves angular momentum far better; principal spin unchanged" {
+    var w: World = .{ .gpa = testing.allocator, .settings = test_settings, .friction = .{ .mu_static = 0.5, .mu_kinetic = 0.4 }, .gravity_m_s2 = m3.zero };
+    defer w.deinit();
+    w.tabletop_contact = false;
+    var body = cuboid(0.04, .{ 0.04, 0.03, 0.01 }, 100);
+    body.angular_velocity_rad_s = .{ 1.0, 0.05, 3.0 };
+    _ = try w.addBody(body);
+    const lw = struct {
+        fn of(b: Body) m3.Vec3 {
+            const wb = b.orientation.rotateInverse(b.angular_velocity_rad_s);
+            return b.orientation.rotate(.{ b.inertia_kg_m2[0] * wb[0], b.inertia_kg_m2[1] * wb[1], b.inertia_kg_m2[2] * wb[2] });
+        }
+    }.of;
+    const l0 = lw(w.bodies.items[0]);
+    for (0..2000) |_| try w.step(0.0005, .{});
+    const l1 = lw(w.bodies.items[0]);
+    const drift = m3.length(m3.sub(l1, l0)) / m3.length(l0);
+    const cosang = m3.dot(l0, l1) / (m3.length(l0) * m3.length(l1));
+    std.debug.print("gyro: |L| rel drift {e}, direction angle {e}\n", .{ @abs(m3.length(l1) - m3.length(l0)) / m3.length(l0), std.math.acos(@min(1.0, cosang)) });
+    // Baseline: the previous integrator (constant world omega, no gyroscopic term).
+    var base = body;
+    for (0..2000) |_| base.orientation = base.orientation.integrate(base.angular_velocity_rad_s, 0.0005);
+    const lb = lw(base);
+    const base_drift = m3.length(m3.sub(lb, l0)) / m3.length(l0);
+    std.debug.print("gyro: |dL|/|L| implicit {e} vs previous {e}\n", .{ drift, base_drift });
+    try testing.expect(drift < base_drift / 10.0);
+
+    var w2: World = .{ .gpa = testing.allocator, .settings = test_settings, .friction = .{ .mu_static = 0.5, .mu_kinetic = 0.4 }, .gravity_m_s2 = m3.zero };
+    defer w2.deinit();
+    w2.tabletop_contact = false;
+    var b2 = cuboid(0.04, .{ 0.04, 0.03, 0.01 }, 100);
+    b2.angular_velocity_rad_s = .{ 0, 0, 2.5 };
+    _ = try w2.addBody(b2);
+    for (0..100) |_| try w2.step(0.0005, .{});
+    try testing.expectEqual(@as(f64, 2.5), w2.bodies.items[0].angular_velocity_rad_s[2]);
+    try testing.expectEqual(@as(f64, 0), w2.bodies.items[0].angular_velocity_rad_s[0]);
 }

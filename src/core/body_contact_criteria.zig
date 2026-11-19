@@ -245,6 +245,7 @@ pub const Criteria = struct {
     criteria_id: []const u8,
     criteria_version: u32,
     run_class: enum { fixture_validation },
+    supersedes: []const u8 = "",
     decisions: []const []const u8,
     rationale: []const u8,
     protocol: struct { path: []const u8, revision: u32 },
@@ -535,7 +536,34 @@ pub const v1_json = @embedFile("criteria_body_contact_v1");
 /// SHA-256 recorded in criteria/REGISTER.md.
 pub const v1_sha256 = "26b2f8dc2c938cd299baaec557132cb2aeb3d039b1d563107214e34a2878d883";
 
+/// Criteria v2 (Q79): v1 with the BB6 swap rule corrected. Default.
+pub const v2_json = @embedFile("criteria_body_contact_v2");
+
+pub const v2_sha256 = "85ae950f7ff1d5647034742a0c598fa59e75c8631a3ce5f041f48c7cfc2f4a60";
+
+/// Criteria v3 (Q80): v2 with the BB6 swap check on the contact midplane. Default.
+pub const v3_json = @embedFile("criteria_body_contact_v3");
+
+pub const v3_sha256 = "05c3d2ec402cdb37bed5b9e30c00f8d2bf465048e8258c90f8db98887918f0c2";
+
 const testing = std.testing;
+
+test "the embedded body-contact criteria v3 are byte-identical to the registered version and parse" {
+    const identity = @import("identity.zig");
+    try testing.expectEqualStrings(v3_sha256, &identity.toHex(identity.fileIdentity(v3_json)));
+    const p = try parse(testing.allocator, v3_json);
+    defer p.deinit();
+    try testing.expectEqual(@as(u32, 3), p.value.criteria_version);
+}
+
+test "the embedded body-contact criteria v2 are byte-identical to the registered version and parse" {
+    const identity = @import("identity.zig");
+    try testing.expectEqualStrings(v2_sha256, &identity.toHex(identity.fileIdentity(v2_json)));
+    const p = try parse(testing.allocator, v2_json);
+    defer p.deinit();
+    try testing.expectEqual(@as(u32, 2), p.value.criteria_version);
+    try testing.expectEqual(@as(usize, 3), p.value.BB6.configurations.len);
+}
 
 test "the embedded body-contact criteria are byte-identical to the registered version" {
     const identity = @import("identity.zig");

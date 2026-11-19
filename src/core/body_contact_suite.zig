@@ -28,8 +28,8 @@ pub const Report = struct {
     schema_version: u32 = 1,
     run_class: []const u8 = "fixture_validation",
     label: []const u8 = "fixture",
-    criteria_path: []const u8 = "criteria/fixture-validation/body-contact-v1.json",
-    criteria_sha256: []const u8 = bcc.v1_sha256,
+    criteria_path: []const u8 = "criteria/fixture-validation/body-contact-v3.json",
+    criteria_sha256: []const u8 = bcc.v3_sha256,
     protocol: []const u8 = "docs/validation/body-contact-v1-protocol.md",
     protocol_revision: u32 = protocol_revision,
     settle_s: f64,
@@ -540,8 +540,12 @@ fn runBb6(ctx: Ctx) ![]const SubRun {
         const fwd = bce.bb6Result(a, bx);
         const swp = bce.bb6Result(bx, a);
         var list: bce.List = .{};
-        try bce.bb6Check(ctx.arena, &list, "", cf, exp_axis, tol, fwd, false);
-        if (b.swap_check.value) try bce.bb6Check(ctx.arena, &list, "swapped.", cf, exp_axis, tol, swp, true);
+        try bce.bb6Check(ctx.arena, &list, "", cf, exp_axis, tol, fwd, false, false, false);
+        if (b.swap_check.value) {
+            const v = ctx.c.criteria_version;
+            try bce.bb6Check(ctx.arena, &list, "swapped.", cf, exp_axis, tol, swp, true, v == 2, v >= 3);
+            if (v >= 3) try bce.bb6MidplaneCheck(ctx.arena, &list, "swapped.", tol, a, bx, fwd, swp);
+        }
         var h = std.crypto.hash.sha2.Sha256.init(.{});
         hashResult(&h, fwd);
         hashResult(&h, swp);
@@ -640,7 +644,20 @@ pub fn run(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: bcc.Criteria
         try cases.append(arena, .{ .case_id = c.BB9.id, .outcome = fe.combine(passes.items), .combinations = try combos.toOwnedSlice(arena) });
     }
 
+    const ver = c.criteria_version;
     return .{
+        // Superseded criteria (v1, v2) can only be re-run as `exploratory`.
+        .label = if (ver < 3) "exploratory" else "fixture",
+        .criteria_path = switch (ver) {
+            1 => "criteria/fixture-validation/body-contact-v1.json",
+            2 => "criteria/fixture-validation/body-contact-v2.json",
+            else => "criteria/fixture-validation/body-contact-v3.json",
+        },
+        .criteria_sha256 = switch (ver) {
+            1 => bcc.v1_sha256,
+            2 => bcc.v2_sha256,
+            else => bcc.v3_sha256,
+        },
         .settle_s = c.settle.duration_s.value,
         .solver_name = "kinigami-rigid",
         .solver_version = "0.1.0",
@@ -679,19 +696,45 @@ test "BB6 configurations: the criteria orientation matrices match the quaternion
     };
 }
 
-test "BB6 generator passes against the registered closed forms (ordered and swapped)" {
-    const p = try loadCriteria();
+test "BB6 v3 midplane swap check passes for all configurations" {
+    const p = try bcc.parse(testing.allocator, bcc.v3_json);
     defer p.deinit();
     var arena = std.heap.ArenaAllocator.init(testing.allocator);
     defer arena.deinit();
     const ctx: Ctx = .{ .arena = arena.allocator(), .scratch = arena.allocator(), .c = p.value, .g = 9.80665, .unit = .{ .numerator = 1, .denominator = 1_000_000 } };
     const subs = try runBb6(ctx);
     try testing.expectEqual(@as(usize, 3), subs.len);
-    // Known protocol ambiguity: the reported point lies on the incident face,
-    // and swapping the pair swaps which box is the incident one, so for BB6a
-    // (face-face, depth 5e-4 m) the swapped point set sits one depth away in z
-    // (5e-4 / 0.04 = 1.25e-2 relative), not "the same point set". Every other
-    // metric must pass.
+    for (subs) |s| for (s.metrics) |m| {
+        if (!m.passed()) std.debug.print("FAIL {s} {s} {e}\n", .{ s.name, m.name, m.value });
+        try testing.expect(m.passed());
+    };
+}
+
+test "BB6 under superseded v2 translate rule fails BB6b and BB6c by one depth" {
+    const p = try bcc.parse(testing.allocator, bcc.v2_json);
+    defer p.deinit();
+    var arena = std.heap.ArenaAllocator.init(testing.allocator);
+    defer arena.deinit();
+    const ctx: Ctx = .{ .arena = arena.allocator(), .scratch = arena.allocator(), .c = p.value, .g = 9.80665, .unit = .{ .numerator = 1, .denominator = 1_000_000 } };
+    const subs = try runBb6(ctx);
+    for (subs) |s| {
+        var failing: usize = 0;
+        for (s.metrics) |m| if (!m.passed()) {
+            failing += 1;
+            try testing.expectEqualStrings("swapped.point_rel_error", m.name);
+            try testing.expectApproxEqAbs(@as(f64, 0.0005 / 0.04), m.value, 1e-9);
+        };
+        try testing.expectEqual(@as(usize, if (std.mem.startsWith(u8, s.name, "BB6a")) 0 else 1), failing);
+    }
+}
+
+test "BB6 under superseded v1 still reports the one-depth swapped point discrepancy" {
+    const p = try loadCriteria();
+    defer p.deinit();
+    var arena = std.heap.ArenaAllocator.init(testing.allocator);
+    defer arena.deinit();
+    const ctx: Ctx = .{ .arena = arena.allocator(), .scratch = arena.allocator(), .c = p.value, .g = 9.80665, .unit = .{ .numerator = 1, .denominator = 1_000_000 } };
+    const subs = try runBb6(ctx);
     for (subs) |s| {
         var failing: usize = 0;
         for (s.metrics) |m| if (!m.passed()) {

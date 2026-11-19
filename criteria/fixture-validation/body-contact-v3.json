@@ -1,0 +1,1063 @@
+{
+ "schema_version": 1,
+ "criteria_id": "fixture-validation-body-contact",
+ "criteria_version": 3,
+ "run_class": "fixture_validation",
+ "decisions": [
+  "Q35",
+  "Q41",
+  "Q43",
+  "Q46",
+  "Q47",
+  "Q48",
+  "Q57",
+  "Q60",
+  "Q74",
+  "Q76",
+  "Q79",
+  "Q80"
+ ],
+ "rationale": "Solver-validation cases for compliant box-box (cuboid-cuboid) contact (Q76), on neutral fixtures. Values are solver-validation parameters, not material or Kin-candidate claims. Results are labeled fixture and qualify only box-box contact within the declared conditions. Every numeric value is either copied from criteria/fixture-validation/analytic-v1.json (status copied, field named in source) or labeled provisional with its basis. Where a case is the block-on-block analogue of an analytic-v1 case, the analytic-v1 tolerance is copied unchanged (Q76 section 5). Tolerance principles follow docs/decisions/Q048-fixture-validation-reference-conditions.md. This file changes no existing criterion.",
+ "protocol": {
+  "path": "docs/validation/body-contact-v1-protocol.md",
+  "revision": 1
+ },
+ "time_unit": {
+  "numerator_s": 1,
+  "denominator_s": 1000000
+ },
+ "physics_step_ticks": [
+  500,
+  1000,
+  2000
+ ],
+ "physics_step_ticks_source": "analytic-v1 physics_step_ticks (Q76 section 4)",
+ "outcome_rule": "all_combinations_pass_else_uncertain_if_mixed",
+ "outcome_rule_source": "analytic-v1 outcome_rule (Q48)",
+ "gravity": {
+  "magnitude_m_s2": 9.80665,
+  "direction_world": [
+   0,
+   0,
+   -1
+  ],
+  "source": "Copied from analytic-v1 gravity. Tabletop is the world plane z = 0. Overridden per case only where a case says so: BB7 rotates the direction, BB8 sets the magnitude to 0."
+ },
+ "friction_law": "coulomb_static_kinetic",
+ "friction_grid": [
+  {
+   "id": "mu_low",
+   "mu_static": 0.3,
+   "mu_kinetic": 0.2
+  },
+  {
+   "id": "mu_mid",
+   "mu_static": 0.6,
+   "mu_kinetic": 0.45
+  },
+  {
+   "id": "mu_high",
+   "mu_static": 0.9,
+   "mu_kinetic": 0.7
+  }
+ ],
+ "friction_grid_source": "Copied verbatim from analytic-v1 friction_grid. One pair is applied to every contact in a run: table-body and body-body.",
+ "fixtures": [
+  {
+   "id": "fixture_flat_block",
+   "shape": "cuboid",
+   "mass_distribution": "uniform",
+   "size_m": [
+    0.04,
+    0.04,
+    0.02
+   ],
+   "mass_kg": 0.04,
+   "source": "analytic-v1 fixtures, verbatim"
+  },
+  {
+   "id": "fixture_tall_block",
+   "shape": "cuboid",
+   "mass_distribution": "uniform",
+   "size_m": [
+    0.02,
+    0.02,
+    0.06
+   ],
+   "mass_kg": 0.03,
+   "source": "analytic-v1 fixtures, verbatim"
+  },
+  {
+   "id": "fixture_support_slab",
+   "shape": "cuboid",
+   "mass_distribution": "uniform",
+   "size_m": [
+    0.6,
+    0.4,
+    0.02
+   ],
+   "motion": "static",
+   "pose": "centre (0, 0, 0.01) m, axis-aligned, resting on the tabletop plane z = 0 unless a case says otherwise",
+   "status": "provisional",
+   "basis": "Added by this file. Q76 names a static block under the dynamic one in BB2 to BB5, but the 40 mm flat block is shorter than the analytic-v1 sliding travel (stop distance 0.064 m at mu_low; above-threshold travel of 0.2 m or more) so the moving block would leave its support. The slab is larger in plan only; its 20 mm thickness equals the flat block. A static body has no mass in the solver. It is a solver fixture, never a Kin candidate (Q38)."
+  }
+ ],
+ "audit_allowance_source": "criteria/qualification/coupler-engagement-v2.json audits (Q57, Q60)",
+ "settle": {
+  "duration_s": {
+   "value": 0.5,
+   "status": "copied",
+   "source": "analytic-v1 protocol revision 2 settle (docs/validation/fixture-analytic-v1-protocol.md); not a criteria field"
+  },
+  "applies_to": "every dynamic body that starts in contact, in BB1 to BB5 and BB7",
+  "note": "Bodies start exactly touching, aligned, at rest, and settle under gravity with no validation load for this long. t = 0 starts after settling. BB4 and BB8 and BB6 are not settled."
+ },
+ "BB1": {
+  "id": "BB1_stacked_rest",
+  "fixtures": {
+   "bottom": "fixture_flat_block",
+   "top": "fixture_flat_block"
+  },
+  "bottom_motion": "dynamic",
+  "poses": {
+   "bottom_centre_m": [
+    0,
+    0,
+    0.01
+   ],
+   "top_centre_m": [
+    0,
+    0,
+    0.03
+   ],
+   "orientation": "identity (axis-aligned), both centred on the same vertical line"
+  },
+  "duration_s": {
+   "value": 2.0,
+   "status": "copied",
+   "source": "analytic-v1 rest.duration_s"
+  },
+  "window_start_s": {
+   "value": 1.0,
+   "status": "copied",
+   "source": "analytic-v1 rest.window_start_s"
+  },
+  "metrics": {
+   "inter_block_normal_force_rel_tol": {
+    "value": 0.001,
+    "status": "copied",
+    "source": "analytic-v1 rest.normal_force_rel_tol"
+   },
+   "inter_block_normal_force_reference": "top_mass_kg * g",
+   "table_normal_force_rel_tol": {
+    "value": 0.001,
+    "status": "copied",
+    "source": "analytic-v1 rest.normal_force_rel_tol"
+   },
+   "table_normal_force_reference": "(bottom_mass_kg + top_mass_kg) * g",
+   "tangential_force_max_rel_weight": {
+    "value": 1e-06,
+    "status": "copied",
+    "source": "analytic-v1 rest.tangential_force_max_rel_weight"
+   },
+   "tangential_force_reference": "weight carried by the interface under test",
+   "center_of_pressure_abs_tol_m": {
+    "value": 0.0001,
+    "status": "copied",
+    "source": "analytic-v1 rest.center_of_pressure_abs_tol_m"
+   },
+   "drift_translation_abs_tol_m": {
+    "value": 1e-06,
+    "status": "copied",
+    "source": "analytic-v1 rest.drift_translation_abs_tol_m"
+   },
+   "drift_rotation_abs_tol_rad": {
+    "value": 1e-06,
+    "status": "copied",
+    "source": "analytic-v1 rest.drift_rotation_abs_tol_rad"
+   },
+   "max_penetration_m": {
+    "value": 0.0001,
+    "status": "copied",
+    "source": "analytic-v1 rest.max_penetration_m"
+   },
+   "penetration_applies_to": "every interface (table-bottom, bottom-top), max over the whole run",
+   "newton_third_law_rel_tol": {
+    "value": 1e-09,
+    "status": "provisional",
+    "basis": "the bottom-top impulse is applied equal and opposite to both bodies (Q76 section 2), so the two bodies' reported contact forces differ only by rounding; double-precision margin like BB6/BB7"
+   }
+  }
+ },
+ "BB2": {
+  "id": "BB2_friction_threshold_on_block",
+  "fixtures": {
+   "bottom": "fixture_support_slab",
+   "top": "fixture_flat_block"
+  },
+  "bottom_motion": "static",
+  "poses": {
+   "top_centre_m": [
+    0,
+    0,
+    0.03
+   ],
+   "orientation": "identity"
+  },
+  "application": {
+   "value": "center_of_mass",
+   "status": "copied",
+   "source": "analytic-v1 friction_threshold.application"
+  },
+  "applied_on": "top block",
+  "direction_world": {
+   "value": [
+    1,
+    0,
+    0
+   ],
+   "status": "copied",
+   "source": "analytic-v1 friction_threshold.direction_world"
+  },
+  "threshold_force": "mu_static * top_mass_kg * g",
+  "below_factor": {
+   "value": 0.9,
+   "status": "copied",
+   "source": "analytic-v1 friction_threshold.below_factor"
+  },
+  "above_factor": {
+   "value": 1.1,
+   "status": "copied",
+   "source": "analytic-v1 friction_threshold.above_factor"
+  },
+  "below": {
+   "duration_s": {
+    "value": 1.0,
+    "status": "copied",
+    "source": "analytic-v1 friction_threshold.duration_s"
+   },
+   "max_displacement_m": {
+    "value": 1e-05,
+    "status": "copied",
+    "source": "analytic-v1 friction_threshold.below_max_displacement_m"
+   },
+   "balance_window_start_s": {
+    "value": 0.5,
+    "status": "copied",
+    "source": "analytic-v1 friction_threshold.below_balance_window_start_s"
+   },
+   "balance_rel_tol": {
+    "value": 0.001,
+    "status": "copied",
+    "source": "analytic-v1 friction_threshold.below_balance_rel_tol"
+   },
+   "max_penetration_m": {
+    "value": 0.0001,
+    "status": "copied",
+    "source": "analytic-v1 friction_threshold.max_penetration_m"
+   }
+  },
+  "above": {
+   "duration_s": {
+    "value": 0.4,
+    "status": "provisional",
+    "basis": "analytic-v1 uses 1.0 s. At 1.1x mu_static the block accelerates at up to 2.84 m/s2 (mu_high), so over 1.0 s it would leave the 0.6 m slab (CoM travel 1.42 m). At 0.4 s the largest CoM travel is 0.23 m, inside the slab half-length of 0.3 m less the block half-width"
+   },
+   "accel_window_start_s": {
+    "value": 0.2,
+    "status": "provisional",
+    "basis": "analytic-v1 uses 0.5 of 1.0 s (half the run); half of the shortened run, with the block already sliding at the kinetic coefficient"
+   },
+   "accel_window_end_s": {
+    "value": 0.4,
+    "status": "provisional",
+    "basis": "end of the shortened run"
+   },
+   "accel_rel_tol": {
+    "value": 0.01,
+    "status": "copied",
+    "source": "analytic-v1 friction_threshold.above_accel_rel_tol"
+   },
+   "accel_reference": "(F - mu_kinetic * top_mass_kg * g) / top_mass_kg",
+   "max_penetration_m": {
+    "value": 0.0001,
+    "status": "copied",
+    "source": "analytic-v1 friction_threshold.max_penetration_m"
+   },
+   "stays_on_slab": {
+    "value": true,
+    "status": "provisional",
+    "basis": "validity check: the top-block CoM horizontal position stays within the slab footprint shrunk by the block half-width, else the run is invalid and fails"
+   }
+  }
+ },
+ "BB3": {
+  "id": "BB3_slide_to_stop_on_block",
+  "fixtures": {
+   "bottom": "fixture_support_slab",
+   "top": "fixture_flat_block"
+  },
+  "bottom_motion": "static",
+  "poses": {
+   "top_centre_m": [
+    0,
+    0,
+    0.03
+   ],
+   "orientation": "identity"
+  },
+  "initial_speed_m_s": {
+   "value": 0.5,
+   "status": "copied",
+   "source": "analytic-v1 slide_to_stop.initial_speed_m_s"
+  },
+  "direction_world": {
+   "value": [
+    1,
+    0,
+    0
+   ],
+   "status": "copied",
+   "source": "analytic-v1 slide_to_stop.direction_world"
+  },
+  "duration_s": {
+   "value": 1.0,
+   "status": "copied",
+   "source": "analytic-v1 slide_to_stop.duration_s"
+  },
+  "stop_speed_threshold_m_s": {
+   "value": 1e-06,
+   "status": "copied",
+   "source": "analytic-v1 slide_to_stop.stop_speed_threshold_m_s"
+  },
+  "stop_point": "bottom-face centre of the top block (analytic-v1 protocol revision 2 definition)",
+  "stop_time_tol_steps": {
+   "value": 2.0,
+   "status": "copied",
+   "source": "analytic-v1 slide_to_stop.stop_time_tol_steps"
+  },
+  "stop_distance_rel_tol": {
+   "value": 0.01,
+   "status": "copied",
+   "source": "analytic-v1 slide_to_stop.stop_distance_rel_tol"
+  },
+  "stop_distance_tol_steps": {
+   "value": 1.0,
+   "status": "copied",
+   "source": "analytic-v1 slide_to_stop.stop_distance_tol_steps"
+  },
+  "post_stop_drift_abs_tol_m": {
+   "value": 1e-06,
+   "status": "copied",
+   "source": "analytic-v1 slide_to_stop.post_stop_drift_abs_tol_m"
+  },
+  "stays_on_slab": {
+   "value": true,
+   "status": "provisional",
+   "basis": "validity check as in BB2 above; the largest stop distance is 0.064 m (mu_low), far inside the slab"
+  }
+ },
+ "BB4": {
+  "id": "BB4_drop_onto_block",
+  "fixtures": {
+   "bottom": "fixture_support_slab",
+   "top": "fixture_flat_block"
+  },
+  "bottom_motion": "static",
+  "poses": {
+   "top_bottom_face_height_above_slab_top_m": {
+    "value": 0.1,
+    "status": "copied",
+    "source": "analytic-v1 free_fall.initial_clearance_m"
+   },
+   "top_centre_xy_m": [
+    0,
+    0
+   ],
+   "orientation": "identity",
+   "initial_velocity": [
+    0,
+    0,
+    0
+   ]
+  },
+  "settle": "none (the block is released from rest at the stated clearance)",
+  "duration_s": {
+   "value": 2.0,
+   "status": "provisional",
+   "basis": "same total length as BB1 (copied rest.duration_s value 2.0); the impact happens at about 0.14 s and the rest-state window then starts well after the contact transient has damped"
+  },
+  "rest_window_start_s": {
+   "value": 1.0,
+   "status": "copied",
+   "source": "analytic-v1 rest.window_start_s"
+  },
+  "rest_state_metrics": {
+   "normal_force_rel_tol": {
+    "value": 0.001,
+    "status": "copied",
+    "source": "analytic-v1 rest.normal_force_rel_tol"
+   },
+   "normal_force_reference": "top_mass_kg * g",
+   "tangential_force_max_rel_weight": {
+    "value": 1e-06,
+    "status": "copied",
+    "source": "analytic-v1 rest.tangential_force_max_rel_weight"
+   },
+   "center_of_pressure_abs_tol_m": {
+    "value": 0.0001,
+    "status": "copied",
+    "source": "analytic-v1 rest.center_of_pressure_abs_tol_m"
+   },
+   "drift_translation_abs_tol_m": {
+    "value": 1e-06,
+    "status": "copied",
+    "source": "analytic-v1 rest.drift_translation_abs_tol_m"
+   },
+   "drift_rotation_abs_tol_rad": {
+    "value": 1e-06,
+    "status": "copied",
+    "source": "analytic-v1 rest.drift_rotation_abs_tol_rad"
+   }
+  },
+  "peak_penetration": {
+   "max_penetration_m": {
+    "value": 0.001,
+    "status": "provisional",
+    "basis": "impact penetration is dynamic, so the 1e-4 m rest bound (analytic-v1 rest.max_penetration_m) does not apply. Undamped bound from energy balance at the impact speed v = sqrt(2 g 0.1) = 1.4 m/s: x = v * sqrt(m / (4 k)) = 4.4e-4 m with four contacts at k = 1e5 N/m, m = 0.04 kg. The limit is that bound rounded up by a factor of about two, and is still 5 percent of the 20 mm block thickness"
+   },
+   "rest_max_penetration_m": {
+    "value": 0.0001,
+    "status": "copied",
+    "source": "analytic-v1 rest.max_penetration_m"
+   },
+   "rest_penetration_window": "max over the rest window only"
+  },
+  "free_flight": {
+   "no_contact_before_clearance_closes": {
+    "value": true,
+    "status": "provisional",
+    "basis": "any normal force before the bottom face first reaches the slab top (separation <= 0) fails the case, as free_fall.contact in analytic-v1 does"
+   },
+   "no_tunnelling": {
+    "value": true,
+    "status": "provisional",
+    "basis": "the top-block CoM height never falls below slab top + half the block thickness - the peak penetration limit"
+   }
+  }
+ },
+ "BB5": {
+  "id": "BB5_tipping_on_block",
+  "fixtures": {
+   "bottom": "fixture_support_slab",
+   "top": "fixture_tall_block"
+  },
+  "bottom_motion": "static",
+  "poses": {
+   "top_centre_m": [
+    0,
+    0,
+    0.05
+   ],
+   "orientation": "identity"
+  },
+  "force_frame": {
+   "value": "body",
+   "status": "copied",
+   "source": "analytic-v1 tipping.force_frame"
+  },
+  "force_direction_body": {
+   "value": [
+    1,
+    0,
+    0
+   ],
+   "status": "copied",
+   "source": "analytic-v1 tipping.force_direction_body"
+  },
+  "application_point_body_m": {
+   "value": [
+    -0.01,
+    0,
+    0.02
+   ],
+   "status": "copied",
+   "source": "analytic-v1 tipping.application_point_body_m"
+  },
+  "below_factor": {
+   "value": 0.9,
+   "status": "copied",
+   "source": "analytic-v1 tipping.below_factor"
+  },
+  "above_factor": {
+   "value": 1.1,
+   "status": "copied",
+   "source": "analytic-v1 tipping.above_factor"
+  },
+  "threshold_force": "top_mass_kg * g * 0.01 / 0.05 (moment about the +x bottom edge; lever 0.05 m above the pivot, weight arm 0.01 m)",
+  "threshold_note": "identical to the analytic-v1 tipping threshold because the support surface, friction law and fixture are the same; mu_low (0.3) exceeds the 0.2 threshold ratio so the block pivots rather than slides at every pair",
+  "duration_s": {
+   "value": 1.0,
+   "status": "copied",
+   "source": "analytic-v1 tipping.duration_s"
+  },
+  "below_max_tilt_rad": {
+   "value": 0.001,
+   "status": "copied",
+   "source": "analytic-v1 tipping.below_max_tilt_rad"
+  },
+  "above_min_tilt_rad": {
+   "value": 0.1,
+   "status": "copied",
+   "source": "analytic-v1 tipping.above_min_tilt_rad"
+  },
+  "no_slip_until_tilt_rad": {
+   "value": 0.05,
+   "status": "copied",
+   "source": "analytic-v1 tipping.no_slip_until_tilt_rad"
+  },
+  "pivot_slip_abs_tol_m": {
+   "value": 0.0001,
+   "status": "copied",
+   "source": "analytic-v1 tipping.pivot_slip_abs_tol_m"
+  },
+  "pivot_point": "the +x bottom-edge midpoint of the top block (analytic-v1 definition)"
+ },
+ "BB6": {
+  "id": "BB6_contact_geometry",
+  "kind": "static_generator_check",
+  "friction_and_timestep": "not applicable. Evaluated once, with no integration",
+  "run_label_note": "the contact generator is called directly on the stated poses; no step is taken",
+  "tolerance": {
+   "position_depth_rel_tol": {
+    "value": 1e-09,
+    "status": "provisional",
+    "basis": "Q76 section 5: double-precision margin. Relative to max(|expected|, position_scale_m)"
+   },
+   "position_scale_m": {
+    "value": 0.04,
+    "status": "provisional",
+    "basis": "largest fixture dimension; lets the relative tolerance apply to coordinates whose expected value is zero"
+   },
+   "normal_component_abs_tol": {
+    "value": 1e-09,
+    "status": "provisional",
+    "basis": "Q76 section 5: unit vector, so absolute and relative coincide"
+   }
+  },
+  "pair_order": "(A, B); the contact normal points from A to B; reported point and depth as stated per configuration",
+  "swap_check": {
+   "value": true,
+   "status": "provisional",
+   "basis": "Q80: each configuration is also run with (B, A). Expected: normal negated, same depth, same point count, and the same point set after projecting every point onto the contact midplane (point + (depth/2) n_AB if it lies on A's incident face side, i.e. each point moved half a depth toward the other box; equivalently compare p - ((p - m)\u00b7n) n with m the midplane origin). The midplane points do not depend on which box is incident. v1 ('same point set') and v2 ('translated by one depth') each held for only some configurations."
+  },
+  "point_comparison": "point sets compared after sorting by (x, y, z); count must equal exactly; feature ids must be strictly increasing with no duplicates",
+  "configurations": [
+   {
+    "id": "BB6a_face_face_offset",
+    "kind": "face_face",
+    "A": {
+     "fixture": "fixture_flat_block",
+     "motion": "static",
+     "centre_m": [
+      0,
+      0,
+      0
+     ],
+     "orientation": "identity"
+    },
+    "B": {
+     "fixture": "fixture_flat_block",
+     "motion": "dynamic",
+     "centre_m": [
+      0.015,
+      0.01,
+      0.0195
+     ],
+     "orientation": "identity"
+    },
+    "penetration_depth_m": 0.0005,
+    "expected_axis": "A local z (SAT axis index 2). Axis 5 (B local z) ties; the fixed order picks the lower index",
+    "expected_normal": [
+     0,
+     0,
+     1
+    ],
+    "expected_depth_m": 0.0005,
+    "expected_points_m": [
+     [
+      -0.005,
+      -0.01,
+      0.0095
+     ],
+     [
+      -0.005,
+      0.02,
+      0.0095
+     ],
+     [
+      0.02,
+      -0.01,
+      0.0095
+     ],
+     [
+      0.02,
+      0.02,
+      0.0095
+     ]
+    ],
+    "points_on": "incident face (B bottom face plane z = 0.0095): the overlap rectangle x in [-0.005, 0.02], y in [-0.01, 0.02]",
+    "expected_count": 4
+   },
+   {
+    "id": "BB6b_edge_face_tilted_45deg",
+    "kind": "edge_face",
+    "A": {
+     "fixture": "fixture_flat_block",
+     "motion": "static",
+     "centre_m": [
+      0,
+      0,
+      0
+     ],
+     "orientation": "identity"
+    },
+    "B": {
+     "fixture": "fixture_flat_block",
+     "motion": "dynamic",
+     "centre_m": [
+      0.005,
+      0.005,
+      0.0307132034355964
+     ],
+     "orientation_rotation_about_y_rad": 0.785398163397448,
+     "orientation_matrix": [
+      [
+       0.707106781186548,
+       0,
+       0.707106781186548
+      ],
+      [
+       0,
+       1,
+       0
+      ],
+      [
+       -0.707106781186548,
+       0,
+       0.707106781186548
+      ]
+     ],
+     "orientation_note": "x' = x cos + z sin, z' = -x sin + z cos with theta = 45 degrees; matrix entries are sqrt(0.5)"
+    },
+    "penetration_depth_m": 0.0005,
+    "lowest_edge_of_B": "along y at x = 0.012071067811865, z = 0.0095; spans y in [-0.015, 0.025], clipped to A top face y <= 0.02",
+    "expected_axis": "A local z (SAT axis 2). Axis 7 (A local x cross B local y = world z) ties with it and loses by order",
+    "incident_face_tie": "the two faces of B that meet at the lowest edge have equal anti-parallelism to the normal (45 degrees); the lower B face index is used. Both give the same two points",
+    "expected_normal": [
+     0,
+     0,
+     1
+    ],
+    "expected_depth_m": 0.0005,
+    "expected_points_m": [
+     [
+      0.0120710678118655,
+      -0.015,
+      0.0095
+     ],
+     [
+      0.0120710678118655,
+      0.02,
+      0.0095
+     ]
+    ],
+    "expected_count": 2
+   },
+   {
+    "id": "BB6c_crossing_edge_edge_right_angle",
+    "kind": "edge_edge",
+    "A": {
+     "fixture": "fixture_flat_block",
+     "motion": "static",
+     "centre_m": [
+      0,
+      0,
+      0
+     ],
+     "orientation_rotation_about_x_rad": 0.785398163397448,
+     "orientation_matrix": [
+      [
+       1,
+       0,
+       0
+      ],
+      [
+       0,
+       0.707106781186548,
+       -0.707106781186548
+      ],
+      [
+       0,
+       0.707106781186548,
+       0.707106781186548
+      ]
+     ],
+     "orientation_note": "y' = y cos - z sin, z' = y sin + z cos with theta = 45 degrees"
+    },
+    "B": {
+     "fixture": "fixture_flat_block",
+     "motion": "dynamic",
+     "centre_m": [
+      0,
+      0,
+      0.0419264068711929
+     ],
+     "orientation_rotation_about_y_rad": 0.785398163397448,
+     "orientation_matrix": [
+      [
+       0.707106781186548,
+       0,
+       0.707106781186548
+      ],
+      [
+       0,
+       1,
+       0
+      ],
+      [
+       -0.707106781186548,
+       0,
+       0.707106781186548
+      ]
+     ]
+    },
+    "penetration_depth_m": 0.0005,
+    "edges": {
+     "A_top_edge": "along x at y = 0.007071067811865, z = 0.021213203435596",
+     "B_lowest_edge": "along y at x = 0.007071067811865, z = 0.020713203435596",
+     "crossing": "at right angles in plan, at (0.007071067811865, 0.007071067811865), inside both edge extents"
+    },
+    "expected_axis": "edge pair A local x with B local y (SAT axis index 7); every face axis has overlap of at least 9.4e-3 m, far above 5e-4 m",
+    "expected_normal": [
+     0,
+     0,
+     1
+    ],
+    "expected_depth_m": 0.0005,
+    "expected_points_m": [
+     [
+      0.00707106781186548,
+      0.00707106781186548,
+      0.0209632034355964
+     ]
+    ],
+    "expected_point_definition": "midpoint of the two closest edge points: z = (0.021213203435596 + 0.020713203435596) / 2",
+    "expected_count": 1
+   }
+  ]
+ },
+ "BB7": {
+  "id": "BB7_frame_invariance",
+  "scenes": [
+   {
+    "id": "BB7_S1_stack_on_slab",
+    "base": "top flat block resting on the static slab, as BB2/BB3 poses, no validation load; evaluated as the BB1 rest case with the slab as the bottom body",
+    "duration_s": {
+     "value": 2.0,
+     "status": "copied",
+     "source": "analytic-v1 rest.duration_s"
+    },
+    "window_start_s": {
+     "value": 1.0,
+     "status": "copied",
+     "source": "analytic-v1 rest.window_start_s"
+    }
+   },
+   {
+    "id": "BB7_S3_slide_on_slab",
+    "base": "BB3 slide to stop on the slab",
+    "duration_s": {
+     "value": 1.0,
+     "status": "copied",
+     "source": "analytic-v1 slide_to_stop.duration_s"
+    }
+   }
+  ],
+  "base_note": "The tabletop plane z = 0 is world-fixed in the solver and cannot be rotated. Both scenes therefore contain no table contact: the slab and the dynamic block are both lifted off the table by the translation below, and the table never touches them",
+  "transform": {
+   "rotation_matrix_row_major": [
+    [
+     0.8222222222222222,
+     -0.35555555555555557,
+     0.4444444444444444
+    ],
+    [
+     0.4444444444444444,
+     0.8888888888888888,
+     -0.1111111111111111
+    ],
+    [
+     -0.35555555555555557,
+     0.28888888888888886,
+     0.8888888888888888
+    ]
+   ],
+   "rotation_matrix_exact_rows": [
+    [
+     "37/45",
+     "-16/45",
+     "4/9"
+    ],
+    [
+     "4/9",
+     "8/9",
+     "-1/9"
+    ],
+    [
+     "-16/45",
+     "13/45",
+     "8/9"
+    ]
+   ],
+   "rotation_definition": "rotation by an angle with cosine 0.8 and sine 0.6 about the unit axis (1, 2, 2) / 3; the matrix is orthonormal exactly in rational arithmetic",
+   "translation_m": [
+    0.3,
+    -0.2,
+    5.0
+   ],
+   "applied_to": "every body position and orientation (R times the body rotation), every initial velocity (R v), the gravity direction, and the applied slide direction",
+   "gravity_direction_world": [
+    -0.444444444444444,
+    0.111111111111111,
+    -0.888888888888889
+   ],
+   "gravity_direction_exact": [
+    "-4/9",
+    "1/9",
+    "-8/9"
+   ],
+   "slide_direction_world": [
+    0.822222222222222,
+    0.444444444444444,
+    -0.355555555555556
+   ],
+   "slide_direction_exact": [
+    "37/45",
+    "20/45",
+    "-16/45"
+   ],
+   "minimum_table_clearance_m": {
+    "value": 4.0,
+    "status": "provisional",
+    "basis": "the scene extent is below 0.7 m about its origin, so with z shifted by 5 m every point stays at least 4 m above the tabletop plane"
+   }
+  },
+  "comparison": "each scene is run twice, identity and transformed, at the same (friction pair, timestep). Body-relative quantities are compared",
+  "quantities_compared": {
+   "S1": [
+    "interface normal force magnitude (windowed mean)",
+    "tangential force magnitude (windowed max)",
+    "centre of pressure in the top block frame",
+    "max penetration",
+    "top block rotation angle relative to the slab (the quaternion relative to the slab, as an angle)",
+    "top block CoM displacement in the slab frame"
+   ],
+   "S3": [
+    "stop step index (within stop_step_index_tol)",
+    "stop time",
+    "stop distance along the slide direction",
+    "post-stop drift in the slab frame",
+    "max penetration"
+   ]
+  },
+  "rel_tol": {
+   "value": 1e-06,
+   "status": "provisional",
+   "basis": "Q76 s5 said 1e-9; lead review before registration raised it: a rotated scene is not bit-identical in IEEE 754, and stick-slip over 1000+ steps can amplify rounding. 1e-6 is still 100x tighter than the physics tolerances (1e-4 m penetration, 1e-3 relative force), so a real frame dependence fails. Relative to max(|reference|, scale), scale 1 N, 0.04 m, 1 rad, 1 s"
+  },
+  "abs_floor": {
+   "value": 1e-12,
+   "status": "provisional",
+   "basis": "avoids dividing by zero for quantities that are exactly zero in the reference; same order as the coupler audits' absolute floors"
+  },
+  "stop_step_index_tol": {
+   "value": 1,
+   "status": "provisional",
+   "basis": "rounding can move the speed threshold crossing by one step; a frame dependence larger than one step fails"
+  }
+ },
+ "BB8": {
+  "id": "BB8_two_dynamic_bodies",
+  "gravity_override": {
+   "magnitude_m_s2": 0.0,
+   "basis": "gravity disabled for this case only, so momentum is conserved with no external force"
+  },
+  "fixtures": {
+   "A": "fixture_flat_block",
+   "B": "fixture_flat_block"
+  },
+  "motion": {
+   "A": "dynamic",
+   "B": "dynamic"
+  },
+  "poses": {
+   "A_centre_m": [
+    0,
+    0,
+    0
+   ],
+   "B_centre_m": [
+    0.01,
+    0,
+    0.021
+   ],
+   "orientation": "both identity",
+   "initial_gap_m": {
+    "value": 0.001,
+    "status": "provisional",
+    "basis": "gap between the facing faces at t = 0 (B bottom face z = 0.011, A top face z = 0.010); small enough that contact occurs within the first 0.01 s and large enough not to start in contact"
+   },
+   "offset_x_m": {
+    "value": 0.01,
+    "status": "provisional",
+    "basis": "B is offset from A by 10 mm in x so the normal impulse is eccentric and both bodies spin about y; the spin axis is a principal axis of the flat block (gyroscopic term omitted by the analytic protocol therefore does not change angular momentum)"
+   }
+  },
+  "velocities": {
+   "A_m_s": [
+    0,
+    0,
+    0
+   ],
+   "B_m_s": [
+    0.3,
+    0,
+    -0.1
+   ],
+   "angular_rad_s": [
+    0,
+    0,
+    0
+   ]
+  },
+  "duration_s": {
+   "value": 0.5,
+   "status": "provisional",
+   "basis": "B moves 0.15 m in x, which clears the 0.04 m width of A so the last sample is contact-free"
+  },
+  "sliding_engaged": {
+   "min_peak_tangential_impulse_n_s": {
+    "value": 1e-06,
+    "status": "provisional",
+    "basis": "far above rounding, far below the expected friction impulse of order 1e-3 N s (mu_low x about 2e-3): a run with no friction activity did not exercise sliding contact and fails"
+   },
+   "basis": "Relative tangential speed 0.3 m/s against a reduced-mass normal impulse scale of 2e-3 N s makes sliding the expected regime at every friction pair (m_r * v_t = 6e-3 N s exceeds mu_static * about 4e-3 N s)"
+  },
+  "final_sample_contact_free": {
+   "value": true,
+   "status": "provisional",
+   "basis": "precondition: the final sample has no body pair overlap (SAT separation > 0). If it does, the energy audit is not valid and the run fails"
+  },
+  "audits": {
+   "applies_to": "every BB8 run",
+   "momentum": {
+    "form": "max over t > 0 of |p - p0| / (rel_tol_of_m_g_t * M * g_n * t + abs_floor_kg_m_s), limit <= 1",
+    "rel_tol_of_m_g_t": {
+     "value": 1e-09,
+     "status": "copied",
+     "source": "analytic-v1 coupler-engagement-v2 audits.momentum.rel_tol_of_m_g_t"
+    },
+    "abs_floor_kg_m_s": {
+     "value": 1e-12,
+     "status": "copied",
+     "source": "analytic-v1 coupler-engagement-v2 audits.momentum.abs_floor_kg_m_s"
+    },
+    "M": "sum of the two body masses",
+    "g_n": "the standard gravity constant 9.80665 m/s2 used as a scale even though the applied gravity is 0, so the allowance keeps the coupler form (the reference p0 + M g t reduces to p0)",
+    "note": "the coupler form has the term (M g t); with gravity applied it is the momentum change gravity can explain. Here it is used only as a scale for the rounding allowance"
+   },
+   "angular_momentum": {
+    "form": "max over t > 0 of |L - L0| / (rel_tol * M * g_n * t * r_ref + abs_floor_kg_m2_s), limit <= 1",
+    "about": "the world origin, L = sum over bodies of (r_c x m v + R I_body R^T omega)",
+    "rel_tol": {
+     "value": 1e-09,
+     "status": "provisional",
+     "basis": "same relative tolerance as the linear momentum audit"
+    },
+    "r_ref_m": {
+     "value": 0.04,
+     "status": "provisional",
+     "basis": "largest fixture dimension"
+    },
+    "abs_floor_kg_m2_s": {
+     "value": 1e-12,
+     "status": "provisional",
+     "basis": "same order as the linear floor"
+    }
+   },
+   "impulse_accounting": {
+    "rel_tol_of_step_impulse_sum": {
+     "value": 1e-09,
+     "status": "copied",
+     "source": "analytic-v1 coupler-engagement-v2 audits.impulse_accounting.rel_tol_of_step_impulse_sum"
+    },
+    "abs_floor_n_s": {
+     "value": 1e-15,
+     "status": "copied",
+     "source": "analytic-v1 coupler-engagement-v2 audits.impulse_accounting.abs_floor_n_s"
+    },
+    "definition": "for every step, each body's change in linear momentum equals the sum of the contact impulses the solver reports for that body, within the allowance"
+   },
+   "pose_integration": {
+    "value": "bit_identical_to_semi_implicit_update",
+    "status": "copied",
+    "source": "analytic-v1 audits.pose_integration"
+   },
+   "energy": {
+    "quantity": "kinetic energy of both bodies, translational plus rotational, total; no stored potential exists because gravity is off and both the first and last samples are contact-free",
+    "creation_rule": "E_final <= E_0 + (creation_rel_tol + first_order_omega_dt_coefficient * omega_ref * dt) * E_0 + abs_floor_j",
+    "creation_rel_tol": {
+     "value": 0.02,
+     "status": "copied",
+     "source": "analytic-v1 coupler-engagement-v2 audits.energy.creation_rel_tol"
+    },
+    "abs_floor_j": {
+     "value": 1e-12,
+     "status": "copied",
+     "source": "analytic-v1 coupler-engagement-v2 audits.energy.abs_floor_j"
+    },
+    "first_order_omega_dt_coefficient": {
+     "value": 0.0,
+     "status": "provisional",
+     "basis": "the coupler value 1.0 compensates the shadow energy of stored potential in the final sample (Q60 section 1). Here both evaluated samples are contact-free, so no potential is stored in either and the term does not apply. If the final sample were in contact the run would already fail the final_sample_contact_free precondition. A larger omega_ref * dt term would also make this audit vacuous at these stiffnesses (sqrt(4k/m_r) = 4.5e3 rad/s)"
+    },
+    "omega_ref_definition": "sqrt(4 * contact_stiffness / m_reduced), reported as informational for the audit record",
+    "dissipation_reported": "E_0 - E_final reported, informational, not gated (the compliant damping legitimately dissipates)"
+   }
+  },
+  "audit_discrimination": {
+   "id": "BB8_audit_discrimination",
+   "controls": [
+    "velocity_snap_on_first_contact",
+    "angular_velocity_snap_on_first_contact"
+   ],
+   "requirement": {
+    "value": "each_control_fails_its_audit_at_every_timestep",
+    "status": "provisional",
+    "basis": "as the coupler C9 requirement: an audit that cannot detect an unmodeled velocity change is not evidence of conservation. Controls are applied in the evaluator on a copy of the trace, not in the solver"
+   }
+  }
+ },
+ "BB9": {
+  "id": "BB9_replay",
+  "requirement": "bit_identical_final_state_hash_on_replay",
+  "source": "coupler-engagement-v2 determinism (C10)",
+  "scope": {
+   "value": "every run of BB1 to BB5, BB7 (identity and transformed) and BB8 at every (friction pair, timestep) combination is executed twice from the same configuration and the canonical final-state hashes compared; BB6 is repeated and its full output compared bitwise",
+   "status": "provisional",
+   "basis": "Q76 says only bit-identical final-state hashes; the cases to which it applies are made explicit here"
+  }
+ },
+ "supersedes": "criteria/fixture-validation/body-contact-v2.json (sha256 85ae950f7ff1d5647034742a0c598fa59e75c8631a3ce5f041f48c7cfc2f4a60), BB6 swap_check only (Q80)"
+}
