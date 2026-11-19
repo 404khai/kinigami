@@ -48,3 +48,7 @@ Not covered:
 - rotation about more than one axis (the gyroscopic term is omitted)
 - other stiffnesses
 - any Kin geometry
+
+## Run 3 — after the gyroscopic term (Q79)
+
+[run 3](run3-c0111f6-ReleaseSafe.json): clean `c0111f6`, criteria v1 unchanged. **All cases pass, as in run 2.** 54 of 63 final-state hashes changed, which is expected because the integrator gained the implicit gyroscopic term. No outcome changed.

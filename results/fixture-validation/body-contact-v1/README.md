@@ -23,3 +23,14 @@
 
 - During implementation, a non-official preview exposed unstable SAT axis selection. That instability caused BB1 at μ_high/500 µs and the BB7 frame dependence. It was fixed and recorded in Q78 (protocol rev 2) before this run.
 - The existing suites are unchanged by the opt-in body contact. Analytic 63/63 and compliant-link 60/60 final-state hashes are identical, and the coupler run-2 report is identical.
+
+## Run 2 — criteria v3, qualified for box-box contact within the declared envelope
+
+- [run 2](run2-c0111f6-ReleaseSafe.json): clean `c0111f6`, ReleaseSafe, criteria `body-contact-v3.json` (sha256 `05c3d2ec…`, Q80), protocol rev. 2. **All nine cases pass:** BB1–BB5, BB7, BB8 and BB9 at 9/9, BB6 at 1/1.
+- **What changed since run 1:**
+  - The rigid-body integrator gained the implicit gyroscopic term (Q79). That fixes BB8: torque-free asymmetric spin conserves L about 4400× better.
+  - The BB6 swap check was corrected twice: the v2 rule was wrong in turn (Q79, then Q80). The final check compares points on the contact midplane.
+  - Both criteria versions were registered before the code that used them. Run 1 is preserved.
+- **Limits:**
+  - Box-box only, with the 100-sweep protocol settings.
+  - Coupler C8 still reports `outside_model` runs: the coupler criteria do not enable body contact. Re-evaluating C8 with body contact needs its own decision.
