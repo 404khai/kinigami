@@ -1,0 +1,1522 @@
+{
+  "code_revision": "9dc7b486df407baf3840c18d4e04c3fb524f373b",
+  "working_tree_dirty": false,
+  "optimize_mode": "safe",
+  "target": "aarch64-macos.27.0...27.0-none",
+  "zig_version": "0.17.0",
+  "report": {
+    "label": "exploratory",
+    "decision": "Q81",
+    "criteria_path": "criteria/qualification/coupler-engagement-v2.json",
+    "criteria_sha256": "72307066686fdd54c15e4052a12cdf3cdde785569d4bdb0e466e91d33dc58a02",
+    "study_step_ticks": [
+      25,
+      50,
+      100,
+      200
+    ],
+    "resolution_m": 0.00001,
+    "converged_tol_m": 0.0001,
+    "solver_settings": {
+      "settings": {
+        "contact_stiffness_n_m": 100000,
+        "contact_damping_n_s_m": 50,
+        "static_slip_speed_m_s": 0.00001,
+        "iterations": 100,
+        "warm_start": true
+      },
+      "link_settings": {
+        "form": "midpoint_prediction",
+        "prediction_q": 0.25
+      }
+    },
+    "axes": [
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0,
+        "approach_speed_m_s": 0.02,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.0023046875000000003,
+            "bracket_upper_m": 0.0023146875000000003,
+            "runs": 11
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0023046875000000003,
+            "bracket_upper_m": 0.0023146875000000003,
+            "runs": 11
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "bounded",
+            "boundary_m": 0.0022656250000000003,
+            "bracket_upper_m": 0.0022756250000000003,
+            "runs": 11
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.0021796875,
+            "bracket_upper_m": 0.0021896875000000002,
+            "runs": 11
+          }
+        ],
+        "analysed": true,
+        "fit": {
+          "order": null,
+          "order_status": "not_monotone",
+          "extrapolation_fitted_m": null,
+          "extrapolation_p1_m": 0.0023046875000000003,
+          "extrapolation_p2_m": 0.0023046875000000003,
+          "converged": true
+        }
+      },
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0,
+        "approach_speed_m_s": 0.1,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.0021875,
+            "bracket_upper_m": 0.0021975000000000002,
+            "runs": 11
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0022031250000000002,
+            "bracket_upper_m": 0.0022131250000000002,
+            "runs": 11
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "bounded",
+            "boundary_m": 0.0019921875,
+            "bracket_upper_m": 0.0020021875,
+            "runs": 10
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.002015625,
+            "bracket_upper_m": 0.002025625,
+            "runs": 11
+          }
+        ],
+        "analysed": true,
+        "fit": {
+          "order": null,
+          "order_status": "not_monotone",
+          "extrapolation_fitted_m": null,
+          "extrapolation_p1_m": 0.002171875,
+          "extrapolation_p2_m": 0.002182291666666667,
+          "converged": true
+        }
+      },
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0,
+        "approach_speed_m_s": 0.3,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.000359375,
+            "bracket_upper_m": 0.000369375,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0005,
+            "bracket_upper_m": 0.00051,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.0011171875000000001,
+            "bracket_upper_m": 0.0011271875000000002,
+            "runs": 10
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0.005,
+        "approach_speed_m_s": 0.02,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.0025937499999999997,
+            "bracket_upper_m": 0.0026037499999999997,
+            "runs": 11
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0025937499999999997,
+            "bracket_upper_m": 0.0026037499999999997,
+            "runs": 11
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "bounded",
+            "boundary_m": 0.0025937499999999997,
+            "bracket_upper_m": 0.0026037499999999997,
+            "runs": 11
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.0025156249999999996,
+            "bracket_upper_m": 0.0025256249999999997,
+            "runs": 11
+          }
+        ],
+        "analysed": true,
+        "fit": {
+          "order": null,
+          "order_status": "flat",
+          "extrapolation_fitted_m": null,
+          "extrapolation_p1_m": 0.0025937499999999997,
+          "extrapolation_p2_m": 0.0025937499999999997,
+          "converged": true
+        }
+      },
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0.005,
+        "approach_speed_m_s": 0.1,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.0025156249999999996,
+            "bracket_upper_m": 0.0025256249999999997,
+            "runs": 11
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0024921875000000005,
+            "bracket_upper_m": 0.0025021875000000005,
+            "runs": 11
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "bounded",
+            "boundary_m": 0.0024531250000000004,
+            "bracket_upper_m": 0.0024631250000000005,
+            "runs": 11
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.0022421875000000003,
+            "bracket_upper_m": 0.0022521875000000003,
+            "runs": 11
+          }
+        ],
+        "analysed": true,
+        "fit": {
+          "order": 0.7369655941662595,
+          "order_status": "defined",
+          "extrapolation_fitted_m": 0.0025507812499999953,
+          "extrapolation_p1_m": 0.002539062499999999,
+          "extrapolation_p2_m": 0.002523437499999999,
+          "converged": true
+        }
+      },
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0.005,
+        "approach_speed_m_s": 0.3,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.000359375,
+            "bracket_upper_m": 0.000369375,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0005,
+            "bracket_upper_m": 0.00051,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.001984375,
+            "bracket_upper_m": 0.001994375,
+            "runs": 10
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0.15,
+        "approach_speed_m_s": 0.02,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0.15,
+        "approach_speed_m_s": 0.1,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0.15,
+        "approach_speed_m_s": 0.3,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0,
+        "approach_speed_m_s": 0.02,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.0018984375,
+            "bracket_upper_m": 0.0019084375,
+            "runs": 10
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0016250000000000001,
+            "bracket_upper_m": 0.0016350000000000002,
+            "runs": 10
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "bounded",
+            "boundary_m": 0.001484375,
+            "bracket_upper_m": 0.001494375,
+            "runs": 10
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.0006640624999999999,
+            "bracket_upper_m": 0.0006740625,
+            "runs": 9
+          }
+        ],
+        "analysed": true,
+        "fit": {
+          "order": -0.9593580155026518,
+          "order_status": "outside_0.5_4",
+          "extrapolation_fitted_m": null,
+          "extrapolation_p1_m": 0.0021718749999999998,
+          "extrapolation_p2_m": 0.0019895833333333332,
+          "converged": false
+        }
+      },
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0,
+        "approach_speed_m_s": 0.1,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.0010390625,
+            "bracket_upper_m": 0.0010490625,
+            "runs": 10
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0011640625000000002,
+            "bracket_upper_m": 0.0011740625000000002,
+            "runs": 10
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "bounded",
+            "boundary_m": 0.0007109375,
+            "bracket_upper_m": 0.0007209375,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.000703125,
+            "bracket_upper_m": 0.000713125,
+            "runs": 9
+          }
+        ],
+        "analysed": true,
+        "fit": {
+          "order": null,
+          "order_status": "not_monotone",
+          "extrapolation_fitted_m": null,
+          "extrapolation_p1_m": 0.0009140624999999999,
+          "extrapolation_p2_m": 0.0009973958333333334,
+          "converged": false
+        }
+      },
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0,
+        "approach_speed_m_s": 0.3,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.00034375,
+            "bracket_upper_m": 0.00035375,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0003515625,
+            "bracket_upper_m": 0.0003615625,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.001,
+            "bracket_upper_m": 0.00101,
+            "runs": 10
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0.005,
+        "approach_speed_m_s": 0.02,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.0022187500000000002,
+            "bracket_upper_m": 0.0022287500000000003,
+            "runs": 11
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0019765625,
+            "bracket_upper_m": 0.0019865625,
+            "runs": 10
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "bounded",
+            "boundary_m": 0.0021015625,
+            "bracket_upper_m": 0.0021115625,
+            "runs": 11
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.0006640624999999999,
+            "bracket_upper_m": 0.0006740625,
+            "runs": 9
+          }
+        ],
+        "analysed": true,
+        "fit": {
+          "order": null,
+          "order_status": "not_monotone",
+          "extrapolation_fitted_m": null,
+          "extrapolation_p1_m": 0.0024609375000000005,
+          "extrapolation_p2_m": 0.002299479166666667,
+          "converged": false
+        }
+      },
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0.005,
+        "approach_speed_m_s": 0.1,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.002015625,
+            "bracket_upper_m": 0.002025625,
+            "runs": 11
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0018359375,
+            "bracket_upper_m": 0.0018459375,
+            "runs": 10
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "bounded",
+            "boundary_m": 0.0007109375,
+            "bracket_upper_m": 0.0007209375,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.000703125,
+            "bracket_upper_m": 0.000713125,
+            "runs": 9
+          }
+        ],
+        "analysed": true,
+        "fit": {
+          "order": 2.646363045385298,
+          "order_status": "defined",
+          "extrapolation_fitted_m": 0.0020497804752066117,
+          "extrapolation_p1_m": 0.0021953125,
+          "extrapolation_p2_m": 0.0020755208333333333,
+          "converged": false
+        }
+      },
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0.005,
+        "approach_speed_m_s": 0.3,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.00034375,
+            "bracket_upper_m": 0.00035375,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.00040625000000000004,
+            "bracket_upper_m": 0.00041625000000000006,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.00125,
+            "bracket_upper_m": 0.00126,
+            "runs": 10
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0.15,
+        "approach_speed_m_s": 0.02,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0.15,
+        "approach_speed_m_s": 0.1,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_low",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0.15,
+        "approach_speed_m_s": 0.3,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0,
+        "approach_speed_m_s": 0.02,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.0007421875,
+            "bracket_upper_m": 0.0007521875,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.000765625,
+            "bracket_upper_m": 0.0007756250000000001,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "bounded",
+            "boundary_m": 0.001015625,
+            "bracket_upper_m": 0.001025625,
+            "runs": 10
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.001015625,
+            "bracket_upper_m": 0.001025625,
+            "runs": 10
+          }
+        ],
+        "analysed": true,
+        "fit": {
+          "order": 3.4150374992788426,
+          "order_status": "defined",
+          "extrapolation_fitted_m": 0.0007397629310344827,
+          "extrapolation_p1_m": 0.00071875,
+          "extrapolation_p2_m": 0.000734375,
+          "converged": true
+        }
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0,
+        "approach_speed_m_s": 0.1,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.000875,
+            "bracket_upper_m": 0.000885,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0008437500000000001,
+            "bracket_upper_m": 0.0008537500000000001,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "bounded",
+            "boundary_m": 0.000703125,
+            "bracket_upper_m": 0.000713125,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.0006015625000000001,
+            "bracket_upper_m": 0.0006115625000000001,
+            "runs": 9
+          }
+        ],
+        "analysed": true,
+        "fit": {
+          "order": 2.1699250014423175,
+          "order_status": "defined",
+          "extrapolation_fitted_m": 0.0008839285714285714,
+          "extrapolation_p1_m": 0.0009062499999999999,
+          "extrapolation_p2_m": 0.0008854166666666666,
+          "converged": true
+        }
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0,
+        "approach_speed_m_s": 0.3,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.0004609375,
+            "bracket_upper_m": 0.0004709375,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0005,
+            "bracket_upper_m": 0.00051,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.0004921875,
+            "bracket_upper_m": 0.0005021875,
+            "runs": 9
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0.005,
+        "approach_speed_m_s": 0.02,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.0007421875,
+            "bracket_upper_m": 0.0007521875,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.000765625,
+            "bracket_upper_m": 0.0007756250000000001,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "bounded",
+            "boundary_m": 0.0012656249999999998,
+            "bracket_upper_m": 0.0012756249999999998,
+            "runs": 10
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.001015625,
+            "bracket_upper_m": 0.001025625,
+            "runs": 10
+          }
+        ],
+        "analysed": true,
+        "fit": {
+          "order": 4.415037499278842,
+          "order_status": "outside_0.5_4",
+          "extrapolation_fitted_m": null,
+          "extrapolation_p1_m": 0.00071875,
+          "extrapolation_p2_m": 0.000734375,
+          "converged": true
+        }
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0.005,
+        "approach_speed_m_s": 0.1,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.000875,
+            "bracket_upper_m": 0.000885,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0008437500000000001,
+            "bracket_upper_m": 0.0008537500000000001,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "bounded",
+            "boundary_m": 0.000703125,
+            "bracket_upper_m": 0.000713125,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.0006015625000000001,
+            "bracket_upper_m": 0.0006115625000000001,
+            "runs": 9
+          }
+        ],
+        "analysed": true,
+        "fit": {
+          "order": 2.1699250014423175,
+          "order_status": "defined",
+          "extrapolation_fitted_m": 0.0008839285714285714,
+          "extrapolation_p1_m": 0.0009062499999999999,
+          "extrapolation_p2_m": 0.0008854166666666666,
+          "converged": true
+        }
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0.005,
+        "approach_speed_m_s": 0.3,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.0004609375,
+            "bracket_upper_m": 0.0004709375,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.001,
+            "bracket_upper_m": 0.00101,
+            "runs": 10
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.0011250000000000001,
+            "bracket_upper_m": 0.0011350000000000002,
+            "runs": 10
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0.15,
+        "approach_speed_m_s": 0.02,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0.15,
+        "approach_speed_m_s": 0.1,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_facet",
+        "misalignment_rad": 0.15,
+        "approach_speed_m_s": 0.3,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0,
+        "approach_speed_m_s": 0.02,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.0005937500000000001,
+            "bracket_upper_m": 0.0006037500000000001,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0004609375,
+            "bracket_upper_m": 0.0004709375,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "bounded",
+            "boundary_m": 0.00039843750000000003,
+            "bracket_upper_m": 0.00040843750000000005,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.000390625,
+            "bracket_upper_m": 0.00040062500000000005,
+            "runs": 9
+          }
+        ],
+        "analysed": true,
+        "fit": {
+          "order": -1.087462841250342,
+          "order_status": "outside_0.5_4",
+          "extrapolation_fitted_m": null,
+          "extrapolation_p1_m": 0.0007265625000000002,
+          "extrapolation_p2_m": 0.0006380208333333334,
+          "converged": false
+        }
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0,
+        "approach_speed_m_s": 0.1,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.0004609375,
+            "bracket_upper_m": 0.0004709375,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0005625000000000001,
+            "bracket_upper_m": 0.0005725000000000001,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "bounded",
+            "boundary_m": 0.000515625,
+            "bracket_upper_m": 0.000525625,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.00053125,
+            "bracket_upper_m": 0.0005412500000000001,
+            "runs": 9
+          }
+        ],
+        "analysed": true,
+        "fit": {
+          "order": null,
+          "order_status": "not_monotone",
+          "extrapolation_fitted_m": null,
+          "extrapolation_p1_m": 0.0003593749999999999,
+          "extrapolation_p2_m": 0.0004270833333333333,
+          "converged": false
+        }
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0,
+        "approach_speed_m_s": 0.3,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.0000234375,
+            "bracket_upper_m": 0.0000334375,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0000234375,
+            "bracket_upper_m": 0.0000334375,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.00003125,
+            "bracket_upper_m": 0.00004125,
+            "runs": 9
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0.005,
+        "approach_speed_m_s": 0.02,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.0006015625000000001,
+            "bracket_upper_m": 0.0006115625000000001,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.0004765625,
+            "bracket_upper_m": 0.0004865625,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "bounded",
+            "boundary_m": 0.00039843750000000003,
+            "bracket_upper_m": 0.00040843750000000005,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.00045312499999999997,
+            "bracket_upper_m": 0.000463125,
+            "runs": 9
+          }
+        ],
+        "analysed": true,
+        "fit": {
+          "order": -0.6780719051126397,
+          "order_status": "outside_0.5_4",
+          "extrapolation_fitted_m": null,
+          "extrapolation_p1_m": 0.0007265625000000002,
+          "extrapolation_p2_m": 0.0006432291666666668,
+          "converged": false
+        }
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0.005,
+        "approach_speed_m_s": 0.1,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.0004609375,
+            "bracket_upper_m": 0.0004709375,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.000625,
+            "bracket_upper_m": 0.000635,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "bounded",
+            "boundary_m": 0.0006406249999999999,
+            "bracket_upper_m": 0.0006506249999999999,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.00053125,
+            "bracket_upper_m": 0.0005412500000000001,
+            "runs": 9
+          }
+        ],
+        "analysed": true,
+        "fit": {
+          "order": -3.3923174227787696,
+          "order_status": "outside_0.5_4",
+          "extrapolation_fitted_m": null,
+          "extrapolation_p1_m": 0.00029687499999999994,
+          "extrapolation_p2_m": 0.00040625,
+          "converged": false
+        }
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0.005,
+        "approach_speed_m_s": 0.3,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "bounded",
+            "boundary_m": 0.00022656249999999998,
+            "bracket_upper_m": 0.00023656249999999998,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "bounded",
+            "boundary_m": 0.00016406249999999998,
+            "bracket_upper_m": 0.00017406249999999998,
+            "runs": 9
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "bounded",
+            "boundary_m": 0.00003125,
+            "bracket_upper_m": 0.00004125,
+            "runs": 9
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0.15,
+        "approach_speed_m_s": 0.02,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0.15,
+        "approach_speed_m_s": 0.1,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      },
+      {
+        "friction_pair": "mu_mid",
+        "offset_direction": "toward_corner",
+        "misalignment_rad": 0.15,
+        "approach_speed_m_s": 0.3,
+        "boundaries": [
+          {
+            "physics_step_ticks": 25,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 50,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 100,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          },
+          {
+            "physics_step_ticks": 200,
+            "kind": "none",
+            "boundary_m": null,
+            "bracket_upper_m": null,
+            "runs": 1
+          }
+        ],
+        "analysed": false,
+        "fit": null
+      }
+    ],
+    "axes_total": 36,
+    "axes_analysed": 16,
+    "axes_converged": 8,
+    "verdict": "partially converged",
+    "candidate_max_dt_ticks": 50,
+    "total_runs": 902
+  }
+}
