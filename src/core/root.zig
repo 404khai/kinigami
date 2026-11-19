@@ -14,6 +14,7 @@ pub const snapshot = @import("snapshot.zig");
 pub const driver = @import("driver.zig");
 pub const analytic = @import("analytic.zig");
 pub const criteria = @import("criteria.zig");
+pub const body_contact_criteria = @import("body_contact_criteria.zig");
 pub const link_criteria = @import("link_criteria.zig");
 pub const coupler_criteria = @import("coupler_criteria.zig");
 pub const gate1_criteria = @import("gate1_criteria.zig");
@@ -21,6 +22,7 @@ pub const gate1_declaration = @import("gate1_declaration.zig");
 pub const gate1_eval = @import("gate1_eval.zig");
 pub const math3 = @import("math3.zig");
 pub const coupler_geometry = @import("coupler_geometry.zig");
+pub const box_contact = @import("box_contact.zig");
 pub const fixture_eval = @import("fixture_eval.zig");
 pub const link_eval = @import("link_eval.zig");
 pub const coupler_eval = @import("coupler_eval.zig");
@@ -28,6 +30,8 @@ pub const rigid = @import("rigid.zig");
 pub const fixture_suite = @import("fixture_suite.zig");
 pub const link_suite = @import("link_suite.zig");
 pub const coupler_suite = @import("coupler_suite.zig");
+pub const body_contact_eval = @import("body_contact_eval.zig");
+pub const body_contact_suite = @import("body_contact_suite.zig");
 
 test {
     _ = identity;
@@ -44,6 +48,7 @@ test {
     _ = driver;
     _ = analytic;
     _ = criteria;
+    _ = body_contact_criteria;
     _ = link_criteria;
     _ = coupler_criteria;
     _ = gate1_criteria;
@@ -51,6 +56,7 @@ test {
     _ = gate1_eval;
     _ = math3;
     _ = coupler_geometry;
+    _ = box_contact;
     _ = fixture_eval;
     _ = link_eval;
     _ = coupler_eval;
@@ -58,4 +64,6 @@ test {
     _ = fixture_suite;
     _ = link_suite;
     _ = coupler_suite;
+    _ = body_contact_eval;
+    _ = body_contact_suite;
 }

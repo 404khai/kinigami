@@ -86,3 +86,8 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q73 | [Gate 1 run 5 disposition (cand-a v5)](Q073-gate1-run5-disposition.md) (agent decision under owner delegation) | accepted |
 | Q74 | [Pause candidate revisions; proceed with R8 follow-ups](Q074-pause-candidates-r8-followups.md) (agent decision under owner delegation) | accepted |
 | Q75 | [Coupler-engagement solver-settings sensitivity study](Q075-coupler-solver-settings-sensitivity.md) (agent decision under owner delegation) | accepted |
+| Q76 | [Body-body (box-box) contact slice: scope, formulation and validation cases](Q076-body-body-contact-slice.md) (agent decision under owner delegation) | accepted |
+| Q77 | [Body-contact BB7 invariance tolerance](Q077-body-contact-bb7-tolerance.md) (agent decision under owner delegation) | accepted |
+| Q78 | [Body-contact protocol revision 2: axis-selection hysteresis and the angular snap control](Q078-body-contact-protocol-rev2.md) (agent decision under owner delegation) | accepted |
+| Q79 | [Body-contact criteria v2 (BB6 swap) and the gyroscopic term (BB8)](Q079-body-contact-v2-bb6-swap-bb8-gyroscopic.md) (agent decision under owner delegation) | accepted |
+| Q80 | [Body-contact criteria v3: BB6 swap check on the contact midplane](Q080-body-contact-v3-bb6-midplane.md) (agent decision under owner delegation) | accepted |

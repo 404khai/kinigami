@@ -57,3 +57,7 @@ All ten cases pass. Q60 was ruled and v2 was registered **after run 1 and before
 - **Capture classes** of valid runs: captured 107, separated 108, latch_blocked 68, missed 109. 65 offsets disagree across Δt: the capture boundary is Δt-sensitive at this resolution.
 - **C9:** both snap controls trip their audits at every Δt, and the baseline trips none.
 - **Regression gates:** 63/63 analytic and 60/60 compliant-link hashes are unchanged.
+
+## Run 3 — after the gyroscopic term (Q79)
+
+[run 3](run3-c0111f6-ReleaseSafe.json): clean `c0111f6`, criteria v2 unchanged. **C1–C10 pass, as in run 2.** Many hashes changed (gyroscopic term). No outcome changed.

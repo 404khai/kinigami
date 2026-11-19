@@ -145,3 +145,7 @@ Not covered:
 - any Kin geometry
 
 Recordings: `kinigami-qualify <report> --recordings <dir>` writes one format-v3 recording per evaluated run (Q55), with no effect on results (hashes verified identical to run 2). Recordings are reproducible from the code revision and are not committed.
+
+## Run 3 — after the gyroscopic term (Q79)
+
+[run 3](run3-c0111f6-ReleaseSafe.json): clean `c0111f6`, criteria v2 unchanged. **L1–L10 pass, as in run 2.** 2 of 60 hashes changed (gyroscopic term). No outcome changed.

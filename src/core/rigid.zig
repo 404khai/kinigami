@@ -4,7 +4,8 @@
 //!
 //! Status: implemented, **not qualified**. Fixture links are qualified only
 //! by their own suite. The reduced fixture coupler (below) is implemented,
-//! qualification pending (Q56/Q57). General body-body contact does not exist.
+//! qualification pending (Q56/Q57). Body-body contact is cuboid-cuboid only and
+//! opt-in (see below); general convex contact does not exist.
 //!
 //! Formulation (velocity-level time stepping, fixed step h):
 //! 1. Contacts are cuboid vertices with z ≤ 0 against the plane z = 0.
@@ -52,6 +53,15 @@
 //! decided from the link report with engagement-scaled limits. The discrete
 //! states are never read by the solver (CPL-001). The pawl work is reported.
 //!
+//! Body-body (cuboid-cuboid) contact (Q76, opt-in per world via
+//! `body_contact`): `box_contact` generates, per body pair (A < B), a SAT
+//! manifold; every point is one two-body row with the tabletop's law (compliant
+//! normal with the declared k and c, Coulomb friction with the static/kinetic
+//! switch on the relative tangential speed at step start), solved in the same
+//! Gauss–Seidel sweeps after tabletop contacts and before guide and link
+//! rows, warm-started per (body pair, feature id), with equal and opposite
+//! impulses. Worlds without `body_contact` are bit-identical to before.
+//!
 //! Static bodies (infinite mass, never move) are permitted only when the
 //! world is flagged `allow_static_bodies` by fixture-validation code.
 
@@ -60,6 +70,7 @@ const m3 = @import("math3.zig");
 const canonical = @import("canonical.zig");
 const backend_mod = @import("backend.zig");
 const coupler_geometry = @import("coupler_geometry.zig");
+const box_contact = @import("box_contact.zig");
 
 pub const Settings = struct {
     contact_stiffness_n_m: f64,
@@ -99,6 +110,43 @@ pub const Body = struct {
         if (self.is_static) return m3.zero;
         const b = self.orientation.rotateInverse(v);
         return self.orientation.rotate(.{ b[0] / self.inertia_kg_m2[0], b[1] / self.inertia_kg_m2[1], b[2] / self.inertia_kg_m2[2] });
+    }
+
+    /// Implicit gyroscopic term (Q79): one Newton step in the body frame on
+    /// I(w2 - w1) + h w2 x (I w2) = 0, starting from w1. Returns the new world
+    /// angular velocity. Unchanged bitwise when w1 x (I w1) is exactly zero.
+    fn gyroscopicStep(self: Body, h: f64) m3.Vec3 {
+        const w1 = self.angular_velocity_rad_s;
+        const w = self.orientation.rotateInverse(w1);
+        const i = self.inertia_kg_m2;
+        const iw: m3.Vec3 = .{ i[0] * w[0], i[1] * w[1], i[2] * w[2] };
+        const c = m3.cross(w, iw);
+        if (c[0] == 0 and c[1] == 0 and c[2] == 0) return w1;
+        const f = m3.scale(c, h);
+        // J = I + h (S(w) I - S(I w)), S(a) v = a x v.
+        const sw = skew(w);
+        const siw = skew(iw);
+        var j: [3][3]f64 = undefined;
+        for (0..3) |r| for (0..3) |k| {
+            j[r][k] = (if (r == k) i[r] else 0) + h * (sw[r][k] * i[k] - siw[r][k]);
+        };
+        const d = solve3(j, f) orelse return w1;
+        return self.orientation.rotate(m3.sub(w, d));
+    }
+
+    fn skew(a: m3.Vec3) [3][3]f64 {
+        return .{ .{ 0, -a[2], a[1] }, .{ a[2], 0, -a[0] }, .{ -a[1], a[0], 0 } };
+    }
+
+    /// Cramer's rule; null for a (numerically) singular matrix.
+    fn solve3(m: [3][3]f64, b: m3.Vec3) ?m3.Vec3 {
+        const c0 = m3.cross(m[1], m[2]);
+        const det = m3.dot(m[0], c0);
+        if (!(@abs(det) > 0) or !std.math.isFinite(det)) return null;
+        const c1 = m3.cross(m[2], m[0]);
+        const c2 = m3.cross(m[0], m[1]);
+        // Rows of the inverse are the cross products of rows, so x = M^-1 b.
+        return .{ m3.dot(.{ c0[0], c1[0], c2[0] }, b) / det, m3.dot(.{ c0[1], c1[1], c2[1] }, b) / det, m3.dot(.{ c0[2], c1[2], c2[2] }, b) / det };
     }
 
     fn applyImpulse(self: *Body, r: m3.Vec3, p: m3.Vec3) void {
@@ -235,6 +283,27 @@ const GuideRow = struct {
     p: [3]f64,
 };
 
+/// One body-body contact row (a manifold point). Normals point from A to B.
+const BodyRow = struct {
+    a: u32,
+    b: u32,
+    feature: u8,
+    r_a: m3.Vec3,
+    r_b: m3.Vec3,
+    point: m3.Vec3,
+    n: m3.Vec3,
+    t: [2]m3.Vec3,
+    mu: f64,
+    kn: f64,
+    kt: [2]f64,
+    c_coord: f64,
+    depth: f64,
+    p: [3]f64,
+};
+
+/// Warm-start impulses of the previous step, keyed by (body pair, feature id).
+const BodyWarm = struct { a: u32, b: u32, feature: u8, p: [3]f64 };
+
 /// AUDIT CONTROL ONLY: deliberately violates CPL-004. Applied at coupler
 /// link activation to prove the audits discriminate.
 pub const AuditControl = enum {
@@ -300,8 +369,22 @@ pub const World = struct {
     /// AUDIT CONTROL ONLY: deliberately violates CPL-004. `step` refuses any
     /// value but `.none` unless `allow_static_bodies` (fixture validation).
     audit_control: AuditControl = .none,
+    /// Opt-in cuboid-cuboid contact (Q76). Off: no body-body rows, and the
+    /// canonical state has no body-contact section.
+    body_contact: bool = false,
+    /// Tabletop contact against z = 0. On by default; fixture-validation
+    /// scenes with no table (gravity-free BB8) turn it off.
+    tabletop_contact: bool = true,
+    bb_rows: std.ArrayList(BodyRow) = .empty,
+    bb_warm: std.ArrayList(BodyWarm) = .empty,
+    /// Impulse actually applied to each body by body-body rows during the last
+    /// step (warm start included); sized to the body count while `body_contact`.
+    bb_applied: std.ArrayList(m3.Vec3) = .empty,
 
     pub fn deinit(self: *World) void {
+        self.bb_rows.deinit(self.gpa);
+        self.bb_warm.deinit(self.gpa);
+        self.bb_applied.deinit(self.gpa);
         self.couplers.deinit(self.gpa);
         self.guide_rows.deinit(self.gpa);
         self.coupler_reports.deinit(self.gpa);
@@ -474,7 +557,7 @@ pub const World = struct {
         // 1. Contact detection and friction regime from step-start velocities.
         for (self.bodies.items, 0..) |*b, bi| {
             if (b.is_static) continue;
-            for (0..8) |vi| {
+            if (self.tabletop_contact) for (0..8) |vi| {
                 const r = b.orientation.rotate(b.vertexBody(vi));
                 const p = m3.add(b.position_m, r);
                 if (p[2] > 0) continue;
@@ -490,7 +573,7 @@ pub const World = struct {
                     .kt = .{ b.effectiveMass(r, t_axes[0]), b.effectiveMass(r, t_axes[1]) },
                     .p = if (s.warm_start) b.warm[vi] else .{ 0, 0, 0 },
                 });
-            }
+            };
             // Vertices not in contact this step start from zero next step.
             b.warm = @splat(.{ 0, 0, 0 });
         }
@@ -536,6 +619,7 @@ pub const World = struct {
 
         // 1c. Guide contacts from the step-start pose.
         try self.detectGuides();
+        try self.detectBodyRows();
 
         // 2. External loads.
         for (self.bodies.items) |*b| {
@@ -557,6 +641,7 @@ pub const World = struct {
             const b = &self.bodies.items[c.body];
             b.applyImpulse(c.r, m3.add(m3.scale(n_axis, c.p[0]), m3.add(m3.scale(t_axes[0], c.p[1]), m3.scale(t_axes[1], c.p[2]))));
         }
+        for (self.bb_rows.items) |g| self.applyBodyImpulse(g, m3.add(m3.scale(g.n, g.p[0]), m3.add(m3.scale(g.t[0], g.p[1]), m3.scale(g.t[1], g.p[2]))));
         for (self.guide_rows.items) |g| self.applyGuideImpulse(g, m3.add(m3.scale(g.n, g.p[0]), m3.add(m3.scale(g.t[0], g.p[1]), m3.scale(g.t[1], g.p[2]))));
         for (self.link_rows.items) |row| self.applyRowImpulse(row, row.p);
         const soft = h * (h * s.contact_stiffness_n_m + s.contact_damping_n_s_m);
@@ -584,6 +669,32 @@ pub const World = struct {
                 b.applyImpulse(c.r, m3.add(m3.scale(t_axes[0], pt[0] - c.p[1]), m3.scale(t_axes[1], pt[1] - c.p[2])));
                 c.p[1] = pt[0];
                 c.p[2] = pt[1];
+            }
+            for (self.bb_rows.items) |*g| {
+                const a = self.bodies.items[g.a];
+                const b = self.bodies.items[g.b];
+                const vn = m3.dot(m3.sub(b.pointVelocity(g.r_b), a.pointVelocity(g.r_a)), g.n);
+                const dpn = -(vn + bias_gain * g.c_coord + g.p[0] / soft) / (g.kn + 1.0 / soft);
+                const pn = @max(g.p[0] + dpn, 0.0);
+                self.applyBodyImpulse(g.*, m3.scale(g.n, pn - g.p[0]));
+                g.p[0] = pn;
+
+                const a2 = self.bodies.items[g.a];
+                const b2 = self.bodies.items[g.b];
+                const vel = m3.sub(b2.pointVelocity(g.r_b), a2.pointVelocity(g.r_a));
+                var pt = [2]f64{
+                    g.p[1] - m3.dot(vel, g.t[0]) / g.kt[0],
+                    g.p[2] - m3.dot(vel, g.t[1]) / g.kt[1],
+                };
+                const mag = @sqrt(pt[0] * pt[0] + pt[1] * pt[1]);
+                const limit = g.mu * g.p[0];
+                if (mag > limit) {
+                    const k = if (mag > 0) limit / mag else 0;
+                    pt = .{ pt[0] * k, pt[1] * k };
+                }
+                self.applyBodyImpulse(g.*, m3.add(m3.scale(g.t[0], pt[0] - g.p[1]), m3.scale(g.t[1], pt[1] - g.p[2])));
+                g.p[1] = pt[0];
+                g.p[2] = pt[1];
             }
             for (self.guide_rows.items) |*g| {
                 const a = self.bodies.items[self.couplers.items[g.coupler].spec.body_a];
@@ -643,6 +754,19 @@ pub const World = struct {
                 .tangential_force_n = .{ c.p[1] / h, c.p[2] / h, 0 },
             });
         }
+        self.bb_warm.clearRetainingCapacity();
+        for (self.bb_rows.items) |g| {
+            try self.bb_warm.append(self.gpa, .{ .a = g.a, .b = g.b, .feature = g.feature, .p = g.p });
+            try self.reports.append(self.gpa, .{
+                .body_a = g.a,
+                .body_b = g.b,
+                .world_point_m = g.point,
+                .world_normal = g.n,
+                .normal_force_n = g.p[0] / h,
+                .tangential_force_n = m3.scale(m3.add(m3.scale(g.t[0], g.p[1]), m3.scale(g.t[1], g.p[2])), 1.0 / h),
+                .penetration_m = g.depth,
+            });
+        }
         for (self.couplers.items) |*cp| cp.guide_warm = @splat(.{ 0, 0, 0 });
         for (self.guide_rows.items) |g| {
             self.couplers.items[g.coupler].guide_warm[g.feature] = g.p;
@@ -659,6 +783,7 @@ pub const World = struct {
         for (self.bodies.items) |*b| {
             if (b.is_static) continue;
             b.position_m = m3.add(b.position_m, m3.scale(b.velocity_m_s, h));
+            b.angular_velocity_rad_s = b.gyroscopicStep(h);
             b.orientation = b.orientation.integrate(b.angular_velocity_rad_s, h);
             inline for (.{ b.position_m, b.velocity_m_s, b.angular_velocity_rad_s }) |v|
                 for (v) |x| if (!std.math.isFinite(x)) return error.NumericalFailure;
@@ -671,6 +796,67 @@ pub const World = struct {
             const cmd: backend_mod.Command = if (ci < inputs.coupler_commands.len) inputs.coupler_commands[ci] else .hold;
             try self.couplerUpdate(ci, cmd, h);
         }
+    }
+
+    fn applyBodyImpulse(self: *World, g: BodyRow, imp: m3.Vec3) void {
+        const a = &self.bodies.items[g.a];
+        const b = &self.bodies.items[g.b];
+        b.applyImpulse(g.r_b, imp);
+        a.applyImpulse(g.r_a, m3.scale(imp, -1.0));
+        if (!b.is_static) self.bb_applied.items[g.b] = m3.add(self.bb_applied.items[g.b], imp);
+        if (!a.is_static) self.bb_applied.items[g.a] = m3.sub(self.bb_applied.items[g.a], imp);
+    }
+
+    /// Body-body rows from the step-start poses (Q76 section 2): pairs in
+    /// ascending (A, B) body index, points in manifold order, so the row order
+    /// is (body pair, feature id). Empty unless `body_contact`.
+    fn detectBodyRows(self: *World) error{OutOfMemory}!void {
+        self.bb_rows.clearRetainingCapacity();
+        if (!self.body_contact) return;
+        try self.bb_applied.resize(self.gpa, self.bodies.items.len);
+        @memset(self.bb_applied.items, m3.zero);
+        const s = self.settings;
+        const nb = self.bodies.items.len;
+        for (0..nb) |ai| for (ai + 1..nb) |bi| {
+            const a = self.bodies.items[ai];
+            const b = self.bodies.items[bi];
+            if (a.is_static and b.is_static) continue;
+            const man = box_contact.collide(
+                .{ .centre = a.position_m, .orientation = a.orientation, .half = a.half_extents_m },
+                .{ .centre = b.position_m, .orientation = b.orientation, .half = b.half_extents_m },
+            ) orelse continue;
+            const n = man.normal;
+            const t = man.tangent;
+            for (man.slice(), 0..) |pt, fi| {
+                const r_a = m3.sub(pt.point, a.position_m);
+                const r_b = m3.sub(pt.point, b.position_m);
+                const vrel = m3.sub(b.pointVelocity(r_b), a.pointVelocity(r_a));
+                const vt = m3.sub(vrel, m3.scale(n, m3.dot(vrel, n)));
+                var warm: [3]f64 = .{ 0, 0, 0 };
+                if (s.warm_start) for (self.bb_warm.items) |w| {
+                    if (w.a == ai and w.b == bi and w.feature == fi) {
+                        warm = w.p;
+                        break;
+                    }
+                };
+                try self.bb_rows.append(self.gpa, .{
+                    .a = @intCast(ai),
+                    .b = @intCast(bi),
+                    .feature = @intCast(fi),
+                    .r_a = r_a,
+                    .r_b = r_b,
+                    .point = pt.point,
+                    .n = n,
+                    .t = t,
+                    .mu = if (m3.length(vt) <= s.static_slip_speed_m_s) self.friction.mu_static else self.friction.mu_kinetic,
+                    .kn = a.effectiveMass(r_a, n) + b.effectiveMass(r_b, n),
+                    .kt = .{ a.effectiveMass(r_a, t[0]) + b.effectiveMass(r_b, t[0]), a.effectiveMass(r_a, t[1]) + b.effectiveMass(r_b, t[1]) },
+                    .c_coord = -pt.depth,
+                    .depth = pt.depth,
+                    .p = warm,
+                });
+            }
+        };
     }
 
     fn applyGuideImpulse(self: *World, g: GuideRow, imp: m3.Vec3) void {
@@ -893,6 +1079,18 @@ pub const World = struct {
         if (self.links.items.len > 0) {
             try e.int(u32, @intCast(self.links.items.len));
             for (self.links.items) |lk| for (lk.p) |x| try e.float(x);
+        }
+        // Body-contact section: present only when `body_contact`, so other
+        // worlds keep their encoding. Count, then per warm-start entry in row
+        // order: body pair, feature id, (normal, tangent 1, tangent 2) impulses.
+        if (self.body_contact) {
+            try e.int(u32, @intCast(self.bb_warm.items.len));
+            for (self.bb_warm.items) |w| {
+                try e.int(u32, w.a);
+                try e.int(u32, w.b);
+                try e.int(u32, w.feature);
+                for (w.p) |x| try e.float(x);
+            }
         }
         // Coupler section: present only when the world has couplers, appended
         // after the link section. Per coupler: pawl travel, link-active,
@@ -1395,4 +1593,157 @@ test "coupler T8: audit controls are refused outside fixture-validation worlds" 
     try testing.expectError(error.InvalidInput, w.step(0.001, .{}));
     w.audit_control = .none;
     try w.step(0.001, .{});
+}
+
+// --- Body-body (cuboid) contact tests (Q76; validation is in body_contact_suite) ---
+
+fn bodyWorld(gpa: std.mem.Allocator, enabled: bool) World {
+    return .{ .gpa = gpa, .settings = test_settings, .friction = .{ .mu_static = 0.6, .mu_kinetic = 0.45 }, .gravity_m_s2 = .{ 0, 0, -9.80665 }, .allow_static_bodies = true, .body_contact = enabled };
+}
+
+test "body-body contact is opt-in: overlapping bodies create no body rows by default" {
+    var w = bodyWorld(testing.allocator, false);
+    defer w.deinit();
+    _ = try w.addBody(staticCuboid(.{ 0.6, 0.4, 0.02 }, .{ 0, 0, 0.01 }));
+    var b = cuboid(0.04, .{ 0.04, 0.04, 0.02 }, 0);
+    b.position_m = .{ 0, 0, 0.029 };
+    _ = try w.addBody(b);
+    try w.step(0.001, .{});
+    for (w.reports.items) |r| try testing.expect(r.body_b == null);
+    try testing.expectEqual(@as(usize, 0), w.bb_rows.items.len);
+}
+
+test "a block on a static slab is carried by four body rows equal to its weight, with equal and opposite impulses" {
+    var w = bodyWorld(testing.allocator, true);
+    defer w.deinit();
+    _ = try w.addBody(staticCuboid(.{ 0.6, 0.4, 0.02 }, .{ 0, 0, 0.01 }));
+    var b = cuboid(0.04, .{ 0.04, 0.04, 0.02 }, 0);
+    b.position_m = .{ 0, 0, 0.03 };
+    _ = try w.addBody(b);
+    for (0..2000) |_| try w.step(0.0005, .{});
+    var sum: f64 = 0;
+    var n: usize = 0;
+    for (w.reports.items) |r| if (r.body_b) |bb| {
+        try testing.expectEqual(@as(u32, 1), bb);
+        sum += r.normal_force_n;
+        n += 1;
+    };
+    try testing.expectEqual(@as(usize, 4), n);
+    try testing.expectApproxEqRel(@as(f64, 0.04 * 9.80665), sum, 1e-6);
+    // The static slab takes no impulse; the dynamic body takes the row impulse.
+    try testing.expectEqual(m3.zero, w.bb_applied.items[0]);
+    try testing.expect(w.bb_applied.items[1][2] > 0);
+}
+
+test "two dynamic bodies receive equal and opposite body-row impulses" {
+    var w = bodyWorld(testing.allocator, true);
+    defer w.deinit();
+    w.gravity_m_s2 = m3.zero;
+    w.tabletop_contact = false;
+    var a = cuboid(0.04, .{ 0.04, 0.04, 0.02 }, 0);
+    a.position_m = .{ 0, 0, 5 };
+    var b = a;
+    b.position_m = .{ 0.01, 0, 5.0199 };
+    b.velocity_m_s = .{ 0.3, 0, -0.1 };
+    _ = try w.addBody(a);
+    _ = try w.addBody(b);
+    var peak: f64 = 0;
+    for (0..60) |_| {
+        try w.step(0.0005, .{});
+        const s = m3.add(w.bb_applied.items[0], w.bb_applied.items[1]);
+        peak = @max(peak, m3.length(w.bb_applied.items[0]));
+        try testing.expect(m3.length(s) <= 1e-12 * @max(1.0, m3.length(w.bb_applied.items[0])));
+    }
+    try testing.expect(peak > 0);
+}
+
+test "body-contact worlds are deterministic and include the warm-start section in the hash" {
+    var hashes: [2][]u8 = undefined;
+    inline for (0..2) |i| {
+        var w = bodyWorld(testing.allocator, true);
+        defer w.deinit();
+        _ = try w.addBody(staticCuboid(.{ 0.6, 0.4, 0.02 }, .{ 0, 0, 0.01 }));
+        var b = cuboid(0.04, .{ 0.04, 0.04, 0.02 }, 0);
+        b.position_m = .{ 0, 0, 0.0305 };
+        b.velocity_m_s = .{ 0.2, 0.1, 0 };
+        _ = try w.addBody(b);
+        for (0..300) |_| try w.step(0.001, .{});
+        var sink: canonical.BufferSink = .{ .gpa = testing.allocator };
+        defer sink.deinit();
+        try w.encodeState(sink.encoder());
+        hashes[i] = try testing.allocator.dupe(u8, sink.list.items);
+        try testing.expect(w.bb_warm.items.len > 0);
+    }
+    defer for (hashes) |h| testing.allocator.free(h);
+    try testing.expectEqualSlices(u8, hashes[0], hashes[1]);
+}
+
+test "one body-body row impulse conserves linear and angular momentum about the origin" {
+    var w = bodyWorld(testing.allocator, true);
+    defer w.deinit();
+    w.gravity_m_s2 = m3.zero;
+    w.tabletop_contact = false;
+    // Cubes: isotropic inertia, so the omitted gyroscopic term cannot matter.
+    var a = cuboid(0.02, .{ 0.02, 0.02, 0.02 }, 0);
+    a.position_m = .{ 0.3, -0.2, 5 };
+    var b = a;
+    b.position_m = .{ 0.3 + 0.007, -0.2 + 0.003, 5 + 0.0199 };
+    b.velocity_m_s = .{ 0.2, 0.1, -0.1 };
+    _ = try w.addBody(a);
+    _ = try w.addBody(b);
+    const l = struct {
+        fn of(world: *World) [2]m3.Vec3 {
+            var p = m3.zero;
+            var am = m3.zero;
+            for (world.bodies.items) |x| {
+                p = m3.add(p, m3.scale(x.velocity_m_s, x.mass_kg));
+                am = m3.add(am, m3.add(m3.cross(x.position_m, m3.scale(x.velocity_m_s, x.mass_kg)), m3.scale(x.angular_velocity_rad_s, x.inertia_kg_m2[0])));
+            }
+            return .{ p, am };
+        }
+    }.of;
+    const before = l(&w);
+    try w.step(0.0005, .{});
+    try testing.expect(w.bb_rows.items.len > 0);
+    const after = l(&w);
+    try testing.expect(m3.length(m3.sub(after[0], before[0])) < 1e-12);
+    try testing.expect(m3.length(m3.sub(after[1], before[1])) < 1e-12);
+}
+
+test "gyroscopic step: torque-free asymmetric spin conserves angular momentum far better; principal spin unchanged" {
+    var w: World = .{ .gpa = testing.allocator, .settings = test_settings, .friction = .{ .mu_static = 0.5, .mu_kinetic = 0.4 }, .gravity_m_s2 = m3.zero };
+    defer w.deinit();
+    w.tabletop_contact = false;
+    var body = cuboid(0.04, .{ 0.04, 0.03, 0.01 }, 100);
+    body.angular_velocity_rad_s = .{ 1.0, 0.05, 3.0 };
+    _ = try w.addBody(body);
+    const lw = struct {
+        fn of(b: Body) m3.Vec3 {
+            const wb = b.orientation.rotateInverse(b.angular_velocity_rad_s);
+            return b.orientation.rotate(.{ b.inertia_kg_m2[0] * wb[0], b.inertia_kg_m2[1] * wb[1], b.inertia_kg_m2[2] * wb[2] });
+        }
+    }.of;
+    const l0 = lw(w.bodies.items[0]);
+    for (0..2000) |_| try w.step(0.0005, .{});
+    const l1 = lw(w.bodies.items[0]);
+    const drift = m3.length(m3.sub(l1, l0)) / m3.length(l0);
+    const cosang = m3.dot(l0, l1) / (m3.length(l0) * m3.length(l1));
+    std.debug.print("gyro: |L| rel drift {e}, direction angle {e}\n", .{ @abs(m3.length(l1) - m3.length(l0)) / m3.length(l0), std.math.acos(@min(1.0, cosang)) });
+    // Baseline: the previous integrator (constant world omega, no gyroscopic term).
+    var base = body;
+    for (0..2000) |_| base.orientation = base.orientation.integrate(base.angular_velocity_rad_s, 0.0005);
+    const lb = lw(base);
+    const base_drift = m3.length(m3.sub(lb, l0)) / m3.length(l0);
+    std.debug.print("gyro: |dL|/|L| implicit {e} vs previous {e}\n", .{ drift, base_drift });
+    try testing.expect(drift < base_drift / 10.0);
+
+    var w2: World = .{ .gpa = testing.allocator, .settings = test_settings, .friction = .{ .mu_static = 0.5, .mu_kinetic = 0.4 }, .gravity_m_s2 = m3.zero };
+    defer w2.deinit();
+    w2.tabletop_contact = false;
+    var b2 = cuboid(0.04, .{ 0.04, 0.03, 0.01 }, 100);
+    b2.angular_velocity_rad_s = .{ 0, 0, 2.5 };
+    _ = try w2.addBody(b2);
+    for (0..100) |_| try w2.step(0.0005, .{});
+    try testing.expectEqual(@as(f64, 2.5), w2.bodies.items[0].angular_velocity_rad_s[2]);
+    try testing.expectEqual(@as(f64, 0), w2.bodies.items[0].angular_velocity_rad_s[0]);
 }

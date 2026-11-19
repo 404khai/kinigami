@@ -35,7 +35,15 @@ const RecordingWriter = struct {
 pub fn main(init: std.process.Init) !void {
     const arena = init.arena.allocator();
     const args = try init.minimal.args.toSlice(arena);
-    const usage = "usage: kinigami-validate <report.json> [--recordings <dir>]\n";
+    const usage = "usage: kinigami-validate <report.json> [--recordings <dir>]\n       kinigami-validate --body-contact <report.json> [--criteria-v1|--criteria-v2]   (box-box contact; v1/v2 are exploratory)\n";
+    if (args.len >= 3 and std.mem.eql(u8, args[1], "--body-contact")) {
+        var ver: u32 = 3;
+        if (args.len == 4 and std.mem.eql(u8, args[3], "--criteria-v1")) ver = 1 else if (args.len == 4 and std.mem.eql(u8, args[3], "--criteria-v2")) ver = 2 else if (args.len != 3) {
+            std.debug.print(usage, .{});
+            std.process.exit(2);
+        }
+        return bodyContact(init, arena, args[2], ver);
+    }
     if (args.len != 2 and !(args.len == 4 and std.mem.eql(u8, args[2], "--recordings"))) {
         std.debug.print(usage, .{});
         std.process.exit(2);
@@ -81,5 +89,55 @@ pub fn main(init: std.process.Init) !void {
         if (c.outcome != .pass) all_pass = false;
     }
     std.debug.print("report written to {s}\n", .{args[1]});
+    if (!all_pass) std.process.exit(1);
+}
+
+const BodyContactOutput = struct {
+    code_revision: []const u8,
+    working_tree_dirty: bool,
+    optimize_mode: []const u8,
+    target: []const u8,
+    zig_version: []const u8,
+    report: core.body_contact_suite.Report,
+};
+
+/// Body-body contact fixture validation (Q76, Q77). Same provenance and exit
+/// convention as the analytic suite; every result is labeled `fixture`.
+fn bodyContact(init: std.process.Init, arena: std.mem.Allocator, path: []const u8, ver: u32) !void {
+    const bcr = core.body_contact_criteria;
+    const parsed = try bcr.parse(arena, switch (ver) {
+        1 => bcr.v1_json,
+        2 => bcr.v2_json,
+        else => bcr.v3_json,
+    });
+    const report = try core.body_contact_suite.run(arena, init.gpa, parsed.value);
+    const out: BodyContactOutput = .{
+        .code_revision = std.mem.trim(u8, @embedFile("git_revision"), " \n\r"),
+        .working_tree_dirty = std.mem.trim(u8, @embedFile("git_status"), " \n\r").len != 0,
+        .optimize_mode = @tagName(@import("builtin").mode),
+        .target = build_info.target,
+        .zig_version = @import("builtin").zig_version_string,
+        .report = report,
+    };
+    const json = try std.json.Stringify.valueAlloc(arena, out, .{ .whitespace = .indent_2 });
+    try std.Io.Dir.cwd().writeFile(init.io, .{ .sub_path = path, .data = json });
+
+    var all_pass = true;
+    std.debug.print("body-contact fixture validation (label: fixture), criteria {s}\n", .{report.criteria_sha256[0..12]});
+    for (report.cases) |c| {
+        var n_pass: usize = 0;
+        for (c.combinations) |cb| {
+            if (cb.passed) n_pass += 1;
+        }
+        std.debug.print("  {s:<34} {s:<10} ({d}/{d} combinations)\n", .{ c.case_id, @tagName(c.outcome), n_pass, c.combinations.len });
+        for (c.combinations) |cb| {
+            if (cb.passed) continue;
+            for (cb.sub_runs) |s| for (s.metrics) |m| if (!m.passed()) {
+                std.debug.print("      {s} dt={d}us {s}.{s}: {e} (limit {s} {e})\n", .{ cb.friction_id, cb.physics_step_ticks, s.name, m.name, m.value, if (m.at_least) ">=" else "<=", m.limit });
+            };
+        }
+        if (c.outcome != .pass) all_pass = false;
+    }
+    std.debug.print("report written to {s}\n", .{path});
     if (!all_pass) std.process.exit(1);
 }
