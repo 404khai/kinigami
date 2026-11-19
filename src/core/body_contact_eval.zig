@@ -181,12 +181,54 @@ pub fn bb6Result(a: box_contact.Box, b: box_contact.Box) ?Bb6Result {
     return r;
 }
 
+/// Contact midplane along `n` (A to B): the plane n . x = m midway between A's
+/// highest and B's lowest extent along n. Returns m.
+pub fn midplaneOffset(a: box_contact.Box, b: box_contact.Box, n: m3.Vec3) f64 {
+    const ra = box_radius(a, n);
+    const rb = box_radius(b, n);
+    const hi_a = m3.dot(a.centre, n) + ra;
+    const lo_b = m3.dot(b.centre, n) - rb;
+    return 0.5 * (hi_a + lo_b);
+}
+
+fn box_radius(bx: box_contact.Box, dir: m3.Vec3) f64 {
+    const ax = [3]m3.Vec3{ bx.orientation.rotate(.{ 1, 0, 0 }), bx.orientation.rotate(.{ 0, 1, 0 }), bx.orientation.rotate(.{ 0, 0, 1 }) };
+    return @abs(m3.dot(dir, ax[0])) * bx.half[0] + @abs(m3.dot(dir, ax[1])) * bx.half[1] + @abs(m3.dot(dir, ax[2])) * bx.half[2];
+}
+
+/// v3 swap check (Q80): both point sets are projected onto the contact
+/// midplane (normal n_AB) and compared after sorting.
+pub fn bb6MidplaneCheck(al: std.mem.Allocator, list: *List, prefix: []const u8, tol: anytype, a: box_contact.Box, b: box_contact.Box, fwd: ?Bb6Result, swp: ?Bb6Result) !void {
+    const name = try std.fmt.allocPrint(al, "{s}point_rel_error", .{prefix});
+    const f = fwd orelse return;
+    const s = swp orelse return;
+    var perr: f64 = 0;
+    if (f.count != s.count) {
+        perr = std.math.inf(f64);
+    } else {
+        const n = f.normal;
+        const m = midplaneOffset(a, b, n);
+        var pf: [box_contact.max_points]m3.Vec3 = @splat(m3.zero);
+        var ps: [box_contact.max_points]m3.Vec3 = @splat(m3.zero);
+        for (0..f.count) |i| {
+            pf[i] = m3.sub(f.points[i], m3.scale(n, m3.dot(f.points[i], n) - m));
+            ps[i] = m3.sub(s.points[i], m3.scale(n, m3.dot(s.points[i], n) - m));
+        }
+        std.mem.sort(m3.Vec3, pf[0..f.count], {}, lessPoint);
+        std.mem.sort(m3.Vec3, ps[0..f.count], {}, lessPoint);
+        for (0..f.count) |i| for (0..3) |k| {
+            perr = @max(perr, @abs(ps[i][k] - pf[i][k]) / @max(@abs(pf[i][k]), tol.position_scale_m));
+        };
+    }
+    try list.add(al, .{ .name = name, .value = perr, .limit = tol.position_depth_rel_tol });
+}
+
 /// Compares a generator result with the closed form of configuration `cf`.
 /// `swapped` negates the expected normal and skips the axis check (the axis
 /// index refers to the other box order). With `swap_translate` (criteria v2,
 /// Q79) each expected point is the (A, B) point translated by the depth along
 /// the (A, B) normal, since swapping exchanges the incident box.
-pub fn bb6Check(a: std.mem.Allocator, list: *List, prefix: []const u8, cf: bcc.Bb6Config, expected_axis: u8, tol: anytype, got: ?Bb6Result, swapped: bool, swap_translate: bool) !void {
+pub fn bb6Check(a: std.mem.Allocator, list: *List, prefix: []const u8, cf: bcc.Bb6Config, expected_axis: u8, tol: anytype, got: ?Bb6Result, swapped: bool, swap_translate: bool, skip_points: bool) !void {
     const nm = struct {
         fn n(al: std.mem.Allocator, p: []const u8, s: []const u8) ![]const u8 {
             return std.fmt.allocPrint(al, "{s}{s}", .{ p, s });
@@ -218,7 +260,7 @@ pub fn bb6Check(a: std.mem.Allocator, list: *List, prefix: []const u8, cf: bcc.B
         perr = std.math.inf(f64);
     }
     try list.add(a, .{ .name = try nm(a, prefix, "depth_rel_error"), .value = derr, .limit = tol.position_depth_rel_tol });
-    try list.add(a, .{ .name = try nm(a, prefix, "point_rel_error"), .value = perr, .limit = tol.position_depth_rel_tol });
+    if (!skip_points) try list.add(a, .{ .name = try nm(a, prefix, "point_rel_error"), .value = perr, .limit = tol.position_depth_rel_tol });
 }
 
 // --- BB7 ---
