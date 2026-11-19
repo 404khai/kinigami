@@ -1,0 +1,4 @@
+node_modules
+dist
+# written by scripts/generate.mjs on every dev and build
+src/generated
