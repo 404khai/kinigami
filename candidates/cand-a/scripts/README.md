@@ -29,3 +29,9 @@ Discrepancy (accepted by the lead): the margin split differs by 0.03 to 0.07 deg
 ## pin2.py (second torsion pin, packing and roll-in path)
 
 Roll-in path of any A-frame point d in B's body frame, same table-height method as dossier 7.1: p(phi) = V + R(phi)[(25.5, 0) + R(-60) d], V = (-12.75, 22.084), R(t) = [[cos t, sin t], [-sin t, cos t]]. At phi = 60 the point lands at d. The peg (d = 0) reproduces the dossier points ((12.75, 22.084) at roll 0, (9.334, 9.334) at 30, (0, 0) at 60). Packing checks use the declared component boxes (body frame, +z is down at rest). The module is a feasibility map only; no declaration was generated from it.
+
+## jawwin.py and k4_gonogo.py (K4 + K1 go/no-go, `docs/studies/coupler-k4-gonogo.md`)
+
+`jawwin.py`: distance from the swept peg (hex AF 4.0 rolling 60 deg along the arc, orientation R(phi - 60) of the docked hex) to the open jaw rectangle (x +-2.9, height 3.05) or tongue rectangle (x +-2.05, height 2.55) at open stroke S, with an optional peg height offset toward the jaw. Validated against `dossier-v5.md` 7.2 and review r1: jaw 0.448 / 0.089 (dossier 0.104, review 0.087) / 0.052 / 0.000 at S = 5.582 / 5.088 / 5.035 / 4.631; tongue 1.024 / 0.654 / 0.308 (dossier 1.025 / 0.654 / 0.318); peg +0.35 at 5.582 gives 0.193 (review 0.193).
+
+`k4_gonogo.py`: check 1 (screw lead angle against cited mu), check 2 (AABB overlap of the declared v5 boxes, with the four-bar parts removed, against the K4 drive boxes; cavity rules; arc keep-out validated against dossier v5 for frame-base 3.31 and rocker post 4.98, the saddle and M3 boxes differ because the declared boxes are stand-ins; K1 pin search), check 3 (required stroke and screw length). Negative control: pushing the M3 box into the wheel is flagged. Ring segment AABBs are skipped (the radial rule covers them). Exploratory; selects nothing.
