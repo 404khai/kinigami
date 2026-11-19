@@ -1266,7 +1266,16 @@ pub fn run(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: cc.Criteria,
 
 /// As `run`, with the result label (`exploratory` for the superseded v1).
 pub fn runLabeled(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: cc.Criteria, identity: CriteriaIdentity, recorder: ?Recorder, label: []const u8) !Report {
+    return runWith(arena, scratch, c, identity, link_suite.protocol_config, recorder, label);
+}
+
+/// Any solver configuration (Q75). Non-protocol configurations must be
+/// labeled `exploratory`; this is enforced, as in the link suite (Q54).
+pub fn runWith(arena: std.mem.Allocator, scratch: std.mem.Allocator, c: cc.Criteria, identity: CriteriaIdentity, solver: link_suite.SolverConfig, recorder: ?Recorder, label: []const u8) !Report {
+    const is_protocol = std.meta.eql(solver, link_suite.protocol_config);
+    if (!is_protocol and !std.mem.eql(u8, label, "exploratory")) return error.NonProtocolRunMustBeExploratory;
     const base: Ctx = .{
+        .solver = solver,
         .label = label,
         .arena = arena,
         .scratch = scratch,
@@ -1364,6 +1373,15 @@ test "wiring: the suite's case list equals the criteria ids, in order, C8 and C9
     try testing.expectEqualStrings(c.determinism.id, ids[9]);
     const prefixes = [_][]const u8{ "C1_", "C2_", "C3_", "C4_", "C5_", "C6_", "C7_", "C8_", "C9_", "C10_" };
     for (ids, prefixes) |id, p| try testing.expect(std.mem.startsWith(u8, id, p));
+}
+
+test "non-protocol solver settings cannot be labeled fixture (coupler suite)" {
+    const gpa = testing.allocator;
+    const parsed = try cc.parse(gpa, cc.coupler_v2_json);
+    defer parsed.deinit();
+    var arena = std.heap.ArenaAllocator.init(gpa);
+    defer arena.deinit();
+    try testing.expectError(error.NonProtocolRunMustBeExploratory, runWith(arena.allocator(), gpa, parsed.value, official_criteria, link_suite.sensitivity_variants[1].config, null, "fixture"));
 }
 
 test "C1 at 200 us runs, audits included, and passes" {

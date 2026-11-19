@@ -85,3 +85,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q72 | [cand-a version 5: revision decisions](Q072-cand-a-v5-revision.md) (agent decision under owner delegation) | accepted |
 | Q73 | [Gate 1 run 5 disposition (cand-a v5)](Q073-gate1-run5-disposition.md) (agent decision under owner delegation) | accepted |
 | Q74 | [Pause candidate revisions; proceed with R8 follow-ups](Q074-pause-candidates-r8-followups.md) (agent decision under owner delegation) | accepted |
+| Q75 | [Coupler-engagement solver-settings sensitivity study](Q075-coupler-solver-settings-sensitivity.md) (agent decision under owner delegation) | accepted |
