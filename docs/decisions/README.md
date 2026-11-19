@@ -87,3 +87,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q74 | [Pause candidate revisions; proceed with R8 follow-ups](Q074-pause-candidates-r8-followups.md) (agent decision under owner delegation) | accepted |
 | Q75 | [Coupler-engagement solver-settings sensitivity study](Q075-coupler-solver-settings-sensitivity.md) (agent decision under owner delegation) | accepted |
 | Q76 | [Body-body (box-box) contact slice: scope, formulation and validation cases](Q076-body-body-contact-slice.md) (agent decision under owner delegation) | accepted |
+| Q77 | [Body-contact BB7 invariance tolerance](Q077-body-contact-bb7-tolerance.md) (agent decision under owner delegation) | accepted |
