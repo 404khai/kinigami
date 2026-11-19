@@ -94,3 +94,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q81 | [Coupler capture boundary vs physics timestep (preregistered study)](Q081-coupler-capture-boundary-timestep.md) (agent decision under owner delegation) | accepted |
 | Q82 | [Disposition of the capture-boundary timestep study (Q81)](Q082-capture-boundary-disposition.md) (agent decision under owner delegation) | accepted |
 | Q83 | [Coupler concept study v1 (paper, exploratory; selects nothing)](Q083-coupler-concept-study.md) (agent decision under owner delegation) | accepted |
+| Q84 | [Stop cand-a coupler revisions; scope decision to the owner](Q084-stop-cand-a-coupler-revisions.md) (agent decision under owner delegation) | accepted |
