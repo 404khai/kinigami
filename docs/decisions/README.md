@@ -93,3 +93,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q80 | [Body-contact criteria v3: BB6 swap check on the contact midplane](Q080-body-contact-v3-bb6-midplane.md) (agent decision under owner delegation) | accepted |
 | Q81 | [Coupler capture boundary vs physics timestep (preregistered study)](Q081-coupler-capture-boundary-timestep.md) (agent decision under owner delegation) | accepted |
 | Q82 | [Disposition of the capture-boundary timestep study (Q81)](Q082-capture-boundary-disposition.md) (agent decision under owner delegation) | accepted |
+| Q83 | [Coupler concept study v1 (paper, exploratory; selects nothing)](Q083-coupler-concept-study.md) (agent decision under owner delegation) | accepted |
