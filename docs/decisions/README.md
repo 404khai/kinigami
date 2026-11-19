@@ -88,3 +88,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q75 | [Coupler-engagement solver-settings sensitivity study](Q075-coupler-solver-settings-sensitivity.md) (agent decision under owner delegation) | accepted |
 | Q76 | [Body-body (box-box) contact slice: scope, formulation and validation cases](Q076-body-body-contact-slice.md) (agent decision under owner delegation) | accepted |
 | Q77 | [Body-contact BB7 invariance tolerance](Q077-body-contact-bb7-tolerance.md) (agent decision under owner delegation) | accepted |
+| Q78 | [Body-contact protocol revision 2: axis-selection hysteresis and the angular snap control](Q078-body-contact-protocol-rev2.md) (agent decision under owner delegation) | accepted |

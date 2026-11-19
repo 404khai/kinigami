@@ -347,3 +347,16 @@ test "generation is a pure function (bit-identical on repeat)" {
     const m2 = collide(a, b).?;
     try testing.expectEqualSlices(u8, std.mem.asBytes(&m1), std.mem.asBytes(&m2));
 }
+
+test "a near-parallel stack keeps a face axis (rounding noise must not select an edge axis)" {
+    const a = mkBox(m3.zero, .identity, flat_half);
+    // Tilts of 1e-7 rad about two axes make every cross-axis overlap differ
+    // from the face overlap by ~1e-9 m; the face reference must still win.
+    const q = (m3.Quat{ .w = 1, .x = 5e-8, .y = 5e-8, .z = 5e-8 }).normalized();
+    const m = collide(a, mkBox(.{ 0, 0, 0.0199993 }, q, flat_half)).?;
+    try testing.expect(m.axis < 6);
+    try testing.expect(m.count >= 4);
+    // A genuine edge contact (BB6c style) is still an edge contact.
+    const e = collide(mkBox(m3.zero, aboutX(0.785398163397448), flat_half), mkBox(.{ 0, 0, 0.0419264068711929 }, aboutY(0.785398163397448), flat_half)).?;
+    try testing.expectEqual(@as(u8, 7), e.axis);
+}

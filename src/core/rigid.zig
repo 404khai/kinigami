@@ -1639,3 +1639,35 @@ test "body-contact worlds are deterministic and include the warm-start section i
     defer for (hashes) |h| testing.allocator.free(h);
     try testing.expectEqualSlices(u8, hashes[0], hashes[1]);
 }
+
+test "one body-body row impulse conserves linear and angular momentum about the origin" {
+    var w = bodyWorld(testing.allocator, true);
+    defer w.deinit();
+    w.gravity_m_s2 = m3.zero;
+    w.tabletop_contact = false;
+    // Cubes: isotropic inertia, so the omitted gyroscopic term cannot matter.
+    var a = cuboid(0.02, .{ 0.02, 0.02, 0.02 }, 0);
+    a.position_m = .{ 0.3, -0.2, 5 };
+    var b = a;
+    b.position_m = .{ 0.3 + 0.007, -0.2 + 0.003, 5 + 0.0199 };
+    b.velocity_m_s = .{ 0.2, 0.1, -0.1 };
+    _ = try w.addBody(a);
+    _ = try w.addBody(b);
+    const l = struct {
+        fn of(world: *World) [2]m3.Vec3 {
+            var p = m3.zero;
+            var am = m3.zero;
+            for (world.bodies.items) |x| {
+                p = m3.add(p, m3.scale(x.velocity_m_s, x.mass_kg));
+                am = m3.add(am, m3.add(m3.cross(x.position_m, m3.scale(x.velocity_m_s, x.mass_kg)), m3.scale(x.angular_velocity_rad_s, x.inertia_kg_m2[0])));
+            }
+            return .{ p, am };
+        }
+    }.of;
+    const before = l(&w);
+    try w.step(0.0005, .{});
+    try testing.expect(w.bb_rows.items.len > 0);
+    const after = l(&w);
+    try testing.expect(m3.length(m3.sub(after[0], before[0])) < 1e-12);
+    try testing.expect(m3.length(m3.sub(after[1], before[1])) < 1e-12);
+}

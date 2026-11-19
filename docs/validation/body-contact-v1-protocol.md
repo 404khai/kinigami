@@ -116,3 +116,14 @@ Same as analytic-v1 (Q48):
 | 2026-11-19 | Initial protocol (revision 1) | — | — |
 
 Any change made after observing results requires its own decision record before the rerun counts as official (Q49).
+
+## Revision 2 (Q78)
+
+- **SAT axis selection:** face and edge axes are tracked separately. Overlaps within 1e-9 m keep the lower index. An edge axis wins only if its overlap is below 0.95 of the best face overlap, minus that margin. Both constants are provisional. This replaces exact-equality tie breaking.
+- **BB8 angular snap control:** reset body B's angular velocity at first contact to its pre-contact value.
+- The criteria JSON and every threshold are unchanged.
+
+| Revision | Date | Change |
+| --- | --- | --- |
+| 1 | 2026-11-19 | Initial (Q76, Q77) |
+| 2 | 2026-11-19 | Axis-selection hysteresis and BB8 snap definition (Q78), after a non-official preview, before official run 1 |
