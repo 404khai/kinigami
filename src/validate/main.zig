@@ -35,8 +35,15 @@ const RecordingWriter = struct {
 pub fn main(init: std.process.Init) !void {
     const arena = init.arena.allocator();
     const args = try init.minimal.args.toSlice(arena);
-    const usage = "usage: kinigami-validate <report.json> [--recordings <dir>]\n       kinigami-validate --body-contact <report.json>   (box-box contact, Q76)\n";
-    if (args.len == 3 and std.mem.eql(u8, args[1], "--body-contact")) return bodyContact(init, arena, args[2]);
+    const usage = "usage: kinigami-validate <report.json> [--recordings <dir>]\n       kinigami-validate --body-contact <report.json> [--criteria-v1]   (box-box contact, Q76/Q79; v1 is exploratory)\n";
+    if (args.len >= 3 and std.mem.eql(u8, args[1], "--body-contact")) {
+        var v1 = false;
+        if (args.len == 4 and std.mem.eql(u8, args[3], "--criteria-v1")) v1 = true else if (args.len != 3) {
+            std.debug.print(usage, .{});
+            std.process.exit(2);
+        }
+        return bodyContact(init, arena, args[2], v1);
+    }
     if (args.len != 2 and !(args.len == 4 and std.mem.eql(u8, args[2], "--recordings"))) {
         std.debug.print(usage, .{});
         std.process.exit(2);
@@ -96,8 +103,8 @@ const BodyContactOutput = struct {
 
 /// Body-body contact fixture validation (Q76, Q77). Same provenance and exit
 /// convention as the analytic suite; every result is labeled `fixture`.
-fn bodyContact(init: std.process.Init, arena: std.mem.Allocator, path: []const u8) !void {
-    const parsed = try core.body_contact_criteria.parse(arena, core.body_contact_criteria.v1_json);
+fn bodyContact(init: std.process.Init, arena: std.mem.Allocator, path: []const u8, v1: bool) !void {
+    const parsed = try core.body_contact_criteria.parse(arena, if (v1) core.body_contact_criteria.v1_json else core.body_contact_criteria.v2_json);
     const report = try core.body_contact_suite.run(arena, init.gpa, parsed.value);
     const out: BodyContactOutput = .{
         .code_revision = std.mem.trim(u8, @embedFile("git_revision"), " \n\r"),

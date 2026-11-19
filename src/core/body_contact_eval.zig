@@ -183,8 +183,10 @@ pub fn bb6Result(a: box_contact.Box, b: box_contact.Box) ?Bb6Result {
 
 /// Compares a generator result with the closed form of configuration `cf`.
 /// `swapped` negates the expected normal and skips the axis check (the axis
-/// index refers to the other box order).
-pub fn bb6Check(a: std.mem.Allocator, list: *List, prefix: []const u8, cf: bcc.Bb6Config, expected_axis: u8, tol: anytype, got: ?Bb6Result, swapped: bool) !void {
+/// index refers to the other box order). With `swap_translate` (criteria v2,
+/// Q79) each expected point is the (A, B) point translated by the depth along
+/// the (A, B) normal, since swapping exchanges the incident box.
+pub fn bb6Check(a: std.mem.Allocator, list: *List, prefix: []const u8, cf: bcc.Bb6Config, expected_axis: u8, tol: anytype, got: ?Bb6Result, swapped: bool, swap_translate: bool) !void {
     const nm = struct {
         fn n(al: std.mem.Allocator, p: []const u8, s: []const u8) ![]const u8 {
             return std.fmt.allocPrint(al, "{s}{s}", .{ p, s });
@@ -204,7 +206,7 @@ pub fn bb6Check(a: std.mem.Allocator, list: *List, prefix: []const u8, cf: bcc.B
     var perr: f64 = 0;
     var exp_pts: [box_contact.max_points]m3.Vec3 = @splat(m3.zero);
     const n = @min(cf.expected_points_m.len, box_contact.max_points);
-    for (cf.expected_points_m[0..n], 0..) |p, i| exp_pts[i] = p;
+    for (cf.expected_points_m[0..n], 0..) |p, i| exp_pts[i] = if (swapped and swap_translate) m3.add(p, m3.scale(cf.expected_normal, cf.expected_depth_m)) else p;
     std.mem.sort(m3.Vec3, exp_pts[0..n], {}, lessPoint);
     if (r.count == n) {
         for (0..n) |i| {
