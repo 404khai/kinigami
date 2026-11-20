@@ -196,3 +196,33 @@ cand-d v1 values:
   - **Release:** the 1.30 margin assumes 3.6 V at the motor.
   - **Alignment:** joint-angle error and tilt are not in the alignment stack.
   - **Citation error:** the "bronze on steel dry 0.35" value is not on the cited page. The lead confirmed this from the raw page.
+
+# Gate 1 paper-gate run 7
+
+- Report: `run7-40c4860-ReleaseSafe.json` (clean tree `40c4860`, ReleaseSafe).
+- Criteria: unchanged `gate1-v1`, sha256 `ffe135329340…ddbf`.
+- Candidates: cand-d **v2** (Q87). v1 is preserved as `declaration-v1.json`. Others are unchanged.
+- Order: Q87 `e4ec1cb` → candidate `f10f85c` → reviews `40c4860` → this evaluation.
+- Label: **exploratory**.
+
+| Candidate | Overall | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| cand-a v5 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
+| cand-b v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-c v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-d v2 | **unresolved** | pass | pass | pass | pass | pass | unresolved | pass | pass |
+
+**Survivors: none.**
+
+cand-d v2 values:
+- **G1:** D 58.862 mm.
+- **G2:** 595 pairs, no interference.
+- **G4:** 31.109 g, peak 3937 mW.
+- **G7, G8:** pass. No high cell, 20 moderate cells.
+- **G6:** the retention review is **unresolved**.
+  - **Closed:** v1 items 3 and 5–9.
+  - **Ears not joined:** the declared geometry does not join the mounting ears to the housing.
+  - **Mount lever:** the in-plane bending lever at the mount is wrong.
+  - **Phase tolerance:** the tooth-to-slot phase tolerance is not derived.
+  - **Preload:** F_p has no lower bound.
+  - **Minor:** the PTFE notch, the Hirth area lost to the slots, and the pilot sequence margin.
