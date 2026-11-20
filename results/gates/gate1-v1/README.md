@@ -226,3 +226,33 @@ cand-d v2 values:
   - **Phase tolerance:** the tooth-to-slot phase tolerance is not derived.
   - **Preload:** F_p has no lower bound.
   - **Minor:** the PTFE notch, the Hirth area lost to the slots, and the pilot sequence margin.
+
+# Gate 1 paper-gate run 8
+
+- Report: `run8-d03f7c3-ReleaseSafe.json` (clean tree `d03f7c3`, ReleaseSafe).
+- Criteria: unchanged `gate1-v1`, sha256 `ffe135329340…ddbf`.
+- Candidates: cand-d **v3** (Q89). v2 is preserved as `declaration-v2.json`. Others are unchanged.
+- Order: Q89 `766191b` → candidate `095545c` → reviews `d03f7c3` → this evaluation.
+- Label: **exploratory**.
+
+| Candidate | Overall | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| cand-a v5 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
+| cand-b v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-c v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-d v3 | **unresolved** | pass | pass | pass | pass | pass | unresolved | pass | pass |
+
+**Survivors: none.**
+
+cand-d v3 values:
+- **G1:** D 58.862 mm.
+- **G2:** 630 pairs, no interference.
+- **G4:** 31.103 g.
+- **G7, G8:** pass. No high cell, 21 moderate cells; the reviewer read Belke and Paik in full.
+- **G6:** the retention review is **unresolved**, with no contradiction.
+  - **What holds:** the friction-wedge retention is accepted, and the head mount reproduces.
+  - **Tail stud mount:** it threads into PA12 and is not sized.
+  - **Plate joints:** the plate-to-shell joints are not located.
+  - **Slot lash:** stated at the wrong radius. The seated clearance is about 0.65°, not 1.39°.
+  - **Tooth meshing:** not shown at the lower-bound motor torque.
+  - **Reference planes:** not declared.
