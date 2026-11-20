@@ -209,3 +209,15 @@ Reuse the Take 3 package Graft. Check a supported 4:1 epicyclic versus a permane
 **Take 10 result — retained section, not a freeze.** The [drive/access study](docs/studies/cand-d-internal-screw/package.md) and [script](docs/studies/cand-d-internal-screw/drive_stack.py) replace the earlier 1.10 mm stroke hypothesis. The opposed races, moving nut through the front race and +0.80 mm metal nose give 3.530 mm guaranteed stroke and 59.762 mm containing diameter for the listed parts. The simple one-jaw pin/bridge section fails its bending screens. No hidden use of the tail PCB cavity: the external cassette changes pitch to 50.8 mm. At 46 g the projected allowance for tail, ejector, bidirectional overload mechanism and sensing together is only 2.28 g, not a mass criterion. Reused the package Graft; no additional candidate declaration or gate run.
 
 **Lead synthesis (same rear-thrust-v6 Graft):** [Q98](docs/decisions/Q098-cand-d-internal-screw-study.md) holds the design. The [six-contact witness](docs/studies/cand-d-internal-screw/clearance_witness.py) also shows why dropping preload in favour of deliberate clearance does not by itself bound the one-jaw reaction. The model balances nonzero internal forces at zero external wrench. It is not proof a physical unit jams. Full studies, sources and next discriminating measurements are [here](docs/studies/cand-d-internal-screw/README.md).
+
+## Take 11 — six-coordinate retention and release
+
+New independent-of-packaging design Graft for the Take 4/9 mechanics author, based on 96fcfeb. Q99 replaces the Q98 seven-normal preload clamp with six bilateral, individually clearanced pole constraints. Test the frictional wrench bound, edge transitions and partials, not just the rank of a nominal matrix. This designer cannot independently review v7.
+
+## Take 12 — shutter and positive stripper package
+
+New packaging Graft from 96fcfeb, Take 3/10 design author. Size the output mechanism, captive drive, blade and stripper stroke, assembly access, package bounds and fault loads; no transfer of the Q98 screw result to this topology.
+
+## Take 13 — integrate six-coordinate shutter and QA
+
+Lead's fresh `reciprocal-v7` Graft from 96fcfeb with ignored pinned toolchain. Graft v0.2.0 copied 318 tracked files and 19,507 toolchain files on ext4; the GLIBC weak-version warning was nonfatal. Q99 precedes the v7 declaration. Archive v6 verbatim (SHA-256 `620b7fafc2ec1cf4c9ebb4708eeee6e22578eed0ba4190df9c3ab6d9262c944b`). No pass before a clean official run.
