@@ -299,3 +299,17 @@ cand-d v4 values:
 | cand-d v5 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
 
 **Survivors: none.** cand-d measures 59.133 mm; its 1,081 box pairs have no interference. Mass 31.181 g; 3,939 mW peak versus 19,425 mW available. The G6 failure is a physical contradiction: the 4.10 mm collar bore cannot fit the 7.00 mm housing tube. Adverse-pose seating, release under fixed loads and the gearhead bond also remain open. Q61 records one non-fictional high (Beckhoff, D2), no fictional highs, and neither exclusion.
+
+# Gate 1 paper-gate run 11
+
+- Report: [run11-2b8ea96-ReleaseSafe.json](run11-2b8ea96-ReleaseSafe.json), clean tree `2b8ea96`, ReleaseSafe, pinned Zig 0.17.0. Label: **exploratory**.
+- Unchanged `gate1-v1` SHA-256 `ffe135329340…ddbf`. Q95/Q96 → frozen candidate `bf5af8a` → independent reviews `2b8ea96` → this evaluation. [Disposition: Q97](../../../docs/decisions/Q097-gate1-run11-disposition.md).
+
+| Candidate | Overall | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| cand-a v5 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
+| cand-b v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-c v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-d v6 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
+
+**Survivors: none.** The 59.357 mm, 45.541 g candidate fits the paper envelope. A physically assembled rear support and nominal two-contact release do not establish release from a partial lock. Its one-lug dry/mixed torque screens are 86.19/99.13 N·mm versus 49.03 rated. The declaration disclaims bounded independent release and the independent retention review fails. The independent Q61 review passes despite three non-fictional coupler-concept highs on three different references; no F1/F2 high and neither family exclusion.
