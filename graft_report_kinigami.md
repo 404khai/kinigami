@@ -249,3 +249,7 @@ After v7 freeze, fresh `drawbolt-load-study` Graft at a82f52c, mechanics author.
 After v7 freeze, fresh `drawbolt-stack-study` Graft at a82f52c, packaging author. Study actual nut, bearing, runout, sensing, side-load and recovery envelopes. Not a candidate change or an amendment to Q99.
 
 Take 16 direct mating draw study: [source and limits](docs/studies/cand-d-drawbolt/direct.md). Complete flanks can carry preload with rated drive; a tensile 4W remains as the last flank loses its area. Take 13 lead compared [internal screw torque, packaging and edge pressure](docs/studies/cand-d-drawbolt/README.md); no successor is declared.
+
+**Take 16 result:** the [barrel](docs/studies/cand-d-drawbolt/barrel.md) runs off its smooth patch during ordinary partial pitch. [Larger-sphere study](docs/studies/cand-d-drawbolt/cylinders.md): removing one keeper admits 12° where the guided-coupon force budget assumes ≤3°. Neither is a free-release result.
+
+**Take 17 result:** the [linear, rotary and swinging sections](docs/studies/cand-d-drawbolt/drawbolt-take17.md) retain separate dimensions and force budgets. The long screw exceeds the face by 4.07 mm; the short rise exceeds rated torque. A pivot removes a guide but hits the existing rim. The lead's [guard calculation](docs/studies/cand-d-drawbolt/swing.py) does not change that geometry or authorize a freeze.
