@@ -232,9 +232,13 @@ Take 11 bounded all flat pole normals (including partial subsets, no equal shari
 
 Dedicated reviewer Graft from the immutable v7 candidate commit. Review only; no candidate authorship, candidate edits or evaluator changes.
 
+**Take 14 result.** [Retention review](candidates/cand-d/retention-review-v7-r1.md), Graft `take14-retention-v7`, session `f9ea685b9da04d208a10ab16b5d387d2`. At frozen `a82f52c`, independent reproduction and hashes matched, and pinned Zig tests and purity exited 0. G6 **fail**: 1.20 N available in the adverse one-pad case versus 2.45 N needed before internal drag. No candidate edits, commit or official evaluation by the reviewer.
+
 ## Take 15 — frozen v7 independent originality review
 
 Separate reviewer Graft from the immutable v7 candidate commit. Q61 corpus, searches and full matrix; no candidate authorship, candidate edits or evaluator changes.
+
+**Take 15 result.** [Fresh Q61 review](candidates/cand-d/originality-review-gate1-v7-r1.md), Graft `originality-v7`, session `742431beae9f465fabd47886a57ac982`. At `a82f52c` the reviewer checked the frozen declaration hash, 126 references, the search log and full five-dimension matrix. Outcome **pass**: six non-fictional highs; no reference high on two dimensions, no F1/F2 high, neither exclusion present. No candidate edits, commit or official evaluation by the reviewer.
 
 ## Take 16 — direct drawbolt reaction study
 
