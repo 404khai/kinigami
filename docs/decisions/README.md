@@ -99,3 +99,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q86 | [Gate 1 run 6 disposition (cand-d v1)](Q086-gate1-run6-disposition.md) (agent decision under owner delegation) | accepted |
 | Q87 | [cand-d version 2: revision decisions](Q087-cand-d-v2-revision.md) (agent decision under owner delegation) | accepted |
 | Q88 | [Gate 1 run 7 disposition (cand-d v2)](Q088-gate1-run7-disposition.md) (agent decision under owner delegation) | accepted |
+| Q89 | [cand-d version 3: revision decisions](Q089-cand-d-v3-revision.md) (agent decision under owner delegation) | accepted |
