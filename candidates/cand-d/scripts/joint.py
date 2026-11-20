@@ -45,7 +45,7 @@ print("sector stays at y >= %.2f at the tip (cell box y <= -3.80)" % min(ymin, 4
 I = 58 / 12
 for n, tm in (("rated 3 mN m (drive limit)", 3.0), ("stall at 3.0 V", 9.0), ("stall at 3.6 V (fault)", 10.8)):
     print("joint torque, motor %s: %.1f mN m (eta 1, upper bound)" % (n, tm * I))
-W = 0.3051
+W = 0.3058
 for n_units in (1, 2):
     lever = 47.2 * n_units / 2 + 1.8
     print("  pushing %d unit(s) sideways at mu 0.3 (PROVISIONAL), lever %.1f mm: %.1f mN m" % (n_units, lever, 0.3 * W * n_units * lever))
