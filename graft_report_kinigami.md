@@ -243,3 +243,5 @@ After v7 freeze, fresh `drawbolt-load-study` Graft at a82f52c, mechanics author.
 ## Take 17 — blind-mate drawbolt stack
 
 After v7 freeze, fresh `drawbolt-stack-study` Graft at a82f52c, packaging author. Study actual nut, bearing, runout, sensing, side-load and recovery envelopes. Not a candidate change or an amendment to Q99.
+
+Take 16 direct mating draw study: [source and limits](docs/studies/cand-d-drawbolt/direct.md). Complete flanks can carry preload with rated drive; a tensile 4W remains as the last flank loses its area. Take 13 lead compared [internal screw torque, packaging and edge pressure](docs/studies/cand-d-drawbolt/README.md); no successor is declared.
