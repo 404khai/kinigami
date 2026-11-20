@@ -110,3 +110,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q97 | [Gate 1 run 11 disposition (cand-d v6)](Q097-gate1-run11-disposition.md) (agent decision under owner delegation) | accepted |
 | Q98 | [Study disposition: do not freeze the captive-screw jaw layout](Q098-cand-d-internal-screw-study.md) (agent decision under owner delegation) | accepted |
 | Q99 | [Separate the six retention coordinates in cand-d v7](Q099-cand-d-six-coordinate-shutter.md) (agent decision under owner delegation) | accepted design direction |
+| Q100 | [Gate 1 run 12 disposition (cand-d v7)](Q100-gate1-run12-disposition.md) (agent decision under owner delegation) | accepted |

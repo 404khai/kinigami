@@ -313,3 +313,18 @@ cand-d v4 values:
 | cand-d v6 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
 
 **Survivors: none.** The 59.357 mm, 45.541 g candidate fits the paper envelope. A physically assembled rear support and nominal two-contact release do not establish release from a partial lock. Its one-lug dry/mixed torque screens are 86.19/99.13 N·mm versus 49.03 rated. The declaration disclaims bounded independent release and the independent retention review fails. The independent Q61 review passes despite three non-fictional coupler-concept highs on three different references; no F1/F2 high and neither family exclusion.
+
+
+# Gate 1 paper-gate run 12
+
+- Report: [run12-a0833e3-ReleaseSafe.json](run12-a0833e3-ReleaseSafe.json), clean tree `a0833e3`, ReleaseSafe, pinned Zig 0.17.0. Label: **exploratory**.
+- Unchanged `gate1-v1` SHA-256 `ffe135329340…ddbf`. Q99 → frozen candidate `a82f52c` → fresh independent reviews `a0833e3` → this evaluation. [Disposition: Q100](../../../docs/decisions/Q100-gate1-run12-disposition.md).
+
+| Candidate | Overall | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| cand-a v5 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
+| cand-b v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-c v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-d v7 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
+
+**Survivors: none.** Cand-d v7: D 57.868 mm; 2,145 box pairs clear, mass 46.534 g; peak 9,635 mW against 26,640 mW source. The head's adverse ejection screen gives 1.20 N against 2.45 N required before internal drag at the 50 g design load. The declaration disclaims bounded independent release. The independent Q61 review passes, including its explicit comparison to CONRO's eject sequence and industrial tool changers; zero fictional highs and neither exclusion.
