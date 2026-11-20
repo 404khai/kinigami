@@ -51,7 +51,10 @@ AX = (3.3, 1.0)              # coupler axis (y, z), same for head and tail
 
 # head cartridge (304 housing + C93200 cam sleeve with gear) along x
 LIP = 0.8                    # housing lip thickness (front thrust face)
-CART_X0 = 28.0               # rear of gear ring
+CART_X0 = 28.8               # rear of gear ring
+HF = 0.8                     # 304 housing front flange, in front of the PA12 front plate
+HX = LX1 + HF                # Hirth pitch plane of the head = head site
+FLG_R, LOBE_R, SCREW_R = 7.0, 9.4, 7.8   # flange disc radius, lobe reach (+-z), screw radius
 CART_R = 6.45                # gear pitch radius = cartridge box half extent
 # tail stud (304, one piece: flange, pilot, two lugs)
 FL_T, FL_R = 1.0, 6.3        # flange thickness and radius (smaller than the lip and window, r 6.45)
@@ -145,27 +148,27 @@ add("driver", "other", "Pololu DRV8835 dual driver carrier: channel A coupler mo
 
 # coupler drive
 my, mz = AX[0], AX[1] - PIN_DIST
-add("coupler-motor", "actuator", "Precision Microdrives 206-109 gearmotor driving the cam sleeve; axis along x at (y, z) = (%.2f, %.2f), body x 9.3 to 28.0, shaft cut to 1.5 mm (to x 29.5; the shaft inside the pinion is not boxed separately). Peak 851 mW (230 mA start x 3.7 V), average 215 mW (rated-load bound)" % (my, mz),
-    box_from_bounds(9.3, 28.0, my - 3.0, my + 3.0, mz - 3.0, mz + 3.0), mass_mg=1200, src="mot", dim_basis="source", peak=851, avg=215)
+add("coupler-motor", "actuator", "Precision Microdrives 206-109 gearmotor driving the cam sleeve; axis along x at (y, z) = (%.2f, %.2f), body x 10.1 to 28.8, shaft cut to 1.5 mm (to x 30.3; the shaft inside the pinion is not boxed separately). Peak 851 mW (230 mA start x 3.7 V), average 215 mW (rated-load bound)" % (my, mz),
+    box_from_bounds(10.1, 28.8, my - 3.0, my + 3.0, mz - 3.0, mz + 3.0), mass_mg=1200, src="mot", dim_basis="source", peak=851, avg=215)
 pin_v = math.pi * 1.8 ** 2 * 1.5 - math.pi * 1.0 ** 2 * 1.5
 add("coupler-pinion", "actuator", "spur pinion m 0.3 z 12 (pitch radius 1.8 mm, 1.5 mm face) on the coupler motor shaft; box bounded at the pitch circle toward the sleeve gear (tooth tips cross the pitch line by design); 304, volume = pitch-disc minus 2 mm bore",
     box_from_bounds(CART_X0, CART_X0 + 1.5, my - 1.8, my + 1.8, mz - 1.8, mz + 1.8), mat="ss", volume_mm3=pin_v)
 
 # head cartridge: 304 housing (tube r 2.0..4.0 with lip r 6.45) + C93200 sleeve (r 4.05..5.8) with gear ring (to pitch r 6.45)
-hous_tube = math.pi * (3.5 ** 2 - 2.05 ** 2) * (LX1 - CART_X0 + 0.4) - 2 * 3.05 * 1.45 * 5.4
-hous_lip = math.pi * (CART_R ** 2 - 2.05 ** 2) * LIP - 2 * 4.25 * 3.85 * LIP + math.pi * 1.0 ** 2 / 4 * 1.5  # incl. stop pin dia 1
+hous_tube = math.pi * (3.5 ** 2 - 2.05 ** 2) * (LX1 - CART_X0 + 0.4) - 2 * 3.20 * 1.45 * 5.4
+hous_lip = 0.0  # the lip is now the separate front flange component
 v_ss = hous_tube + hous_lip
 sleeve_x0 = CART_X0 + 1.5
-sleeve_x1 = LX1 - LIP - 0.3   # 0.3 mm PTFE thrust ring in front of the sleeve
+sleeve_x1 = LX1 - 0.3         # 0.3 mm PTFE thrust ring between the sleeve and the flange's rear face (inside the plate window)
 v_sleeve = math.pi * (6.3 ** 2 - 3.55 ** 2) * (sleeve_x1 - sleeve_x0) - 2 * 3.1 * 10.4 * 2.45
 v_gear = math.pi * (CART_R ** 2 - 3.55 ** 2) * 1.5
-v_ptfe = math.pi * (4.4 ** 2 - 3.6 ** 2) * 0.3
+v_ptfe = math.pi * (4.4 ** 2 - 3.6 ** 2) * 0.3 - 2 * 3.25 * 0.8 * 0.3  # two lug notches
 v_br = v_sleeve + v_gear
 m_cart = RHO["ss"] * v_ss * 1e-3 * 1e-3 + RHO["br"] * v_br * 1e-3 * 1e-3  # g
 v_cart = v_ss + v_br + v_ptfe
 rho_eff = (RHO["ss"] * v_ss + RHO["br"] * v_br + RHO["ptfe"] * v_ptfe) / v_cart
 add("head-cartridge", "coupler_mechanism",
-    "head coupler cartridge, one subassembly of three concentric parts: 304 housing (tube r 2.05 to 3.5 with a 4.10 pilot bore (entry guide) and two axial lug slots 3.05 wide; front lip 0.8 thick carrying a 36-tooth 90 deg Hirth ring r 2.6 to 6.3 on its face, V lead-ins and a 0.6 x 45 deg bore chamfer; a 304 stop pin dia 1 in the lip rear face; the two tapped mounting ears are declared separately; %.1f mm3), C93200 cam sleeve (r 3.55 to 6.3, two two-stage helical slots 20 deg / 3 deg, an arc groove for the stop pin in its front face, gear ring m 0.3 z 43 on its rear; %.1f mm3) and a PTFE thrust ring (r 3.6 to 4.4 x 0.3 between the sleeve and the lip; %.1f mm3). Effective density = (7900 V_304 + 8910 V_bronze + 2150 V_PTFE) / V = %.1f kg/m3 from the three cited densities. Box bounded at the gear pitch circle toward the pinion" % (v_ss, v_br, v_ptfe, rho_eff),
+    "head coupler cartridge behind and in the front plate window, one subassembly: the 304 housing tube (r 2.05 to 3.5, 4.10 entry bore, two axial lug slots 3.20 wide; it is one turned part with the front flange, declared separately as head-flange, and joins it at x 35.6 across r 2.05 to 3.5; %.1f mm3), the C93200 cam sleeve (r 3.55 to 6.3, passes through the window to x 35.3; two two-stage helical slots 20 deg / 3 deg, an arc groove for the flange's stop pin in its front face, gear ring m 0.3 z 43 on its rear; %.1f mm3) and a PTFE thrust ring (r 3.6 to 4.4 x 0.3 with two lug notches, keyed by them, between the sleeve and the flange's rear face; %.1f mm3). Effective density = (7900 V_304 + 8910 V_bronze + 2150 V_PTFE) / V = %.1f kg/m3 from the three cited densities. Box bounded at the gear pitch circle toward the pinion" % (v_ss, v_br, v_ptfe, rho_eff),
     box_from_bounds(CART_X0, LX1, AX[0] - CART_R, AX[0] + CART_R, AX[1] - CART_R, AX[1] + CART_R),
     mass_mg=None, src="ss")
 comps[-1]["mass_mg"] = int(round(rho_eff * v_cart * 1e-9 * 1e6))
@@ -173,10 +176,14 @@ comps[-1]["mass_basis"] = "derived"
 comps[-1]["derivation"] = {"density_kg_m3": rho_eff, "volume_m3": v_cart * 1e-9}
 comps[-1]["source"]["title"] = SRC["ss"][2] + "; C93200 bronze from " + SRC["br"][1] + " (density 8.91 g/cm3, yield 138 MPa); PTFE from https://multimedia.3m.com/mws/media/132393O/ptfe-tf-1620-data-sheet (3M Dyneon TF 1620, specific gravity 2.15)"
 
-# cartridge mounting ears (part of the 304 housing; declared as their own boxes) and rear retainer collar
-for nm, z0, z1 in (("cartridge-ear-up", AX[1] + CART_R, AX[1] + 8.35), ("cartridge-ear-low", AX[1] - 8.35, AX[1] - CART_R)):
-    add(nm, "coupler_mechanism", "tapped mounting ear of the 304 housing (one part with it, boxed separately), 3.0 x 1.9 x 1.6 behind the front plate, M1.6 thread for a countersunk A2 screw through the plate; carries pull-out on the plate's inner face; 304, volume = ear minus the tapped hole",
-        box_from_bounds(LXE - 1.6, LXE, AX[0] - 1.5, AX[0] + 1.5, z0, z1), mat="ss", volume_mm3=3.0 * (z1 - z0) * 1.6 - math.pi * 0.6 ** 2 * 1.6)
+# housing front flange (one part with the housing tube; boxed separately) and nut blocks behind the plate
+lobe_w = 3.4
+v_flg = (math.pi * (FLG_R ** 2 - 2.05 ** 2) + 2 * lobe_w * (LOBE_R - FLG_R)) * HF - 2 * 4.0 * 3.6 * HF - 2 * math.pi * 0.85 ** 2 * HF + math.pi * 0.5 ** 2 * 1.5
+add("head-flange", "coupler_mechanism", "304 housing front flange, one turned part with the housing tube (joined at x 35.6, r 2.05 to 3.5): disc r 7.0 x 0.8 in front of the PA12 front plate, with two lobes at +-z to r 9.4 (3.4 wide); its front face is the head's 36-tooth 90 deg Hirth ring r 2.6 to 6.3 (pitch plane x 36.4, teeth +-0.2), with the two lug slots 3.20 wide with 0.6 x 45 deg V lead-ins and a 0.4 x 45 deg bore chamfer; its rear face inside the window is the sleeve thrust face; a 304 stop pin dia 1 pressed into that face at r 5.3; two countersunk M1.6 holes in the lobes at r 7.8. Pull-out goes through the two screws into nut blocks behind the plate, push-in and bending through the flange bearing on the plate's outer face. Volume = disc + lobes - bore - slots - holes + pin",
+    box_from_bounds(LX1, HX, AX[0] - FLG_R, AX[0] + FLG_R, AX[1] - LOBE_R, AX[1] + LOBE_R), mat="ss", volume_mm3=v_flg)
+for nm, zc in (("nut-block-up", AX[1] + SCREW_R), ("nut-block-low", AX[1] - SCREW_R)):
+    add(nm, "coupler_mechanism", "304 nut block 2.2 x 2.2 x 0.8, tapped M1.6, behind the front plate; takes a flange screw (countersunk ISO 7046 M1.6 A2, through the flange lobe and the 1.2 mm plate); bears on the plate's inner face under pull-out; volume = block minus the tapped hole",
+        box_from_bounds(LXE - 0.8, LXE, AX[0] - 1.1, AX[0] + 1.1, zc - 1.1, zc + 1.1), mat="ss", volume_mm3=2.2 * 2.2 * 0.8 - math.pi * 0.6 ** 2 * 0.8)
 add("retainer-collar", "coupler_mechanism", "rear retainer collar, 304, pressed on the housing tube behind the sleeve gear (r 2.05 to 4.9 x 0.4); takes the ejection reaction of the sleeve at release",
     box_from_bounds(CART_X0 - 0.4, CART_X0, AX[0] - 4.9, AX[0] + 4.9, AX[1] - 4.9, AX[1] + 4.9), mat="ss", volume_mm3=math.pi * (4.9 ** 2 - 2.05 ** 2) * 0.4)
 
@@ -245,11 +252,14 @@ body = [prim_box("head-segment", "body", LX0, LXE, -YO, YO, -ZO, ZO),
         prim_box("tail-segment", "body", SXE, SX1, -YO, YO, -ZO, ZO),
         prim_box("tail-end-plate", "body", SX0, SXE, -INSET_Y, INSET_Y, -INSET_Z, INSET_Z)]
 coupler = [prim_cyl_x("stud-flange", "coupler", FL_R, sx_face - TOOTH, SX0, AX[0], AX[1]),
-           prim_cyl_x("head-hirth-teeth", "coupler", FL_R, LX1, LX1 + TOOTH, AX[0], AX[1]),
+           prim_cyl_x("head-flange-disc", "coupler", FLG_R, LX1, HX, AX[0], AX[1]),
+           prim_box("head-flange-lobes", "coupler", LX1, HX, AX[0] - 1.7, AX[0] + 1.7, AX[1] - LOBE_R, AX[1] + LOBE_R),
+           prim_cyl_x("head-hirth-teeth", "coupler", FL_R, HX, HX + TOOTH, AX[0], AX[1]),
            prim_cyl_x("stud-pilot", "coupler", STUD_R, sx_face - STUD_L, sx_face, AX[0], AX[1]),
            prim_cyl_y("stud-lugs", "coupler", LUG_R, LUG_REACH, lug_x, AX[0], AX[1])]
 cavity = [prim_box("cavity-envelope", "cavity", SX0, LX1, -YO, YO, -ZO, ZO),
-          prim_box("stud-envelope", "cavity", sx_face - STUD_L, SX0, AX[0] - FL_R, AX[0] + FL_R, AX[1] - FL_R, AX[1] + FL_R)]
+          prim_box("stud-envelope", "cavity", sx_face - STUD_L, SX0, AX[0] - FL_R, AX[0] + FL_R, AX[1] - FL_R, AX[1] + FL_R),
+          prim_box("head-flange-envelope", "cavity", LX1, HX, AX[0] - FLG_R, AX[0] + FLG_R, AX[1] - LOBE_R, AX[1] + LOBE_R)]
 
 # ---------------------------------------------------------------- checks
 def rotm(q):
@@ -320,7 +330,7 @@ if __name__ == "__main__":
         here = os.path.dirname(os.path.abspath(__file__))
         with open(os.path.join(here, "declaration_text.json")) as f:
             text = json.load(f)
-        decl = {"schema_version": 1, "candidate_id": "cand-d", "candidate_version": 2, "family": "B",
+        decl = {"schema_version": 1, "candidate_id": "cand-d", "candidate_version": 3, "family": "B",
                 "declared_on": DECLARED, "author": text["author"], "summary": text["summary"],
                 "stowed_geometry": {"primitives": body + coupler + cavity},
                 "chain_geometry": {"primitives": body + coupler},
@@ -328,7 +338,7 @@ if __name__ == "__main__":
                 "mass_budget": {"total_mass_mg": tot},
                 "assembly_access": {"statement": text["assembly_access"]},
                 "coupler_sites": [
-                    {"id": "site-head", "position_um": [um(LX1), um(AX[0]), um(AX[1])], "normal": [1.0, 0.0, 0.0], "mount": text["mount_head"]},
+                    {"id": "site-head", "position_um": [um(HX), um(AX[0]), um(AX[1])], "normal": [1.0, 0.0, 0.0], "mount": text["mount_head"]},
                     {"id": "site-tail", "position_um": [um(sx_face), um(AX[0]), um(AX[1])], "normal": [-1.0, 0.0, 0.0], "mount": text["mount_tail"]}],
                 "chain": {"head_site": "site-head", "tail_site": "site-tail", "rest_orientation": QI, "mating_roll_deg": [0]},
                 "retention": text["retention"],

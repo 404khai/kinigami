@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""cand-d coupler on paper (version 2): cam layout, axial tolerance stack,
+"""cand-d coupler on paper (version 3): cam layout, axial tolerance stack,
 self-locking, preload, release, Hirth face coupling, load carriers alone and
 combined, contact stresses, stops, mount, pre-alignment windows.
 
@@ -16,7 +16,7 @@ def atand(x): return math.degrees(math.atan(x))
 def section(t): print("\n== " + t)
 
 # ------------------------------------------------------------------ declared geometry
-LIP = 0.8            # housing lip thickness behind the Hirth pitch plane
+LIP = 0.8            # housing front flange thickness behind the Hirth pitch plane (the flange sits in front of the PA12 plate)
 R_THRUST = 4.0       # PTFE thrust ring r 3.6..4.4 x 0.3
 LUG_R = 1.5          # lug radius (dia 3.0 g6)
 CLR = 0.1            # axial clearance of the lug at the slot ends
@@ -28,9 +28,9 @@ STUD_R = 2.0         # pilot radius (dia 4.0 g6)
 BORE_R = 2.05        # bore dia 4.10 (+0.018/0): an entry guide only; the Hirth ring centres at the seat
 PILOT_CLR = (0.050, 0.130)
 HOUSING_RO = 3.5
-SLOT_W = 3.05        # housing lug slots (IT9)
+SLOT_W = 3.20        # housing and flange lug slots (IT9): wide enough that the lugs never touch them while the teeth are seated
 LIP_V = 0.6          # V lead-in per side on the lip slots and sleeve notches (45 deg)
-BORE_CH, NOSE_CH = 0.6, 0.5
+BORE_CH, NOSE_CH = 0.4, 0.5
 STUD_L = 6.2         # pilot length beyond the Hirth pitch plane
 HIRTH_N, HIRTH_RI, HIRTH_RO = 36, 2.6, 6.3   # face teeth, 90 deg included, on the stud flange and the housing lip
 HIRTH_RM = (HIRTH_RI + HIRTH_RO) / 2
@@ -56,7 +56,12 @@ MU_T = (0.05, 0.20)
 MU_SS_MAX = 0.8
 # 206-109 datasheet (pdftotext of https://www.precisionmicrodrives.com/datasheets/206-109-V0.pdf): rated
 # 3 mN m at 3 V, stall 9 mN m, max 3.6 V. Stall torque is taken proportional to the applied voltage.
-T_STALL_3V = 9.0
+T_STALL_3V = 9.0     # typical (no maximum or minimum is given)
+# Lower bound from guaranteed rows of the same datasheet: rated load 3 mN m at 3 V (at rated speed, so stall >= 3),
+# max start voltage 0.5 V (the friction torque is at most Kt x 0.5 / R). Hence Kt/R x 2.5 >= 3, Kt/R >= 1.2 mN m/V, and
+# stall(V) >= 1.2 x (V - 0.5) mN m at the output. Upper values use the typical 9 mN m at 3 V, scaled with V, no offset.
+def stall_lb(v): return 1.2 * (v - 0.5)
+def stall_typ(v): return T_STALL_3V * v / 3.0
 # Release supply rule (controller): release only with the cell at >= 3.5 V. The DRV8835 bridge
 # (TI datasheet https://www.ti.com/lit/ds/symlink/drv8835.pdf, HS + LS on-resistance 305 mOhm typical)
 # drops about 0.07 V at the 230 mA start current; 3.4 V at the motor is used (rounded down, PROVISIONAL).
@@ -77,7 +82,7 @@ _decl = json.load(open(os.path.join(_here, "..", "declaration.json")))
 MASS_MG = sum(c["mass_mg"] for c in _decl["components"])
 W = MASS_MG * 1e-6 * 9.80665
 HALF_WIDTH = 12.7
-UNIT_LEN = 47.2
+UNIT_LEN = 48.0
 MU_TABLE_BOUND = 1.0 # PROVISIONAL upper bound, as cand-a v5
 
 section("0. unit")
@@ -101,7 +106,7 @@ stack = [("tail: Hirth pitch plane to lug axis (3.6 mm, IT9)", IT9["3-6"] / 2),
          ("tail: lug radius (dia 3 g6, -2..-8 um)", 0.004),
          ("tail: Hirth tooth form, axial effect (IT9 on the 0.4 mm teeth)", IT9["1-3"] / 2),
          ("head: Hirth tooth form, axial effect (IT9)", IT9["1-3"] / 2),
-         ("head: lip, pitch plane to rear face (0.8 mm, IT9)", IT9["1-3"] / 2),
+         ("head: flange, pitch plane to rear (thrust) face (0.8 mm, IT9)", IT9["1-3"] / 2),
          ("head: PTFE ring (0.3 mm, IT9; creep at 0.6 MPa not counted)", IT9["1-3"] / 2),
          ("head: sleeve front face to flank at the seat angle (2.5 mm, IT9)", IT9["1-3"] / 2),
          ("head: thrust running play (0 under load: the lug load pushes the sleeve forward)", 0.0)]
@@ -110,8 +115,8 @@ for n, v in stack: print("  +-%.4f  %s" % (v, n))
 lo, hi = s_nom - tot, s_nom + tot
 print("seat depth %.3f..%.3f inside the lock stage %.2f..%.2f: margins %.3f / %.3f" % (lo, hi, c1, c2, lo - c1, c2 - hi))
 print("not in the stack: the cartridge position in the PA12 plate and the plate flushness. They set only the PA12 gap between")
-print("  the two units' plates: nominal 1.0 (flange), minus 0.3 + 0.3 (SLS) and 0.1 (cartridge seating) = 0.3 mm minimum.")
-print("  The flange (r 6.3) is smaller than the lip and the window (r 6.45), so it can only bear on the lip's teeth")
+print("  the tail stud flange (1.0 thick, r 6.3) separates the tail end plate from the head flange's teeth; at r > 6.3 the head flange")
+print("  (0.8) and the tail plate are 1.0 - 0.3 (SLS) = 0.7 mm apart at worst. The stud flange (r 6.3) can bear only on the head's teeth")
 assert c1 < lo and hi < c2
 
 section("3. self-locking of the lock stage")
@@ -126,12 +131,13 @@ def k_release(mu, lam, mut): return RC * tand(atand(mu) - lam) + mut * R_THRUST
 t_motor_c = T_STALL_3V * V_C / 3.0
 Ts_c = [t_motor_c * GEAR_I * e for e in ETA]
 F_min = Ts_c[0] / k_close(MU_DRY[1], LAM2, MU_T[1])
+F_lb = stall_lb(V_C) * GEAR_I * ETA[0] / k_close(MU_DRY[1], LAM2, MU_T[1])
 F_max = Ts_c[1] / k_close(MU_DRY[0], LAM2, MU_T[0])
 Fo_min = Ts_c[0] / k_close(MU_OIL[1], LAM2, MU_T[1])
 Fo_max = Ts_c[1] / k_close(MU_OIL[0], LAM2, MU_T[0])
 print("closing at %.1f V: motor stall %.2f mN m, sleeve %.2f..%.2f mN m" % (V_C, t_motor_c, Ts_c[0], Ts_c[1]))
 print("preload F_p dry %.2f..%.2f N; oil %.2f..%.2f N" % (F_min, F_max, Fo_min, Fo_max))
-print("F_p scales with the actual motor constant (typical datasheet values only); retention does not depend on F_p (sections 6-8)")
+print("guaranteed lower bound (stall >= 1.2 x (V - 0.5)): F_p >= %.2f N. Retention does not depend on F_p (section 6a); the no-gapping ratios do" % F_lb)
 
 section("5. declared loads (PROVISIONAL modelling assumptions, Q31 tabletop chain of 5)")
 T_TENSION = 4 * MU_TABLE_BOUND * W
@@ -157,18 +163,43 @@ print("  by torsion slip, and no face friction is relied on")
 print("shear %.3f N: the radial teeth centre the flange (separating force <= shear x tan 45); the pilot (clearance %.3f..%.3f) is an entry guide" % (SHEAR, *PILOT_CLR))
 r_slot = (BORE_R + HOUSING_RO) / 2
 clr_min, clr_max = (SLOT_W - IT9["3-6"] / 2) - (3.0 - 0.002), (SLOT_W + IT9["3-6"] / 2) - (3.0 - 0.008)
-print("roll indexing: the lugs index roll within the slot lash %.2f..%.2f deg (r %.2f); half a tooth pitch is 5 deg, so the" %
-      (math.degrees(clr_min / 2 / r_slot), math.degrees(clr_max / 2 / r_slot), r_slot))
-print("  teeth always meet their own gaps; the tooth phase to the slots (one set-up, IT9) is within about +-0.2 deg")
+lash_min_in = math.degrees(clr_min / 2 / BORE_R)
+print("roll indexing before the teeth meet: slot lash %.2f..%.2f deg at the inner radius %.2f (the lug touches there first); this is" % (lash_min_in, math.degrees(clr_max / 2 / BORE_R), BORE_R))
+print("  less than half a tooth pitch (5 deg), so the teeth always meet their own gaps")
+phase = 2 * math.degrees((IT9["3-6"] / 2) / HIRTH_RM) + 2 * math.degrees((IT9["3-6"] / 2) / BORE_R)
+print("tooth phase to slot, both parts: tooth position IT9 (+-15 um at r_m) and slot position IT9 (+-15 um at r 2.05), summed for two parts: +-%.2f deg" % phase)
+print("  with the teeth seated the lugs keep >= %.2f deg of clearance to the slot sides each way: they never bear on the slots, so" % (lash_min_in - phase))
+print("  torsion goes only through the teeth and the lugs cannot slide on the flank")
+assert lash_min_in - phase > 1.0 and math.degrees(clr_max / 2 / BORE_R) < 5.0
+
+section("6a. why tooth engagement and roll do not depend on F_p")
+E_LUG = E_SS
+I_lug = math.pi * (2 * LUG_R) ** 4 / 64
+k_lug = 2 * 3 * E_LUG * I_lug / (RC - STUD_R) ** 3     # two lugs as cantilevers from the pilot to the flank (N/mm), stiff-side bound
+k_loop = 20000.0   # PROVISIONAL loop stiffness lower bound (N/mm), well below the two lugs alone
+excess = 20.0      # an axial separating load 20 N above any preload, far above the declared loads
+print("two lugs as cantilevers: %.0f N/mm; with a loop stiffness lower bound of %.0f N/mm, an axial load %.0f N above the preload opens the" % (k_lug, k_loop, excess))
+print("  faces by <= %.4f mm, against a tooth height of 0.39 mm: the teeth stay geometrically engaged at any F_p, including zero, as long" % (excess / k_loop))
+print("  as the self-locking stage holds (section 3); roll is then bounded by the tooth flanks to <= %.3f deg" % math.degrees(excess / k_loop / HIRTH_RM))
+print("  F_p sets only whether the faces stay in contact (stiffness), reported below with both the typical and the lower-bound F_p")
 
 section("7. carriers, each load alone")
 print("tension: F_p_min %.2f > %.3f N, faces stay closed (ratio %.2f); geometric carrier: lugs on the self-locking stage" % (F_min, T_TENSION, F_min / T_TENSION))
 print("torsion: Hirth teeth, ratio %.2f to tooth separation; beyond separation the lugs on the housing slot sides (r %.2f)" % (F_min / F_sep_t, r_slot))
+# lug slots (3.20 + V lead-ins 0.6 x 2 = 4.4 wide) cut the head's Hirth ring along +-y; the in-plane tipping edge sits where the ring resumes
+slot_half = (SLOT_W + 2 * LIP_V) / 2
+edge_y = math.sqrt(HIRTH_RO ** 2 - slot_half ** 2)
+frac = 1 - 2 * 2 * math.asin(slot_half / HIRTH_RM) / (2 * math.pi)
+print("lug slots remove %.0f percent of the head Hirth ring at r_m; the in-plane tipping edge is at y = %.2f, not %.2f" % (100 * (1 - frac), edge_y, HIRTH_RO))
 tip = F_min * HIRTH_RO
+tip_ip = F_min * edge_y
+tip_lb, tip_ip_lb = F_lb * HIRTH_RO, F_lb * edge_y
 print("out-of-plane bending: tipping %.2f mN m vs %.2f (ratio %.2f); beyond it the pilot couple bounds the tilt to <= %.2f deg" % (tip, M_OOP, tip / M_OOP, math.degrees(PILOT_CLR[1] / 5.0)))
-print("in-plane bending: tipping %.2f vs %.2f (ratio %.2f); beyond it the lug pair (lever %.2f mm) as axial load on the self-locking stage" % (tip, M_INPLANE, tip / M_INPLANE, RC + HIRTH_RO))
+print("in-plane bending: tipping %.2f vs %.2f (ratio %.2f); beyond it the lug pair (lever %.2f mm) as axial load on the self-locking stage" % (tip_ip, M_INPLANE, tip_ip / M_INPLANE, RC + edge_y))
+print("at the lower-bound F_p %.2f N: tension ratio %.2f, torsion-separation ratio %.2f, tipping ratios %.2f / %.2f: below 1 the faces gap" % (F_lb, F_lb / T_TENSION, F_lb / F_sep_t, tip_lb / M_OOP, tip_ip_lb / M_INPLANE))
+print("  (not separation: section 6a)")
 print("shear: Hirth teeth (ratio %.1f of preload to separating force)" % (F_min / SHEAR))
-assert F_min > T_TENSION and F_min > F_sep_t and tip > M_OOP and tip > M_INPLANE
+assert F_min > T_TENSION and F_min > F_sep_t and tip > M_OOP and tip_ip > M_INPLANE
 
 section("8. all declared loads at once (an upper bound; not a stated operating case)")
 sep_axial = T_TENSION + F_sep_t + SHEAR
@@ -221,23 +252,33 @@ print("  open stop sets the entry notch over the housing slot: the V lead-in all
 F_ej = MU_TABLE_BOUND * W + 0.5
 print("rear retainer collar (304, pressed on the housing tube, r 2.05..4.9 x 0.4): ejection reaction <= %.2f N (drag of one free unit at mu 1 plus a" % F_ej)
 print("  PROVISIONAL 0.5 N for pilot and teeth friction) on the gear rear face r 3.55..4.9: %.2f MPa" % (F_ej / (math.pi * (4.9 ** 2 - 3.55 ** 2))))
-ear_z = 7.4
-M_mount = max(M_OOP, M_INPLANE)
-F_scr = M_mount / (2 * ear_z) + T_TENSION / 2
-print("mount: two tapped 304 ears of the housing (M1.6, 1.6 thick, behind the front plate, axis offsets z +-%.1f) and countersunk M1.6" % ear_z)
-print("  A2 screws through the 1.2 mm PA12 plate. Pull-out (tension %.3f N) bears the ears on the plate's inner face; push-in bears the" % T_TENSION)
-print("  countersunk heads on the plate. Worst screw load (bending %.1f mN m over 2 x %.1f mm plus half the tension) %.2f N;" % (M_mount, ear_z, F_scr))
-print("  PA12 bearing under a 3.2 mm countersunk head about %.2f MPa (PA2200 tensile strength 50 MPa)" % (F_scr / (math.pi / 4 * (3.2 ** 2 - 1.6 ** 2))))
+FLG_R, SCREW_R, PLATE_T = 7.0, 7.8, 1.2
+print("mount: the 304 housing front flange (disc r %.1f, lobes at +-z to r 9.4) lies on the PA12 front plate's outer face; two countersunk" % FLG_R)
+print("  ISO 7046 M1.6 A2 screws through the lobes (z +-%.1f from the axis) and the 1.2 mm plate into tapped 304 nut blocks behind it" % SCREW_R)
+print("  pull-out (tension %.3f N): the screws, nut blocks bearing on the plate's inner face, %.2f N each" % (T_TENSION, T_TENSION / 2))
+print("  push-in and both bendings: the flange bears on the plate's outer face and pivots on its edge; the screws hold the far side")
+for n, M, lev in (("out-of-plane (about y), pivot on a lobe tip, far screw at", M_OOP, SCREW_R + 9.4),
+                  ("in-plane (about z), pivot on the disc edge at y +-7.0, screws at lever", M_INPLANE, FLG_R),
+                  ("in-plane fault (joint stall at 3.6 V), same lever", M_INPLANE_FAULT, FLG_R)):
+    Fs = M / lev + T_TENSION / 2
+    print("  %s %.1f mm: %.1f mN m -> %.2f N per screw (both screws share the in-plane case: %.2f N each)" % (n, lev, M, Fs, M / lev / 2 + T_TENSION / 2))
+Fs_max = M_INPLANE_FAULT / FLG_R / 2 + T_TENSION / 2
+A_nut = 2.2 * 2.2 - math.pi * 0.8 ** 2
+print("  worst nut-block bearing on PA12: %.2f N over %.2f mm2 = %.2f MPa (PA2200 tensile 50 MPa); thread engagement 0.8 mm in 304:" % (Fs_max, A_nut, Fs_max / A_nut))
+A_thr = math.pi * 1.17 * 0.8 * 0.5
+print("  stripping area about %.2f mm2 x 0.6 x 515 MPa = %.0f N" % (A_thr, A_thr * 0.6 * 515))
+F_edge = M_INPLANE_FAULT / FLG_R
+print("  flange edge on the plate face (fault): %.2f N on a 1 mm wide bearing band 4 mm long: %.2f MPa" % (F_edge, F_edge / 4.0))
 
 section("12. pre-alignment windows (presented pose; not a capture window, CPL-006)")
 lat = (BORE_R + BORE_CH) - (STUD_R - NOSE_CH)
-print("lateral: bore chamfer 0.6, nose chamfer 0.5 and the clearance: +-%.2f mm vs the +-0.6 mm two-unit PA12 stack" % lat)
+print("lateral: bore chamfer %.1f, nose chamfer %.1f and the clearance: +-%.2f mm vs the +-0.6 mm two-unit PA12 stack" % (BORE_CH, NOSE_CH, lat))
 print("no wedging on the 45 deg chamfers while mu < 1: at the dry steel-steel upper bound 0.8 the centring force is %.2f of the push" % ((1 - MU_SS_MAX) / (1 + MU_SS_MAX)))
 lug_front = s_nom + LUG_R
 pilot_cyl = STUD_L - NOSE_CH
-print("sequence: the lug fronts are at %.2f, the pilot cylinder starts at %.2f: the pilot is %.2f deep (bore chamfer %.2f) when the lugs" % (lug_front, pilot_cyl, pilot_cyl - lug_front, BORE_CH))
+print("sequence: the lug fronts are at %.2f, the pilot cylinder starts at %.2f: the pilot is %.2f deep (bore chamfer %.2f, margin %.2f) when the lugs" % (lug_front, pilot_cyl, pilot_cyl - lug_front, BORE_CH, pilot_cyl - lug_front - BORE_CH))
 print("  reach the lip, so the lateral error at the lugs is <= the pilot clearance %.3f mm, inside the +-0.6 mm V lead-ins" % PILOT_CLR[1])
-assert pilot_cyl - lug_front >= BORE_CH - 1e-9
+assert pilot_cyl - lug_front - BORE_CH >= 0.15
 print("roll: V lead-in 0.6 at the lug tip radius %.1f: +-%.1f deg vs about +-1.4 deg (0.6 mm base flatness over 25 mm)" % (LUG_TIP, math.degrees(LIP_V / LUG_TIP)))
 print("pitch: both units stand on the table; flatness stack 0.6 mm over 47 mm = +-%.2f deg" % math.degrees(math.atan(0.6 / 47)))
 print("yaw and the joint angles: only the relative pose of the head unit's head segment and the tail unit's tail segment matters;")
