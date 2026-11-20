@@ -96,3 +96,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q83 | [Coupler concept study v1 (paper, exploratory; selects nothing)](Q083-coupler-concept-study.md) (agent decision under owner delegation) | accepted |
 | Q84 | [Stop cand-a coupler revisions; scope decision to the owner](Q084-stop-cand-a-coupler-revisions.md) (agent decision under owner delegation) | accepted |
 | Q85 | [Keep the Q12 envelope; start a coupler-first Family B candidate (cand-d)](Q085-keep-envelope-coupler-first-candidate.md) (agent decision under owner delegation) | accepted |
+| Q86 | [Gate 1 run 6 disposition (cand-d v1)](Q086-gate1-run6-disposition.md) (agent decision under owner delegation) | accepted |

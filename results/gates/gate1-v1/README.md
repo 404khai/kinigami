@@ -164,3 +164,35 @@ cand-a v5 values:
   - **Torsion has no carrier:** once the vertical free play exceeds 0.62 mm (43% of the declared 0.05–1.05 mm), the declared torsion load is carried by nothing.
   - **Jaw window too small:** the open-jaw window at the class-f minimum stroke is 0.087 mm (the dossier said 0.104), below the declared ±0.35 mm stack.
   - **What still holds:** tension retention, the machined frame, the four-bar margins and the cylindrical thrust are supported.
+
+# Gate 1 paper-gate run 6
+
+- Report: `run6-efe5163-ReleaseSafe.json` (clean tree `efe5163`, ReleaseSafe, Zig 0.17.0).
+- Criteria: unchanged `gate1-v1`, sha256 `ffe135329340…ddbf`.
+- Candidates: new **cand-d v1** (Family B, Q85). cand-a v5, cand-b v1 and cand-c v1 are unchanged.
+- Order: Q85 `de5855c` → candidate `0625127` → reviews `efe5163` → this evaluation.
+- Label: **exploratory**.
+
+| Candidate | Overall | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| cand-a v5 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
+| cand-b v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-c v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-d v1 | **unresolved** | pass | pass | pass | pass | pass | unresolved | pass | pass |
+
+**Survivors: none.**
+
+cand-d v1 values:
+- **G1:** D 58.862 mm.
+- **G2:** 496 pairs tested, no interference.
+- **G4:** 30.247 g. Peak 3937 mW against a 19 425 mW limit. Endurance 1749 s, reported only.
+- **G5:** a three-unit chain is supported at roll 0°.
+- **G7, G8:** pass. No high cell, 15 moderate cells, both exclusions not present.
+- **G6:** the retention review is **unresolved**.
+  - **What holds:** the self-locking lock stage, its friction margins (2.86 dry, 1.91 oiled), the tension carrier, and the lateral and roll windows. The reviewer reproduced all of them.
+  - **Mount not buildable:** the cartridge is held by M1.6 screws in a 0.8 mm lip.
+  - **Torsion no-slip:** holds at one corner only. It depends on motor-constant, face-friction and r_eff assumptions, and on load combinations.
+  - **Missing parts:** no sleeve rear retainer and no open hard stop.
+  - **Release:** the 1.30 margin assumes 3.6 V at the motor.
+  - **Alignment:** joint-angle error and tilt are not in the alignment stack.
+  - **Citation error:** the "bronze on steel dry 0.35" value is not on the cited page. The lead confirmed this from the raw page.
