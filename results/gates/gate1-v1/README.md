@@ -256,3 +256,32 @@ cand-d v3 values:
   - **Slot lash:** stated at the wrong radius. The seated clearance is about 0.65°, not 1.39°.
   - **Tooth meshing:** not shown at the lower-bound motor torque.
   - **Reference planes:** not declared.
+
+# Gate 1 paper-gate run 9
+
+- Report: `run9-dbb2dc4-ReleaseSafe.json` (clean tree `dbb2dc4`, ReleaseSafe).
+- Criteria: unchanged `gate1-v1`, sha256 `ffe135329340…ddbf`.
+- Candidates: cand-d **v4** (Q91). v3 is preserved as `declaration-v3.json`. Others are unchanged.
+- Order: Q91 `6642f0a` → candidate `42031d1` → reviews `dbb2dc4` → this evaluation.
+- Label: **exploratory**.
+
+| Candidate | Overall | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| cand-a v5 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
+| cand-b v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-c v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-d v4 | **unresolved** | pass | pass | pass | pass | pass | unresolved | pass | pass |
+
+**Survivors: none.**
+
+cand-d v4 values:
+- **G1:** D 58.862 mm.
+- **G2:** 741 pairs, no interference.
+- **G4:** 31.222 g.
+- **G7, G8:** pass. No high cell, 21 moderate cells.
+- **G6:** the retention review is **unresolved**, with no contradiction.
+  - **What holds:** the fully seated joint carries every declared load, and the v3 items are closed.
+  - **Partial seat:** the fallback covers pitch only. Roll and yaw residuals at the lower-bound motor torque can take the seat out of the lock stage.
+  - **Undeclared parts:** no coupler motor mount, and no cell-voltage sense.
+  - **Hinge ear:** it crosses the inner wall without a declared notch.
+  - **Errors:** the plate model, the pilot margin at the crest plane, the assembly sequence, and an unverifiable PA 2200 source.
