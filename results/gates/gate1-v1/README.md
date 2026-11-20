@@ -164,3 +164,124 @@ cand-a v5 values:
   - **Torsion has no carrier:** once the vertical free play exceeds 0.62 mm (43% of the declared 0.05–1.05 mm), the declared torsion load is carried by nothing.
   - **Jaw window too small:** the open-jaw window at the class-f minimum stroke is 0.087 mm (the dossier said 0.104), below the declared ±0.35 mm stack.
   - **What still holds:** tension retention, the machined frame, the four-bar margins and the cylindrical thrust are supported.
+
+# Gate 1 paper-gate run 6
+
+- Report: `run6-efe5163-ReleaseSafe.json` (clean tree `efe5163`, ReleaseSafe, Zig 0.17.0).
+- Criteria: unchanged `gate1-v1`, sha256 `ffe135329340…ddbf`.
+- Candidates: new **cand-d v1** (Family B, Q85). cand-a v5, cand-b v1 and cand-c v1 are unchanged.
+- Order: Q85 `de5855c` → candidate `0625127` → reviews `efe5163` → this evaluation.
+- Label: **exploratory**.
+
+| Candidate | Overall | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| cand-a v5 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
+| cand-b v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-c v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-d v1 | **unresolved** | pass | pass | pass | pass | pass | unresolved | pass | pass |
+
+**Survivors: none.**
+
+cand-d v1 values:
+- **G1:** D 58.862 mm.
+- **G2:** 496 pairs tested, no interference.
+- **G4:** 30.247 g. Peak 3937 mW against a 19 425 mW limit. Endurance 1749 s, reported only.
+- **G5:** a three-unit chain is supported at roll 0°.
+- **G7, G8:** pass. No high cell, 15 moderate cells, both exclusions not present.
+- **G6:** the retention review is **unresolved**.
+  - **What holds:** the self-locking lock stage, its friction margins (2.86 dry, 1.91 oiled), the tension carrier, and the lateral and roll windows. The reviewer reproduced all of them.
+  - **Mount not buildable:** the cartridge is held by M1.6 screws in a 0.8 mm lip.
+  - **Torsion no-slip:** holds at one corner only. It depends on motor-constant, face-friction and r_eff assumptions, and on load combinations.
+  - **Missing parts:** no sleeve rear retainer and no open hard stop.
+  - **Release:** the 1.30 margin assumes 3.6 V at the motor.
+  - **Alignment:** joint-angle error and tilt are not in the alignment stack.
+  - **Citation error:** the "bronze on steel dry 0.35" value is not on the cited page. The lead confirmed this from the raw page.
+
+# Gate 1 paper-gate run 7
+
+- Report: `run7-40c4860-ReleaseSafe.json` (clean tree `40c4860`, ReleaseSafe).
+- Criteria: unchanged `gate1-v1`, sha256 `ffe135329340…ddbf`.
+- Candidates: cand-d **v2** (Q87). v1 is preserved as `declaration-v1.json`. Others are unchanged.
+- Order: Q87 `e4ec1cb` → candidate `f10f85c` → reviews `40c4860` → this evaluation.
+- Label: **exploratory**.
+
+| Candidate | Overall | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| cand-a v5 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
+| cand-b v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-c v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-d v2 | **unresolved** | pass | pass | pass | pass | pass | unresolved | pass | pass |
+
+**Survivors: none.**
+
+cand-d v2 values:
+- **G1:** D 58.862 mm.
+- **G2:** 595 pairs, no interference.
+- **G4:** 31.109 g, peak 3937 mW.
+- **G7, G8:** pass. No high cell, 20 moderate cells.
+- **G6:** the retention review is **unresolved**.
+  - **Closed:** v1 items 3 and 5–9.
+  - **Ears not joined:** the declared geometry does not join the mounting ears to the housing.
+  - **Mount lever:** the in-plane bending lever at the mount is wrong.
+  - **Phase tolerance:** the tooth-to-slot phase tolerance is not derived.
+  - **Preload:** F_p has no lower bound.
+  - **Minor:** the PTFE notch, the Hirth area lost to the slots, and the pilot sequence margin.
+
+# Gate 1 paper-gate run 8
+
+- Report: `run8-d03f7c3-ReleaseSafe.json` (clean tree `d03f7c3`, ReleaseSafe).
+- Criteria: unchanged `gate1-v1`, sha256 `ffe135329340…ddbf`.
+- Candidates: cand-d **v3** (Q89). v2 is preserved as `declaration-v2.json`. Others are unchanged.
+- Order: Q89 `766191b` → candidate `095545c` → reviews `d03f7c3` → this evaluation.
+- Label: **exploratory**.
+
+| Candidate | Overall | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| cand-a v5 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
+| cand-b v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-c v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-d v3 | **unresolved** | pass | pass | pass | pass | pass | unresolved | pass | pass |
+
+**Survivors: none.**
+
+cand-d v3 values:
+- **G1:** D 58.862 mm.
+- **G2:** 630 pairs, no interference.
+- **G4:** 31.103 g.
+- **G7, G8:** pass. No high cell, 21 moderate cells; the reviewer read Belke and Paik in full.
+- **G6:** the retention review is **unresolved**, with no contradiction.
+  - **What holds:** the friction-wedge retention is accepted, and the head mount reproduces.
+  - **Tail stud mount:** it threads into PA12 and is not sized.
+  - **Plate joints:** the plate-to-shell joints are not located.
+  - **Slot lash:** stated at the wrong radius. The seated clearance is about 0.65°, not 1.39°.
+  - **Tooth meshing:** not shown at the lower-bound motor torque.
+  - **Reference planes:** not declared.
+
+# Gate 1 paper-gate run 9
+
+- Report: `run9-dbb2dc4-ReleaseSafe.json` (clean tree `dbb2dc4`, ReleaseSafe).
+- Criteria: unchanged `gate1-v1`, sha256 `ffe135329340…ddbf`.
+- Candidates: cand-d **v4** (Q91). v3 is preserved as `declaration-v3.json`. Others are unchanged.
+- Order: Q91 `6642f0a` → candidate `42031d1` → reviews `dbb2dc4` → this evaluation.
+- Label: **exploratory**.
+
+| Candidate | Overall | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| cand-a v5 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
+| cand-b v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-c v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-d v4 | **unresolved** | pass | pass | pass | pass | pass | unresolved | pass | pass |
+
+**Survivors: none.**
+
+cand-d v4 values:
+- **G1:** D 58.862 mm.
+- **G2:** 741 pairs, no interference.
+- **G4:** 31.222 g.
+- **G7, G8:** pass. No high cell, 21 moderate cells.
+- **G6:** the retention review is **unresolved**, with no contradiction.
+  - **What holds:** the fully seated joint carries every declared load, and the v3 items are closed.
+  - **Partial seat:** the fallback covers pitch only. Roll and yaw residuals at the lower-bound motor torque can take the seat out of the lock stage.
+  - **Undeclared parts:** no coupler motor mount, and no cell-voltage sense.
+  - **Hinge ear:** it crosses the inner wall without a declared notch.
+  - **Errors:** the plate model, the pilot margin at the crest plane, the assembly sequence, and an unverifiable PA 2200 source.
