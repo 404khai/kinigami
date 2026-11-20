@@ -253,3 +253,15 @@ Take 16 direct mating draw study: [source and limits](docs/studies/cand-d-drawbo
 **Take 16 result:** the [barrel](docs/studies/cand-d-drawbolt/barrel.md) runs off its smooth patch during ordinary partial pitch. [Larger-sphere study](docs/studies/cand-d-drawbolt/cylinders.md): removing one keeper admits 12° where the guided-coupon force budget assumes ≤3°. Neither is a free-release result.
 
 **Take 17 result:** the [linear, rotary and swinging sections](docs/studies/cand-d-drawbolt/drawbolt-take17.md) retain separate dimensions and force budgets. The long screw exceeds the face by 4.07 mm; the short rise exceeds rated torque. A pivot removes a guide but hits the existing rim. The lead's [guard calculation](docs/studies/cand-d-drawbolt/swing.py) does not change that geometry or authorize a freeze.
+
+## Take 18 — central gripper force and release
+
+A fresh `central-grasp-study` Graft from e6b51f9 (mechanics author). Study one central sphere between actively opened jaws; separate capture from three outward-opening bearing seats. No frozen revision or gate result.
+
+The [mechanics study](docs/studies/cand-d-central-grasp/grasp.md) gives a measured-draw window and a zero-tilt one-jaw contact at the open stop. The [thin slot/comb study](docs/studies/cand-d-central-grasp/grille.md) distinguishes fully parked clearance from off-axis side loads during withdrawal. Neither free lead, backed transition nor unconstrained ejection has a complete installed proof.
+
+## Take 19 — central gripper and ejection package
+
+A separate `central-drive-package` Graft from e6b51f9 (packaging author). Check actual drive, jaw take-up, independent push, sensing and access against 60 mm. No candidate edit or official evaluation.
+
+The [package section](docs/studies/cand-d-central-grasp/central-drive-take19.md) keeps a rear-running ejector screw but rejects the original high shaft: the two critical features span 60.194 mm before the rest of the unit. The wider slotted hex needs 4.531 mm radial stroke before cage motion. Neither that package nor the conditional force result is a Gate 1 design.
