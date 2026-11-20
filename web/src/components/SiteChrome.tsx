@@ -3,12 +3,13 @@ import { DECISIONS, REGISTER } from "../generated/records";
 import { GH, GH_BLOB, PORTFOLIO } from "../lib/site";
 import { KLogo } from "./KLogo";
 
-export type Page = "home" | "blog";
+export type Page = "home" | "blog" | "docs";
 
 const LINKS: [string, string, Page | null][] = [
   ["Principles", "/#principles", null],
   ["Refusals", "/#refusals", null],
   ["Decision log", "/#decisions", null],
+  ["Docs", "/docs", "docs"],
   ["Blog", "/blog", "blog"],
   ["Records", `${GH}/tree/main/docs`, null],
 ];
@@ -144,7 +145,7 @@ export function Poster({ layout, children }: { layout: "footer" | "card"; childr
 }
 
 const COLUMNS: { title: string; links: [string, string][] }[] = [
-  { title: "Site", links: [["Overview", "/"], ["Blog", "/blog"], ["Decision log", "/#decisions"], ["Principles", "/#principles"]] },
+  { title: "Site", links: [["Overview", "/"], ["Docs", "/docs"], ["Brand", "/docs#brand"], ["Blog", "/blog"], ["Decision log", "/#decisions"], ["Principles", "/#principles"]] },
   {
     title: "Records",
     links: [
