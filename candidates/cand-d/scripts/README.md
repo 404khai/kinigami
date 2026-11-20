@@ -1,0 +1,12 @@
+# cand-d scripts (provenance for version 1)
+
+Plain Python 3, no third-party packages. Run them from this directory, except `gen_declaration.py`, which runs anywhere.
+
+| Script | What it does |
+| --- | --- |
+| `declaration_text.py` | Writes `declaration_text.json`: the prose fields (summary, retention, alignment, limitations, assembly). Every number in it is printed by `coupler.py` or `joint.py` |
+| `gen_declaration.py` | Builds `../declaration.json` from the parameters and `declaration_text.json` (`--write`). Without `--write` it prints its own checks: oriented-box overlap with the protocol's 1 µm erosion (separating-axis test), containment in a cavity primitive, mass sum, centre of mass, peak power |
+| `coupler.py` | Cam slot layout and web, axial tolerance stack (ISO 286 IT10 / g6), self-locking margins, preload from a voltage-limited stall over the cited friction and mesh-efficiency bands, release torque, declared loads and their carriers, Hertz and root stresses, pre-alignment windows and the pilot-before-lug sequence. Hard assertions: the stack lies inside the lock stage, the torsion no-slip ratio is at least 1.25, the pilot leads the lugs |
+| `joint.py` | Joint range from the segment outlines (analytic and swept), sector sweep clearance, joint torque at the drive limit |
+
+The authority for G1 to G8 is the registered evaluator (`zig-out/bin/kinigami-gate1`). On the declaration hashed in `../dossier.md` it gives G1 to G5 `pass` (draft run, not recorded). `gen_declaration.py`'s overlap and containment checks agree with it (none of 496 pairs, all boxes inside).
