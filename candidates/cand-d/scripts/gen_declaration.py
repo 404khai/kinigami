@@ -112,10 +112,10 @@ def add(cid, kind, desc, box, mass_mg=None, mat=None, volume_mm3=None, src=None,
 
 def slab(cid, desc, x0, x1, y0, y1, z0, z1):
     v = (x1 - x0) * (y1 - y0) * (z1 - z0)
-    add(cid, "structure", desc + " (PA12 SLS; mass = slab volume x density)", box_from_bounds(x0, x1, y0, y1, z0, z1), mat="pa", volume_mm3=v)
+    add(cid, "structure", desc + " (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)", box_from_bounds(x0, x1, y0, y1, z0, z1), mat="pa", volume_mm3=v)
 
 # long (head) segment shell
-slab("L-top", "head segment top wall", LX0, LXE, -YO, YO, ZI, ZO)
+slab("L-top", "head segment top lid, a separate part screwed on last; carries no declared load", LX0, LXE, -YO, YO, ZI, ZO)
 slab("L-bottom", "head segment bottom wall", LX0, LXE, -YO, YO, -ZO, -ZI)
 slab("L-side-p", "head segment +y side wall", LX0, LXE, YI, YO, -ZI, ZI)
 slab("L-side-n", "head segment -y side wall", LX0, LXE, -YO, -YI, -ZI, ZI)
@@ -130,11 +130,11 @@ slab("L-front-p", "head front wall, +y of the cartridge window", fx0, fx1, wy1, 
 slab("L-front-lo", "head front wall below the cartridge window", fx0, fx1, wy0, wy1, -INSET_Z, wz0)
 slab("L-front-hi", "head front wall above the cartridge window", fx0, fx1, wy0, wy1, wz1, INSET_Z)
 # short (tail) segment shell
-slab("S-top", "tail segment top wall", SXE, SX1, -YO, YO, ZI, ZO)
+slab("S-top", "tail segment top lid, a separate part screwed on last; carries no declared load", SXE, SX1, -YO, YO, ZI, ZO)
 slab("S-bottom", "tail segment bottom wall", SXE, SX1, -YO, YO, -ZO, -ZI)
 slab("S-side-p", "tail segment +y side wall", SXE, SX1, YI, YO, -ZI, ZI)
 slab("S-side-n", "tail segment -y side wall", SXE, SX1, -YO, -YI, -ZI, ZI)
-slab("S-inner", "tail segment inner end wall facing the hinge gap", SX1 - T, SX1, -YI, YI, -ZI, ZI)
+slab("S-inner", "tail segment inner end wall facing the hinge gap (slot z -10.8 to -9.0 for the lower hinge plate)", SX1 - T, SX1, -YI, YI, -9.0, ZI)
 slab("S-end", "tail segment end plate carrying the stud flange (inset 0.8 mm at its edges)", SX0, SXE, -INSET_Y, INSET_Y, -INSET_Z, INSET_Z)
 
 # electronics
@@ -155,7 +155,7 @@ add("coupler-pinion", "actuator", "spur pinion m 0.3 z 12 (pitch radius 1.8 mm, 
     box_from_bounds(CART_X0, CART_X0 + 1.5, my - 1.8, my + 1.8, mz - 1.8, mz + 1.8), mat="ss", volume_mm3=pin_v)
 
 # head cartridge: 304 housing (tube r 2.0..4.0 with lip r 6.45) + C93200 sleeve (r 4.05..5.8) with gear ring (to pitch r 6.45)
-hous_tube = math.pi * (3.5 ** 2 - 2.05 ** 2) * (LX1 - CART_X0 + 0.4) - 2 * 3.20 * 1.45 * 5.4
+hous_tube = math.pi * (3.5 ** 2 - 2.05 ** 2) * (LX1 - CART_X0 + 0.4) - 2 * 3.40 * 1.45 * 5.4
 hous_lip = 0.0  # the lip is now the separate front flange component
 v_ss = hous_tube + hous_lip
 sleeve_x0 = CART_X0 + 1.5
@@ -168,7 +168,7 @@ m_cart = RHO["ss"] * v_ss * 1e-3 * 1e-3 + RHO["br"] * v_br * 1e-3 * 1e-3  # g
 v_cart = v_ss + v_br + v_ptfe
 rho_eff = (RHO["ss"] * v_ss + RHO["br"] * v_br + RHO["ptfe"] * v_ptfe) / v_cart
 add("head-cartridge", "coupler_mechanism",
-    "head coupler cartridge behind and in the front plate window, one subassembly: the 304 housing tube (r 2.05 to 3.5, 4.10 entry bore, two axial lug slots 3.20 wide; it is one turned part with the front flange, declared separately as head-flange, and joins it at x 35.6 across r 2.05 to 3.5; %.1f mm3), the C93200 cam sleeve (r 3.55 to 6.3, passes through the window to x 35.3; two two-stage helical slots 20 deg / 3 deg, an arc groove for the flange's stop pin in its front face, gear ring m 0.3 z 43 on its rear; %.1f mm3) and a PTFE thrust ring (r 3.6 to 4.4 x 0.3 with two lug notches, keyed by them, between the sleeve and the flange's rear face; %.1f mm3). Effective density = (7900 V_304 + 8910 V_bronze + 2150 V_PTFE) / V = %.1f kg/m3 from the three cited densities. Box bounded at the gear pitch circle toward the pinion" % (v_ss, v_br, v_ptfe, rho_eff),
+    "head coupler cartridge behind and in the front plate window, one subassembly: the 304 housing tube (r 2.05 to 3.5, 4.10 entry bore, two axial lug slots 3.40 wide; it is one turned part with the front flange, declared separately as head-flange, and joins it at x 35.6 across r 2.05 to 3.5; %.1f mm3), the C93200 cam sleeve (r 3.55 to 6.3, passes through the window to x 35.3; two two-stage helical slots 20 deg / 3 deg, an arc groove for the flange's stop pin in its front face, gear ring m 0.3 z 43 on its rear; %.1f mm3) and a PTFE thrust ring (r 3.6 to 4.4 x 0.3 with two lug notches, keyed by them, between the sleeve and the flange's rear face; %.1f mm3). Effective density = (7900 V_304 + 8910 V_bronze + 2150 V_PTFE) / V = %.1f kg/m3 from the three cited densities. Box bounded at the gear pitch circle toward the pinion" % (v_ss, v_br, v_ptfe, rho_eff),
     box_from_bounds(CART_X0, LX1, AX[0] - CART_R, AX[0] + CART_R, AX[1] - CART_R, AX[1] + CART_R),
     mass_mg=None, src="ss")
 comps[-1]["mass_mg"] = int(round(rho_eff * v_cart * 1e-9 * 1e6))
@@ -178,8 +178,8 @@ comps[-1]["source"]["title"] = SRC["ss"][2] + "; C93200 bronze from " + SRC["br"
 
 # housing front flange (one part with the housing tube; boxed separately) and nut blocks behind the plate
 lobe_w = 3.4
-v_flg = (math.pi * (FLG_R ** 2 - 2.05 ** 2) + 2 * lobe_w * (LOBE_R - FLG_R)) * HF - 2 * 4.0 * 3.6 * HF - 2 * math.pi * 0.85 ** 2 * HF + math.pi * 0.5 ** 2 * 1.5
-add("head-flange", "coupler_mechanism", "304 housing front flange, one turned part with the housing tube (joined at x 35.6, r 2.05 to 3.5): disc r 7.0 x 0.8 in front of the PA12 front plate, with two lobes at +-z to r 9.4 (3.4 wide); its front face is the head's 36-tooth 90 deg Hirth ring r 2.6 to 6.3 (pitch plane x 36.4, teeth +-0.2), with the two lug slots 3.20 wide with 0.6 x 45 deg V lead-ins and a 0.4 x 45 deg bore chamfer; its rear face inside the window is the sleeve thrust face; a 304 stop pin dia 1 pressed into that face at r 5.3; two countersunk M1.6 holes in the lobes at r 7.8. Pull-out goes through the two screws into nut blocks behind the plate, push-in and bending through the flange bearing on the plate's outer face. Volume = disc + lobes - bore - slots - holes + pin",
+v_flg = (math.pi * (FLG_R ** 2 - 2.05 ** 2) + 2 * lobe_w * (LOBE_R - FLG_R)) * HF - 2 * 4.6 * 3.6 * HF - 2 * math.pi * 0.85 ** 2 * HF + math.pi * 0.5 ** 2 * 1.5
+add("head-flange", "coupler_mechanism", "304 housing front flange, one turned part with the housing tube (joined at x 35.6, r 2.05 to 3.5): disc r 7.0 x 0.8 in front of the PA12 front plate, with two lobes at +-z to r 9.4 (3.4 wide); its front face is the head's 36-tooth 90 deg Hirth ring r 2.6 to 6.3 (pitch plane x 36.4, teeth +-0.2), with the two lug slots 3.40 wide with 0.6 x 45 deg V lead-ins and, on an inner land r 2.05 to 2.6 recessed 0.25 below the pitch plane, a 0.4 x 45 deg bore chamfer; its rear face inside the window is the sleeve thrust face; a 304 stop pin dia 1 pressed into that face at r 5.3; two countersunk M1.6 holes in the lobes at r 7.8. Pull-out goes through the two screws into nut blocks behind the plate, push-in and bending through the flange bearing on the plate's outer face. Volume = disc + lobes - bore - slots - holes + pin",
     box_from_bounds(LX1, HX, AX[0] - FLG_R, AX[0] + FLG_R, AX[1] - LOBE_R, AX[1] + LOBE_R), mat="ss", volume_mm3=v_flg)
 for nm, zc in (("nut-block-up", AX[1] + SCREW_R), ("nut-block-low", AX[1] - SCREW_R)):
     add(nm, "coupler_mechanism", "304 nut block 2.2 x 2.2 x 0.8, tapped M1.6, behind the front plate; takes a flange screw (countersunk ISO 7046 M1.6 A2, through the flange lobe and the 1.2 mm plate); bears on the plate's inner face under pull-out; volume = block minus the tapped hole",
@@ -188,10 +188,10 @@ add("retainer-collar", "coupler_mechanism", "rear retainer collar, 304, pressed 
     box_from_bounds(CART_X0 - 0.4, CART_X0, AX[0] - 4.9, AX[0] + 4.9, AX[1] - 4.9, AX[1] + 4.9), mat="ss", volume_mm3=math.pi * (4.9 ** 2 - 2.05 ** 2) * 0.4)
 
 # tail stud: flange + pilot + lugs, 304, one machined part, outside the shell
-v_stud = math.pi * FL_R ** 2 * FL_T + math.pi * STUD_R ** 2 * STUD_L + 2 * math.pi * LUG_R ** 2 * (LUG_REACH - STUD_R)
+v_stud = math.pi * FL_R ** 2 * FL_T + math.pi * STUD_R ** 2 * STUD_L + 2 * math.pi * LUG_R ** 2 * (LUG_REACH - STUD_R) - 2 * math.pi * 0.6 ** 2 * 0.6
 sx_face = SX0 - FL_T
 add("tail-stud", "coupler_mechanism",
-    "tail stud, one machined 304 part: flange r 6.3 x 1.0 screwed to the tail end plate, its face a 36-tooth 90 deg Hirth ring r 2.6 to 6.3 (pitch plane at x %.1f, teeth +-0.2); pilot r 2.0 g6 x 6.2 beyond the pitch plane (entry guide); two lugs r 1.5 (dia 3.0 g6) to radius 6.2 with their axis 3.6 below the pitch plane (nominal)" % sx_face,
+    "tail stud, one machined 304 part: flange r 6.3 x 1.0 screwed to the tail end plate, its face a 36-tooth 90 deg Hirth ring r 2.6 to 6.3 (pitch plane at x %.1f, teeth +-0.2, inner land r 2.0 to 2.6 recessed 0.25); two blind M1.6 holes 0.6 deep in its rear face at (y, z) = (3.3, 1.0 +- 4.6) for countersunk A2 screws driven from inside the tail end plate; pilot r 2.0 g6 x 6.2 beyond the pitch plane, nose 0.3 x 45 deg (entry guide); two lugs r 1.5 (dia 3.0 g6) to radius 6.2 with their axis 3.6 below the pitch plane (nominal)" % sx_face,
     box_from_bounds(sx_face - STUD_L, SX0, AX[0] - FL_R, AX[0] + FL_R, AX[1] - FL_R, AX[1] + FL_R), mat="ss", volume_mm3=v_stud)
 
 # joint drive (vertical axis through the pivot at x = 0, y = 0)
@@ -212,14 +212,20 @@ v_sect = (math.radians(2 * SPAN) / 2) * (SECT_R ** 2 - sect_in ** 2) * 1.5
 add("joint-sector", "structure", "toothed sector m 0.3 (pitch radius 8.7, z 58 equivalent), +-21 deg about the joint motor direction (%.1f deg), r 4.5 to 8.7, 1.5 mm thick at z -10.7 to -9.2; part of the tail segment's lower hinge plate, runs in the head segment's bottom layer through the L-inner wall slot; 304" % ang,
     obox((sc[0], sc[1], -9.95), ((SECT_R - sect_in) / 2, sect_he_t, 0.75), qz), mat="ss", volume_mm3=v_sect)
 v_plate = 3.4 * 3.2 * 1.5 + math.pi * 1.6 ** 2 * 1.5 / 2 - math.pi * 1.0 ** 2 * 1.5
-add("hinge-plate-low", "structure", "tail segment lower hinge plate (z -10.7 to -9.2) from the tail inner face (x -1.8) to the pin, boss r 1.6 around the pin (0.2 mm clear of the head inner face at every joint angle); carries the sector; 304, volume = plate minus pin bore",
-    box_from_bounds(-1.8, 1.6, -1.6, 1.6, -10.7, -9.2), mat="ss", volume_mm3=v_plate)
+add("hinge-plate-low", "structure", "tail segment lower hinge plate (z -10.7 to -9.2), 304, one part with the sector: from x -5.0 on the tail floor (through the S-inner slot) to the pin, boss r 1.6 around the pin (0.2 mm clear of the head inner face at every joint angle); fixed by two countersunk M1.6 A2 screws from below through the tail bottom wall into tapped holes in the plate (no thread in PA12); volume = plate minus pin bore and holes",
+    box_from_bounds(-5.0, 1.6, -1.6, 1.6, -10.7, -9.2), mat="ss", volume_mm3=v_plate + 3.2 * 3.2 * 1.5 - 2 * math.pi * 0.6 ** 2 * 1.5)
 add("hinge-plate-up", "structure", "tail segment upper hinge plate (z 7.6 to 9.1) from the tail inner face to the pin, boss r 1.6; 304, volume = plate minus pin bore",
     box_from_bounds(-1.8, 1.6, -1.6, 1.6, 7.6, 9.1), mat="ss", volume_mm3=v_plate)
 add("hinge-ear-low", "structure", "head segment lower ear (z -9.0 to -7.5) from the head inner face (x 1.8) to the pin, boss r 1.6, pin pressed in; 304, volume = plate minus pin bore",
     box_from_bounds(-1.6, 1.8, -1.6, 1.6, -9.0, -7.5), mat="ss", volume_mm3=v_plate)
 add("hinge-ear-up", "structure", "head segment upper ear (z 9.3 to 10.8) from the head inner face to the pin, boss r 1.6, pin pressed in; 304, volume = plate minus pin bore",
     box_from_bounds(-1.6, 1.8, -1.6, 1.6, 9.3, 10.8), mat="ss", volume_mm3=v_plate)
+v_leg = 3.2 * 3.0 * 0.8 - math.pi * 0.6 ** 2 * 0.8
+for nm, z0, z1, txt in (("ear-up-leg", 7.8, 10.8, "upper"), ("ear-low-leg", -9.0, -6.0, "lower")):
+    add(nm, "structure", "root leg of the head segment's %s hinge ear (one 304 part with the ear), 3.2 x 3.0 x 0.8 inside the head cavity against the inner wall's inner face; a countersunk M1.6 A2 screw from the gap side through the 1.2 mm wall into its tapped hole (no thread in PA12); pull-off bears the leg on the wall" % txt,
+        box_from_bounds(LX0 + T, LX0 + T + 0.8, -1.6, 1.6, z0, z1), mat="ss", volume_mm3=v_leg)
+add("plate-up-leg", "structure", "root leg of the tail segment's upper hinge plate (one 304 part with the plate), 3.2 x 1.6 x 0.8 in the hinge gap against the tail inner wall's outer face, below the head's upper ear; a countersunk M1.6 A2 screw from inside the tail segment through the wall into its tapped hole",
+    box_from_bounds(SX1, SX1 + 0.8, -1.6, 1.6, 6.0, 7.6), mat="ss", volume_mm3=3.2 * 1.6 * 0.8 - math.pi * 0.6 ** 2 * 0.8)
 v_pin = math.pi * 1.0 ** 2 * 21.5
 add("hinge-pin", "structure", "hinge pin dia 2.0 x 21.5 (z -10.7 to 10.8), 304; box covers the exposed length z -7.5 to 7.6 between the ears and plates (the rest lies inside their bosses)",
     box_from_bounds(-1.0, 1.0, -1.0, 1.0, -7.5, 7.6), mat="ss", volume_mm3=v_pin)
@@ -330,7 +336,7 @@ if __name__ == "__main__":
         here = os.path.dirname(os.path.abspath(__file__))
         with open(os.path.join(here, "declaration_text.json")) as f:
             text = json.load(f)
-        decl = {"schema_version": 1, "candidate_id": "cand-d", "candidate_version": 3, "family": "B",
+        decl = {"schema_version": 1, "candidate_id": "cand-d", "candidate_version": 4, "family": "B",
                 "declared_on": DECLARED, "author": text["author"], "summary": text["summary"],
                 "stowed_geometry": {"primitives": body + coupler + cavity},
                 "chain_geometry": {"primitives": body + coupler},
