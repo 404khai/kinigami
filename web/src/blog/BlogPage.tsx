@@ -272,10 +272,10 @@ function NotFound({ slug }: { slug: string }) {
 export function Blog({ slug }: { slug?: string }) {
   const post = slug ? postBySlug(slug) : undefined;
   return (
-    <>
+    <div className="rails">
       <Nav current="blog" />
       {post ? <PostView post={post} /> : slug ? <NotFound slug={slug} /> : <BlogIndex />}
       <Footer />
-    </>
+    </div>
   );
 }
