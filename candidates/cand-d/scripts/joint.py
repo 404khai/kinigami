@@ -35,8 +35,9 @@ print("boss r 1.6 to the opposite inner face: 0.20 mm at every angle (the face l
 
 # Sector sweep (tail part); take its layer from the versioned declaration.
 R_TIP = 8.7 + 0.3
-jm = comps["joint-motor"]["box"]["pose"]["position_um"][:2]
-ang = math.degrees(math.atan2(jm[1], jm[0]))
+# The sector's local +x is radial; the clipped motor box is not axis-centred.
+w, x, y, z = comps["joint-sector"]["box"]["pose"]["orientation"]
+ang = math.degrees(math.atan2(2*(x*y+w*z), 1-2*(y*y+z*z)))
 span = 21 + 15
 lo, hi = ang - span, ang + span
 print("sector swept sector in the head frame: %.1f..%.1f deg, r <= %.2f" % (lo, hi, R_TIP))
