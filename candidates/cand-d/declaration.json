@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "candidate_id": "cand-d",
-  "candidate_version": 6,
+  "candidate_version": 7,
   "family": "B",
   "declared_on": "2026-11-20",
   "author": "Claude Opus 5.5 (engineering lead, cand-d author)",
-  "summary": "Family B, cand-d v6 (Q95/Q96). A long head and short tail articulate about a vertical pin with a geared sector; a tail stud with a pivoted lug bar mates with a head cartridge and rigid face teeth. An onboard serial servo winds the sleeve via a torsion spring; a separate positive dog reverses it. A low-lead cam, not the servo or spring, retains a fully locked joint when power is lost. Mechanical flats react servo torque and a cross-pinned collar takes ejection reaction. No magnets, ground-truth docking signal, inter-unit energy transfer or active unloaded holding assumed. The author field preserves the candidate lineage; dossier-v6 names this revision's design authors.",
+  "summary": "Family B, cand-d v7 (Q99). Three radially carried balls at 120 degrees meet short straight tangential cheeks and axially opposed pads and shutters. No central stud, V clamp or Hirth teeth. A mechanically captured head servo moves three transverse keepers; a separately timed barrel track moves the rear stops outward. The enclosed two-segment body and internal hinge provide articulation. This is an exploratory candidate, not an accepted mechanism.",
   "stowed_geometry": {
     "primitives": [
       {
@@ -101,13 +101,13 @@
         "role": "body"
       },
       {
-        "id": "stud-flange",
+        "id": "tail-plate",
         "kind": "cylinder",
         "radius_um": 6300,
-        "half_height_um": 600,
+        "half_height_um": 500,
         "pose": {
           "position_um": [
-            -11200,
+            -11100,
             600,
             -4600
           ],
@@ -121,9 +121,29 @@
         "role": "coupler"
       },
       {
-        "id": "head-flange-disc",
+        "id": "tail-three-stations-bound",
         "kind": "cylinder",
-        "radius_um": 7000,
+        "radius_um": 5700,
+        "half_height_um": 1850,
+        "pose": {
+          "position_um": [
+            -13450,
+            600,
+            -4600
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.0,
+            0.7071067811865475,
+            0.0
+          ]
+        },
+        "role": "coupler"
+      },
+      {
+        "id": "head-plate",
+        "kind": "cylinder",
+        "radius_um": 6300,
         "half_height_um": 400,
         "pose": {
           "position_um": [
@@ -187,64 +207,73 @@
         "role": "coupler"
       },
       {
-        "id": "head-hirth-teeth",
-        "kind": "cylinder",
-        "radius_um": 6300,
-        "half_height_um": 100,
+        "id": "keeper-nose-90",
+        "kind": "box",
+        "role": "coupler",
+        "half_extent_um": [
+          650,
+          2875,
+          2180
+        ],
         "pose": {
           "position_um": [
-            36500,
+            36250,
             600,
-            -4600
+            75
           ],
           "orientation": [
             0.7071067811865476,
-            0.0,
             0.7071067811865475,
+            0.0,
             0.0
           ]
-        },
-        "role": "coupler"
+        }
       },
       {
-        "id": "stud-pilot",
-        "kind": "cylinder",
-        "radius_um": 2000,
-        "half_height_um": 3250,
+        "id": "keeper-nose-210",
+        "kind": "box",
+        "role": "coupler",
+        "half_extent_um": [
+          650,
+          2875,
+          2180
+        ],
         "pose": {
           "position_um": [
-            -14850,
-            600,
-            -4600
+            36250,
+            -3449,
+            -6938
           ],
           "orientation": [
-            0.7071067811865476,
+            -0.25881904510252085,
+            0.9659258262890683,
             0.0,
-            0.7071067811865475,
             0.0
           ]
-        },
-        "role": "coupler"
+        }
       },
       {
-        "id": "stud-lugs",
-        "kind": "cylinder",
-        "radius_um": 1250,
-        "half_height_um": 5250,
+        "id": "keeper-nose-330",
+        "kind": "box",
+        "role": "coupler",
+        "half_extent_um": [
+          650,
+          2875,
+          2180
+        ],
         "pose": {
           "position_um": [
-            -15200,
-            600,
-            -4600
+            36250,
+            4649,
+            -6938
           ],
           "orientation": [
-            0.7071067811865476,
-            0.7071067811865475,
+            -0.9659258262890682,
+            0.258819045102521,
             0.0,
             0.0
           ]
-        },
-        "role": "coupler"
+        }
       },
       {
         "id": "cavity-envelope",
@@ -270,16 +299,16 @@
         "role": "cavity"
       },
       {
-        "id": "stud-envelope",
+        "id": "tail-stations-envelope",
         "kind": "box",
         "half_extent_um": [
-          3750,
+          2350,
           6300,
           6300
         ],
         "pose": {
           "position_um": [
-            -14350,
+            -12950,
             600,
             -4600
           ],
@@ -296,13 +325,13 @@
         "id": "head-flange-envelope",
         "kind": "box",
         "half_extent_um": [
-          400,
+          650,
           9700,
-          7000
+          8000
         ],
         "pose": {
           "position_um": [
-            36000,
+            36250,
             600,
             -4600
           ],
@@ -412,13 +441,13 @@
         "role": "body"
       },
       {
-        "id": "stud-flange",
+        "id": "tail-plate",
         "kind": "cylinder",
         "radius_um": 6300,
-        "half_height_um": 600,
+        "half_height_um": 500,
         "pose": {
           "position_um": [
-            -11200,
+            -11100,
             600,
             -4600
           ],
@@ -432,9 +461,29 @@
         "role": "coupler"
       },
       {
-        "id": "head-flange-disc",
+        "id": "tail-three-stations-bound",
         "kind": "cylinder",
-        "radius_um": 7000,
+        "radius_um": 5700,
+        "half_height_um": 1850,
+        "pose": {
+          "position_um": [
+            -13450,
+            600,
+            -4600
+          ],
+          "orientation": [
+            0.7071067811865476,
+            0.0,
+            0.7071067811865475,
+            0.0
+          ]
+        },
+        "role": "coupler"
+      },
+      {
+        "id": "head-plate",
+        "kind": "cylinder",
+        "radius_um": 6300,
         "half_height_um": 400,
         "pose": {
           "position_um": [
@@ -498,64 +547,73 @@
         "role": "coupler"
       },
       {
-        "id": "head-hirth-teeth",
-        "kind": "cylinder",
-        "radius_um": 6300,
-        "half_height_um": 100,
+        "id": "keeper-nose-90",
+        "kind": "box",
+        "role": "coupler",
+        "half_extent_um": [
+          650,
+          2875,
+          2180
+        ],
         "pose": {
           "position_um": [
-            36500,
+            36250,
             600,
-            -4600
+            75
           ],
           "orientation": [
             0.7071067811865476,
-            0.0,
             0.7071067811865475,
+            0.0,
             0.0
           ]
-        },
-        "role": "coupler"
+        }
       },
       {
-        "id": "stud-pilot",
-        "kind": "cylinder",
-        "radius_um": 2000,
-        "half_height_um": 3250,
+        "id": "keeper-nose-210",
+        "kind": "box",
+        "role": "coupler",
+        "half_extent_um": [
+          650,
+          2875,
+          2180
+        ],
         "pose": {
           "position_um": [
-            -14850,
-            600,
-            -4600
+            36250,
+            -3449,
+            -6938
           ],
           "orientation": [
-            0.7071067811865476,
+            -0.25881904510252085,
+            0.9659258262890683,
             0.0,
-            0.7071067811865475,
             0.0
           ]
-        },
-        "role": "coupler"
+        }
       },
       {
-        "id": "stud-lugs",
-        "kind": "cylinder",
-        "radius_um": 1250,
-        "half_height_um": 5250,
+        "id": "keeper-nose-330",
+        "kind": "box",
+        "role": "coupler",
+        "half_extent_um": [
+          650,
+          2875,
+          2180
+        ],
         "pose": {
           "position_um": [
-            -15200,
-            600,
-            -4600
+            36250,
+            4649,
+            -6938
           ],
           "orientation": [
-            0.7071067811865476,
-            0.7071067811865475,
+            -0.9659258262890682,
+            0.258819045102521,
             0.0,
             0.0
           ]
-        },
-        "role": "coupler"
+        }
       }
     ]
   },
@@ -891,7 +949,7 @@
     {
       "id": "L-bottom-front",
       "kind": "structure",
-      "description": "Flush keyed 304 pan under sleeve, collar and window.",
+      "description": "Flush keyed 304 pan under the rotor and front window.",
       "mass_mg": 393,
       "mass_basis": "derived",
       "derivation": {
@@ -1588,7 +1646,7 @@
     {
       "id": "S-end",
       "kind": "structure",
-      "description": "tail segment end plate carrying the stud flange (inset 0.8 mm at its edges) (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
+      "description": "tail segment end plate carrying the station flange (inset 0.8 mm at its edges) (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
       "mass_mg": 608,
       "mass_basis": "derived",
       "derivation": {
@@ -1862,13 +1920,9 @@
     {
       "id": "drive-socket",
       "kind": "coupler_mechanism",
-      "description": "17-4 H900 socket of the one-piece driver; female profile matched to 28T / 3.9 spline and gauged before assembly. Shaft and boss share this box.",
+      "description": "Gauged 28T keyed and screwed servo hub, with axial float to independently supported cam rotor. Gross stock, mm3: rear hub OD5.7, broach inscribed diameter 3.4 10.356",
       "mass_mg": 81,
       "mass_basis": "derived",
-      "derivation": {
-        "density_kg_m3": 7810.0,
-        "volume_m3": 1.0356181642742457e-08
-      },
       "box": {
         "half_extent_um": [
           385,
@@ -1897,14 +1951,18 @@
         "kind": "datasheet",
         "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/precipitationhardening/ati_17-4_tds_en_v2.pdf",
         "accessed": "2026-11-20",
-        "title": "ATI 17-4 H900 density 7.81 g/cm3, p3; H900 bar 170 ksi minimum proof: https://ssa-corp.com/documents/Data%20Sheet%2017-4-Stainless-Steel-AMS-5643-UNSS17400.pdf"
+        "title": "ATI 17-4 H900 density 7.81 g/cm3, p3; H900 bar 170 ksi minimum proof: https://ssa-corp.com/documents/Data%20Sheet%2017-4-Stainless-Steel-AMS-5643-UNSS17400.pdf; also https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf (304), https://www.concast.com/c95400.php (bronze); https://sdballs.com/product/aisi-52100-chrome-steel-balls/ (52100). See dossier-v7 and rear_drive.py for separated material volumes and other sources."
+      },
+      "derivation": {
+        "density_kg_m3": 7810.0,
+        "volume_m3": 1.0356181642742416e-08
       }
     },
     {
       "id": "head-cartridge",
       "kind": "coupler_mechanism",
-      "description": "Cross-pinned H900 collar and housing, sleeved dowel with soft independent keeper, machined bronze two-stage cam and skirt, relieved reverse dog, series-elastic closing spring and front thrust washer. Gross-minus-known-cuts volumes (mm3): 17-4 H900 453.500, pin/keeper upper at 304 density 41.316, C95400 605.669, PTFE 6.032, spring 14.575",
-      "mass_mg": 8508,
+      "description": "Q99 rotary cams, guides, mechanical stops, fixed cheeks, three keeper linkages and positively driven stripper; not a V clamp or a preload screw. Gross stock, mm3: front of socket and floating tongue 66.346, rear annular retainer and front radial guide plate 147.896, split journals, shoulders and thrust faces 144.765, boxed hollow cam drum stock 295.491, driver disk and planar cam plate 143.085, three radial slides, two rails per station 68.544, fork heads, crossheads and followers 32.663, stripper spider and its three pads 85.707, stripper output guide rods and sleeves 72.293, hardened cheeks 18.870, frame tie posts, lock stops, guide inserts and screws 126.412, sensing leaves, pads, flex, screws and wire within cartridge 30.000",
+      "mass_mg": 9609,
       "mass_basis": "derived",
       "box": {
         "half_extent_um": [
@@ -1934,32 +1992,28 @@
         "kind": "datasheet",
         "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/precipitationhardening/ati_17-4_tds_en_v2.pdf",
         "accessed": "2026-11-20",
-        "title": "ATI 17-4 H900 density 7.81 g/cm3, p3; H900 bar 170 ksi minimum proof: https://ssa-corp.com/documents/Data%20Sheet%2017-4-Stainless-Steel-AMS-5643-UNSS17400.pdf; bronze https://www.concast.com/c95400.php; keeper https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf; PTFE 3M Dyneon TF 1620, 2.15 g/cm3; wire ASTM A228, 7.85 g/cm3. Effective density is volume weighted."
+        "title": "ATI 17-4 H900 density 7.81 g/cm3, p3; H900 bar 170 ksi minimum proof: https://ssa-corp.com/documents/Data%20Sheet%2017-4-Stainless-Steel-AMS-5643-UNSS17400.pdf; also https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf (304), https://www.concast.com/c95400.php (bronze); https://sdballs.com/product/aisi-52100-chrome-steel-balls/ (52100). See dossier-v7 and rear_drive.py for separated material volumes and other sources."
       },
       "derivation": {
-        "density_kg_m3": 7588.894672966526,
-        "volume_m3": 1.1210926151270784e-06
+        "density_kg_m3": 7798.673807933501,
+        "volume_m3": 1.2320710054906707e-06
       }
     },
     {
       "id": "head-flange",
       "kind": "coupler_mechanism",
-      "description": "One piece with H900 guide housing. Disc r7; two staggered ears for M1.6 screws at offsets (+7.8,+4.2) and (-7.8,-4.2), clear of lug slots. Forward 72 truncated teeth at r4.25..6.30, two lug channels and bore lead. Back supports front PTFE thrust ring and sleeve end stop. Charge gross plate and peak tooth stock.",
-      "mass_mg": 1330,
+      "description": "Front keeper guides and steel plate on two staggered screw ears. Tool and motion details in the section study. Gross stock, mm3: front guide plates and lateral ears 120.284, three projecting station frames and nose guides 98.623",
+      "mass_mg": 1710,
       "mass_basis": "derived",
-      "derivation": {
-        "density_kg_m3": 7810.0,
-        "volume_m3": 1.703463753880351e-07
-      },
       "box": {
         "half_extent_um": [
-          400,
+          650,
           9700,
-          7000
+          8000
         ],
         "pose": {
           "position_um": [
-            36000,
+            36250,
             600,
             -4600
           ],
@@ -1979,7 +2033,11 @@
         "kind": "datasheet",
         "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/precipitationhardening/ati_17-4_tds_en_v2.pdf",
         "accessed": "2026-11-20",
-        "title": "ATI 17-4 H900 density 7.81 g/cm3, p3; H900 bar 170 ksi minimum proof: https://ssa-corp.com/documents/Data%20Sheet%2017-4-Stainless-Steel-AMS-5643-UNSS17400.pdf"
+        "title": "ATI 17-4 H900 density 7.81 g/cm3, p3; H900 bar 170 ksi minimum proof: https://ssa-corp.com/documents/Data%20Sheet%2017-4-Stainless-Steel-AMS-5643-UNSS17400.pdf; also https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf (304), https://www.concast.com/c95400.php (bronze); https://sdballs.com/product/aisi-52100-chrome-steel-balls/ (52100). See dossier-v7 and rear_drive.py for separated material volumes and other sources."
+      },
+      "derivation": {
+        "density_kg_m3": 7810.000000000001,
+        "volume_m3": 2.1890751105491835e-07
       }
     },
     {
@@ -2065,24 +2123,20 @@
       }
     },
     {
-      "id": "tail-stud",
+      "id": "tail-stations",
       "kind": "coupler_mechanism",
-      "description": "Blind-threaded 304 flange and pilot with pivoted crowned lug bar, bronze pin, opposed slot-guide flats and 72 face teeth. Flat-bottom fork cut, forward axial location and free rocker travel per coupler.py. Group mating features in plate with their stud; volume includes rocker, pivot and finished tooth stock at steel density.",
-      "mass_mg": 2081,
+      "description": "Three radially carried, hard metal crowned members at 120 degrees. Eccentric stems leave the opposed axial and tangential poles free. No central preload or long pilot. Gross stock, mm3: flange and blind screw pads 133.172, three ball-carrying stems and radial necks 55.800, three crowned members 14.967",
+      "mass_mg": 1593,
       "mass_basis": "derived",
-      "derivation": {
-        "density_kg_m3": 7900.0,
-        "volume_m3": 2.634745538223705e-07
-      },
       "box": {
         "half_extent_um": [
-          3750,
+          2350,
           6300,
           6300
         ],
         "pose": {
           "position_um": [
-            -14350,
+            -12950,
             600,
             -4600
           ],
@@ -2100,9 +2154,13 @@
       "power_basis": "derived",
       "source": {
         "kind": "datasheet",
-        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/precipitationhardening/ati_17-4_tds_en_v2.pdf",
         "accessed": "2026-11-20",
-        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+        "title": "ATI 17-4 H900 density 7.81 g/cm3, p3; H900 bar 170 ksi minimum proof: https://ssa-corp.com/documents/Data%20Sheet%2017-4-Stainless-Steel-AMS-5643-UNSS17400.pdf; also https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf (304), https://www.concast.com/c95400.php (bronze); https://sdballs.com/product/aisi-52100-chrome-steel-balls/ (52100). See dossier-v7 and rear_drive.py for separated material volumes and other sources."
+      },
+      "derivation": {
+        "density_kg_m3": 7809.266115914023,
+        "volume_m3": 2.0393886104930296e-07
       }
     },
     {
@@ -2511,7 +2569,7 @@
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 7900.0,
-        "volume_m3": 1.0555751316061707e-08
+        "volume_m3": 1.0555751316061706e-08
       },
       "box": {
         "half_extent_um": [
@@ -3243,16 +3301,16 @@
     }
   ],
   "mass_budget": {
-    "total_mass_mg": 45541
+    "total_mass_mg": 46534
   },
   "assembly_access": {
-    "statement": "Bench assemble PTFE thrust ring and bronze sleeve onto the H900 housing from the rear. Locate the collar from the actual thrust face and match-ream the collar and housing without the sleeve installed. Clean, refit sleeve and collar, set and flush-finish the two washers and the independent soft keeper rivet through opposed skirt ports; the fitted hollow pin, not the keeper, carries thrust. Check end play before mounting. Fix the driver/spring to the servo spline with a gauged M1.7 rocker screw before there is a housing in its path. The fitted case pads and retained tab locate the servo in its steel cassette with both shell lids open. Set the open datum, insert the preassembled cartridge from the front through the finish-machined window, sliding the open-ended dog and spring pickups together. The front flange bears outside the plate; install the two flush screws into the nut blocks while accessible from above. No press fit over the 7 mm land. Fit the tail stud screws before the controller, through aligned driver ports in the opposite inner wall. Fit hinge plates, ears, sector, pin, joint motor clamp and harness in the open shells; fit boards and cell with edge keepers, then slide in the tapped lid ledges and secure lids. Structural screw threads are in metal. See dossier-v6 for access order and fits; not prototyped."
+    "statement": "Build each short metal cartridge outside the shell. Fit captive rear-stop spider and guide rods, cam drum and two radial lands, keeper pickups and runners, then front guides. Gauge the three travel paths individually through a complete forward and reverse rotation. Secure the gauged 28T input hub with the axial rocker screw before fitting the cartridge, engage the floating torque tongues through the front opening, secure the two projecting ears from outside into captive metal nuts. Install each radial ball carrier and threaded tail plate before the tail controller. Retain v6's cassette-to-floor and side-brace screws, metal nut ledges, insulated harness and removable lids. The swept model is a paper screen; tool access at the interior runners, drive overload and recovery remain unverified."
   },
   "coupler_sites": [
     {
       "id": "site-head",
       "position_um": [
-        36400,
+        37250,
         600,
         -4600
       ],
@@ -3261,7 +3319,7 @@
         0.0,
         0.0
       ],
-      "mount": "H900 housing flange in front of PA12 end plate, clamped via opposed screws into rear nut blocks. Pitch plane x36.4, common axis y+0.60,z-4.60 mm."
+      "mount": "Two staggered M1.6 flush screws, captive 304 nuts, fixed front steel plate; pitch datum x37.25, common axis y+0.60 z-4.60 mm."
     },
     {
       "id": "site-tail",
@@ -3275,7 +3333,7 @@
         0.0,
         0.0
       ],
-      "mount": "Toothed stud flange fixed by two flush screws from inside the tail end plate into blind metal threads. Pitch plane x-11.6; axis shared with the head."
+      "mount": "Tail station flange at x-11.60, fastened from inside tail into blind metal threads. Same centreline as head; three 120-degree sites."
     }
   ],
   "chain": {
@@ -3293,13 +3351,13 @@
   },
   "retention": {
     "requires_power_to_hold": false,
-    "mechanism_kind": "friction_wedge",
-    "mechanism": "This is a friction wedge only after both crowned lug pads have entered the low-lead lock region. The higher-lead entry, mouth dwell and a jammed or partially seated state are not locks. Axial pull travels through stud rocker/pin, lug pads, bronze cam flanks, front thrust washer, fixed flange, its two steel fasteners and nut blocks to the PA12 shell; opposite-side load enters the tail via the stud flange. Matched face teeth carry torsion and shear by flank reaction; bending loads act through the surviving face rim, pilot and opposed lug reactions. The two-segment body carries these loads through the ears, hinge pin, plates and metal screw attachments. Neither an unpowered servo holding torque nor the continuing presence of spring torque is credited. The spring meters the *closing* torque from a bounded relative angular excursion. The dry/oiled friction cases, upper and lower spring rates, combined external loads, bearing drag and orientation-dependent contact constraints are evaluated in coupler.py.",
+    "mechanism_kind": "geometric_interlock",
+    "mechanism": "Inside the closed travel dwell, parallel rear pads and transverse keeper faces enclose three axial poles. Each opposing pair of short cheeks bounds the tangential poles of its own sphere. Axials carry pull/push and pitch/yaw; tangentials carry shear and twist, with no required adjacent reaction at a smaller lever arm. Rigid dwell and stops are the proposed powered-off mechanism, not motor holding torque. A six-coordinate bound holds for flat smooth pole contacts with positive opposite-side gaps. Neither zero backlash nor fully loaded transit follows from this bound. The current closure has no independent finite-preload device to absorb axial tolerances as Q85 requires.",
     "component_ids": [
       "head-cartridge",
-      "tail-stud",
       "head-flange",
       "drive-socket",
+      "tail-stations",
       "coupler-servo",
       "servo-boost",
       "servo-cradle",
@@ -3310,75 +3368,35 @@
       "cradle-brace-lower",
       "nut-block-up",
       "nut-block-low",
+      "fasteners",
       "S-end",
       "L-front-n",
       "L-front-p",
-      "L-front-hi",
-      "fasteners",
-      "hinge-ear-low",
-      "hinge-ear-up",
-      "hinge-pin",
-      "hinge-plate-low",
-      "hinge-plate-up",
-      "ear-low-leg",
-      "ear-up-leg",
-      "plate-up-leg"
+      "L-front-hi"
     ],
     "release": {
       "bounded_independent_release": false,
-      "means": "Only the head unit powers this release. Reverse input unwinds the closing spring until its separate driver pad contacts the relieved sleeve-skirt wall. Continued motion drives the sleeve toward its open stop. Front PTFE thrust face carries pull-assisted release. During positive ejection the sleeve shifts rearward across its full axial play and bears directly on the cross-pinned H900 collar, then pin, housing and plate. Loaded cases keep the fixed external forces and journal reactions, not a scaling cancellation between motor constants. The spline retains its own hub, not the mating unit. Release requires a serviceable charged head and no responsive tail. The rated torque does NOT cover the one-sided loaded cases. This version cannot declare bounded release under all Q31 loads."
+      "means": "The head alone withdraws each keeper, then drives a common stripper against the balls toward the mouths. These motions are mechanically sequenced, not a command to unlink. The planar cam takes up drag at the ball and guide surfaces; the barrel cam must also overcome an eccentrically loaded rear-pad guide. Normal-edge forces, rated push on the last loaded pad and obstruction recovery are not bounded over all release states. No release under worst load is claimed."
     }
   },
   "alignment": [
     {
       "kind": "geometric_guide",
-      "description": "Presented pilot and chamfer into an interrupted guide bore.",
-      "justification": "An external quasistatic presentation supplies insertion, not an onboard approach or an invisible fixture holding the assembly during powered closure. The guide channels interrupt the pilot circumference; count only the retained lands, with actual chord clearance at each insertion depth. The guide/rim comparison distinguishes first contact from full seating. No autonomous capture window is inferred from the opening diameter.",
+      "description": "Three straight tangential cheek pairs, rear seating flats, and transverse keeper ends; no alignment magnets.",
+      "justification": "The spheres enter short parallel throats under a quasistatic presentation. The cheek normals control transverse position and roll; the rear seats oppose axial overtravel and set pitch and yaw at three separated points. No independent force is supplied for active centring or flattening a mispresented neighbor. A partial or obstructed presentation is not a locked joint. No capture window claimed.",
       "component_ids": [
         "head-flange",
         "head-cartridge",
-        "tail-stud"
-      ]
-    },
-    {
-      "kind": "geometric_guide",
-      "description": "Opposed lug guide entries, rocking lug bar and face teeth.",
-      "justification": "The slots constrain clocking before tooth contact. The rocker admits unequal axial depths at the two ends; the angled Hirth flanks transmit draw into centring and clocking reactions. The force/stack bounds include tooth standoff and residual tilt, not a snap to a common axis.",
-      "component_ids": [
-        "tail-stud",
-        "head-flange",
-        "head-cartridge"
-      ]
-    },
-    {
-      "kind": "geometric_guide",
-      "description": "Mouth dwell, draw stage and shallow lock stage.",
-      "justification": "The operator presents the lugs into the open mouth; the servo takes up a finite angle on the dwell before the rotating flank can pick them up. Only the servo and the series spring then provide draw. An obstructed or off-window start may remain partial; servo position is not an independent indication of tooth seating.",
-      "component_ids": [
-        "head-cartridge",
-        "tail-stud",
-        "head-flange",
-        "drive-socket",
-        "coupler-servo",
-        "servo-boost",
-        "servo-cradle",
-        "servo-cheek-n",
-        "servo-cheek-p",
-        "cassette-tie",
-        "cradle-brace-upper",
-        "cradle-brace-lower"
+        "tail-stations"
       ]
     }
   ],
   "limitations": [
-    "Gate 1 is paper feasibility only. Q31 starts connected. No autonomous approach, measured capture region or cycle life claimed.",
-    "Wedge retention depends on the specified friction regime. Unknown vibration, impact, lubricant, PTFE migration or wear can defeat the self-lock condition.",
-    "Spring, dog, keyed mount, precise fits and machined/match-reamed parts are design callouts. Inspect the finished parts. Handbook friction and elastic properties are not component-pair test results.",
-    "The regulator and trimmed case are not qualified hardware; verify loaded voltage, torque, current and heating over the operating range. Do not run a blocked servo continuously.",
-    "A voltage or internal servo-shaft reading cannot prove latch engagement. No credit for a completed closure after a partial or obstructed motion.",
-    "No curvature-holding torque unpowered or five-unit benchmark pass is claimed. Joint angle feedback and the later dynamic articulation benchmark remain open.",
-    "Small features, rocker, screw-access fixtures, case clamping without crush, spline profile and end play require bench checks. Part tolerance and assembly acceptance limits are not measurements.",
-    "Component boxes are grouping or mass proxies where stated; interlocking internal parts are analysed separately. G5 is the registered three-unit static support calculation at roll zero.",
-    "BLE only; no power or wired data exchange between units."
+    "Gate 1 is exploratory paper feasibility; no real prototype, dynamic solver, R10 or later acceptance result.",
+    "Clearance in axial and transverse pairs is real. The design does not meet Q85 axial tolerance take-up by a torque-limited stop; no additional load path or spring is assumed.",
+    "The six-reaction bound is conditional on spherical flat-land contact, no seventh contact and bounded friction, location, deformation and normal errors. It is not a release-path certificate.",
+    "Servo shaft position and current do not report three blade positions or actual ball seating. No lock indication or automatic recovery is credited.",
+    "Gross stock and projected box allocations conservatively charge material; they do not establish every internal 3D clearance or contact sequence.",
+    "No inter-unit power, autonomous capture, full five-kin chain articulation, impact survival or fatigue life claimed."
   ]
 }

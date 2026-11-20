@@ -1,18 +1,18 @@
 {
  "author": "Claude Opus 5.5 (engineering lead, cand-d author)",
- "summary": "Family B, cand-d v6 (Q95/Q96). A long head and short tail articulate about a vertical pin with a geared sector; a tail stud with a pivoted lug bar mates with a head cartridge and rigid face teeth. An onboard serial servo winds the sleeve via a torsion spring; a separate positive dog reverses it. A low-lead cam, not the servo or spring, retains a fully locked joint when power is lost. Mechanical flats react servo torque and a cross-pinned collar takes ejection reaction. No magnets, ground-truth docking signal, inter-unit energy transfer or active unloaded holding assumed. The author field preserves the candidate lineage; dossier-v6 names this revision's design authors.",
- "assembly_access": "Bench assemble PTFE thrust ring and bronze sleeve onto the H900 housing from the rear. Locate the collar from the actual thrust face and match-ream the collar and housing without the sleeve installed. Clean, refit sleeve and collar, set and flush-finish the two washers and the independent soft keeper rivet through opposed skirt ports; the fitted hollow pin, not the keeper, carries thrust. Check end play before mounting. Fix the driver/spring to the servo spline with a gauged M1.7 rocker screw before there is a housing in its path. The fitted case pads and retained tab locate the servo in its steel cassette with both shell lids open. Set the open datum, insert the preassembled cartridge from the front through the finish-machined window, sliding the open-ended dog and spring pickups together. The front flange bears outside the plate; install the two flush screws into the nut blocks while accessible from above. No press fit over the 7 mm land. Fit the tail stud screws before the controller, through aligned driver ports in the opposite inner wall. Fit hinge plates, ears, sector, pin, joint motor clamp and harness in the open shells; fit boards and cell with edge keepers, then slide in the tapped lid ledges and secure lids. Structural screw threads are in metal. See dossier-v6 for access order and fits; not prototyped.",
- "mount_head": "H900 housing flange in front of PA12 end plate, clamped via opposed screws into rear nut blocks. Pitch plane x36.4, common axis y+0.60,z-4.60 mm.",
- "mount_tail": "Toothed stud flange fixed by two flush screws from inside the tail end plate into blind metal threads. Pitch plane x-11.6; axis shared with the head.",
+ "summary": "Family B, cand-d v7 (Q99). Three radially carried balls at 120 degrees meet short straight tangential cheeks and axially opposed pads and shutters. No central stud, V clamp or Hirth teeth. A mechanically captured head servo moves three transverse keepers; a separately timed barrel track moves the rear stops outward. The enclosed two-segment body and internal hinge provide articulation. This is an exploratory candidate, not an accepted mechanism.",
+ "assembly_access": "Build each short metal cartridge outside the shell. Fit captive rear-stop spider and guide rods, cam drum and two radial lands, keeper pickups and runners, then front guides. Gauge the three travel paths individually through a complete forward and reverse rotation. Secure the gauged 28T input hub with the axial rocker screw before fitting the cartridge, engage the floating torque tongues through the front opening, secure the two projecting ears from outside into captive metal nuts. Install each radial ball carrier and threaded tail plate before the tail controller. Retain v6's cassette-to-floor and side-brace screws, metal nut ledges, insulated harness and removable lids. The swept model is a paper screen; tool access at the interior runners, drive overload and recovery remain unverified.",
+ "mount_head": "Two staggered M1.6 flush screws, captive 304 nuts, fixed front steel plate; pitch datum x37.25, common axis y+0.60 z-4.60 mm.",
+ "mount_tail": "Tail station flange at x-11.60, fastened from inside tail into blind metal threads. Same centreline as head; three 120-degree sites.",
  "retention": {
   "requires_power_to_hold": false,
-  "mechanism_kind": "friction_wedge",
-  "mechanism": "This is a friction wedge only after both crowned lug pads have entered the low-lead lock region. The higher-lead entry, mouth dwell and a jammed or partially seated state are not locks. Axial pull travels through stud rocker/pin, lug pads, bronze cam flanks, front thrust washer, fixed flange, its two steel fasteners and nut blocks to the PA12 shell; opposite-side load enters the tail via the stud flange. Matched face teeth carry torsion and shear by flank reaction; bending loads act through the surviving face rim, pilot and opposed lug reactions. The two-segment body carries these loads through the ears, hinge pin, plates and metal screw attachments. Neither an unpowered servo holding torque nor the continuing presence of spring torque is credited. The spring meters the *closing* torque from a bounded relative angular excursion. The dry/oiled friction cases, upper and lower spring rates, combined external loads, bearing drag and orientation-dependent contact constraints are evaluated in coupler.py.",
+  "mechanism_kind": "geometric_interlock",
+  "mechanism": "Inside the closed travel dwell, parallel rear pads and transverse keeper faces enclose three axial poles. Each opposing pair of short cheeks bounds the tangential poles of its own sphere. Axials carry pull/push and pitch/yaw; tangentials carry shear and twist, with no required adjacent reaction at a smaller lever arm. Rigid dwell and stops are the proposed powered-off mechanism, not motor holding torque. A six-coordinate bound holds for flat smooth pole contacts with positive opposite-side gaps. Neither zero backlash nor fully loaded transit follows from this bound. The current closure has no independent finite-preload device to absorb axial tolerances as Q85 requires.",
   "component_ids": [
    "head-cartridge",
-   "tail-stud",
    "head-flange",
    "drive-socket",
+   "tail-stations",
    "coupler-servo",
    "servo-boost",
    "servo-cradle",
@@ -23,75 +23,35 @@
    "cradle-brace-lower",
    "nut-block-up",
    "nut-block-low",
+   "fasteners",
    "S-end",
    "L-front-n",
    "L-front-p",
-   "L-front-hi",
-   "fasteners",
-   "hinge-ear-low",
-   "hinge-ear-up",
-   "hinge-pin",
-   "hinge-plate-low",
-   "hinge-plate-up",
-   "ear-low-leg",
-   "ear-up-leg",
-   "plate-up-leg"
+   "L-front-hi"
   ],
   "release": {
    "bounded_independent_release": false,
-   "means": "Only the head unit powers this release. Reverse input unwinds the closing spring until its separate driver pad contacts the relieved sleeve-skirt wall. Continued motion drives the sleeve toward its open stop. Front PTFE thrust face carries pull-assisted release. During positive ejection the sleeve shifts rearward across its full axial play and bears directly on the cross-pinned H900 collar, then pin, housing and plate. Loaded cases keep the fixed external forces and journal reactions, not a scaling cancellation between motor constants. The spline retains its own hub, not the mating unit. Release requires a serviceable charged head and no responsive tail. The rated torque does NOT cover the one-sided loaded cases. This version cannot declare bounded release under all Q31 loads."
+   "means": "The head alone withdraws each keeper, then drives a common stripper against the balls toward the mouths. These motions are mechanically sequenced, not a command to unlink. The planar cam takes up drag at the ball and guide surfaces; the barrel cam must also overcome an eccentrically loaded rear-pad guide. Normal-edge forces, rated push on the last loaded pad and obstruction recovery are not bounded over all release states. No release under worst load is claimed."
   }
  },
  "alignment": [
   {
    "kind": "geometric_guide",
-   "description": "Presented pilot and chamfer into an interrupted guide bore.",
-   "justification": "An external quasistatic presentation supplies insertion, not an onboard approach or an invisible fixture holding the assembly during powered closure. The guide channels interrupt the pilot circumference; count only the retained lands, with actual chord clearance at each insertion depth. The guide/rim comparison distinguishes first contact from full seating. No autonomous capture window is inferred from the opening diameter.",
+   "description": "Three straight tangential cheek pairs, rear seating flats, and transverse keeper ends; no alignment magnets.",
+   "justification": "The spheres enter short parallel throats under a quasistatic presentation. The cheek normals control transverse position and roll; the rear seats oppose axial overtravel and set pitch and yaw at three separated points. No independent force is supplied for active centring or flattening a mispresented neighbor. A partial or obstructed presentation is not a locked joint. No capture window claimed.",
    "component_ids": [
     "head-flange",
     "head-cartridge",
-    "tail-stud"
-   ]
-  },
-  {
-   "kind": "geometric_guide",
-   "description": "Opposed lug guide entries, rocking lug bar and face teeth.",
-   "justification": "The slots constrain clocking before tooth contact. The rocker admits unequal axial depths at the two ends; the angled Hirth flanks transmit draw into centring and clocking reactions. The force/stack bounds include tooth standoff and residual tilt, not a snap to a common axis.",
-   "component_ids": [
-    "tail-stud",
-    "head-flange",
-    "head-cartridge"
-   ]
-  },
-  {
-   "kind": "geometric_guide",
-   "description": "Mouth dwell, draw stage and shallow lock stage.",
-   "justification": "The operator presents the lugs into the open mouth; the servo takes up a finite angle on the dwell before the rotating flank can pick them up. Only the servo and the series spring then provide draw. An obstructed or off-window start may remain partial; servo position is not an independent indication of tooth seating.",
-   "component_ids": [
-    "head-cartridge",
-    "tail-stud",
-    "head-flange",
-    "drive-socket",
-    "coupler-servo",
-    "servo-boost",
-    "servo-cradle",
-    "servo-cheek-n",
-    "servo-cheek-p",
-    "cassette-tie",
-    "cradle-brace-upper",
-    "cradle-brace-lower"
+    "tail-stations"
    ]
   }
  ],
  "limitations": [
-  "Gate 1 is paper feasibility only. Q31 starts connected. No autonomous approach, measured capture region or cycle life claimed.",
-  "Wedge retention depends on the specified friction regime. Unknown vibration, impact, lubricant, PTFE migration or wear can defeat the self-lock condition.",
-  "Spring, dog, keyed mount, precise fits and machined/match-reamed parts are design callouts. Inspect the finished parts. Handbook friction and elastic properties are not component-pair test results.",
-  "The regulator and trimmed case are not qualified hardware; verify loaded voltage, torque, current and heating over the operating range. Do not run a blocked servo continuously.",
-  "A voltage or internal servo-shaft reading cannot prove latch engagement. No credit for a completed closure after a partial or obstructed motion.",
-  "No curvature-holding torque unpowered or five-unit benchmark pass is claimed. Joint angle feedback and the later dynamic articulation benchmark remain open.",
-  "Small features, rocker, screw-access fixtures, case clamping without crush, spline profile and end play require bench checks. Part tolerance and assembly acceptance limits are not measurements.",
-  "Component boxes are grouping or mass proxies where stated; interlocking internal parts are analysed separately. G5 is the registered three-unit static support calculation at roll zero.",
-  "BLE only; no power or wired data exchange between units."
+  "Gate 1 is exploratory paper feasibility; no real prototype, dynamic solver, R10 or later acceptance result.",
+  "Clearance in axial and transverse pairs is real. The design does not meet Q85 axial tolerance take-up by a torque-limited stop; no additional load path or spring is assumed.",
+  "The six-reaction bound is conditional on spherical flat-land contact, no seventh contact and bounded friction, location, deformation and normal errors. It is not a release-path certificate.",
+  "Servo shaft position and current do not report three blade positions or actual ball seating. No lock indication or automatic recovery is credited.",
+  "Gross stock and projected box allocations conservatively charge material; they do not establish every internal 3D clearance or contact sequence.",
+  "No inter-unit power, autonomous capture, full five-kin chain articulation, impact survival or fatigue life claimed."
  ]
 }

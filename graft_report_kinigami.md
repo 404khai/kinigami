@@ -221,3 +221,13 @@ New packaging Graft from 96fcfeb, Take 3/10 design author. Size the output mecha
 ## Take 13 — integrate six-coordinate shutter and QA
 
 Lead's fresh `reciprocal-v7` Graft from 96fcfeb with ignored pinned toolchain. Graft v0.2.0 copied 318 tracked files and 19,507 toolchain files on ext4; the GLIBC weak-version warning was nonfatal. Q99 precedes the v7 declaration. Archive v6 verbatim (SHA-256 `620b7fafc2ec1cf4c9ebb4708eeee6e22578eed0ba4190df9c3ab6d9262c944b`). No pass before a clean official run.
+
+Take 11 bounded all flat pole normals (including partial subsets, no equal sharing) at R4.65. Residual: edges and guide drag. Take 12's initial fork sweep and common barrel stripper pass their nominal travel checks, but the opposite-pad torque budget fails. Take 13 freezes that actual section, not the *proposed* separate pickup, spring ejectors or three independently driven strippers. Full dossier and separate scripts carry the numerical assumptions and failures. The branch retains Q85: a clearance trial is a recorded deficiency, not a new rule allowing free play.
+
+## Take 14 — frozen v7 independent retention review
+
+Dedicated reviewer Graft from the immutable v7 candidate commit. Review only; no candidate authorship, candidate edits or evaluator changes.
+
+## Take 15 — frozen v7 independent originality review
+
+Separate reviewer Graft from the immutable v7 candidate commit. Q61 corpus, searches and full matrix; no candidate authorship, candidate edits or evaluator changes.

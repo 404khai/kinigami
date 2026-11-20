@@ -13,7 +13,7 @@ mass sum, centre of mass) are a design aid that must agree with it.
 """
 import json, math, sys, itertools
 import rear_drive as rear
-import coupler as cam
+
 
 ACCESSED = "2026-11-20"
 DECLARED = "2026-11-20"
@@ -61,19 +61,14 @@ INSET_Y, INSET_Z = 11.9, 11.2   # end plates inset 0.8 mm (rounded end edges)
 LXE, SXE = LX1 - T, SX0 + T     # inner faces of the end plates       # short segment (tail) outer x
 AX = (0.6, -4.6)             # installed servo axis, shared by head and tail
 
-# head cartridge (304 housing + C95400 aluminium bronze cam sleeve with gear) along x
-LIP = 0.8                    # housing lip thickness (front thrust face)
-CART_X0 = 28.8               # rear of gear ring
-HF = 0.8                     # 304 housing front flange, in front of the PA12 front plate
-HX = LX1 + HF                # Hirth pitch plane of the head = head site
-FLG_R, LOBE_R = 7.0, 9.7   # flange radius and lateral extent
-SCREW_Y, SCREW_Z = 7.8, 4.2  # staggered to clear lateral lug slots
-CART_R = 6.45                # gear pitch radius = cartridge box half extent
-# tail stud (304, one piece: flange, pilot, two lugs)
-FL_T, FL_R = 1.0, 6.3        # flange thickness and radius (smaller than the lip and window, r 6.45)
-TOOTH = 0.2                  # Hirth teeth protrude 0.2 mm beyond each pitch plane
-STUD_R, STUD_L = 2.0, 6.5    # pilot radius, length beyond the flange face
-LUG_R, LUG_S, LUG_REACH = cam.CROWN, cam.SEAT, cam.R1   # lug radius, nominal depth of lug axis below flange face, lug tip radius
+# Q99: head-end section and terminal flange; the mating datum is independent
+# of the last keeper face. Dimensions shared with the mechanical calculations.
+HX = rear.HEAD_PITCH
+FLG_R, LOBE_R = rear.FLANGE_R, 9.7
+SCREW_Y, SCREW_Z = 7.8, 4.2
+CART_R = 6.45
+FL_R = rear.TAIL_R
+sx_face = rear.TAIL_PITCH
 
 JM = (6.2, 8.47)             # joint motor axis (x, y), vertical
 SECT_R = 8.7                 # joint sector pitch radius (z58 m0.3)
@@ -145,7 +140,7 @@ inset_panel("L-top",LX0,22.7,-4.95,6.15,True,0.22,"Flush 304 head lid skin above
 slab("L-top-front","PA12 head lid forward of servo",22.7,LXE,-YO,YO,ZI,ZO)
 inset_panel("L-bottom",LX0,11.2,-4.2,11.5,False,0.22,"Flush keyed floor pan under swept sector and pinion.")
 slab("L-bottom-mid","Intact 1.2 mm PA12 floor bolted to cassette sole",11.2,23.0,-YO,YO,-ZO,-ZI)
-inset_panel("L-bottom-front",23.0,LXE,-5.9,7.1,False,0.28,"Flush keyed 304 pan under sleeve, collar and window.")
+inset_panel("L-bottom-front",23.0,LXE,-5.9,7.1,False,0.28,"Flush keyed 304 pan under the rotor and front window.")
 slab("L-side-p","Head +y side, motor collar locally relieved", LX0, LXE, YI, YO, -ZI, ZI)
 slab("L-side-n","Head -y side", LX0, LXE, -YO, -YI, -ZI, ZI)
 slab("L-inner","Hinge-facing wall negative side of servo pocket",LX0,LX0+T,-YI,-4.20,-10.0,ZI)
@@ -165,7 +160,7 @@ inset_panel("S-bottom",SXE,SX1,-7.5,8.9,False,0.25,"Keyed steel pan under tail l
 slab("S-side-p", "tail segment +y side wall", SXE, SX1, YI, YO, -ZI, ZI)
 slab("S-side-n", "tail segment -y side wall", SXE, SX1, -YO, -YI, -ZI, ZI)
 slab("S-inner", "tail segment inner end wall facing the hinge gap (floor slot to z -10.0 for the lower hinge plate)", SX1 - T, SX1, -YI, YI, -10.0, ZI)
-slab("S-end", "tail segment end plate carrying the stud flange (inset 0.8 mm at its edges)", SX0, SXE, -INSET_Y, INSET_Y, -INSET_Z, INSET_Z)
+slab("S-end", "tail segment end plate carrying the station flange (inset 0.8 mm at its edges)", SX0, SXE, -INSET_Y, INSET_Y, -INSET_Z, INSET_Z)
 
 # electronics
 add("cell", "energy_source", "Fab.to.Lab 30545985163500 bare 240 mAh 1S along -y wall; 3.7 V x 0.240 Ah x 3600; 30C continuous = 7.2 A retail rating. Screen delivered, insulated, untensioned cell incl tab folds against this enlarged 30.65 x 5.4 x 20.7 allocation; do not compress or trim pouch.",
@@ -197,48 +192,31 @@ add("ttl-interface", "other", "7.5 x 4.5 x 1.5 mm flex/circuit over board edge, 
 # coupler drive
 add("coupler-servo", "actuator", "FEETECH SCS0037-C001 with long side +z. Drawing p6 tip-to-back 23.3, static axial cap 20.2, base height 17.4, spline 3.1 proud. Both tab ends trimmed OUTSIDE sealed case; retain 0.8 minimum short-ear key beyond short body edge at clevis. Source unmarked tolerance +/-0.3. Case incl lead exit is acceptance-gauged inside declared box; tip x25.35 +/-0.025 y+0.60 z-4.60. Spline in hub and short tab in trapped sole recess not boxed twice. Charge full untrimmed max 6.6 g. Rated 49.03 N mm at 4.8 V, not stall. 5.2 V x 0.88 A conservative peak/average allocation.",
     box_from_bounds(1.70,22.58,-4.10,5.30,-9.83,11.43), mass_mg=6600, src="servo", peak=servo_pk, avg=servo_pk)
-# Mated shaft is not a second actuator, spur wheel or pinion.
-pin_v = math.pi * 1.8 ** 2 * 1.5 - math.pi * 1.0 ** 2 * 1.5
+# Each coaxial mechanism is an installed assembly within its allocation.
+# Individual stationary/moving sections and material stock are in rear_drive.
+def assembly(cid,desc,x0,x1,yr,zr,items):
+    vol=sum(v for _,v,density in items)
+    mass=sum(v*density/1000 for _,v,density in items)
+    add(cid,"coupler_mechanism",desc+" Gross stock, mm3: "+", ".join(
+        f"{name} {v:.3f}" for name,v,density in items),
+        box_from_bounds(x0,x1,AX[0]-yr,AX[0]+yr,AX[1]-zr,AX[1]+zr),
+        src="ph", mass_mg=math.ceil(mass),mass_basis="derived",
+        extra={"derivation":{"density_kg_m3":1000*mass/vol,"volume_m3":vol*1e-9}})
+    comps[-1]["source"]["title"] += "; also "+SRC["ss"][1]+" (304), "+SRC["br"][1]+" (bronze); "+rear.BALL_SOURCE+" (52100). See dossier-v7 and rear_drive.py for separated material volumes and other sources."
 
-# Coaxial solids inside this assembly are assessed by rear_drive and coupler.
-cam_stages = [(cam.S0, cam.S1, cam.Q1), (cam.S1, cam.S2, cam.Q2)]
-volumes, v_cart, weighted = rear.cartridge_volumes(
-    30.83, cam.SLOT, cam.V_WIRE, 7850., cam_stages, LUG_REACH, LUG_R)
-add("drive-socket", "coupler_mechanism",
-    "17-4 H900 socket of the one-piece driver; female profile matched to 28T / 3.9 spline and gauged before assembly. Shaft and boss share this box.",
-    box_from_bounds(22.58, rear.PLATE_X, AX[0]-2.85, AX[0]+2.85, AX[1]-2.85, AX[1]+2.85),
-    mat="ph", volume_mm3=math.pi*(2.85**2-1.70**2)*(rear.PLATE_X-rear.BOSS_X))
-add("head-cartridge", "coupler_mechanism",
-    "Cross-pinned H900 collar and housing, sleeved dowel with soft independent keeper, machined bronze two-stage cam and skirt, relieved reverse dog, series-elastic closing spring and front thrust washer. Gross-minus-known-cuts volumes (mm3): "
-    + ", ".join(f"{k} {v:.3f}" for k,v in volumes.items()),
-    box_from_bounds(rear.PLATE_X, LX1, AX[0]-6.30, AX[0]+6.30, AX[1]-6.30, AX[1]+6.30),
-    src="ph", mass_mg=math.ceil(weighted*.001), mass_basis="derived",
-    extra={"derivation": {"density_kg_m3":weighted/v_cart, "volume_m3":v_cart*1e-9}})
-comps[-1]["source"]["title"] += ("; bronze " + SRC["br"][1] + "; keeper " + SRC["ss"][1]
-    + "; PTFE 3M Dyneon TF 1620, 2.15 g/cm3; wire ASTM A228, 7.85 g/cm3. Effective density is volume weighted.")
-
-# housing front flange (one part with the housing tube; boxed separately) and nut blocks behind the plate
-lobe_w, lobe_y0 = 3.8, 4.5
-v_flg = ((math.pi*FLG_R**2 + 2*lobe_w*(LOBE_R-lobe_y0))*HF
-         + math.pi*(FL_R**2-cam.RI**2)*TOOTH + math.pi*.65**2*1.5)
-add("head-flange", "coupler_mechanism",
-    "One piece with H900 guide housing. Disc r7; two staggered ears for M1.6 screws at offsets (+7.8,+4.2) and (-7.8,-4.2), clear of lug slots. Forward 72 truncated teeth at r4.25..6.30, two lug channels and bore lead. Back supports front PTFE thrust ring and sleeve end stop. Charge gross plate and peak tooth stock.",
-    box_from_bounds(LX1,HX,AX[0]-LOBE_R,AX[0]+LOBE_R,AX[1]-FLG_R,AX[1]+FLG_R), mat="ph", volume_mm3=v_flg)
+assembly("drive-socket","Gauged 28T keyed and screwed servo hub, with axial float to independently supported cam rotor.",
+    22.58,rear.SPLIT_X,2.85,2.85,rear.stock("hub"))
+assembly("head-cartridge","Q99 rotary cams, guides, mechanical stops, fixed cheeks, three keeper linkages and positively driven stripper; not a V clamp or a preload screw.",
+    rear.SPLIT_X,LX1,6.30,6.30,rear.stock("cartridge"))
+lobe_w, lobe_y0=3.8,4.5
+assembly("head-flange","Front keeper guides and steel plate on two staggered screw ears. Tool and motion details in the section study.",
+    LX1,rear.NOSE_X,LOBE_R,FLG_R,rear.stock("flange"))
 for nm,sgn in (("nut-block-up",1),("nut-block-low",-1)):
     yc,zc=AX[0]+sgn*SCREW_Y,AX[1]+sgn*SCREW_Z
     add(nm,"coupler_mechanism","304 tapped M1.6 nut 2.2 square x 0.8, 0.15 recessed in front wall side pier, 0.65 boxed behind. Screw takes pullout through captive square nut bearing on pier.",
         box_from_bounds(LXE-.65,LXE,yc-1.1,yc+1.1,zc-1.1,zc+1.1),mat="ss",volume_mm3=(2.2**2-math.pi*.6**2)*.8)
-# Inscribed fork cut is removed once. The complete bar and pivot are then added.
-bar_section = 2*(.8*math.sqrt(cam.CROWN**2-.8**2)+cam.CROWN**2*math.asin(.8/cam.CROWN))
-pocket = 2.74*1.64*2*math.sqrt(cam.P_MIN**2-.82**2)
-v_stud = (math.pi*FL_R**2*(FL_T+TOOTH) + math.pi*STUD_R**2*STUD_L
-          - pocket + 2*LUG_REACH*bar_section + math.pi*.505**2*4
-          + 2*math.pi*1.5**2*.45)
-sx_face = SX0-FL_T
-add("tail-stud", "coupler_mechanism",
-    "Blind-threaded 304 flange and pilot with pivoted crowned lug bar, bronze pin, opposed slot-guide flats and 72 face teeth. Flat-bottom fork cut, forward axial location and free rocker travel per coupler.py. Group mating features in plate with their stud; volume includes rocker, pivot and finished tooth stock at steel density.",
-    box_from_bounds(sx_face-STUD_L, SX0, AX[0]-FL_R, AX[0]+FL_R, AX[1]-FL_R, AX[1]+FL_R),
-    mat="ss", volume_mm3=v_stud)
+assembly("tail-stations","Three radially carried, hard metal crowned members at 120 degrees. Eccentric stems leave the opposed axial and tangential poles free. No central preload or long pilot.",
+    rear.TAIL_MIN,SX0,FL_R,FL_R,rear.stock("tail"))
 
 # Thin, closed, welded 304 cassette. Top tie closes the cheek reaction;
 # lower blade positively traps the ear in x, not an ABS friction clamp.
@@ -271,6 +249,7 @@ add("joint-clamp", "structure", "304 split clamp at z -8.4..-4.4. Bore to measur
 dirv = (math.cos(math.radians(ang)), math.sin(math.radians(ang)))
 qz = q_axis((0, 0, 1), ang)
 pc = (dirv[0] * (SECT_R + 1.8), dirv[1] * (SECT_R + 1.8))
+pin_v = math.pi*(1.8**2-1.0**2)*1.5
 add("joint-pinion", "actuator", "spur pinion m 0.3 z 12 on the joint motor shaft (z -11.65 to -10.15); box oriented toward the pivot and bounded at the pitch circle facing the sector; 304, pitch-disc minus 2 mm bore",
     obox((pc[0], pc[1], -10.90), (1.8, 1.8, 0.75), qz), mat="ss", volume_mm3=pin_v)
 SPAN = 21.0  # deg each side: joint range 15 deg plus 6 deg of tooth engagement
@@ -355,21 +334,27 @@ def prim_cyl_y(pid, role, r, half, x, y, z):
     return {"id": pid, "kind": "cylinder", "radius_um": um(r), "half_height_um": um(half),
             "pose": {"position_um": [um(x), um(y), um(z)], "orientation": q_axis((1, 0, 0), 90)}, "role": role}
 
-lug_x = sx_face - LUG_S
 body = [prim_box("head-segment", "body", LX0, LXE, -YO, YO, -ZO, ZO),
         prim_box("head-front-plate", "body", LXE, LX1, -INSET_Y, INSET_Y, -INSET_Z, INSET_Z),
         prim_box("tail-segment", "body", SXE, SX1, -YO, YO, -ZO, ZO),
         prim_box("tail-end-plate", "body", SX0, SXE, -INSET_Y, INSET_Y, -INSET_Z, INSET_Z)]
-coupler = [prim_cyl_x("stud-flange", "coupler", FL_R, sx_face - TOOTH, SX0, AX[0], AX[1]),
-           prim_cyl_x("head-flange-disc", "coupler", FLG_R, LX1, HX, AX[0], AX[1]),
-           prim_box("head-flange-ear-p","coupler",LX1,HX,AX[0]+lobe_y0,AX[0]+LOBE_R,AX[1]+SCREW_Z-lobe_w/2,AX[1]+SCREW_Z+lobe_w/2),
-           prim_box("head-flange-ear-n","coupler",LX1,HX,AX[0]-LOBE_R,AX[0]-lobe_y0,AX[1]-SCREW_Z-lobe_w/2,AX[1]-SCREW_Z+lobe_w/2),
-           prim_cyl_x("head-hirth-teeth", "coupler", FL_R, HX, HX + TOOTH, AX[0], AX[1]),
-           prim_cyl_x("stud-pilot", "coupler", STUD_R, sx_face - STUD_L, sx_face, AX[0], AX[1]),
-           prim_cyl_y("stud-lugs", "coupler", LUG_R, LUG_REACH, lug_x, AX[0], AX[1])]
-cavity = [prim_box("cavity-envelope", "cavity", SX0, LX1, -YO, YO, -ZO, ZO),
-          prim_box("stud-envelope", "cavity", sx_face - STUD_L, SX0, AX[0] - FL_R, AX[0] + FL_R, AX[1] - FL_R, AX[1] + FL_R),
-          prim_box("head-flange-envelope", "cavity", LX1, HX, AX[0] - LOBE_R, AX[0] + LOBE_R, AX[1] - FLG_R, AX[1] + FLG_R)]
+coupler = [prim_cyl_x("tail-plate","coupler",FL_R,sx_face,SX0,*AX),
+           prim_cyl_x("tail-three-stations-bound","coupler",rear.R_SITE+rear.R_BALL,
+                      rear.TAIL_MIN,sx_face,*AX),
+           prim_cyl_x("head-plate","coupler",6.30,LX1,rear.EAR_X,*AX),
+           prim_box("head-flange-ear-p","coupler",LX1,rear.EAR_X,AX[0]+lobe_y0,AX[0]+LOBE_R,AX[1]+SCREW_Z-lobe_w/2,AX[1]+SCREW_Z+lobe_w/2),
+           prim_box("head-flange-ear-n","coupler",LX1,rear.EAR_X,AX[0]-LOBE_R,AX[0]-lobe_y0,AX[1]-SCREW_Z-lobe_w/2,AX[1]-SCREW_Z+lobe_w/2)]
+# Three separately clocked nose frames; no imaginary full disk under the shell.
+for az in (90,210,330):
+    a=math.radians(az)
+    r=(1.8+7.55)/2
+    coupler.append({"id":f"keeper-nose-{az}", "kind":"box","role":"coupler",
+                    "half_extent_um":[um((rear.NOSE_X-LX1)/2),um((7.55-1.8)/2),2180],
+                    "pose":{"position_um":[um((LX1+rear.NOSE_X)/2),um(AX[0]+r*math.cos(a)),um(AX[1]+r*math.sin(a))],
+                            "orientation":q_axis((1,0,0),az)}})
+cavity = [prim_box("cavity-envelope","cavity",SX0,LX1,-YO,YO,-ZO,ZO),
+          prim_box("tail-stations-envelope","cavity",rear.TAIL_MIN,SX0,AX[0]-FL_R,AX[0]+FL_R,AX[1]-FL_R,AX[1]+FL_R),
+          prim_box("head-flange-envelope","cavity",LX1,rear.NOSE_X,AX[0]-LOBE_R,AX[0]+LOBE_R,AX[1]-FLG_R,AX[1]+FLG_R)]
 
 # ---------------------------------------------------------------- checks
 def rotm(q):
@@ -443,7 +428,7 @@ if __name__ == "__main__":
         here = os.path.dirname(os.path.abspath(__file__))
         with open(os.path.join(here, "declaration_text.json")) as f:
             text = json.load(f)
-        decl = {"schema_version": 1, "candidate_id": "cand-d", "candidate_version": 6, "family": "B",
+        decl = {"schema_version": 1, "candidate_id": "cand-d", "candidate_version": 7, "family": "B",
                 "declared_on": DECLARED, "author": text["author"], "summary": text["summary"],
                 "stowed_geometry": {"primitives": body + coupler + cavity},
                 "chain_geometry": {"primitives": body + coupler},
