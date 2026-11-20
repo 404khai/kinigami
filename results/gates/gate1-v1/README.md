@@ -285,3 +285,17 @@ cand-d v4 values:
   - **Undeclared parts:** no coupler motor mount, and no cell-voltage sense.
   - **Hinge ear:** it crosses the inner wall without a declared notch.
   - **Errors:** the plate model, the pilot margin at the crest plane, the assembly sequence, and an unverifiable PA 2200 source.
+
+# Gate 1 paper-gate run 10
+
+- Report: [run10-cac007e-ReleaseSafe.json](run10-cac007e-ReleaseSafe.json), clean tree `cac007e`, ReleaseSafe, pinned Zig 0.17.0. Label: **exploratory**.
+- Criteria: unchanged `gate1-v1`, sha256 `ffe135329340…ddbf`. Q93 `eeead8f` → candidate `f8c1c99` → independent reviews `cac007e` → this evaluation. [Disposition: Q94](../../../docs/decisions/Q094-gate1-run10-disposition.md).
+
+| Candidate | Overall | G1 | G2 | G3 | G4 | G5 | G6 | G7 | G8 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| cand-a v5 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
+| cand-b v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-c v1 | **fail** | pass | pass | unresolved | pass | **fail** | unresolved | unresolved | unresolved |
+| cand-d v5 | **fail** | pass | pass | pass | pass | pass | **fail** | pass | pass |
+
+**Survivors: none.** cand-d measures 59.133 mm; its 1,081 box pairs have no interference. Mass 31.181 g; 3,939 mW peak versus 19,425 mW available. The G6 failure is a physical contradiction: the 4.10 mm collar bore cannot fit the 7.00 mm housing tube. Adverse-pose seating, release under fixed loads and the gearhead bond also remain open. Q61 records one non-fictional high (Beckhoff, D2), no fictional highs, and neither exclusion.

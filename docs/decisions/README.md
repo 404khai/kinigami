@@ -104,3 +104,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q91 | [cand-d version 4: revision decisions](Q091-cand-d-v4-revision.md) (agent decision under owner delegation) | accepted |
 | Q92 | [Gate 1 run 9 disposition (cand-d v4)](Q092-gate1-run9-disposition.md) (agent decision under owner delegation) | accepted |
 | Q93 | [cand-d version 5: revision decisions](Q093-cand-d-v5-revision.md) (agent decision under owner delegation) | accepted |
+| Q94 | [Gate 1 run 10 disposition (cand-d v5)](Q094-gate1-run10-disposition.md) (agent decision under owner delegation) | accepted |
