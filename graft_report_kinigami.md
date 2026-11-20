@@ -89,3 +89,31 @@ python -B gen_declaration.py              # diagnostics only; no --write
 **Review and verification.** Compared declaration/dossier, v4 records, decisions, registered criteria/protocol/corpus and primary reference material. The three diagnostic scripts completed; they locate features, not an official evaluation. Constructed the Q61 record from reviewer notes stored outside the graft. Audited five reasoned and linked cells per row, coverage of every fixed ID, high-cell counts and the unique evaluator keys against the declaration hash/author/version; checked `git status --porcelain` separately in the root and graft.
 
 **Problems:** the release CLI printed a missing weak GLIBC_2.39 version warning but completed init, new, path and list. No toolchain change or build workaround needed. Several publisher downloads failed or timed out; used author-hosted copies, dissertations, DFKI’s live host, indexed primary passages, and the TYCOON authors’ supplemental footage as detailed in the review. No claim of fresh full-text reading for all non-close corpus entries. Official clean-tree evaluation and any landing are for the lead, not this reviewer.
+
+## Take 3 — v6 servo packaging
+
+Assigned to session 25f599250d1141f7a2e9cdd1666469fb, separate `pkg-v6` graft from Q95 (`b8f389b`). Scope: servo/cell/converter layout, geometry generator, mount and fasteners. This assignment is not yet a verified result.
+
+Generator returned. The lead incorporated it in the Take 5 graft and added the new cartridge geometry and captive 304 base nuts. On the resulting **work-in-progress** input, the registered evaluator in scratch reported 58.920 mm, no overlap in 1540 pairs, 40.244 g and 7184 / 26640 mW; G1–G5 passed. This was not an official run or a G6 review.
+
+## Take 4 — v6 cam, preload and release calculation
+
+Assigned to session 709fe37ba624478793647aa3272fb91b, separate `mech-v6` graft from the same Q95. Scope: seating, passive retention, bounded release, spring and load cases. This assignment is not yet a verified result.
+
+## Take 5 — v6 thrust support and drive interface
+
+Lead session f83105eb20a94fb3b9ce36f2d6260868: `graft init`, `graft new rear-thrust-v6 --from b8f389b --clone-ignored .toolchain`, `graft ls`, `graft path rear-thrust-v6`. CLI 0.2.0; ext4 copied instead of reflinking (480.4 MiB), and the weak GLIBC_2.39 warning did not prevent creation. The exact v5 declaration was archived from Git. No worktrees or squash integration. Design in progress; no v6 judgement.
+
+## Take 6 — compare rated servo alternatives, before candidate freeze
+
+Reuse the separate Take 3 packaging graft for a source/dimensional study,
+not a new candidate or official run. Compare FEETECH SCS0037/SCS0043
+manufacturer ratings and drawings against the revised bearing loads and
+actual package. Do not credit a market listing or a stall value as a
+moving torque. No new servo implementation before the revision decision.
+
+Take 6 outcome: both alternative drives are rated 49.03 N·mm at 4.8 V. SCS0043 is deeper with no advantage at that rail. After Q96 the packaging graft placed the SCS0037 into a lowered-axis steel cassette; the lead combined its generator with the Take 4 contact analysis and Take 5 H900 cross-dowel cartridge. The final scratch input is 59.357 mm / 45.541 g. Correcting the tool-port projection and preserving all one-sided service loads gives 86.19 dry / 99.13 mixed N·mm breakaway. There is no supported bounded independent release in v6. The 176.5 N·mm catalogue stall point is a **fault diagnostic only**.
+
+## Takes 7 and 8 — frozen v6 reviews
+
+Independent retention and originality sessions will inspect immutable v6 in separate Grafts. They do not author candidate files and receive no requested verdict. The next official result must be from a clean tree after both review records have been committed.

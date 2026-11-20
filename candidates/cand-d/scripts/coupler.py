@@ -1,368 +1,587 @@
 #!/usr/bin/env python3
-"""cand-d coupler on paper (version 5): cam layout, axial tolerance stack,
-self-locking, preload, release, Hirth face coupling, load carriers alone and
-combined, contact stresses, stops, mount, pre-alignment windows.
-
-Plain Python 3, no third-party packages. Lengths mm, forces N, torques mN m
-(N mm). Every input is a declared dimension of cand-d, a cited value (source and
-how it was checked noted next to it), or marked PROVISIONAL. Run: python3 coupler.py
-Hard assertions stop the script if a claimed margin is lost. The unit weight is
-read from ../declaration.json.
+"""cand-d v6 design arithmetic, NOT a gate run or capture simulation.
+mm, N, N mm, degrees where stated; Python stdlib only. Run beside the candidate
+or pass --declaration PATH. No geometry, state, or evidence files are written.
 """
-import math, json, os
+import argparse
+import json
+import math
+from pathlib import Path
 
-def tand(a): return math.tan(math.radians(a))
-def atand(x): return math.degrees(math.atan(x))
-def section(t): print("\n== " + t)
+PI, rad, deg = math.pi, math.radians, math.degrees
+hypot, sqrt, atan = math.hypot, math.sqrt, math.atan
+def show(title, **values):
+    print(title + ": " + "; ".join(f"{k}={v:.4f}" for k, v in values.items()))
 
-# ------------------------------------------------------------------ declared geometry
-LIP = 0.8            # housing front flange thickness behind the Hirth pitch plane (the flange sits in front of the PA12 plate)
-R_THRUST = 4.0       # PTFE thrust ring r 3.6..4.4 x 0.3
-LUG_R = 1.5          # lug radius (dia 3.0 g6)
-CLR = 0.1            # axial clearance of the lug at the slot ends
-D1, LAM1 = 1.0, 20.0 # capture stage: draw (mm), lead angle (deg)
-D2, LAM2 = 0.4, 3.0  # lock stage
-SLEEVE_RI, SLEEVE_RO = 3.55, 6.3
-LUG_TIP = 6.2
-STUD_R = 2.0         # pilot radius (dia 4.0 g6)
-BORE_R = 2.005       # bore dia 4.010 +0.010/0, pilot 3.960..3.970: an entry guide that also bounds yaw; the Hirth ring centres at the seat
-PILOT_CLR = (0.040, 0.060)
-HOUSING_RO = 3.5
-SLOT_W = 3.40        # housing and flange lug slots (IT9): wide enough that the lugs never touch them while the teeth are seated
-LIP_V = 0.6          # V lead-in per side on the lip slots and sleeve notches (45 deg)
-BORE_CH, NOSE_CH = 0.4, 0.3
-LAND = 0.25          # inner lands (head r 2.05..2.6, stud r 2.0..2.6) recessed below their pitch planes: they never touch
-STUD_L = 6.5         # pilot length beyond the Hirth pitch plane
-HIRTH_N, HIRTH_RI, HIRTH_RO = 36, 2.6, 6.3   # face teeth, 90 deg included, on the stud flange and the housing lip
-HIRTH_RM = (HIRTH_RI + HIRTH_RO) / 2
-GEAR_I = 43 / 12     # sleeve gear z43 / pinion z12
-SECTOR_I = 58 / 12
+# HX = head pitch plane; s increases into head. s is the APPROACH-LOADED
+# pin centre locus at zero partner roll, not the centre of a symmetric cut.
+HX = 36.4
+S0, S1, S2 = 2.72, 3.18, 3.765
+Q1, Q2 = 2.00, 0.331  # dz/d(theta) [mm/rad], constant across radius
+DQ1, DQ2 = .010, .003  # drawing/slope inspection limits, not IT grades
+R0, R1 = 3.505, 5.25  # conservative contact(inner) and lug tip radii
+CROWN, BAR, SLOT = 1.25, 1.60, 1.70
+A1, A2 = (S1-S0)/Q1, (S2-S1)/Q2
+SHELF = 31.5  # rotate across both half-mouths before applying axial lead
+STOP = SHELF+deg(A1+A2)
+SEAT, STACK = 3.60, .015 + .004 + 5*.0125
+# STACK: seat axis position; crown; forms of two teeth; flange, thrust ring,
+# sleeve track axial position. No moulding dimension in the preload loop.
+# Machine each flank by enveloping the actual crowned/flattened follower.
+# Opposite (ejection) centre locus is 0.160 +/-0.015 mm deeper, not zero lash.
+LOST = .175
+PLAY = .127
+RF, RR = 4.4, 4.89  # outer thrust radii; keep forward and rear faces distinct
+TILT_PIVOT = rad(1.8)
+# All bores measured finished, including dry bonded PTFE on pilot OD and
+# stationary slot side flats (masked from cam). Edges of both slotted lands
+# have a <=.03 break. Full land begins 5.57 below HX; floor 6.70 +/-.015.
+P_MIN, P_MAX = 3.986/2, 3.990/2
+B_MIN, B_MAX = 4.000/2, 4.008/2
+PILOT = 6.50
+NOSE, FRONT = .30, .73  # front station beyond land, entry chamfer, edge breaks
+COAX = .003  # combined radial true position of pitch ring wrt bore/pilot
+C0 = B_MIN - P_MAX
+# Worst displacement toward a missing sector: circles at the last surviving
+# edge of the slot, NOT full diameter contact through an empty axial channel.
+BAND = (SLOT+.010)/2 + .03
+C_SPLIT = sqrt(B_MAX**2-BAND**2)-sqrt(P_MIN**2-BAND**2)
+C_FULL = B_MAX-P_MIN
+COS_GUIDE = sqrt(1-(BAND/P_MIN)**2)
+# Bolt/key drawing limits; include phase/position of BOTH mating parts.
+R_GUIDE = 3.45
+HALF_LASH = math.asin(((SLOT+.010)-(BAR-.010))/(2*R_GUIDE))
+PHASE = rad(.20)  # two indexed machining setups, +/-0.10 deg EACH
+# Teeth have a constant axial tooth advance per radian, not a constant flank
+# angle at every radius. Root and crest truncated by <=.010 each.
+N_TEETH, RI, RO, QT = 72, 4.25, 6.30, 8.80
+QT_LO, QT_HI = 8.70, 8.90
+H_MIN, H_MAX = QT_LO*PI/N_TEETH-.020, QT_HI*PI/N_TEETH
+ROLL = HALF_LASH + PHASE + math.asin((C_SPLIT+COAX)/RI)
+DRY, OIL = (.15,.23), (.10,.16)
+MU_CF, MU_P, MU_R, MU_SS = .20, .20, .23, .80
+MU_Z_LO = .05
+# Room-temperature paper properties: ATI 304 sheet (E=200 GPa, yield 205
+# MPa); Concast C95400 (107 GPa, minimum yield 221 MPa); Materialise PA12
+# (48 MPa tensile only). Poisson ratios and contact models PROVISIONAL.
+E_STAR = 1/((1-.29**2)/200000+(1-.33**2)/107000)
+# Servo: FEETECH SCS0037-C001 pp3-5. Use the 4.8 V column on the accepted
+# 4.8..5.2 V AT SERVO supply. Rating is NOT a specimen lower tolerance or
+# a guaranteed torque-speed curve. No operating torque is taken from 6 V.
+RATED, STALL = .50*98.0665, 1.50*98.0665
 
-c0 = LIP + LUG_R + CLR
-c1, c2 = c0 + D1, c0 + D1 + D2
-s_nom = (c1 + c2) / 2
-RC = (SLEEVE_RI + LUG_TIP) / 2
-L_CONTACT = LUG_TIP - SLEEVE_RI
+def span(s):
+    # Earliest pilot front end at this lug-pivot depth incl tail dimensional
+    # tolerance, tip tolerance, nose break. Rear effective station .05 before
+    # full cylindrical tip; if not on unslotted land, use a second split arc.
+    back = PILOT-.015 - (.30+.015) - ((SEAT+.015)-s) - .050
+    full = back >= 5.57
+    return back-FRONT, (C_SPLIT+(C_FULL if full else C_SPLIT))/(back-FRONT), full
 
-# ------------------------------------------------------------------ cited values (each checked against raw source text)
-# Wikipedia "Leadscrew" (https://en.wikipedia.org/wiki/Leadscrew, accessed 2026-11-20; checked in the raw
-# wikitext, index.php?action=raw, friction table): steel on bronze dry 0.15-0.23, machine oil 0.10-0.16.
-# Same page: self-locking when mu > tan(lead angle); "not absolute" under vibration or shock.
-MU_DRY = (0.15, 0.23)
-MU_OIL = (0.10, 0.16)
-# Engineering ToolBox (https://www.engineeringtoolbox.com/friction-coefficients-d_778.html, accessed
-# 2026-11-20; checked in the raw HTML): PTFE on steel clean and dry 0.05-0.2; steel on steel clean and dry
-# static 0.5-0.8, kinetic 0.42. The page has no dry bronze-on-steel row (only "Grease 0.16").
-MU_T = (0.05, 0.20)
-MU_SS_MAX = 0.8
-# 206-109 datasheet (pdftotext of https://www.precisionmicrodrives.com/datasheets/206-109-V0.pdf): rated
-# 3 mN m at 3 V, stall 9 mN m, max 3.6 V. Stall torque is taken proportional to the applied voltage.
-T_STALL_3V = 9.0     # typical (no maximum or minimum is given)
-# Lower bound from guaranteed rows of the same datasheet: rated load 3 mN m at 3 V (at rated speed, so stall >= 3),
-# max start voltage 0.5 V (the friction torque is at most Kt x 0.5 / R). Hence Kt/R x 2.5 >= 3, Kt/R >= 1.2 mN m/V, and
-# stall(V) >= 1.2 x (V - 0.5) mN m at the output. Upper values use the typical 9 mN m at 3 V, scaled with V, no offset.
-def stall_lb(v): return 1.2 * (v - 0.5)
-def stall_typ(v): return T_STALL_3V * v / 3.0
-# Release supply rule (controller): release only with the cell at >= 3.75 V (measured through the vsense divider).
-# The DRV8835 bridge (TI datasheet https://www.ti.com/lit/ds/symlink/drv8835.pdf, HS + LS on-resistance 305 mOhm
-# typical) drops about 0.07 V at the 230 mA start current, so the motor sees >= 3.68 V; the PWM caps it at the
-# 206-109's maximum operating voltage 3.6 V, which is the value used.
-V_RELEASE = 3.6
-V_C = 1.5            # closing voltage (PWM average of the cell voltage measured through the vsense divider)
-# Materials: 304 E 193 GPa, nu 0.29, yield 205 MPa (ATI data sheet); C95400 aluminium bronze E 107 GPa, yield
-# 221 MPa min (Concast C95400 page, raw HTML: ASTM B505 table and physical properties); bronze nu 0.33 PROVISIONAL.
-# The flank friction rows are for steel on "bronze" (Wikipedia Leadscrew); aluminium bronze is applied as a bronze.
-E_SS, NU_SS, SY_SS = 193e3, 0.29, 205.0
-E_BR, NU_BR, SY_BR = 107e3, 0.33, 221.0
-MU_TEETH = (0.05, 0.20)   # bonded PTFE dry film on the head Hirth flanks against 304 (Engineering ToolBox PTFE on steel)
-# ISO 286 IT grades (https://en.wikipedia.org/wiki/IT_Grade): IT9 1..3 mm 25 um, 3..6 mm 30 um.
-IT9 = {"1-3": 0.025, "3-6": 0.030}
-# Spur mesh efficiency: KHK, ABCs of Gearing (https://khkgears.us/media/fqrlut1m/abcs-of-gearing-b.pdf):
-# 98.0-99.5 percent. Used as 0.90..1.00 (lower bound widened, PROVISIONAL, small unlubricated gears).
-ETA = (0.9, 1.0)
+def angle(s, late):
+    a, b = (Q1-DQ1,Q2-DQ2) if late else (Q1+DQ1,Q2+DQ2)
+    return SHELF+deg(min(s-S0,S1-S0)/a + max(s-S1,0.)/b)
 
-_here = os.path.dirname(os.path.abspath(__file__))
-_decl = json.load(open(os.path.join(_here, "..", "declaration.json")))
-MASS_MG = sum(c["mass_mg"] for c in _decl["components"])
-W = MASS_MG * 1e-6 * 9.80665
-HALF_WIDTH = 12.7
-UNIT_LEN = 48.0      # site-to-site pitch
-MU_TABLE_BOUND = 1.0 # PROVISIONAL upper bound, as cand-a v5
+def hp(q,r,mu):
+    return (mu+q/r)/(1-mu*q/r)  # tangential/axial force, raising
+def hm(q,r,mu):
+    return (mu-q/r)/(1+mu*q/r)  # lowering; negative can overhaul
 
-section("0. unit")
-print("declared mass %d mg, W = %.4f N" % (MASS_MG, W))
+# Rectangular z flats (reaction in roll) on a cylindrical rocker crown. Metal
+# rocking joint has a separate central C95400 pin retained by two fork ears.
+# From pivot bearing friction at r=.50 plus position error, not assumed 50:50.
+# Cross-pin axial load F; bound the residual bearing moment incl nonaxial
+# resultant: <= mu*rp*1.4F plus .03F small machining eccentricity.
+ECC = .23*.505*1.4+.03  # C95400 pivot pin against 304 rocker (fork cheeks unloaded)
+IMBALANCE = (R1-R0+2*ECC)/(R1+R0)
+def asym_force(hlo,hhi):
+    return .5*((hhi-hlo)+IMBALANCE*(hhi+hlo))
+B_MIN_SPAN, TAN_TILT, _ = span(S0-.12)
+# Slightly enlarge for clearance of a tilted, eccentric pilot nose.
+TAN_TILT += .0003
+FACE_DROP = RO*TAN_TILT
+LUG_DROP = R1*TAN_TILT
+TOOTH_DROP = QT_HI*ROLL
+# Two loaded opposed rocker tips cancel the first-order differential depth
+# (interpolating at the pivot), but cannot cancel translation of a cocked
+# thrust datum. When forward-loaded its centre moves into the head; rearward
+# ejection moves it OUT of the head vs the parallel rear-stop extreme.
+REAR, FWD = (27.16,27.61), (35.05,35.30)
+JSPAN = FWD[0]-REAR[1]
+JR = 5.045/math.cos(math.asin(1.365/5.04))
+JF = 3.51/math.cos(2*math.asin(.86/3.49))
+TAN_SLEEVE=(.020*JR/5.045+.0175*JF/3.51+.005)/JSPAN
+C_CAM=.0175*JF/3.51+.005+C_SPLIT
+CAM_PHASE=ROLL+math.asin(C_CAM/R0)
+DATUM_DROP=RF*TAN_SLEEVE+.004  # extra projection at off-centre pivot; face flatness in STACK
+FIRST=SEAT-STACK-FACE_DROP-DATUM_DROP-TOOTH_DROP
+SEAT_LOW, SEAT_HIGH=FIRST+TOOTH_DROP, SEAT+STACK+.004
+# Angle uncertainty includes partner roll, rocker sweep & 0.6 deg cam start
+# datum; operating feedback may report only the input member, not the sleeve.
+EARLY = angle(SEAT_LOW,False)-deg(CAM_PHASE)-.6
+LATE = angle(SEAT_HIGH,True)+deg(CAM_PHASE)+.6
+# Spring. Diameter acceptance is a screened subset of .016" +/-.0003" stock.
+# Mandrel-free elastic energy U=M² L/(2 E I); N_eff includes straight leg
+# angular compliance. 0.94 lower multiplier covers the common 10.8 (vs
+# 64/(2*pi) = 10.186) turn-rate convention. E range is a DESIGN
+# allowance about 30 Mpsi, not an A228 modulus tolerance. Inspect lot rate.
+WIRE, DW, D, DD, N, DN = .4064, .0026, 9.20, .04, 3.75, .03
+LEGS = (2.60,1.36)  # nominal extra wire, straight/radiused radial pickups
+DLO,DHI,NLO,NHI = D-DD,D+DD,N-DN,N+DN
+WLO,WHI = WIRE-DW,WIRE+DW
+EFF_HI = NHI+sum(LEGS)/(PI*DLO)  # upper: end moments over whole legs
+def spring_rate(E,d,mean,n):
+    return E*d**4/(64*mean*n) * PI/180
+KLO = .94*spring_rate(199000,WLO,DHI,EFF_HI)
+KHI = spring_rate(215000,WHI,DLO,NLO)
+HOME,CMD = 14.,245.  # absolute input at theta_sleeve=0 datum; relative close increment
+ERR = .5+.30+1.5+.7+.5  # backlash, conservative quantisation, accepted loaded tracking, calibration, cradle
+FREE_ERR = 1.0  # spring free leg pickup relative to assembled pair
+# Soft unloaded pickup, not a bilateral spring forced past neutral. Reverse
+# dog touches at input=HOME + actual sleeve angle - 6 (+/-1) deg.
+DOG,DOG_ERR = -6.,1.
+WIND_MAX = CMD+ERR+FREE_ERR+.6  # obstruction at open stop incl stop error
+WIND_MIN = CMD-ERR-FREE_ERR-LATE
+WIND_SEAT_MAX = CMD+ERR+FREE_ERR-EARLY
+TS_JAM, TS_MIN, TS_MAX = KHI*WIND_MAX, KLO*WIND_MIN, KHI*WIND_SEAT_MAX
+# Rate model excludes rubbing. Forward losses are estimated separately; bound
+# +/- .25 N mm in the spring cartridge as a bench acceptance limit, not data.
+CARTRIDGE_DRAG = .25
+VP = PI*WIRE**2/4
+PITCH = 1.900/N
+V_WIRE = VP*(N*hypot(PI*D,PITCH)+sum(LEGS))
+# Geometry: fixed plane spacing 1.900 +/-.008, allowing increased turns to share
+# the pitch rather than collide; optically inspect the minimum live gap.
+BODY = 1.908+WHI
+GAP = 1.892/(NHI+WIND_MAX/360)-WHI
+ID_WOUND = DLO*NLO/(NLO+WIND_MAX/360)-WHI
+C_INDEX = (ID_WOUND+WHI)/WHI
+KB = (4*C_INDEX**2-C_INDEX-1)/(4*C_INDEX*(C_INDEX-1))
+STRESS = KB*32*TS_JAM/(PI*WLO**3)
+# Body swept solids. No double-subtracting notch/skirt or claiming exact mass
+# for swept overlaps. Lower bound on removed slot area: core contained in the
+# cutter at every centre angle, integrate actual radial shell; leave overlap
+# of the open mouth out of the cut deduction.
+SLEEVE_X0,SLEEVE_X1=30.35,35.30
+SKIRT_X0=24.35
+def volume_results():
+    barrel = PI*(6.30**2-3.5075**2)*(SLEEVE_X1-SLEEVE_X0)
+    skirt = PI*(6.30**2-5.035**2)*(SLEEVE_X0-SKIRT_X0)
+    # Through-cuts at both stations of radius, irrespective of lug tip depth.
+    # One angular ray across the two opposing helices cuts >=2*(CROWN-.005) axially.
+    # Even at ends, the crown has full axial diameter on its z=0 centreline.
+    cut = 2*(A1+A2+rad(SHELF))*(6.30**2-3.5125**2)/2*(2*(CROWN-.005))
+    bar_section = 2*(.8*sqrt(CROWN**2-.8**2)+CROWN**2*math.asin(.8/CROWN))
+    # 2.74 mm long through pocket, 1.64 wide, running across y in the pilot.
+    # Bound volume from below with an inscribed prism across the cylinder.
+    pocket = 2.74*1.64*2*sqrt(P_MIN**2-.82**2)
+    show("CAD volume mm3", sleeve_blank=barrel, two_cam_cuts_min=cut,
+         barrel_upper=barrel-cut, skirt_blank=skirt, spring=V_WIRE,
+         rocker=bar_section*2*R1-PI*.505**2*BAR,
+         fork_pocket_min=pocket, crosspin_upper=PI*.5**2*3.98)
+    show("spring chamber mm", body=BODY,min_interturn_gap=GAP,
+         wound_ID=ID_WOUND,free_OD=DHI+WHI,mandrel_OD=6.75)
+    assert 0 < cut < barrel and BODY<2.4 and GAP>.01 and ID_WOUND>6.8
 
-section("1. cam slot layout")
-arc1, arc2 = D1 / tand(LAM1), D2 / tand(LAM2)
-a1, a2 = math.degrees(arc1 / RC), math.degrees(arc2 / RC)
-half_lug = math.degrees(LUG_R / RC)
-entry_half = math.degrees((LUG_R + LIP_V) / RC)
-slot_end = a1 + a2 + half_lug
-web = 180 - entry_half - slot_end
-print("capture start depth %.2f, capture end %.2f, lock end %.2f, nominal seat %.2f (below the Hirth pitch plane)" % (c0, c1, c2, s_nom))
-print("Rc %.3f, flank contact length %.2f; capture %.1f deg, lock %.1f deg; slot -%.1f..%.1f deg; web %.1f deg (%.2f mm)" %
-      (RC, L_CONTACT, a1, a2, entry_half, slot_end, web, math.radians(web) * RC))
-print("sleeve rotation to the nominal seat %.1f deg; stop pin arc: open stop at 0, closing over-travel stop at %.1f deg (lock stage end)" % (a1 + a2 / 2, a1 + a2))
-assert web > 5
+def layout():
+    print("v6 exploratory static design; not a measurement, evaluator or capture window")
+    show("cam", start=S0,transition=S1,end=S2,q1=Q1,q2=Q2,
+         dead_shelf_deg=SHELF,capture_deg=deg(A1),lock_deg=deg(A2),total_deg=STOP,
+         dry_lock_factor=DRY[0]*R0/(Q2+DQ2),oil_lock_factor=OIL[0]*R0/(Q2+DQ2))
+    # Tangential flats project <=.805, entry slot includes 0.5 V lead; allow
+    # 1 degree for datum. At front face a chamfer leads the radial channel.
+    # V entry on stationary flange ONLY, straight 1.70 sleeve mouth with
+    # ≤.010 all-in profile allowance. No flare in the deep end's web.
+    half_mouth=math.asin(.855/R0)+math.asin(.805/R0)
+    bridge=SHELF-deg(half_mouth+CAM_PHASE)-.6
+    web=180-STOP-1-deg(half_mouth)
+    rear=HX-SLEEVE_X0-(S2+CROWN*sqrt(1+((Q2+DQ2)/R0)**2)+LOST+.020)
+    show("metal",web_deg=web,web_mm=rad(web)*R0,rear_web=rear,fully_bridged_before_rise_deg=bridge,
+         minimum_pivot_travel_deg=deg(TILT_PIVOT),pivot_ecc_limit=ECC)
+    for s in (S0-.12,FIRST,SEAT_LOW,SEAT_HIGH):
+        l,t,f=span(s);show("pilot "+("rear full" if f else "rear split"),
+                            depth=s,span=l,rock_deg=deg(atan(t)))
+    show("tooth/min-max locus",phase_bound_deg=deg(ROLL),tooth_height=H_MIN,
+         crest=H_MAX/2,ring_standoff=FACE_DROP,each_lug_skew=LUG_DROP,
+         first_tooth_min=FIRST,early_seat=SEAT_LOW,late_seat=SEAT_HIGH,
+         earliest_full_deg=EARLY,latest_full_deg=LATE)
+    err=2*.0125+(.015+.015)*rad(1) # opposing track depth mismatch (mm)
+    req_tilt=atan(TAN_TILT+TAN_SLEEVE+err/(2*R0))
+    show("fork",rocker_need_deg=deg(req_tilt),min_throat_side_clearance=(2.74-2.51)/2-2*math.tan(TILT_PIVOT))
+    # Finite crescent contact at mouth: not 5 mm engagement at first V touch.
+    lead=PILOT-.015-.315-(SEAT+.015+CROWN+.005+H_MAX/2)-FRONT
+    # Centre-offset limit at the nose, present roll +/-1.4 deg on the table.
+    show("external presentation",nose_chamfer_capacity=(.40+.30+C0),
+         axial_pilot_lead_at_lug_crest=lead,
+         V_allowance=.50-R1*math.sin(rad(1.4))-C_SPLIT-.04)
+    assert FIRST>S1+.0125 and SEAT_LOW>S1 and SEAT_HIGH<S2 and web>5 and rear>.30 and bridge>0
+    show("two-journal cocking",max_deg=deg(atan(TAN_SLEEVE)),front_datum_debit=DATUM_DROP,
+         lateral_phase_debit_deg=deg(CAM_PHASE-ROLL))
+    assert COAX<C0 and req_tilt<TILT_PIVOT and lead>.10 and ROLL<PI/N_TEETH
+    assert DRY[0]>(Q2+DQ2)/R0 and OIL[0]>(Q2+DQ2)/R0
+    show("servo",rated_4v8=RATED,stall_4v8=STALL,absolute_close_min=HOME+CMD-ERR,
+         absolute_close_max=HOME+CMD+ERR,absolute_dog_at_open_min=HOME+DOG-DOG_ERR-.6,
+         absolute_dog_at_open_max=HOME+DOG+DOG_ERR+.6)
+    show("spring",k_lo_Nmm_deg=KLO,k_hi=KHI,wind_min_deg=WIND_MIN,
+         wind_seat_max=WIND_SEAT_MAX,wind_jam_max=WIND_MAX,T_min=TS_MIN,
+         T_seat_max=TS_MAX,T_jam_max=TS_JAM,body_jam_MPa=STRESS)
+    assert HOME+CMD+ERR<270 and HOME+DOG-DOG_ERR-.6>2+ERR
+    assert DOG+DOG_ERR < -FREE_ERR and TS_JAM+CARTRIDGE_DRAG < RATED
+    assert STRESS < .8*362000*.00689476 # M&R static body screen, not fatigue or leg proof
+    volume_results()
 
-section("2. axial tolerance stack at seating (Hirth teeth fully meshed)")
-stack = [("tail: Hirth pitch plane to lug axis (3.6 mm, IT9)", IT9["3-6"] / 2),
-         ("tail: lug radius (dia 3 g6, -2..-8 um)", 0.004),
-         ("tail: Hirth tooth form, axial effect (IT9 on the 0.4 mm teeth)", IT9["1-3"] / 2),
-         ("head: Hirth tooth form, axial effect (IT9)", IT9["1-3"] / 2),
-         ("head: flange, pitch plane to rear (thrust) face (0.8 mm, IT9)", IT9["1-3"] / 2),
-         ("head: PTFE ring (0.3 mm, IT9; creep at 0.6 MPa not counted)", IT9["1-3"] / 2),
-         ("head: sleeve front face to flank at the seat angle (2.5 mm, IT9)", IT9["1-3"] / 2),
-         ("head: thrust running play (0 under load: the lug load pushes the sleeve forward)", 0.0)]
-tot = sum(v for _, v in stack)
-for n, v in stack: print("  +-%.4f  %s" % (v, n))
-lo, hi = s_nom - tot, s_nom + tot
-print("seat depth %.3f..%.3f inside the lock stage %.2f..%.2f: margins %.3f / %.3f" % (lo, hi, c1, c2, lo - c1, c2 - hi))
-print("not in the stack: the cartridge position in the PA12 plate and the plate flushness. They set only the PA12 gap between")
-print("  the tail stud flange (1.0 thick, r 6.3) separates the tail end plate from the head flange's teeth; at r > 6.3 the head flange")
-print("  (0.8) and the tail plate are 1.0 - 0.3 (SLS) = 0.7 mm apart at worst. The stud flange (r 6.3) can bear only on the head's teeth")
-assert c1 < lo and hi < c2
+# Fixed lands; station resultants may lie anywhere in the actual supported bands.
+# Front: rotating mouth plus fixed channel can adjoin; use their SUM of full
+# angular widths as a missing sector, not the width of either alone.
+JM=.23
+def arm(x,a,b):
+    return (JR*abs(b-x)+JF*abs(x-a))/(b-a)
+def drive_loss(xs,r,imbalance=1):
+    return imbalance*JM*max(arm(x,a,b) for x in xs for a in REAR for b in FWD)/r
+SPRING_LOSS=drive_loss((26.84,27.10),5.05)
+DOG_LOSS=drive_loss((29.35-.127,30.00+.127),5.64)
 
-section("3. self-locking of the lock stage")
-t2 = tand(LAM2)
-for name, mus in (("dry (declared condition)", MU_DRY), ("machine oil (contamination case)", MU_OIL)):
-    print("  %s: mu %.2f..%.2f vs tan 3 deg = %.4f -> margin %.2f..%.2f" % (name, mus[0], mus[1], t2, mus[0] / t2, mus[1] / t2))
-print("  the PTFE thrust friction adds holding torque; not credited")
+def cam_path(q,mu,raising,thrust):
+    func=hp if raising else hm
+    hs=[func(q,r,m) for r in (R0,R1) for m in mu]
+    diff=asym_force(min(hs),max(hs))
+    # Resultant cam side load from friction variation and potential unequal
+    # lug radii. Eccentricity of axial resultant adds a journal couple.
+    # Absolute projection for the open arcs throughout. A negative descending
+    # cam torque isn't credited as a motor or as helping other reactions.
+    # All working axial cam reaction centres lie between the fixed lands.
+    # Journal torque/axial force from net side force and a residual couple.
+    fj=diff*max(JR,JF)+ECC*(JR+JF)/JSPAN
+    lever=max(0.,max(r*func(q,r,m) for r in (R0,R1) for m in mu))
+    return lever+thrust+JM*fj,lever,diff
 
-section("4. closing preload (voltage-limited stall)")
-def k_close(mu, lam, mut): return RC * tand(lam + atand(mu)) + mut * R_THRUST
-def k_release(mu, lam, mut): return RC * tand(atand(mu) - lam) + mut * R_THRUST
-t_motor_c = T_STALL_3V * V_C / 3.0
-Ts_c = [t_motor_c * GEAR_I * e for e in ETA]
-F_min = Ts_c[0] / k_close(MU_DRY[1], LAM2, MU_T[1])
-F_lb = stall_lb(V_C) * GEAR_I * ETA[0] / k_close(MU_DRY[1], LAM2, MU_T[1])
-F_max = Ts_c[1] / k_close(MU_DRY[0], LAM2, MU_T[0])
-Fo_min = Ts_c[0] / k_close(MU_OIL[1], LAM2, MU_T[1])
-Fo_max = Ts_c[1] / k_close(MU_OIL[0], LAM2, MU_T[0])
-print("closing at %.1f V: motor stall %.2f mN m, sleeve %.2f..%.2f mN m" % (V_C, t_motor_c, Ts_c[0], Ts_c[1]))
-print("preload F_p dry %.2f..%.2f N; oil %.2f..%.2f N" % (F_min, F_max, Fo_min, Fo_max))
-print("guaranteed lower bound (stall >= 1.2 x (V - 0.5)): F_p >= %.2f N. Retention does not depend on F_p (section 6a); the no-gapping ratios do" % F_lb)
+def efficiency_guides(q,mu):
+    k,h,side=cam_path(q,mu,True,0)
+    # Sliding axial drag from torque reaction on both fixed slots, adverse
+    # net cam side force and residual eccentric moment reacted by pilot pair.
+    # Use positive feedback, solve F_pilot = F_fixed/(1-gamma), not an
+    # assumed constant allowance. No second binding with loose original bore.
+    gamma=MU_P*(h/R_GUIDE+(side+2*ECC/B_MIN_SPAN)/COS_GUIDE)
+    assert gamma<1
+    return 1-gamma
 
-section("5. declared loads (PROVISIONAL modelling assumptions, Q31 tabletop chain of 5)")
-T_TENSION = 4 * MU_TABLE_BOUND * W
-T_TORSION = 2 * W * HALF_WIDTH
-M_OOP = W * UNIT_LEN
-M_INPLANE = 3.0 * SECTOR_I * ETA[1]
-M_INPLANE_FAULT = T_STALL_3V * 3.6 / 3.0 * SECTOR_I
-SHEAR = W
-for n, v, u in (("tension (4 mu W, mu = 1)", T_TENSION, "N"), ("torsion (2 W x 12.7)", T_TORSION, "mN m"),
-                ("out-of-plane bending (W x 47.2)", M_OOP, "mN m"), ("in-plane bending at the joint drive limit", M_INPLANE, "mN m"),
-                ("in-plane bending, fault (joint stall at 3.6 V)", M_INPLANE_FAULT, "mN m"), ("shear (W)", SHEAR, "N")):
-    print("  %-52s %7.3f %s" % (n, v, u))
+def torque_after_spring(angle_late):
+    ts=KLO*(CMD-ERR-FREE_ERR-angle_late)
+    return max(0.,ts*(1-SPRING_LOSS)-CARTRIDGE_DRAG)
 
-section("6. Hirth face coupling (torsion and shear, zero lash under preload)")
-pitch = 2 * math.pi * HIRTH_RM / HIRTH_N
-print("36 teeth, 90 deg included, r %.1f..%.1f; pitch at r_m %.2f = %.3f mm, tooth height about %.2f mm" % (HIRTH_RI, HIRTH_RO, HIRTH_RM, pitch, pitch / 2))
-F_t = T_TORSION / HIRTH_RM
-F_sep_t = F_t * tand(45)
-print("torsion: tangential %.2f N at r_m; axial separating force <= %.2f N (45 deg flanks, flank friction neglected: upper bound)" % (F_t, F_sep_t))
-print("  the teeth stay seated while F_p_min %.2f > %.2f (ratio %.2f). Roll cannot change without axial separation, and axial" % (F_min, F_sep_t, F_min / F_sep_t))
-print("  separation is resisted by the self-locking stage. The lugs never slide along the flank, so the sleeve cannot be walked")
-print("  by torsion slip, and no face friction is relied on")
-print("shear %.3f N: the radial teeth centre the flange (separating force <= shear x tan 45); the pilot (clearance %.3f..%.3f) is an entry guide" % (SHEAR, *PILOT_CLR))
-r_slot = (BORE_R + HOUSING_RO) / 2
-clr_min, clr_max = (SLOT_W - IT9["3-6"] / 2) - (3.0 - 0.002), (SLOT_W + IT9["3-6"] / 2) - (3.0 - 0.008)
-R_CONTACT = HOUSING_RO   # a rotating lug touches the slot side first at the largest radius of the slot wall (tube OD 3.5)
-lash_min = math.degrees(clr_min / 2 / R_CONTACT)
-lash_max = math.degrees(clr_max / 2 / R_CONTACT)
-print("roll indexing before the teeth meet: slot lash %.2f..%.2f deg at the contact radius %.2f; less than half a tooth pitch (5 deg)," % (lash_min, lash_max, R_CONTACT))
-print("  so the teeth always meet their own gaps")
-phase = 2 * math.degrees((IT9["3-6"] / 2) / HIRTH_RM) + 2 * math.degrees((IT9["3-6"] / 2) / R_CONTACT)
-print("tooth phase to slot, two parts: tooth position IT9 (+-15 um at r_m %.2f) and slot position IT9 (+-15 um at r %.1f), summed: +-%.2f deg" % (HIRTH_RM, R_CONTACT, phase))
-print("  with the teeth seated the lugs keep >= %.2f deg of clearance to the slot sides each way: they never bear on the slots, so" % (lash_min - phase))
-print("  torsion goes only through the teeth and the lugs cannot slide on the flank")
-assert lash_min - phase > 1.5 and lash_max < 5.0
+def assert_open_and_overlap():
+    # At open the ejection flank takes up its width + all collar end play;
+    # both teeth and opposing crowns must clear. The pilot and stationary
+    # key slots STILL guide the body at open; no claim of powered withdrawal
+    # of a full 6.5-mm pilot or separation against arbitrary lateral jamming.
+    open_depth=S0+LOST+PLAY+.0125+LUG_DROP
+    separation=(SEAT-STACK)-open_depth-FACE_DROP
+    overlap=H_MIN-TOOTH_DROP-2*FACE_DROP  # axial flank overlap opposite a first-touch edge
+    # 2 kN/mm is a provisional minimum differential axial stiffness (steel
+    # pin, bar and flange), not Young's modulus or a Gate 2 measurement.
+    slack=20/2000
+    locked_drop=RO*(span(FIRST-.03)[1]+.0003)
+    loaded_overlap=H_MIN-TOOTH_DROP-2*locked_drop-DATUM_DROP-2*(Q2+DQ2)*CAM_PHASE-slack
+    show("passive geometric reserve at limiting tilt/phase",teeth_open_clearance=separation-H_MAX,
+         overlap_unloaded=overlap,overlap_after_cocking_roll_20N=loaded_overlap,
+         first_contact_stroke_into_lock=FIRST-S1,
+         after_single_roll_reversal=FIRST-S1-(Q2+DQ2)*2*ROLL)
+    assert separation>H_MAX and loaded_overlap>0 and FIRST-S1>(Q2+DQ2)*2*CAM_PHASE
+    show("spring interface",spring_side_loss_fraction=SPRING_LOSS,
+         dog_side_loss_fraction=DOG_LOSS,
+         free_release_at_open_absolute_command=2.,close_absolute_command=HOME+CMD,
+         extra_endplay=PLAY,opposite_flank_takeup=LOST)
 
-section("6a. why tooth engagement and roll do not depend on F_p")
-E_LUG = E_SS
-I_lug = math.pi * (2 * LUG_R) ** 4 / 64
-k_lug = 2 * 3 * E_LUG * I_lug / (RC - STUD_R) ** 3     # two lugs as cantilevers from the pilot to the flank (N/mm), stiff-side bound
-k_loop = 20000.0   # PROVISIONAL loop stiffness lower bound (N/mm), well below the two lugs alone
-excess = 20.0      # an axial separating load 20 N above any preload, far above the declared loads
-print("two lugs as cantilevers: %.0f N/mm; with a loop stiffness lower bound of %.0f N/mm, an axial load %.0f N above the preload opens the" % (k_lug, k_loop, excess))
-print("  faces by <= %.4f mm, against a tooth height of 0.39 mm: the teeth stay geometrically engaged at any F_p, including zero, as long" % (excess / k_loop))
-print("  as the self-locking stage holds (section 3); roll is then bounded by the tooth flanks to <= %.3f deg" % math.degrees(excess / k_loop / HIRTH_RM))
-print("  F_p sets only whether the faces stay in contact (stiffness), reported below with both the typical and the lower-bound F_p")
+def loads(mass_g,com,verbose=False):
+    W=mass_g*.001*9.80665
+    tension,twist,shear,oop,ip=4*W,2*W*12.7,W,48.0*W,14.5
+    fault=10.8*58/12
+    M=hypot(oop,ip)
+    # Face wedge may wedge harder than ideal T/QT. Keep adverse tooth
+    # friction at both radii; assume the pilot can carry all radial shear.
+    hirth=min((QT_LO-.20*r)/(1+.20*QT_LO/r) for r in (RI,RO))
+    sep=tension+twist/hirth+shear*max(1,RO/hirth)
+    edge=sqrt(RO**2-((SLOT+.01+1.0)/2)**2)
+    # finite pitch: usable compression patch may be another half pitch from
+    # the cut. Pilot may carry some of this bending; no credit at breakaway.
+    edge*=math.cos(PI/N_TEETH)
+    bending=M/edge
+    t_roll=W*(12.7+abs(com[1]))
+    pitch_v=W*(35.6-com[0])/(35.6+11.6)
+    yaw_drag=W*hypot(47.2,25.4)
+    # At first hard tooth contact, don't call the minimum spring torque at a
+    # nominal mid-stage stall. Calculate the available draw at the latest
+    # end of each interval. Spring winds up quasi-statically if sleeve lags.
+    phases=[("shelf",0.,SHELF+deg(CAM_PHASE)+.6),
+            ("capture",Q1+DQ1,SHELF+deg((S1-S0)/(Q1-DQ1))+deg(CAM_PHASE)+.6),
+            ("lock",Q2+DQ2,LATE)]
+    previous={}
+    for name,q,ang in phases:
+        k,ht,_=cam_path(q,DRY,True,RF*MU_CF)
+        cam=torque_after_spring(ang)/k
+        eff=efficiency_guides(q,DRY)
+        useful=cam*eff-W
+        previous[name]=useful
+        if verbose:
+            show(name+(" reaction capacity ONLY; no axial advance" if not q else " draw; net after one free unit"),angle_deg=ang,
+                 sleeve_T=torque_after_spring(ang),cam_F=cam,guide_eff=eff,
+                 net_F=useful)
+        assert useful>0, (name,mass_g,useful)
+    # Real corrective torque: adverse parasitic cam torque on mating stud and
+    # ground load retained. Do NOT claim that individual scalar margins prove
+    # simultaneous resolution of roll, yaw and pitch.
+    kl,ht,_=cam_path(Q2+DQ2,DRY,True,RF*MU_CF)
+    fcam=torque_after_spring(LATE)/kl
+    roll_cap=hirth*previous['lock']-ht*fcam
+    if verbose:
+        show("attitude demand (no hidden levelling)",roll_needed=t_roll,
+             adverse_roll_supplied=roll_cap,pitch_vertical_needed=pitch_v,
+             yaw_floor_friction_torque_upper=yaw_drag)
+        # Simultaneous virtual-work limit; moment spent at a tilted rim
+        # cannot also be spent indexing teeth/translating on the table.
+        fnet=previous['lock']
+        show("upper service screening certificate (negative reserve rejects corner)",
+             draw_available=fnet,draw_for_roll=(t_roll+ht*fcam)/hirth,
+             draw_for_pitch=pitch_v*(35.6+11.6)/edge,draw_for_yaw=yaw_drag/edge,
+             residual_draw=fnet-(t_roll+ht*fcam)/hirth-(pitch_v*47.2+yaw_drag)/edge)
+    # Extremes when spring stalls at earliest permitted solid tooth contact,
+    # not just the nominal parallel seat. Trapped static preload survives
+    # unwinding. Do not subtract initial preload from external fixed loads.
+    first_angle=angle(FIRST,False)-deg(CAM_PHASE)-.6
+    ts_partial=KHI*(CMD+ERR+FREE_ERR-first_angle)
+    by_condition={}
+    for cond,cl,mu in (("dry",DRY,DRY),("oil",OIL,OIL),("oil-to-dry",OIL,DRY)):
+        fmax=(ts_partial+CARTRIDGE_DRAG)/(R0*hp(Q2-DQ2,R0,cl[0])+3.6*MU_Z_LO)
+        # Lowering a clamped or outward-pulled stud: front thrust ring remains
+        # loaded. During pullout after unclamping, fixed tension ASSISTS: do
+        # not both charge its descent friction and treat it as a compression.
+        k_down,_,_=cam_path(Q2-DQ2,mu,False,RF*MU_CF)
+        tax=fmax+sep+bending
+        unload=(k_down*tax+CARTRIDGE_DRAG)/(1-DOG_LOSS)
+        stage_opens=[]
+        for name,q,_ in phases:
+            # Evaluate BOTH flank signs and both thrust faces throughout.
+            k_ej,_,_=cam_path(q,mu,True,RR*MU_R)
+            eff=efficiency_guides(q,mu)
+            # After teeth disengage: the pilot pair can carry ALL bending;
+            # tapered/tooth flank unloading assistance is not credited.
+            # Fixed slot sides take all torsion while the lugs remain in them.
+            external=W+MU_P*((shear+2*M/B_MIN_SPAN)/COS_GUIDE+twist/R_GUIDE)
+            # Include a separate, adverse case of an inward load equal to the
+            # declared chain tension, though not a v5 service case.
+            eject=(external/eff*k_ej+CARTRIDGE_DRAG)/(1-DOG_LOSS)
+            compressed=((external+tension)/eff*k_ej+CARTRIDGE_DRAG)/(1-DOG_LOSS)
+            # Released after first relaxation: no initial preload unless teeth
+            # still in contact; use the worst aiding fixed axial load.
+            kd,_,_=cam_path(q,mu,False,RF*MU_CF)
+            descend=((sep+bending)*kd+CARTRIDGE_DRAG)/(1-DOG_LOSS)
+            stage_opens.append((name,eject,descend,compressed))
+        demand=max([unload]+[max(row[1:3]) for row in stage_opens])
+        if verbose:
+            # Alternate front bearing: take ZERO thrust resistance on closure
+            # when finding preload; solve its allowable drag at breakaway.
+            f0=(ts_partial+CARTRIDGE_DRAG)/(R0*hp(Q2-DQ2,R0,cl[0]))
+            k0=cam_path(Q2-DQ2,mu,False,0)[0]
+            show(cond+" positive-drive breakaway",trapped_preload_max=fmax,external_sep=sep,
+                 additional_bend=bending,T_break=unload,imbalance_max_at_35Nmm=
+                 (1-(k_down*tax+CARTRIDGE_DRAG)/35)/DOG_LOSS,
+                 alternative_front_mu_max_at_35_zero_floor=
+                 ((35*(1-DOG_LOSS)-CARTRIDGE_DRAG)/(f0+sep+bending)-k0)/RF)
+            for name,eject,descend,compressed in stage_opens:
+                show(cond+" reverse "+name,eject_against_drag=eject,assisted_descent=descend,
+                     sensitivity_if_compression=compressed)
+        by_condition[cond]=(demand,fmax)
+    demand=max(v[0] for v in by_condition.values())
+    # Lower bounds on usable quiescent preload only after F settles. At
+    # first-contact the draw may be consumed in aligning; do not assume all
+    # of it enters clamp compression or that the faces never gap.
+    if verbose:
+        show("fixed service loads",pull=tension,shear=shear,twist=twist,
+             outplane=oop,inplane=ip,inplane_fault=fault)
+        show("guide withdrawal after geometric unlatch (external, not a powered stroke)",
+             axial_force=external)
+        structural(W,tension,twist,oop,ip,fault,max(x[1] for x in by_condition.values())+sep+bending)
+    show("load summary",mass_g=mass_g,lock_draw_net=previous['lock'],
+         release_dry=by_condition['dry'][0],release_oil=by_condition['oil'][0],
+         oil_then_dry=by_condition['oil-to-dry'][0],
+         rated_ratio=RATED/demand,locked_rotor_ratio=STALL/demand)
+    print("  rated-envelope release: "+("within nominal rating" if demand<=RATED else "NOT demonstrated")+
+          "; static locked-rotor screen: "+("below catalogue stall" if demand<STALL else "EXCEEDS catalogue stall"))
+    return demand
 
-section("6b. seating the teeth at the guaranteed lower-bound motor torque")
-eff = lambda mu: (1 - mu) / (1 + mu)    # tangential (or lateral) force per unit axial force on 45 deg flanks
-k_cl = k_close(MU_DRY[1], LAM2, MU_T[1])
-F_ax_lb = stall_lb(V_C) * GEAR_I * ETA[0] / k_cl
-x_com, y_com = 13.81, -0.74
-T_roll = W * (12.7 + abs(y_com))                         # tip the tail unit about its farther bottom edge
-F_roll = T_roll / (HIRTH_RM * eff(MU_TEETH[1]))
-x_far, x_tail = 35.6, -11.6
-F_v = W * (x_far - x_com) / (x_far - x_tail)
-F_pitch = F_v / eff(MU_TEETH[1])
-print("closing at %.1f V: the lock stage gives >= %.2f N at the guaranteed lower bound (typical %.2f..%.2f N)" % (V_C, F_ax_lb, F_min, F_max))
-print("roll: tipping a unit about its far bottom edge needs %.2f mN m; through the PTFE-coated 45 deg teeth (mu <= 0.20) that is %.2f N of draw" % (T_roll, F_roll))
-print("pitch: lifting the stud end needs %.3f N vertical, %.2f N of draw" % (F_v, F_pitch))
-print("  guaranteed draw / roll need = %.2f, / pitch need = %.2f: the teeth roll and pitch the units flat at every corner" % (F_ax_lb / F_roll, F_ax_lb / F_pitch))
-assert F_ax_lb > 1.25 * F_roll and F_ax_lb > 1.25 * F_pitch
-yaw = math.atan(PILOT_CLR[1] / 5.0)
-dz_yaw = RC * math.tan(yaw)
-print("yaw is not relied on to flatten (table friction): the pilot bounds it to %.2f deg; the two lugs then sit +-%.3f mm apart in depth" % (math.degrees(yaw), dz_yaw))
-print("  seat window: stack +-%.4f plus yaw +-%.3f = +-%.3f against the lock-stage half-width %.2f (margin %.3f)" % (tot, dz_yaw, tot + dz_yaw, D2 / 2, D2 / 2 - tot - dz_yaw))
-assert tot + dz_yaw < D2 / 2 - 0.03
-print("the pilot's radial clearance (%.3f..%.3f) exceeds the coaxiality of the pilot and the Hirth rings (IT9 one set-up, +-0.005 per part, +-0.010" % (PILOT_CLR[0] / 2, PILOT_CLR[1] / 2))
-print("  for two parts): the teeth centre the seat without fighting the pilot")
-assert PILOT_CLR[0] / 2 >= 0.010
+def structural(W,pull,twist,oop,ip,fault,axial):
+    high_fraction=(1+IMBALANCE)/2
+    Fn=axial*high_fraction*sqrt(1+hp(Q2+DQ2,R0,DRY[1])**2)
+    line=R1-R0
+    p0=sqrt(Fn*E_STAR/(PI*CROWN*line))
+    # Rectangular *inscribed* section on each side of the central pin.
+    chord=2*sqrt(CROWN**2-(BAR/2)**2)
+    Z=BAR*chord**2/6
+    b=Fn*(R1-.50)/Z
+    show("rocker conditional nominal line; no edge-load guarantee",F_lug=Fn,
+         Hertz_MPa=p0,onset_model=1.67*221,root_bend_MPa=b,
+         pin_double_shear=axial/(2*PI*.495**2),rocker_pin_bearing=axial/(.99*BAR))
+    # Head/tail mount and originally declared hinge working/fault paths.
+    P=fault/7/2+pull/2
+    Pt=fault/RO/2+pull/2
+    show("structural loads (PA12 tensile coupon 48 MPa, NOT bearing)",head_screw_fault=P,
+         tail_screw_fault=Pt,head_nut_bearing=P/(2.2**2-PI*.8**2),
+         tail_cone_bearing=Pt/(PI/4*(3**2-1.6**2)),
+         head_strip_MPa=6*P*23/(8*3.35*1.2**2),
+         tail_strip_MPa=6*Pt*23/(8*4.0*1.2**2),
+         hinge_ear_F=oop/18.3+pull/2,hinge_pin_bearing=(oop/18.3+pull/2)/(2*1.5),
+         hinge_twist_F=twist/18.3)
+    # Forward closure uses a compliant drive. Reverse fault torque is not
+    # limited by the spring; use a structural design load, not a guaranteed limit.
+    torque=176.5  # 6 V catalogue fault screen, not a measured upper limit
+    force=torque/5.75
+    show("stops & reaction screening",stop_torque=torque,stop_pin_F=force,
+         stop_pin_shear=force/(PI*.65**2),bronze_bearing=force/(1.30*.5))
+    print("  Rear collar, cross-rivet, tang/shoe and keyed ABS case cradle: see separate v6 assembly checks.")
 
-section("7. carriers, each load alone")
-print("tension: F_p_min %.2f > %.3f N, faces stay closed (ratio %.2f); geometric carrier: lugs on the self-locking stage" % (F_min, T_TENSION, F_min / T_TENSION))
-print("torsion: Hirth teeth, ratio %.2f to tooth separation; beyond separation the lugs on the housing slot sides (r %.2f)" % (F_min / F_sep_t, r_slot))
-# lug slots (3.20 + V lead-ins 0.6 x 2 = 4.4 wide) cut the head's Hirth ring along +-y; the in-plane tipping edge sits where the ring resumes
-slot_half = (SLOT_W + 2 * LIP_V) / 2   # slot plus V lead-ins
-edge_y = math.sqrt(HIRTH_RO ** 2 - slot_half ** 2)
-frac = 1 - 2 * 2 * math.asin(slot_half / HIRTH_RM) / (2 * math.pi)
-print("lug slots remove %.0f percent of the head Hirth ring at r_m; the in-plane tipping edge is at y = %.2f, not %.2f" % (100 * (1 - frac), edge_y, HIRTH_RO))
-tip = F_min * HIRTH_RO
-tip_ip = F_min * edge_y
-tip_lb, tip_ip_lb = F_lb * HIRTH_RO, F_lb * edge_y
-print("out-of-plane bending: tipping %.2f mN m vs %.2f (ratio %.2f); beyond it the pilot couple bounds the tilt to <= %.2f deg" % (tip, M_OOP, tip / M_OOP, math.degrees(PILOT_CLR[1] / 5.0)))
-print("in-plane bending: tipping %.2f vs %.2f (ratio %.2f); beyond it the lug pair (lever %.2f mm) as axial load on the self-locking stage" % (tip_ip, M_INPLANE, tip_ip / M_INPLANE, RC + edge_y))
-print("at the lower-bound F_p %.2f N: tension ratio %.2f, torsion-separation ratio %.2f, tipping ratios %.2f / %.2f: below 1 the faces gap" % (F_lb, F_lb / T_TENSION, F_lb / F_sep_t, tip_lb / M_OOP, tip_ip_lb / M_INPLANE))
-print("  (not separation: section 6a)")
-print("shear: Hirth teeth (ratio %.1f of preload to separating force)" % (F_min / SHEAR))
-assert F_min > T_TENSION and F_min > F_sep_t and tip > M_OOP and tip_ip > M_INPLANE
+def partial_lock_screen(mass_g,journal_mu=.23,front_mu=.20,clamp_thrust_floor=0.,
+                        fixed_key=False,com=(15.70,-.18,-.64)):
+    """Q96 investigation ONLY; no assumed levelling or opposing-contact rescue."""
+    W=mass_g*.001*9.80665
+    twist=2*W*12.7
+    M=hypot(48*W,14.5)
+    edge=sqrt(RO**2-((SLOT+.01+1.)/2)**2)*math.cos(PI/N_TEETH)
+    a=min((QT_LO-.2*r)/(1+.2*QT_LO/r) for r in (RI,RO))
+    sep=4*W+twist/a+W*max(1,RO/a)
+    slot=twist/R_GUIDE  # FULL external twist on just one side, either sign
+    pilot=(W+slot+2*M/B_MIN_SPAN)/COS_GUIDE
+    external=W+MU_P*(slot+pilot)
+    # New, longer journal spacing. Do not assume zero loss at the port.
+    rear=REAR
+    jspan=FWD[0]-rear[1]
+    dog=journal_mu*max(arm(x,aa,b) for x in (29.35-.127,30.00+.127) for aa in rear for b in FWD)/5.64
+    leg=journal_mu*max(arm(x,aa,b) for x in (26.84,27.10) for aa in rear for b in FWD)/5.05
+    show("Q96 assumptions",front_mu=front_mu,clamp_thrust_floor=clamp_thrust_floor,
+         journal_mu=journal_mu,fixed_separate_key=float(fixed_key),
+         roll_required=W*(12.7+abs(com[1])),pitch_tail_force=W*(35.6-com[0])/47.2)
+    show("Q96 partial; fixed service, no tooth torsion required",mass_g=mass_g,slot_force=slot,
+         paired_pilot_normal_sum=pilot,withdraw_force=external,slot_reverse_lash_deg=deg(2*HALF_LASH),
+         spring_side_loss=leg,dog_side_loss=dog,minimum_journal_spacing=jspan)
+    ts=KHI*(CMD+ERR+FREE_ERR-angle(FIRST,False)+deg(CAM_PHASE)+.6)
+    for label,closing in (("dry",DRY),("oil-to-dry",OIL)):
+        fp=(ts+CARTRIDGE_DRAG)/(R0*hp(Q2-DQ2,R0,closing[0])+3.6*clamp_thrust_floor)
+        A=fp+sep+M/edge
+        # One contact at either radius: eccentric axial force r*A as well
+        # as transverse h*A. The eccentric couple needs opposite journals.
+        def one_path(q,fn,thrust):
+            return max(max(0.,r*fn(q,r,u))+thrust+journal_mu*(abs(fn(q,r,u))*max(JR,JF)
+                       +r*(JR+JF)/jspan) for r in (R0,R1) for u in DRY)
+        kd=one_path(Q2-DQ2,hm,RF*front_mu)
+        T=(kd*A+CARTRIDGE_DRAG)/(1-dog)
+        Nlug=A*hypot(1,hp(Q2+DQ2,R0,DRY[1]))
+        L_req=Nlug*E_STAR/(PI*CROWN*(1.67*221)**2)
+        show("Q96 one-lug "+label+" breaking against fixed loads",A=A,T=T,
+             ratio_rated=RATED/T,effective_Hertz_line_needed_mm=L_req)
+    for name,q in (("shelf",0.),("steep",Q1+DQ1),("shallow",Q2+DQ2)):
+        # One cam side PLUS one guide-flat side can load the pilot. Worst
+        # signs treated independently: nonpositive denominator disproves
+        # THIS certificate, not proof that every build self-jams.
+        h=max(hp(q,r,DRY[1]) for r in (R0,R1))
+        lever=max(r*hp(q,r,DRY[1]) for r in (R0,R1))
+        gamma=MU_P*(lever/R_GUIDE+(h+lever/R_GUIDE+2*R1/B_MIN_SPAN)/COS_GUIDE)
+        show("Q96 one-lug eject "+name,feedback=gamma)
+        if gamma<1:
+            show("  positive-flank (upper sizing estimate)",T=(external/(1-gamma)
+                 *one_path(q,hp,RR*MU_R)+CARTRIDGE_DRAG)/(1-dog))
+        else:
+            print("  no finite upper torque certified by this Coulomb envelope")
+    # Conditional free-rocker case. Unlike the one-tip screen, the
+    # resistance to rocking is a MOMENT with a load-independent intercept.
+    # These bearing dimensions/restraints are proposals, not v6 properties.
+    for name,q,fn in (("break",Q2-DQ2,hm),("eject lock",Q2+DQ2,hp),
+                      ("eject steep",Q1+DQ1,hp),("shelf",0.,hp)):
+        hs=[fn(q,r,u) for r in (R0,R1) for u in DRY]
+        hh=max(map(abs,hs))
+        lever=max(abs(r*fn(q,r,u)) for r in (R0,R1) for u in DRY)
+        def resist(A,small_pad):
+            G=(twist+lever*A)/R_GUIDE
+            H=hh*A+(0 if fixed_key else G)
+            # Face friction at slot; cam may have a bounded lateral
+            # in-plane component .30A. Opposed radial bearing bands span
+            # >=1.10 along pivot axis. Charge BOTH orthogonal moments to
+            # their reaction sum, not only the net force at a central pin.
+            Fxy=1.30*A+(0 if fixed_key else .20*G)
+            RP=Fxy+2*((lever*A if fixed_key else twist)+1.26*H+.805*Fxy)/1.10
+            cheek=.23*.85 if small_pad else .80*2.40
+            return .23*.505*RP+cheek*H+(0 if fixed_key else .20*3.75*G)+(.03+1.26*.30)*A
+        for small in (False,True):
+            m0=resist(0,small)
+            b=resist(1,small)-m0
+            print(f"  {name}, {'small' if small else 'broad'} cheek: "
+                  f"M <= {m0:.3f} + {b:.3f} A; "
+                  + ("one-tip static possible at any load in this bound"
+                     if b>=R0 else f"one-tip crossover A*={m0/(R0-b):.3f} N"))
+        for target in (False,True):
+            net_guide=.25 if target else 1.
+            def calc(A):
+                Mcap=(.50+.30*A) if target else resist(A,True)
+                E=min(R1*A,Mcap)
+                imbalance=min(A,((R1-R0)*A+2*E)/(R1+R0))
+                side=.5*((max(hs)-min(hs))*A+abs(max(hs)+min(hs))*imbalance)
+                J=journal_mu*(max(JR,JF)*side+(JR+JF)*E/jspan)
+                G=(twist+lever*A)/R_GUIDE
+                N=(W+2*M/B_MIN_SPAN+net_guide*G+side+2*E/B_MIN_SPAN)/COS_GUIDE
+                return W+MU_P*(G+N),J
+            if name=="break":
+                # Both low and high external torque present; keep maximum
+                # trapped oil preload and dry reverse lever in one case.
+                F=(ts+CARTRIDGE_DRAG)/(R0*hp(Q2-DQ2,R0,OIL[0])+3.6*clamp_thrust_floor)+sep+M/edge
+                thrust=RF*front_mu
+            else:
+                # Piecewise-affine monotone envelope: Freq(0)>0, slopes
+                # nonincreasing as moment and imbalance saturate.
+                lo,hi=0.,1000.
+                assert calc(hi)[0]<hi
+                for _ in range(60):
+                    mid=(lo+hi)/2
+                    if calc(mid)[0]>mid:
+                        lo=mid
+                    else:
+                        hi=mid
+                F=hi
+                thrust=RR*MU_R
+            T=((lever+thrust)*F+calc(F)[1]+CARTRIDGE_DRAG)/(1-dog)
+            show("Q96 "+name+(" redesign TARGET, not achieved" if target else " proposed small free cheeks"),
+                 axial_contact=F,T=T,ratio_rated=RATED/T)
 
-section("8. all declared loads at once (an upper bound; not a stated operating case)")
-sep_axial = T_TENSION + F_sep_t + SHEAR
-print("axial separating loads: tension %.3f + torsion %.3f + shear %.3f = %.3f N vs F_p_min %.2f: the teeth stay seated (ratio %.2f)" %
-      (T_TENSION, F_sep_t, SHEAR, sep_axial, F_min, F_min / sep_axial))
-rem = F_min - sep_axial
-M_comb = math.hypot(M_OOP, M_INPLANE)
-print("residual clamp %.2f N: tipping capacity %.2f mN m against the vector sum of both bendings %.2f mN m: the faces gap at one edge" % (rem, rem * HIRTH_RO, M_comb))
-print("  gapping is not separation: the lugs stay on the self-locking stage (geometric while self-locked), the teeth on the")
-print("  far side stay meshed, the pilot bounds the tilt. Retention holds; stiffness falls (Gate 2)")
-assert sep_axial < F_min
+def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--declaration',type=Path,
+                        default=Path(__file__).resolve().parents[1]/'declaration.json')
+    parser.add_argument('--q96-only',action='store_true',help="run only the separate SCS0037 investigation")
+    parser.add_argument('--journal-mu',type=float,default=.23,help="Q96 journal sensitivity, not cam friction")
+    parser.add_argument('--front-mu',type=float,default=.20,help="Q96 breakout thrust friction; closure floor always zero")
+    parser.add_argument('--fixed-key',action='store_true',help="Q96 separate stud torque guide at r≥3.45, no twist transfer via rocker")
+    args=parser.parse_args()
+    with args.declaration.open() as f:
+        declaration=json.load(f)
+    masses=declaration["components"]
+    mg=sum(c["mass_mg"] for c in masses)
+    assert mg==declaration["mass_budget"]["total_mass_mg"] and mg>0
+    if not (0<=args.journal_mu<=.35 and 0<=args.front_mu<=.35):
+        parser.error("sensitivity inputs must be in [0,0.35]")
+    com=[sum(c["mass_mg"]*c["box"]["pose"]["position_um"][i]
+             for c in masses)/mg/1000 for i in range(3)]
+    def q96():
+        for m in sorted({mg/1000,46.}):
+            partial_lock_screen(m,args.journal_mu,args.front_mu,0.,args.fixed_key,com)
+    if args.q96_only:
+        q96()
+        return
+    layout()
+    assert_open_and_overlap()
+    show("actual input declaration",version=declaration['candidate_version'],mg=mg,x=com[0],y=com[1],z=com[2])
+    print("Conditional two-contact path only; not a release certificate. See partial and one-tip cases below.")
+    loads(mg/1000,com,verbose=True)
+    for q in (0., Q2-DQ2, Q1-DQ1):
+        show("176.5 Nmm catalogue fault screen; own drive only (no drag credit)",q=q,
+             positive_flank_F=176.5/(R0*hp(q,R0,OIL[0])))
+    q96()
 
-section("9. release (bounded, independent: the head unit's own motor)")
-ts_avail = T_STALL_3V * V_RELEASE / 3.0 * GEAR_I * ETA[0]
-worst = (F_max + sep_axial) * k_release(MU_DRY[1], LAM2, MU_T[1])
-worst_o = (Fo_max + sep_axial) * k_release(MU_OIL[1], LAM2, MU_T[1])
-print("release needs, worst dry corner (F_p_max %.2f + all axial loads, flank 0.23, thrust 0.20): %.2f mN m" % (F_max, worst))
-print("release needs, oil case: %.2f mN m" % worst_o)
-print("available at %.1f V at the motor (cell >= 3.75 V rule), eta 0.9: %.2f mN m -> margins %.2f dry, %.2f oil" % (V_RELEASE, ts_avail, ts_avail / worst, ts_avail / worst_o))
-print("preload and available torque scale with the same motor constant: the margin does not depend on motor-to-motor variation")
-print("capture stage drawing one free unit at mu = 1: %.2f mN m (vs closing %.2f)" % (MU_TABLE_BOUND * W * k_close(MU_DRY[1], LAM1, MU_T[1]), Ts_c[0]))
-print("ejection: the outer flank pushes the stud out %.1f mm; the reaction pushes the sleeve rearward onto the 304 retainer collar" % (D1 + D2))
-assert ts_avail / worst > 1.25 and ts_avail / worst_o > 1.25
-
-section("10. stresses")
-Es = 1 / ((1 - NU_SS ** 2) / E_SS + (1 - NU_BR ** 2) / E_BR)
-def hertz_line(F, R, L): return math.sqrt(F * Es / (math.pi * R * L))
-onset = 1.67 * SY_BR
-lever = RC + HIRTH_RO
-cases = [("F_p_max alone (dry)", F_max / 2),
-         ("F_p_max + all axial loads + in-plane bending at the drive limit (dry)", (F_max + sep_axial) / 2 + M_INPLANE / lever),
-         ("same, oil case", (Fo_max + sep_axial) / 2 + M_INPLANE / lever),
-         ("fault bending (joint stall at 3.6 V), dry", (F_max + sep_axial) / 2 + M_INPLANE_FAULT / lever)]
-for n, F in cases:
-    print("  lug on bronze flank, %s: %.2f N per lug, Hertz p0 %.0f MPa (onset %.0f = 1.67 x yield, rule of thumb)" % (n, F, hertz_line(F, LUG_R, L_CONTACT), onset))
-assert hertz_line(cases[1][1], LUG_R, L_CONTACT) < onset and hertz_line(cases[2][1], LUG_R, L_CONTACT) < onset
-Z = math.pi * (2 * LUG_R) ** 3 / 32
-print("  lug root bending, combination: %.1f MPa (304 yield 205)" % (cases[1][1] * (RC - STUD_R) / Z))
-print("  PTFE ring r 3.6..4.4: %.2f MPa at the combination" % (2 * cases[1][1] / (math.pi * (4.4 ** 2 - 3.6 ** 2))))
-band = 0.05   # PROVISIONAL flank contact band width per tooth flank
-print("  Hirth flanks: %.2f N on 72 flanks, contact band %.2f mm (PROVISIONAL): %.1f MPa" % (F_max + sep_axial, band, (F_max + sep_axial) / (72 * (HIRTH_RO - HIRTH_RI) * band)))
-
-section("11. stops, retainer and mount")
-t_stop = T_STALL_3V * 3.6 / 3.0 * GEAR_I * ETA[1]
-r_pin, d_pin = 5.3, 1.0
-F_pin = t_stop / r_pin
-print("stop pin dia %.1f (304), pressed into the head flange rear face at r %.1f, runs in an arc groove (0.5 deep) of the sleeve front face;" % (d_pin, r_pin))
-print("  worst stop torque %.1f mN m (3.6 V stall, eta 1): %.2f N, shear %.1f MPa, bronze bearing %.1f MPa" % (t_stop, F_pin, F_pin / (math.pi * d_pin ** 2 / 4), F_pin / (d_pin * 0.5)))
-print("  open stop sets the entry notch over the housing slot: the V lead-in allows +-%.1f deg at Rc; stop position tolerance (IT9) about +-0.3 deg" % math.degrees(LIP_V / RC))
-F_ej = MU_TABLE_BOUND * W + 0.5
-print("rear retainer collar (304, pressed on the housing tube, r 2.05..4.9 x 0.4): ejection reaction <= %.2f N (drag of one free unit at mu 1 plus a" % F_ej)
-print("  PROVISIONAL 0.5 N for pilot and teeth friction) on the gear rear face r 3.55..4.9: %.2f MPa" % (F_ej / (math.pi * (4.9 ** 2 - 3.55 ** 2))))
-FLG_R, SCREW_R, PLATE_T = 7.0, 7.8, 1.2
-print("mount: the 304 housing front flange (disc r %.1f, lobes at +-z to r 9.4) lies on the PA12 front plate's outer face; two countersunk" % FLG_R)
-print("  ISO 7046 M1.6 A2 screws through the lobes (z +-%.1f from the axis) and the 1.2 mm plate into tapped 304 nut blocks behind it" % SCREW_R)
-print("  pull-out (tension %.3f N): the screws, nut blocks bearing on the plate's inner face, %.2f N each" % (T_TENSION, T_TENSION / 2))
-print("  push-in and both bendings: the flange bears on the plate's outer face and pivots on its edge; the screws hold the far side")
-for n, M, lev in (("out-of-plane (about y), pivot on a lobe tip, far screw at", M_OOP, SCREW_R + 9.4),
-                  ("in-plane (about z), pivot on the disc edge at y +-7.0, screws at lever", M_INPLANE, FLG_R),
-                  ("in-plane fault (joint stall at 3.6 V), same lever", M_INPLANE_FAULT, FLG_R)):
-    Fs = M / lev + T_TENSION / 2
-    print("  %s %.1f mm: %.1f mN m -> %.2f N per screw (both screws share the in-plane case: %.2f N each)" % (n, lev, M, Fs, M / lev / 2 + T_TENSION / 2))
-Fs_max = M_INPLANE_FAULT / FLG_R / 2 + T_TENSION / 2
-A_nut = 2.2 * 2.2 - math.pi * 0.8 ** 2
-print("  worst nut-block bearing on PA12: %.2f N over %.2f mm2 = %.2f MPa (PA12 tensile 48 MPa); thread engagement 0.8 mm in 304:" % (Fs_max, A_nut, Fs_max / A_nut))
-A_thr = math.pi * 1.17 * 0.8 * 0.5
-print("  stripping area about %.2f mm2 x 0.6 x 515 MPa = %.0f N" % (A_thr, A_thr * 0.6 * 515))
-F_edge = M_INPLANE_FAULT / FLG_R
-print("  flange edge on the plate face (fault): %.2f N on a 1 mm wide bearing band 4 mm long: %.2f MPa" % (F_edge, F_edge / 4.0))
-
-print("tail stud mount: two countersunk ISO 7046 M1.6 A2 screws from inside the tail end plate (heads flush with its inner face) into blind holes")
-print("  0.6 deep in the 304 stud flange at z +-4.6 from the axis; no thread in PA12")
-r_s = 4.6
-for n, F in (("tension", T_TENSION / 2),
-             ("in-plane bending (pivot on the flange edge at y +-6.3, both screws on the z line)", M_INPLANE / HIRTH_RO / 2 + T_TENSION / 2),
-             ("in-plane fault", M_INPLANE_FAULT / HIRTH_RO / 2 + T_TENSION / 2),
-             ("out-of-plane bending (pivot on the far flange edge, lever 6.3 + 4.6)", M_OOP / (HIRTH_RO + r_s) + T_TENSION / 2)):
-    print("  %-75s %.2f N per screw" % (n, F))
-F_cone = M_INPLANE_FAULT / HIRTH_RO / 2 + T_TENSION / 2
-A_cone = math.pi / 4 * (3.0 ** 2 - 1.6 ** 2)
-print("  worst: countersunk head bearing on the PA12 cone, projected %.2f mm2: %.2f MPa; thread 0.6 deep in 304 strips at about %.0f N" % (A_cone, F_cone / A_cone, math.pi * 1.17 * 0.6 * 0.5 * 0.6 * 515))
-print("  torsion: the screws in shear at r 4.6: %.2f N each, PA12 hole bearing %.2f MPa; shear W: %.2f N each" % (T_TORSION / (2 * r_s), T_TORSION / (2 * r_s) / (1.6 * 1.2), SHEAR / 2))
-print("front plate: one SLS part with the head shell (bottom, sides, front plate, inner wall); the top is a lid that carries no declared load")
-nu_pa = 0.4   # PROVISIONAL Poisson ratio of PA12
-SIG_PA = 48.0  # Materialise PA12 (SLS) tensile strength, DIN EN ISO 527 (raw HTML of the cited page)
-P = M_INPLANE_FAULT / FLG_R / 2 + T_TENSION / 2
-a_pl, r0 = 10.0, 1.1
-sig = 3 * P / (2 * math.pi * PLATE_T ** 2) * ((1 + nu_pa) * math.log(a_pl / r0) + 1)
-print("  plate bending under one nut block, fault load %.2f N, as a clamped circular plate radius %.0f mm loaded over r %.1f (Roark): %.1f MPa" % (P, a_pl, r0, sig))
-print("  against the PA12 tensile strength %.0f MPa: ratio %.1f" % (SIG_PA, SIG_PA / sig))
-def strip(P, span, width):
-    return 6 * (P * span / 8) / (width * PLATE_T ** 2)   # fixed-fixed beam, central point load
-s_head = strip(P, 23.0, 7.45 - 1.0 - 6.45 + 10.8 - 7.45)   # strip above the window: z 7.45..10.8 (3.35 mm) spanning the side walls
-s_tail = strip(M_INPLANE_FAULT / HIRTH_RO / 2 + T_TENSION / 2, 23.0, 4.0)
-print("  as strips (fixed-fixed beams, span 23 mm between the side walls, central load): head plate strip 3.35 mm wide %.1f MPa," % s_head)
-print("  tail end plate 4 mm wide strip under a stud screw %.1f MPa; against %.0f MPa: ratios %.1f, %.1f" % (s_tail, SIG_PA, SIG_PA / s_head, SIG_PA / s_tail))
-assert SIG_PA / s_head > 2 and SIG_PA / s_tail > 2
-print("hinge: the head ears and the tail plates are 304 with root legs (head legs inside the head cavity, tail upper leg in the gap,")
-print("  tail lower plate on the tail floor), each fixed by countersunk M1.6 A2 screws through PA12 into 304 thread")
-ear_sep = 18.3
-F_ear = M_OOP / ear_sep + T_TENSION / 2
-print("  worst ear force (out-of-plane bending over the ear spacing %.1f plus half the tension) %.2f N; torsion as a lateral couple %.2f N" % (ear_sep, F_ear, T_TORSION / ear_sep))
-print("  pin dia 2 in 304 bosses 1.5 long: bearing %.2f MPa" % (F_ear / (2 * 1.5)))
-
-T_m_stall = stall_typ(3.6)
-F_mesh = T_m_stall / 1.8
-bond_cap = 13.5 * math.pi * 6.0 * 6.0
-print("coupler motor mount: 304 clip band bonded to the gearhead with LOCTITE 638 over 6 mm (113 mm2); 15-minute strength 13.5 N/mm2")
-print("  gives %.0f N of shear, %.1f N m of torque at r 3.05, against the motor reaction %.1f mN m (3.6 V stall); mesh force %.1f N goes" % (bond_cap, bond_cap * 3.05 / 1000, T_m_stall, F_mesh))
-print("  through the clip's two feet and countersunk M1.6 screws from below into 304 thread: %.1f N per screw, PA12 bearing %.2f MPa" % (F_mesh / 2, F_mesh / 2 / (math.pi / 4 * (3.0 ** 2 - 1.6 ** 2))))
-print("  the gearhead housing material is not stated in the datasheet; the TDS strengths are for steel pins and collars")
-
-section("12. pre-alignment windows (presented pose; not a capture window, CPL-006)")
-lat = (BORE_R + BORE_CH) - (STUD_R - NOSE_CH)
-print("reference planes: head flange front face = head Hirth pitch plane (teeth crest +0.2, root -0.2); the head inner land (r 2.05..2.6)")
-print("  is recessed %.2f below it, and the bore chamfer runs %.2f from the land; the stud's inner land (r 2.0..2.6) is also recessed" % (LAND, BORE_CH))
-print("  %.2f, so the lands never touch; the pilot nose chamfer %.1f is measured from the pilot tip; the lug V lead-ins start at the" % (LAND, NOSE_CH))
-print("  head flange's tooth crest plane")
-print("lateral: bore chamfer %.1f, nose chamfer %.1f and the clearance: +-%.2f mm vs the +-0.6 mm two-unit PA12 stack" % (BORE_CH, NOSE_CH, lat))
-print("no wedging on the 45 deg chamfers while mu < 1: at the dry steel-steel upper bound 0.8 the centring force is %.2f of the push" % ((1 - MU_SS_MAX) / (1 + MU_SS_MAX)))
-lug_front = s_nom + LUG_R
-pilot_cyl = STUD_L - NOSE_CH
-bore_cyl = LAND + BORE_CH
-TOOTH = 0.2
-crest_margin = pilot_cyl - (lug_front + TOOTH) - bore_cyl
-print("sequence: the lug fronts are at %.2f, the pilot cylinder starts at %.2f; when the lug fronts reach the head's tooth crest plane (+0.2)" % (lug_front, pilot_cyl))
-print("  the pilot cylinder is %.2f past the head pitch plane and the bore cylinder starts at %.2f: margin %.2f, so the lugs" % (pilot_cyl - lug_front - TOOTH, bore_cyl, crest_margin))
-print("  reach the lip, so the lateral error at the lugs is <= the pilot clearance %.3f mm, inside the +-0.6 mm V lead-ins" % PILOT_CLR[1])
-assert crest_margin >= 0.15
-print("roll: V lead-in 0.6 at the lug tip radius %.1f: +-%.1f deg vs about +-1.4 deg (0.6 mm base flatness over 25 mm)" % (LUG_TIP, math.degrees(LIP_V / LUG_TIP)))
-print("pitch: both units stand on the table; flatness stack 0.6 mm over 47 mm = +-%.2f deg" % math.degrees(math.atan(0.6 / 47)))
-print("yaw and the joint angles: only the relative pose of the head unit's head segment and the tail unit's tail segment matters;")
-print("  each is rigid, so a joint angle error moves the far segments, not the coupler. Full pilot engagement bounds the yaw to")
-print("  clearance / length = %.2f deg before the Hirth teeth meet, and the teeth align it under the draw" % math.degrees(PILOT_CLR[1] / 5.0))
-print("axial push to reach the capture stage: not supplied by the candidate. Stroke %.2f mm, force about mu W = %.2f N at mu 1 plus" % (c0, W))
-print("  chamfer friction; it comes from the experiment's documented start configuration (Q31 item 1) or a later approach design")
+if __name__=='__main__':
+    main()

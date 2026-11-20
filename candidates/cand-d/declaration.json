@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
   "candidate_id": "cand-d",
-  "candidate_version": 5,
+  "candidate_version": 6,
   "family": "B",
   "declared_on": "2026-11-20",
   "author": "Claude Opus 5.5 (engineering lead, cand-d author)",
-  "summary": "Two-segment inline body (Family B), version 5, designed coupler-first. A long head segment (PA12 shell 33.8 x 25.4 x 24 mm) holds the cell, the coupler drive and the joint drive; a short tail segment (8.8 mm) holds the controller and carries the coupler stud. One vertical revolute joint (pin at mid-gap, 304 ears and plates, spur sector z58 driven by a 6 mm gearmotor) bends the chain in the table plane, +-15 deg working, outline contact at +-16.1 deg. The coupler is rigid and gendered: a one-piece 304 tail stud (Hirth-toothed flange, dia 4 pilot, two dia 3 lugs) enters the head cartridge: a one-piece 304 housing (front flange with a Hirth ring, lying on the front plate's outer face and screwed through it into two nut blocks, and a tube with axial lug slots) around a C95400 aluminium bronze cam sleeve whose two helical slots have a 20 deg capture stage and a 3 deg self-locking lock stage, on a PTFE thrust ring, retained by a 304 collar. A 6 mm gearmotor turns the sleeve to a 1.5 V stall, which seats the 36-tooth Hirth faces with 6.62 to 13.50 N typical preload (1.76 N guaranteed); axial tolerance is absorbed by sleeve travel inside the lock stage. Torsion and shear are carried by the Hirth teeth with zero lash. No spring, no SMA, no magnet. BLE only, no power transfer. Version 5 closes the items of retention-review-v4-r1 (Q93): a C95400 sleeve and PTFE-coated head teeth let the guaranteed lower-bound closing force roll and pitch units flat; a tighter pilot bounds yaw; the coupler motor is bonded into a 304 clip; a cell-voltage divider is declared.",
+  "summary": "Family B, cand-d v6 (Q95/Q96). A long head and short tail articulate about a vertical pin with a geared sector; a tail stud with a pivoted lug bar mates with a head cartridge and rigid face teeth. An onboard serial servo winds the sleeve via a torsion spring; a separate positive dog reverses it. A low-lead cam, not the servo or spring, retains a fully locked joint when power is lost. Mechanical flats react servo torque and a cross-pinned collar takes ejection reaction. No magnets, ground-truth docking signal, inter-unit energy transfer or active unloaded holding assumed. The author field preserves the candidate lineage; dossier-v6 names this revision's design authors.",
   "stowed_geometry": {
     "primitives": [
       {
@@ -108,8 +108,8 @@
         "pose": {
           "position_um": [
             -11200,
-            3300,
-            1000
+            600,
+            -4600
           ],
           "orientation": [
             0.7071067811865476,
@@ -128,8 +128,8 @@
         "pose": {
           "position_um": [
             36000,
-            3300,
-            1000
+            600,
+            -4600
           ],
           "orientation": [
             0.7071067811865476,
@@ -141,18 +141,41 @@
         "role": "coupler"
       },
       {
-        "id": "head-flange-lobes",
+        "id": "head-flange-ear-p",
         "kind": "box",
         "half_extent_um": [
           400,
-          1700,
-          9400
+          2600,
+          1900
         ],
         "pose": {
           "position_um": [
             36000,
-            3300,
-            1000
+            7700,
+            -400
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "coupler"
+      },
+      {
+        "id": "head-flange-ear-n",
+        "kind": "box",
+        "half_extent_um": [
+          400,
+          2600,
+          1900
+        ],
+        "pose": {
+          "position_um": [
+            36000,
+            -6500,
+            -8800
           ],
           "orientation": [
             1.0,
@@ -171,8 +194,8 @@
         "pose": {
           "position_um": [
             36500,
-            3300,
-            1000
+            600,
+            -4600
           ],
           "orientation": [
             0.7071067811865476,
@@ -191,8 +214,8 @@
         "pose": {
           "position_um": [
             -14850,
-            3300,
-            1000
+            600,
+            -4600
           ],
           "orientation": [
             0.7071067811865476,
@@ -206,13 +229,13 @@
       {
         "id": "stud-lugs",
         "kind": "cylinder",
-        "radius_um": 1500,
-        "half_height_um": 6200,
+        "radius_um": 1250,
+        "half_height_um": 5250,
         "pose": {
           "position_um": [
             -15200,
-            3300,
-            1000
+            600,
+            -4600
           ],
           "orientation": [
             0.7071067811865476,
@@ -257,8 +280,8 @@
         "pose": {
           "position_um": [
             -14350,
-            3300,
-            1000
+            600,
+            -4600
           ],
           "orientation": [
             1.0,
@@ -274,14 +297,14 @@
         "kind": "box",
         "half_extent_um": [
           400,
-          7000,
-          9400
+          9700,
+          7000
         ],
         "pose": {
           "position_um": [
             36000,
-            3300,
-            1000
+            600,
+            -4600
           ],
           "orientation": [
             1.0,
@@ -396,8 +419,8 @@
         "pose": {
           "position_um": [
             -11200,
-            3300,
-            1000
+            600,
+            -4600
           ],
           "orientation": [
             0.7071067811865476,
@@ -416,8 +439,8 @@
         "pose": {
           "position_um": [
             36000,
-            3300,
-            1000
+            600,
+            -4600
           ],
           "orientation": [
             0.7071067811865476,
@@ -429,18 +452,41 @@
         "role": "coupler"
       },
       {
-        "id": "head-flange-lobes",
+        "id": "head-flange-ear-p",
         "kind": "box",
         "half_extent_um": [
           400,
-          1700,
-          9400
+          2600,
+          1900
         ],
         "pose": {
           "position_um": [
             36000,
-            3300,
-            1000
+            7700,
+            -400
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "role": "coupler"
+      },
+      {
+        "id": "head-flange-ear-n",
+        "kind": "box",
+        "half_extent_um": [
+          400,
+          2600,
+          1900
+        ],
+        "pose": {
+          "position_um": [
+            36000,
+            -6500,
+            -8800
           ],
           "orientation": [
             1.0,
@@ -459,8 +505,8 @@
         "pose": {
           "position_um": [
             36500,
-            3300,
-            1000
+            600,
+            -4600
           ],
           "orientation": [
             0.7071067811865476,
@@ -479,8 +525,8 @@
         "pose": {
           "position_um": [
             -14850,
-            3300,
-            1000
+            600,
+            -4600
           ],
           "orientation": [
             0.7071067811865476,
@@ -494,13 +540,13 @@
       {
         "id": "stud-lugs",
         "kind": "cylinder",
-        "radius_um": 1500,
-        "half_height_um": 6200,
+        "radius_um": 1250,
+        "half_height_um": 5250,
         "pose": {
           "position_um": [
             -15200,
-            3300,
-            1000
+            600,
+            -4600
           ],
           "orientation": [
             0.7071067811865476,
@@ -517,22 +563,145 @@
     {
       "id": "L-top",
       "kind": "structure",
-      "description": "head segment top lid, a separate part screwed on last; carries no declared load (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
-      "mass_mg": 944,
+      "description": "Flush 304 head lid skin above trimmed case and cassette; PA12 frame outside opening.",
+      "mass_mg": 470,
       "mass_basis": "derived",
       "derivation": {
-        "density_kg_m3": 950.0,
-        "volume_m3": 9.936479999999993e-07
+        "density_kg_m3": 7900.0,
+        "volume_m3": 5.94858e-08
       },
       "box": {
         "half_extent_um": [
-          16300,
+          10450,
+          5550,
+          110
+        ],
+        "pose": {
+          "position_um": [
+            12250,
+            600,
+            11890
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-20",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+      }
+    },
+    {
+      "id": "L-top-rail-n",
+      "kind": "structure",
+      "description": "PA12 frame locked to perforated inlay edge (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
+      "mass_mg": 185,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 950.0,
+        "volume_m3": 1.9436999999999985e-07
+      },
+      "box": {
+        "half_extent_um": [
+          10450,
+          3875,
+          600
+        ],
+        "pose": {
+          "position_um": [
+            12250,
+            -8825,
+            11400
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls",
+        "accessed": "2026-11-20",
+        "title": "Materialise PA12 (SLS) datasheet table: density 0.95 g/cm3, tensile strength 48 MPa (DIN EN ISO 527), tensile modulus 1650 MPa; same page gives the SLS tolerance used in Q68"
+      }
+    },
+    {
+      "id": "L-top-rail-p",
+      "kind": "structure",
+      "description": "PA12 frame locked to perforated inlay edge (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
+      "mass_mg": 156,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 950.0,
+        "volume_m3": 1.642739999999999e-07
+      },
+      "box": {
+        "half_extent_um": [
+          10450,
+          3275,
+          600
+        ],
+        "pose": {
+          "position_um": [
+            12250,
+            9425,
+            11400
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls",
+        "accessed": "2026-11-20",
+        "title": "Materialise PA12 (SLS) datasheet table: density 0.95 g/cm3, tensile strength 48 MPa (DIN EN ISO 527), tensile modulus 1650 MPa; same page gives the SLS tolerance used in Q68"
+      }
+    },
+    {
+      "id": "L-top-front",
+      "kind": "structure",
+      "description": "PA12 head lid forward of servo (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
+      "mass_mg": 339,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 950.0,
+        "volume_m3": 3.566159999999997e-07
+      },
+      "box": {
+        "half_extent_um": [
+          5850,
           12700,
           600
         ],
         "pose": {
           "position_um": [
-            18100,
+            28550,
             0,
             11400
           ],
@@ -558,23 +727,269 @@
     {
       "id": "L-bottom",
       "kind": "structure",
-      "description": "head segment bottom wall (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
-      "mass_mg": 944,
+      "description": "Flush keyed floor pan under swept sector and pinion.",
+      "mass_mg": 309,
       "mass_basis": "derived",
       "derivation": {
-        "density_kg_m3": 950.0,
-        "volume_m3": 9.936479999999993e-07
+        "density_kg_m3": 7900.0,
+        "volume_m3": 3.9094000000000006e-08
       },
       "box": {
         "half_extent_um": [
-          16300,
+          4700,
+          7850,
+          110
+        ],
+        "pose": {
+          "position_um": [
+            6500,
+            3650,
+            -11890
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-20",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+      }
+    },
+    {
+      "id": "L-bottom-rail-n",
+      "kind": "structure",
+      "description": "PA12 frame locked to perforated inlay edge (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
+      "mass_mg": 91,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 950.0,
+        "volume_m3": 9.587999999999994e-08
+      },
+      "box": {
+        "half_extent_um": [
+          4700,
+          4250,
+          600
+        ],
+        "pose": {
+          "position_um": [
+            6500,
+            -8450,
+            -11400
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls",
+        "accessed": "2026-11-20",
+        "title": "Materialise PA12 (SLS) datasheet table: density 0.95 g/cm3, tensile strength 48 MPa (DIN EN ISO 527), tensile modulus 1650 MPa; same page gives the SLS tolerance used in Q68"
+      }
+    },
+    {
+      "id": "L-bottom-rail-p",
+      "kind": "structure",
+      "description": "PA12 frame locked to perforated inlay edge (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
+      "mass_mg": 13,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 950.0,
+        "volume_m3": 1.3535999999999983e-08
+      },
+      "box": {
+        "half_extent_um": [
+          4700,
+          600,
+          600
+        ],
+        "pose": {
+          "position_um": [
+            6500,
+            12100,
+            -11400
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls",
+        "accessed": "2026-11-20",
+        "title": "Materialise PA12 (SLS) datasheet table: density 0.95 g/cm3, tensile strength 48 MPa (DIN EN ISO 527), tensile modulus 1650 MPa; same page gives the SLS tolerance used in Q68"
+      }
+    },
+    {
+      "id": "L-bottom-mid",
+      "kind": "structure",
+      "description": "Intact 1.2 mm PA12 floor bolted to cassette sole (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
+      "mass_mg": 342,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 950.0,
+        "volume_m3": 3.596639999999998e-07
+      },
+      "box": {
+        "half_extent_um": [
+          5900,
           12700,
           600
         ],
         "pose": {
           "position_um": [
-            18100,
+            17100,
             0,
+            -11400
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls",
+        "accessed": "2026-11-20",
+        "title": "Materialise PA12 (SLS) datasheet table: density 0.95 g/cm3, tensile strength 48 MPa (DIN EN ISO 527), tensile modulus 1650 MPa; same page gives the SLS tolerance used in Q68"
+      }
+    },
+    {
+      "id": "L-bottom-front",
+      "kind": "structure",
+      "description": "Flush keyed 304 pan under sleeve, collar and window.",
+      "mass_mg": 393,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 4.96944e-08
+      },
+      "box": {
+        "half_extent_um": [
+          5700,
+          6500,
+          140
+        ],
+        "pose": {
+          "position_um": [
+            28700,
+            600,
+            -11860
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-20",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+      }
+    },
+    {
+      "id": "L-bottom-front-rail-n",
+      "kind": "structure",
+      "description": "PA12 frame locked to perforated inlay edge (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
+      "mass_mg": 88,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 950.0,
+        "volume_m3": 9.302399999999993e-08
+      },
+      "box": {
+        "half_extent_um": [
+          5700,
+          3400,
+          600
+        ],
+        "pose": {
+          "position_um": [
+            28700,
+            -9300,
+            -11400
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls",
+        "accessed": "2026-11-20",
+        "title": "Materialise PA12 (SLS) datasheet table: density 0.95 g/cm3, tensile strength 48 MPa (DIN EN ISO 527), tensile modulus 1650 MPa; same page gives the SLS tolerance used in Q68"
+      }
+    },
+    {
+      "id": "L-bottom-front-rail-p",
+      "kind": "structure",
+      "description": "PA12 frame locked to perforated inlay edge (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
+      "mass_mg": 73,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 950.0,
+        "volume_m3": 7.660799999999995e-08
+      },
+      "box": {
+        "half_extent_um": [
+          5700,
+          2800,
+          600
+        ],
+        "pose": {
+          "position_um": [
+            28700,
+            9900,
             -11400
           ],
           "orientation": [
@@ -599,7 +1014,7 @@
     {
       "id": "L-side-p",
       "kind": "structure",
-      "description": "head segment +y side wall (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
+      "description": "Head +y side, motor collar locally relieved (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
       "mass_mg": 803,
       "mass_basis": "derived",
       "derivation": {
@@ -640,7 +1055,7 @@
     {
       "id": "L-side-n",
       "kind": "structure",
-      "description": "head segment -y side wall (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
+      "description": "Head -y side (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
       "mass_mg": 803,
       "mass_basis": "derived",
       "derivation": {
@@ -681,65 +1096,24 @@
     {
       "id": "L-inner",
       "kind": "structure",
-      "description": "head segment inner end wall, core (slot z -10.8 to -9.0 for the joint sector; notches at |y| < 1.6 for the two hinge ears) (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
-      "mass_mg": 440,
+      "description": "Hinge-facing wall negative side of servo pocket (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
+      "mass_mg": 173,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 950.0,
-        "volume_m3": 4.6368000000000003e-07
+        "volume_m3": 1.82208e-07
       },
       "box": {
         "half_extent_um": [
           600,
-          11500,
-          8400
+          3650,
+          10400
         ],
         "pose": {
           "position_um": [
             2400,
-            0,
-            900
-          ],
-          "orientation": [
-            1.0,
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "dimension_basis": "derived",
-      "peak_power_mw": 0,
-      "average_power_mw": 0,
-      "power_basis": "derived",
-      "source": {
-        "kind": "datasheet",
-        "url": "https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls",
-        "accessed": "2026-11-20",
-        "title": "Materialise PA12 (SLS) datasheet table: density 0.95 g/cm3, tensile strength 48 MPa (DIN EN ISO 527), tensile modulus 1650 MPa; same page gives the SLS tolerance used in Q68"
-      }
-    },
-    {
-      "id": "L-inner-up-n",
-      "kind": "structure",
-      "description": "head inner wall beside the upper ear notch, -y (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
-      "mass_mg": 17,
-      "mass_basis": "derived",
-      "derivation": {
-        "density_kg_m3": 950.0,
-        "volume_m3": 1.782e-08
-      },
-      "box": {
-        "half_extent_um": [
-          600,
-          4950,
-          750
-        ],
-        "pose": {
-          "position_um": [
-            2400,
-            -6550,
-            10050
+            -7850,
+            400
           ],
           "orientation": [
             1.0,
@@ -763,106 +1137,24 @@
     {
       "id": "L-inner-up-p",
       "kind": "structure",
-      "description": "head inner wall beside the upper ear notch, +y (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
-      "mass_mg": 17,
+      "description": "Hinge-facing wall positive side of servo pocket; upper/lower steel ear legs on outer face, tapped from inside (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
+      "mass_mg": 145,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 950.0,
-        "volume_m3": 1.782e-08
+        "volume_m3": 1.52256e-07
       },
       "box": {
         "half_extent_um": [
           600,
-          4950,
-          750
+          3050,
+          10400
         ],
         "pose": {
           "position_um": [
             2400,
-            6550,
-            10050
-          ],
-          "orientation": [
-            1.0,
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "dimension_basis": "derived",
-      "peak_power_mw": 0,
-      "average_power_mw": 0,
-      "power_basis": "derived",
-      "source": {
-        "kind": "datasheet",
-        "url": "https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls",
-        "accessed": "2026-11-20",
-        "title": "Materialise PA12 (SLS) datasheet table: density 0.95 g/cm3, tensile strength 48 MPa (DIN EN ISO 527), tensile modulus 1650 MPa; same page gives the SLS tolerance used in Q68"
-      }
-    },
-    {
-      "id": "L-inner-lo-n",
-      "kind": "structure",
-      "description": "head inner wall beside the lower ear notch, -y (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
-      "mass_mg": 17,
-      "mass_basis": "derived",
-      "derivation": {
-        "density_kg_m3": 950.0,
-        "volume_m3": 1.782e-08
-      },
-      "box": {
-        "half_extent_um": [
-          600,
-          4950,
-          750
-        ],
-        "pose": {
-          "position_um": [
-            2400,
-            -6550,
-            -8250
-          ],
-          "orientation": [
-            1.0,
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "dimension_basis": "derived",
-      "peak_power_mw": 0,
-      "average_power_mw": 0,
-      "power_basis": "derived",
-      "source": {
-        "kind": "datasheet",
-        "url": "https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls",
-        "accessed": "2026-11-20",
-        "title": "Materialise PA12 (SLS) datasheet table: density 0.95 g/cm3, tensile strength 48 MPa (DIN EN ISO 527), tensile modulus 1650 MPa; same page gives the SLS tolerance used in Q68"
-      }
-    },
-    {
-      "id": "L-inner-lo-p",
-      "kind": "structure",
-      "description": "head inner wall beside the lower ear notch, +y (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
-      "mass_mg": 17,
-      "mass_basis": "derived",
-      "derivation": {
-        "density_kg_m3": 950.0,
-        "volume_m3": 1.782e-08
-      },
-      "box": {
-        "half_extent_um": [
-          600,
-          4950,
-          750
-        ],
-        "pose": {
-          "position_um": [
-            2400,
-            6550,
-            -8250
+            8450,
+            400
           ],
           "orientation": [
             1.0,
@@ -887,22 +1179,22 @@
       "id": "L-front-n",
       "kind": "structure",
       "description": "head front wall, -y of the cartridge window (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
-      "mass_mg": 223,
+      "mass_mg": 154,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 950.0,
-        "volume_m3": 2.3520000000000054e-07
+        "volume_m3": 1.6262400000000038e-07
       },
       "box": {
         "half_extent_um": [
           600,
-          4375,
+          3025,
           11200
         ],
         "pose": {
           "position_um": [
             35000,
-            -7525,
+            -8875,
             0
           ],
           "orientation": [
@@ -928,64 +1220,23 @@
       "id": "L-front-p",
       "kind": "structure",
       "description": "head front wall, +y of the cartridge window (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
-      "mass_mg": 55,
+      "mass_mg": 124,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 950.0,
-        "volume_m3": 5.7792000000000145e-08
+        "volume_m3": 1.303680000000003e-07
       },
       "box": {
         "half_extent_um": [
           600,
-          1075,
+          2425,
           11200
         ],
         "pose": {
           "position_um": [
             35000,
-            10825,
+            9475,
             0
-          ],
-          "orientation": [
-            1.0,
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "dimension_basis": "derived",
-      "peak_power_mw": 0,
-      "average_power_mw": 0,
-      "power_basis": "derived",
-      "source": {
-        "kind": "datasheet",
-        "url": "https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls",
-        "accessed": "2026-11-20",
-        "title": "Materialise PA12 (SLS) datasheet table: density 0.95 g/cm3, tensile strength 48 MPa (DIN EN ISO 527), tensile modulus 1650 MPa; same page gives the SLS tolerance used in Q68"
-      }
-    },
-    {
-      "id": "L-front-lo",
-      "kind": "structure",
-      "description": "head front wall below the cartridge window (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
-      "mass_mg": 85,
-      "mass_basis": "derived",
-      "derivation": {
-        "density_kg_m3": 950.0,
-        "volume_m3": 8.901000000000021e-08
-      },
-      "box": {
-        "half_extent_um": [
-          600,
-          6450,
-          2875
-        ],
-        "pose": {
-          "position_um": [
-            35000,
-            3300,
-            -8325
           ],
           "orientation": [
             1.0,
@@ -1010,23 +1261,23 @@
       "id": "L-front-hi",
       "kind": "structure",
       "description": "head front wall above the cartridge window (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
-      "mass_mg": 55,
+      "mass_mg": 138,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 950.0,
-        "volume_m3": 5.8050000000000126e-08
+        "volume_m3": 1.4473800000000033e-07
       },
       "box": {
         "half_extent_um": [
           600,
           6450,
-          1875
+          4675
         ],
         "pose": {
           "position_um": [
             35000,
-            3300,
-            9325
+            600,
+            6525
           ],
           "orientation": [
             1.0,
@@ -1091,23 +1342,105 @@
     {
       "id": "S-bottom",
       "kind": "structure",
-      "description": "tail segment bottom wall (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
-      "mass_mg": 220,
+      "description": "Keyed steel pan under tail lower hinge foot and sector web; captive dimpled CSK seats at two fixing points.",
+      "mass_mg": 303,
       "mass_basis": "derived",
       "derivation": {
-        "density_kg_m3": 950.0,
-        "volume_m3": 2.3164799999999988e-07
+        "density_kg_m3": 7900.0,
+        "volume_m3": 3.836e-08
       },
       "box": {
         "half_extent_um": [
           3800,
-          12700,
+          8200,
+          125
+        ],
+        "pose": {
+          "position_um": [
+            -5600,
+            700,
+            -11875
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-20",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+      }
+    },
+    {
+      "id": "S-bottom-rail-n",
+      "kind": "structure",
+      "description": "PA12 frame locked to perforated inlay edge (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
+      "mass_mg": 45,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 950.0,
+        "volume_m3": 4.742399999999997e-08
+      },
+      "box": {
+        "half_extent_um": [
+          3800,
+          2600,
           600
         ],
         "pose": {
           "position_um": [
             -5600,
-            0,
+            -10100,
+            -11400
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls",
+        "accessed": "2026-11-20",
+        "title": "Materialise PA12 (SLS) datasheet table: density 0.95 g/cm3, tensile strength 48 MPa (DIN EN ISO 527), tensile modulus 1650 MPa; same page gives the SLS tolerance used in Q68"
+      }
+    },
+    {
+      "id": "S-bottom-rail-p",
+      "kind": "structure",
+      "description": "PA12 frame locked to perforated inlay edge (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
+      "mass_mg": 33,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 950.0,
+        "volume_m3": 3.465599999999998e-08
+      },
+      "box": {
+        "half_extent_um": [
+          3800,
+          1900,
+          600
+        ],
+        "pose": {
+          "position_um": [
+            -5600,
+            10800,
             -11400
           ],
           "orientation": [
@@ -1214,24 +1547,24 @@
     {
       "id": "S-inner",
       "kind": "structure",
-      "description": "tail segment inner end wall facing the hinge gap (slot z -10.8 to -9.0 for the lower hinge plate) (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
-      "mass_mg": 519,
+      "description": "tail segment inner end wall facing the hinge gap (floor slot to z -10.0 for the lower hinge plate) (PA12 SLS; walls other than the lids are one SLS part per segment; mass = slab volume x density)",
+      "mass_mg": 545,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 950.0,
-        "volume_m3": 5.464800000000001e-07
+        "volume_m3": 5.740799999999999e-07
       },
       "box": {
         "half_extent_um": [
           600,
           11500,
-          9900
+          10400
         ],
         "pose": {
           "position_um": [
             -2400,
             0,
-            900
+            400
           ],
           "orientation": [
             1.0,
@@ -1296,19 +1629,19 @@
     {
       "id": "cell",
       "kind": "energy_source",
-      "description": "Grepow GRP8020030 1S LiPo, 350 mAh, 15C, 3.7 V, 7.5 x 20.0 x 31.0 mm, 8.0 g; stands on edge along the -y wall of the head segment (31 along x, 7.5 along y, 20 along z)",
-      "mass_mg": 8000,
+      "description": "Fab.to.Lab 30545985163500 bare 240 mAh 1S along -y wall; 3.7 V x 0.240 Ah x 3600; 30C continuous = 7.2 A retail rating. Screen delivered, insulated, untensioned cell incl tab folds against this enlarged 30.65 x 5.4 x 20.7 allocation; do not compress or trim pouch.",
+      "mass_mg": 5800,
       "mass_basis": "source",
       "box": {
         "half_extent_um": [
-          15500,
-          3750,
-          10000
+          15325,
+          2700,
+          10350
         ],
         "pose": {
           "position_um": [
-            18800,
-            -7750,
+            18350,
+            -8700,
             0
           ],
           "orientation": [
@@ -1319,24 +1652,24 @@
           ]
         }
       },
-      "dimension_basis": "source",
+      "dimension_basis": "derived",
       "peak_power_mw": 0,
       "average_power_mw": 0,
       "power_basis": "derived",
       "source": {
-        "kind": "datasheet",
-        "url": "https://www.grepow.com/high-discharge-rate-battery/15c-high-power-lipo.html",
+        "kind": "publication",
+        "url": "https://www.fabtolab.com/lipo-3.7v-1S",
         "accessed": "2026-11-20",
-        "title": "Grepow 15C high-power LiPo table, row GRP8020030 (350 mAh, 3.7 V, Max. Cont. Discharge Current 5.25 A, 7.5 x 20.0 x 31.0 mm, 8.0 g)"
+        "title": "Fab.to.Lab retailer table, row 4 item 30545985163500: bare 1S 240 mAh, 30C CONTINUOUS, 30 x 20 x 5 mm, 5.8 g, no JST; not an OEM tolerance, protection or aging specification"
       },
       "nominal_voltage_v": 3.7,
-      "rated_continuous_discharge_a": 5.25,
-      "energy_mj": 4662000
+      "rated_continuous_discharge_a": 7.2,
+      "energy_mj": 3196800
     },
     {
       "id": "controller",
       "kind": "controller",
-      "description": "Adafruit QT Py ESP32-C3 (product 5405), 22.0 x 17.8 x 5.7 mm, 2.1 g, BLE; stands across the tail segment (5.7 along x, 22 along y, 17.8 along z). Power derived: 3.3 V regulator 600 mA peak x 3.7 V = 2220 mW, used as both peak and average bound",
+      "description": "Adafruit QT Py ESP32-C3 (5405), 22 x 17.8 x 5.7 mm headerless across tail. BAT/GND input. Budget 0.600 A x 4.2 V from cell at both peak and average, including board regulator. No USB while installed.",
       "mass_mg": 2100,
       "mass_basis": "source",
       "box": {
@@ -1347,7 +1680,7 @@
         ],
         "pose": {
           "position_um": [
-            -6450,
+            -6400,
             0,
             0
           ],
@@ -1360,8 +1693,8 @@
         }
       },
       "dimension_basis": "source",
-      "peak_power_mw": 2220,
-      "average_power_mw": 2220,
+      "peak_power_mw": 2520,
+      "average_power_mw": 2520,
       "power_basis": "derived",
       "source": {
         "kind": "datasheet",
@@ -1373,7 +1706,7 @@
     {
       "id": "driver",
       "kind": "other",
-      "description": "Pololu DRV8835 dual driver carrier: channel A coupler motor, channel B joint motor; 10.2 x 17.8 x 1.8 mm, 0.5 g; stands along the +y wall of the head segment (10.2 along x, 1.8 along y, 17.8 along z); quiescent 15 mW bound",
+      "description": "Headerless DRV8835 carrier drives joint ONLY; other channel disabled. Budget 4 mA x 4.2 V quiescent rounded up; joint input accounted separately.",
       "mass_mg": 500,
       "mass_basis": "source",
       "box": {
@@ -1384,8 +1717,8 @@
         ],
         "pose": {
           "position_um": [
-            15100,
-            10600,
+            16950,
+            10250,
             0
           ],
           "orientation": [
@@ -1397,8 +1730,8 @@
         }
       },
       "dimension_basis": "source",
-      "peak_power_mw": 15,
-      "average_power_mw": 15,
+      "peak_power_mw": 17,
+      "average_power_mw": 17,
       "power_basis": "derived",
       "source": {
         "kind": "datasheet",
@@ -1408,22 +1741,22 @@
       }
     },
     {
-      "id": "coupler-motor",
-      "kind": "actuator",
-      "description": "Precision Microdrives 206-109 gearmotor driving the cam sleeve; axis along x at (y, z) = (3.30, -7.25), body x 10.1 to 28.8, shaft cut to 1.5 mm (to x 30.3; the shaft inside the pinion is not boxed separately; the box is enlarged to +-3.35 to contain the 304 clip band bonded around the gearhead, whose mass is in coupler-motor-clip). Peak 851 mW (230 mA start x 3.7 V), average 215 mW (rated-load bound)",
-      "mass_mg": 1200,
-      "mass_basis": "source",
+      "id": "servo-boost",
+      "kind": "other",
+      "description": "TI TPS61022, custom 4-layer headerless PCB above rear drive; fitted 1 uH shielded power inductor, effective input >=10uF and output >=40uF, EN pulldown and forced PWM; nominal rail 5.02 V, full-load transient screen 4.80..5.20 at actual servo. 80% provisional loss floor, 3 mA extra, no typical efficiency guarantee. PCB gross mass at 3200 kg/m3, component envelopes at copper density. No USB back-power.",
+      "mass_mg": 1673,
+      "mass_basis": "derived",
       "box": {
         "half_extent_um": [
-          9350,
-          3350,
-          3350
+          5300,
+          7750,
+          2125
         ],
         "pose": {
           "position_um": [
-            19450,
-            3300,
-            -7250
+            28400,
+            2400,
+            4425
           ],
           "orientation": [
             1.0,
@@ -1433,38 +1766,120 @@
           ]
         }
       },
-      "dimension_basis": "source",
-      "peak_power_mw": 851,
-      "average_power_mw": 215,
+      "dimension_basis": "derived",
+      "peak_power_mw": 1157,
+      "average_power_mw": 1157,
       "power_basis": "derived",
       "source": {
         "kind": "datasheet",
-        "url": "https://www.precisionmicrodrives.com/datasheets/206-109-V0.pdf",
+        "url": "https://www.ti.com/lit/ds/symlink/tps61022.pdf",
         "accessed": "2026-11-20",
-        "title": "Precision Microdrives 206-109 6 mm planetary gearmotor 136:1: 1.2 g, body 6 dia x 18.7 mm, shaft 2 dia x 3.6 mm, 3 V rated, 3.6 V max, rated 3 mN m at 140 rpm, stall 9 mN m, start current 230 mA, typical rated-load power 215 mW"
+        "title": "TI TPS61022 rev D pp1,5,13-22: true disconnect, 6.5 A minimum valley limit, 0.585..0.615 V PWM reference; custom PCB with 1 uH inductor, input/output ceramics and true EN; power is conversion loss only. Coilcraft XEL5030-102MEC at 0.58 g series upper: https://www.coilcraft.com/getmedia/38f73356-5dfa-4ba3-b406-5d8b038c37d2/xel5030.pdf ; effective COUT 40..50 uF at bias, include feedforward capacitor (TI 8.2.2.4)."
+      },
+      "derivation": {
+        "density_kg_m3": 5625.863304150117,
+        "volume_m3": 2.9731700000000004e-07
       }
     },
     {
-      "id": "coupler-pinion",
-      "kind": "actuator",
-      "description": "spur pinion m 0.3 z 12 (pitch radius 1.8 mm, 1.5 mm face) on the coupler motor shaft; box bounded at the pitch circle toward the sleeve gear (tooth tips cross the pitch line by design); 304, volume = pitch-disc minus 2 mm bore",
-      "mass_mg": 83,
+      "id": "ttl-interface",
+      "kind": "other",
+      "description": "7.5 x 4.5 x 1.5 mm flex/circuit over board edge, IO on 3.3 V. TI SN74LVC2G125 (YZP) TX with 10k /OE pullup, RX always enabled; 100nF local bypass, 4.7k boost EN pulldown. Disabled TX and RX input tolerate 5.5 V per https://www.ti.com/lit/ds/symlink/sn74lvc2g125.pdf . Peak/avg allocation 10 mW incl pull resistors and switching; mass upper uses full 0.20 mm flex laminate, IC 2.4 x 1.4 x 0.8, 3 mm3 passives + 5 mm3 solder at copper density.",
+      "mass_mg": 155,
       "mass_basis": "derived",
       "derivation": {
-        "density_kg_m3": 7900.0,
-        "volume_m3": 1.0555751316061707e-08
+        "density_kg_m3": 8900.0,
+        "volume_m3": 1.7438000000000004e-08
       },
       "box": {
         "half_extent_um": [
-          750,
-          1800,
-          1800
+          2250,
+          3750,
+          750
         ],
         "pose": {
           "position_um": [
-            29550,
-            3300,
-            -7250
+            -6500,
+            -4200,
+            9750
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 10,
+      "average_power_mw": 10,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://aurubis.com/dam/jcr:ec116d17-1541-419a-a897-ad31b4fa6c93/c11000-cu-etp-us.pdf",
+        "accessed": "2026-11-20",
+        "title": "Aurubis C11000 density 8.9 g/cm3; wire dimensions from https://www.digikey.ca/en/products/detail/alpha-wire/2841-7-YL001/3708252 (distributor page of manufacturer data)"
+      }
+    },
+    {
+      "id": "coupler-servo",
+      "kind": "actuator",
+      "description": "FEETECH SCS0037-C001 with long side +z. Drawing p6 tip-to-back 23.3, static axial cap 20.2, base height 17.4, spline 3.1 proud. Both tab ends trimmed OUTSIDE sealed case; retain 0.8 minimum short-ear key beyond short body edge at clevis. Source unmarked tolerance +/-0.3. Case incl lead exit is acceptance-gauged inside declared box; tip x25.35 +/-0.025 y+0.60 z-4.60. Spline in hub and short tab in trapped sole recess not boxed twice. Charge full untrimmed max 6.6 g. Rated 49.03 N mm at 4.8 V, not stall. 5.2 V x 0.88 A conservative peak/average allocation.",
+      "mass_mg": 6600,
+      "mass_basis": "source",
+      "box": {
+        "half_extent_um": [
+          10440,
+          4700,
+          10630
+        ],
+        "pose": {
+          "position_um": [
+            12140,
+            600,
+            800
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 4576,
+      "average_power_mw": 4576,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.feetech.cn/Data/feetechrc/upload/file/20260622/6391771882565263995959110.pdf",
+        "accessed": "2026-11-20",
+        "title": "FEETECH SCS0037-C001 A/0 pp3,4,6: 4.8..6 V; stall 0.5/0.8 A +/-10%, rated 0.50/0.60 kgf cm, stall 1.5/1.8 kgf cm; 6.1 +/-0.5 g; 28T/diam 3.9, M1.7x3.5; unmarked drawing tol +/-0.3 mm."
+      }
+    },
+    {
+      "id": "drive-socket",
+      "kind": "coupler_mechanism",
+      "description": "17-4 H900 socket of the one-piece driver; female profile matched to 28T / 3.9 spline and gauged before assembly. Shaft and boss share this box.",
+      "mass_mg": 81,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7810.0,
+        "volume_m3": 1.0356181642742457e-08
+      },
+      "box": {
+        "half_extent_um": [
+          385,
+          2850,
+          2850
+        ],
+        "pose": {
+          "position_um": [
+            22965,
+            600,
+            -4600
           ],
           "orientation": [
             1.0,
@@ -1480,28 +1895,28 @@
       "power_basis": "derived",
       "source": {
         "kind": "datasheet",
-        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/precipitationhardening/ati_17-4_tds_en_v2.pdf",
         "accessed": "2026-11-20",
-        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+        "title": "ATI 17-4 H900 density 7.81 g/cm3, p3; H900 bar 170 ksi minimum proof: https://ssa-corp.com/documents/Data%20Sheet%2017-4-Stainless-Steel-AMS-5643-UNSS17400.pdf"
       }
     },
     {
       "id": "head-cartridge",
       "kind": "coupler_mechanism",
-      "description": "head coupler cartridge behind and in the front plate window, one subassembly: the 304 housing tube (r 2.005 to 3.5, entry bore 4.010 +0.010/0 (pilot clearance 0.040 to 0.060), two axial lug slots 3.40 wide; it is one turned part with the front flange, declared separately as head-flange, and joins it at x 35.6 across r 2.05 to 3.5; 128.8 mm3), the C95400 aluminium bronze cam sleeve (r 3.55 to 6.3, passes through the window to x 35.3; two two-stage helical slots 20 deg / 3 deg, an arc groove for the flange's stop pin in its front face, gear ring m 0.3 z 43 on its rear; 404.2 mm3) and a PTFE thrust ring (r 3.6 to 4.4 x 0.3 with two lug notches, keyed by them, between the sleeve and the flange's rear face; 4.5 mm3). Effective density = (7900 V_304 + 7450 V_bronze + 2150 V_PTFE) / V = 7513.7 kg/m3 from the three cited densities. Box bounded at the gear pitch circle toward the pinion",
-      "mass_mg": 4038,
+      "description": "Cross-pinned H900 collar and housing, sleeved dowel with soft independent keeper, machined bronze two-stage cam and skirt, relieved reverse dog, series-elastic closing spring and front thrust washer. Gross-minus-known-cuts volumes (mm3): 17-4 H900 453.500, pin/keeper upper at 304 density 41.316, C95400 605.669, PTFE 6.032, spring 14.575",
+      "mass_mg": 8508,
       "mass_basis": "derived",
       "box": {
         "half_extent_um": [
-          3400,
-          6450,
-          6450
+          6125,
+          6300,
+          6300
         ],
         "pose": {
           "position_um": [
-            32200,
-            3300,
-            1000
+            29475,
+            600,
+            -4600
           ],
           "orientation": [
             1.0,
@@ -1517,36 +1932,36 @@
       "power_basis": "derived",
       "source": {
         "kind": "datasheet",
-        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/precipitationhardening/ati_17-4_tds_en_v2.pdf",
         "accessed": "2026-11-20",
-        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade; C95400 aluminium bronze from https://www.concast.com/c95400.php (density 7.45 g/cm3, yield 221 MPa); PTFE from https://multimedia.3m.com/mws/media/132393O/ptfe-tf-1620-data-sheet (3M Dyneon TF 1620, specific gravity 2.15)"
+        "title": "ATI 17-4 H900 density 7.81 g/cm3, p3; H900 bar 170 ksi minimum proof: https://ssa-corp.com/documents/Data%20Sheet%2017-4-Stainless-Steel-AMS-5643-UNSS17400.pdf; bronze https://www.concast.com/c95400.php; keeper https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf; PTFE 3M Dyneon TF 1620, 2.15 g/cm3; wire ASTM A228, 7.85 g/cm3. Effective density is volume weighted."
       },
       "derivation": {
-        "density_kg_m3": 7513.734584477018,
-        "volume_m3": 5.374307548809162e-07
+        "density_kg_m3": 7588.894672966526,
+        "volume_m3": 1.1210926151270784e-06
       }
     },
     {
       "id": "head-flange",
       "kind": "coupler_mechanism",
-      "description": "304 housing front flange, one turned part with the housing tube (joined at x 35.6, r 2.05 to 3.5): disc r 7.0 x 0.8 in front of the PA12 front plate, with two lobes at +-z to r 9.4 (3.4 wide); its front face is the head's 36-tooth 90 deg Hirth ring r 2.6 to 6.3 (pitch plane x 36.4, teeth +-0.2) with a bonded PTFE dry-film coating on the tooth flanks (low tooth friction for seating; film mass below 1 mg, neglected), with the two lug slots 3.40 wide with 0.6 x 45 deg V lead-ins and, on an inner land r 2.05 to 2.6 recessed 0.25 below the pitch plane, a 0.4 x 45 deg bore chamfer; its rear face inside the window is the sleeve thrust face; a 304 stop pin dia 1 pressed into that face at r 5.3; two countersunk M1.6 holes in the lobes at r 7.8. Pull-out goes through the two screws into nut blocks behind the plate, push-in and bending through the flange bearing on the plate's outer face. Volume = disc + lobes - bore - slots - holes + pin",
-      "mass_mg": 764,
+      "description": "One piece with H900 guide housing. Disc r7; two staggered ears for M1.6 screws at offsets (+7.8,+4.2) and (-7.8,-4.2), clear of lug slots. Forward 72 truncated teeth at r4.25..6.30, two lug channels and bore lead. Back supports front PTFE thrust ring and sleeve end stop. Charge gross plate and peak tooth stock.",
+      "mass_mg": 1330,
       "mass_basis": "derived",
       "derivation": {
-        "density_kg_m3": 7900.0,
-        "volume_m3": 9.669481365689739e-08
+        "density_kg_m3": 7810.0,
+        "volume_m3": 1.703463753880351e-07
       },
       "box": {
         "half_extent_um": [
           400,
-          7000,
-          9400
+          9700,
+          7000
         ],
         "pose": {
           "position_um": [
             36000,
-            3300,
-            1000
+            600,
+            -4600
           ],
           "orientation": [
             1.0,
@@ -1562,32 +1977,32 @@
       "power_basis": "derived",
       "source": {
         "kind": "datasheet",
-        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/precipitationhardening/ati_17-4_tds_en_v2.pdf",
         "accessed": "2026-11-20",
-        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+        "title": "ATI 17-4 H900 density 7.81 g/cm3, p3; H900 bar 170 ksi minimum proof: https://ssa-corp.com/documents/Data%20Sheet%2017-4-Stainless-Steel-AMS-5643-UNSS17400.pdf"
       }
     },
     {
       "id": "nut-block-up",
       "kind": "coupler_mechanism",
-      "description": "304 nut block 2.2 x 2.2 x 0.8, tapped M1.6, behind the front plate; takes a flange screw (countersunk ISO 7046 M1.6 A2, through the flange lobe and the 1.2 mm plate); bears on the plate's inner face under pull-out; volume = block minus the tapped hole",
+      "description": "304 tapped M1.6 nut 2.2 square x 0.8, 0.15 recessed in front wall side pier, 0.65 boxed behind. Screw takes pullout through captive square nut bearing on pier.",
       "mass_mg": 23,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 7900.0,
-        "volume_m3": 2.9672213157661402e-09
+        "volume_m3": 2.9672213157661407e-09
       },
       "box": {
         "half_extent_um": [
-          400,
+          325,
           1100,
           1100
         ],
         "pose": {
           "position_um": [
-            34000,
-            3300,
-            8800
+            34075,
+            8400,
+            -400
           ],
           "orientation": [
             1.0,
@@ -1611,65 +2026,24 @@
     {
       "id": "nut-block-low",
       "kind": "coupler_mechanism",
-      "description": "304 nut block 2.2 x 2.2 x 0.8, tapped M1.6, behind the front plate; takes a flange screw (countersunk ISO 7046 M1.6 A2, through the flange lobe and the 1.2 mm plate); bears on the plate's inner face under pull-out; volume = block minus the tapped hole",
+      "description": "304 tapped M1.6 nut 2.2 square x 0.8, 0.15 recessed in front wall side pier, 0.65 boxed behind. Screw takes pullout through captive square nut bearing on pier.",
       "mass_mg": 23,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 7900.0,
-        "volume_m3": 2.9672213157661402e-09
+        "volume_m3": 2.9672213157661407e-09
       },
       "box": {
         "half_extent_um": [
-          400,
+          325,
           1100,
           1100
         ],
         "pose": {
           "position_um": [
-            34000,
-            3300,
-            -6800
-          ],
-          "orientation": [
-            1.0,
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "dimension_basis": "derived",
-      "peak_power_mw": 0,
-      "average_power_mw": 0,
-      "power_basis": "derived",
-      "source": {
-        "kind": "datasheet",
-        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
-        "accessed": "2026-11-20",
-        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
-      }
-    },
-    {
-      "id": "retainer-collar",
-      "kind": "coupler_mechanism",
-      "description": "rear retainer collar, 304, pressed on the housing tube behind the sleeve gear (r 2.05 to 4.9 x 0.4); takes the ejection reaction of the sleeve at release",
-      "mass_mg": 197,
-      "mass_basis": "derived",
-      "derivation": {
-        "density_kg_m3": 7900.0,
-        "volume_m3": 2.489083859439194e-08
-      },
-      "box": {
-        "half_extent_um": [
-          200,
-          4900,
-          4900
-        ],
-        "pose": {
-          "position_um": [
-            28600,
-            3300,
-            1000
+            34075,
+            -7200,
+            -8800
           ],
           "orientation": [
             1.0,
@@ -1693,12 +2067,12 @@
     {
       "id": "tail-stud",
       "kind": "coupler_mechanism",
-      "description": "tail stud, one machined 304 part: flange r 6.3 x 1.0 screwed to the tail end plate, its face a 36-tooth 90 deg Hirth ring r 2.6 to 6.3 (pitch plane at x -11.6, teeth +-0.2, inner land r 2.0 to 2.6 recessed 0.25); two blind M1.6 holes 0.6 deep in its rear face at (y, z) = (3.3, 1.0 +- 4.6) for countersunk A2 screws driven from inside the tail end plate; pilot r 2.0 (dia 4.0 -0.030/-0.040) x 6.5 beyond the pitch plane, nose 0.3 x 45 deg (entry guide; bounds yaw to 0.69 deg); two lugs r 1.5 (dia 3.0 g6) to radius 6.2 with their axis 3.6 below the pitch plane (nominal)",
-      "mass_mg": 2089,
+      "description": "Blind-threaded 304 flange and pilot with pivoted crowned lug bar, bronze pin, opposed slot-guide flats and 72 face teeth. Flat-bottom fork cut, forward axial location and free rocker travel per coupler.py. Group mating features in plate with their stud; volume includes rocker, pivot and finished tooth stock at steel density.",
+      "mass_mg": 2081,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 7900.0,
-        "volume_m3": 2.643901545408098e-07
+        "volume_m3": 2.634745538223705e-07
       },
       "box": {
         "half_extent_um": [
@@ -1709,8 +2083,8 @@
         "pose": {
           "position_um": [
             -14350,
-            3300,
-            1000
+            600,
+            -4600
           ],
           "orientation": [
             1.0,
@@ -1732,26 +2106,26 @@
       }
     },
     {
-      "id": "coupler-motor-clip",
+      "id": "servo-cradle",
       "kind": "structure",
-      "description": "304 clip band (r 3.05 to 3.3, 6 mm long) bonded around the coupler motor's gearhead with LOCTITE 638, with two tapped 0.8 mm feet screwed from below through the head bottom wall (countersunk M1.6 A2, no PA12 thread); carries the motor reaction torque and the mesh force. LUMPED box: the band itself lies inside the enlarged coupler-motor box",
-      "mass_mg": 295,
+      "description": "Tapped 304 sole 7 x 11 x 0.85 with an end-open channel for short ear, one integral stop and one 1.0 x 5 x 1.1 keyed gate inserted from underneath after sliding servo into cassette. Floor then traps gate without adhesive. Lower tab cropped to z-10.65, at least 0.8 of land beyond case. Two M1.6 floor screws; no Al taps, old nuts or keeper screw.",
+      "mass_mg": 604,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 7900.0,
-        "volume_m3": 3.733011265697507e-08
+        "volume_m3": 7.645000000000001e-08
       },
       "box": {
         "half_extent_um": [
-          1500,
-          1700,
-          400
+          3500,
+          5500,
+          425
         ],
         "pose": {
           "position_um": [
-            22000,
-            -2000,
-            -10300
+            15400,
+            600,
+            -10375
           ],
           "orientation": [
             1.0,
@@ -1773,26 +2147,26 @@
       }
     },
     {
-      "id": "coupler-motor-bond",
-      "kind": "other",
-      "description": "LOCTITE 638 film, 0.05 mm over 6 mm of the gearhead (113 mm2), between the motor and the clip. LUMPED box next to the clip lump",
-      "mass_mg": 6,
+      "id": "servo-cheek-n",
+      "kind": "structure",
+      "description": "7 x 0.80 x 21.43 sheet 304 cassette side, lower edge welded to sole, upper edge welded to tie. Two fitted antirotation pad lands at least 7 x 2; swaged lips trap finished Al shims inside case allocation. No ear friction credit; mass includes shims.",
+      "mass_mg": 1038,
       "mass_basis": "derived",
       "derivation": {
-        "density_kg_m3": 1100.0,
-        "volume_m3": 5.654866776461628e-09
+        "density_kg_m3": 7900.0,
+        "volume_m3": 1.313795443037975e-07
       },
       "box": {
         "half_extent_um": [
-          500,
-          1700,
-          100
+          3500,
+          400,
+          10705
         ],
         "pose": {
           "position_um": [
-            24000,
-            -2000,
-            -10600
+            15400,
+            -4500,
+            755
           ],
           "orientation": [
             1.0,
@@ -1808,15 +2182,179 @@
       "power_basis": "derived",
       "source": {
         "kind": "datasheet",
-        "url": "https://datasheets.tdx.henkel.com/LOCTITE-638-en_GL.pdf",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
         "accessed": "2026-11-20",
-        "title": "Henkel LOCTITE 638 retaining compound TDS (May 2024): specific gravity 1.1, compressive shear strength ISO 10123 on steel pins and collars 13.5 N/mm2 after 15 min, 29 N/mm2 after 72 h, bond gaps up to 0.25 mm"
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+      }
+    },
+    {
+      "id": "servo-cheek-p",
+      "kind": "structure",
+      "description": "7 x 0.80 x 21.43 sheet 304 cassette side, lower edge welded to sole, upper edge welded to tie. Two fitted antirotation pad lands at least 7 x 2; swaged lips trap finished Al shims inside case allocation. No ear friction credit; mass includes shims.",
+      "mass_mg": 1038,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 1.313795443037975e-07
+      },
+      "box": {
+        "half_extent_um": [
+          3500,
+          400,
+          10705
+        ],
+        "pose": {
+          "position_um": [
+            15400,
+            5700,
+            755
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-20",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+      }
+    },
+    {
+      "id": "cassette-tie",
+      "kind": "structure",
+      "description": "Welded 0.24 x 7 top tie across both cheeks, preassembled outside shell; slip case AXIALLY through fitted collar before inserting separate floor-captive axial gate. Fit screen loaded case rotation at declared fault.",
+      "mass_mg": 146,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 1.848e-08
+      },
+      "box": {
+        "half_extent_um": [
+          3500,
+          5500,
+          120
+        ],
+        "pose": {
+          "position_um": [
+            15400,
+            600,
+            11580
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-20",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+      }
+    },
+    {
+      "id": "cradle-brace-upper",
+      "kind": "structure",
+      "description": "Welded 304 4.0 x 1.60 side strap from positive cheek to side wall, tapped M1 along y from outside. Driver enters along x between braces before lowering cassette.",
+      "mass_mg": 273,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 3.4560000000000006e-08
+      },
+      "box": {
+        "half_extent_um": [
+          2000,
+          2700,
+          800
+        ],
+        "pose": {
+          "position_um": [
+            15400,
+            8800,
+            9820
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-20",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+      }
+    },
+    {
+      "id": "cradle-brace-lower",
+      "kind": "structure",
+      "description": "Welded 304 4.0 x 1.60 side strap from positive cheek to side wall, tapped M1 along y from outside. Driver enters along x between braces before lowering cassette.",
+      "mass_mg": 273,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 3.4560000000000006e-08
+      },
+      "box": {
+        "half_extent_um": [
+          2000,
+          2700,
+          800
+        ],
+        "pose": {
+          "position_um": [
+            15400,
+            8800,
+            -9820
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-20",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
       }
     },
     {
       "id": "vsense-r1",
       "kind": "sensor",
-      "description": "cell-voltage divider resistor (Vishay CRCW0402, 100 kOhm, upper) feeding a controller ADC pin: the controller measures the cell to set the closing PWM duty (1.4 V average) and to apply the release rule (cell >= 3.5 V). Power derived: 4.2 V^2 / 200 kOhm = 0.09 mW, declared as a 1 mW upper bound",
+      "description": "100 kOhm CRCW0402 divider on insulated leads beside tail logic board. Monitor loaded cell, inhibit motion below commissioned rail threshold. 4.2 V squared / 200 kOhm = 0.09 mW total; book 1 mW each.",
       "mass_mg": 1,
       "mass_basis": "source",
       "box": {
@@ -1853,7 +2391,7 @@
     {
       "id": "vsense-r2",
       "kind": "sensor",
-      "description": "cell-voltage divider resistor (Vishay CRCW0402, 100 kOhm, lower) feeding a controller ADC pin: the controller measures the cell to set the closing PWM duty (1.4 V average) and to apply the release rule (cell >= 3.5 V). Power derived: 4.2 V^2 / 200 kOhm = 0.09 mW, declared as a 1 mW upper bound",
+      "description": "100 kOhm CRCW0402 divider on insulated leads beside tail logic board. Monitor loaded cell, inhibit motion below commissioned rail threshold. 4.2 V squared / 200 kOhm = 0.09 mW total; book 1 mW each.",
       "mass_mg": 1,
       "mass_basis": "source",
       "box": {
@@ -1890,20 +2428,20 @@
     {
       "id": "joint-motor",
       "kind": "actuator",
-      "description": "Precision Microdrives 206-109 gearmotor for the body joint, axis vertical at (x, y) = (6.20, 8.47), body z -8.9 to 9.8, shaft down, cut to 1.8 mm; peak 851 mW, average 215 mW",
+      "description": "Precision Microdrives 206-109 gearmotor for the body joint, axis vertical at (x, y) = (6.20, 8.47), body z -9.85 to 8.85, shaft down, cut to 1.8 mm; provisional upper electrical allocation 230 mA at 3 V scaled linearly to a 4.2 V pulse: 1353 mW, average 215 mW rated; limit effective drive to 3.0 V. Box enlarged for clamp except 0.09 mm band relieved into +y wall",
       "mass_mg": 1200,
       "mass_basis": "source",
       "box": {
         "half_extent_um": [
-          3000,
-          3000,
+          3120,
+          3075,
           9350
         ],
         "pose": {
           "position_um": [
             6200,
-            8470,
-            450
+            8425,
+            -500
           ],
           "orientation": [
             1.0,
@@ -1913,8 +2451,8 @@
           ]
         }
       },
-      "dimension_basis": "source",
-      "peak_power_mw": 851,
+      "dimension_basis": "derived",
+      "peak_power_mw": 1353,
       "average_power_mw": 215,
       "power_basis": "derived",
       "source": {
@@ -1925,9 +2463,50 @@
       }
     },
     {
+      "id": "joint-clamp",
+      "kind": "structure",
+      "description": "304 split clamp at z -8.4..-4.4. Bore to measured 6 mm gearhead, 0.12 wall band, two 2.4 x 1.4 x 4 tangential ears in +x aisle. One M1.6 CSK draws tapped ear toward side wall through machined PA12 stand-off, reacting joint torques in either direction. Actual arc in joint-motor box and <=0.10 mm relief in side wall; mass proxy at the tab location, not a free block. Prove couple without crushing or slipping; coefficient not manufacturer data.",
+      "mass_mg": 285,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 3.610874257918539e-08
+      },
+      "box": {
+        "half_extent_um": [
+          1200,
+          2150,
+          2000
+        ],
+        "pose": {
+          "position_um": [
+            10550,
+            9350,
+            -6400
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-20",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+      }
+    },
+    {
       "id": "joint-pinion",
       "kind": "actuator",
-      "description": "spur pinion m 0.3 z 12 on the joint motor shaft (z -10.7 to -9.2); box oriented toward the pivot and bounded at the pitch circle facing the sector; 304, pitch-disc minus 2 mm bore",
+      "description": "spur pinion m 0.3 z 12 on the joint motor shaft (z -11.65 to -10.15); box oriented toward the pivot and bounded at the pitch circle facing the sector; 304, pitch-disc minus 2 mm bore",
       "mass_mg": 83,
       "mass_basis": "derived",
       "derivation": {
@@ -1944,7 +2523,7 @@
           "position_um": [
             6202,
             8473,
-            -9950
+            -10900
           ],
           "orientation": [
             0.8918131306939425,
@@ -1968,7 +2547,7 @@
     {
       "id": "joint-sector",
       "kind": "structure",
-      "description": "toothed sector m 0.3 (pitch radius 8.7, z 58 equivalent), +-21 deg about the joint motor direction (53.8 deg), r 4.5 to 8.7, 1.5 mm thick at z -10.7 to -9.2; part of the tail segment's lower hinge plate, runs in the head segment's bottom layer through the L-inner wall slot; 304",
+      "description": "toothed sector m 0.3 (pitch radius 8.7, z 58 equivalent), +-21 deg about the joint motor direction (53.8 deg), r 4.5 to 8.7, 1.5 mm thick at z -11.65 to -10.15; part of the tail segment's lower hinge plate, runs in the head segment's bottom layer through the L-inner wall slot; 304",
       "mass_mg": 241,
       "mass_basis": "derived",
       "derivation": {
@@ -1985,7 +2564,7 @@
           "position_um": [
             3898,
             5326,
-            -9950
+            -10900
           ],
           "orientation": [
             0.8918131306939425,
@@ -2009,30 +2588,30 @@
     {
       "id": "hinge-plate-low",
       "kind": "structure",
-      "description": "tail segment lower hinge plate (z -10.7 to -9.2), 304, one part with the sector: from x -5.0 on the tail floor (through the S-inner slot) to the pin, boss r 1.6 around the pin (0.2 mm clear of the head inner face at every joint angle); fixed by two countersunk M1.6 A2 screws from below through the tail bottom wall into tapped holes in the plate (no thread in PA12); volume = plate minus pin bore and holes",
-      "mass_mg": 234,
+      "description": "Tail lower 304 plate, one piece with sector via 1.4-wide radial web u=1.3..4.6. Foot x -5.8..-3.0 x 6.4 wide; neck to pin centre 3.2 wide; r1.6 boss. Two CSK M1.6 screws at x -4.4, y +/-1.8, through 0.25 steel floor and 0.1 shim; thread 1.25 into 1.5 steel, CSK finished in plate below first threads; no projecting screw tips. This OBB covers the foot, neck, web and inner arc of adjoining sector; boxes meet at u=4.5 along joint drive.",
+      "mass_mg": 379,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 7900.0,
-        "volume_m3": 2.960654884863074e-08
+        "volume_m3": 4.792854884863074e-08
       },
       "box": {
         "half_extent_um": [
-          3300,
-          1600,
+          5300,
+          4700,
           750
         ],
         "pose": {
           "position_um": [
-            -1700,
-            0,
-            -9950
+            -2006,
+            477,
+            -10900
           ],
           "orientation": [
-            1.0,
+            0.8918131306939425,
             0.0,
             0.0,
-            0.0
+            0.4524039565718551
           ]
         }
       },
@@ -2091,24 +2670,65 @@
     {
       "id": "hinge-ear-low",
       "kind": "structure",
-      "description": "head segment lower ear (z -9.0 to -7.5), passing through a notch in the head inner wall (x 1.8 to 3.0) to the pin, boss r 1.6, pin pressed in; 304, volume = plate minus pin bore",
-      "mass_mg": 185,
+      "description": "304 r1.6 pin boss joined along +y by 1.05-wide strap x0.60..1.65 to exterior hinge-wall leg. Ear strap y0.8..8.9; minimum section 1.05 x 1.5. Box includes air over the circular boss; no material extends across servo pocket.",
+      "mass_mg": 159,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 7900.0,
-        "volume_m3": 2.3399468914507714e-08
+        "volume_m3": 2.0108826809400123e-08
       },
       "box": {
         "half_extent_um": [
-          2300,
-          1600,
+          1625,
+          5250,
           750
         ],
         "pose": {
           "position_um": [
-            700,
-            0,
-            -8250
+            25,
+            3650,
+            -9200
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-20",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+      }
+    },
+    {
+      "id": "ear-low-leg",
+      "kind": "structure",
+      "description": "Tapped 304 leg outside the +y pier of the hinge wall, integral with offset strap, driven flush from INSIDE empty head before payload. 0.7 engagement in 0.8 leg. Fixing tool axis parallel to x; slot clearance for shaft before cassette/motor insertion.",
+      "mass_mg": 64,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 8.05522131576614e-09
+      },
+      "box": {
+        "half_extent_um": [
+          400,
+          1600,
+          1750
+        ],
+        "pose": {
+          "position_um": [
+            1400,
+            7300,
+            -6700
           ],
           "orientation": [
             1.0,
@@ -2132,23 +2752,23 @@
     {
       "id": "hinge-ear-up",
       "kind": "structure",
-      "description": "head segment upper ear (z 9.3 to 10.8), passing through a notch in the head inner wall to the pin, boss r 1.6, pin pressed in; 304, volume = plate minus pin bore",
-      "mass_mg": 185,
+      "description": "304 r1.6 pin boss joined along +y by 1.05-wide strap x0.60..1.65 to exterior hinge-wall leg. Ear strap y0.8..8.9; minimum section 1.05 x 1.5. Box includes air over the circular boss; no material extends across servo pocket.",
+      "mass_mg": 159,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 7900.0,
-        "volume_m3": 2.3399468914507714e-08
+        "volume_m3": 2.0108826809400123e-08
       },
       "box": {
         "half_extent_um": [
-          2300,
-          1600,
+          1625,
+          5250,
           750
         ],
         "pose": {
           "position_um": [
-            700,
-            0,
+            25,
+            3650,
             10050
           ],
           "orientation": [
@@ -2173,65 +2793,24 @@
     {
       "id": "ear-up-leg",
       "kind": "structure",
-      "description": "root leg of the head segment's upper hinge ear (one 304 part with the ear), 3.2 x 3.0 x 0.8 inside the head cavity against the inner wall's inner face; a countersunk M1.6 A2 screw from the gap side through the 1.2 mm wall into its tapped hole (no thread in PA12); pull-off bears the leg on the wall",
-      "mass_mg": 54,
+      "description": "Tapped 304 leg outside the +y pier of the hinge wall, integral with offset strap, driven flush from INSIDE empty head before payload. 0.7 engagement in 0.8 leg. Fixing tool axis parallel to x; slot clearance for shaft before cassette/motor insertion.",
+      "mass_mg": 64,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 7900.0,
-        "volume_m3": 6.775221315766141e-09
+        "volume_m3": 8.05522131576614e-09
       },
       "box": {
         "half_extent_um": [
           400,
           1600,
-          1500
+          1750
         ],
         "pose": {
           "position_um": [
-            3400,
-            0,
-            9300
-          ],
-          "orientation": [
-            1.0,
-            0.0,
-            0.0,
-            0.0
-          ]
-        }
-      },
-      "dimension_basis": "derived",
-      "peak_power_mw": 0,
-      "average_power_mw": 0,
-      "power_basis": "derived",
-      "source": {
-        "kind": "datasheet",
-        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
-        "accessed": "2026-11-20",
-        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
-      }
-    },
-    {
-      "id": "ear-low-leg",
-      "kind": "structure",
-      "description": "root leg of the head segment's lower hinge ear (one 304 part with the ear), 3.2 x 3.0 x 0.8 inside the head cavity against the inner wall's inner face; a countersunk M1.6 A2 screw from the gap side through the 1.2 mm wall into its tapped hole (no thread in PA12); pull-off bears the leg on the wall",
-      "mass_mg": 54,
-      "mass_basis": "derived",
-      "derivation": {
-        "density_kg_m3": 7900.0,
-        "volume_m3": 6.775221315766141e-09
-      },
-      "box": {
-        "half_extent_um": [
-          400,
-          1600,
-          1500
-        ],
-        "pose": {
-          "position_um": [
-            3400,
-            0,
-            -7500
+            1400,
+            7300,
+            7550
           ],
           "orientation": [
             1.0,
@@ -2255,24 +2834,24 @@
     {
       "id": "plate-up-leg",
       "kind": "structure",
-      "description": "root leg of the tail segment's upper hinge plate (one 304 part with the plate), 3.2 x 1.6 x 0.8 in the hinge gap against the tail inner wall's outer face, below the head's upper ear; a countersunk M1.6 A2 screw from inside the tail segment through the wall into its tapped hole",
-      "mass_mg": 25,
+      "description": "Integral root leg of tail upper plate against the outer face of its inner wall; 3.2 x 3.4 x 0.8, tapped for a flush screw from inside empty tail.",
+      "mass_mg": 62,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 7900.0,
-        "volume_m3": 3.1912213157661407e-09
+        "volume_m3": 7.79922131576614e-09
       },
       "box": {
         "half_extent_um": [
           400,
           1600,
-          800
+          1700
         ],
         "pose": {
           "position_um": [
             -1400,
             0,
-            6800
+            5900
           ],
           "orientation": [
             1.0,
@@ -2296,24 +2875,24 @@
     {
       "id": "hinge-pin",
       "kind": "structure",
-      "description": "hinge pin dia 2.0 x 21.5 (z -10.7 to 10.8), 304; box covers the exposed length z -7.5 to 7.6 between the ears and plates (the rest lies inside their bosses)",
-      "mass_mg": 534,
+      "description": "hinge pin dia 2.0 x 22.45 (z -11.65 to 10.8), 304; box covers the exposed length z -8.45 to 7.6 between the ears and plates (the rest lies inside their bosses)",
+      "mass_mg": 557,
       "mass_basis": "derived",
       "derivation": {
         "density_kg_m3": 7900.0,
-        "volume_m3": 6.754424205218056e-08
+        "volume_m3": 7.052875507309085e-08
       },
       "box": {
         "half_extent_um": [
           1000,
           1000,
-          7550
+          8025
         ],
         "pose": {
           "position_um": [
             0,
             0,
-            50
+            -425
           ],
           "orientation": [
             1.0,
@@ -2335,26 +2914,22 @@
       }
     },
     {
-      "id": "fasteners",
+      "id": "lid-nut-head-a",
       "kind": "structure",
-      "description": "14x M1.6 x 4 A2 pan head screws (dk 3.2, k 1.3); bounding volume pi*1.6^2*1.3 + pi*0.8^2*4 = 18.50 mm3 each (upper bound), 304 density assumed for A2; LUMPED box, not at the real screw positions",
-      "mass_mg": 2046,
+      "description": "Removable tapped 304 ledge (3.2 x 4.4 x 0.8) inserted laterally through a finished shell slot AFTER boards, ending flush outside. 1.2 of its 4.4 length is inside wall allocation; slot roof captures tab against lid lift. 3.2 square x 1.0 PA12 boss on lid sits on tab. Lid screw prevents transverse withdrawal. No fixed ledge blocks insertion.",
+      "mass_mg": 99,
       "mass_basis": "derived",
-      "derivation": {
-        "density_kg_m3": 7900.0,
-        "volume_m3": 2.5900000000000003e-07
-      },
       "box": {
         "half_extent_um": [
-          7000,
-          1800,
-          2500
+          1600,
+          1600,
+          900
         ],
         "pose": {
           "position_um": [
-            19000,
-            -2000,
-            6500
+            11600,
+            9900,
+            9900
           ],
           "orientation": [
             1.0,
@@ -2372,30 +2947,235 @@
         "kind": "datasheet",
         "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
         "accessed": "2026-11-20",
-        "title": "ATI 304 density 7.90 g/cm3 (A2 = 18/8 304 family, assumption); screw dimensions from https://www.westfieldfasteners.co.uk/A2-ScrewBolt-PoziPan-M1.6.html"
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+      },
+      "derivation": {
+        "density_kg_m3": 4590.476190476191,
+        "volume_m3": 2.1504000000000005e-08
+      }
+    },
+    {
+      "id": "lid-nut-head-b",
+      "kind": "structure",
+      "description": "Removable tapped 304 ledge (3.2 x 4.4 x 0.8) inserted laterally through a finished shell slot AFTER boards, ending flush outside. 1.2 of its 4.4 length is inside wall allocation; slot roof captures tab against lid lift. 3.2 square x 1.0 PA12 boss on lid sits on tab. Lid screw prevents transverse withdrawal. No fixed ledge blocks insertion.",
+      "mass_mg": 99,
+      "mass_basis": "derived",
+      "box": {
+        "half_extent_um": [
+          1600,
+          1600,
+          900
+        ],
+        "pose": {
+          "position_um": [
+            32500,
+            9900,
+            9900
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-20",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+      },
+      "derivation": {
+        "density_kg_m3": 4590.476190476191,
+        "volume_m3": 2.1504000000000005e-08
+      }
+    },
+    {
+      "id": "lid-nut-head-c",
+      "kind": "structure",
+      "description": "Removable tapped 304 ledge (3.2 x 4.4 x 0.8) inserted laterally through a finished shell slot AFTER boards, ending flush outside. 1.2 of its 4.4 length is inside wall allocation; slot roof captures tab against lid lift. 3.2 square x 1.0 PA12 boss on lid sits on tab. Lid screw prevents transverse withdrawal. No fixed ledge blocks insertion.",
+      "mass_mg": 99,
+      "mass_basis": "derived",
+      "box": {
+        "half_extent_um": [
+          1600,
+          1600,
+          900
+        ],
+        "pose": {
+          "position_um": [
+            32800,
+            -1900,
+            9900
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-20",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+      },
+      "derivation": {
+        "density_kg_m3": 4590.476190476191,
+        "volume_m3": 2.1504000000000005e-08
+      }
+    },
+    {
+      "id": "lid-nut-tail-n",
+      "kind": "structure",
+      "description": "Removable tapped 304 ledge (3.2 x 4.4 x 0.8) inserted laterally through a finished shell slot AFTER boards, ending flush outside. 1.2 of its 4.4 length is inside wall allocation; slot roof captures tab against lid lift. 3.2 square x 1.0 PA12 boss on lid sits on tab. Lid screw prevents transverse withdrawal. No fixed ledge blocks insertion.",
+      "mass_mg": 99,
+      "mass_basis": "derived",
+      "box": {
+        "half_extent_um": [
+          1600,
+          1600,
+          900
+        ],
+        "pose": {
+          "position_um": [
+            -6500,
+            -9900,
+            9900
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-20",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+      },
+      "derivation": {
+        "density_kg_m3": 4590.476190476191,
+        "volume_m3": 2.1504000000000005e-08
+      }
+    },
+    {
+      "id": "lid-nut-tail-p",
+      "kind": "structure",
+      "description": "Removable tapped 304 ledge (3.2 x 4.4 x 0.8) inserted laterally through a finished shell slot AFTER boards, ending flush outside. 1.2 of its 4.4 length is inside wall allocation; slot roof captures tab against lid lift. 3.2 square x 1.0 PA12 boss on lid sits on tab. Lid screw prevents transverse withdrawal. No fixed ledge blocks insertion.",
+      "mass_mg": 99,
+      "mass_basis": "derived",
+      "box": {
+        "half_extent_um": [
+          1600,
+          1600,
+          900
+        ],
+        "pose": {
+          "position_um": [
+            -6500,
+            9900,
+            9900
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.atimaterials.com/Products/Documents/datasheets/stainless-specialty-steel/austenitic/ati_302_304_304l_305_tds_en1_v1.pdf",
+        "accessed": "2026-11-20",
+        "title": "ATI 302/304/304L/305 technical data sheet (304 density 7.90 g/cm3, yield 205 MPa, UTS 515 MPa); size tolerances ISO 286 IT grades https://en.wikipedia.org/wiki/IT_Grade"
+      },
+      "derivation": {
+        "density_kg_m3": 4590.476190476191,
+        "volume_m3": 2.1504000000000005e-08
+      }
+    },
+    {
+      "id": "fasteners",
+      "kind": "structure",
+      "description": "Mass proxy ONLY, in free space above rear module. DIN 965 A2 M1.6 CSK finished overall lengths: 2 x 2.55 flange to nut, 2 x 1.70 tail to blind flange, 2 x 1.60 lower hinge, 3 x 1.90 hinge legs, 2 x 2.00 cassette, 5 x 2.90 lids, 1 x 5.30 joint-clamp. M1.7 x 3.5 servo hub screw (procure, not supplied). Conical and cylindrical solid envelopes bound finished heads, no fictional screws installed here. Two additional side brace screws M1 x 3 DIN 963, slot drive, 1.90 head, 0.60 head length, 1.8 nominal engagement after shell. https://microfasteners.com.au/product/m1-0-x-3mm-countersunk-head-slot-machine-screw-grade-304-stainless-steel/",
+      "mass_mg": 1330,
+      "mass_basis": "derived",
+      "derivation": {
+        "density_kg_m3": 7900.0,
+        "volume_m3": 1.6839119882812753e-07
+      },
+      "box": {
+        "half_extent_um": [
+          5200,
+          3100,
+          1150
+        ],
+        "pose": {
+          "position_um": [
+            28300,
+            -2600,
+            7800
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.westfieldfasteners.co.uk/A2-ScrewBolt-PhilCsk-M.html",
+        "accessed": "2026-11-20",
+        "title": "Westfield A2 Phillips CSK DIN 965 M1.6 x 2, 3, 4 stock; cut, deburr and measure after machining. 304 density 7.90 g/cm3 from ATI (A2 approximation). Mass uses cylindrical upper envelopes, not nominal pan-head substitutions."
       }
     },
     {
       "id": "harness",
       "kind": "other",
-      "description": "harness lump: 200 mm Alpha Wire 2841/7 30 AWG PTFE, OD 0.61 mm; bounding volume pi*0.305^2*200 at copper density (upper bound); lumped box, no routing",
-      "mass_mg": 520,
+      "description": "Mass proxy only, above rear drive. Up to 550 mm insulated wire; OD <=0.6604; full diam 0.35 conductor allocation at silver density 10.5 g/cm3, remainder PTFE 2.2 g/cm3. Trim servo pigtail/plug, retain full untrimmed servo mass as conservative allowance. Alpha Wire 2841/7 dimensional table; silver density https://periodic-table.rsc.org/element/47/silver ; 3M Dyneon TF 1620 typical 2.15 g/cm3 rounded up.",
+      "mass_mg": 854,
       "mass_basis": "derived",
-      "derivation": {
-        "density_kg_m3": 8900.0,
-        "volume_m3": 5.8449331320038104e-08
-      },
       "box": {
         "half_extent_um": [
-          3500,
-          1800,
-          2500
+          5350,
+          3450,
+          1150
         ],
         "pose": {
           "position_um": [
-            7500,
-            -2000,
-            6500
+            28450,
+            4050,
+            7800
           ],
           "orientation": [
             1.0,
@@ -2414,43 +3194,88 @@
         "url": "https://aurubis.com/dam/jcr:ec116d17-1541-419a-a897-ad31b4fa6c93/c11000-cu-etp-us.pdf",
         "accessed": "2026-11-20",
         "title": "Aurubis C11000 density 8.9 g/cm3; wire dimensions from https://www.digikey.ca/en/products/detail/alpha-wire/2841-7-YL001/3708252 (distributor page of manufacturer data)"
+      },
+      "derivation": {
+        "density_kg_m3": 4531.310135993053,
+        "volume_m3": 1.8839384072844965e-07
+      }
+    },
+    {
+      "id": "pack-keepers",
+      "kind": "structure",
+      "description": "Four 12 x 3 x 1.1 integral PA12 edge ledges/locators for cell/boards; 220 mm x 4 nonmetallic polyester tape up to 0.065 thick for cell/board retention and dielectric wrap; 6 mm3 splice solder. PA12 at source density, film at provisional 1.6 g/cm3 upper allocation and solder at copper density. Mass proxy over boost; edge ledges occupy unpopulated board edges or cell allowance, not a solid block over rear drive.",
+      "mass_mg": 295,
+      "mass_basis": "derived",
+      "box": {
+        "half_extent_um": [
+          3950,
+          8425,
+          875
+        ],
+        "pose": {
+          "position_um": [
+            26950,
+            2725,
+            9875
+          ],
+          "orientation": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "dimension_basis": "derived",
+      "peak_power_mw": 0,
+      "average_power_mw": 0,
+      "power_basis": "derived",
+      "source": {
+        "kind": "datasheet",
+        "url": "https://www.materialise.com/en/industrial/3d-printing-materials/pa12-sls",
+        "accessed": "2026-11-20",
+        "title": "Materialise PA12 (SLS) datasheet table: density 0.95 g/cm3, tensile strength 48 MPa (DIN EN ISO 527), tensile modulus 1650 MPa; same page gives the SLS tolerance used in Q68"
+      },
+      "derivation": {
+        "density_kg_m3": 1333.0324909747292,
+        "volume_m3": 2.2160000000000003e-07
       }
     }
   ],
   "mass_budget": {
-    "total_mass_mg": 31181
+    "total_mass_mg": 45541
   },
   "assembly_access": {
-    "statement": "Each segment shell is one SLS part (bottom, two sides, end plate and inner wall) closed by a separate top lid that carries no declared load; all internal parts go in through the top. Head segment: the cell, coupler motor, joint motor, driver and hinge-ear legs are fitted from the top. The one-piece 304 housing (flange and tube) is pushed tube-first through the front plate window from outside until its flange lies on the plate's outer face; from inside, through the open top, the PTFE ring and the sleeve are slid onto the tube (stop pin engaged) and the retainer collar is pressed on; two countersunk M1.6 A2 screws go through the flange lobes and the plate into the two nut blocks held behind it. The coupler motor, bonded into its clip, is screwed to the floor from below. Tail segment: the stud flange is held on the end plate's outer face by two countersunk M1.6 screws driven from inside with a short L key through the open top into the flange's blind tapped holes, before the controller drops in; the lower hinge plate lies on the tail floor and is screwed from below. Hinge: the head ears' legs are screwed through the head inner wall from the gap side, the tail upper plate's leg through the tail inner wall from inside; the sector (part of the tail lower plate) is meshed with the joint pinion, then the pin is pressed through ears and plates from above. The harness passes the gap beside the pin. Not prototyped; the sequence is a paper statement."
+    "statement": "Bench assemble PTFE thrust ring and bronze sleeve onto the H900 housing from the rear. Locate the collar from the actual thrust face and match-ream the collar and housing without the sleeve installed. Clean, refit sleeve and collar, set and flush-finish the two washers and the independent soft keeper rivet through opposed skirt ports; the fitted hollow pin, not the keeper, carries thrust. Check end play before mounting. Fix the driver/spring to the servo spline with a gauged M1.7 rocker screw before there is a housing in its path. The fitted case pads and retained tab locate the servo in its steel cassette with both shell lids open. Set the open datum, insert the preassembled cartridge from the front through the finish-machined window, sliding the open-ended dog and spring pickups together. The front flange bears outside the plate; install the two flush screws into the nut blocks while accessible from above. No press fit over the 7 mm land. Fit the tail stud screws before the controller, through aligned driver ports in the opposite inner wall. Fit hinge plates, ears, sector, pin, joint motor clamp and harness in the open shells; fit boards and cell with edge keepers, then slide in the tapped lid ledges and secure lids. Structural screw threads are in metal. See dossier-v6 for access order and fits; not prototyped."
   },
   "coupler_sites": [
     {
       "id": "site-head",
       "position_um": [
         36400,
-        3300,
-        1000
+        600,
+        -4600
       ],
       "normal": [
         1.0,
         0.0,
         0.0
       ],
-      "mount": "head cartridge through the head front plate window; its 304 front flange (0.8 thick) lies on the plate's outer face, Hirth pitch plane at x 36.4, held by two countersunk M1.6 screws through the flange lobes and the plate into 304 nut blocks; axis (y, z) = (3.3, 1.0)"
+      "mount": "H900 housing flange in front of PA12 end plate, clamped via opposed screws into rear nut blocks. Pitch plane x36.4, common axis y+0.60,z-4.60 mm."
     },
     {
       "id": "site-tail",
       "position_um": [
         -11600,
-        3300,
-        1000
+        600,
+        -4600
       ],
       "normal": [
         -1.0,
         0.0,
         0.0
       ],
-      "mount": "tail stud flange (r 6.3) on the tail end plate's outer face, held by two countersunk M1.6 A2 screws from inside into blind holes of the 304 flange; Hirth pitch plane at x -11.6; same axis (3.3, 1.0)"
+      "mount": "Toothed stud flange fixed by two flush screws from inside the tail end plate into blind metal threads. Pitch plane x-11.6; axis shared with the head."
     }
   ],
   "chain": {
@@ -2469,36 +3294,56 @@
   "retention": {
     "requires_power_to_hold": false,
     "mechanism_kind": "friction_wedge",
-    "mechanism": "Holding principle: a self-locking cam (friction wedge). The two 304 lugs of the tail stud sit on the 3 deg lock stage of the C95400 aluminium bronze sleeve's helical slots. Axial lug load cannot turn the sleeve while flank friction exceeds tan 3 deg = 0.0524: steel on bronze dry 0.15 to 0.23 and machine oil 0.10 to 0.16 (Wikipedia Leadscrew, raw wikitext; aluminium bronze taken as a bronze) give 2.86x and 1.91x at the mean flank radius (2.08x and 1.39x at the inner end of the flank line); PTFE thrust friction adds holding torque that is not credited. Self-locking is friction-based and not absolute under vibration (same source). While the stage holds, the stud moves axially only by elastic deflection: an axial load 20 N above any preload opens the faces by at most 0.001 mm (loop stiffness lower bound 20 kN/mm), against a Hirth tooth height of 0.39 mm, so the two 36-tooth 90 deg Hirth faces (r 2.6 to 6.3) stay geometrically engaged at any preload and roll is bounded to 0.013 deg. Closing: the controller measures the cell (vsense divider) and drives the coupler motor at a 1.5 V PWM average to stall. Preload typical 6.62 to 13.50 N dry (7.87 to 17.03 oiled); guaranteed lower bound 1.76 N (datasheet rated load 3 mN m at 3 V and max start voltage 0.5 V give stall >= 1.2 (V - 0.5) mN m). Seating at the lower bound: the head teeth carry a bonded PTFE dry film (PTFE on steel mu 0.05 to 0.20, Engineering ToolBox), so the guaranteed draw rolls a unit flat (1.39 N needed to tip it about its far bottom edge, 1.27x) and pitches it flat (0.21 N, 8.3x). Yaw is bounded by the pilot (clearance 0.040 to 0.060, 0.69 deg); with that residual the seat stays inside the lock stage (stack +-0.0815 plus yaw +-0.059 = +-0.140 against +-0.20). The pilot's radial clearance (>= 0.020) exceeds the pilot-to-Hirth coaxiality (+-0.010 for two parts), so pilot and teeth do not fight. Tension (declared 1.223 N = 4 mu W, mu = 1): lugs on the self-locking stage; faces closed at typical F_p (5.41x) and at the lower bound (1.44x). Torsion (declared 7.77 mN m): Hirth teeth, zero lash, no face friction relied on; separation ratio 3.79 typical, 1.01 at the lower bound. With the teeth seated the lugs keep at least 2.29 deg of clearance to the 3.40 mm slots at the contact radius 3.5 (phase +-0.88 deg), so torsion goes only through the teeth and the lugs cannot slide along the flank. Shear (declared 0.306 N): Hirth teeth. Out-of-plane bending (declared 14.7 mN m): tipping 41.7 mN m (2.84x); beyond it the pilot couple (tilt <= 0.69 deg). In-plane bending (declared 14.5 mN m, the joint drive limit): tipping about y 5.87 (the slots remove 35 percent of the head ring) 38.8 mN m (2.68x); beyond it the lug pair on the self-locking stage. All declared loads at once: axial separating 3.27 N against typical F_p (2.02x); the residual clamp holds the combined bending (21.1 against 20.6 mN m). At the lower bound the faces may gap by micrometres under bending; gapping is not separation. Every load path is closed in machined metal or in one-piece SLS shells, and every screw joint to PA12 puts the thread in 304 (PA12 bearing only). Head mount: the 304 housing's front flange (disc r 7.0, lobes at +-z) lies on the front plate; two countersunk M1.6 screws through the lobes and the plate into nut blocks; worst 4.34 N per screw (fault), 1.53 MPa on PA12. Tail mount: two countersunk M1.6 screws from inside the end plate into blind holes of the 304 stud flange; worst 4.75 N per screw (fault), 0.94 MPa on the PA12 countersink. Plates as fixed-fixed strips (span 23 mm) under the worst screw load: head 15.5 MPa, tail 14.2 MPa against the Materialise PA12 tensile strength 48 MPa (3.1x, 3.4x). Contact stress: lug on bronze flank (2.65 mm line), Hertz p0 203 MPa at typical F_p_max, 244 MPa with all declared loads, 265 MPa oiled, fault 283, against a first-yield onset of about 369 MPa (1.67 x 221, rule of thumb). Axial stack: seat 3.518 to 3.681 at the IT9 / g6 corners inside the lock stage 3.40 to 3.80.",
+    "mechanism": "This is a friction wedge only after both crowned lug pads have entered the low-lead lock region. The higher-lead entry, mouth dwell and a jammed or partially seated state are not locks. Axial pull travels through stud rocker/pin, lug pads, bronze cam flanks, front thrust washer, fixed flange, its two steel fasteners and nut blocks to the PA12 shell; opposite-side load enters the tail via the stud flange. Matched face teeth carry torsion and shear by flank reaction; bending loads act through the surviving face rim, pilot and opposed lug reactions. The two-segment body carries these loads through the ears, hinge pin, plates and metal screw attachments. Neither an unpowered servo holding torque nor the continuing presence of spring torque is credited. The spring meters the *closing* torque from a bounded relative angular excursion. The dry/oiled friction cases, upper and lower spring rates, combined external loads, bearing drag and orientation-dependent contact constraints are evaluated in coupler.py.",
     "component_ids": [
       "head-cartridge",
-      "head-flange",
       "tail-stud",
-      "retainer-collar",
+      "head-flange",
+      "drive-socket",
+      "coupler-servo",
+      "servo-boost",
+      "servo-cradle",
+      "servo-cheek-n",
+      "servo-cheek-p",
+      "cassette-tie",
+      "cradle-brace-upper",
+      "cradle-brace-lower",
       "nut-block-up",
       "nut-block-low",
-      "coupler-motor",
-      "coupler-motor-clip",
-      "coupler-motor-bond",
-      "vsense-r1",
-      "vsense-r2",
       "S-end",
       "L-front-n",
       "L-front-p",
-      "L-front-lo",
       "L-front-hi",
-      "fasteners"
+      "fasteners",
+      "hinge-ear-low",
+      "hinge-ear-up",
+      "hinge-pin",
+      "hinge-plate-low",
+      "hinge-plate-up",
+      "ear-low-leg",
+      "ear-up-leg",
+      "plate-up-leg"
     ],
     "release": {
-      "bounded_independent_release": true,
-      "means": "The head unit's own coupler motor turns the sleeve back to the open stop (304 stop pin dia 1 in the flange's rear face at r 5.3 in an arc groove of the sleeve face; worst stop load 7.3 N, shear 9.3 MPa, bronze bearing 14.6 MPa). Release is allowed only with the cell at 3.75 V or more (measured through the vsense divider); the motor then gets its maximum operating voltage 3.6 V (DRV8835 on-resistance 305 mOhm drops about 0.07 V). Release needs at most 27.8 mN m at the sleeve (typical F_p_max 13.50 N plus all declared axial loads, flank 0.23, thrust 0.20; 26.8 oiled) against 34.8 mN m (typical 3.6 V stall 10.8 mN m x 43/12 x 0.9): margin 1.25 dry, 1.30 oiled. Closing and release use the same motor, so with the voltage-linear model the margin is independent of motor-to-motor variation; with the datasheet start-voltage offset (up to 0.5 V) the ratio of release to closing torque rises. The capture stage's outer flank pushes the stud out 1.4 mm; the reaction goes into the 304 retainer collar. Release is a physical process under load and may be slow or blocked by loads beyond the declared ones, or when the cell is below 3.75 V (CPL-008). The tail unit cannot release this joint; each head releases its own joint."
+      "bounded_independent_release": false,
+      "means": "Only the head unit powers this release. Reverse input unwinds the closing spring until its separate driver pad contacts the relieved sleeve-skirt wall. Continued motion drives the sleeve toward its open stop. Front PTFE thrust face carries pull-assisted release. During positive ejection the sleeve shifts rearward across its full axial play and bears directly on the cross-pinned H900 collar, then pin, housing and plate. Loaded cases keep the fixed external forces and journal reactions, not a scaling cancellation between motor constants. The spline retains its own hub, not the mating unit. Release requires a serviceable charged head and no responsive tail. The rated torque does NOT cover the one-sided loaded cases. This version cannot declare bounded release under all Q31 loads."
     }
   },
   "alignment": [
     {
       "kind": "geometric_guide",
-      "description": "Lateral: 45 deg chamfers on the pilot nose (0.3) and the flange's bore mouth (0.4, from the inner land recessed 0.25 below the pitch plane), leading into the 4.010 entry bore (pilot clearance 0.040 to 0.060)",
-      "justification": "Presented-pose window +-0.70 mm lateral against the +-0.6 mm two-unit PA12 SLS stack. On a 45 deg chamfer an axial push gives a centring force (1 - mu)/(1 + mu) of it, 0.11 at the dry steel-steel upper bound 0.8 (Engineering ToolBox): no wedging while mu < 1. Reference planes: the head flange front face is the head Hirth pitch plane (crest +0.2, root -0.2); both inner lands are recessed 0.25 and never touch; the chamfer runs 0.4 from the land. Sequence: when the lug fronts reach the head's tooth crest plane, the pilot's cylindrical part (from 6.2) is 0.90 past the head pitch plane, 0.25 past the start of the bore cylinder (0.65), so the lugs meet their slots with at most 0.060 mm of lateral error, inside their +-0.6 mm V lead-ins. The pilot then bounds yaw to 0.69 deg; the Hirth teeth centre the seat.",
+      "description": "Presented pilot and chamfer into an interrupted guide bore.",
+      "justification": "An external quasistatic presentation supplies insertion, not an onboard approach or an invisible fixture holding the assembly during powered closure. The guide channels interrupt the pilot circumference; count only the retained lands, with actual chord clearance at each insertion depth. The guide/rim comparison distinguishes first contact from full seating. No autonomous capture window is inferred from the opening diameter.",
+      "component_ids": [
+        "head-flange",
+        "head-cartridge",
+        "tail-stud"
+      ]
+    },
+    {
+      "kind": "geometric_guide",
+      "description": "Opposed lug guide entries, rocking lug bar and face teeth.",
+      "justification": "The slots constrain clocking before tooth contact. The rocker admits unequal axial depths at the two ends; the angled Hirth flanks transmit draw into centring and clocking reactions. The force/stack bounds include tooth standoff and residual tilt, not a snap to a common axis.",
       "component_ids": [
         "tail-stud",
         "head-flange",
@@ -2507,43 +3352,33 @@
     },
     {
       "kind": "geometric_guide",
-      "description": "Roll, pitch and yaw: round dia 3 lugs entering 0.6 x 45 deg V lead-ins of the flange and housing slots and the sleeve notches; final roll, centring and pitch by the 36-tooth PTFE-coated Hirth faces",
-      "justification": "Roll window +-5.5 deg at the lug tip radius 6.2 against about +-1.4 deg between two units on one table. Before the teeth meet, the lugs index roll within the slot lash, 3.17 to 3.46 deg at the contact radius 3.5, less than half a tooth pitch (5 deg), so the teeth always meet their own gaps. The teeth then roll the tail unit flat (guaranteed draw 1.76 N against 1.39 N needed through PTFE-coated flanks) and pitch it flat (0.21 N needed); pitch on one table is within +-0.73 deg. Yaw stays within the pilot's 0.69 deg, which the lock stage absorbs. Joint angles do not enter: the head unit's head segment and the tail unit's tail segment are each rigid. The open stop puts the sleeve notches over the slots within about +-0.3 deg, inside the +-7.1 deg the V lead-in allows.",
-      "component_ids": [
-        "tail-stud",
-        "head-flange",
-        "head-cartridge"
-      ]
-    },
-    {
-      "kind": "geometric_guide",
-      "description": "Axial closing and seating: the 20 deg capture stage draws the stud 1.0 mm, then the 3 deg lock stage seats the Hirth faces",
-      "justification": "Closing force is the coupler motor's: at the 1.5 V closing stall the sleeve gives 14.5 to 16.1 mN m typical (3.6 mN m at the guaranteed lower bound), while drawing one free unit at the mu = 1 table bound needs 1.21 mN m through the capture stage. The axial push that brings the lugs to the capture stage (2.40 mm stroke, about mu W = 0.31 N plus chamfer friction) is not supplied by the candidate: it comes from the experiment's documented start configuration (Q31 item 1) or a later approach design. Tolerance and the yaw residual are taken by sleeve travel to a stall inside the lock stage. No capture window is claimed (CPL-006).",
+      "description": "Mouth dwell, draw stage and shallow lock stage.",
+      "justification": "The operator presents the lugs into the open mouth; the servo takes up a finite angle on the dwell before the rotating flank can pick them up. Only the servo and the series spring then provide draw. An obstructed or off-window start may remain partial; servo position is not an independent indication of tooth seating.",
       "component_ids": [
         "head-cartridge",
-        "coupler-motor",
-        "coupler-pinion",
         "tail-stud",
-        "vsense-r1",
-        "vsense-r2"
+        "head-flange",
+        "drive-socket",
+        "coupler-servo",
+        "servo-boost",
+        "servo-cradle",
+        "servo-cheek-n",
+        "servo-cheek-p",
+        "cassette-tie",
+        "cradle-brace-upper",
+        "cradle-brace-lower"
       ]
     }
   ],
   "limitations": [
-    "Approach locomotion is not designed. The coupler engages from a presented pose (stud nose at the bore mouth within +-0.70 mm lateral, +-5.5 deg roll, yaw within the pilot's acceptance) with an external axial push of 2.40 mm. Q31 starts the chain engaged. No capture window is claimed (CPL-006).",
-    "Retention is a friction wedge: self-locking needs flank mu > 0.0524 (0.072 at the inner end of the flank line). The cited lower bounds give 2.86x dry and 1.91x oiled at the mean radius, but self-locking is not absolute under vibration or shock (Wikipedia Leadscrew); the bending chain's vibration level is not known. Walking by torsion slip is excluded by the Hirth teeth; walking by vibration is not analysed (Gate 2/3). The cited friction rows are for steel on bronze; C95400 aluminium bronze is taken as a bronze.",
-    "The bonded PTFE film on the head teeth must stay off the cam flank: PTFE on the flank would lower the flank friction toward 0.05, below the self-locking condition. The film is bonded to the tooth flanks only.",
-    "Preload is typical 6.62 to 13.50 N; the guaranteed lower bound from the datasheet is 1.76 N. At that bound the faces may gap by micrometres under the declared bending (retention and tooth engagement do not depend on it). There is no engagement or current sensor; the controller measures the cell voltage and drives for a fixed time, so it cannot confirm the engaged state (Q32).",
-    "Release needs the cell at 3.75 V or more; below that the joint stays locked until recharged (bounded release still holds at that state of charge).",
-    "Friction values are handbook values, not tests of these pairs: flank steel on bronze (Wikipedia Leadscrew, raw wikitext), PTFE on steel, steel on steel and nylon on steel (Engineering ToolBox, raw HTML). Mesh efficiency 0.9 to 1.0, bronze Poisson ratio 0.33, the 20 kN/mm loop-stiffness lower bound and the PA12 Poisson ratio 0.4 are provisional. LOCTITE 638 strengths are for steel pins and collars; the gearhead housing material is not stated in the motor datasheet.",
-    "Declared loads are modelling assumptions: tension 4 mu W with mu = 1, torsion 2 W x 12.7 mm, out-of-plane bending W x 48.0 mm (site-to-site pitch), in-plane bending equal to the joint drive limit. Joint stall at 3.6 V (fault) gives 52.2 mN m; the lug contact then reaches Hertz 283 MPa, still below the C95400 onset.",
-    "The joint motor torque is limited by PWM to the rated 3 mN m (14.5 mN m at the joint). Holding a curvature unpowered is not claimed (Q31 item 6). Pushing two units sideways at a table mu of 1 would need about 30 mN m: Q31 bending adequacy is unresolved.",
-    "There is no joint angle sensor. Joint position control is unresolved.",
-    "All screw joints to PA12 put the thread in 304 (nut blocks, the stud flange, hinge legs, the lower plate and the motor clip); PA12 sees bearing only, compared with the Materialise PA12 tensile strength 48 MPa (no compressive or bearing strength is cited). Thread engagements are short (0.6 to 0.8 mm); the loads are a few newtons against a stripping capacity of several hundred. The tail stud screws are driven from inside through the open top with a short L key before the controller is fitted (countersunk hex-socket micro screws; the exact screw form is not a standard ISO size and is provisional).",
-    "The Hirth rings are small (36 teeth, about 0.39 mm high, r 2.6 to 6.3; the head ring loses 35 percent to the lug slots) and need fine machining (for example wire EDM); the 0.05 mm flank contact band used for their pressure is provisional. 304 teeth and the 304 pilot in the 304 bore can gall.",
-    "Gear and pinion boxes are bounded at their pitch circles toward their mating gear; shafts and the hinge pin inside bores are boxed with the bore part; the housing tube and its front flange are one part declared as two boxes; the motor clip band lies inside the enlarged motor box, and the clip and bond masses are lumped boxes. Shell walls are slabs (one SLS part per segment, separate lids); fasteners and harness are lumped boxes.",
-    "The stowed diameter margin is reported by the evaluator. PA12 SLS +-0.3 mm on outer dimensions uses up to about 0.6 mm of it.",
-    "Mating roll is 0 deg only (the coupler axis is off the body centre, so a 180 deg roll would stand the unit upside down).",
-    "BLE only, no inter-unit data or power path through the coupler."
+    "Gate 1 is paper feasibility only. Q31 starts connected. No autonomous approach, measured capture region or cycle life claimed.",
+    "Wedge retention depends on the specified friction regime. Unknown vibration, impact, lubricant, PTFE migration or wear can defeat the self-lock condition.",
+    "Spring, dog, keyed mount, precise fits and machined/match-reamed parts are design callouts. Inspect the finished parts. Handbook friction and elastic properties are not component-pair test results.",
+    "The regulator and trimmed case are not qualified hardware; verify loaded voltage, torque, current and heating over the operating range. Do not run a blocked servo continuously.",
+    "A voltage or internal servo-shaft reading cannot prove latch engagement. No credit for a completed closure after a partial or obstructed motion.",
+    "No curvature-holding torque unpowered or five-unit benchmark pass is claimed. Joint angle feedback and the later dynamic articulation benchmark remain open.",
+    "Small features, rocker, screw-access fixtures, case clamping without crush, spline profile and end play require bench checks. Part tolerance and assembly acceptance limits are not measurements.",
+    "Component boxes are grouping or mass proxies where stated; interlocking internal parts are analysed separately. G5 is the registered three-unit static support calculation at roll zero.",
+    "BLE only; no power or wired data exchange between units."
   ]
 }

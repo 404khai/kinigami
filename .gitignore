@@ -7,3 +7,6 @@ zig-out/
 
 # Packages extracted by the Zig package manager (reproducible from build.zig.zon hashes)
 /zig-pkg/
+
+# Generated when the candidate geometry generators import their helpers.
+__pycache__/
