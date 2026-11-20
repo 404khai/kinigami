@@ -67,6 +67,10 @@ Never use a system or Homebrew `zig` for recorded results.
 - PR titles use the same style. Descriptions cover what changed, why, requirement and decision IDs, tests, validation evidence, limitations, and follow-ups.
 - Never push, open public PRs, pull, merge from remote, or rebase without explicit owner authorization.
 - Inspect staged changes before committing. Never discard, reset, or clean existing work.
+- **Parallel work uses grafts, not git worktrees.** Give each parallel workstream or agent its own graft: `graft new <name> --from <ref> --clone-ignored .toolchain`. That carries the pinned toolchain without a download.
+  - Never work in, or switch the branch of, a checkout another agent is using. Do not create git worktrees for parallel work.
+  - Quote graft paths: they contain a space (`cd "$(graft path <name>)"`).
+  - Land a graft's commits through a branch and PR (`git push origin HEAD:<branch>`), not `graft integrate`, which squashes commits and breaks preregistration order.
 
 ## Working method
 
