@@ -107,3 +107,4 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q94 | [Gate 1 run 10 disposition (cand-d v5)](Q094-gate1-run10-disposition.md) (agent decision under owner delegation) | accepted |
 | Q95 | [Separate closing preload from the release drive in cand-d v6](Q095-cand-d-v6-servo-drive.md) (agent decision under owner delegation) | accepted design direction |
 | Q96 | [Size the release drive against moving torque](Q096-cand-d-rate-the-release-drive.md) (agent decision under owner delegation) | accepted design direction |
+| Q97 | [Gate 1 run 11 disposition (cand-d v6)](Q097-gate1-run11-disposition.md) (agent decision under owner delegation) | accepted |
