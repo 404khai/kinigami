@@ -2,6 +2,8 @@
 
 **Design study only.** The nested screw fits the dimension study, but the loaded jaw drive, overload recovery and separation do not close. Do not freeze this package as cand-d v7. The latest official result is still [run 11](../../../results/gates/gate1-v1/run11-2b8ea96-ReleaseSafe.json). No change to the criteria, evaluator or candidate.
 
+[Mechanics and force-limiter study](mechanics.md) · [working-load, detent and contact-cone calculations](take9.py) · [package sections](package.md). The force study puts the caps on the head and the grooves on the tail. The independent clearance witness also examines the opposite assignment; these examples are not one assembled layout.
+
 ## What the four screens establish
 
 | Question | Evidence | Limit |
