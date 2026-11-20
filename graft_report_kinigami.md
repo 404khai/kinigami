@@ -214,9 +214,13 @@ Reuse the Take 3 package Graft. Check a supported 4:1 epicyclic versus a permane
 
 New independent-of-packaging design Graft for the Take 4/9 mechanics author, based on 96fcfeb. Q99 replaces the Q98 seven-normal preload clamp with six bilateral, individually clearanced pole constraints. Test the frictional wrench bound, edge transitions and partials, not just the rank of a nominal matrix. This designer cannot independently review v7.
 
+**Take 11 result:** `graft new exact-pairs-v7 --from 96fcfeb --clone-ignored .toolchain` (weak GLIBC warning, ext4 file copies). [Follow-on edge atlas](docs/studies/cand-d-exact-pairs/mechanics.md), not frozen v7: a *longer* cheek, outward-free blade and bounded guide reactions admit a finite mixed-edge bound. With lateral travel around the rim, the resulting 50 g sufficient ejector budget exceeds 9.90 N. Neither that cheek nor the free-leading blade is established by the frozen declaration.
+
 ## Take 12 — shutter and positive stripper package
 
 New packaging Graft from 96fcfeb, Take 3/10 design author. Size the output mechanism, captive drive, blade and stripper stroke, assembly access, package bounds and fault loads; no transfer of the Q98 screw result to this topology.
+
+**Take 12 result:** `graft new shutter-v7 --from 96fcfeb --clone-ignored .toolchain` (copy fallback). [Final section including independent pad option](docs/studies/cand-d-shutter/shutter-take12.md). Driving each pad separately at its own lane improves the provisional rated budget from 1.20 N to 4.39 N, still not enough to credit all loaded exits. The 41.824 g subtotal omits guides, sensing and other hardware and is not v7's declared mass.
 
 ## Take 13 — integrate six-coordinate shutter and QA
 
@@ -231,3 +235,11 @@ Dedicated reviewer Graft from the immutable v7 candidate commit. Review only; no
 ## Take 15 — frozen v7 independent originality review
 
 Separate reviewer Graft from the immutable v7 candidate commit. Q61 corpus, searches and full matrix; no candidate authorship, candidate edits or evaluator changes.
+
+## Take 16 — direct drawbolt reaction study
+
+After v7 freeze, fresh `drawbolt-load-study` Graft at a82f52c, mechanics author. Study the *mating* thread instead of the earlier internal screw and retractable jaws. Require actual preload bounds, transverse isolation, thread-end and independent final release. Not part of v7 or its reviews.
+
+## Take 17 — blind-mate drawbolt stack
+
+After v7 freeze, fresh `drawbolt-stack-study` Graft at a82f52c, packaging author. Study actual nut, bearing, runout, sensing, side-load and recovery envelopes. Not a candidate change or an amendment to Q99.
