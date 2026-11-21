@@ -341,3 +341,11 @@ Mechanics Graft: test an arcuate toe which turns the exposed faces into positive
 ## Take 35 — fit and power an arcuate toe
 
 Packaging Graft: check the independent blade and a powered circular toe, including its pivot, guard and moving root, against own structure, deploy and stow. A crank exposed behind a cosmetic cover or a sector sweeping the lower cheek does not count.
+
+## Take 36 — virtual co-motion of a loose tail and the opening upper jaw
+
+Mechanics Graft: test a virtual twist common to the entire jaw and the free tail. Internal contact work cancels without requiring every moving rear surface to assist release. Evaluate actual fixed-deck, table, pusher, axle-friction and stop constraints; distinguish travel from verified complete separation.
+
+## Take 37 — support an aft-pivot lift without crossing its sweep
+
+Packaging Graft: test an aft pivot near the lower-deck height and a supported moving arm which can nest in a guarded terminal landing. Check whether a fixed shaft, motor and gear train can coexist with its housing, own fork and both neighbours, not just the working pad.
