@@ -1,0 +1,66 @@
+# Take 32 — oblique upper ram: the drive fits; the load frame does not
+
+**Exploratory. Reject this installed section.** One translating toe can clear x3 without a folding joint or vertical bridge. The fixed screw, travellers and selected hardware can pass the geometric checks at 34.5 mm pitch. The only modelled metal frame root cannot carry the clamp moment. The motor exceeds its continuous rating in the higher-friction load screen, and the moving attachment cuts the proposed release shield. These are separate failures. No candidate, official run, review or change to the gate.
+
+Reproduce with `python3 oblique-drive.py` beside the supplied unchanged `install.py`. Python standard library only. The latter supplies existing body/eject inventory; do not add Take 28's retired clamp stocks. Both the lay-out and assumed friction/material properties below are provisional. The scripts test nominal geometry with explicit comparison reserves, not manufacturing capability.
+
+## Section that was checked
+
+In head coordinates, x is docking; y is transverse. Open direction **t=(−.8,+.6,0)**. Side normal **n=(+.6,+.8,0)**. Each drive drawing coordinate is **(−2.15,+1.02,0)+q t+g n+z k** in mm. Straight stow centres: sphere (−.20,0,+.15); head +15, own tail −19.5. Joint H=(−6.5,−7.8); other electronics and fixed eject axes retained. The 240 mAh cell moves 1.35 toward −z: x[−12.35,8.35], y[−14.30,16.35], z[−21.75,−16.35]. The actual outer pouch, protection, leads and shell must fit; no assumed cell shrink.
+
+* **Toe.** Use Take 31's convex drafted front, not a flat rectangular spur. With U=−t·(point−(15,3.5,0)), V=n·(point−(15,3.5,0)), intersect y≥3.50, x≤17.85, V+.32U≤2.60, −V+.32U≤1.05, ±z+.32U≤2.85, x≥1.65. Rear extrema: y7.071..26.572; |z|6.953 at lower rear and **10.697** at upper rear. Translating 20.5 moves every point (−16.4,+12.3,0): working centre (−1.40,15.80,0), moving assembly front **x1.45**, rear x−14.75, roof y38.872. The 18.56 mm geometric travel to bring x17.85 exactly to x3 has no tolerance or masking allowance. No terminal hinge.
+* **Positive ejector.** Retain the Take 28 15 mm x-stroke and both wings, including the +z dogleg. Only the central blade top is cut from y9.25 to **4.70** (bottom −1.50). The Take 27 monitored butt witness reaches y4.341; usable flat/rounding and actual inclined tail projection still matter. Retract toe before eject; retract ejector before closing toe. Both neighbouring mechanisms may move independently in the screen. Preserve the separate ≥15 N pusher test; do not count screw motion as tail motion.
+* **One permanent screw.** M2.5×.35, g0/z−12.75. Nut q.10..2.10 home →20.60..22.60 open. Fixed spindle q−4.25..22.95, end support to q23.95. Front thrust cartridge q−3.95..−.15, outer R3.25; opposed lapped steel faces on the wheel shoulder, not a pair of unallocated rolling bearings. The m.25 two-start worm engages a 24T R3-pitch worm wheel about the screw. Axle z through x−2.98/y−3.92; independent journals below/above mesh and near driving spur. Worm access needs a window in the barrel. The full-diameter cartridge is an outside bound, not solid fill interpenetrating its own teeth.
+* **Two supports.** Backed master rail q−4.30..22.58, g3.80..5.65, z−15.75..−14.30; 5.70-long dovetail gib with 4.70 usable span, not two point bearings at its ends. Separate floating single-normal roll shoe at g≈7.45, q−4.10..22.75; roll guide does not supply a free second bending couple. Both remain engaged through the stroke. Master/roll backing ribs included. No equal sharing. Some fixed outboard rail/bed ends reach x4.68..6.05 at z below −11.50; they are **not** behind the terminal x3 plane and require a guard or separate contact exclusion. Metal lower-cheek feet at x≤13.70 are also fixed stock.
+* **Connection.** Inboard tabs from the nut and gibs join one web at z−10.45..−9.70. The upright reaches z−9.30, rear collar x−.90..1.68/y7.30..9.75/z−10.45..3 joins the solid toe at its rear. Make that a continuous machined/brazed metal joint, not a nominal .03 mm shear lap. The modelled return is the metal side frame, lower tie, V cheek, paddle, then upper toe. It bypasses the polymer shell but has inadequate section.
+* **Motor.** Ø6.4 guarded motor along z−18.50..10.20 at (−.75,−19.10); m.30 14T pinion, 34T idler (−4.2813,−12.8254), 26T output (−2.98,−3.92), spur plane z10.85..11.85. Worm pitch radius 1.45, gear pitch radius 3, centre distance 4.45. The quill, idler pin and motor saddle are included; the motor gearbox alone must not take worm thrust. Compare [Maxon RE6 A](https://www.maxongroup.com/medias/sys_master/root/9396141293598/Cataloge-Page-EN-129.pdf) and [GP6A 221:1, 30 N·mm continuous](https://www.maxongroup.com/medias/sys_master/root/9406823596062/Cataloge-Page-EN-412.pdf). Ratio after gearhead 22.286:1. At the nominal 5670 rpm motor comparison speed one full ram stroke takes **51 min**: not a practical powered duty cycle for this cell. At 0.242 A nominal current this is ~206 mAh motor-side per one-way stroke before conversion, not a battery endurance prediction.
+
+## Geometric discriminator
+
+The original low central fixed screw from (−4.5,4,0)+q t fails with material penetration: at next yaw +15°, q22 lies at (6.4611,12.3106,0) inside the **parked** full toe by ≥4.336 mm normal distance to every face. A centred rotating-nut/translation-bar concept would otherwise send moving supports through the back of the tapered toe; a bare tapered outer shell is not evidence of room for its stationary supports.
+
+For the retained side drive, calculate convex support intervals, including circular end radii; exact prismatic sweep = convex hull plus a segment, not a set of motion samples. Shoulder/head yaw samples every .5° subtract .20 mm stock plus finite angular displacement 2r sin(.25°/2); a pure z separating plane needs no rotational debit. Bounds below are *surpluses after* these debits. Checked mating tail means the Take 27 solids including the R7 cropped butt centred local (−3.45,+.48,0), finite twin arms and fork; not arbitrary complete housing.
+
+| Test | Minimum (mm) |
+|---|---:|
+| Straight stow, listed solids | Ø59.838; only .081 radial spare |
+| Own head, ram motion while blade parked; open ram with full eject stroke | .050 |
+| Own articulated fork/tail through ±15° | .115 |
+| Mated aligned paddle during ram relief, excluding intended upper ball contact | .740 |
+| Aligned tail translating 0..15 versus fully withdrawn ram | 1.900 |
+| Moving ram versus preceding head, both strokes, neighbouring joint ±15° | .050 (blade / travelling nut) |
+| Moving ram versus next head/ram with same motions | .654 |
+| Shifted retained parts versus next retained parts | .841 |
+| Internal moving ram vs fixed drive, excluding screw/guide working contacts | .030 (roll shoe / rear backing) |
+| First versus third head, independent angles/strokes | 4.470 axial |
+
+Neighbour screens include a blocked neighbour and up to 15 mm subsequent +x translation. No bank of separating axes finding a positive gap can prove clearance to an *omitted* part. The .030–.050 clearances are not robust to unmodelled deflection or unbudgeted fastener heads. Excluded working pairs are named in code. The lower foot is deliberately joined to the V-cheek. The separate motor saddle, gear hubs, covers, service screws/retainers, fractured/worn material, flex tray, feet/table and complete traffic of three freely misaligned Kins are not an assembled qualification model.
+
+**Shield conflict.** Take 31's optional roof spans x−17..2.32, z±12.5 and approximately .6x+.8y=5.94..6.39. The collar spans **5.300..8.808** on this same projection at z0; e.g. x0/y7.70 gives 6.16. Because n·t=0 this cannot be fixed by calling the stroke complete. Side features and wide tail housings need independent exclusion. A cuff front at x1.95 clears the nominal collar front by .27 but does not supply a sealed rear pocket; a screw-end, switch or motor current is not proof of release.
+
+## Loads, holding and limits
+
+The following are component-sizing screens, not measured loads or proof of static force balance of the mating faces. Use adverse contact anywhere over x11.95..17.85, |z|≤3.64, y3.5; allow upper transverse force up to .23P. Guide friction and toe contact friction are **not** the same coefficient. The code resolves forces into (t,n,z); the master owns both bending couples. Torque about t is assigned to the master and one separate anti-roll reaction in z, separated by 2.72 in n. At P85 the screened anti-roll reaction is **604 N**. A fixed unbacked rod or unconstrained second bearing is not equivalent. One rail cannot be removed without changing the math.
+
+| Actual clamp target | Guide µ | Required screw thrust | Screw + plain-thrust torque | Gearhead demand |
+|---:|---:|---:|---:|---:|
+| 65 N | .08 | 281 N | 154 N·mm | 14.8 N·mm |
+| 85 N | .04 | 199 N | 110 N·mm | 10.5 N·mm |
+| 85 N | .08 | 366 N | 201 N·mm | 19.3 N·mm |
+| 85 N | .12 | 590 N | 323 N·mm | **31.0 N·mm** |
+| 85 N | .23 | 1969 N | 1074 N·mm | **103 N·mm** |
+| 120 N comparison, not a new target | .08 | 515 N | 282 N·mm | 27.1 N·mm |
+
+Model: D=(F_t+3+µ_g N₀)/(1−ρ), where ρ=2µ_g(4.73+1.95)/4.70 includes the drive offset; N₀ includes direct lateral reactions and three moment couples. M2.5 pitch diameter 2.273, thread µ=.18, 60° included angle; thrust friction .10 at mean R2.5 plus 1.5 N·mm parasitics. Assume .85 two-spur and **.55 worm** efficiencies; neither is a guarantee. At 201 N·mm the small wheel sees ~67 N tangential before shock, transferred by a 2 mm tooth face. Tiny worm teeth, quill thrust restraint, thrust surface pressure/lubrication, shaft and nut strips are **not rated** by the comparator. At 25 mm unsupported length the Ø2.071 core's ideal steel Euler estimate falls from 2.85 kN pinned to 0.712 kN with K=2. Even before tooth/contact stress, the adverse case is out of range.
+
+**Mount rejection independent of motor selection.** In static hold the checked side-root section alone would bridge x1.95×z.30 to the lower tie, centred at z−15.88. With no second anchored support the pure 85 N normal already applies 1349.8 N·mm about x at the root. Section modulus 0.02925 mm³ gives **46.1 GPa nominal bending stress**, not including the other bending axis or holes. Even replacing it with a solid 2 mm wall at the same width would demand ~1 GPa before notches. A mesh, motor saddle, wire, battery wrap or polymer shell is not a second frame support. This is a no-go for this mount, not a theorem excluding all oblique rams.
+
+**Anti-backdrive.** Lead angle 2.806°; ideal thread self-lock only at actual effective flank coefficient corresponding to thread µ>0.04245. Lubrication, vibration and impact must be measured in both directions; do not assign a brake rating to a two-start worm or an unpowered gearbox. At zero friction a holding brake at the screw needs at least 5.57 N·mm per 100 N equivalent axial load before factor, backlash and shock; do not select it from the lower 85 N toe figure alone. A 200 N·mm screw limiter could develop 3.59 kN in a frictionless hard-stop jam. Actual seated load needs a separate series metal load element, force trip *before* solid height, and positive-opening shoulders. No independent spring-applied/positively released shaft dog or brake and no fault-rated force trip are included in the tested housing. Loss of power ⇒ support chain externally, inhibit reclamp, unload and rehome; not autonomous safe recovery.
+
+## What to change before a fixture
+
+1. Route a second metal reaction path from the guide plate to the lower cheek, separated in z; e.g. a closed yoke around the lower cheek with two loaded anchor rails, not two bolts on one thin sheet. For 1.35 N·m alone a 12 mm anchor span still needs a 113 N couple, **in addition** to primary shear. Check plate bending, fastener bearing, stationary side-wall access, mating-tail yaw and ±z ejector uprights before including it.
+2. Spread the roll bearings (or balance the drive near z0 via a truly supported symmetric crosshead) rather than increasing reduction. Bench-measure guide/thrust/thread drag and backlash under eccentric combined loading. Select and rate real teeth, thrust bearings, steel root and holding brake; derive independent stopping/load windows. Use a faster transmission only after restoring torque/holding margin.
+3. Route the rear connection outside the shielded strip and return above the stationary sill, or separately demonstrate all eligible contacts and independent actual clearance. A slot through the new roof undoes the protecting surface. With the tail seated, unload, retract and *observe* toe/collar and break contacts before axial ejection; blocked or unobserved travel is a fault.
+
+Assembly trial: fit the drive shaft and front thrust shoulders in a split metal cartridge, mesh the worm through the side window with independent journals, slide on the captive nut and keyed master/floating shoe, close the nose keeper, then seat the common crosshead/toe. Install the framed cartridge onto the cheek **before** the cell and controller; final fork/feet, guards, stop access and removable driver tooling require a physical stack check. Do not advance this single-root section to a candidate or claim a full ENV-004, Q85 or release pass.

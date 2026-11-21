@@ -4,6 +4,11 @@ sweep clearance, joint torque at the drive limit. Lengths mm, torques mN m.
 Plain Python 3. Run: python3 joint.py
 """
 import math
+import json
+from pathlib import Path
+
+decl = json.loads((Path(__file__).resolve().parents[1] / "declaration.json").read_text())
+comps = {c["id"]: c for c in decl["components"]}
 
 GAP_HALF = 1.8       # segment inner faces at x = +-1.8, pivot at the origin
 YO = 12.7            # segment outer half width
@@ -28,24 +33,58 @@ print("first outline contact found by sweep at %.2f deg (working range +-15, sto
 # hinge bosses: r 1.6 against the opposite inner face line at distance 1.8 from the pivot
 print("boss r 1.6 to the opposite inner face: 0.20 mm at every angle (the face line stays 1.8 from the pivot)")
 
-# sector sweep (tail part) through the head bottom layer: z -10.7..-9.2
+# Sector sweep (tail part); take its layer from the versioned declaration.
 R_TIP = 8.7 + 0.3
-jm = (6.2, 8.47)
-ang = math.degrees(math.atan2(jm[1], jm[0]))
+# The sector's local +x is radial; the clipped motor box is not axis-centred.
+w, x, y, z = comps["joint-sector"]["box"]["pose"]["orientation"]
+ang = math.degrees(math.atan2(2*(x*y+w*z), 1-2*(y*y+z*z)))
 span = 21 + 15
 lo, hi = ang - span, ang + span
 print("sector swept sector in the head frame: %.1f..%.1f deg, r <= %.2f" % (lo, hi, R_TIP))
-# nearest head part in that layer is the coupler motor box x >= 9.3, y 0.3..6.3, z -10.25..-4.25
-xmax = max(R_TIP * math.cos(math.radians(a)) for a in [lo + i * 0.1 for i in range(int((hi - lo) * 10) + 1)])
-print("sector reaches x <= %.2f; coupler motor box starts at x 9.30: clearance %.2f" % (xmax, 9.30 - xmax))
-ymin = R_TIP * math.sin(math.radians(lo))
-print("sector stays at y >= %.2f at the tip (cell box y <= -3.80)" % min(ymin, 4.5 * math.sin(math.radians(lo))))
+def axis_bounds(box):
+    """Conservative AABB even for rotated parts."""
+    w, x, y, z = box["pose"]["orientation"]
+    m = [[1-2*(y*y+z*z), 2*(x*y-z*w), 2*(x*z+y*w)],
+         [2*(x*y+z*w), 1-2*(x*x+z*z), 2*(y*z-x*w)],
+         [2*(x*z-y*w), 2*(y*z+x*w), 1-2*(x*x+y*y)]]
+    he = box["half_extent_um"]
+    dh = [sum(abs(a)*h for a, h in zip(row, he)) for row in m]
+    return [((c-h)/1000, (c+h)/1000) for c, h in zip(box["pose"]["position_um"], dh)]
+
+# Each wedge contains its entire annular arc (inner chord inside, outer
+# chord tangent). Unlike sampling poses, gaps between angles aren't omitted.
+def wedge(deg0, deg1):
+    r = R_TIP/math.cos(math.radians(deg1-deg0)/2)
+    return [rot((rr, 0), math.radians(t)) for rr, t in
+            ((4.5, deg0), (r, deg0), (r, deg1), (4.5, deg1))]
+
+def overlaps(a, b):
+    for poly in (a, b):
+        for p, q in zip(poly, poly[1:]+poly[:1]):
+            nx, ny = q[1]-p[1], p[0]-q[0]
+            proj_a = [nx*x+ny*y for x,y in a]
+            proj_b = [nx*x+ny*y for x,y in b]
+            if max(proj_a) < min(proj_b) or max(proj_b) < min(proj_a):
+                return False
+    return True
+
+sector_z = axis_bounds(comps["joint-sector"]["box"])[2]
+wedges = [wedge(lo+i, lo+i+1) for i in range(2*span)]
+for cid, c in comps.items():
+    if cid in ("joint-pinion", "joint-sector", "hinge-plate-low"):
+        continue  # intended gear mesh / sector stock
+    (x0,x1), (y0,y1), (z0,z1) = axis_bounds(c["box"])
+    if x1 < 0 or z0 >= sector_z[1] or z1 <= sector_z[0]:
+        continue
+    rect = [(x0,y0), (x1,y0), (x1,y1), (x0,y1)]
+    assert not any(overlaps(w, rect) for w in wedges), f"sector sweep not clear of {cid}"
+print("full swept sector clears stationary component box bounds (excluding intended gear mesh)")
 
 # torque
 I = 58 / 12
 for n, tm in (("rated 3 mN m (drive limit)", 3.0), ("stall at 3.0 V", 9.0), ("stall at 3.6 V (fault)", 10.8)):
     print("joint torque, motor %s: %.1f mN m (eta 1, upper bound)" % (n, tm * I))
-W = 0.3058
+W = sum(c["mass_mg"] for c in comps.values())*1e-6*9.80665
 for n_units in (1, 2):
     lever = 47.2 * n_units / 2 + 1.8
     print("  pushing %d unit(s) sideways at mu 0.3 (PROVISIONAL), lever %.1f mm: %.1f mN m" % (n_units, lever, 0.3 * W * n_units * lever))
