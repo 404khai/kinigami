@@ -1,0 +1,3 @@
+# Byte copies of previously evaluated generated declarations; keep the
+# current declaration, its generators, all reviews and all results visible.
+candidates/cand-d/declaration-v[0-9]*.json linguist-generated
