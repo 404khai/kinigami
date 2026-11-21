@@ -317,3 +317,15 @@ Separate packaging Graft: size one transversely driven platen, the opposite fixe
 ## Take 29 — seated support and release force for the transverse vise
 
 Lead integration in the reciprocal-v7 Graft: test the six V faces and upper pad as a new three-dimensional load path. Distinguish existence of equilibrium, incomplete seating and partial-release force; no universal 60 mm inference.
+
+## Take 30 — integrate the articulated body and adjacent-unit sweep
+
+Lead (reciprocal-v7 Graft), in parallel with the separate surface and actuator Grafts. Place the cell, controller and real joint; screen moving parts **between** units as well as within one unit. The straight 30 mm chain pitch is not itself a swept-clearance proof.
+
+## Take 31 — oblique upper toe and guarded withdrawal
+
+Mechanics Graft: investigate a fixed-direction tapered toe instead of folding a tongue. A flat load face may remain horizontal; side and leading surfaces must recede, and the rear surface needs shielding. Do not assume any cone/sleeve seam is inaccessible.
+
+## Take 32 — oblique ram package
+
+Packaging Graft: replace the wide platen bridge, not the independent ejector, with a supported oblique linear ram. Check the stowed and deployed stock including real guides, drive and neighbouring unit. Independent of whether Take 31 finds a release certificate.
