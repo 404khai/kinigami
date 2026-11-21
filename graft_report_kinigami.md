@@ -329,3 +329,15 @@ Mechanics Graft: investigate a fixed-direction tapered toe instead of folding a 
 ## Take 32 — oblique ram package
 
 Packaging Graft: replace the wide platen bridge, not the independent ejector, with a supported oblique linear ram. Check the stowed and deployed stock including real guides, drive and neighbouring unit. Independent of whether Take 31 finds a release certificate.
+
+## Take 33 — compatibility of clamp preload with actual contact deflection
+
+Lead integration Graft: bound the seven-contact preload under external service using both equilibrium and relative deflection from the measured closing load. Test an integral spherical top pad separately from the free ball/bed; do not infer contact-force sharing or available torque from the motor current alone.
+
+## Take 34 — terminal force direction rather than a terminal mask
+
+Mechanics Graft: test an arcuate toe which turns the exposed faces into positive-work ejector surfaces as it opens. Preserve the translational toe's real parked-shoulder counterexample. Bound the work of all reachable faces throughout rotation and at the final stop; a stroke angle is not a mask.
+
+## Take 35 — fit and power an arcuate toe
+
+Packaging Graft: check the independent blade and a powered circular toe, including its pivot, guard and moving root, against own structure, deploy and stow. A crank exposed behind a cosmetic cover or a sector sweeping the lower cheek does not count.
