@@ -346,6 +346,10 @@ Packaging Graft: check the independent blade and a powered circular toe, includi
 
 Mechanics Graft: test a virtual twist common to the entire jaw and the free tail. Internal contact work cancels without requiring every moving rear surface to assist release. Evaluate actual fixed-deck, table, pusher, axle-friction and stop constraints; distinguish travel from verified complete separation.
 
+[Report](docs/studies/cand-d-transverse-vise/twist.md) · [calculator](docs/studies/cand-d-transverse-vise/twist.py). The upper deck gives at least +0.913 N·mm per N at the aft pivot under the stated bearing model. The finite cheek sides and parked blade can oppose opening. In a free five-Kin chain, weight bounds total floor normal, not the internal squeeze. No independent release or candidate revision is established.
+
 ## Take 37 — support an aft-pivot lift without crossing its sweep
 
 Packaging Graft: test an aft pivot near the lower-deck height and a supported moving arm which can nest in a guarded terminal landing. Check whether a fixed shaft, motor and gear train can coexist with its housing, own fork and both neighbours, not just the working pad.
+
+[Package report](docs/studies/cand-d-transverse-vise/aft-drive-take37.md) · [drive](docs/studies/cand-d-transverse-vise/aft-drive-take37.py) · [checks](docs/studies/cand-d-transverse-vise/aft-gear-search-take37.py). At 10° literal co-rotation puts the crown inside the parked blade by .372 mm. Moving the park 1 mm back puts the nut .70 mm into the bevel allocation. The next motor hits the closed jaw at both pitches; the terminal roof hits a side arm. Reject this installation, not Q12.
