@@ -24,4 +24,6 @@ In a lower-only contact state, choose a virtual translation with positive work o
 
 ## Reproduction
 
+[Contact deflection and load sharing](pads.md) tests a different, integral top pad. [Straight toe](toe.md) and [its ram](oblique-drive.md) document the terminal contact and single-web failures. The [rotary toe](sector.md) can turn its central face toward ejection, but the [installed sector drive](sector-drive-take35.md) collides. None replaces the frozen v7.
+
 Run from this directory: `for s in bench drive install articulate vise settle; do OPENBLAS_NUM_THREADS=1 python3 -B "$s.py" || exit 1; done`. The three installation/surface calculators use the standard library; the trial articulation and force screens also use NumPy and the LPs use SciPy/HiGHS. No simulator or candidate declaration reads these files. A candidate revision still needs a complete loaded restraint/release path, sensing, structure, fault response, provenance and a fresh independent review.
