@@ -295,3 +295,11 @@ Fresh mechanics Graft: reverse the radial direction of the port and replace the 
 ## Take 25 — central bulb, head-side push and package
 
 Separate packaging Graft: size the passive bulb, powered take-up and central ejector without the Take 23 blind floor. Verify stock and deployment in a mechanically achievable stowed pose; no assumption that changing the pitch solves Q12.
+
+**Take 24 result:** [central bulb and moving bowl](docs/studies/cand-d-inward-bulb/README.md): a Ø24.96 section admits the six working flanks and three rear pads. The deep park clears the local moving wall; the 731 N guide-reaction screen makes the original short straight guide unacceptable without a start-friction bound.
+
+**Take 25 result:** [common cam and terminal study](docs/studies/cand-d-inward-bulb/bulb-drive-take25.py): the long terminal exceeds 60 mm even folded to 15°. The shorter ring collides with the side-wall servo or cell at every clocking in the studied arrangement. Do not treat the two layouts as one.
+
+## Take 26 — integrate the inward bulb, wrench and rocker studies
+
+Lead integration in the `reciprocal-v7` Graft, alongside the existing Take 24/25 mechanics and drive Grafts. [Wrench and force-point certificates](docs/studies/cand-d-inward-bulb/README.md): checked a nine-contact equilibrium with one rear pad unloaded, then recomputed the R18 tangential rocker with independent uncertainties and full friction disks. At 90 g, 32±.8 N per nose, the worst table reserve is 1.800 N in the frictionless existence proof; the frictional strength screen allows a single shoe to carry 192.064 N summed normal force. No v8, review or official result follows from this screen.
