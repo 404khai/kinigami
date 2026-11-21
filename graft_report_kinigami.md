@@ -275,3 +275,23 @@ Follow-up in the same Graft: the [revised rear drive](docs/studies/cand-d-centra
 ## Take 21 — load transfer to an inverted T-bar
 
 `vacuum-fork-study` Graft from c750e18 with the pinned toolchain. [Two-foot latch and load-transfer analysis](docs/studies/cand-d-pressure-transfer/vacuum-fork.md), [calculator](docs/studies/cand-d-pressure-transfer/vacuum-fork.py). The local six-seat calculation has positive reserve with an intact, qualified seal. After the latch aligns with the exit slot, sudden venting leaves no tensile carrier. Distinct from Take 20; the budgets do not certify a single integrated design. No candidate change, review or official run.
+
+## Take 22 — positively retracting button and passive cup
+
+`retracting-button-study` Graft, mechanics author. Test a p5-backed tail against a finite male-nose port, including moving and parked contacts, unilateral button draw, the cut lip and an actual working crown. Do not carry an intact vacuum seal or a nominal centred contact into this study.
+
+## Take 23 — expanding-plug drive and blind receiver
+
+`expanding-plug-drive` Graft from c750e18, package author. Study a mechanically metered cartridge, separate retracting shoes, six alternating V and lock sites, actual swept volume and terminal ejection. Related calculations in the lead integration Graft: [crown](docs/studies/cand-d-expanding-plug/crown.py) and [individual seat loads](docs/studies/cand-d-expanding-plug/supported.py). No replacement candidate has been authorized.
+
+**Take 22 result:** the [finite-collar proof](docs/studies/cand-d-expanding-plug/button.md) shields the cut lip; the last moving contact is still a small-radius blend, not the seated crown. Test the individual port, do not freeze a candidate.
+
+**Take 23 result:** the [drive section](docs/studies/cand-d-expanding-plug/plug-drive-take23.md) has a 0.271 mm lock-land interference, a shared motor/floor volume and no unobstructed grid or split-ring strip. A 66.17 mm two-feature lower bound rejects the proposed aft-floor fix, not the 60 mm class.
+
+## Take 24 — inward buttons around a single tail bulb
+
+Fresh mechanics Graft: reverse the radial direction of the port and replace the costly outer torus with one centrally mounted, rounded mushroom. Check its actual rolling radius, locked and moving contact stresses and finite funnel clearances; do not import Take 22's outer-nose proof.
+
+## Take 25 — central bulb, head-side push and package
+
+Separate packaging Graft: size the passive bulb, powered take-up and central ejector without the Take 23 blind floor. Verify stock and deployment in a mechanically achievable stowed pose; no assumption that changing the pitch solves Q12.
