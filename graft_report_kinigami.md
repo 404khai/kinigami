@@ -265,3 +265,13 @@ The [mechanics study](docs/studies/cand-d-central-grasp/grasp.md) gives a measur
 A separate `central-drive-package` Graft from e6b51f9 (packaging author). Check actual drive, jaw take-up, independent push, sensing and access against 60 mm. No candidate edit or official evaluation.
 
 The [package section](docs/studies/cand-d-central-grasp/central-drive-take19.md) keeps a rear-running ejector screw but rejects the original high shaft: the two critical features span 60.194 mm before the rest of the unit. The wider slotted hex needs 4.531 mm radial stroke before cage motion. Neither that package nor the conditional force result is a Gate 1 design.
+
+Follow-up in the same Graft: the [revised rear drive](docs/studies/cand-d-central-grasp/central-drive-rear19.md) intersects the retained joint motor. Four points in the proposed stock alone require a containing diameter of at least 60.939 mm; this rejects that package, not Q12.
+
+## Take 20 — local vacuum transfer package
+
+`vacuum-pose-hold` Graft from c750e18 with the pinned toolchain. [Section and gas/drive budgets](docs/studies/cand-d-pressure-transfer/vacuum-take20.md), [calculator](docs/studies/cand-d-pressure-transfer/vacuum-take20.py). A single stroke can provide the modelled differential for a finite interval. The return shaft collides with the joint motor and the slow cycle needs a tight leak bound. No external air or unpowered structural credit.
+
+## Take 21 — load transfer to an inverted T-bar
+
+`vacuum-fork-study` Graft from c750e18 with the pinned toolchain. [Two-foot latch and load-transfer analysis](docs/studies/cand-d-pressure-transfer/vacuum-fork.md), [calculator](docs/studies/cand-d-pressure-transfer/vacuum-fork.py). The local six-seat calculation has positive reserve with an intact, qualified seal. After the latch aligns with the exit slot, sudden venting leaves no tensile carrier. Distinct from Take 20; the budgets do not certify a single integrated design. No candidate change, review or official run.
