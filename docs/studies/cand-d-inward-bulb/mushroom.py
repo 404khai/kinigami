@@ -94,12 +94,15 @@ def backing():
         # Actual 0.40-radius plane disk on the core. Its normal is j; no
         # penalty to its own rear plane. Other cuts, not the plane, truncate it.
         a = .40
-        radial = Krad-hypot(*q[1:])-a   # simple norm bound (not meridional only)
+        # For a tangent disk, r^2 is quadratic in its meridional direction
+        # cosine; it increases up to that cosine = 1 for this disk.
+        assert hypot(*q[1:])*cos(alpha)>a*sin(alpha)**2
+        radial = Krad-hypot(*q[1:])-a*cos(alpha)
         wall = min(dot(v, q)+d-p-a*sqrt(max(0., 1-dot(v, j)**2)) for v, d in walls)
         cut = min(max(dist(q, l)-(rd+p)-a for l, _ in pair) for pair in cutters())
         assert min(radial, wall-.07, cut, q[0]-Klo-a) > 0
     show('rear x,r; pad core x,r; equivalent arm', *C[:2], *Q[:2], rr-xr*tan(alpha))
-    show('rear core disk radial spare (isotropic enclosure), min wall free, other cut', radial, wall, cut)
+    show('rear core disk radial spare, min wall free, other cut', radial, wall, cut)
     show('bulb OD; port x,r; lock centre height', 2*(Krad+p), *P[:2], H)
     # Integrated insphere. Two witnesses cover each 120-degree angular sector:
     # the rear-pole ball or the ball centred at (B-p) times query direction.

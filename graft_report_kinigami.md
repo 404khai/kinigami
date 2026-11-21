@@ -303,3 +303,17 @@ Separate packaging Graft: size the passive bulb, powered take-up and central eje
 ## Take 26 — integrate the inward bulb, wrench and rocker studies
 
 Lead integration in the `reciprocal-v7` Graft, alongside the existing Take 24/25 mechanics and drive Grafts. [Wrench and force-point certificates](docs/studies/cand-d-inward-bulb/README.md): checked a nine-contact equilibrium with one rear pad unloaded, then recomputed the R18 tangential rocker with independent uncertainties and full friction disks. At 90 g, 32±.8 N per nose, the worst table reserve is 1.800 N in the frictionless existence proof; the frictional strength screen allows a single shoe to carry 192.064 N summed normal force. No v8, review or official result follows from this screen.
+
+**Take 26 follow-up:** [finite swing](docs/studies/cand-d-inward-bulb/mushroom.md) and [bevel package](docs/studies/cand-d-inward-bulb/bulb-drive-take25.py). The 0.02979 opening coefficient cannot bound a partly supported shoe at the light-lead force while the 32 N closure is still applied. Even moving the motors behind the arm leaves the supported axle 0.723 mm inside the next motor. At 35 mm pitch a fixed guide rim and an actual opposite tail ball span 60.268 mm at the shorter 4 mm stroke, independent of chosen sphere centre. Retire this package, not all central bulbs.
+
+## Take 27 — transverse vise surface and paddle
+
+Separate mechanics Graft: replace the stud's undercut, moving buttons and ports with a metal paddle between two transverse jaws. Investigate finite V-groove and paddle faces, sweep, neck, last contact and ejection, including free tilt. Exploratory, not a candidate.
+
+## Take 28 — one platen and positive ejector
+
+Separate packaging Graft: size one transversely driven platen, the opposite fixed jaw and an axial head pusher within the complete stowed unit, including actual structural and electrical components. No credit for the bulb's bearings or actuator positions.
+
+## Take 29 — seated support and release force for the transverse vise
+
+Lead integration in the reciprocal-v7 Graft: test the six V faces and upper pad as a new three-dimensional load path. Distinguish existence of equilibrium, incomplete seating and partial-release force; no universal 60 mm inference.

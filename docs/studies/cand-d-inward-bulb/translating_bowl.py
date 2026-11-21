@@ -26,8 +26,8 @@ def mouth():
 
 def cut_port():
     # Full hemisphere only: c>=0. Lower part is a cylinder, not an exposed
-    # sphere with a slender neck. Four stock witnesses; bearing remains fixed.
-    cmax,hmin,tube,WW=.315,-4.12,5.4,5.35
+    # sphere with a slender neck. Intact top annulus alone suffices.
+    cmax,hmin,WW=.315,-4.12,5.35
     worst=0.
     for i in range(1200):
         lo,hi=cmax*i/1200,cmax*(i+1)/1200
@@ -36,11 +36,7 @@ def cut_port():
         for j in range(70):
             zl=(p+bl)*lo+hmin+(hhi-hmin)*j/70
             zh=(p+bh)*hi+hmin+(hhi-hmin)*(j+1)/70
-            ds=[hypot(gap(r0,r1,WW,W),gap(zl,zh,0,0)),
-                hypot(gap(r0,r1,A,W),gap(zl,zh,-1.,-1.)),
-                hypot(gap(r0,r1,A,A),gap(zl,zh,-1.50,-1.)),
-                hypot(gap(r0,r1,A,A),gap(zl,zh,-tube,-1.68))]
-            worst=max(worst,min(ds))
+            worst=max(worst,hypot(gap(r0,r1,WW,W),gap(zl,zh,0,0)))
     show('recessed collar strict exclusion c<=.315, overlap',p-worst-1.e-9)
     assert p-worst>.05
     # Equator-side cylinder normals c=0 at all accessible heights. For
@@ -72,15 +68,8 @@ def band():
     # Slightly reducing the inner bore doesn't remove material at the collar;
     # use larger OUTER blank. To avoid covering the opening itself check local
     # extension including outer plane -1.55 at its complete radius A.
-    def cap(z,R):
-        xmax=abs(z)*cos(f)+R  # conservative, not the full ridge
-        return P[1]+xmax+(deck-P[0]+abs(z)*sin(f)+R*cos(f))*slope
     show('entire planar port disk max radius extrapolated to deck at 16deg; clip radius',worst,17.70)
-    # Rear-layer disk witnesses to W are needed only over A..5.35; outside
-    # that radius upper annulus supersedes lower disk in the proof. Instead
-    # retain the local -1 layer out to W with a side land outside the clip.
-    # It is part of the bowl blank; not an intrusion in the inner chamber.
-    show('back-ring stock nominal envelope (rough upper), x-front collar, moving rim home radius',cap(-1.55,A),P[0]+W*cos(f),18.25)
+    show('x-front collar, moving rim home radius',P[0]+W*cos(f),18.25)
     assert worst<17.60
     # No W ring at -1 needed for low-c bounds: all probe centres have r>W.
     assert (p+bl)*sqrt(1-.315**2)-drift>W

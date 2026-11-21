@@ -99,3 +99,5 @@ for script in mushroom translating_bowl bulb-drive-take25 tripod friction swing 
   OPENBLAS_NUM_THREADS=1 python3 -B "docs/studies/cand-d-inward-bulb/$script.py" || exit 1
 done
 ```
+
+**Subsequent Take 24–26 checks.** [Complete swing study and limits](mushroom.md). The constant light closing bias is not guaranteed during removal of the loaded saddle: even with no saddle or bearing drag, 32.8/0.029789 = 1,101 N is the loose normal-sum bound, **not** a predicted load. The [axial motor and bevel check](bulb-drive-take25.py) reproduces a solid shaft–motor collision and a 60.268 mm centre-independent span for the shorter fixed sleeve at 35 mm straight pitch. Neither the 59.632 mm motor-only guard nor the free-lead contact estimate authorizes a successor.

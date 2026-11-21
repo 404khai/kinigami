@@ -373,6 +373,161 @@ def common_cup():
     assert amin-proj-drift>0 and 0<sstar<st and free-solid-cap32<sh
 
 
+def swing():
+    print('\nCOMMON +t TANGENTIAL SWING; no straight-slide force credit')
+    L, h0, hl = 18., 2.450, 3.020
+    ph=rad(37)
+    n=(sin(ph),-cos(ph),0)
+    m=(cos(ph),sin(ph),0)
+    qlock=asin((hl-h0)/L)
+    V=(18.430-(hl-h0)*n[0],10.950-(hl-h0)*n[1],L*cos(qlock))
+    O=(.514,0.,0.)
+    def point(q,u,t,w=0.):
+        return add(add(add(V,u*cos(q)-t*sin(q),n),w,m),u*sin(q)+t*cos(q),(0.,0.,1.))
+    def cyl(centre,axis,r,l):
+        v0=add(centre,-1,O)
+        x=dot(v0,axis)
+        return 2*hypot(abs(x)+l/2,sqrt(max(0.,dot(v0,v0)-x*x))+r)
+    def tcyl(x,r,t1,t2,b):
+        return cyl((x,r,(t1+t2)/2),(0,0,1),b,t2-t1)
+    show('global virtual pivot x,r,t, local x',*V,V[0]-19)
+    for h in (hl,-1.928,-4.10):
+        q = asin((h-h0)/L)
+        xi,ri,ti=point(q,-9.5,-5.)
+        x,r,t=point(q,-9.5,-5.,-2.8)
+        N=-9.5*cos(q)+5*sin(q)
+        Tp=-9.5*sin(q)-5*cos(q)
+        rp=cos(ph)*Tp
+        ap=(r*N-t*rp)/(r*r+t*t)
+        show('h,deg,crank global x/r/t, screw tangent F at 32.8 plus 12Nmm trial bearing drag',
+             h,degrees(q),xi,ri,ti,(32.8*L+12)/abs(N))
+        show('aft pin x/rho/az, hoop rad/rad, one/all3 hoop torques @32.8 before losses',
+             x,hypot(r,t),degrees(atan2(t,r)),ap,32.8*L/abs(ap),3*32.8*L/abs(ap))
+    for w,r,l in ((.4,5.5,4.5),(4.7,5.5,4.5),(-5.,5.5,4.5),(-17.,5.5,4.5),(-4.,4.,4.)):
+        v=add(V,w,m)
+        show('pivot race w, D actual stock about prescribed centre',w,cyl(v,m,r,l))
+    # Witness on 11-mm race rim, NOT its centre hole. Rotate to station
+    # 120 degrees then add raised z datum. Also lies inside the Cell x range.
+    v=rot(add(add(V,-17.,m),-5.5,(0,0,1)),2*pi/3)
+    show('rear race rim x,y,z vs cell',v[0],v[1],v[2]+1.2)
+    w1,w2=-5.,-17.
+    Fs,Fin=198.,65.
+    mm=L*Fs+.23*192.064*2.41
+    rb=(mm+abs(w1)*(Fs+Fin))/(w1-w2)
+    show('robust overbound rear/front race radial (NOT simultaneous predictions)',rb,Fs+Fin+rb)
+    show('MTA04-11 axial-only, radial-only C0 N',1410,282)
+    # Illustrative, admissible transverse arm test, NOT a nine-face solution.
+    # 100N purely along pivot axis at 18 mm remote => 150N paired couple.
+    show('single 100N axial-to-pivot load, two-race couple over 12',18*100/12)
+    # M2x.4, pitch diameter 1.74, opposed supported thrust pair. Spring/guide
+    # friction trials add 2N and 12 Nmm at swing axis, 1 Nmm on screw.
+    F=(32.8*L+12)/abs(-9.5*cos(qlock)+5*sin(qlock))+2
+    tm=F*.87*tan(atan(.4/(pi*1.74))+atan(.18/cos(rad(30))))+1.
+    show('working screw N/Nmm, GP6A output after motor 25:26 gear/.85, min GP efficiency',
+         F,tm,tm/(26/25*.85),tm/(26/25*.85*.324*(531441/2401)))
+    show('jam at 27 Nmm screw: frictionless upper axial load, crank torque at max arm',
+         27*2*pi/.4,27*2*pi/.4*10.67)
+    show('tangential motor, gears, cartridge envelope D at x+.514',
+         tcyl(11.4,14.375,-9.,19.7,3.2),tcyl(11.4,20.75,-12.35,-11.1,3.85),
+         tcyl(11.4,20.75,-4.,12.8,3.10))
+    elbow=point(qlock,-6.15,-18.,-2.2)
+    g0=hypot(elbow[0]-11.4,elbow[1]-14.375)-3.
+    show('locked elbow corner and signed gap to actual motor',*elbow,g0)
+    # A solid screw witness at deep park: nearest actual member point can
+    # slide within the beam thickness and its 4.40 meridional width.
+    q=asin((-4.10-h0)/L)
+    pts=(point(q,-6.15+u,-18.+t,w) for u,t,w in product(
+        (-1.1,0.,1.1),(0.,.5,1.),(-2.2,-1.,0.,1.,2.2)))
+    gg,z=min((hypot(v[0]-11.4,v[1]-20.75)-.75,v) for v in pts if -4.<v[2]<10.)
+    show('deep parked beam vs M2 root cylinder, signed gap and x,r,t',gg,*z)
+    ser=degrees(asin((10.65-1.2)/21.5));cell=degrees(asin((15.325-1.2)/21.5))
+    show('abandoned linear stage: guaranteed servo/cell angular sectors, overlap',
+         ser,cell,ser+cell-60)
+    assert g0 < -1.4 and gg<0 and -22.<v[1]<-1.3 and 1.5<v[0]<6.9
+
+    print('\nBEVEL + BOTTOM CELL: 35 pitch, x19/-16, trial sphere centre (0,0,0)')
+    show('undimpled R12.48/.8 304 shell mass; three RE6A + GP6A estimate g',
+         4*pi/3*(12.48**3-11.68**3)*.008,3*(2.3+2.9))
+    s0=point(0.,-5.85,0.,-4.)
+    x,r=s0[:2]
+    rho=15.92
+    t=-sqrt(rho*rho-r*r)
+    front=x-5.55
+    aft=front-28.7
+    clock=pi/2-atan2(t,r)
+    motors=[rot((0,r,t),clock+i*2*pi/3) for i in range(3)]
+    shafts=[rot(add(V,-17.,m),clock+i*2*pi/3) for i in range(3)]
+    htest=-3.91013
+    q=asin((htest-h0)/L)
+    # Directly specified solid section; tangent screw major-root cylinder
+    # includes r=.75 and runs through the point's measured t. No box contact.
+    hit=point(q,-7.25,-8.)
+    show('parent bevel witness h,q,beam x/r/t and signed screw-root gap',
+         htest,q,*hit,hypot(hit[0]-12.2,hit[1]-19.)-.75)
+    show('revised meridional and cross-section e,n,x,r,t motor, x aft/front, clock deg',
+         -4.,-5.85,x,r,t,aft,front,degrees(clock))
+    show('motor 3x guard D, intermotor gap, worst bottom cell vertical gap, local tail B margin',
+         2*hypot(aft,rho+3.2),sqrt(3)*rho-6.4,min(k[2] for k in motors)-3.2+15,
+         rho-3.2-12.48)
+    cellD=2*hypot(14.,15.325,20.4)
+    show('bottom cell D, original provisional front/secondary disk D, core-offset bound D',
+         cellD,2*hypot(22.1,20.),2*hypot(9.5,22.),2*(hypot(22.15,6.68)+5.8))
+    for i,(xx,y,z) in enumerate(shafts):
+        _,ym,zm=motors[(i+1)%3]
+        g=hypot(y-ym,z-zm)-3.0
+        show('station index, e-17 solid axle centre global x/y/z, signed gap next bare motor',i,xx,y,z,g)
+        assert aft<xx<front and g<-.71
+    # Arm's x is increasing in e, and n is smallest at min q, tip end
+    # (-18 t) for q<0. For positive q lower bound is -7.25 outright.
+    qp=asin((-4.12-h0)/L)
+    low=V[0]-2.2*m[0]+(-7.25*cos(qp)+18*sin(qp))*n[0]
+    show('beam x lower bound, axially clear three motor bodies by',low,low-front)
+    show('e-plane gaps screw to beam; flattened 2.90-wide crosshead to beam',
+         4.-2.20-1.,4.-2.20-1.45)
+    # Brake/clutch position and spring are not installed. Working target
+    # tangent 32, independent flexure measurement required downstream.
+    for h in (3.02,-4.10):
+        qp=asin((h-h0)/18.)
+        tp=point(qp,-9.5,-5.)[2]
+        show('h; crank pin t, fork datum; nut datum loaded vs picked-up park',
+             h,tp,tp-12.5,tp-12.5+(-2.15 if h>0 else .18))
+    xx=19.+3.30+4.+.30; rf=18.39+4.30*tan(rad(14.4))+.40
+    show('max straight 4mm-sleeve pitch vs rear p-ball alone',
+         sqrt((60-5.8)**2-(rf+2.95+5.8*sin(rad(35)))**2)
+         -(xx-19)+(-9.92+5.8*cos(rad(35))))
+    # Slot/guide assumptions, not catalogue guaranteed. Rotate at full
+    # exposure including h tolerance. For screw start use dry effective
+    # fork and keyed guide friction, not just the previous 2-N loss.
+    qh=asin((3.055-h0)/L)
+    N=abs(-9.5*cos(qh)+5*sin(qh))
+    dN=abs(-9.5*sin(qh)-5*cos(qh))
+    for us,ug in ((.03,.03),(.18,.18),(.23,.23)):
+        F=(32.8*18.+12.)/(N-us*dN)
+        # guide pads straddle screw, two support planes 7.5 apart along t;
+        # 5.1 normal-to-screw eccentricity incl slot width; no equal sharing.
+        guide=2*5.1*F/7.5+us*F
+        thrust=F+ug*guide+2.
+        tm=thrust*.87*tan(atan(.4/(pi*1.74))+atan(.18/cos(rad(30))))+1.
+        show('fork/guide mu, pin thrust, guide normal sum, screw force/torque, bevel eta_min vs 30 Nmm, GP eta_min @.85',
+             us,F,guide,thrust,tm,tm/30.,tm/(.85*.324*(531441/2401)))
+    show('jam: crank radius and roll, screw 27Nmm frictionless upper thrust; e-17..-5 reactions upper at fault',
+         hypot(9.5,5.),2.55,27*2*pi/.4,
+         (mm+5*198+abs(-4+5)*27*2*pi/.4)/12,
+         198+27*2*pi/.4+(mm+5*198+abs(-4+5)*27*2*pi/.4)/12)
+    # Take 24's fixed sleeve must remain ahead of moving rim. This is
+    # physical stock, not the deployed pose imposed as a stow condition.
+    xr=-16-9.920+5.8*cos(rad(35))
+    rr=2.950+5.8*sin(rad(35))
+    for st in (4.,9.):
+        xx=19.+3.30+st+.30
+        rrim=18.39+(st+.30)*tan(rad(14.4))+.40
+        both=hypot(xx-xr,rrim+rr)+5.80
+        show('travel, stationary guide x/R, D about zero, actual opposed tail p-ball distance, motor-guard distance',
+             st,xx,rrim,2*hypot(xx,rrim),both,hypot(xx-aft,rrim+rho+3.2))
+        assert both>60
+
+
 if __name__ == '__main__':
     inventory(ejection(geometry()))
     common_cup()
+    swing()
