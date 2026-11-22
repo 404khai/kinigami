@@ -374,6 +374,18 @@ Lead integration in the separate reciprocal-v7 Graft while Takes 38 and 39 check
 
 Mechanics Graft: remove the assumption of a separately bounded pin-x reaction. Test a fixed pin with only a near cheek, including its cap, port and contacts with the table after the six-V registry retreats. A squeeze that assists withdrawal may still damage the parts.
 
+[Near-cheek calculation](docs/studies/cand-d-vertical-pin/README.md): the pin and roof reactions are bounded in the tested pose domain, not over arbitrary poses. A 121 N central load admits a short-journal case with 293 N dry sliding drag before eye friction. The rear roof corners can oppose ejection.
+
 ## Take 42 — lift the pin instead of translating its journal
 
 Packaging Graft: fix the upper journal and drive a folded-back rack upward; move the indexed plate axially for take-up, relief and ejection. Check the mounted cantilever variant separately from the two-journal variant, including the powered stroke, direct position flags, level table and neighbouring drive.
+
+[Installation and physical witnesses](docs/studies/cand-d-vertical-pin/fixed-z-take42.md): the plate clears the roof and folded rack, but its thin roots need at least 1.49 GPa nominal bending stress under the 131.55 N draw. At 36 mm pitch the closed-stock sphere is 59.037 mm; it is not an achievable stow because the eye centreline enters the joint motor by 1.950 mm.
+
+## Take 43 — guard a shorter tapered button
+
+Mechanics Graft: test the finite slotted roof and the full parked support, including rear, outer and upper edges. A positive forward normal on an interior strip of roof is not an installed all-pose clearance guarantee.
+
+## Take 44 — fit the larger rounded eye around the joint
+
+Packaging Graft: relocate the hinge motor and reduction, check the eye and its three bosses through articulation, then test the protected button, indexed face and both drives within the complete stowed assembly.
