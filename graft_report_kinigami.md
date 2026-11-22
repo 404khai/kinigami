@@ -440,6 +440,28 @@ Lead integration in the reciprocal-v7 Graft. Relocate the bosses and check a fin
 
 Mechanics Graft: test a finite strand driven through a passive curved return. Check force transfer at unequal end tensions, mouth interference and the last-link exit under live load; no latch opened merely by command.
 
+[Fixture and derivation](docs/studies/cand-d-beaded-lace/README.md): the rocker absorbs a full pitch, and a single rounded lip cannot statically trap the last bead in the stated gauge. Two rounded strips leave a 2.011 mm throat around a 2.30 mm bead even at zero friction. This refutes the general single-lip argument, not reachability in a complete assembly.
+
 ## Take 53 — install the reusable lace and its receivers
 
 Packaging Graft: check a head-side feed, supported pickup, power-off lock, take-up, recovery and actual pusher with the passive return, neighbouring body and electronics. Do not carry over the horn, high post or long X rail.
+
+[Installed section](docs/studies/cand-d-beaded-lace/bore-take53.md): Ø59.599 mm straight stow does not make this assembly installable. The U wall crosses its own hinge and opposing magazines at 38 mm pitch have overlapping metal. At 55.5 N draw the tested drive needs 43.33 N·mm against 23.96 N·mm optimistic continuous output. Reject this arrangement, not every flexible tie.
+
+## Take 54 — bound the two-end draw on an indexed face
+
+Lead integration in the reciprocal-v7 Graft. Check the effect of unequal or single-end tension in a laced U return on all six indexed reactions. Separate the working draw from guide friction, working load, strength at the end fitting and actual exit.
+
+[Finite frame](docs/studies/cand-d-lace/README.md): 55.77 N total axial draw at the 70 g table case on six R8 cropped crowns, conditional on a 1.16 tension ratio, a 6.7° line cone and the stated errors. The frame clears the preliminary rocker at zero draw offset through ±17°; full installed motion and release are not certified.
+
+## Take 55 — discharge a spherical stud sideways
+
+Mechanics Graft. Explore an open-ended C-track and a full-section positive displacement plug. Distinguish a closed end cross-section from a force bound through the last partial engagement; model the finite stock of the neck and the moving neighbour.
+
+## Take 56 — install a transverse discharge slide
+
+Packaging Graft. Budget the short track, axial take-up, one positively driven transverse plug, screw drives, battery, logic and the joint together; check the ejected neighbour as well as straight stow.
+
+## Take 57 — finite-time release after the last loaded support
+
+Lead Graft. Test whether a positively retained, stored-energy **opening** stroke could bound the relative pose before the last edge clears, instead of assuming a partly released body remains aligned forever. Account separately for lost preload, guide reactions, moving mass, rebound, power interruption and the work needed to clear a neighbour.

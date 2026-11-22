@@ -1,0 +1,43 @@
+constants F,P,H,A, bead pitch, sprocket Rp 16.5 38.0 [-5.9  0.   0. ] [6.5 0.  0. ] 3.2774193548387096 5.302975911515785
+angles at R6 and 10-pocket, nominal/max pitch 31.699814494500604 32.91849925652045 36.0 37.39536972394667
+R1.45 base / R1.65 option radial travel for R1.25..1.15 [(0.19999999999999996, 0.30000000000000004), (0.3999999999999999, 0.5)]
+R6/Rp/R5.48 and articulation nominal/max pitch; no supplier limit [(6.0, 31.699814494500604, 32.91849925652045), (5.302975911515785, 36.0, 37.39536972394667), (5.48, 34.79925791446854, 36.14485523819892)]
+max R6 chord sagitta 0.2458710476736794
+fork halfslot, touching R1.25 space for tine / minimum pitched centres for .50 tine 0.5 0.20871215252208009 2.79128784747792
+fork halfslot, touching R1.25 space for tine / minimum pitched centres for .50 tine 0.95 0.8751923190728079 2.124807680927192
+U length, travel from parked tip centre 3.42 back to seated, pitches/turn, magazine route/spare 25.84955592153876 39.26955592153876 11.981852692595488 431.3466969334376 43.91592774167207 4.646371820133311
+nominal 20-interval cut diagnostic: required path in draw=0, cut, common u to tighten 62.23665269573231 65.54838709677419 1.655867200520941
+93 vs 94 per foot over 5 pockets and deployment 0.17433081674673945 0.41776123320785813
+rocker differential exact for ±17° at D10, projected per arm, single-arm projected ±3.40 yaw 3.507217112532709 1.7542302283364206 34.51810784106126
+angular bound B/minX/max transverse/radians converted deg 1.45 8.64576977166358 0.7421714642217874 4.906365017718633
+angular bound B/minX/max transverse/radians converted deg 1.65 8.64576977166358 0.9421714642217873 6.21925749375058
+3 deg entry radius needed using .10 datums and .08 end margin 1.6134272274906445
+beta/external Nmm/Faxial/arm min,max/Tmax/ratio bound 3.0 0.5 39.0 5.5582 6.08 20.445 1.0987
+beta/external Nmm/Faxial/arm min,max/Tmax/ratio bound 3.0 0.5 55.5 5.5582 6.08 29.077 1.0973
+beta/external Nmm/Faxial/arm min,max/Tmax/ratio bound 3.0 0.5 113.0 5.5582 6.08 59.157 1.0956
+beta/external Nmm/Faxial/arm min,max/Tmax/ratio bound 3.0 0.5 184.0 5.5582 6.08 96.3 1.0949
+beta/external Nmm/Faxial/arm min,max/Tmax/ratio bound 3.0 5.0 39.0 5.5582 6.08 20.832 1.1434
+beta/external Nmm/Faxial/arm min,max/Tmax/ratio bound 3.0 5.0 55.5 5.5582 6.08 29.464 1.1284
+beta/external Nmm/Faxial/arm min,max/Tmax/ratio bound 3.0 5.0 113.0 5.5582 6.08 59.544 1.1107
+beta/external Nmm/Faxial/arm min,max/Tmax/ratio bound 3.0 5.0 184.0 5.5582 6.08 96.687 1.1042
+beta/external Nmm/Faxial/arm min,max/Tmax/ratio bound 6.7 0.5 39.0 5.414 6.08 20.815 1.1281
+beta/external Nmm/Faxial/arm min,max/Tmax/ratio bound 6.7 0.5 55.5 5.414 6.08 29.603 1.1266
+beta/external Nmm/Faxial/arm min,max/Tmax/ratio bound 6.7 0.5 113.0 5.414 6.08 60.228 1.1248
+beta/external Nmm/Faxial/arm min,max/Tmax/ratio bound 6.7 0.5 184.0 5.414 6.08 98.044 1.1241
+beta/external Nmm/Faxial/arm min,max/Tmax/ratio bound 6.7 5.0 39.0 5.414 6.08 21.207 1.1749
+beta/external Nmm/Faxial/arm min,max/Tmax/ratio bound 6.7 5.0 55.5 5.414 6.08 29.995 1.1592
+beta/external Nmm/Faxial/arm min,max/Tmax/ratio bound 6.7 5.0 113.0 5.414 6.08 60.62 1.1407
+beta/external Nmm/Faxial/arm min,max/Tmax/ratio bound 6.7 5.0 184.0 5.414 6.08 98.435 1.1338
+peg hard-stop nominal at 17, debit .10 0.20935871116688554
+axial, peak leg, stale wheel/key F, screw torque, geared input torque .75 total mesh eff, frictionless index key tangential R3, trunnion shear double and projected bearing 3.8x2.8 39.0 21.21 29.59 11.08 8.31 1.03 2.45 3.67
+axial, peak leg, stale wheel/key F, screw torque, geared input torque .75 total mesh eff, frictionless index key tangential R3, trunnion shear double and projected bearing 3.8x2.8 55.5 29.99 41.86 15.77 11.83 1.47 3.49 5.22
+axial, peak leg, stale wheel/key F, screw torque, geared input torque .75 total mesh eff, frictionless index key tangential R3, trunnion shear double and projected bearing 3.8x2.8 113.0 60.62 84.6 32.12 24.09 3.0 7.11 10.62
+axial, peak leg, stale wheel/key F, screw torque, geared input torque .75 total mesh eff, frictionless index key tangential R3, trunnion shear double and projected bearing 3.8x2.8 184.0 98.44 137.37 52.29 39.22 4.88 11.58 17.29
+feed line thrust/wheel torque/required gearhead torque incl two bevels and spur at .75 / positive key R3.8 2.0 10.60595182303157 7.954463867273677 2.7910399534293604
+feed line thrust/wheel torque/required gearhead torque incl two bevels and spur at .75 / positive key R3.8 4.0 21.21190364606314 15.908927734547355 5.582079906858721
+feed line thrust/wheel torque/required gearhead torque incl two bevels and spur at .75 / positive key R3.8 8.0 42.42380729212628 31.81785546909471 11.164159813717442
+strip F/cam torque over 1.55 rise 70deg cycloid at .65/required geared torque 3.0 11.71100548289375 8.499923334358366
+strip F/cam torque over 1.55 rise 70deg cycloid at .65/required geared torque 6.0 23.4220109657875 16.99984666871673
+M3 .5 and 24-index lock: maximum forward-only advance to lock, paired path change 0.020833333333333332 0.041666666666666664
+1.90 slot remaining overlap at R1.15, projected shear area per side .50 thick x chord height, nominal per-side stress at T30,60.62 all on one 0.19999999999999996 0.6480740698407859 46.291004988627584 93.53869074702014
+average roll/tube rest friction NOT credited; cut length, fatigue, terminal, source shoe and all caps unverified

@@ -1,0 +1,224 @@
+{
+  "excluded": [
+    "drive motor",
+    "reel",
+    "positive latch cam",
+    "tip receiver drive",
+    "all bearings",
+    "loaded feed guide",
+    "pusher",
+    "frame",
+    "physical validation",
+    "full stow and arbitrary-attitude release"
+  ],
+  "head_equalizer": {
+    "axis": [
+      0,
+      0,
+      1
+    ],
+    "bar_local_box": [
+      [
+        -0.8,
+        0.8
+      ],
+      [
+        -6.4,
+        6.4
+      ],
+      [
+        -0.8,
+        0.8
+      ]
+    ],
+    "bearing": "bilaterally supported Z trunnion, drag bound .50 target not source-rated",
+    "draw_slide": "translating, stroke and physical preload limiter unresolved",
+    "endpoints": "permanent anchor and reversible tip pocket/latch on opposite arms",
+    "force_line_eccentricity_max": 0.08,
+    "halfspan": 6.0,
+    "line_support": "direct legs, no separate fixed loaded fairlead; support/feed tracks must withdraw or ride on arms",
+    "pivot": [
+      -10.0,
+      0,
+      0
+    ],
+    "service_degrees": [
+      -17,
+      17
+    ],
+    "tip_centres": "(-DIST +/- ARM*sin(theta), +/- ARM*cos(theta),0)",
+    "unloaded_stops_degrees": [
+      -20,
+      20
+    ]
+  },
+  "label": "exploratory Take 52 local fixture; not a Kin package",
+  "lace_gauge_targets": {
+    "bead_r_max": 1.25,
+    "bead_r_min": 1.15,
+    "chain": "hypothetical gauged #3 stainless; source averages are not tolerances",
+    "external_connector_capsule_radius_max": 0.35,
+    "pitch_max": 3.4,
+    "smooth_end": "last bead only; NO dumbbell stub beyond it"
+  },
+  "passive_tail": {
+    "bore_radius": 1.65,
+    "centreline": [
+      {
+        "segment": [
+          [
+            0,
+            -6.0,
+            0
+          ],
+          [
+            3.5,
+            -6.0,
+            0
+          ]
+        ]
+      },
+      {
+        "arc": {
+          "centre": [
+            3.5,
+            0,
+            0
+          ],
+          "plane": "XY",
+          "radius": 6.0,
+          "t": [
+            0,
+            3.141592653589793
+          ],
+          "x": "LEG+TURN*sin(t)",
+          "y": "TURN*cos(t)"
+        }
+      },
+      {
+        "segment": [
+          [
+            3.5,
+            6.0,
+            0
+          ],
+          [
+            0,
+            6.0,
+            0
+          ]
+        ]
+      }
+    ],
+    "end_caps": [
+      {
+        "join": "outer/bore straight tube begins x=LIP",
+        "torus": {
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "centre": [
+            1.25,
+            -6.0,
+            0
+          ],
+          "major": 2.9,
+          "minor": 1.25
+        }
+      },
+      {
+        "join": "outer/bore straight tube begins x=LIP",
+        "torus": {
+          "axis": [
+            1,
+            0,
+            0
+          ],
+          "centre": [
+            1.25,
+            6.0,
+            0
+          ],
+          "major": 2.9,
+          "minor": 1.25
+        }
+      }
+    ],
+    "joining": "No zero-thickness seams; monolithic machined metal or joined halves with continuous internal finish; strength/join unresolved",
+    "material": "outer swept tube minus bore, ends as specified rounded lip caps",
+    "outside_radius": 4.15
+  },
+  "pinch_witness": {
+    "bead_centre": [
+      0,
+      0,
+      0
+    ],
+    "bead_radius": 1.15,
+    "finite_lip_capsules": [
+      {
+        "centreline": [
+          [
+            -0.8208483439816049,
+            -2.25526228988618,
+            -5
+          ],
+          [
+            -0.8208483439816049,
+            -2.25526228988618,
+            5
+          ]
+        ],
+        "radius": 1.25
+      },
+      {
+        "centreline": [
+          [
+            -0.8208483439816049,
+            2.25526228988618,
+            -5
+          ],
+          [
+            -0.8208483439816049,
+            2.25526228988618,
+            5
+          ]
+        ],
+        "radius": 1.25
+      }
+    ],
+    "lip_ball_radius": 1.25,
+    "lip_centres": [
+      [
+        -0.8208483439816049,
+        -2.25526228988618,
+        0
+      ],
+      [
+        -0.8208483439816049,
+        2.25526228988618,
+        0
+      ]
+    ],
+    "pull_direction": [
+      -1,
+      0,
+      0
+    ],
+    "scope": "two disjoint finite rounded mouth edges; no claimed collision-checked full-head/tail path"
+  },
+  "six_land_face": {
+    "normal_tangential": "+/-sqrt(3)/2",
+    "normal_x": 0.5,
+    "offset_y_target": 0.5,
+    "radius": 13,
+    "sites_deg": [
+      0,
+      120,
+      240
+    ]
+  },
+  "units": "mm N Nmm; head negative X, tail positive X, face x=0"
+}
