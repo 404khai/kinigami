@@ -1,0 +1,7 @@
+computer (-7.5, 3.0, -16.0) 25.4079 [('controller board incl LDO SWD', (16.0, 13.0, 3.5)), ('BMD antenna air reserve', (6.3, 11.4, 3.61))]
+driver (-4.5, 15.0, 0.5) 19.1388 [('coupler H-bridge', (9.8, 1.87, 8.8))]
+cutoff (-9.0, -10.5, 2.0) 17.5361 [('independent cutoff', (6.2, 1.95, 6.85))]
+yawdriver (-3.0, 3.0, 15.5) 18.5767 [('yaw H-bridge', (6.2, 5.8, 2.05))]
+bolt (-1.5, -15.0, 0.5) 16.5834 [('parking coil switch', (4.4, 1.75, 5.1))]
+connector (-9.0, -6.0, -1.0) 13.0812 [('bus connector', (2.9, 2.8, 3.35))]
+flex (-7.5, 12.0, -2.5) 17.1489 [('interface flex reserve', (2.12, 3.1, 7.2))]

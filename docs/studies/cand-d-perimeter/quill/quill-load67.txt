@@ -1,0 +1,31 @@
+qx=.60 mechanics pole: (np.float64(-2.2499999998589337), np.float64(-0.75000000005225), np.float64(12.750000000144986), np.float64(0.5999999999226735), np.float64(-0.3288746092382302)) central link P and radial output D range (0.848955365791892, 14.448111949011444, 18.896302928706213) (-0.9673230500000001, 16.64851293, 21.288878757274688)
+spring F, k, L, reserve to solid, conditional Wahl stress MPa 25.2 13.825 5.05253164556962 0.8525316455696208 858.1270748787931
+spring F, k, L, reserve to solid, conditional Wahl stress MPa 28 13.825 4.85 0.6500000000000004 953.4745276431034
+spring F, k, L, reserve to solid, conditional Wahl stress MPa 30.8 13.825 4.647468354430379 0.4474683544303799 1048.8219804074138
+extension and back stops F, reachable range 22.7465 31.317999999999998
+one dog pitch ring degrees, ideal takeup mm and ΔS, nonzero final draw slope 0.17307692307692307 0.0029625029592112995 0.040956603411096214
+conditional closing from true extension stop: theta, S, cx, 3-pole ring torque (reject if out of stroke) 0 27.99999999804976 -2.2499999998589337 107.81531814243597
+conditional closing from true extension stop: theta, S, cx, 3-pole ring torque (reject if out of stroke) 10 25.71537735636518 -2.0847470058853657 112.36496343872419
+conditional closing from true extension stop: theta, S, cx, 3-pole ring torque (reject if out of stroke) 12 24.82045919312644 -2.02001513151005 307.58375118320953
+conditional closing from true extension stop: theta, S, cx, 3-pole ring torque (reject if out of stroke) 14 23.092683021494466 -1.8950403632184063 495.48544929082044
+conditional closing from true extension stop: theta, S, cx, 3-pole ring torque (reject if out of stroke) 16 20.47635566754618 -1.7057942616669932 695.7583046866899
+flank pickup theta from front-stop if moving tail follows, include finite p 14.311567462352217 (np.float64(-1.87), np.float64(-0.6251864236630784), np.float64(12.91804962124193), np.float64(0.4979254305347687), np.float64(-0.3417616972529015))
+one 228 N jaw + μ=.23: torque upper and effective link lever / force 402.5025351084227 2.865817749576335 140.4494529241876
+P pin double-shear MPa, simple center load span 4.35 bending MPa, centre-pair bearing nominal MPa 62.09229079843586 900.3382165773202 78.02747384677089
+one 102 N seat (clean) axial/tang, 3 bilateral rollers, key torque 57.037676154016175 84.56183240061425 [ 55.68472254  34.9614464  -33.60849278] 870.9868737263268
+with μ=.23 isolated worst axial / tangent (separate) 76.48689760615746 97.68049791603798
+ring torque; worm axial N; drive worm T; required 2:1 gearhead T (ηspur=.8); conservative dog force if FULL drive worm T at parked plate 200 10.256410256410257 3.5484111088653094 2.2177569430408184 0.9967446935014914
+ring torque; worm axial N; drive worm T; required 2:1 gearhead T (ηspur=.8); conservative dog force if FULL drive worm T at parked plate 500 25.641025641025642 8.871027772163274 5.544392357602046 2.4918617337537285
+ring torque; worm axial N; drive worm T; required 2:1 gearhead T (ηspur=.8); conservative dog force if FULL drive worm T at parked plate 1000 51.282051282051285 17.742055544326547 11.088784715204092 4.983723467507457
+ring torque; worm axial N; drive worm T; required 2:1 gearhead T (ηspur=.8); conservative dog force if FULL drive worm T at parked plate 1500 76.92307692307692 26.61308331648982 16.633177072806138 7.475585201261185
+pure disk rise max slope, pressure angle, torque for 40/75/113 N 13.663636363636362 51.98751053533769 [546.5454545454545, 1024.7727272727273, 1543.9909090909089]
+full drive-pin conservative jam: bolt load, shear, edge bearing 13.460674157303371 22.131537494671118 13.536478436548041
+bolt hole R.50 less pin .44 nominal ±worm angular backlash and ring angle 0.9656706348239008 0.007428235652491544
+16-hole circumferential ligament / radial outer ligament 0.3890430927548332 0.4700000000000002
+0615 N 003 S cold stall both: at 22C R16.2 ohm, at 10C copper coeff .00393/K plus provisional -10% winding/brush tolerance 0.4318905941657109 A. Approximate both gearmotors 2*(2g + ca.4g), nominal mass; not a toleranced lower.
+trial coil 12x74 turns, .08 bare/.09 OD Cu, mean r1.67, R at ~20C, cold high current, ideal simple airgap 1.99mm pull N 31.957787999999997 0.10946670691795873 0.004073610709535699
+spring ten active turns d.16 D1.66; force at .22mm installed compression and .22+1.99mm retracted 0.031125436569911527 0.31266915827047487
+simultaneous 3V nominal bus (2 cold-stall + coil cold + provisional .13 logic/instrument + .15 transients), 85% efficiency 0.9663027071572584 A; not an as-built peak
+min 3V x 2A all-in = 6 W (entire unit at cell, 10..45C). Illustrative branch HARD current limits, not verified: coupler .90A, yaw .42A, parking coil .30A, logic/radio/sensors .13A, contingency .15A.
+illustrative simultaneous peak at cell incl all running, 5% high-side scatter 1.9949999999999999 A / 6 W. If drivers assumed to regulate motor current rather than battery-side branch current, budget invalid. Actual worst unbounded until min cold winding resistance, shunt/loop response, converters, pack impedance, armature pull-in and all stall/start currents verified.
+mass screen required equivalent S at 74.323g vs trial 28 28.45572848285714 N, holds only for mass-proportional loads and same 70g geometry/moment arms; include actual larger joint torques instead.

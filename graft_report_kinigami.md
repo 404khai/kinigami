@@ -530,6 +530,8 @@ Mechanics Graft. Test a rounded three-lobe core, higher working axial component 
 
 Packaging Graft. Try an offset yaw assembly, central quill, three-lobe flange, 56° seats, and a positively inserted worm parking bolt. Check electronics at cycled cell dimensions, mounted tabs, separate protection and antenna clearance. No ordinary worm friction as a lock.
 
+[Offset quill](docs/studies/cand-d-perimeter/quill/quill-take67.md): a cycled-cell corner and a foot corner are 61.365 mm apart. The named steel parts and bare cell alone weigh at least 74.323 g; do not transfer the 70 g preload result. The shallow center pocket is only 0.73 mm deep. The slide's transverse cheeks cannot react its 9.465 N mm pitch couple per radial newton. Reject this installed layout.
+
 ## Take 68 — move the compliant seats into the ejector plate
 
 Lead saddle-plate Graft. Keep the three-lobe tail solid with integral R2.50 buttons. Model independent translating V-saddles, narrow blind running gaps, finite protrusion and spring/guide stock behind the mobile disk. Check plate-rim continuity, pressurized parts, force windows and one-sided guide reactions separately from the moving-leaf proof.
@@ -539,3 +541,17 @@ Lead saddle-plate Graft. Keep the three-lobe tail solid with integral R2.50 butt
 ## Take 69 — partition the inside and outside release contacts
 
 Mechanics Graft. Test whether a single tail configuration can load both the outer drive stock and the inner jaws. Try a configuration-specific virtual twist or a fixed convex guard. Include one-sided guide and journal losses; distinguish a missing certificate from a self-stress.
+
+[Three pose families](docs/studies/cand-d-perimeter/twists/README.md) admit different work certificates. The near-bore family covers every leaf surface when all R2.50 generators stay inside radius 10.95; it is not an invariant of release. The fixed hoop introduces a reachable backward-facing rim. Neither a positive local margin nor adding the hoop establishes a global jam or a guaranteed release.
+
+## Take 70 — reduce installed mass without erasing the contacts
+
+Packaging Graft. Try a mechanically backed light core or a closed hollow tail with finite ribs, finished metal load pads and fixed pull-off keys; check the cycled cell, feet, motor mounts and enclosing sphere together. Keep the stock and force scales consistent.
+
+## Take 71 — put the six seats on one floating plate
+
+Lead floating-seat Graft. Remove three separate sliding carriages. Screen a single spring-loaded plate with two angular degrees of freedom, including the actual pivot offset, swept rim, six finite faces, antiroll reaction, spring travel, finite load path and one-sided contacts.
+
+## Take 72 — release across a floating face
+
+Mechanics Graft. Test the non-tilting XY plate alternative separately from the seated force screen: finite moving V faces, displaced rim and central boss, draw with the jaws locked, then withdrawal under load without assuming continuing seat contact.

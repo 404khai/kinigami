@@ -1,0 +1,1 @@
+[('fixed', 892), ('yaw_tail', 280), ('cam_blank', 7), ('disk_home', 28), ('closed', 206), ('park', 206)]

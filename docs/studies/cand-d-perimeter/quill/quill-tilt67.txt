@@ -1,0 +1,9 @@
+probe ring °, center and known boss touch world 1.8488601953803194 [ 30.5815382   1.8       -12.5450972] [ 18.58764486   1.8        -15.0054754 ]
+installed links separating-plane max/closest (negative inconclusive) (np.float64(-0.3028828028659767), ('centre clevis link (-90.0, 1)', 'rolled three-lobe hull'))
+inner material ball [world X,Y,Z,R]; outside clevis bores by [ 18.45220877   1.44499675 -15.41472952   0.08500325] 0.38522217094758415 outside tail port R2.66 by 8.433613242900925
+fixed hood and stop supports separating-plane max/closest (negative inconclusive) (np.float64(1.641795768750498), ('thin liner (-90.0, 1, -1.55, 0)', 'rolled three-lobe hull'))
+power/rear housing separating-plane max/closest (negative inconclusive) (np.float64(9.259183278536742), ('foot (10.65, 8.7)', 'rolled three-lobe hull'))
+adjacent yaw, broad powered gap, actual lowest foot, penetration -15.0 (3.765096105152665, 'slider guide cheek (-90.0, 1, -3.72)', 'controller board incl LDO SWD') (np.float64(-55.47703053102392), 'foot (10.65, 8.7)') 31.577030531023922
+adjacent yaw, broad powered gap, actual lowest foot, penetration 0.0 (4.477720577099149, 'slider guide cheek (-90.0, -1, -3.72)', 'controller board incl LDO SWD') (np.float64(-53.86969526733866), 'foot (10.65, -8.7)') 29.969695267338665
+adjacent yaw, broad powered gap, actual lowest foot, penetration 15.0 (3.5728556507998412, 'slider guide cheek (-90.0, 1, -3.72)', 'controller board incl LDO SWD') (np.float64(-55.47703053102392), 'foot (10.65, -8.7)') 31.577030531023922
+floor penetration lower across ALL independent adjacent yaws 29.817447057634723
