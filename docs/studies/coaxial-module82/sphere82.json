@@ -1,0 +1,82 @@
+{
+  "center_mm": [
+    -21.0181091,
+    -0.0189606,
+    -0.0037543
+  ],
+  "common_diameter_upper_mm": 59.96169163045669,
+  "critical_support": [
+    [
+      "sleeve rear lid",
+      [
+        -41.94,
+        21.37,
+        0.0
+      ]
+    ],
+    [
+      "cell service lid",
+      [
+        -0.91,
+        -21.6024458,
+        4.9992733
+      ]
+    ],
+    [
+      "cell service lid",
+      [
+        -0.91,
+        -18.0673806,
+        -12.8541105
+      ]
+    ],
+    [
+      "outer clamshell 1",
+      [
+        -38.624444,
+        23.8159426,
+        4.1346631
+      ]
+    ],
+    [
+      "outer clamshell 1",
+      [
+        -37.5656352,
+        23.3909865,
+        8.5616953
+      ]
+    ],
+    [
+      "outer clamshell 1",
+      [
+        -35.8208551,
+        23.6536626,
+        10.7525778
+      ]
+    ]
+  ],
+  "includes_air_and_teeth": true,
+  "installed_polygonal_common_diameter_mm": 59.84022627956587,
+  "label": "exploratory",
+  "one_pose_pair": [
+    [
+      "cell service lid",
+      [
+        -0.91,
+        -18.0673806,
+        -12.8541105
+      ]
+    ],
+    [
+      "outer clamshell 1",
+      [
+        -41.8088008,
+        17.06998,
+        13.064797
+      ]
+    ]
+  ],
+  "one_pose_pair_diameter_mm": 59.82587887816639,
+  "uniform_surface_debit_mm": 0.06,
+  "yaw_arc_max_debit_mm": 0.0007326754454117395
+}

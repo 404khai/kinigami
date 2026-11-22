@@ -1,0 +1,1473 @@
+{
+  "label": "exploratory",
+  "rows": [
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 0,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": -15,
+      "host_yaw": -15,
+      "largest_five": [
+        [
+          23.686844,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          20.975121,
+          "outer clamshell 1",
+          "sleeve wheel root"
+        ],
+        [
+          15.274536,
+          "barrel",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          12.904251,
+          "eject 0615 + 06/1",
+          "outer clamshell 1"
+        ],
+        [
+          12.186657,
+          "sleeve 0615 + 06/1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "LOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 0,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 0,
+      "host_yaw": -15,
+      "largest_five": [
+        [
+          22.64214,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          22.64214,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 1",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "eject L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "draw L730ZZ 0"
+        ]
+      ],
+      "phase": "LOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 0,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 15,
+      "host_yaw": -15,
+      "largest_five": [
+        [
+          39.779197,
+          "outer clamshell 0",
+          "cell bulk"
+        ],
+        [
+          35.433543,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "eject wheel root"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "draw wheel root"
+        ],
+        [
+          16.394346,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "LOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 0,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": -15,
+      "host_yaw": 0,
+      "largest_five": [
+        [
+          23.686844,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          20.975121,
+          "outer clamshell 1",
+          "sleeve wheel root"
+        ],
+        [
+          15.274536,
+          "barrel",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          12.904251,
+          "eject 0615 + 06/1",
+          "outer clamshell 1"
+        ],
+        [
+          12.186657,
+          "sleeve 0615 + 06/1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "LOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 0,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 0,
+      "host_yaw": 0,
+      "largest_five": [
+        [
+          22.64214,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          22.64214,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 1",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "eject L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "draw L730ZZ 0"
+        ]
+      ],
+      "phase": "LOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 0,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 15,
+      "host_yaw": 0,
+      "largest_five": [
+        [
+          39.779197,
+          "outer clamshell 0",
+          "cell bulk"
+        ],
+        [
+          35.433543,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "eject wheel root"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "draw wheel root"
+        ],
+        [
+          16.394346,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "LOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 0,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": -15,
+      "host_yaw": 15,
+      "largest_five": [
+        [
+          23.686844,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          20.975121,
+          "outer clamshell 1",
+          "sleeve wheel root"
+        ],
+        [
+          15.274536,
+          "barrel",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          12.904251,
+          "eject 0615 + 06/1",
+          "outer clamshell 1"
+        ],
+        [
+          12.186657,
+          "sleeve 0615 + 06/1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "LOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 0,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 0,
+      "host_yaw": 15,
+      "largest_five": [
+        [
+          22.64214,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          22.64214,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 1",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "eject L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "draw L730ZZ 0"
+        ]
+      ],
+      "phase": "LOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 0,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 15,
+      "host_yaw": 15,
+      "largest_five": [
+        [
+          39.779197,
+          "outer clamshell 0",
+          "cell bulk"
+        ],
+        [
+          35.433543,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "eject wheel root"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "draw wheel root"
+        ],
+        [
+          16.394346,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "LOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": -15,
+      "host_yaw": -15,
+      "largest_five": [
+        [
+          23.686844,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          20.975121,
+          "outer clamshell 1",
+          "sleeve wheel root"
+        ],
+        [
+          15.274536,
+          "barrel",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          12.904251,
+          "eject 0615 + 06/1",
+          "outer clamshell 1"
+        ],
+        [
+          12.186657,
+          "sleeve 0615 + 06/1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "DRAW"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 0,
+      "host_yaw": -15,
+      "largest_five": [
+        [
+          22.64214,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          22.64214,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 1",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "eject L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "draw L730ZZ 0"
+        ]
+      ],
+      "phase": "DRAW"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 15,
+      "host_yaw": -15,
+      "largest_five": [
+        [
+          39.779197,
+          "outer clamshell 0",
+          "cell bulk"
+        ],
+        [
+          35.433543,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "eject wheel root"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "draw wheel root"
+        ],
+        [
+          16.394346,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "DRAW"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": -15,
+      "host_yaw": 0,
+      "largest_five": [
+        [
+          23.686844,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          20.975121,
+          "outer clamshell 1",
+          "sleeve wheel root"
+        ],
+        [
+          15.274536,
+          "barrel",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          12.904251,
+          "eject 0615 + 06/1",
+          "outer clamshell 1"
+        ],
+        [
+          12.186657,
+          "sleeve 0615 + 06/1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "DRAW"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 0,
+      "host_yaw": 0,
+      "largest_five": [
+        [
+          22.64214,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          22.64214,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 1",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "eject L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "draw L730ZZ 0"
+        ]
+      ],
+      "phase": "DRAW"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 15,
+      "host_yaw": 0,
+      "largest_five": [
+        [
+          39.779197,
+          "outer clamshell 0",
+          "cell bulk"
+        ],
+        [
+          35.433543,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "eject wheel root"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "draw wheel root"
+        ],
+        [
+          16.394346,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "DRAW"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": -15,
+      "host_yaw": 15,
+      "largest_five": [
+        [
+          23.686844,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          20.975121,
+          "outer clamshell 1",
+          "sleeve wheel root"
+        ],
+        [
+          15.274536,
+          "barrel",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          12.904251,
+          "eject 0615 + 06/1",
+          "outer clamshell 1"
+        ],
+        [
+          12.186657,
+          "sleeve 0615 + 06/1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "DRAW"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 0,
+      "host_yaw": 15,
+      "largest_five": [
+        [
+          22.64214,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          22.64214,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 1",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "eject L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "draw L730ZZ 0"
+        ]
+      ],
+      "phase": "DRAW"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 15,
+      "host_yaw": 15,
+      "largest_five": [
+        [
+          39.779197,
+          "outer clamshell 0",
+          "cell bulk"
+        ],
+        [
+          35.433543,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "eject wheel root"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "draw wheel root"
+        ],
+        [
+          16.394346,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "DRAW"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": -15,
+      "host_yaw": -15,
+      "largest_five": [
+        [
+          23.686844,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          20.975121,
+          "outer clamshell 1",
+          "sleeve wheel root"
+        ],
+        [
+          15.274536,
+          "barrel",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          12.904251,
+          "eject 0615 + 06/1",
+          "outer clamshell 1"
+        ],
+        [
+          12.186657,
+          "sleeve 0615 + 06/1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "UNLOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 0,
+      "host_yaw": -15,
+      "largest_five": [
+        [
+          22.64214,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          22.64214,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 1",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "eject L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "draw L730ZZ 0"
+        ]
+      ],
+      "phase": "UNLOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 15,
+      "host_yaw": -15,
+      "largest_five": [
+        [
+          39.779197,
+          "outer clamshell 0",
+          "cell bulk"
+        ],
+        [
+          35.433543,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "eject wheel root"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "draw wheel root"
+        ],
+        [
+          16.394346,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "UNLOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": -15,
+      "host_yaw": 0,
+      "largest_five": [
+        [
+          23.686844,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          20.975121,
+          "outer clamshell 1",
+          "sleeve wheel root"
+        ],
+        [
+          15.274536,
+          "barrel",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          12.904251,
+          "eject 0615 + 06/1",
+          "outer clamshell 1"
+        ],
+        [
+          12.186657,
+          "sleeve 0615 + 06/1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "UNLOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 0,
+      "host_yaw": 0,
+      "largest_five": [
+        [
+          22.64214,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          22.64214,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 1",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "eject L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "draw L730ZZ 0"
+        ]
+      ],
+      "phase": "UNLOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 15,
+      "host_yaw": 0,
+      "largest_five": [
+        [
+          39.779197,
+          "outer clamshell 0",
+          "cell bulk"
+        ],
+        [
+          35.433543,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "eject wheel root"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "draw wheel root"
+        ],
+        [
+          16.394346,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "UNLOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": -15,
+      "host_yaw": 15,
+      "largest_five": [
+        [
+          23.686844,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          20.975121,
+          "outer clamshell 1",
+          "sleeve wheel root"
+        ],
+        [
+          15.274536,
+          "barrel",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          12.904251,
+          "eject 0615 + 06/1",
+          "outer clamshell 1"
+        ],
+        [
+          12.186657,
+          "sleeve 0615 + 06/1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "UNLOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 0,
+      "host_yaw": 15,
+      "largest_five": [
+        [
+          22.64214,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          22.64214,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 1",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "eject L730ZZ 0"
+        ],
+        [
+          14.435481,
+          "outer clamshell 0",
+          "draw L730ZZ 0"
+        ]
+      ],
+      "phase": "UNLOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 0,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 15,
+      "host_yaw": 15,
+      "largest_five": [
+        [
+          39.779197,
+          "outer clamshell 0",
+          "cell bulk"
+        ],
+        [
+          35.433543,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "eject wheel root"
+        ],
+        [
+          19.862935,
+          "outer clamshell 0",
+          "draw wheel root"
+        ],
+        [
+          16.394346,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ]
+      ],
+      "phase": "UNLOCK"
+    },
+    {
+      "assumed_aligned_displacement_mm": 3.4499999999999997,
+      "fraction": 0.5,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": -15,
+      "host_yaw": -15,
+      "largest_five": [
+        [
+          23.772685,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          12.186657,
+          "sleeve 0615 + 06/1",
+          "outer clamshell 1"
+        ],
+        [
+          9.180449,
+          "outer clamshell 1",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          3.973129,
+          "outer clamshell 1",
+          "sleeve gear dome"
+        ],
+        [
+          3.378265,
+          "outer clamshell 1",
+          "sleeve radial bearing socket 0"
+        ]
+      ],
+      "phase": "EJECT"
+    },
+    {
+      "assumed_aligned_displacement_mm": 3.4499999999999997,
+      "fraction": 0.5,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 0,
+      "host_yaw": -15,
+      "largest_five": [
+        [
+          59.831115,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          38.201907,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          24.317294,
+          "outer clamshell 1",
+          "sleeve rear lid"
+        ],
+        [
+          24.289983,
+          "outer clamshell 0",
+          "eject rear lid"
+        ],
+        [
+          24.289983,
+          "outer clamshell 0",
+          "draw rear lid"
+        ]
+      ],
+      "phase": "EJECT"
+    },
+    {
+      "assumed_aligned_displacement_mm": 3.4499999999999997,
+      "fraction": 0.5,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 15,
+      "host_yaw": -15,
+      "largest_five": [
+        [
+          18.435905,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          14.016762,
+          "draw 0615 + 06/1",
+          "outer clamshell 0"
+        ],
+        [
+          13.085073,
+          "outer clamshell 0",
+          "eject L730ZZ 0"
+        ],
+        [
+          13.085073,
+          "outer clamshell 0",
+          "draw L730ZZ 0"
+        ],
+        [
+          9.396647,
+          "eject 0615 + 06/1",
+          "eject rear lid"
+        ]
+      ],
+      "phase": "EJECT"
+    },
+    {
+      "assumed_aligned_displacement_mm": 3.4499999999999997,
+      "fraction": 0.5,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": -15,
+      "host_yaw": 0,
+      "largest_five": [
+        [
+          23.772685,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          12.186657,
+          "sleeve 0615 + 06/1",
+          "outer clamshell 1"
+        ],
+        [
+          9.180449,
+          "outer clamshell 1",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          3.973129,
+          "outer clamshell 1",
+          "sleeve gear dome"
+        ],
+        [
+          3.378265,
+          "outer clamshell 1",
+          "sleeve radial bearing socket 0"
+        ]
+      ],
+      "phase": "EJECT"
+    },
+    {
+      "assumed_aligned_displacement_mm": 3.4499999999999997,
+      "fraction": 0.5,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 0,
+      "host_yaw": 0,
+      "largest_five": [
+        [
+          59.831115,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          38.201907,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          24.317294,
+          "outer clamshell 1",
+          "sleeve rear lid"
+        ],
+        [
+          24.289983,
+          "outer clamshell 0",
+          "eject rear lid"
+        ],
+        [
+          24.289983,
+          "outer clamshell 0",
+          "draw rear lid"
+        ]
+      ],
+      "phase": "EJECT"
+    },
+    {
+      "assumed_aligned_displacement_mm": 3.4499999999999997,
+      "fraction": 0.5,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 15,
+      "host_yaw": 0,
+      "largest_five": [
+        [
+          18.435905,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          14.016762,
+          "draw 0615 + 06/1",
+          "outer clamshell 0"
+        ],
+        [
+          13.085073,
+          "outer clamshell 0",
+          "eject L730ZZ 0"
+        ],
+        [
+          13.085073,
+          "outer clamshell 0",
+          "draw L730ZZ 0"
+        ],
+        [
+          9.396647,
+          "eject 0615 + 06/1",
+          "eject rear lid"
+        ]
+      ],
+      "phase": "EJECT"
+    },
+    {
+      "assumed_aligned_displacement_mm": 3.4499999999999997,
+      "fraction": 0.5,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": -15,
+      "host_yaw": 15,
+      "largest_five": [
+        [
+          23.772685,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          12.186657,
+          "sleeve 0615 + 06/1",
+          "outer clamshell 1"
+        ],
+        [
+          9.180449,
+          "outer clamshell 1",
+          "sleeve L730ZZ 0"
+        ],
+        [
+          3.973129,
+          "outer clamshell 1",
+          "sleeve gear dome"
+        ],
+        [
+          3.378265,
+          "outer clamshell 1",
+          "sleeve radial bearing socket 0"
+        ]
+      ],
+      "phase": "EJECT"
+    },
+    {
+      "assumed_aligned_displacement_mm": 3.4499999999999997,
+      "fraction": 0.5,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 0,
+      "host_yaw": 15,
+      "largest_five": [
+        [
+          59.831115,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          38.201907,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          24.317294,
+          "outer clamshell 1",
+          "sleeve rear lid"
+        ],
+        [
+          24.289983,
+          "outer clamshell 0",
+          "eject rear lid"
+        ],
+        [
+          24.289983,
+          "outer clamshell 0",
+          "draw rear lid"
+        ]
+      ],
+      "phase": "EJECT"
+    },
+    {
+      "assumed_aligned_displacement_mm": 3.4499999999999997,
+      "fraction": 0.5,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 15,
+      "host_yaw": 15,
+      "largest_five": [
+        [
+          18.435905,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          14.016762,
+          "draw 0615 + 06/1",
+          "outer clamshell 0"
+        ],
+        [
+          13.085073,
+          "outer clamshell 0",
+          "eject L730ZZ 0"
+        ],
+        [
+          13.085073,
+          "outer clamshell 0",
+          "draw L730ZZ 0"
+        ],
+        [
+          9.396647,
+          "eject 0615 + 06/1",
+          "eject rear lid"
+        ]
+      ],
+      "phase": "EJECT"
+    },
+    {
+      "assumed_aligned_displacement_mm": 7.5,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": -15,
+      "host_yaw": -15,
+      "largest_five": [
+        [
+          1.415368,
+          "ejector lip",
+          "sleeve gear dome"
+        ],
+        [
+          0.447765,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          0.312126,
+          "outer clamshell 1",
+          "sleeve rear lid"
+        ]
+      ],
+      "phase": "EJECT"
+    },
+    {
+      "assumed_aligned_displacement_mm": 7.5,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 0,
+      "host_yaw": -15,
+      "largest_five": [],
+      "phase": "EJECT"
+    },
+    {
+      "assumed_aligned_displacement_mm": 7.5,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 15,
+      "host_yaw": -15,
+      "largest_five": [
+        [
+          19.618918,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          8.236986,
+          "draw 0615 + 06/1",
+          "outer clamshell 0"
+        ],
+        [
+          3.337222,
+          "outer clamshell 0",
+          "eject rear lid"
+        ],
+        [
+          3.337222,
+          "outer clamshell 0",
+          "draw rear lid"
+        ],
+        [
+          0.100493,
+          "outer clamshell 0",
+          "eject gear dome"
+        ]
+      ],
+      "phase": "EJECT"
+    },
+    {
+      "assumed_aligned_displacement_mm": 7.5,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": -15,
+      "host_yaw": 0,
+      "largest_five": [
+        [
+          1.415368,
+          "ejector lip",
+          "sleeve gear dome"
+        ],
+        [
+          0.447765,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          0.312126,
+          "outer clamshell 1",
+          "sleeve rear lid"
+        ]
+      ],
+      "phase": "EJECT"
+    },
+    {
+      "assumed_aligned_displacement_mm": 7.5,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 0,
+      "host_yaw": 0,
+      "largest_five": [],
+      "phase": "EJECT"
+    },
+    {
+      "assumed_aligned_displacement_mm": 7.5,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 15,
+      "host_yaw": 0,
+      "largest_five": [
+        [
+          19.618918,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          8.236986,
+          "draw 0615 + 06/1",
+          "outer clamshell 0"
+        ],
+        [
+          3.337222,
+          "outer clamshell 0",
+          "eject rear lid"
+        ],
+        [
+          3.337222,
+          "outer clamshell 0",
+          "draw rear lid"
+        ],
+        [
+          0.100493,
+          "outer clamshell 0",
+          "eject gear dome"
+        ]
+      ],
+      "phase": "EJECT"
+    },
+    {
+      "assumed_aligned_displacement_mm": 7.5,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": -15,
+      "host_yaw": 15,
+      "largest_five": [
+        [
+          1.415368,
+          "ejector lip",
+          "sleeve gear dome"
+        ],
+        [
+          0.447765,
+          "outer clamshell 1",
+          "outer clamshell 1"
+        ],
+        [
+          0.312126,
+          "outer clamshell 1",
+          "sleeve rear lid"
+        ]
+      ],
+      "phase": "EJECT"
+    },
+    {
+      "assumed_aligned_displacement_mm": 7.5,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 0,
+      "host_yaw": 15,
+      "largest_five": [],
+      "phase": "EJECT"
+    },
+    {
+      "assumed_aligned_displacement_mm": 7.5,
+      "fraction": 1,
+      "guest_floor_z": -20.445944697267056,
+      "guest_yaw": 15,
+      "host_yaw": 15,
+      "largest_five": [
+        [
+          19.618918,
+          "outer clamshell 0",
+          "outer clamshell 0"
+        ],
+        [
+          8.236986,
+          "draw 0615 + 06/1",
+          "outer clamshell 0"
+        ],
+        [
+          3.337222,
+          "outer clamshell 0",
+          "eject rear lid"
+        ],
+        [
+          3.337222,
+          "outer clamshell 0",
+          "draw rear lid"
+        ],
+        [
+          0.100493,
+          "outer clamshell 0",
+          "eject gear dome"
+        ]
+      ],
+      "phase": "EJECT"
+    }
+  ],
+  "warning": "Registered axial motion is imposed only as a collision probe, not mechanically imposed ejection. Eight host bodies vs whole registered neighbor; not a complete global approach sweep."
+}

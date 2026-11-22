@@ -1,0 +1,5 @@
+## Take 82 — coaxial tri-roller full-Kin packaging inside Ø60 mm
+
+Packaging Graft. Package Take 80’s `Ø21.8 mm` coaxial tri-roller barrel, M3 leadscrew + locking sleeve + force-limited draw stage + 360° annular ejector, real drives, joint motor, battery, controller, and covers strictly inside Ø60.0 mm with zero collisions, catalog-rated bearings/gears, unpowered lock check, and assembly access.
+
+[Coaxial module](docs/studies/coaxial-module82/coaxial-take82.md): exploratory; reject this installation. The covered four-motor stock fits a nominal Ø59.962 mm sphere through all strokes and ±15° own yaw, but the cage rail penetrates the strict tail shoulder (R.061 material ball), a fixed ejector bush enters the sleeve (R.080), and the moving ejector crosshead intersects the yaw shaft (R.290 at 1.965 mm stroke). Two straight registered shells also overlap. M3 self-lock is conditional, the eccentric unlock model loses its force bound at μg=.23 and there is no independent positive hold. Nothing qualified or promoted.

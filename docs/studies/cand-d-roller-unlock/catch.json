@@ -1,0 +1,22 @@
+{
+  "label": "exploratory",
+  "hard_contact_angle_deg": 2.817761052542066,
+  "head_contact_body_x": -6.569725155854606,
+  "conditional_fixed_pose_upper_ring_axial": {
+    "service": 3.1155737220192674,
+    "table": 7.539911723655754,
+    "fault": 3.7489059495413426
+  },
+  "service_witness_external": [
+    -2.6721558623631565,
+    0.6321258159877793,
+    -0.0,
+    -0.0,
+    -0.0,
+    -20.369518841913383
+  ],
+  "ring_normal": 2.7,
+  "roller_normal": 0.5,
+  "front_cage_wall": 0.024579693102481814,
+  "relief_sleeve": 0.49939547323437744
+}

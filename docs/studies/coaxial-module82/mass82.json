@@ -1,0 +1,27 @@
+{
+  "as_built_COM": null,
+  "as_built_mass_upper_g": null,
+  "gross_listed_g": {
+    "7075": 6.7322203668098215,
+    "PA12": 6.440725016467246,
+    "bearing": 5.04530532151497,
+    "bronze": 1.5501633424941812,
+    "catalog": 24.0,
+    "cell": 2.9,
+    "electronics": 11.603835759313512,
+    "spring": 0.45355247989923864,
+    "steel": 52.24223850070121,
+    "thrust": 5.04,
+    "wire": 0.075264
+  },
+  "gross_subtotal_g": 116.08330478720019,
+  "label": "exploratory",
+  "nominal_all_four_foot_margin_mm": 5.986758019876387,
+  "notes": "Gross listed material only: bearings, PCB and spring reservations billed as envelopes, overlapping joints can double count. Nominal catalog masses not tolerance bounds; missing fasteners/wires/adhesive and collision fixes not bounded.",
+  "selected_nominal_partial_min_g": 32.79158468780817,
+  "subtotal_COM_DRAW_zero_yaw_mm": [
+    -20.3180723,
+    2.013242,
+    -1.0084628
+  ]
+}

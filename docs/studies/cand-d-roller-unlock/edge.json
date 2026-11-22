@@ -1,0 +1,38 @@
+{
+  "axis": [
+    0,
+    0,
+    1
+  ],
+  "blend_Hertz_indentation_scale": 7.57792465426129e-05,
+  "blend_R_eff": 0.21428571428571427,
+  "contact_entry_u": -3.7652067247599836,
+  "convex_blend": {
+    "halfwidth": 0.00569884373770979,
+    "peak_MPa": 1534.3040832295587
+  },
+  "label": "exploratory",
+  "local_flat": {
+    "halfwidth": 0.01507772329059791,
+    "peak_MPa": 579.9124342537657
+  },
+  "local_per_tail_normal": {
+    "f_per_N": 0.08111560741778029,
+    "normal": {
+      "side": 0.21631054432201133,
+      "sleeve": 0.9156443239724705,
+      "tail": 1.0,
+      "wall": 0.4851455135587345
+    },
+    "res": 6.938893903907228e-16
+  },
+  "quarter_length_sensitivity": {
+    "halfwidth": 0.01139768747541958,
+    "peak_MPa": 3068.6081664591175
+  },
+  "roller_center_u": -3.556447073319885,
+  "roller_outward": 0.017030879702251867,
+  "sleeve_normal_N": 41.203994578761176,
+  "tail_normal_N": 45,
+  "tilt_end_gap_at_halfdeg": 0.026179606495121806
+}
