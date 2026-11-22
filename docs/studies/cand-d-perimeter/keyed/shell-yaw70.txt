@@ -1,0 +1,1 @@
+one sphere, entire continuous yaw -15..+15 & full stroke, explicit reevaluated containment diameter 59.947305393249366 (-1.407398466052806, 0.5010842530771406, -0.4402214228013227) yaw 114T sector 0

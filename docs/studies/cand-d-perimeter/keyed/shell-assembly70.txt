@@ -1,0 +1,8 @@
+inserting preassembled disk/post/roller through front; solid axle vs untouched front shoulder [(np.float64(0.16), 'disk axle 90.0', 'uncut disk front shoulder 12', [7.78, -0.5892, 10.073]), (np.float64(0.16), 'disk axle 90.0', 'uncut disk front shoulder 11', [7.78, 0.5892, 10.073])]
+disk lip R12.42 passes nominal fixed bore, but ID 9.78 < assembled roller outer station R11.49. Need install loose axle from inside or close drum around it, not credit a seated CAD stack.
+remove bolt plate +Z 9mm vs unrelated outer parts []
+clevis pin access: local x/r; tangential tool cylinder ±t beyond bosses must be checked after removing outboard bearing caps 0.848955365791892 14.448111949011444
+clevis pin access: local x/r; tangential tool cylinder ±t beyond bosses must be checked after removing outboard bearing caps -0.9673230500000001 16.64851293
+all three roller flanks X offsets ± 0.0762 local plane low/high on R12.42 integral rim 1.436447191011235 1.7235528089887633 worst plane (np.float64(-0.14355280898876407), (-1, 1, -1), [-0.0254, -9.135257376620523e-19, 0.009513108614232211])
+forward/in-bore branch rear-over-lip threshold, min nominal margin, max-rim force angle debit, signed axial ratio 1.3126346233509631 0.12381256766027193 73.35195085043723 0.06613292078015884
+max allowed total unmodeled forward error before friction sign reversal at upper edge 0.15231239201346747 mm; elastic cocking, clearance in roller bearings, rotor tilt and mounted stack not specified

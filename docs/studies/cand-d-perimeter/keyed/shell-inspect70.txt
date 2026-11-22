@@ -1,0 +1,14 @@
+pitch, lip and table world 38.0 17.04 -23.22
+straight stow mech only / also electronics upper OD (array([-2.25902208,  1.30474204, -0.42086439]), np.float64(59.01278402387914)) (array([-0.59059659,  0.66622255, -0.35633184]), np.float64(59.54072090562599))
+stroke union, straight and all parts including electronic reserves OD upper (array([-0.59329884,  0.66561325, -0.35667131]), np.float64(59.541911765880435))
+true reserved corner distance, pair witnesses (np.float64(44.50870938206204), 'worm 32T spur', array([-15.9, -15.4, -20.2]), array([  4.11260417,  24.1689068 , -16.35      ])) actual foot alone (np.float64(36.06981702199222), 'foot (8.3, -7.8)', array([-15.9,  15.4, -14.8]), array([  9.42,  -8.87, -23.22]))
+own static non-foot min floor (np.float64(-22.9), 'slider guide cheek (-90.0, -1, -3.72)')
+combined yaw hulls, neighbor gap lower; debit per head (-1.5809171670812958, 'external park lever (-90.0, -6.68)', 'cell bulk') 0.08049290368867222
+3deg independent grid raw, net ((-1.4110661690343704, 'external park lever (-90.0, 6.68)', 'cell bulk'), 0, 0) -3.342841072175666
+yawless body/foot separations do not prove tail clearance against own joint; limits checked separately
+beam vs positive guide tangent true fixed-coordinate flank separation -90.0 0.13999999999999968 identical negative guide
+beam vs positive guide tangent true fixed-coordinate flank separation 30.0 0.13999999999999813 identical negative guide
+beam vs positive guide tangent true fixed-coordinate flank separation 150.0 0.13999999999999613 identical negative guide
+park stub ID radial play, total across two supports; allowed profile difference 0.020000000000000018 0.040000000000000036 0.02
+single positive 0.030 mm OD stop position error -> angle/normal toe error at meridian 0.45233980032269194 0.015768339868421053
+For spring/cup envelope see separate central-space test. Release under external load not certified.

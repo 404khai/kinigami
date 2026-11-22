@@ -1,0 +1,4 @@
+continuous expanded convex swept links vs outboard heels rails feet and motors (np.float64(2.266900976131727), ("crosshead X face (150.0, -1, 'inner')", 'fixed wall heel 129'))
+continuous pad registration; radial inner / outer margin, X face gap, useful transverse contact width 0.43797486356643134 0.1979837290829991 0.04 0.6500000000000001
+translating post assembly vs quill, inner webs, flanking stationary pads and same outer stock (np.float64(0.05999999999999872), ('seat backer -30.0', 'key positive face (-30.0, -1)'))
+carrier response and disk clearance to all other cut surfaces are NOT established by these subsets.

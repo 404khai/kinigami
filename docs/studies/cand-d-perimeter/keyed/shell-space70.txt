@@ -1,0 +1,7 @@
+existing face: local x, radius/t, fixed except noted, in mm; disk rear and full flat -8.55 -6.95 at terminal -0.02000000000000135 1.5799999999999992
+axis cylinder R6.92, height .73, home x[-9.30,-8.57], translated 0..8.53. Min separation to fixed stock incl full ring blank/electronics (0.019999999999999574, 'inner key web -30.0')
+swept leaf and link stock vs translated pocket (5.334711884298635, "('cone leaf', 150.0)")
+co-moving min radius lower for disk key/post/backer/live channels (np.float64(6.99), 'disk key -30.0')
+center quill occupied x[-24.42,-9.39] r<=3.44; inner key webs x[-11.79,-9.32] r2.88..6.87 t±1.47 @ BAZ; side pads x[-11.81,-9.34] r6.53..8.05 t=±[1.16,1.50]. These are true metal inside the requested region, not shaft-hole allowances.
+moving home posts x[-19.74,-8.43] r8.18..9.56 t±1.39, keys x[-20.31,-8.44] r6.99..8.29 t±1.05; backers x[-9.28,-8.51] r7.80..11.50 t±2.35; all advance +8.53 with disk.
+no coaxial solid spring/cup length 7mm down the full R9 corridor. Annular/sector designs require azimuth, travel, preload reactions, walls, tool access and loss of room to pitch/yaw.

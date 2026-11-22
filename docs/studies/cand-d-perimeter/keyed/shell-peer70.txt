@@ -1,0 +1,4 @@
+broad pair count 15
+deepest actual cell bulk / solid member ball (np.float64(-0.5205208689625024), 'external park lever (-90.0, 6.68)', -3.2, 0, 15, [19.322813917853786, 7.800520868962503, -15.8377317995487])
+all registered two-yaw interval hulls lowest support margin (neg inconclusive) -1.6972287813542 ('external park lever (-90.0, -6.68)', 'cell bulk', (np.int64(57), np.int64(60)))
+receiver-relative independent-yaw support minimum (all other pairs at least .45) 0.45 ('external park lever (30.0, 6.68)', 'park geared 4to1')
