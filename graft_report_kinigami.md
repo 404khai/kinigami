@@ -578,8 +578,24 @@ Mechanics Graft. Test a seven-contact load path: one positively withdrawn tapere
 
 Packaging Graft. Put two opposing X-bearing rows at different radii on each translating plug, drive all three with an enclosed face cam, and drive the terminal disk independently. Keep the finite front wall, check assembly access and guide loads at the actual actuator offset.
 
+[Radial shuttle](docs/studies/cand-d-radial-shuttle/shuttle-take75.md): rejected for advancement. Covered package requires at least Ø60.9003 mm (Ø60.9004 mm upper), the fixed polymer guard intersects the rotating steel ring (R0.1298 mm common ball), the terminal disk collar intersects the ejector motor at 6.56 mm throw, and loaded brake-pin extraction requires 13.75 N·mm (15.04 N·mm worst envelope) against 6.99 N·mm optimistic rated output. All 13 generated outputs reproduced byte-for-byte and all 29 manifest hashes matched. Take 70 and Take 76 remain separate.
+
 ## Take 76 — compatibility of elastic seat loads
 
 Lead elastic-seats Graft. Test the rigid disk with finite local compliance against simultaneous equilibrium, true contact poles and installation errors. Compute whether a zero-charge seat remains supportable as a function of measured draw, not just whether an arbitrary rigid contact-force vector exists.
 
 [Compatible states](docs/studies/cand-d-perimeter/elastic.md): at the same 100 N draw and 0.029421 mm disk advance, all seats can carry load or one recessed seat can have a 0.0138 mm gap. Both obey finite unilateral compliance and Coulomb friction. A separate six-pocket spring installation intersects all three disk posts.
+
+## Take 77 — bound locked motion with an unloaded face
+
+Lead key-cage Graft. Test finite form closure of the inclined dry key from a registered initial pose, allowing an air gap on any seat. Check finite land loss, key guide clearance and actual closure travel; keep geometric restraint separate from structure and release.
+
+[Finite-flat cage](docs/studies/cand-d-single-key/cage.md): conditional connected-component bound gives ≤0.1639 mm translation, ≤1.7991° rotation, and positive finite-flat reserve (0.5324 mm key, 0.0200 mm seats) under 0.065/0.025 mm recess and 2.0°/0.60° normal-tilt budgets. The original Take 74 guide bands fail the key recess budget (0.0851 mm normal recession at 0.50° cock), and a trial lower y=4.50 mm band loses full two-shoulder shank engagement before the 4.85 mm park. Geometric bound only; does not prove strength, passive lock, or release.
+
+## Take 78 — release a caged but not necessarily seated tail
+
+Mechanics Graft. Check loaded key withdrawal and a positively driven separator across off-axis poses from the retained neighborhood. Test finite guide edges, slot, stem and wings; do not equate commanded stroke with departure.
+
+## Take 79 — package the inclined single key separately from Take 75
+
+Packaging Graft. Package the Take 74/77 inclined key with actual guide engagement, force-limited take-up, unpowered hold, and coordinated ejection space from Take 78, without reusing Take 75’s rejected disk collar or parking-pin arrangement.
