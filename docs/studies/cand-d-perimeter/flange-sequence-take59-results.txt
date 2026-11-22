@@ -1,0 +1,36 @@
+open shoe vs whole flange unyawed any-X radial gap 1.1789592298213893
+other open-jaw hardware vs aligned swept flange (4.466279678479667, 'one-piece rolled flange and solid core', 'radial heel tie upper 30')
+disk swept vs fixed bore, radial expression for tapered OD, nominal 0.06525050633883289
+disk steel vs cans/frame/jacks, X 0 []
+disk steel vs cans/frame/jacks, X 3.747766952966369 []
+disk steel vs cans/frame/jacks, X 7.495533905932738 []
+continuous aligned neighbour entire tail +X ray over disk motion vs other stock (-2.5599999999999987, 'tail ball index 0', 'cam wheel outer stock outer')
+open jaw gap to disk, all phases (1.6745830393902867, 'solid metal ejector plate', 'Take58 contact shoe 150')
+closed shoe material vs fixed guides/feet [(0.26, 'Take58 contact shoe 30', 'jaw guide-to-wall foot1', (15.9, 11.442438770425982, 10.001114687126249)), (0.26, 'Take58 contact shoe 150', 'jaw guide-to-wall foot2', (15.899999999999999, -15.620855097837731, 5.623885312873749)), (0.26, 'Take58 contact shoe -90', 'jaw guide-to-wall foot0', (13.8, 2.9400000000000004, -16.34))]
+open shoe material vs fixed guides/feet [(0.26, 'Take58 contact shoe 30', 'jaw guide-to-wall foot1', (15.9, 12.597716659074425, 10.66811468712625)), (0.26, 'Take58 contact shoe 150', 'jaw guide-to-wall foot2', (15.9, -16.876591933325166, 6.348885312873749)), (0.26, 'Take58 contact shoe -90', 'jaw guide-to-wall foot0', (13.8, 2.9400000000000004, -17.79))]
+stop offsets at projection of one 45-degree cone force line 3.597766952966369 1.7677669529663687 5.365533905932738
+barycentric pad thrust fractions vs tangent offset 0.0 [0.93873874 0.03063063 0.03063063]
+barycentric pad thrust fractions vs tangent offset 1.7677669529663687 [ 0.93873874  0.14096801 -0.07970675]
+barycentric pad thrust fractions vs tangent offset 5.365533905932738 [ 0.93873874  0.36552711 -0.30426585]
+screw inbound force sensitivity to restore three nonnegative stops, one cone, F 40 397.5441926618247 screw load bary [0.33333333 0.63605212 0.03061454]
+screw inbound force sensitivity to restore three nonnegative stops, one cone, F 75 745.3953612409214 screw load bary [0.33333333 0.63605212 0.03061454]
+ideal disk center transverse offset, remaining sharp-edge radial clearance 0 0.06525050633883289
+ideal disk center transverse offset, remaining sharp-edge radial clearance 0.05 0.01525050633883289
+ideal disk center transverse offset, remaining sharp-edge radial clearance 0.1 -0.03474949366116711
+ring radial float from .12 bore gap, groove clearance, total radial lost motion bound (not stiffness) 0.24 0.075 0.315
+park shoe radial recess above cone bore on t=0 -3.5 1.8294158240632665
+park shoe radial recess above cone bore on t=0 -2.0 0.8394158240632663
+park shoe radial recess above cone bore on t=0 -1.3619555984410687 0.4183065190343722
+park shoe radial recess above cone bore on t=0 -0.38 1.5703999999999994
+terminal mouth/disk annulus nominal radial gap and face overtravel 1.8699999999999992 1.05
+axial force ratio ramp ends at x/s -1.0777458046266406 0.10799972164948268
+plane patch radius remaining after R.12 convex blend 0.04522262226176118
+mid-index phi, radial travel, matching axial motion, contact X, valid first flank 9.642857142857142 0.05193324856334731 0.13666644358775606 -1.2252891548533127 True
+F, ideal motor and conditional demanded gearhead 40 5.994230010961349 13.875532432780902
+F, ideal motor and conditional demanded gearhead 75 11.23918127055253 26.016623311464194
+F, ideal motor and conditional demanded gearhead 113 16.933699780965807 39.19837912260604
+plane patch radius remaining after R.12 convex blend -1.3683934151537827
+mid-index phi, radial travel, matching axial motion, contact X, valid first flank 22.5 0.554074771755665 1.458091504620171 0.09613590617910228 False
+F, ideal motor and conditional demanded gearhead 40 15.673528437234063 36.28131582693071
+F, ideal motor and conditional demanded gearhead 75 29.387865819813875 68.02746717549509
+F, ideal motor and conditional demanded gearhead 113 44.27771783518623 102.49471721107925

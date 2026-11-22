@@ -1,0 +1,188 @@
+{
+  "label": "exploratory",
+  "last_one_jaw_on_rounded_crest": [
+    {
+      "button_to_seat_clear_lower": 0.14901898741068642,
+      "core_center_x": -1.7953896588170413,
+      "frictionless_normal_per_axial": 4.0,
+      "guard_clear": 0.39174159806724207,
+      "nd": 0.9682458365518543,
+      "nx": 0.25,
+      "other_two_support_plane_clear": 0.35485981723553534,
+      "radial_offset": 0.24433176220292196
+    },
+    {
+      "button_to_seat_clear_lower": 0.4764539701981887,
+      "core_center_x": -1.4023896588170413,
+      "frictionless_normal_per_axial": 10.0,
+      "guard_clear": 0.5651743006057681,
+      "nd": 0.99498743710662,
+      "nx": 0.1,
+      "other_two_support_plane_clear": 0.2600928533785903,
+      "radial_offset": 0.1742687687494353
+    },
+    {
+      "button_to_seat_clear_lower": 0.6145898604087199,
+      "core_center_x": -1.2189896588170412,
+      "frictionless_normal_per_axial": 33.333333333333336,
+      "guard_clear": 0.6261353632093334,
+      "nd": 0.9995498987044118,
+      "nx": 0.03,
+      "other_two_support_plane_clear": 0.2433630916765532,
+      "radial_offset": 0.16231511936322107
+    },
+    {
+      "button_to_seat_clear_lower": 0.6523834889958975,
+      "core_center_x": -1.1665896588170412,
+      "frictionless_normal_per_axial": 100.0,
+      "guard_clear": 0.6412734100106734,
+      "nd": 0.9999499987499375,
+      "nx": 0.01,
+      "other_two_support_plane_clear": 0.2418881905492305,
+      "radial_offset": 0.16126685724394285
+    },
+    {
+      "button_to_seat_clear_lower": 0.671002319967211,
+      "core_center_x": -1.1403896588170412,
+      "frictionless_normal_per_axial": null,
+      "guard_clear": 0.6484638654997434,
+      "nd": 1.0,
+      "nx": 0.0,
+      "other_two_support_plane_clear": 0.2417037809531699,
+      "radial_offset": 0.16113585396877994
+    },
+    {
+      "button_to_seat_clear_lower": 1.0753288707650634,
+      "core_center_x": -0.4853896588170412,
+      "frictionless_normal_per_axial": null,
+      "guard_clear": 0.7449568004984033,
+      "nd": 0.9682458365518543,
+      "nx": -0.25,
+      "other_two_support_plane_clear": 0.35485981723553534,
+      "radial_offset": 0.24433176220292196
+    },
+    {
+      "button_to_seat_clear_lower": 1.3491082181358145,
+      "core_center_x": 0.1696103411829588,
+      "frictionless_normal_per_axial": null,
+      "guard_clear": 0.6636657527672432,
+      "nd": 0.8660254037844386,
+      "nx": -0.5,
+      "other_two_support_plane_clear": 0.6653014513690382,
+      "radial_offset": 0.5121492960535505
+    }
+  ],
+  "loads": {
+    "contact_work": 0.17604319052617512,
+    "drag_feedback": 1.2,
+    "drive_coeff": 0.368,
+    "dry_example_budget": {
+      "contact_help": -2.2754162666910847,
+      "drag0_multiplier": 1.3812154696132597,
+      "drive_help": 0.8830939226519336,
+      "guide_Q_per_N_at_D0_P_zero": 10.658519379205478
+    },
+    "first_flat_patch_cutoff_radial_s": 0.02422474117483774,
+    "flat_patch_nominal_reserve": 0.06819687487560318,
+    "guide_coeff": 7.716768030544766,
+    "guide_mu_limit": 0.022205190407339405,
+    "illustrative_10N_axial_on_nx_point1_crest": {
+      "N": 100.0,
+      "half_axes": [
+        0.017086170446864963,
+        0.33924866878252163
+      ],
+      "peak_GPa": 8.23717892658517
+    },
+    "min_any_contact_nd": 0.3880226528869942,
+    "one_lip_clean_40N": {
+      "N": 285.2710212334151,
+      "half_axes": [
+        0.12322690712597485,
+        0.3831603939275395
+      ],
+      "peak_GPa": 2.884781231566346
+    },
+    "slope_min_for_qx_point72": 4.477921872689448,
+    "target_guide_budget": {
+      "contact_help": 0.05816995177039967,
+      "drag0_multiplier": 1.0183299389002036,
+      "drive_help": 0.9943788187372709,
+      "guide_Q_per_N_at_D0_P_zero": 7.858215917051696
+    }
+  },
+  "parked_local_ball": {
+    "center": [
+      -0.5348,
+      11.955492731089048
+    ],
+    "disk_first_intersection_at_face_x": -3.0348,
+    "normal_head_on_tail_x": -0.12,
+    "other_axial_edge_clear_lower": 0.9364390037814276,
+    "pole": [
+      -0.2348,
+      14.43742746028722
+    ],
+    "scope": "one R2.5 generator, NOT the whole flange in this pose",
+    "unrounded_shoe_clear_lower": 0.03235595189793461
+  },
+  "section": {
+    "CX": -2.25,
+    "R": 2.5,
+    "core": 10.75,
+    "downstream_recess_center": 1.5703999999999994,
+    "front_r_intercept": 15.35,
+    "gap": 0.11,
+    "guard_face_radial_depth": [
+      0.42701582406326644,
+      0.07279999999999909,
+      0.696472176037954
+    ],
+    "home_disk_radial_clear": 0.34895922982138927,
+    "jaws_at_deg": [
+      -90,
+      30,
+      150
+    ],
+    "lip_radius": 14.5,
+    "min_roof_lowerbound": 12.97895922982139,
+    "park_radial_recess_min_lower": 0.2307280551168489,
+    "rear_home": 16.6,
+    "roof_blend": 0.12,
+    "roof_core_offsets": [
+      0.12837195955503677,
+      0.2899931033662697,
+      0.174
+    ],
+    "s_range": [
+      0,
+      1.45
+    ],
+    "side_r_intercept": 11.33,
+    "slopes": [
+      -0.38,
+      2.2,
+      1.05
+    ],
+    "t_half": 3.2,
+    "taper": 0.28,
+    "true_ridge_center": [
+      -1.1403896588170412,
+      13.131135853968779
+    ],
+    "true_rmin": 13.01113585396878,
+    "work_r_intercept": 12.569415824063267,
+    "x": [
+      -3.5,
+      -0.38
+    ]
+  },
+  "units": "mm,N,N mm",
+  "work_plane": {
+    "flat_edge_distance": 0.19142378200157803,
+    "nd": 0.9347835805883489,
+    "nx": 0.3552177606235726,
+    "r": 13.086958951470873,
+    "x": -1.3619555984410685
+  }
+}

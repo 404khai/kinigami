@@ -476,10 +476,24 @@ Lead Graft. Test whether a positively retained, stored-energy **opening** stroke
 
 Mechanics Graft. Replace the central stud by a broad, short tail flange. Check opening the rear-flank sectors under one-sided load including sector ends, guide reactions, neck and neighbouring stock; no spring-closed clamp or assumed band load sharing.
 
+[Sector study](docs/studies/cand-d-perimeter/README.md): a single loaded sector can reach the rounded crest while the other two clear. Pressure assists opening only within the guide-drag budget. The parked sector leaves a 1.570 mm recess with a backward-facing fixed lip; the local sphere witness is not a whole-flange jam.
+
 ## Take 59 — package a perimeter clamp and a solid central ejector
 
 Packaging Graft. Install the flange, radial sector drives and positively driven disk; test the metal axial take-up/disk stop, screw reactions, tail joint, electronics, neighbour and stow together.
 
+[Installation](docs/studies/cand-d-perimeter/flange-take59.md): transverse motor clears the neighbouring head in Ø58.504 stow, but crosses its own frame, and the sectors cross their feet. One loaded seat needs a tensile reaction at a compression-only pad. Reject both studied packages.
+
 ## Take 60 — close the full bore with a solid advancing disk
 
 Lead Graft. Bound the annular slit around the advancing disk and the loaded pole directions with real backed-surface radii; separate emptying the retaining cavity from clearing other exposed parts or certifying the sector drive.
+
+[Disk analysis](docs/studies/cand-d-perimeter/disk.md): .072 mm terminal clearance for sphere generators inside the continuous mouth. The earlier window contact and installed eccentric drive are outside the smooth-bore force proof. No Gate result.
+
+## Take 61 — repair the forward sector seam
+
+Mechanics Graft. Test a whole-flange constraint at the parked lip and a positively driven wall bridge if necessary; keep side and end contacts in the release budget.
+
+## Take 62 — retract the sleeve around a fixed seat plate
+
+Packaging Graft. Test a rigid metal spine, six finite face inserts, three axial take-up shoes and positively sequenced radial opening then axial sleeve retreat.
