@@ -548,6 +548,8 @@ Mechanics Graft. Test whether a single tail configuration can load both the oute
 
 Packaging Graft. Try a mechanically backed light core or a closed hollow tail with finite ribs, finished metal load pads and fixed pull-off keys; check the cycled cell, feet, motor mounts and enclosing sphere together. Keep the stock and force scales consistent.
 
+[Keyed sleeve](docs/studies/cand-d-perimeter/keyed/shell-take70.md): Ø59.948 nominally including the cycled cell and articulating tail, but the front shoulder blocks insertion of the assembled axle. At the trial load the dog needs .831 N mm for extraction versus .562 N mm optimistic continuous drive. The separate spherical cup intersects the fixed quill. No buildable loaded-release installation.
+
 ## Take 71 — put the six seats on one floating plate
 
 Lead floating-seat Graft. Remove three separate sliding carriages. Screen a single spring-loaded plate with two angular degrees of freedom, including the actual pivot offset, swept rim, six finite faces, antiroll reaction, spring travel, finite load path and one-sided contacts.
@@ -557,3 +559,19 @@ Lead floating-seat Graft. Remove three separate sliding carriages. Screen a sing
 ## Take 72 — release across a floating face
 
 Mechanics Graft. Test the non-tilting XY plate alternative separately from the seated force screen: finite moving V faces, displaced rim and central boss, draw with the jaws locked, then withdrawal under load without assuming continuing seat contact.
+
+[Rocking release](docs/studies/cand-d-floating-rim/README.md): under 20 N compression one continuous path rocks the complete tail 4° and clears the lip at the minimum stroke, with four seats still in contact. The central boss penetrates a diagonal capsule at a permitted .18 mm transverse displacement. Neither continued compression nor positive stroke certifies a persistent air gap.
+
+## Take 73 — withdraw a plug with an actual cone cap
+
+Lead flush-plugs Graft. Replace the external pivot/link with a blind radial piston. Keep the original tension pole on an aft bevel, use a true cone on the nose, and quantify the missing cap at the bevel and side reliefs at park. Check the front end and the rear fixed cheek during opening, not only the ideal working plane.
+
+[Blind plugs](docs/studies/cand-d-perimeter/plug.md): all bore-side cuts of the trial port have a common positive virtual-work motion on R2.45-backed stock. The proof includes the non-flush aft bevel, not a perfectly filled cone. It does not include guide loss, missing seats or the outer housing.
+
+## Take 74 — one draw contact and six rigid seats
+
+Mechanics Graft. Test a seven-contact load path: one positively withdrawn tapered key carrying a central rounded lug, and six rigid seat normals around its load line. Check eccentric force, Coulomb stiction, tolerance, partial contacts and real guide stock.
+
+## Take 75 — enclose the radial-plug drive
+
+Packaging Graft. Put two opposing X-bearing rows at different radii on each translating plug, drive all three with an enclosed face cam, and drive the terminal disk independently. Keep the finite front wall, check assembly access and guide loads at the actual actuator offset.
