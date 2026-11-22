@@ -465,3 +465,17 @@ Packaging Graft. Budget the short track, axial take-up, one positively driven tr
 ## Take 57 — finite-time release after the last loaded support
 
 Lead Graft. Test whether a positively retained, stored-energy **opening** stroke could bound the relative pose before the last edge clears, instead of assuming a partly released body remains aligned forever. Account separately for lost preload, guide reactions, moving mass, rebound, power interruption and the work needed to clear a neighbour.
+
+[Opening-only captive return](docs/studies/cand-d-pressure-transfer/retreat.md): a conditional .709 ms aligned stroke spends almost all the slot margin in a free-body load screen. The carrier can recoil, the terminal stop must absorb up to .300 J, and vacuum loss **before** alignment leaves a finite interval where the bar cannot retreat. No release credit.
+
+## Take 58 — open three captive peripheral sectors
+
+Mechanics Graft. Replace the central stud by a broad, short tail flange. Check opening the rear-flank sectors under one-sided load including sector ends, guide reactions, neck and neighbouring stock; no spring-closed clamp or assumed band load sharing.
+
+## Take 59 — package a perimeter clamp and a solid central ejector
+
+Packaging Graft. Install the flange, radial sector drives and positively driven disk; test the metal axial take-up/disk stop, screw reactions, tail joint, electronics, neighbour and stow together.
+
+## Take 60 — close the full bore with a solid advancing disk
+
+Lead Graft. Bound the annular slit around the advancing disk and the loaded pole directions with real backed-surface radii; separate emptying the retaining cavity from clearing other exposed parts or certifying the sector drive.
