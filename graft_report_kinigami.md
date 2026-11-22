@@ -358,10 +358,22 @@ Packaging Graft: test an aft pivot near the lower-deck height and a supported mo
 
 Mechanics Graft: check the toroidal eye through loaded withdrawal, including tilted-eye binding, the rounded pin end, finite flared walls and port edges. Do not transfer unloaded-stroke or single-contact estimates to uncontrolled partials.
 
+[Mechanics](docs/studies/cand-d-transverse-eye/README.md) · [calculator](docs/studies/cand-d-transverse-eye/eye.py). The fixed flares admit simultaneous barrel and hemisphere contact at 36°. A finite bound needs the whole applied wrench. At the far-journal exit even ideal near-face fixity allows the pin to reach the port at 32.03 N. An empty port has positive axial work for the stated tube, not necessarily for a thin stem.
+
 ## Take 39 — install the eye, cross-pin and independent eject drive
 
 Packaging Graft: place the pin in supported journals, draw and unload the eye, park the pin behind the real wall, then eject. Include the motor, passive hold, load isolation, neighbours, sensors, and both bodies within the 60 mm stowed limit.
 
+[Installation](docs/studies/cand-d-crosspin/eye-pin-take39.md) · [material witnesses](docs/studies/cand-d-crosspin/eye-witness-take39.py). At 36 mm pitch neighbouring head stock clears in the four specified endpoint pairs, but the relieved journal cuts the fixed cheek and the parked ejector rib intersects its own motor. The 59.665 mm sphere encloses the drawn stock, not an achievable stow.
+
 ## Take 40 — couple the ring contact to an indexed face
 
 Lead integration in the separate reciprocal-v7 Graft while Takes 38 and 39 check mechanics and package. [Face, ellipse and taper checks](docs/studies/cand-d-crosspin/README.md): two points can bear on the long barrel from 27.275° tilt, not only at the 37.814° diametric pinch. Their restoring moment bounds drag **only with a bounded external eye wrench**. The illustrative six-V registry needs 141.93 N sufficient table-case draw at .050 mm pin offset allowance. A cone steep enough to shed dry friction and a tube-shielded positive-work port do not meet the same sufficient conditions. No official result or candidate revision.
+
+## Take 41 — fixed vertical pin and a relieved seat plate
+
+Mechanics Graft: remove the assumption of a separately bounded pin-x reaction. Test a fixed pin with only a near cheek, including its cap, port and contacts with the table after the six-V registry retreats. A squeeze that assists withdrawal may still damage the parts.
+
+## Take 42 — lift the pin instead of translating its journal
+
+Packaging Graft: fix the upper journal and drive a folded-back rack upward; move the indexed plate axially for take-up, relief and ejection. Check the mounted cantilever variant separately from the two-journal variant, including the powered stroke, direct position flags, level table and neighbouring drive.
