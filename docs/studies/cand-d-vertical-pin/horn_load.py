@@ -6,7 +6,7 @@ from button_seats import test
 from slotted import hertz
 
 
-def pressure(h,hi):
+def pressure(h,hi,exy=.045,ez=.060,eye_angle_deg=1.):
     """Enclose every smooth contact of the torus with the polar-disk surface.
 
     Coordinates on grid cells only; debit the full unsampled range in
@@ -14,10 +14,9 @@ def pressure(h,hi):
     """
     # Uniform position/normal profile errors, not dimensional tolerances
     # assigned independently and then silently assumed to give these errors.
-    form=.030; da=radians(.40); angle=radians(1.)
+    form=.030; da=radians(.40); angle=radians(eye_angle_deg)
     ring_error=.030; tube_error=.030
     # Actual eye datum relative to horn frame, not an externally held fixture.
-    exy=.045; ez=.060
     m,n=681,1441
     ts=np.linspace(h.lo,hi,m);vs=np.linspace(-pi,pi,n)[None,:]
     dt=(ts[1]-ts[0])/2; dv=pi/(n-1)

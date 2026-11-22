@@ -1,0 +1,31 @@
+alternative leaves U-face, replaces central neck/backing with lateral keels/sockets; load pickup at nut thrust before shoe friction
+travel joint, fixed X hardware, own tail, root drive, full rotor, forward hood (1.5199999999999996, 'rib cross sill-1', 'lower hinge elbow') (0.21999999999999886, 'rib cross sill-1', 'T rail head -1') [(0.7, 'all', 'separate', 0)] (2.549999999999999, 'land transverse backer upper-1', 'horn motor X') (1.6287130693769223, 'land transverse backer middle-1', 'spoke-1(1, 0)') (0.9849999999999994, 'land transverse backer middle-1', 'front hood side-1')
+mated at aligned home (0.2808625356241996, 'side socket fore-1', 'heavy neck2/0')
+cap relative co-relief (0.30999999999999983, 'M2 toe nut boss(-1, 3.55)', 'bottom apron')
+cap relative park horn (0.30999999999999983, 'M2 toe nut boss(-1, 3.55)', 'bottom apron')
+cap relative return before cap spread (0.30999999999999983, 'M2 toe nut boss(-1, 3.55)', 'bottom apron')
+cap relative track/expand cap (0.3099999999999994, 'M2 toe nut boss(-1, 3.55)', 'bottom apron')
+cap relative close laterally at fixed X (0.3099999999999994, 'M2 toe nut boss(-1, 3.55)', 'bottom apron')
+cap relative closed carry (0.3099999999999994, 'M2 toe nut boss(-1, 3.55)', 'bottom apron')
+cap relative optional extra carry (0.3099999999999994, 'M2 toe nut boss(-1, 3.55)', 'bottom apron')
+Fx, U tower single side high-contact illustrative height/Z/stress, old central web centred moment stress 111 20.194789999999998 0.7167274670797729 3127.5788817376297 143.65932921574264
+socket M Nmm; opposing sole force @5.70; one M2 tension MPa @2.07; bushing projected MPa at t1.85*d1.44 (conditional full Fx), tip Z at y14.8..16.65 & effective whole x2.64..6.04, solid upper bound 3342.27105 586.3633421052631 283.2673150266972 41.666666666666664 3.5643333333333334
+if single .96 sill carries entire moment: St Venant shear MPa (no warping restraint), angle rad over 7.5 mm assuming G79GPa 1067.1481260023097 0.1055328447391525
+centred vs high land, mu, ideal one guide couple, thrust, gearhead 20.3 0.1 326.5652173913044 195.80617237485887 60.72823172388528
+centred vs high land, mu, ideal one guide couple, thrust, gearhead 32.61055 0.1 524.6045 247.2352672186677 76.67868901103007
+centred vs high land, mu, ideal one guide couple, thrust, gearhead 20.3 0.23 326.5652173913044 429.7128712871288 133.27313692799342
+centred vs high land, mu, ideal one guide couple, thrust, gearhead 32.61055 0.23 524.6045 622.9902475247527 193.21707612451917
+Fx, U tower single side high-contact illustrative height/Z/stress, old central web centred moment stress 170.43 20.194789999999998 0.7167274670797729 4802.101520851749 220.57531061476593
+socket M Nmm; opposing sole force @5.70; one M2 tension MPa @2.07; bushing projected MPa at t1.85*d1.44 (conditional full Fx), tip Z at y14.8..16.65 & effective whole x2.64..6.04, solid upper bound 5131.7410365000005 900.3054450000001 434.9301666666667 63.97522522522522 3.5643333333333334
+if single .96 sill carries entire moment: St Venant shear MPa (no warping restraint), angle rad over 7.5 mm assuming G79GPa 1638.5050010321954 0.1620357002603042
+centred vs high land, mu, ideal one guide couple, thrust, gearhead 20.3 0.1 501.41 300.6418554761009 93.24245524956548
+centred vs high land, mu, ideal one guide couple, thrust, gearhead 32.61055 0.1 805.4805850000001 379.60636569439225 117.73287358693564
+centred vs high land, mu, ideal one guide couple, thrust, gearhead 20.3 0.23 501.41 659.7834653465347 204.62829483457583
+centred vs high land, mu, ideal one guide couple, thrust, gearhead 32.61055 0.23 805.4805850000001 956.5425935643568 296.66654309821445
+Fx, U tower single side high-contact illustrative height/Z/stress, old central web centred moment stress 208.3 20.194789999999998 0.7167274670797729 5869.141270864398 269.5877322129657
+socket M Nmm; opposing sole force @5.70; one M2 tension MPa @2.07; bushing projected MPa at t1.85*d1.44 (conditional full Fx), tip Z at y14.8..16.65 & effective whole x2.64..6.04, solid upper bound 6272.027565 1100.3557131578948 531.5728082888381 78.19069069069069 3.5643333333333334
+if single .96 sill carries entire moment: St Venant shear MPa (no warping restraint), angle rad over 7.5 mm assuming G79GPa 2002.5851769935239 0.19804046449698623
+centred vs high land, mu, ideal one guide couple, thrust, gearhead 20.3 0.1 612.8246376811595 367.4452766277757 113.96117718995768
+centred vs high land, mu, ideal one guide couple, thrust, gearhead 32.61055 0.1 984.4605166666668 463.95591136620254 143.89343172069877
+centred vs high land, mu, ideal one guide couple, thrust, gearhead 20.3 0.23 612.8246376811595 806.3891089108913 250.0972470459552
+centred vs high land, mu, ideal one guide couple, thrust, gearhead 32.61055 0.23 984.4605166666668 1169.0889059405945 362.586639249886

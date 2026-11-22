@@ -1,0 +1,26 @@
+root fixed / face [(1.4123306461258576, 'horn motor X', 'side-1'), (1.7353306461258562, 'horn motor X', 'land5'), (3.4074211130160936, 'rail outer -1', 'side-1'), (3.4074211130160936, 'rail outer 1', 'side1')]
+root swept / face [(3.48044729527306, 'buried pin head:0', 'side1'), (3.48044729527306, 'buried pin head:1', 'side1'), (3.48044729527306, 'buried pin keeper:0', 'side-1'), (3.48044729527306, 'buried pin keeper:1', 'side-1')]
+X fixed vs face [(1.8136314769388804, 'face screw', 'bottom'), (1.963631476938879, 'T rail head -1', 'bottom'), (1.963631476938879, 'T rail head 1', 'bottom'), (2.373631476938879, 'T rail head -1', 'land1')]
+X new vs root fixed [(20.270000000000003, 'U bottom backing', 'root screw'), (23.92, 'U bottom backing', 'horn motor X'), (24.32, 'U bottom backing', 'rail lower -1'), (24.32, 'U bottom backing', 'rail lower 1')]
+X vs joint [(1.25, 'axial crosshead', 'lower bridge'), (1.25, 'moving keel -1', 'lower bridge'), (1.25, 'moving keel 1', 'lower bridge'), (1.2800000000000011, 'face nut', 'lower bridge')]
+v3 face vs v3 joint [(2.1937128236993204, 'centre', 'rear spine'), (2.238972019174232, 'centre', 'upper hinge elbow'), (2.80525, 'centre', 'stationary central knuckle'), (4.00525, 'centre', 'fixed hinge foot')]
+new face vs hood [(0.4834472952730593, 'side-1', 'front hood side-1'), (0.4834472952730593, 'side1', 'front hood side1'), (0.4834472952730602, 'side-1', 'slot floor(-1.15, -1)'), (0.6827087881813245, 'side1', 'slot floor(-1.15, 1)')]
+parked link/guide vs fixed [(-3.9499999999999993, 'travelling nut', 'root screw'), (0.030000000000001137, 'slipper(-5.4, -1)', 'root thrust tie'), (0.20000000000000284, 'slider ear arm-1', 'root thrust tie'), (0.22000000000000064, 'nut bridge', 'root screw')]
+root fixed own Take51 tail [(0.18663989024898459, 'root motor 34T', 'heavy neck2/0', -11), (0.18663989024898459, 'root motor 34T', 'heavy neck2/0', -10), (0.18663989024898459, 'root motor 34T', 'heavy neck2/0', -9), (0.18663989024898459, 'root motor 34T', 'heavy neck2/0', -8)]
+short root link own Take51 tail [(0.7, 'all', 'separate', 0)]
+fixed X own Take51 tail [(0.4040484442441965, 'face Y motor', 'heavy neck0/0', -15), (0.4040484442441965, 'face Y motor', 'heavy neck0/0', -14), (0.4040484442441965, 'face Y motor', 'heavy neck0/0', -13), (0.4040484442441965, 'face Y motor', 'heavy neck0/0', -12)]
+moving X own Take51 tail [(0.7, 'all', 'separate', 0)]
+face51 own Take51 tail [(0.7, 'all', 'separate', 0)]
+X fixed rails x span (-13.58, 13.790000000000001) next rail gap 10.13
+Fx mu aligned guide drag, axial, motor Nmm (0.28,0.72) 111 0.1 84.80617237485887 195.80617237485887 60.72823172388528
+Fx mu aligned guide drag, axial, motor Nmm (0.28,0.72) 111 0.23 318.7128712871288 429.7128712871288 133.27313692799342
+Fx mu aligned guide drag, axial, motor Nmm (0.28,0.72) 155 0.1 118.42303349642455 273.4230334964245 84.80068393875871
+Fx mu aligned guide drag, axial, motor Nmm (0.28,0.72) 155 0.23 445.0495049504952 600.0495049504952 186.10212814269352
+Fx mu aligned guide drag, axial, motor Nmm (0.28,0.72) 163 0.1 124.53519006398194 287.53519006398193 89.17749343237207
+Fx mu aligned guide drag, axial, motor Nmm (0.28,0.72) 163 0.23 468.0198019801981 631.019801980198 195.70739927263895
+Fx mu aligned guide drag, axial, motor Nmm (0.28,0.72) 170.43 0.1 130.2118554761009 300.6418554761009 93.24245524956548
+Fx mu aligned guide drag, axial, motor Nmm (0.28,0.72) 170.43 0.23 489.3534653465348 659.7834653465347 204.62829483457583
+Fx mu aligned guide drag, axial, motor Nmm (0.28,0.72) 200 0.1 152.8039141889349 352.80391418893487 109.42023734033383
+Fx mu aligned guide drag, axial, motor Nmm (0.28,0.72) 200 0.23 574.2574257425745 774.2574257425745 240.13177824863678
+Fx mu aligned guide drag, axial, motor Nmm (0.28,0.72) 208.3 0.1 159.1452766277757 367.4452766277757 113.96117718995768
+Fx mu aligned guide drag, axial, motor Nmm (0.28,0.72) 208.3 0.23 598.0891089108914 806.3891089108913 250.09724704595524

@@ -19,14 +19,14 @@ def moments(L,Fx,diam=3.,ell=7.30,G=79000):
     return np.array(out)
 
 
-def upper(Fx,mass,case,phi=5.62,dp=.81,pitch=37.5):
+def upper(Fx,mass,case,phi=5.62,dp=.81,pitch=37.5,rad=11.,sta=6.,foot_radius=18.566):
     # Independent finite sets of vertices generate outer cones, not inscribed
     # circles. Each vertex coefficient is a possible share of total normal;
     # no independence or equal sharing postulate is needed for inclusion.
-    q,c,e,ps,ns=setup(-90.,11.,6.,58.)
-    nfac=16;mu=.23;rad=11.;delta=2*sin(radians(.60)/2)
+    q,c,e,ps,ns=setup(-90.,rad,sta,58.)
+    nfac=16;mu=.23;delta=2*sin(radians(.60)/2)
     w=envelope(mass,case,rad,wide='take23')
-    torque=.001*mass*9.80665*(3*pitch+3*18.566)
+    torque=.001*mass*9.80665*(3*pitch+3*foot_radius)
     w[-1]+=(torque*(1.4 if case=='fault' else 1)-(52.2 if case=='fault' else 14.5))/rad
     w[3:]+=abs(np.cross(np.eye(3),15*X-c)).T@w[:3]/rad
     W=[]; err=[]; cap=[]; df=delta*hypot(1,mu)

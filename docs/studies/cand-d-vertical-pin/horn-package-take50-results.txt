@@ -1,0 +1,11 @@
+complete actual-point certificate (65.52364966816303, [('face input bush', (-21.08433, -18.82, -20.81907), 0.033983), ('cell', (8.85, -25.2, -16.33), 0.430733), ('cell', (8.85, -25.2, 14.33), 0.053808), ('MCU', (-15.5, 28.35, 12.4), 0.481475)]) without relocated electronics (61.04094064210687, [('face input bush', (-21.08433, -18.82, -20.81907), 0.265224), ('horn motor X', (10.23097, -13.45, 20.79808), 0.167258), ('key lifter', (-18.4, 13.65, 22.61865), 0.301512), ('foot(11.0, 8.5)', (12.3, 9.75, -23.5), 0.266006)])
+all stock (conservative diameter upper only) ((-4.634999999999999, 0.515, -1.0899999999999999), [(65.6426, 'root garage root motor 34T'), (65.7497, 'MCU'), (65.7535, 'face gear cover back'), (65.7536, 'cell')])
+worst forward hood face LP ('side-1', 'front hood side-1', array([ 2.93425701, -7.76156978,  2.09491906, -1.5       , -0.36574299]))
+hub / rib LP [ 0.31890791 -1.51491492 -5.83508508 -1.5        -1.51491492]
+clipped link side roof floor [0.88849608 1.3083505  3.25658586]
+clipped spoke side roof floor [1.57316503 4.60089305 2.51093713]
+neighbour endpoint CC SAT envelope only (-6.634153161210247, -15, 'fore end', 'root garage  outer') 1006
+neighbour endpoint RC SAT envelope only (-6.634153161210247, -15, 'fore end', 'root garage  outer') 990
+neighbour endpoint EC held SAT envelope only (-12.965588448029953, 15, 'land5', 'root garage  outer') 2207
+neighbour endpoint EC follows SAT envelope only (-1.086815928594379, -8, 'land4', 'root garage  outer') 18
+neighbour endpoint EE follows SAT envelope only (-1.1376660445174664, -8, 'land4', 'root garage  outer') 21

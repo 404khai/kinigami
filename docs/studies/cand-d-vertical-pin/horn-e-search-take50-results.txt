@@ -1,0 +1,7 @@
+cell (np.float64(-1.5), np.float64(-22.5), np.float64(-1.0)) (20.7, 5.4, 30.66) 32.921473235564655
+MCU (np.float64(-4.5), np.float64(25.5), np.float64(3.5)) (22.0, 5.7, 17.8) 33.124952830155095
+joint+X driver (np.float64(-6.0), np.float64(-7.5), np.float64(-8.5)) (9.8, 1.87, 8.8) 16.270194374991345
+power cutoff (np.float64(0.0), np.float64(7.5), np.float64(-2.5)) (1.95, 6.2, 6.85) 13.405269486287844
+Z driver (np.float64(-4.5), np.float64(-10.5), np.float64(-7.0)) (6.2, 2.05, 5.8) 15.425486215999806
+cell connector (np.float64(0.0), np.float64(-9.0), np.float64(-1.0)) (2.8, 3.35, 2.9) 12.630840233333648
+harness channel (np.float64(1.5), np.float64(-6.0), np.float64(-5.5)) (2.0, 3.0, 3.4) 12.653458025377885

@@ -422,6 +422,24 @@ Packaging Graft: compare a through axle with separated stub trunnions, check the
 
 Mechanics Graft: test whether a drafted pusher or interleaved hood and comb can physically exclude the loose rolling tail at full stroke. Check the rear seams, first fork, drive reactions and fixed/moving stock; measured pose alone does not force exit.
 
+[Four-tile separator](docs/studies/cand-d-forced-section/README.md): forced separation holds inside a bounded window, not around the perimeter. The root motor axis penetrates both a cropped side and a blade even at home.
+
 ## Take 50 — drive the horn root without an overhung cam
 
 Packaging Graft: check a pinned connecting rod to the buried horn root, driven by an always-engaged screw. Replace the Take 48 external cam and long torque-carrying stub; check the actual link, nut, motor, lock, supports and repeated Kin rather than treating an ideal slider as installed.
+
+[Root drive](docs/studies/cand-d-vertical-pin/horn-take50.md): no crank dead centre, but four non-electronic points need ≥61.041 mm. The guide also hits the fixed horn motor, and the moving carriage hits a held neighbour. A stronger paired socket trades tower bending for an inadequately supported cross-sill.
+
+## Take 51 — put the six seats on a drafted, backed face
+
+Lead integration in the reciprocal-v7 Graft. Relocate the bosses and check a finite U-shaped moving face with continuous tapered backing from each tangent land. Check its underside, side towers, junctions, load targets, local release path and interaction with the actual stationary hinge.
+
+[Backed face and relocated joint](docs/studies/cand-d-vertical-pin/registered-face.md): the four-tile stock clears the revised hinge but not the root motor. The steel eye/tail and face alone weigh about 49–55 g; the 90 g loaded-datum study needs 170.43 N axial force, not a universal 111 N.
+
+## Take 52 — thread and withdraw a flexible positive tie
+
+Mechanics Graft: test a finite strand driven through a passive curved return. Check force transfer at unequal end tensions, mouth interference and the last-link exit under live load; no latch opened merely by command.
+
+## Take 53 — install the reusable lace and its receivers
+
+Packaging Graft: check a head-side feed, supported pickup, power-off lock, take-up, recovery and actual pusher with the passive return, neighbouring body and electronics. Do not carry over the horn, high post or long X rail.
