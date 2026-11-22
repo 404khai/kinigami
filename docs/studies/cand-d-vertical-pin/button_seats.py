@@ -21,7 +21,7 @@ def setup(phase,radius,station,face_angle):
     return q,c,e,np.array(pts),np.array(dirs)
 
 
-def test(phase,rad,sta,ang):
+def test(phase,rad,sta,ang,normal_error=2.,point_error=.47,mass=70.,yaw=(14.5,52.2)):
     q,c,e,ps,ns=setup(phase,rad,sta,ang)
     R,r,k=7.5,4.2,.32
     xp=15-R+.48+r*hypot(1,k)
@@ -39,7 +39,7 @@ def test(phase,rad,sta,ang):
     H=np.linalg.inv(J); f,m=H[:,:3],H[:,3:]
     # Cone working normal e with arbitrary traction mu=.23 and 2 degrees
     # normal error. P is the resultant component along e, NOT a screw force.
-    kap=np.tan(atan(.23)+radians(2)); dp=.47
+    kap=np.tan(atan(.23)+radians(normal_error)); dp=point_error
     loss=(np.linalg.norm(f,axis=1)*dn+np.linalg.norm(m,axis=1)*dm)/(cos(radians(ang))-dn)
     v=f+np.cross(m,q-c)/rad
     slope=v@e-kap*np.linalg.norm(v-np.outer(v@e,e),axis=1)-loss
@@ -47,7 +47,8 @@ def test(phase,rad,sta,ang):
     if min(slope)<=0:return None
     P=[]
     for case in ('service','table','fault'):
-        w=envelope(70.,case,rad,wide='take23')
+        w=envelope(mass,case,rad,wide='take23')
+        w[-1]+=(yaw[1]-52.2 if case=='fault' else yaw[0]-14.5)/rad
         # Envelope moments here must be about c. Charge shift from assumed
         # old reference at ring centre even when it worsens the old allowance.
         w[3:]+=abs(np.cross(np.eye(3),15*X-c)).T@w[:3]/rad

@@ -1,0 +1,33 @@
+common hood/part point hinge top elbow (0.0, -4.0, 1.15) inside box signed depth 0.75 skin depth 0.19897648360061027
+common hood/part point upper bridge1 (5.5, 6.51, 10.0) inside box signed depth 0.4500000000000002 skin depth 0.09999999999999964
+spoke clipped forward of rear plane / inner hood sides conservative mm 0.25313296564143584
+rear bulkhead / actual upper lug annular point (-1.05, 0.0, 6.15) lug radius 2.45 separation of point from garage outer proxies (3.5493061047567798, 'w', 'spoke shell spoke-1(1, 5)')
+two independent rails aligned, closed gap and onset 3.25 full advance overlap 13.55 point (21.575000000000003, -9.6, -15.65)
+L18 common point (-6.25, 0.0, 1.28) r to hinge, to shaft 2.75 0.24981858854449882
+L/p, nominal straight thick stem to axis xz distance 18.0 37.5 5.161430308188067
+L/p, nominal straight thick stem to axis xz distance 20.0 37.5 3.261845666717291
+stalk upper fibre reaction pure centered Fx, MPa 155.0 642.8471779336735
+stalk upper fibre reaction pure centered Fx, MPa 163.0 676.026387117347
+stalk upper fibre reaction pure centered Fx, MPa 200.0 829.4802295918369
+groove half lash at pole mm, full sign reversal 0.16304372440175785 0.3260874488035157
+references, solve gear output torque at peak if unrelieved 130.22248416666665 peak root spur tangential at worst cam load 173.62997888888887
+independent cell / closed web lower cert (61.67928820813987, [('cell', (-19.33, 15.95, -22.1), 0.26931), ('cell', (11.33, 15.95, -22.1), 0.266107), ('cam rear web', (-3.89431, -23.5, 19.8684), 0.464584)])
+independent MCU / X motor material-point distance (61.284740207367946, (-12.4, 25.85, 10.5), (16.9, -25.119077862357727, -6.805562231418448))
+offset 0.0 floor (0.14999999999999858, 'foot(-12.0, -8.5)') lower cert (62.58807106791263, [('cell', (-19.33, 15.95, -22.1), 0.236818), ('MCU', (-12.4, 25.85, 10.5), 0.277016), ('X gearmotor', (16.9, -25.25442, -6.30045), 0.354842), ('cam rear web', (-3.89431, -23.5, 19.8684), 0.131324)]) enclosing proxy upper incl full round cam envelope ((-3.9999999999999996, -2.2349999999999994, 0.21499999999999994), [(63.6983, 'MCU'), (63.7438, 'grooved cam envelope'), (65.2268, 'cam solid rear web'), (65.2277, 'cell')])
+non-electronic lower cert (58.32216627637441, [('foot(11.0, 8.5)', (12.3, 9.75, -23.5), 0.416663), ('yaw gearmotor', (4.72606, 16.16908, 18.6), 0.035662), ('cam rear web', (-3.89431, -23.5, 19.8684), 0.377642), ('true own torus', (-29.83611, 1.55934, 0.0), 0.170032)])
+own split moving incl thick tail [(0.4881001889005375, 'fork hub 1', 'heavy stem', -15)] vs fixed hinge [(1.0658935253212531, 'spoke-1(0, 0)', 'hinge top elbow')] cell/MCU v tail [(0.7, 'all', 'separate', 0)] cell/MCU vs core [(1.0, 'cell', 'X shoe base0'), (1.0, 'cell', 'X shoe base1')]
+offset -3.0 floor (-0.3500000000000014, 'X plunger body') lower cert (62.71359805139266, [('cell', (-19.33, 15.95, -22.1), 0.105832), ('MCU', (-12.4, 25.85, 10.5), 0.407844), ('X gearmotor', (16.9, -25.25442, -9.30045), 0.456492), ('X rail', (-22.7, -12.45, -20.45), 0.029832)]) enclosing proxy upper incl full round cam envelope ((-3.2350000000000003, -2.045, -1.515), [(63.4504, 'MCU'), (63.4529, 'X gearmotor'), (63.4543, 'cell'), (63.4558, 'cam solid rear web')])
+non-electronic lower cert (58.67959326989769, [('yaw gearmotor', (4.72606, 16.16908, 18.6), 0.409131), ('X gearmotor', (16.9, -25.11908, -9.80556), 0.246974), ('X rail', (-22.7, -12.45, -20.45), 0.343895)])
+own split moving incl thick tail [(-1.187278998952039, 'spoke-1(1, 8)', 'tail pivot lug1270', 0)] vs fixed hinge [(-0.7504405625830457, 'spoke-1(1, 0)', 'hinge top elbow')] cell/MCU v tail [(0.6499999999999979, 'cell', 'boss0', -15)] cell/MCU vs core [(1.0, 'cell', 'X shoe base0'), (1.0, 'cell', 'X shoe base1')]
+offset -5.0 floor (-2.3500000000000014, 'X plunger body') lower cert (63.36524538979741, [('MCU', (-12.4, 25.85, 10.5), 0.455538), ('X gearmotor', (16.9, -25.11908, -11.80556), 0.432388), ('X rail', (-22.7, -12.45, -22.45), 0.112074)]) enclosing proxy upper incl full round cam envelope ((-3.3100000000000005, -1.8, -3.009999999999999), [(63.0722, 'cam solid rear web'), (64.1747, 'X gearmotor'), (64.177, 'MCU'), (64.177, 'X plunger body')])
+non-electronic lower cert (59.84568078114718, [('yaw gearmotor', (4.72606, 16.16908, 18.6), 0.414987), ('X gearmotor', (16.9, -25.11908, -11.80556), 0.238557), ('X rail', (-22.7, -12.45, -22.45), 0.346457)])
+own split moving incl thick tail [(-2.1257508930743563, 'spoke-1(2, 8)', 'tail pivot lug1270', -3)] vs fixed hinge [(-1.9860117128039327, 'spoke-1(1, 0)', 'hinge top elbow')] cell/MCU v tail [(-1.350000000000002, 'cell', 'boss0', -15)] cell/MCU vs core [(-0.1999999999999993, 'cell', 'lower bridge'), (-0.1999999999999993, 'cell', 'side pillar1')]
+offset -7.0 floor (-4.350000000000001, 'X plunger body') lower cert (64.16028748717815, [('MCU', (-12.4, 25.85, 10.5), 0.45495), ('X gearmotor', (16.9, -25.11908, -13.80556), 0.427217), ('X rail', (-22.7, -12.45, -24.45), 0.117833)]) enclosing proxy upper incl full round cam envelope ((-3.335, -1.2850000000000001, -4.925000000000001), [(63.6722, 'cam solid rear web'), (65.0042, 'X gearmotor'), (65.0046, 'X plunger body'), (65.005, 'MCU')])
+non-electronic lower cert (61.061372535458844, [('yaw gearmotor', (4.72606, 16.16908, 18.6), 0.420872), ('X gearmotor', (16.9, -25.11908, -13.80556), 0.141566), ('X gearmotor', (16.9, -24.89808, -14.2795), 0.088797), ('X rail', (-22.7, -12.45, -24.45), 0.348765)])
+own split moving incl thick tail [(-2.255251725425021, 'spoke1(3, 8)', 'tail pivot lug160', -13)] vs fixed hinge [(-1.9860117128039327, 'spoke-1(1, 0)', 'hinge top elbow')] cell/MCU v tail [(-3.187199069225419, 'cell', 'boss0', -15)] cell/MCU vs core [(-2.1999999999999993, 'cell', 'lower bridge'), (-2.1999999999999993, 'cell', 'side pillar1')]
+CC end-state bound after .2 and 1-degree angular interval, unresolved tests (0.07321718210161704, 'X gearmotor', 'X motor 18T', -15) 0
+CW end-state bound after .2 and 1-degree angular interval, unresolved tests (0.07321718210161704, 'X gearmotor', 'X motor 18T', -15) 0
+EC co-advanced end-state bound after .2 and 1-degree angular interval, unresolved tests (0.18326076048049528, 'X rail', 'X rail', -15) 0
+EC held end-state bound after .2 and 1-degree angular interval, unresolved tests (-8.29689828674796, 'pad 2.0', 'horn  bound', -15) 1627
+CE held end-state bound after .2 and 1-degree angular interval, unresolved tests (0.03685316959727447, 'X gearmotor', 'X motor 18T', -15) 0
+EE co-advanced end-state bound after .2 and 1-degree angular interval, unresolved tests (4.373230433185429, 'beam 0.0', 'cell', 15) 0

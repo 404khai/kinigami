@@ -404,6 +404,24 @@ Lead integration in the reciprocal-v7 Graft. Check an isostatic five-roller Z gu
 
 Mechanics Graft: test a larger-radius fairing on the actual tail connectors and a raised front opening. Check whether the six working lands remain reachable, then distinguish isolation of the parked button from positive ejection.
 
+[Rolling cartridge](docs/studies/cand-d-rolling-cartridge/README.md): the short central lintel catches the R4.20 stem ball. Raising it to 2.00 mm and routing the thick upper necks forward hides the parked cone by .560 mm and permits six cropped, drafted seats. The remaining rear surfaces have an aligned .499 mm clearance/work certificate, not a pose constraint on the free tail.
+
 ## Take 47 — withdraw a tapered horn on a transverse axle
 
 Lead integration in the reciprocal-v7 Graft. Replace the five translating roller tracks with a fixed revolute axis. Derive the opening moment from the exact curved surface and test the swept opening, tail and housing instead of carrying over the straight cone's release credit.
+
+[Local geometry and wrench](docs/studies/cand-d-vertical-pin/horn.md): the curved taper clears the aligned eye during rotation but the loaded pole can apply 1742 N·mm; an opening-assisting contact is not a small holding torque.
+
+## Take 48 — install the horn, its trunnions and a power-off lock
+
+Packaging Graft: compare a through axle with separated stub trunnions, check the moving horn, support and opposing end of the same Kin. A favourable surface normal does not prove that a buried drive fits or can unlock under load.
+
+[Installation and stow witnesses](docs/studies/cand-d-vertical-pin/horn-take48.md): the split trunnions clear the thick tail. The installed cam/carriage configuration needs at least Ø62.588; the hood intersects the hinge and moving seat bridge independently of this diameter.
+
+## Take 49 — force separation through a finite material section
+
+Mechanics Graft: test whether a drafted pusher or interleaved hood and comb can physically exclude the loose rolling tail at full stroke. Check the rear seams, first fork, drive reactions and fixed/moving stock; measured pose alone does not force exit.
+
+## Take 50 — drive the horn root without an overhung cam
+
+Packaging Graft: check a pinned connecting rod to the buried horn root, driven by an always-engaged screw. Replace the Take 48 external cam and long torque-carrying stub; check the actual link, nut, motor, lock, supports and repeated Kin rather than treating an ideal slider as installed.
