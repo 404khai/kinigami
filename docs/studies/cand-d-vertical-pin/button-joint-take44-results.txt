@@ -1,0 +1,25 @@
+joint v whole tail 35.0 (-0.09773812797832482, 'stationary central knuckle', 'main stem', -15) 1 [(-0.098, 'stationary central knuckle', 'main stem', -15)]
+joint v eye bosses necks alone 35.0 (1.3310452267755117, 'stationary central knuckle', 'eye0', -7)
+electronics v own tail 35.0 (1.1000000000000008, 'joint+X driver', 'sector web102', -7)
+stock enclosing diameter 35.0 ((-3.7350000000000003, 0.0, -0.9450000000000001), [(58.6826, 'foot(11.0, -8.5)'), (58.6826, 'foot(11.0, 8.5)'), (58.7743, 'MCU'), (58.7743, 'cell')])
+joint v whole tail 36.0 (0.04999999999999999, 'compound lower bearing', 'sector web102', -15) 0 []
+joint v eye bosses necks alone 36.0 (1.7653437667754464, 'stationary central knuckle', 'eye20', -15)
+electronics v own tail 36.0 (1.1000000000000008, 'joint+X driver', 'sector web102', -7)
+stock enclosing diameter 36.0 ((-3.7350000000000003, 0.0, -0.9450000000000001), [(58.6826, 'foot(11.0, -8.5)'), (58.6826, 'foot(11.0, 8.5)'), (58.7743, 'MCU'), (58.7743, 'cell')])
+joint v whole tail 37.5 (0.04999999999999999, 'compound lower bearing', 'sector web102', -15) 0 []
+joint v eye bosses necks alone 37.5 (2.921460235688091, 'compound input 42T', 'eye0', -15)
+electronics v own tail 37.5 (1.1000000000000008, 'joint+X driver', 'sector web102', -7)
+stock enclosing diameter 37.5 ((-4.5, 0.0, -0.97), [(59.494, 'eye170'), (59.494, 'eye180'), (59.4947, 'foot(11.0, -8.5)'), (59.4947, 'foot(11.0, 8.5)')])
+stationary joint v electronics [(0.35, 'frame pillar', 'cell'), (0.35, 'gear plate spine', 'cell'), (0.35, 'gear plate wing', 'cell'), (0.5071, 'bracket heel', 'cell'), (0.5778, 'hinge pin', 'joint+X driver'), (0.65, 'compound shaft', 'cell')]
+2 followers plus own, mu1, Rfeet, Nmm, gearhead Nmm, min motor/GP efficiency 35.0 18.56616546301363 110.31397367295115 14.774192902627384 0.2060135843982655
+2 followers plus own, mu1, Rfeet, Nmm, gearhead Nmm, min motor/GP efficiency 36.0 18.56616546301363 112.37337017295116 15.050004933877386 0.20985954915264976
+2 followers plus own, mu1, Rfeet, Nmm, gearhead Nmm, min motor/GP efficiency 37.5 18.56616546301363 115.46246492295116 15.463722980752385 0.21562849628422615
+shaft spacings / ratio 7.5 11.25 9.333333333333334
+final stacked joint v whole tail 36.0 (0.11762487115924741, 'hinge pin', 'fork tip-1', -15) 0 []
+final stacked joint v electronics [(0.3, 'frame pillar', 'Z driver'), (0.3, 'hinge plate elbow', 'Z driver'), (0.35, 'frame pillar', 'cell')]
+final electronics v own tail 36.0 (1.6133294513153311, 'cell connector', 'boss0', -3)
+final tail and joint subtotal 36.0 ((-3.7350000000000003, 0.0, -0.9450000000000001), [(58.6826, 'foot(11.0, -8.5)'), (58.6826, 'foot(11.0, 8.5)'), (58.7743, 'MCU'), (58.7743, 'cell')])
+final stacked joint v whole tail 37.5 (0.11762487115924741, 'hinge pin', 'fork tip-1', -15) 0 []
+final stacked joint v electronics [(0.3, 'frame pillar', 'Z driver'), (0.3, 'hinge plate elbow', 'Z driver'), (0.35, 'frame pillar', 'cell')]
+final electronics v own tail 37.5 (1.6264469677462925, 'joint+X driver', 'boss0', -11)
+final tail and joint subtotal 37.5 ((-4.5, 0.0, -0.97), [(59.494, 'eye170'), (59.494, 'eye180'), (59.4947, 'foot(11.0, -8.5)'), (59.4947, 'foot(11.0, 8.5)')])

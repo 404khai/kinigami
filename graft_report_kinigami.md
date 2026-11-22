@@ -386,6 +386,24 @@ Packaging Graft: fix the upper journal and drive a folded-back rack upward; move
 
 Mechanics Graft: test the finite slotted roof and the full parked support, including rear, outer and upper edges. A positive forward normal on an interior strip of roof is not an installed all-pose clearance guarantee.
 
+[Guard and tail](docs/studies/cand-d-parked-button/README.md): the shortened support behind the lowered hood has .473 mm nominal all-attitude clearance from the named terminal. A thinner stem can touch a lateral slot face, and the actual drive pierces the skin.
+
 ## Take 44 — fit the larger rounded eye around the joint
 
 Packaging Graft: relocate the hinge motor and reduction, check the eye and its three bosses through articulation, then test the protected button, indexed face and both drives within the complete stowed assembly.
+
+[Installation](docs/studies/cand-d-vertical-pin/button-take44.md): the relocated joint clears the eye, but the Z motor intersects the upper boss by 2.77 mm at +15°. The straight stow requires at least Ø62.369; lowering by 7 mm leaves an electronics-independent Ø64.791 lower bound.
+
+## Take 45 — guide the tapered button and relocate the electronics
+
+Lead integration in the reciprocal-v7 Graft. Check an isostatic five-roller Z guide, the loaded seated contact and its steel supports. Search for positions of the actual cell and controller around the swept joint and release hardware rather than treating an inherited electronics position as fixed. Do not transfer a coupon load rating to a complete installation.
+
+[Guide, register and placement](docs/studies/cand-d-vertical-pin/button-guide.md): electronics positions exist for the unshifted core, and a smaller cell can clear even the lowered drive stock. Neither repairs the drive collision or demonstrates electrical sufficiency.
+
+## Take 46 — exclude contact inside the open slot
+
+Mechanics Graft: test a larger-radius fairing on the actual tail connectors and a raised front opening. Check whether the six working lands remain reachable, then distinguish isolation of the parked button from positive ejection.
+
+## Take 47 — withdraw a tapered horn on a transverse axle
+
+Lead integration in the reciprocal-v7 Graft. Replace the five translating roller tracks with a fixed revolute axis. Derive the opening moment from the exact curved surface and test the swept opening, tail and housing instead of carrying over the straight cone's release credit.

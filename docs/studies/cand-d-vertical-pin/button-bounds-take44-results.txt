@@ -1,0 +1,45 @@
+exact ring gap cert incl arc debit [(0.2401843740690053, 'backing 1.1'), (0.2401843740690053, 'backing 2.1'), (0.24345501530502126, 'crown pusher'), (0.2934550153050211, 'stripper column'), (0.34054263831656156, 'pad 1.1'), (0.34054263831656156, 'pad 2.1'), (0.401404939180611, 'beam 1.1'), (0.401404939180611, 'beam 2.1')]
+exact non-contact face v boss [(0.37112415057827874, 'side pillar-1', 2), (0.37112415057827874, 'side pillar1', 1), (0.38355027777241446, 'beam 1.1', 1), (0.38355027777241446, 'beam 2.1', 2), (0.595518741491893, 'upper bridge-1', 2), (0.595518741491893, 'upper bridge1', 1), (0.7305862925171951, 'beam 1.0', 1), (0.7305862925171951, 'beam 2.0', 2)]
+neck gap incl sampling debit [(1.5700767070218296, 'pad 1.1', 'metal neck1'), (1.5700767070218296, 'pad 2.1', 'metal neck2'), (2.1868906402711645, 'pad 0.0', 'metal neck0'), (2.1868906402711645, 'pad 0.1', 'metal neck0'), (2.1874138751933767, 'pad 1.0', 'metal neck1'), (2.1874138751933767, 'pad 2.0', 'metal neck2')]
+all nonworking aligned surfaces through relief / inverse pickup, raw gap certificate (0.21786257442587348, 'backing 1.1', 'ring', np.float64(0.0))
+takeup face v fixed and moving [(0.1, 'stripper column', 'stationary central knuckle'), (0.25, 'lower bridge', 'frame pillar'), (0.32, 'beam 0.1', 'frame pillar'), (0.4934, 'beam 2.1', 'X gearmotor')]
+lift face v fixed and moving [(0.1, 'stripper column', 'stationary central knuckle'), (0.25, 'lower bridge', 'frame pillar'), (0.32, 'beam 0.1', 'frame pillar'), (0.4934, 'beam 2.1', 'X gearmotor')]
+push face v fixed and moving [(0.0241, 'beam 1.0', 'root sleeve80'), (0.0241, 'beam 1.0', 'root sleeve90'), (0.0241, 'beam 2.0', 'root sleeve260'), (0.0241, 'beam 2.0', 'root sleeve270')]
+face alone vs own tail all states 36.0 (0.06416743854371526, 'stripper low return', 'tail sector hub0', 0)
+face alone vs own tail all states 37.5 (0.06416743854371526, 'stripper low return', 'tail sector hub0', 0)
+own boss2 vs Z motor pitch yaw15 36.0 nearest solid point [-21.28029509537226, -16.05184982649053, 7.120086006271468] inside sphere 2.773527204366178
+neighbor motor depth, yaw, face x offset, interior pillar point 36.0 (np.float64(2.8013448020260334), -15, 0, (np.float64(7.130000000000001), np.float64(-12.97), 7.225421361613903))
+own boss2 vs Z motor pitch yaw15 37.5 nearest solid point [-22.729183834805866, -16.05222244988166, 7.10996678177195] inside sphere 3.161493381380068
+neighbor motor depth, yaw, face x offset, interior pillar point 37.5 (np.float64(1.5750404413805985), -15, 0, (np.float64(7.130000000000001), np.float64(-13.83), 7.225421361613903))
+closed rack inner point (7.0, -18.7, -1.15) in X motor 1.5498447189992426
+shifted cell vs boss -5.0 (-17.6, 0, -16.5) 0.8130544734229943 original/routed shoe floor gaps -0.15000000000000213 -1.1500000000000021
+shifted cell vs boss -7.0 (-17.6, 0, -16.5) 2.182228952532029 original/routed shoe floor gaps -2.150000000000002 -3.150000000000002
+Take43 negative wall inward depth at bridge point (12.0, -4.97, 16.8) 0.06058539913407523 top leading lift hit outer T and .2 skin 10.099999999999998 9.899999999999999
+moving rail travel margins front / rear 0.6499999999999986 0.4999999999999991
+slot thickness / positive lateral / aft x clearance 0.4 0.16055639410361167 0.16013282467229573
+slot thickness / positive lateral / aft x clearance 0.68 0.06963057645972137 0.08356124980894286
+roller working wall in stationary knuckle (-1.75, 0.0, 3) knuckle radius 1.75 wall thickness coordinates -2.9452 -1.6452000000000002
+roller working wall in stationary knuckle (-1.75, 0.0, 1) knuckle radius 1.75 wall thickness coordinates -2.9452 -1.6452000000000002
+face3 vs full trial hood incl end panels [(-1.0652, 'backing 1.0', 'aft'), (-1.0652, 'backing 1.0', 'side1'), (-1.0652, 'backing 2.0', 'aft'), (-1.0652, 'backing 2.0', 'side-1'), (-0.9513, 'beam 1.0', 'aft'), (-0.9513, 'beam 1.0', 'side1')]
+five-roller vs joint, electronics 0 [(-1.3162, 'slot(1, -1)', 'compound upper bush'), (-1.1452, 'slot(2, -1)', 'hinge pin')] [(-6.15, 'slot(2, -1)', 'MCU'), (-6.15, 'slot(2, 1)', 'MCU')]
+five-roller vs joint, electronics -5 [(-2.7452, 'slot(2, -1)', 'stationary central knuckle'), (-2.15, 'slot(1, -1)', 'compound input 42T')] [(-1.15, 'slot(2, -1)', 'MCU'), (-1.15, 'slot(2, 1)', 'MCU')]
+five-roller vs joint, electronics -7 [(-4.15, 'slot(1, -1)', 'compound input 42T'), (-2.7452, 'slot(2, -1)', 'stationary central knuckle')] [(-2.05, 'slot(0, 1)', 'Z driver'), (-0.3897, 'roll0', 'Z driver')]
+slot vs routed face stages [(-0.3748, 'slot(0, 1)', 'upper bridge-1'), (-0.3748, 'slot(1, 1)', 'upper bridge1'), (-0.3048, 'slot(0, 1)', 'beam 2.0')]
+pure centred Fx 64.0 normal solution [25.85121438634637, 25.85121438634638, 22.46085961266443, 9.181241420563213, 22.460859612664425, 9.181241420563218] 4x4 root |normal| max for each beam MPa [np.float64(20.126079308876594), np.float64(20.1260793088766), np.float64(4.8450793928233855), np.float64(4.9391756609347635), np.float64(4.845079392823384), np.float64(4.939175660934767)]
+couple from pure screw thrust to centred face M_y,M_z Nmm 681.6 1139.2 stalk M_y,M_z 665.6 473.6
+pure centred Fx 76.0 normal solution [30.698317083786307, 30.698317083786318, 26.672270790039008, 10.902724186918816, 26.672270790039004, 10.902724186918821] 4x4 root |normal| max for each beam MPa [np.float64(23.899719179290948), np.float64(23.89971917929096), np.float64(5.75353177897777), np.float64(5.865271097360032), np.float64(5.753531778977769), np.float64(5.865271097360035)]
+couple from pure screw thrust to centred face M_y,M_z Nmm 809.4 1352.8 stalk M_y,M_z 790.4 562.4
+M3 screw torque Nmm ideal / at .28 eff 6.047887837492023 21.599599419614364
+drive toe radius/m, tangential N sector then input mesh, radial at 20 deg 9.0 0.25 12.485888888888889 6.688888888888889 4.544491903910662 2.4345564558694868
+dog flat overlap LxW, lifted gap open 2.95 4.9 1.5
+nominal tangent cone contact z/max bending z/lateral F/nominal MPa/upward normal component 1.2800580538358919 2.670087080753838 76.0 56.6059747118967 24.32
+nominal tangent cone contact z/max bending z/lateral F/nominal MPa/upward normal component 1.2800580538358919 2.670087080753838 121.0 90.12267026499342 38.72
+stalk area/weak Z modulus, nominal axial + biaxial bending for nominal pure F76 8.959999999999999 4.181333333333333 315.20248724489795
+fixed rail bed inside retained cell (-9.0, -6.9, -17.0) (-11.2, 23.35) (-8.9, -4.9) (-17.9, -16.25)
+fixed rail alternate min axial span 33.6 chosen length 34.55 end marg 0.4499999999999993 0.5
+button guide reference F at local z0, lower/upper reaction, .23 drag 5.0 28.906249999999996 23.906249999999996 12.146875
+button guide reference F at local z0, lower/upper reaction, .23 drag 76.0 439.37499999999994 363.37499999999994 184.6325
+button guide reference F at local z0, lower/upper reaction, .23 drag 121.0 699.5312499999999 578.5312499999999 293.95437499999997
+stow lower diameter 0.0 62.36940511632597 ['cell', 'Z motor', 'yaw gearmotor', 'block mounting foot'] points [[-17.8, 15.33, -21.7], [-27.45, -21.76031076020401, 8.511584486230046], [-3.3998715696280146, 21.748328583966615, 18.599999999999998], [18.75, -11.25, -19.8]] weights [0.07438360550308362, 0.30073787057744683, 0.2870265615680034, 0.33785196235146625]
+stow lower diameter -5.0 63.75979000283917 ['Z motor', 'yaw gearmotor', 'MCU', 'block mounting foot'] points [[-27.45, -21.93918082338024, 3.033279127443922], [-3.6403827720324013, 21.746713646199197, 18.599999999999998], [8.9, 8.9, 24.05], [18.75, -11.25, -24.8]] weights [0.24102249309070717, 0.4209613063516346, 0.0, 0.3380162005576582]
+stow lower diameter -7.0 64.79096954672909 ['Z motor', 'yaw gearmotor', 'MCU', 'block mounting foot'] points [[-27.45, -21.970202234678858, 0.9127487279951735], [-3.6725384371096, 21.745034304932044, 18.599999999999998], [8.9, 8.9, 24.05], [18.75, -11.25, -26.8]] weights [0.23600648447022918, 0.4190547535559636, 0.0, 0.3449387619738072]
