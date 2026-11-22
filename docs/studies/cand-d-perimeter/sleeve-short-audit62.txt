@@ -1,0 +1,43 @@
+p 0 stow full, mechanical ((0.1615444121478805, -1.0929707355306517, 2.4719818358158268), np.float64(64.89681029996441), [(np.float64(32.44840514998221), 'cell'), (np.float64(32.448254641609644), 'motor base'), (np.float64(32.41516347188171), 'computer')]) ((-1.9661813117916074, 0.2781403199093961, -0.32746589285021105), np.float64(58.32973305884903), [(np.float64(29.164866529424515), 'motor base'), (np.float64(29.16396711680211), 'sequencer plate (96, 15)'), (np.float64(29.16380325733916), 'yaw gearmotor')])
+min-z -23.5
+p 5.9 stow full, mechanical ((0.1615444121478805, -1.0929707355306517, 2.4719818358158268), np.float64(64.89681029996441), [(np.float64(32.44840514998221), 'cell'), (np.float64(32.448254641609644), 'motor base'), (np.float64(32.41516347188171), 'computer')]) ((-1.4993875818998967, 1.02921268031385, -0.5254297771633962), np.float64(57.773537214436935), [(np.float64(28.886768607218468), 'foot(11.0, -8.5)'), (np.float64(28.88637106093927), 'revised tail button 2'), (np.float64(28.883587899745926), 'front bushing reserve')])
+min-z -23.5
+p 16 stow full, mechanical ((0.1615444121478805, -1.0929707355306517, 2.4719818358158268), np.float64(64.89681029996441), [(np.float64(32.44840514998221), 'cell'), (np.float64(32.448254641609644), 'motor base'), (np.float64(32.41516347188171), 'computer')]) ((-1.4993875818998967, 1.02921268031385, -0.5254297771633962), np.float64(57.773537214436935), [(np.float64(28.886768607218468), 'foot(11.0, -8.5)'), (np.float64(28.88637106093927), 'revised tail button 2'), (np.float64(28.883587899745926), 'front bushing reserve')])
+min-z -23.5
+head-head held pitch 38 raw / net lower (-1.3650505550405878, 'sequencer plate (-24, 15)', 'clamp gearmotor', 15) -1.8770575458177499
+own revised tail-head raw / net lower (-1.6046290878456464, 'clamp gearmotor', 'web fork -1', -15) -2.0178923913926035
+boards v head sweeps (0.36999999999999855, 'wire reserve', 'conical lip outer cylinder')
+p 0 hoop vs actual fixed joint/frame []
+inner actual steel jaw slide, own fixed rigid struts 0 []
+inscribed sleeve wall vs fixed force train 0 []
+fixed plate vs real moving rocker rods 0 []
+p 5.9 hoop vs actual fixed joint/frame []
+inner actual steel jaw slide, own fixed rigid struts 5.9 []
+inscribed sleeve wall vs fixed force train 5.9 []
+fixed plate vs real moving rocker rods 5.9 []
+p 12 hoop vs actual fixed joint/frame [(0.425, 'intact yoke hoop 33', 'rear spine', (-2.675, -4.175, -13.25651158555113)), (0.119019, 'intact yoke hoop 34', 'rear spine', (-2.369018798455066, -3.869018798455066, -14.899228056239975))]
+inner actual steel jaw slide, own fixed rigid struts 12 []
+inscribed sleeve wall vs fixed force train 12 []
+fixed plate vs real moving rocker rods 12 []
+p 16 hoop vs actual fixed joint/frame [(0.25725, 'intact yoke hoop 44', 'compound upper bridge', (-7.4927501396248495, 12.027677988821042, -6.647136572298797)), (0.085913, 'intact yoke hoop 43', 'compound upper bridge', (-7.251574669399935, 11.717121569307222, -6.864087036905768)), (0.057417, 'intact yoke hoop 45', 'compound upper bridge', (-7.692583049971267, 13.928961127804854, -5.707416950028733))]
+inner actual steel jaw slide, own fixed rigid struts 16 []
+inscribed sleeve wall vs fixed force train 16 []
+fixed plate vs real moving rocker rods 16 []
+own tail rolled flange/buttons vs motor, yaw -15 []
+own tail rolled flange/buttons vs motor, yaw 0 []
+own tail rolled flange/buttons vs motor, yaw 15 []
+head-head inner samples 0 0 -15 []
+head-head inner samples 0 0 0 []
+head-head inner samples 0 0 15 []
+head-head inner samples 16 16 -15 []
+head-head inner samples 16 16 0 []
+head-head inner samples 16 16 15 []
+head-head inner samples 0 16 -15 []
+head-head inner samples 0 16 0 []
+head-head inner samples 0 16 15 []
+head-head inner samples 16 0 -15 []
+head-head inner samples 16 0 0 []
+head-head inner samples 16 0 15 []
+fixed disc vs translated taper at face, nominal if present 0 -6.95 0.13400000000000034
+fixed disc vs translated taper at face, nominal if present 8.35 1.3999999999999995 2.4719999999999995
+listed-stock lower point pair 62.76659063546466 ('cell', [-10.85, 15.33, 28.2]) ('computer', [11.4, -28.35, -11.0])

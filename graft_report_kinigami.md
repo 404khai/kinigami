@@ -497,3 +497,15 @@ Mechanics Graft. Test a whole-flange constraint at the parked lip and a positive
 ## Take 62 — retract the sleeve around a fixed seat plate
 
 Packaging Graft. Test a rigid metal spine, six finite face inserts, three axial take-up shoes and positively sequenced radial opening then axial sleeve retreat.
+
+[Installed sleeve](docs/studies/cand-d-perimeter/sleeve-take62.md): the fixed plate removes the tensile-pad problem. One drive hits its own yaw motor, and the lower spring seat crosses the table. In the shorter layout the translating hoop crosses the fixed spine, and two electronics corners are 62.767 mm apart. These are specific installations, not a universal lower bound.
+
+## Take 63 — bound the axial take-up and fixed face
+
+Lead fixed-spine Graft. Test finite drafted index faces, independent spring bands, unilateral clamping work and actual static reactions in a declared tolerance box. Do not count the spring as the radial lock.
+
+[Fixed face](docs/studies/cand-d-perimeter/fixed_face.md): three independently delivered 33–39 N axial springs on the working jaws can resist a local seated escape in the 70 g screen, but their catalog tolerance and installed drag are not established. Moving the springs behind the tail buttons changes the wrench matrix: it needs a different jaw angle. Neither meets the full release requirement.
+
+## Take 64 — drive three captured plate followers and pivot leaves on one fixed-axis drum
+
+Packaging Graft. Test an axially fixed ring, three bilateral disk supports, worm and positively backed index, rigid opening leaves, and separate passive-tail button cartridges. Keep the actual last-leaf contacts distinct from a nominal force calculation.
