@@ -552,6 +552,8 @@ Packaging Graft. Try a mechanically backed light core or a closed hollow tail wi
 
 Lead floating-seat Graft. Remove three separate sliding carriages. Screen a single spring-loaded plate with two angular degrees of freedom, including the actual pivot offset, swept rim, six finite faces, antiroll reaction, spring travel, finite load path and one-sided contacts.
 
+[Floating plate](docs/studies/cand-d-perimeter/floating.md): moving the pitch/yaw center aft exhausts the trial rank budget. For the XY alternative an exact dry equilibrium with one recessed seat supports the whole draw even with ideal slide guides. Force-only seating is not sufficient. A separate full uncut backing overlaps the three post tips.
+
 ## Take 72 — release across a floating face
 
 Mechanics Graft. Test the non-tilting XY plate alternative separately from the seated force screen: finite moving V faces, displaced rim and central boss, draw with the jaws locked, then withdrawal under load without assuming continuing seat contact.
