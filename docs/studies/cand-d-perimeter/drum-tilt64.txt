@@ -1,0 +1,11 @@
+partial pose ring deg, determinant 41.247880344909206 1.0000000000006402
+adjacent joint yaw, powered-to-powered gap, floor lowest, intrusion -15.0 (11.790554144523256, 'leaf link fork root -90.0', 'foot(-12.0, -8.5)') (np.float64(-40.165299495884284), 'foot(11.0, -8.5)') 16.665299495884284
+actual lowest neighbouring foot (np.float64(-40.165299495884284), 'foot(11.0, -8.5)')
+adjacent joint yaw, powered-to-powered gap, floor lowest, intrusion 0.0 (12.014002894832814, 'fixed flared wall cylinder', 'compound input 42T') (np.float64(-40.33727289496042), 'foot(11.0, -8.5)') 16.83727289496042
+actual lowest neighbouring foot (np.float64(-40.33727289496042), 'foot(11.0, -8.5)')
+adjacent joint yaw, powered-to-powered gap, floor lowest, intrusion 15.0 (9.115171132876128, 'fixed flared wall cylinder', 'compound input 42T') (np.float64(-39.93212606883889), 'foot(11.0, -8.5)') 16.43212606883889
+actual lowest neighbouring foot (np.float64(-39.93212606883889), 'foot(11.0, -8.5)')
+tilted full tail vs auxiliary stock outer 0.0 (0.9681530574406594, 'paired dogleg-90.0', 'one-piece rolled flange and solid core')
+tilted full tail vs auxiliary stock outer -0.4 (0.9681530574406594, 'paired dogleg-90.0', 'one-piece rolled flange and solid core')
+tilted full tail vs auxiliary stock outer 0.22 (0.9681530574406594, 'paired dogleg-90.0', 'one-piece rolled flange and solid core')
+global continuous worst clearance UPPER of a foot to plane vs all adjacent yaws -16.295633471798105

@@ -13,8 +13,8 @@ QX, QR = .38/hypot(1,.38), 1/hypot(1,.38)
 DELTA, POS, MU = radians(.6), .19, .23
 
 
-def faces():
-    k, s, c = tan(radians(ANG)), sin(radians(ANG)), cos(radians(ANG))
+def faces(angle=ANG):
+    k, s, c = tan(radians(angle)), sin(radians(angle)), cos(radians(angle))
     pole_x, pole_t = BC-BACK*c, BACK*s
     cap, rw, outer = -5., 1.35, 3.81
     toe = pole_t-(pole_x-HOME)/k
@@ -34,7 +34,7 @@ def faces():
     margin=min((pole_x-HOME)/s,(cap-pole_x)/s,
                (HOME+k*rw-pole_x)/hypot(k,s),
                (HOME+k*(outer-pole_t)-pole_x)/(s+k*c))
-    nx=cos(radians(ANG)+DELTA)
+    nx=cos(radians(angle)+DELTA)
     g=seam(B-A+.05,BACK-.05,END-.05,END+.05)
     vals=[pole_x,pole_t,toe,outer-(cap-HOME)/k-top_t,top_w,
           A-hypot(RAD+rw,outer), BC-BACK-HOME,CX-BACK-cap,
@@ -63,14 +63,18 @@ def loads(case):
     return W
 
 
-def reactions(mu=.23, guide=.05, d0=.5, lo=33., hi=39., order=24):
+def reactions(mu=.23, guide=.05, d0=.5, lo=33., hi=39., order=24,
+              angle=ANG, qx=QX, phase=0., tail_springs=False):
     """Outer LP for seated equilibria. No equal-sharing or frictionless-force credit."""
-    pts,ns,_=setup(RAD,radians(ANG),radians(CLOCK))
+    pts,ns,_=setup(RAD,radians(angle),radians(CLOCK))
     p=[r-BACK*n for r,n in zip(pts,ns)]
     ns=list(ns)
-    for r in pts[::2]/RAD:
-        ns.append(QX*X+QR*r)
-        p.append((CX+BACK*QX-BC)*X+(RIM+BACK*QR)*r)
+    qr=sqrt(1-qx*qx)
+    for i in range(3):
+        t=radians(CLOCK+phase+120*i)
+        r=cos(t)*Y+sin(t)*Z
+        ns.append(qx*X+qr*r)
+        p.append((CX+BACK*qx-BC)*X+(RIM+BACK*qr)*r)
     # Orthonormal nominal axes; f on tail positive at seats and negative at shoes.
     mtx=np.zeros((6,27))
     aq=[];bq=[]
@@ -85,12 +89,17 @@ def reactions(mu=.23, guide=.05, d0=.5, lo=33., hi=39., order=24):
         for angle in 2*pi*np.arange(order)/order:
             row=np.zeros(27);row[sl]=[-tan(atan(mu)+DELTA),cos(angle),sin(angle)]
             aq.append(row);bq.append(0.)
-        if i>=6:
-            # If |guide axial drag|<= d0+guide*N_actual then F_x lies
-            # within [lo-drag,hi+drag]. Assumes no axial hard stop engaged.
-            for sign,lim in ((1,hi),(-1,-lo)):
-                row=np.zeros(27);row[sl]=sign*F[0];row[3*i]-=guide/C
-                aq.append(row);bq.append(lim+d0)
+    groups=((0,1),(2,3),(4,5)) if tail_springs else ((6,),(7,),(8,))
+    for contacts in groups:
+        # Local slider balance, not global load sharing: total axial thrust
+        # on ONE slider is within S +/- (d0+guide*sum of its true normals).
+        for sign,lim in ((1,hi),(-1,-lo)):
+            row=np.zeros(27)
+            for i in contacts:
+                sl=slice(3*i,3*i+3)
+                row[sl]=sign*(1 if i<6 else -1)*mtx[0,sl]
+                row[3*i]-=guide/C
+            aq.append(row);bq.append(lim+d0)
     out=[]
     for case in ('service','table','fault'):
         W=loads(case)

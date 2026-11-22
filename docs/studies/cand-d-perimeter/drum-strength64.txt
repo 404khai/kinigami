@@ -1,0 +1,18 @@
+jaw normal, centred frictionless E torque / high with μ=.23; best equal two bars shear MPa for BOTH load cases 410 -117.95458885389422 328.80962024500224 3526.1186845359593 9829.390758482541
+jaw contact shear per equally loaded R.22, hinge T normal/upper, max required one horn axial N 1348.2133609024193 713.5263236085132 713.5263236085133 226.69154726890386
+jaw normal, centred frictionless E torque / high with μ=.23; best equal two bars shear MPa for BOTH load cases 534 -153.62865962921836 428.2544810020274 4592.554579371226 12802.182109828484
+jaw contact shear per equally loaded R.22, hinge T normal/upper, max required one horn axial N 1755.9656944436388 929.3245287974291 929.3245287974293 295.25191766242597
+one seat normal / clean axial and tangential / individual axial+, tangent+ including μ=.23 (not simultaneous) 197 83.25579756291779 178.54263404622003 124.3206033935484 197.69146748569113
+clean bilateral roller loads xg=-10.11, frictionless shaft bending worst, key torsion [ 81.28094094  56.96809305 -54.99323643] 316.5754422190166 1838.9891306760665
+uncut seat plan footprint, direct+bending gross root MPa 6.163040034332013 119.78055465672674
+one seat normal / clean axial and tangential / individual axial+, tangent+ including μ=.23 (not simultaneous) 261 110.30336631432256 236.54633241656563 164.70902277013266 261.9161066688598
+clean bilateral roller loads xg=-10.11, frictionless shaft bending worst, key torsion [107.68693191  75.47549384 -72.85905943] 419.4222863916921 2436.427223890626
+uncut seat plan footprint, direct+bending gross root MPa 6.163040034332013 158.69403434216082
+65deg seat crest tangent, radial width 0.4640075533184729 0.8814001331955057
+finite flat pole patch after corner rounding 0.25 0.2451708161012219
+finite flat pole patch after corner rounding 0.5 -0.11884737534432799
+three installed midlength errors, common physical interval width [0, 0, 0] 0.2627
+three installed midlength errors, common physical interval width [-0.09, 0, 0.09] 0.0827
+three installed midlength errors, common physical interval width [-0.15, 0, 0.15] -0.0373
+two neighbouring grooves centreline / opposed-cut / min curvature radius sampled disk 8.54549495438845 6.455494954388451 2.196737210712959
+two neighbouring grooves centreline / opposed-cut / min curvature radius sampled leaf 4.236523928788426 2.516523928788426 5.884745647888833

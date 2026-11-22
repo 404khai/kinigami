@@ -494,6 +494,8 @@ Lead Graft. Bound the annular slit around the advancing disk and the loaded pole
 
 Mechanics Graft. Test a whole-flange constraint at the parked lip and a positively driven wall bridge if necessary; keep side and end contacts in the release budget.
 
+[Pivot leaf](docs/studies/cand-d-perimeter/pivot/README.md): .48 axial pole fits the whole flange; .55 and .60 intersect it. A tilted flange can oppose rotation at the finite toe. The parked seam's 1.77 µm normal-loss allowance does not establish a robust stop.
+
 ## Take 62 — retract the sleeve around a fixed seat plate
 
 Packaging Graft. Test a rigid metal spine, six finite face inserts, three axial take-up shoes and positively sequenced radial opening then axial sleeve retreat.
@@ -509,3 +511,19 @@ Lead fixed-spine Graft. Test finite drafted index faces, independent spring band
 ## Take 64 — drive three captured plate followers and pivot leaves on one fixed-axis drum
 
 Packaging Graft. Test an axially fixed ring, three bilateral disk supports, worm and positively backed index, rigid opening leaves, and separate passive-tail button cartridges. Keep the actual last-leaf contacts distinct from a nominal force calculation.
+
+[Captured drum](docs/studies/cand-d-perimeter/drum-take64.md): the cam core overlaps the rear spine even after cutting its grooves. The rod crosses the bearing pillar, and the Geneva releases the wheel before pin pickup. The tested cell and motor-base corners alone are 60.155 mm apart. Reject this installation, not Q12.
+
+## Take 65 — match the full flange to three spring-guided tail buttons
+
+Lead button-support Graft. Use the actual .48 pivot-leaf normal. Compare the 60° face with a finite 65° seat, bound the loaded contacts without equal sharing, and check button guide, stack length, exposed nose and face tolerances. No transfer from the .60 leaf that cuts the flange.
+
+[Button support](docs/studies/cand-d-perimeter/button_support.md): 65° brings the nominal table preload down to 35.404 N per button, but the commercial plunger hides its working pole as it compresses. A loaded custom guide can have more friction than the force tolerance. A rocker changes the required force and admits only .071 mm of equivalent travel in the trial band.
+
+## Take 66 — reshape the full flange and control the parked edge
+
+Mechanics Graft. Test a rounded three-lobe core, higher working axial component and a finite positively supported seam with an attainable tolerance. Check local flare against both home and full ejector stroke; do not carry over the old continuous bore calculation.
+
+## Take 67 — relocate the joint behind the drum
+
+Packaging Graft. Try an offset yaw assembly, central quill, three-lobe flange, 56° seats, and a positively inserted worm parking bolt. Check electronics at cycled cell dimensions, mounted tabs, separate protection and antenna clearance. No ordinary worm friction as a lock.
