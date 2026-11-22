@@ -1,0 +1,114 @@
+{
+  "label": "exploratory",
+  "stock": {
+    "parts": {
+      "wing0": {
+        "barrel": 0.4127065625168047,
+        "guide": 3.4799744979560963,
+        "parked": 1.8492981798203347,
+        "all_key": 1.8183402065095375,
+        "tower_box_clear": -2.4669369771801364,
+        "deck_edge_min_nD": 0.8512252091279455,
+        "guide_lower_trial": 1.0943640590185049
+      },
+      "wing1": {
+        "barrel": 1.214503521101025,
+        "guide": 12.117351866739899,
+        "parked": 7.732747869390124,
+        "all_key": 3.2765644865188737,
+        "tower_box_clear": -2.4618137219128835,
+        "deck_edge_min_nD": 0.8532745112348467,
+        "guide_lower_trial": 8.102800685882308
+      },
+      "wing2": {
+        "barrel": 0.4127065625168047,
+        "guide": 3.4799744979560963,
+        "parked": 1.8492981798203347,
+        "all_key": 1.8183402065095375,
+        "tower_box_clear": -2.4669369771801364,
+        "deck_edge_min_nD": 0.8512252091279455,
+        "guide_lower_trial": 1.0943640590185049
+      },
+      "stem0": {
+        "barrel": 7.272623905906029,
+        "guide": 7.093389318808846,
+        "parked": 2.516448755194691,
+        "all_key": -2.0385606580091533,
+        "tower_box_clear": 2.0128121956882334,
+        "deck_edge_min_nD": 1.0,
+        "guide_lower_trial": 3.009106832725092
+      },
+      "stem1": {
+        "barrel": 6.5490654359360185,
+        "guide": 11.11534567404746,
+        "parked": 6.538408750988756,
+        "all_key": 1.7070061746250564,
+        "tower_box_clear": 1.5422842000080128,
+        "deck_edge_min_nD": 1.0,
+        "guide_lower_trial": 7.031066688354073
+      },
+      "lug": {
+        "barrel": 10.185917998695386,
+        "guide": 5.9988318718638,
+        "parked": 1.4218913082496432,
+        "all_key": -3.133118104954201,
+        "tower_box_clear": 4.926087933852585,
+        "deck_edge_min_nD": 1.0,
+        "guide_lower_trial": 1.9145493857800444
+      }
+    },
+    "hub_key_x": 0.15178146293550787,
+    "hub_guide_min_nx": 0.8187125851742032,
+    "hub_guide_min_D_force": 0.41741118038159275,
+    "hub_barrel_radial_while_x_reachable": 3.3515206568199796,
+    "fork_min_x": 3.248830605685448
+  },
+  "key": {
+    "gate_x": -1.452113032590307,
+    "gate_first_time_ceiling": 3.8845743771460617,
+    "max_stem_inward_projection": -0.019046230200644783,
+    "first_possible_crossing_stroke": 2.1030269162930124,
+    "key_z_fillet_inaccessible": 0.33248237941853553,
+    "min_front_contact_ny": 0.34322071265956655,
+    "min_key_open_force_per_N": 0.07956551669734294,
+    "first_trial_lower_band_partial": 2.2660451748282697,
+    "first_trial_lower_band_total_loss": 3.1160451748282694,
+    "original_full_shank_margin_at_park": 1.5160451748282702,
+    "max_key_shift_at_lug_from_clearance": 0.3565163834270841
+  },
+  "piston": {
+    "end": 1.2,
+    "home": -8.15,
+    "travel": 9.35,
+    "radius": 4.1,
+    "edge": 0.2,
+    "max_t_while_lug_can_lag": 9.03668740973637,
+    "flat_contact_reserve": 2.8748179186745593,
+    "min_trailing_material_relative_to_lug": -0.028093881514609953,
+    "terminal_tail_bound": 1.17190611848539,
+    "ram_to_parked_key_y": 0.47254248593736836,
+    "nonlug_ram_clear": 1.095918085208786,
+    "work_lambda": 1.1363860960160597,
+    "min_seat_forward_per_normal": 0.203647187839121,
+    "box_force_bounds": {
+      "service": {
+        "tail_axial": 3.2086993352565,
+        "sum_ram_radial_bending_reactions_per_axial": 2.701691113175519,
+        "pull_plus_example_guide_drag": 4.248969072726262,
+        "roll_torque": 0.7565852444591377
+      },
+      "table": {
+        "tail_axial": 3.9506094103929583,
+        "sum_ram_radial_bending_reactions_per_axial": 2.701691113175519,
+        "pull_plus_example_guide_drag": 5.231408570675306,
+        "roll_torque": 0.9315216149056205
+      },
+      "fault": {
+        "tail_axial": 3.2086993352565,
+        "sum_ram_radial_bending_reactions_per_axial": 2.701691113175519,
+        "pull_plus_example_guide_drag": 4.248969072726262,
+        "roll_torque": 0.7565852444591377
+      }
+    }
+  }
+}

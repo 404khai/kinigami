@@ -1,0 +1,87 @@
+{
+  "key_toe_axial": 2.9730968565843123,
+  "key_toe_offaxis_z": 0.07432742141460781,
+  "flat_end_stroke": 0.8081559480312317,
+  "toe_end_stroke": 2.7774575140626316,
+  "key_external_norm_max": 0.46174912019407255,
+  "key_moment_norm_bound": 2.0778710408733265,
+  "first_saddle_pickup": 2.7617813664768343,
+  "relative_axial_at_pickup": 0.21131549010747788,
+  "pickup_gaps": [
+    0.0,
+    0.1698696977398383,
+    0.15229836968833282,
+    0.01757132805150545,
+    0.10250617692142455,
+    0.08736352081841373
+  ],
+  "loaded_primary": 0,
+  "recessed": 5,
+  "pickup_external": [
+    -0.07172589277025618,
+    -0.39468004121835093,
+    0.2039192520832463
+  ],
+  "pickup_moment": [
+    4.519354780719145,
+    -0.3152746370301998,
+    0.9794178215840712
+  ],
+  "saddle_11mm_lug_rear": 3.6092024575171706,
+  "peak_saddle_steady_f_x": 0.07172589277025618,
+  "key_guide_example": {
+    "excess_roll_bearing_per_normal": 1.0,
+    "mu_g": 0.12,
+    "guide_normal_per_key": 25.552386193322068,
+    "drive_per_key": 2.986720826501305,
+    "if_60N_actual_cap": 179.20324959007831
+  },
+  "saddle_guide_example": {
+    "service": {
+      "ideal_axial": 2.745862,
+      "antiroll_shoe": 3.744649333958724,
+      "total_radial": 77.38365311942573,
+      "illustrative_pull_if_no_preload_and_mu012": 12.031900374331087
+    },
+    "table": {
+      "ideal_axial": 3.432328,
+      "antiroll_shoe": 5.35456490619137,
+      "total_radial": 106.61666385678424,
+      "illustrative_pull_if_no_preload_and_mu012": 16.226327662814107
+    },
+    "fault": {
+      "ideal_axial": 2.745862,
+      "antiroll_shoe": 3.744649333958724,
+      "total_radial": 91.79597062595181,
+      "illustrative_pull_if_no_preload_and_mu012": 13.761378475114217
+    }
+  },
+  "early_saddle_geometry": {
+    "max_t": 0.4532185370644921,
+    "relative_axial_lag_lower": -0.8074613445557546,
+    "slot_center_clear": 2.5658993304447972,
+    "rounded_OD_clear": 0.6524339419726934,
+    "possible_deck_normal": 0.5363218410958794,
+    "hub_fixed_D_force": 0.41741118038159275
+  },
+  "saddle_with_possible_guide_contact": {
+    "service": {
+      "ideal_axial": 2.745862,
+      "antiroll_shoe": 23.604465904587162,
+      "total_radial": 252.3893430943984,
+      "illustrative_pull_if_no_preload_and_mu012": 33.03258317132781
+    },
+    "table": {
+      "ideal_axial": 3.432328,
+      "antiroll_shoe": 29.80633493354136,
+      "total_radial": 322.0868757556413,
+      "illustrative_pull_if_no_preload_and_mu012": 42.08275309067695
+    },
+    "fault": {
+      "ideal_axial": 2.745862,
+      "antiroll_shoe": 23.604465904587162,
+      "total_radial": 266.80166060092455,
+      "illustrative_pull_if_no_preload_and_mu012": 34.76206127211095
+    }
+  }
+}

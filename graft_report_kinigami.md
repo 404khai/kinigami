@@ -596,6 +596,8 @@ Lead key-cage Graft. Test finite form closure of the inclined dry key from a reg
 
 Mechanics Graft. Check loaded key withdrawal and a positively driven separator across off-axis poses from the retained neighborhood. Test finite guide edges, slot, stem and wings; do not equate commanded stroke with departure.
 
+[Retained exit](docs/studies/cand-d-retained-exit/README.md): exploratory; no general release guarantee from the retained neighborhood alone. The narrow R4.10 ram is bypassable even from exact register (+6.55 mm X then −7.00 mm Y leaves the lug 1.0521 mm behind the lip), and Take 79’s full zero-yaw exterior sweep does not block that bypass. A one-piece C-slotted R13.95 saddle carrying the six rigid V faces closes the bore-side escape at 11.00 mm actual stroke (worst empty radius 2.420 mm < 2.45 mm minimum backing) and admits a loaded one-face exit (3.6092 mm lug clearance, ideal 70 g table axial load ≤3.433 N in the 5° cone before guide drag), but the retained start does not guarantee that cone, the stroke, or persistent separation. All four calculators reproduced byte-for-byte.
+
 ## Take 79 — package the inclined single key separately from Take 75
 
 Packaging Graft. Package the Take 74/77 inclined key with actual guide engagement, force-limited take-up, unpowered hold, and coordinated ejection space from Take 78, without reusing Take 75’s rejected disk collar or parking-pin arrangement.
