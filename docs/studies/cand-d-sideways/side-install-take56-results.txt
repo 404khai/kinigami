@@ -1,0 +1,20 @@
+datums Cx, seated ball centre, rear X, clip front, neck tip 13.370900747590188 13.54 7.720900747590187 18.774603182032706 19.54
+straight/index and parked filled proxy enclosures ((-1.6935394796535683, 0.2100126060397356, -0.6572928279884718), np.float64(58.98758734885125), [(np.float64(29.493793674425625), 'Y outboard quill bush'), (np.float64(29.493570519341958), 'yaw gearmotor'), (np.float64(29.11396593958669), 'motor base')]) ((-1.6935394796535683, 0.2100126060397356, -0.6572928279884718), np.float64(58.98758734885125), [(np.float64(29.493793674425625), 'Y outboard quill bush'), (np.float64(29.493570519341958), 'yaw gearmotor'), (np.float64(29.11396593958669), 'motor base')])
+parked filled after reverse X, own straight ((0.08562658037009169, 0.2423415447158298, -0.9445563224856623), np.float64(60.30181920355438), [(np.float64(30.15090960177719), 'yaw gearmotor'), (np.float64(30.14956814829089), 'Y outboard quill bush'), (np.float64(29.49882304683673), 'motor base')])
+floor -23.5
+positive occupied ball at service (claims on cans, frame, screw core reviewed separately) []
+actual track/gallery vs finite frame at q 0 []
+actual track/gallery vs finite frame at q 3.625 []
+two-head broad/model test mated (5.892606877930099, 'side 0', 'compound input 42T', 15)
+two-head broad/model test held lift (3.205267131287229, 'C shell tile envelope', 'H-bridge', 15)
+two-head broad/model test held discharge (3.205267131287229, 'C shell tile envelope', 'H-bridge', 15)
+two-head broad/model test following lateral (7.78313241656932, 'C shell tile envelope', 'cell', -15)
+two-head nominal material on cans/boards at yaw -15 []
+two-head nominal material on cans/boards at yaw 0 []
+two-head nominal material on cans/boards at yaw 15 []
+flat/frame max x, crowns min x / hard floor take-up / ideal following lift / full transverse slab clearance 17.154230484541326 15.335577136594004 0.31909925240981096 3.305900747590189 1.4872473996428681
+park plug front/back, overshoot, ball Y required if stays in front; radial key recess 5.625 -4.324999999999999 1.625 9.125 0.0
+park key front / rear 4.125 -4.324999999999999
+X plunger axis positions and hinge [(-2.1040992524098128, 0.0, 0.0), (8.870900747590188, 0.0, 0.0)] [-5.9  0.   0. ]
+transverse plug+crossarm swept vs fixed face 0 (0.4500000000000002, 'plug cylindrical core', 'cap -1') []
+transverse plug+crossarm swept vs fixed face 3.625 (0.5328847577293407, 'plug cylindrical core', 'flat4') []

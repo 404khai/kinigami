@@ -1,0 +1,51 @@
+two powered heads, independent X/Y screw stroke, following/held translation box, ±15 yaw; raw gap, worst yaw, radius & total debit (3.205267131287229, 'C shell tile envelope', 'H-bridge', 15) 33.28889755088883 0.4904995115255412 cert 2.714767619761688
+C/gallery vs fixed face (0.6200000000000001, 'Gt(14, 0, 1)', 'cap -1')
+plug and strut vs fixed face (0.4500000000000002, 'plug cylindrical core', 'cap -1')
+Y drive vs fixed X machinery (-5.663919189857866, 'Y gearmotor', 'X race frame diagonal')
+X drive vs fixed hinge (3.170900747590187, 'X race stay1', 'rear spine')
+Y motor and crossarm (-3.7199999999999998, 'Y M3 active screw', 'Y full-form nut')
+X geared drive vs fixed head face (-2.439529330319872, 'X race frame diagonal', 'lower cross')
+material: moving X, positive Y can and brackets vs fixed X 0 [(0.04988, 'Y magazine shoe spine', 'X gearmotor', (np.float64(6.4609), np.float64(-16.22012), np.float64(2.05012)))]
+material: Y can/brackets vs own articulated tail 0 []
+material: moving X, positive Y can and brackets vs fixed X 1.8125 [(0.04988, 'Y magazine shoe spine', 'X gearmotor', (np.float64(6.4609), np.float64(-16.22012), np.float64(2.05012)))]
+material: Y can/brackets vs own articulated tail 1.8125 []
+material: moving X, positive Y can and brackets vs fixed X 3.625 [(0.27127, 'Y thrust mounting tang', 'X gearmotor', (np.float64(5.78463), np.float64(-18.53873), np.float64(2.36873))), (0.04988, 'Y magazine shoe spine', 'X gearmotor', (np.float64(6.4609), np.float64(-16.22012), np.float64(2.05012)))]
+material: Y can/brackets vs own articulated tail 3.625 []
+sharp pose plug advance for first tangent 0.11067870000000024 rest of mated tail vs fixed head, overlap proxies (-0.41309758831083165, 'crown4', 'flat4')
+sharp actual tail mounts vs unbored head []
+sharp whole rotated neighbour head vs upstream head (outer) -15 (8.216930088260572, 'flat5', 'cell')
+sharp whole rotated neighbour head vs upstream head (outer) 0 (7.606263319817611, 'C shell tile envelope', 'cell')
+sharp whole rotated neighbour head vs upstream head (outer) 15 (6.9782646822251735, 'C shell tile envelope', 'compound input 42T')
+sharp crown/flat X slab gap -1.5747108090894884
+rounded pose plug advance for first tangent 0.303331 rest of mated tail vs fixed head, overlap proxies (-0.6193595976452393, 'crown4', 'flat4')
+rounded actual tail mounts vs unbored head []
+rounded whole rotated neighbour head vs upstream head (outer) -15 (7.756787797164932, 'flat5', 'cell')
+rounded whole rotated neighbour head vs upstream head (outer) 0 (7.891086370669992, 'C shell tile envelope', 'cell')
+rounded whole rotated neighbour head vs upstream head (outer) 15 (7.124990202619625, 'C shell tile envelope', 'compound input 42T')
+rounded crown/flat X slab gap -2.0119467694181754
+genuinely following floor-contact neighbour / yaw / all-Y index slab clearance 0 1.4872 lift 3.305900747590189
+genuinely following floor-contact neighbour / yaw / all-Y index slab clearance 3 0.8246 lift 3.305900747590189
+genuinely following floor-contact neighbour / yaw / all-Y index slab clearance 6 0.1589 lift 3.305900747590189
+genuinely following floor-contact neighbour / yaw / all-Y index slab clearance 10 -0.7304 lift 3.305900747590189
+genuinely following floor-contact neighbour / yaw / all-Y index slab clearance 15 -1.8386 lift 3.305900747590189
+central resultant cone / 70g inherited face service, table, illustrative fault 0 [30.135 42.387 38.07 ]
+central resultant cone / 70g inherited face service, table, illustrative fault 3 [32.839 46.191 41.487]
+central resultant cone / 70g inherited face service, table, illustrative fault 8 [38.688 54.417 48.875]
+central resultant cone / 70g inherited face service, table, illustrative fault 15 [52.145 73.345 65.876]
+central resultant cone / 70g inherited face service, table, illustrative fault 30 [343.555 483.233 434.021]
+central resultant cone / 70g inherited face service, table, illustrative fault 45 [inf inf inf]
+one-sided lip normal angle from X & μ=.23 cone; two-symmetric lips not assumed 28.127068218604773 41.07983273198029
+8-station pin radius, minimum moment arm, speed ratio peak, dwell deg, screw increment 2.1047588780079938 3.3952411219920062 0.6199144044217751 225.0 0.0625
+X centered draw, screw thrust with guide, screw torque, pin reaction, motor-output torque incl geneva eff .72 and 18:32 at .75 42.0 42.70548712206047 12.137123879684289 3.574745781991287 7.837477001320616
+X centered draw, screw thrust with guide, screw torque, pin reaction, motor-output torque incl geneva eff .72 and 18:32 at .75 55.5 56.43225083986562 16.03834226958281 4.723771211917057 10.356666037459386
+X centered draw, screw thrust with guide, screw torque, pin reaction, motor-output torque incl geneva eff .72 and 18:32 at .75 75.0 76.25979843225083 21.67343549943623 6.383474610698727 13.995494645215388
+X centered draw, screw thrust with guide, screw torque, pin reaction, motor-output torque incl geneva eff .72 and 18:32 at .75 113.0 114.89809630459126 32.65464281915059 9.61776841345275 21.08654526545785
+Y 8N stud, guide mu and contact span / eccentricity, thrust motor-output torque 0.05 7.0 9.17 9.205983889528193 1.6895179488875043
+Y 8N stud, guide mu and contact span / eccentricity, thrust motor-output torque 0.05 4.0 9.17 10.379500486539085 1.904886276462201
+Y 8N stud, guide mu and contact span / eccentricity, thrust motor-output torque 0.15 7.0 9.17 13.179571663920923 2.4187662233661307
+Y 8N stud, guide mu and contact span / eccentricity, thrust motor-output torque 0.15 4.0 9.17 25.62049639711769 4.701973090738964
+Y 8N stud, guide mu and contact span / eccentricity, thrust motor-output torque 0.23 7.0 9.17 20.13085052843482 3.6944919415783617
+Y 8N stud, guide mu and contact span / eccentricity, thrust motor-output torque 0.23 4.0 9.17 inf inf
+one lip no friction first-order axial F, N and vertical / neck tension/bending over6 mm (no notch) 55.5 62.93200213884732 29.66794386545659 7.85164385920017 67.154487716413
+one lip no friction first-order axial F, N and vertical / neck tension/bending over6 mm (no notch) 113.0 128.13182417459004 60.40500282516387 15.9862298394526 136.7289569721562
+rigid held neighbour, interference at full reverse if no compliance 3.305900747590189

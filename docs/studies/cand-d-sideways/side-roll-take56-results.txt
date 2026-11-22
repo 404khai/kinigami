@@ -1,0 +1,32 @@
+sharp 0 (-0.41309758831083165, 'crown4', 'flat4')
+sharp -5 (-0.5259314938681854, 'crown5', 'flat5')
+sharp 5 (-0.6565422475176987, 'crown4', 'flat4')
+sharp -10 (-0.008784981960086924, 'crown5', 'flat5')
+sharp 10 (-1.3399436556094044, 'crown4', 'plug cylindrical core')
+sharp -15 (-0.7006683912574516, 'crown4', 'flat5')
+sharp 15 (-1.7141988440763605, 'crown4', 'gallery tile envelope')
+sharp -20 (-0.0077147049255117395, 'crown4', 'flat5')
+sharp 20 (-1.850912610081286, 'crown5', 'gallery tile envelope')
+sharp -25 (0.7111894451827503, 'crown stay0', 'gallery tile envelope')
+sharp 25 (-2.243666638655217, 'crown stay2', 'plug slit tongue')
+sharp -30 (0.5756295154181288, 'crown stay0', 'gallery tile envelope')
+sharp 30 (-2.5644425753909097, 'crown stay2', 'plug slit tongue')
+rounded 0 (-0.6193595976452393, 'crown4', 'flat4')
+rounded -5 (-0.8774860485321145, 'crown5', 'flat5')
+rounded 5 (-0.9437844554323878, 'crown4', 'flat4')
+rounded -10 (-0.165593805605452, 'crown4', 'flat5')
+rounded 10 (-1.3399436556094044, 'crown4', 'plug cylindrical core')
+rounded -15 (-1.029928925792424, 'crown4', 'flat5')
+rounded 15 (-1.9571209726615209, 'crown4', 'gallery tile envelope')
+rounded -20 (-0.13852633825479188, 'crown4', 'flat5')
+rounded 20 (-2.0659356406427456, 'crown stay2', 'gallery tile envelope')
+rounded -25 (0.601283432032929, 'crown stay0', 'gallery tile envelope')
+rounded 25 (-2.469954230933112, 'crown stay2', 'plug slit tongue')
+rounded -30 (0.3384826000460812, 'crown stay0', 'gallery tile envelope')
+rounded 30 (-2.87, 'crown stay2', 'plug slit tongue')
+sharp path stage 0 nominal, interpolation debit, allowance .20, cert, floor (0.11067870000000024, 'ball', 'gallery tile envelope') 0.025169189817845248 -0.11449048981784501 -23.5
+sharp path stage 1 nominal, interpolation debit, allowance .20, cert, floor (0.11067870000000024, 'ball', 'gallery tile envelope') 0.20232756588627357 -0.12630413446234778 -25.442332479574866
+sharp path stage 2 nominal, interpolation debit, allowance .20, cert, floor (0.11067870000000024, 'ball', 'gallery tile envelope') 0.1667835764437971 -0.11980715778037936 -25.418761047333092
+rounded path stage 0 nominal, interpolation debit, allowance .20, cert, floor (0.303331, 'ball', 'gallery tile envelope') 0.018869544548425116 0.08446145545157491 -23.5
+rounded path stage 1 nominal, interpolation debit, allowance .20, cert, floor (0.303331, 'ball', 'gallery tile envelope') 0.20232756588627357 0.06634816553765199 -25.442332479574866
+rounded path stage 2 nominal, interpolation debit, allowance .20, cert, floor (0.303331, 'ball', 'gallery tile envelope') 0.18865680394810716 0.06884700213225403 -25.418761047333092

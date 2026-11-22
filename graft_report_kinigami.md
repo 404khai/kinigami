@@ -458,9 +458,13 @@ Lead integration in the reciprocal-v7 Graft. Check the effect of unequal or sing
 
 Mechanics Graft. Explore an open-ended C-track and a full-section positive displacement plug. Distinguish a closed end cross-section from a force bound through the last partial engagement; model the finite stock of the neck and the moving neighbour.
 
+[Free-body certificate](docs/studies/cand-d-sideways/README.md): two inner lips and two rounded rear corners can hold the globe and flat shoulder against an arbitrarily scaled plug load in the rigid friction model. Increasing screw torque is not a release guarantee.
+
 ## Take 56 — install a transverse discharge slide
 
 Packaging Graft. Budget the short track, axial take-up, one positively driven transverse plug, screw drives, battery, logic and the joint together; check the ejected neighbour as well as straight stow.
+
+[Installed section](docs/studies/cand-d-sideways/side-take56.md): Ø58.988 straight stow, but the draw bracket crosses the transverse motor. A −25° pre-roll can bypass the straight-pose index collision and reach the Take 55 jam for the checked free-space surfaces. That path crosses a level table by 1.942 mm, so it does not demonstrate a tabletop jam.
 
 ## Take 57 — finite-time release after the last loaded support
 
