@@ -1,0 +1,104 @@
+{
+  "label": "exploratory",
+  "lambda_mm_per_rad": 1.1,
+  "features": {
+    "roofface": {
+      "certified": true,
+      "boxes": 285,
+      "power": 137,
+      "penetrating": 6,
+      "depth": 13
+    },
+    "toeface": {
+      "certified": true,
+      "boxes": 27,
+      "power": 14,
+      "penetrating": 0,
+      "depth": 5
+    },
+    "sideface": {
+      "certified": true,
+      "boxes": 1,
+      "power": 0,
+      "penetrating": 1,
+      "depth": 0
+    },
+    "back": {
+      "certified": true,
+      "boxes": 1661,
+      "power": 446,
+      "penetrating": 385,
+      "depth": 14
+    },
+    "toe": {
+      "certified": true,
+      "boxes": 63,
+      "power": 32,
+      "penetrating": 0,
+      "depth": 8
+    },
+    "side": {
+      "certified": true,
+      "boxes": 109,
+      "power": 36,
+      "penetrating": 19,
+      "depth": 10
+    },
+    "corner_back": {
+      "certified": true,
+      "boxes": 331,
+      "power": 79,
+      "penetrating": 87,
+      "depth": 12
+    },
+    "corner_toe": {
+      "certified": true,
+      "boxes": 243,
+      "power": 78,
+      "penetrating": 44,
+      "depth": 11
+    },
+    "toe_side": {
+      "certified": true,
+      "boxes": 185,
+      "power": 63,
+      "penetrating": 30,
+      "depth": 10
+    },
+    "rear_side": {
+      "certified": true,
+      "boxes": 65,
+      "power": 0,
+      "penetrating": 33,
+      "depth": 7
+    },
+    "fixed_side": {
+      "certified": true,
+      "boxes": 131,
+      "power": 38,
+      "penetrating": 28,
+      "depth": 10
+    },
+    "fixed_sideface": {
+      "certified": true,
+      "boxes": 1,
+      "power": 0,
+      "penetrating": 1,
+      "depth": 0
+    },
+    "fixed_corner_toe": {
+      "certified": true,
+      "boxes": 135,
+      "power": 37,
+      "penetrating": 31,
+      "depth": 11
+    },
+    "fixed_toe_side": {
+      "certified": true,
+      "boxes": 17,
+      "power": 5,
+      "penetrating": 4,
+      "depth": 4
+    }
+  }
+}

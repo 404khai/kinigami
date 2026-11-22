@@ -524,6 +524,18 @@ Lead button-support Graft. Use the actual .48 pivot-leaf normal. Compare the 60�
 
 Mechanics Graft. Test a rounded three-lobe core, higher working axial component and a finite positively supported seam with an attainable tolerance. Check local flare against both home and full ejector stroke; do not carry over the old continuous bore calculation.
 
+[Rounded lobes](docs/studies/cand-d-perimeter/lobed/README.md): the .60 working pole and the lower inner-contact work bound survive finite stock. At the same actuator phase two distinct tail poses require axial virtual velocities ≤2.266 and ≥3.141 mm/rad. No single axial certificate for all poses; no simultaneous jam established.
+
 ## Take 67 — relocate the joint behind the drum
 
 Packaging Graft. Try an offset yaw assembly, central quill, three-lobe flange, 56° seats, and a positively inserted worm parking bolt. Check electronics at cycled cell dimensions, mounted tabs, separate protection and antenna clearance. No ordinary worm friction as a lock.
+
+## Take 68 — move the compliant seats into the ejector plate
+
+Lead saddle-plate Graft. Keep the three-lobe tail solid with integral R2.50 buttons. Model independent translating V-saddles, narrow blind running gaps, finite protrusion and spring/guide stock behind the mobile disk. Check plate-rim continuity, pressurized parts, force windows and one-sided guide reactions separately from the moving-leaf proof.
+
+[Moving V-saddles](docs/studies/cand-d-perimeter/saddle.md): the pocket retains a continuous outer rim. A clean one-sided guide moment exceeds the short block's smooth-running recommendation; its bracket crosses the disk post. The sufficient seated S=28 N certificate covers less than 73.133 g in the trial mass-scaled load box.
+
+## Take 69 — partition the inside and outside release contacts
+
+Mechanics Graft. Test whether a single tail configuration can load both the outer drive stock and the inner jaws. Try a configuration-specific virtual twist or a fixed convex guard. Include one-sided guide and journal losses; distinguish a missing certificate from a self-stress.
