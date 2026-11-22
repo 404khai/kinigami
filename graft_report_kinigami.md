@@ -603,3 +603,15 @@ Mechanics Graft. Check loaded key withdrawal and a positively driven separator a
 Packaging Graft. Package the Take 74/77 inclined key with actual guide engagement, force-limited take-up, unpowered hold, and coordinated ejection space from Take 78, without reusing Take 75’s rejected disk collar or parking-pin arrangement.
 
 [Inclined carriage](docs/studies/cand-d-inclined-carriage/inclined-take79.md): exploratory; rejected for advancement. The covered layout and controller require Ø62.108 mm, the latch shaft intersects a spring cap, and the relay shaft enters the cell reservation. The third proximal guide retains 0.740 mm of bearing land through park (fixing the lower guide’s −X loss at 3.116 mm withdrawal), but raises the shoe top to y=23.78 mm, and the installed exterior does not prevent Take 78’s narrow-ram bypass. All 13 generated outputs reproduced byte-for-byte and all 35 manifest hashes matched.
+
+## Take 80 — coaxial axial-sleeve tri-roller coupler (lead screen)
+
+Graft `coaxial-balllock` (`4d896fb`). Because radial guide towers pushed Takes 75 (Ø60.90 mm) and 79 (Ø62.11 mm) past 60 mm, [Take 80](docs/studies/cand-d-coaxial-balllock/README.md) screens an internal coaxial tri-roller locking sleeve (`Ø21.8 mm` barrel OD, zero external radial tower) with 6 fixed V-seats (`r=8.20 mm`), 3 `Ø3.0×3.0 mm` steel rollers on tri-flat 45°/0° lands, and a 360° annular ejector. Under 70 g provisional boxes (no equal sharing), all-seated axial draw needs 9.64 N (service) / 27.29 N (table); at 45 N draw cap, line-contact Hertz stress is 694 MPa, sleeve unlock force is 19.10 N (`1.5×` eccentric drag, 16.29 N·mm on M3×0.5), nonlinear 9-contact form closure bounds motion to 0.116 mm / 0.808°, and `Ø21.8 mm` fits a `48×25.4×24 mm` (`Ø59.373 mm`) box. Exploratory only; assigned to Takes 81 and 82.
+
+## Take 81 — coaxial tri-roller loaded unlock, cage wedging, and annular ejection
+
+Mechanics Graft. Try to break Take 80’s coaxial tri-roller coupler: roller-in-cage cocking/wedging at `μ=0.23` during loaded unlock (tension, 20 N compression, worst 52.2 N·mm moment), sleeve chamfer-edge contact, off-axis annular ejection clearance past unlocked rollers and lip, finite V-seat and tri-flat land reserves, and force-limited axial draw sequencing without spring-closed latching.
+
+## Take 82 — coaxial tri-roller full-Kin packaging inside Ø60 mm
+
+Packaging Graft. Package Take 80’s `Ø21.8 mm` coaxial tri-roller barrel, M3 leadscrew + locking sleeve + force-limited draw stage + 360° annular ejector, real drives, joint motor, battery, controller, and covers strictly inside Ø60.0 mm with zero collisions, catalog-rated bearings/gears, unpowered lock check, and assembly access.
