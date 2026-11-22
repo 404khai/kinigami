@@ -1,0 +1,10 @@
+first outside body all along, with cover and attached receiver tail (5.080000000000002, '78 moving ram face reserve', 'uncut cover blank for outer support')
+first mating tail vs 79-only outside stock (1.7998362666419716, 'foot forward tie 7.8', 'solid wing 300') vs cover aperture superset (1.3487507263947975, 'conservative cover after front bore 56', 'solid wing 300')
+first all changed nose guides and struts (0.182113, 'nose guide 0 fore', 'rolled fork hub', [])
+first unchanged shape of tube / bulkhead (1.300454, 'barrel (-6.85, 15)', 'solid wing 60', [])
+second outside body all along, with cover and attached receiver tail (11.629999999999999, '78 moving ram face reserve', 'uncut cover blank for outer support')
+second mating tail vs 79-only outside stock (4.804969915186375, 'foot forward tie 7.8', 'solid wing 300') vs cover aperture superset (1.4748244766302232, 'conservative cover after front bore 56', 'solid wing 300')
+second all changed nose guides and struts (2.806667, 'nose guide 0 fore', 'integral lug', [])
+second unchanged shape of tube / bulkhead (1.66929, 'barrel (-0.18, 15)', 'solid wing 60', [])
+terminal ram/key at PARK, ram vs endpoint lug (0.4725084971874738, 'inclined key 74', '78 moving ram face reserve') (0.40003398874989493, '78 moving ram face reserve', 'integral lug')
+floor z; both listed lowest feet -23.32 -23.32

@@ -1,0 +1,9 @@
+gross listed-category subtotal g, excludes ejector drive and ram; full density-summed blanks double count intersections {'7075 housing/support': np.float64(4.390051871469979), 'steel all other installed stock': np.float64(41.2122041095589), 'polymer guards': 0.9525046901100009, 'bronze bushes': np.float64(0.6741679560871512), 'motor copper envelope': np.float64(24.928462308011312), 'bare catalog cell': 2.9, 'electronics copper envelopes': 11.510361349593058, 'spring steel envelopes': np.float64(2.198328422623882), 'steel blank debit': np.float64(0.8194254131629354), 'external polymer shell before ports': 3.522703959059526}
+gross subtotal (not an as-built upper) g and representative extent-center COM LOCK z yaw 0 93.10821007967675 [-22.78139905  -0.35140848   0.39043554]
+selected disjoint 4 balls+hub metal and nominal three 6g catalog drives +2.9g cell, partial minimum 5.544701594075745 26.444701594075745
+representative support polygon omit -1 margin mm 7.218600951504083
+representative support polygon omit 0 margin mm -2.1352146542637254
+representative support polygon omit 1 margin mm -2.712986890844519
+representative support polygon omit 2 margin mm 2.712986890844519
+representative support polygon omit 3 margin mm 2.1352146542637236
+true as-built maximum and COM unknown; 70g not a rating

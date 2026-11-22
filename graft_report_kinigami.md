@@ -601,3 +601,5 @@ Mechanics Graft. Check loaded key withdrawal and a positively driven separator a
 ## Take 79 — package the inclined single key separately from Take 75
 
 Packaging Graft. Package the Take 74/77 inclined key with actual guide engagement, force-limited take-up, unpowered hold, and coordinated ejection space from Take 78, without reusing Take 75’s rejected disk collar or parking-pin arrangement.
+
+[Inclined carriage](docs/studies/cand-d-inclined-carriage/inclined-take79.md): exploratory; rejected for advancement. The covered layout and controller require Ø62.108 mm, the latch shaft intersects a spring cap, and the relay shaft enters the cell reservation. The third proximal guide retains 0.740 mm of bearing land through park (fixing the lower guide’s −X loss at 3.116 mm withdrawal), but raises the shoe top to y=23.78 mm, and the installed exterior does not prevent Take 78’s narrow-ram bypass. All 13 generated outputs reproduced byte-for-byte and all 35 manifest hashes matched.

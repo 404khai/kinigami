@@ -1,0 +1,1 @@
+editable sectional SCAD generated; aggregate material/gear envelopes not a tolerance model

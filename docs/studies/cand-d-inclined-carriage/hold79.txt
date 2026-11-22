@@ -1,0 +1,3 @@
+hook nominal 0 angle gap .030; earliest forbidden CCW rotation, degrees 0.7132497549106023
+at +6deg actual catch stock ball [-12.421408   9.05036   11.947115   0.117115] at most freely available .020 inward retreat [-12.423357   9.040159  11.937173   0.107173]
+seated hook closing torque sign remains hard-stop directed with load fric mu=.23, moment arm min 1.8287999999999998 mm

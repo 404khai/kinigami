@@ -1,0 +1,2 @@
+physical/required stock finite-support Ø lower; center 62.107835898298795 [-17.14392704   0.99501846   0.29912623] [('surviving cover exterior', [-25.55366, 27.37174, 14.3665], np.float64(0.1599201)), ('surviving cover exterior', [-30.23415, 25.01656, -14.39637], np.float64(0.366021)), ('controller board incl LDO SWD', [-4.2, -26.45, 6.9], np.float64(0.4740589))]
+sufficient all listed continuous yaw and stroke Ø, center, angle interpolation error 62.107835898326236 [-17.14393445   0.99501532   0.2991277 ] 0.005837508247300017

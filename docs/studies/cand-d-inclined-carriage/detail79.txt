@@ -1,0 +1,11 @@
+ideal standard 20deg spur mesh Z/Z transverse contact ratio 18 36 1.6111060667858845 root radius 1.55
+ideal standard 20deg spur mesh Z/Z transverse contact ratio 30 30 1.6535138809029628 root radius 2.75
+face screw pitch/support spacing/eccentricity load factors, separate torque/pinion load
+60N two-row sample motor-opening force key/rear-yoke plus drag/screw torque/optimistic rated 75.68243537396599 99.15948766517438 55.49080847184239 42.172416
+ideal positive-lock roller pinion from angular clearance and hole not proof of achieved preload
+over three LOCK guides, example .15deg cock X differential vs .040 backlash 0.03168698253723358
+78 sleeve rear-bulkhead concentric clearance before unspecified shift 0.05999999999999961 inner polygon chord clearance 0.053953190149965025
+shaft vs cap inner-ball lower, real 3D [-10.62935556  12.3856762    6.75702194   0.1856762 ]
+including true cap ID/OD analytic material margin 0.1856762015794171
+straight guide core radial clearance to cap bore/coil inner diameter 0.07000000000000006 0.10999999999999988
+nominal stationary trunnion seam to near flank at PARK (0.4499999999999993, 'output catch trunnion 1', 'index arm outer strap 1')
