@@ -572,6 +572,8 @@ Lead flush-plugs Graft. Replace the external pivot/link with a blind radial pist
 
 Mechanics Graft. Test a seven-contact load path: one positively withdrawn tapered key carrying a central rounded lug, and six rigid seat normals around its load line. Check eccentric force, Coulomb stiction, tolerance, partial contacts and real guide stock.
 
+[Single key](docs/studies/cand-d-single-key/README.md): a 60 N key normal is compatible with one open face under a 70 g service-box load. The 4.85 mm park clears the returning lug on the centered inclined path, but guide play exceeds the assumed ±0.10° accuracy. Neither an all-seven equilibrium nor a centered release is an installed lock.
+
 ## Take 75 — enclose the radial-plug drive
 
 Packaging Graft. Put two opposing X-bearing rows at different radii on each translating plug, drive all three with an enclosed face cam, and drive the terminal disk independently. Keep the finite front wall, check assembly access and guide loads at the actual actuator offset.

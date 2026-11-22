@@ -1,0 +1,127 @@
+{
+  "actual_pole_error": 0.1,
+  "head_frame_recess": 0.02,
+  "pose_limit_deg": 5.0,
+  "trans_limit_mm": 1.0,
+  "single_gap_cap": 0.48692712522888476,
+  "five_seat_results": [
+    {
+      "gap_interval": [
+        0.0,
+        0.05
+      ],
+      "radius_deg": 0.3662962302311649,
+      "boxes": 40,
+      "lower": 5.277345690885921e-05
+    },
+    {
+      "gap_interval": [
+        0.05,
+        0.1
+      ],
+      "radius_deg": 0.377724632733486,
+      "boxes": 27,
+      "lower": 6.0777139952074057e-05
+    },
+    {
+      "gap_interval": [
+        0.1,
+        0.15000000000000002
+      ],
+      "radius_deg": 0.39246411709723,
+      "boxes": 27,
+      "lower": 0.0001262455527110438
+    },
+    {
+      "gap_interval": [
+        0.15000000000000002,
+        0.2
+      ],
+      "radius_deg": 0.41065765719506575,
+      "boxes": 26,
+      "lower": 5.512646970504502e-05
+    },
+    {
+      "gap_interval": [
+        0.2,
+        0.25
+      ],
+      "radius_deg": 0.4324588224968359,
+      "boxes": 20,
+      "lower": 5.977256692171939e-05
+    },
+    {
+      "gap_interval": [
+        0.25,
+        0.30000000000000004
+      ],
+      "radius_deg": 0.4580329111035078,
+      "boxes": 20,
+      "lower": 8.174651097189678e-05
+    },
+    {
+      "gap_interval": [
+        0.30000000000000004,
+        0.35000000000000003
+      ],
+      "radius_deg": 0.48755824349289245,
+      "boxes": 20,
+      "lower": 8.860976898637102e-05
+    },
+    {
+      "gap_interval": [
+        0.35000000000000003,
+        0.4
+      ],
+      "radius_deg": 0.5212276457527519,
+      "boxes": 20,
+      "lower": 7.941645149588654e-05
+    },
+    {
+      "gap_interval": [
+        0.4,
+        0.45
+      ],
+      "radius_deg": 0.5592501573718476,
+      "boxes": 20,
+      "lower": 5.308020039537081e-05
+    },
+    {
+      "gap_interval": [
+        0.45,
+        0.5
+      ],
+      "radius_deg": 0.601853006595506,
+      "boxes": 26,
+      "lower": 5.438022786606546e-05
+    }
+  ],
+  "fewer_seat_results": [
+    {
+      "second_missing": 2,
+      "boxes": 1,
+      "lower": 0.029580078773423182
+    },
+    {
+      "second_missing": 3,
+      "boxes": 1,
+      "lower": 0.03047339974755369
+    },
+    {
+      "second_missing": 4,
+      "boxes": 1,
+      "lower": 0.012856540441744203
+    },
+    {
+      "second_missing": 5,
+      "boxes": 1,
+      "lower": 0.038213853482239754
+    },
+    {
+      "second_missing": 6,
+      "boxes": 71,
+      "lower": 0.0012046731726714046
+    }
+  ],
+  "all_missing_lower": 5.277345690885921e-05
+}
