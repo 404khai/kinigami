@@ -1,0 +1,2 @@
+finite ball: untouched rotating ring and actual stationary polymer skin (+ means blocked; nonpositive is inconclusive) (np.float64(0.12977138857090598), ([11.34, 18.58122, -10.51275], 'jaw cover 0.35'))
+same-pose adverse extraction at peak lead, actual shank remaining mm, force N, torque Nmm, optimistic 3V rated ceiling 0.8200000000000003 8.685006416727248 13.746268776820022 6.9887999999999995

@@ -1,0 +1,1 @@
+frozen finite stock [('fixed', 1029), ('disk_home', 59), ('plugs_lock', 27), ('cam_blanks', 192), ('tail', 329), ('electrical', 32)]

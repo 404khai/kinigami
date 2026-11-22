@@ -1,0 +1,19 @@
+full continuous bridge, both rows, roller vs fixed local case -90 0.0029999999999992255 ('X pad (-90, 0, -1)', 'guide side (-90, -1)')
+full continuous bridge, both rows, roller vs fixed local case 30 0.002999999998492875 ('X pad (30, 1, -1)', 'guide side (30, -1)')
+full continuous bridge, both rows, roller vs fixed local case 150 0.002999999998492431 ('X pad (150, 1, 1)', 'guide side (150, 1)')
+drivetrains vs cell and radio etc (np.float64(-0.15826), ('disk geared 4', 'interface flex reserve'), [(np.float64(0.03978), 'disk geared 4', 'interface flex reserve', [0.0102, -3.5084, 14.4798])])
+motors against each other (np.float64(2.11293), ('disk worm shaft', 'dog geared 64'), [])
+jaw and disk motors vs static housing and hinge (np.float64(-1.86984), ('disk geared 4', 'central motor frame tie 195'), [(np.float64(0.36708), 'disk geared 4', 'central motor frame tie 260', [1.0794, 3.5853, -4.0434]), (np.float64(0.35578), 'disk geared 4', 'central motor frame tie 195', [0.5638, -1.6988, -4.869])])
+actual translating disk inner hardware vs motors (np.float64(-0.88433), ('disk terminal collar 90 4', 'disk geared 4'), [(np.float64(0.25956), 'disk terminal collar 90 5', 'disk geared 4', [1.9675, -1.1062, 7.8408]), (np.float64(0.25956), 'disk terminal collar 90 4', 'disk geared 4', [2.003, -1.3049, 8.3204]), (np.float64(0.25239), 'disk terminal collar 90 3', 'disk geared 4', [1.0794, -1.3136, 8.8324]), (np.float64(0.24027), 'disk terminal collar 90 6', 'disk geared 4', [1.0794, -0.7694, 7.4708]), (np.float64(0.11311), 'disk terminal collar 90 2', 'disk geared 4', [1.0794, -1.3271, 9.2521]), (np.float64(0.11013), 'disk post 90', 'disk geared 4', [1.0794, -0.914, 8.2014])])
+ring core at untouched working radius vs stationary solids (np.float64(0.16), ('steel untouched ring 2', 'fixed guard side (30, -1)'), [])
+disk screw shaft and wheel vs unrelated chassis (np.float64(1.003), ('disk 24T worm gear 28', 'central motor frame tie 22'), [])
+dog stroke vs motor + guide supports (np.float64(0.08673), ('parking yoke bridge', 'brake bearing tie'), [])
+loaded disk nut and post sweep vs fixed inner guide supports (np.float64(0.04), ('disk post -30', 'outboard bush strut -30'), [])
+own tail and fork vs drive (sample) yaw -15 (np.float64(2.28), ('yaw shaft', 'brake motor return'), [])
+own tail and fork vs drive (sample) yaw 0 (np.float64(2.28), ('yaw shaft', 'brake motor return'), [])
+own tail and fork vs drive (sample) yaw 15 (np.float64(-0.31427), ('yaw 114T sector 9', 'brake motor return'), [])
+holds require independent swept tooth-land/slot tests; empty witnesses alone not an all-stock certificate
+full stroke and analytic yaw incl cylinder circumscription one sphere 60.35688842189555 [-1.7777142   1.12524326  0.732535  ] active [(np.float64(30.178444210947774), 'jaw 32T driven spur'), (np.float64(30.178444210947767), 'yaw motor body'), (np.float64(30.17844421094776), 'dog geared 64'), (np.float64(30.178444210947752), 'dog input spur'), (np.float64(30.177701082066807), 'cell bulk')] 29.590608040698584
+actual two-point reservation diameter lower 59.073153199970996 ('yaw motor body', array([-10.0280503 , -21.46007352, -17.5       ])) ('jaw geared 256', array([ 4.2780503, 22.6716386, 19.07     ]))
+independent powered neighbors continuous ±15 broad -1.953678590058189 front cover high cell bulk
+continuous pair clearance of powered housings 0.2 (np.float64(0.6981632551430802), ('front cover high', 'cell bulk')) host-to-tail mating contacts not included

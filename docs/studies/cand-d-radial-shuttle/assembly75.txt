@@ -1,0 +1,23 @@
+disk front insertion from clear x plus30 to HOME, plugs PARK collars not yet fitted -0.36443 ('disk shell metal blank', 'fixed continuous case (30, 1, 2, -8.65)')
+conservative inscribed finite-material/envelope overlaps []
+disk posts/stud threading in real fixed guides at assembly (no collars) -0.0085 ('disk post 90', 'disk slide bush 1')
+conservative inscribed finite-material/envelope overlaps [(np.float64(0.00174), 'disk post 90', 'disk slide bush 9', [8.1983, 0.6102, 7.6668]), (np.float64(0.00174), 'disk post 90', 'disk slide bush 9', [6.0583, 0.6102, 7.6668])]
+rear motor versus working posts & collars -0.88433 ('disk geared 4', 'disk terminal collar 90 4')
+conservative inscribed finite-material/envelope overlaps [(np.float64(0.25956), 'disk geared 4', 'disk terminal collar 90 5', [1.9675, -1.1062, 7.8408]), (np.float64(0.25956), 'disk geared 4', 'disk terminal collar 90 4', [2.003, -1.3049, 8.3204])]
+external pocket probe, post, exact interval x, transverse overlap and ball -30 -1 (-12.05, -8.55) 0.10866204277500646 0.05103147948244313
+external pocket probe, post, exact interval x, transverse overlap and ball -30 1 (-12.05, -8.55) 0.10866204277500646 0.04995992235914515
+external pocket probe, post, exact interval x, transverse overlap and ball 90 -1 (-12.05, -8.55) 0.10866204277500646 0.047614573729907406
+external pocket probe, post, exact interval x, transverse overlap and ball 90 1 (-12.05, -8.55) 0.10866204277500646 0.04761457372990652
+external pocket probe, post, exact interval x, transverse overlap and ball 210 -1 (-12.05, -8.55) 0.10866204277500646 0.04995992235914781
+external pocket probe, post, exact interval x, transverse overlap and ball 210 1 (-12.05, -8.55) 0.10866204277500646 0.05103147948244402
+carrier radial install front cheek/roof vs guide rails, before top closure (np.float64(0.0029999999962653234), ('X pad (30, 1, -1)', 'guide side (30, -1)'))
+solid lid veto if assembly order reversed [(np.float64(0.12), 'plug stiff spine 30', 'outer guard top (30, -5.08)', [14.88, 20.1564, 10.7482])]
+HOME collar tool access; after fitting drives -30 (np.float64(1.19759), ('retainer cross-pin punch', 'rear frame rib 8'), [])
+HOME collar tool access; after fitting drives 90 (np.float64(2.21936), ('retainer cross-pin punch', 'disk geared 4'), [])
+HOME collar tool access; after fitting drives 210 (np.float64(0.65715), ('retainer cross-pin punch', 'rear frame rib -119'), [])
+stud thread x overlap home/terminal with fixed nut journal
+0 -14.559999999999999 -10.5 8.119999999999997
+8.53 -14.559999999999999 -10.5 8.119999999999997
+disk p nominal; rear min over lip and spare; sign at μ=.23 δ=.6; actual loaded lost stroke unknown 1.58 1.351637582580322 0.2283624174196781 0.12943944475174443
+finite weighted witness diameter lower mechanical and reserved parts 59.160666110196026 [('controller board incl LDO SWD', np.float64(0.171555), [10.4, -25.13, -6.0]), ('jaw geared 256', np.float64(0.150645), [4.2781, 22.6716, 19.07]), ('protection board', np.float64(0.381632), [-13.25, 15.91, -21.93]), ('dog geared 64', np.float64(0.296169), [-0.7797, -16.2256, 25.3924])]
+finite weighted witness diameter lower with actual as-drawn full cover blank 60.90039670718166 [('brake cover 0.35', np.float64(0.276262), [-0.4363, -16.3954, 25.7236]), ('cell bulk', np.float64(0.26908), [-15.9, -15.4, -20.2]), ('jaw cover 0.35', np.float64(0.294246), [8.8549, 23.5936, -17.0027]), ('brake cover 0.35', np.float64(0.080154), [2.7506, 17.8064, 25.9772]), ('brake cover 0.35', np.float64(0.080257), [2.7583, 17.7987, 25.9811])]
