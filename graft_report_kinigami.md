@@ -353,3 +353,15 @@ Mechanics Graft: test a virtual twist common to the entire jaw and the free tail
 Packaging Graft: test an aft pivot near the lower-deck height and a supported moving arm which can nest in a guarded terminal landing. Check whether a fixed shaft, motor and gear train can coexist with its housing, own fork and both neighbours, not just the working pad.
 
 [Package report](docs/studies/cand-d-transverse-vise/aft-drive-take37.md) · [drive](docs/studies/cand-d-transverse-vise/aft-drive-take37.py) · [checks](docs/studies/cand-d-transverse-vise/aft-gear-search-take37.py). At 10° literal co-rotation puts the crown inside the parked blade by .372 mm. Moving the park 1 mm back puts the nut .70 mm into the bevel allocation. The next motor hits the closed jaw at both pitches; the terminal roof hits a side arm. Reject this installation, not Q12.
+
+## Take 38 — withdraw a smooth cross-pin from a passive eye
+
+Mechanics Graft: check the toroidal eye through loaded withdrawal, including tilted-eye binding, the rounded pin end, finite flared walls and port edges. Do not transfer unloaded-stroke or single-contact estimates to uncontrolled partials.
+
+## Take 39 — install the eye, cross-pin and independent eject drive
+
+Packaging Graft: place the pin in supported journals, draw and unload the eye, park the pin behind the real wall, then eject. Include the motor, passive hold, load isolation, neighbours, sensors, and both bodies within the 60 mm stowed limit.
+
+## Take 40 — couple the ring contact to an indexed face
+
+Lead integration in the separate reciprocal-v7 Graft while Takes 38 and 39 check mechanics and package. [Face, ellipse and taper checks](docs/studies/cand-d-crosspin/README.md): two points can bear on the long barrel from 27.275° tilt, not only at the 37.814° diametric pinch. Their restoring moment bounds drag **only with a bounded external eye wrench**. The illustrative six-V registry needs 141.93 N sufficient table-case draw at .050 mm pin offset allowance. A cone steep enough to shed dry friction and a tube-shielded positive-work port do not meet the same sufficient conditions. No official result or candidate revision.
