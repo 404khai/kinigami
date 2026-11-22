@@ -1,0 +1,182 @@
+{
+  "interface": {
+    "reference": [
+      -3.2,
+      0.0,
+      0.0
+    ],
+    "draw": [
+      0.9510565162951535,
+      0.3090169943749474,
+      0.0
+    ],
+    "transverse_ridge_axis": [
+      -0.3090169943749474,
+      0.9510565162951535,
+      0.0
+    ],
+    "registry": [
+      [
+        -4.791437521030979,
+        4.8979410589200425,
+        8.920061658979717
+      ],
+      [
+        -0.017124957938041696,
+        -9.795882117840081,
+        1.261386203121774e-15
+      ],
+      [
+        -4.791437521030979,
+        4.8979410589200425,
+        -8.920061658979717
+      ]
+    ],
+    "lug": [
+      -5.1021130325903075,
+      -0.6180339887498948,
+      0.0
+    ],
+    "stem": [
+      [
+        -5.1021130325903075,
+        -0.6180339887498948,
+        0.0
+      ],
+      [
+        -4.0,
+        -4.65,
+        0
+      ],
+      [
+        2.5,
+        -6.0,
+        0
+      ]
+    ],
+    "stem_radius": 1.4,
+    "flared_wing_end_x_r": [
+      2.5,
+      6.25
+    ],
+    "hub_core": [
+      2.5,
+      7.6
+    ],
+    "backing": 2.5,
+    "key_contact": [
+      -2.724471741852424,
+      0.15450849718747373,
+      0.0
+    ],
+    "shank_x": [
+      -3.3821130325903073,
+      -0.7021130325903071
+    ],
+    "z_half": 1.65,
+    "key_tip": -0.8954915028125263,
+    "prox_end": 13.35,
+    "park": 4.85,
+    "key_fillet": 0.35,
+    "guide_y": [
+      [
+        8.6,
+        9.45
+      ],
+      [
+        11.85,
+        12.7
+      ]
+    ],
+    "guide_sides": 0.04,
+    "outer_guide_x": [
+      -3.9021130325903073,
+      -0.12211303259030715
+    ],
+    "outer_guide_z": 2.35,
+    "blind_pocket_end_y": 18.6,
+    "blind_rear_wall_x": -9.15,
+    "clear_bore_radius": 14.05,
+    "barrel_outside": 15.05,
+    "seat_local": {
+      "origin": [
+        -3.2,
+        0.0,
+        0.0
+      ],
+      "axis": [
+        0.9510565162951535,
+        0.3090169943749474,
+        0.0
+      ],
+      "radial_reference": [
+        -0.3090169943749474,
+        0.9510565162951535,
+        0.0
+      ],
+      "tangent_reference": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "station_deg": [
+        60,
+        180,
+        300
+      ],
+      "radius": 10.3,
+      "deck": -2.68,
+      "cap_height": 2.12,
+      "angular_face_draft_deg": 65.0,
+      "radial_and_end_draft_deg": 65.0,
+      "half_radial_width": 1.35,
+      "half_tangent_width": 3.81,
+      "outer_trim_radius": 12.2,
+      "outer_trim_deg": 64.0,
+      "face_start_t": 1.5087402735508328
+    }
+  },
+  "key_flat_end": [
+    0.893475241575015,
+    0.27609903369994176
+  ],
+  "toe_end": [
+    3.743475241575015,
+    3.126099033699942
+  ],
+  "old_park_actual_collision_and_station": [
+    -0.08564228063466617,
+    5.156616278620257
+  ],
+  "corrected_park_gap_station": [
+    0.5800972807719416,
+    5.37292817468272
+  ],
+  "stem_to_moving_key": 0.9814733776629921,
+  "park_key_to_stem": 1.680097280771942,
+  "wing_barrel_clear": 0.4582441762722248,
+  "wing_same_seat_plane_delta": 1.1965941970949305,
+  "wing_other_seats": 7.6606547454851555,
+  "stem_to_tower": 1.0403912959189918,
+  "lug_to_tower": 6.450000000000001,
+  "hub_tower_guide_min": 0.12211303259030715,
+  "side_wing_guide": 0.5626587736527413,
+  "opposite_wing_key": 2.036645020473978,
+  "guide_lug": 4.287634660927755,
+  "guide_stem": 5.745046326783951,
+  "free_3deg_pitch_lower_mm": 1.375247828608313,
+  "guide_differential_at_010deg": 0.007155857199174081,
+  "guide_cocking_trial_deg": 0.5,
+  "required_clearance_for_trial": 0.03588220801588618,
+  "release_loads": {
+    "min_open_contact_projection": 0.09027399562706206,
+    "guide_normal_per_contact": 11.740628573704788,
+    "max_open_motor_per_normal": 1.3186014332175122,
+    "mg_before_guide_spends_assist": 0.008829411552648103,
+    "preload_cap_example": 60.0,
+    "illustrative_motor_at_60N": 79.11608599305073,
+    "no_friction_key_axial_capacity_last_head_X": 0.0,
+    "last_draw_axis_projection": 0.3090169943749474,
+    "table_one_contact_motor": 4.703424998942395
+  }
+}

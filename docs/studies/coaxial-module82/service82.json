@@ -1,0 +1,219 @@
+{
+  "label": "exploratory",
+  "tests": {
+    "M2 socket-driver barrel through closed rear face": {
+      "continuous_polygon_gap_lower_mm": 0,
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "distance_at_worst_mm": 0.0,
+      "obstacles": [
+        "outer clamshell 0",
+        "outer clamshell 1",
+        "sleeve rear lid"
+      ],
+      "obstructing_part": "sleeve rear lid",
+      "path_mm": 0.0,
+      "step_mm": 0.0,
+      "worst_sample_intersection_mm3": 0.6614611
+    },
+    "aft thrust bearing over screw bare end before wheel installed": {
+      "continuous_polygon_gap_lower_mm": 0,
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "distance_at_worst_mm": 0,
+      "obstacles": [
+        "sleeve M3 screw",
+        "sleeve shaft thrust flange"
+      ],
+      "obstructing_part": null,
+      "path_mm": 12.0,
+      "step_mm": 0.1,
+      "worst_sample_intersection_mm3": 0
+    },
+    "barrel nose insertion into populated front": {
+      "continuous_polygon_gap_lower_mm": 0,
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "distance_at_worst_mm": 0,
+      "obstacles": [
+        "outer clamshell 0",
+        "outer clamshell 1"
+      ],
+      "obstructing_part": null,
+      "path_mm": 21.0,
+      "step_mm": 0.39622641509433965,
+      "worst_sample_intersection_mm3": 0
+    },
+    "cell lid removal along own radial normal inside fixed cover": {
+      "continuous_polygon_gap_lower_mm": 0,
+      "direction": [
+        0.0,
+        -0.9809551553491916,
+        -0.19423435121997168
+      ],
+      "distance_at_worst_mm": 3.0,
+      "obstacles": [
+        "outer clamshell 0",
+        "outer clamshell 1"
+      ],
+      "obstructing_part": "outer clamshell 0",
+      "path_mm": 10.0,
+      "step_mm": 0.5,
+      "worst_sample_intersection_mm3": 36.3828417
+    },
+    "draw thread": {
+      "continuous_min_nominal_mm": 3.5,
+      "full_turns_after_two_half_pitch_end_chamfers": 6.0
+    },
+    "eject ring from nose before rods attached": {
+      "continuous_polygon_gap_lower_mm": 0.029973229373817235,
+      "direction": [
+        1,
+        0,
+        0
+      ],
+      "distance_at_worst_mm": 0,
+      "obstacles": [
+        "pilot",
+        "V seat annulus",
+        "pilot web 60",
+        "bush anchor 60"
+      ],
+      "obstructing_part": null,
+      "path_mm": 4.0,
+      "step_mm": 0.04,
+      "worst_sample_intersection_mm3": 0
+    },
+    "eject thread": {
+      "continuous_min_nominal_mm": 3.5,
+      "full_turns_after_two_half_pitch_end_chamfers": 6.0
+    },
+    "rear gear onto bare screw with rear lid removed": {
+      "continuous_polygon_gap_lower_mm": 0,
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "distance_at_worst_mm": 3.0,
+      "obstacles": [
+        "sleeve L730ZZ 0",
+        "sleeve radial bearing socket 0",
+        "tail shroud"
+      ],
+      "obstructing_part": "sleeve L730ZZ 0",
+      "path_mm": 12.0,
+      "step_mm": 0.5,
+      "worst_sample_intersection_mm3": 65.9065698
+    },
+    "rear sleeve into empty barrel": {
+      "continuous_polygon_gap_lower_mm": 0.024973229373816616,
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "distance_at_worst_mm": 0,
+      "obstacles": [
+        "barrel",
+        "sleeve guide 0",
+        "sleeve guide 1",
+        "V seat annulus"
+      ],
+      "obstructing_part": null,
+      "path_mm": 18.0,
+      "step_mm": 0.05,
+      "worst_sample_intersection_mm3": 0
+    },
+    "sleeve after fixed eject bushes": {
+      "continuous_polygon_gap_lower_mm": 0,
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "distance_at_worst_mm": 0.0,
+      "obstacles": [
+        "rod bush (60, 0)",
+        "rod bush (60, 1)",
+        "rod bush support tube 60",
+        "rod bush (180, 0)",
+        "rod bush (180, 1)",
+        "rod bush support tube 180",
+        "rod bush (300, 0)",
+        "rod bush (300, 1)",
+        "rod bush support tube 300"
+      ],
+      "obstructing_part": "rod bush support tube 300",
+      "path_mm": 18.0,
+      "step_mm": 0.25,
+      "worst_sample_intersection_mm3": 0.2965541
+    },
+    "sleeve nut through assembled rear radial bearing": {
+      "continuous_polygon_gap_lower_mm": 0,
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "distance_at_worst_mm": 15.0,
+      "obstacles": [
+        "sleeve L730ZZ 0",
+        "sleeve F3-8M 0"
+      ],
+      "obstructing_part": "sleeve F3-8M 0",
+      "path_mm": 28.0,
+      "step_mm": 0.5,
+      "worst_sample_intersection_mm3": 47.3361265
+    },
+    "sleeve thread": {
+      "continuous_min_nominal_mm": 3.5,
+      "full_turns_after_two_half_pitch_end_chamfers": 6.0
+    },
+    "split clamshell close over installed yaw motor": {
+      "continuous_polygon_gap_lower_mm": 0,
+      "direction": [
+        0,
+        1,
+        0
+      ],
+      "distance_at_worst_mm": 0,
+      "obstacles": [
+        "yaw motor body",
+        "sleeve 0615 + 06/1"
+      ],
+      "obstructing_part": null,
+      "path_mm": 15.0,
+      "step_mm": 0.5,
+      "worst_sample_intersection_mm3": 0
+    },
+    "uncoupled rear M3 screw WITH flange after thrust housing": {
+      "continuous_polygon_gap_lower_mm": 0,
+      "direction": [
+        -1,
+        0,
+        0
+      ],
+      "distance_at_worst_mm": 3.0,
+      "obstacles": [
+        "sleeve F3-8M 0",
+        "sleeve F3-8M 1",
+        "sleeve seat shoulder 0",
+        "sleeve radial bearing socket 0"
+      ],
+      "obstructing_part": "sleeve F3-8M 0",
+      "path_mm": 43.0,
+      "step_mm": 0.5,
+      "worst_sample_intersection_mm3": 17.8656653
+    }
+  }
+}

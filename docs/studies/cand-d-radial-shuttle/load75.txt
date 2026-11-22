@@ -1,0 +1,31 @@
+conditional per unit externally applied contact NORMAL; Qx+Qt, radial axial-drive F, tangential F; feedback 42.9069690282742 3.171457607400537 0.6427051046836932 0.38878690445302133
+under one contact only; torque upper on drive ring Nmm per N (μslot=.06; independent max pressure angle) 12.976216063563767 max |dr/dtheta| 2.586234375 max pressure angle deg 8.02238149460095
+conditional effective .05 guide assumptions; no equal sharing, no indeterminate preload or squeeze
+guide mu and allowable feedback denom (negative = no bound) 0 1.0
+guide mu and allowable feedback denom (negative = no bound) 0.05 0.6112130955469786
+guide mu and allowable feedback denom (negative = no bound) 0.1 0.2224261910939574
+guide mu and allowable feedback denom (negative = no bound) 0.18 -0.3996328560308766
+guide mu and allowable feedback denom (negative = no bound) 0.23 -0.7884197604838981
+illustrative one contact 100 N: total guide normal; radial drive N, single-row full load on one pad MPa, roller pin cantilever bend MPa 4290.69690282742 317.1457607400538 5641.942015552163 2878.9624397676093
+smallest X pitch, ±clearance, angular cock, x displacement at worst toe; max two-opposed pair twice this BEFORE normal projection 3.3 0.003 0.10417402977702248 0.011181818181818182
+nominal cutter/roller radial gap and one-side radial play max mm 0.0042 0.004241508985223087
+face continuous centerline chordal deviation upper 1.941713116981995e-05 radial margins inside/outside cutter, axial floor 0.695800000000002 0.5166999999999996 0.0600000000000005
+0615N003S + 06/1 ratio, optimistic rated / stall via catalog MAX efficiency, and lossless nominal stall 256 23.9616 33.9456 56.576
+0615N003S + 06/1 ratio, optimistic rated / stall via catalog MAX efficiency, and lossless nominal stall 4 0.5616 0.7956 0.884
+0615N003S + 06/1 ratio, optimistic rated / stall via catalog MAX efficiency, and lossless nominal stall 64 6.9887999999999995 9.9008 14.144
+trial single-start 122 hypothetical μ=.10 ηworm, rated output Nmm (not guaranteed) 0.46368445901187993 2168.793323253129
+one-100N worst drive requirement below/above must use conditional screened torque, no equal split
+trial single-start 24 hypothetical μ=.10 ηworm, rated output Nmm (not guaranteed) 0.4792989419164894 10.33629257396354
+disk 0.50 lead, assumed thread μ=.15, mean R1.58 thrust from rated incl collar eff=.8 23.20480089956441
+disk lossless 3V nominal stall-generated thrust only; NOT an upper bound on static seating, inertia, overvoltage, stiffness or assembly 533.2162379084884
+jam, lossless jaw star torque via gearhead 35 intermittent LIMIT vs nominal motor stall; input no guaranteed fault limiter 70 113.152
+star shaft torque, side reaction, pin single shear & bending (centred reaction overhang), extraction µ=.23 N 50.0 24.038461538461537 62.462693521152026 770.9681028896479 5.528846153846153
+star shaft torque, side reaction, pin single shear & bending (centred reaction overhang), extraction µ=.23 N 70.0 33.65384615384615 87.44777092961284 1079.355344045507 7.740384615384616
+star shaft torque, side reaction, pin single shear & bending (centred reaction overhang), extraction µ=.23 N 113.152 54.4 141.35557394610788 1744.7316555633888 12.512
+park spring k, Llocked, Lreleased, wire solid assumed 8 coils, preload, max 0.7986488248457184 3.8100000000000023 1.7700000000000022 1.52 0.13 1.7592436026852658
+spring compression reserve at full unlock 0.2500000000000022
+brake cam max axial lead, optimistic continuous torque; peak side-loaded extraction incl spring before spur loss at 70Nmm input torque 1.5827586206896551 6.9887999999999995 15.035618455496811
+drift if drive spring or actuator starts between holes unresolved. No finite radial jam bound from motor torque: dr/dtheta→0 near dwell
+four stalled cold 3V/16.2ohm drives on .85 converter, +.13/.15 cell-side allowances A 1.1514596949891067 not a guaranteed sag/thermal or cutoff limit
+illustrative disk thrust, guide X spacing, nominal radial reaction/row if loaded opposite rim uses full rim-to-stud lever 100 1.4000000000000004 1444.285714285714
+illustrative disk thrust, guide X spacing, nominal radial reaction/row if loaded opposite rim uses full rim-to-stud lever 533.2162379084884 1.4000000000000004 7701.165950364024

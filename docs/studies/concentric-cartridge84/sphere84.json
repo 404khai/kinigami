@@ -1,0 +1,105 @@
+{
+  "active": [
+    [
+      "annular ejector",
+      [
+        8.2,
+        5.013993110640606,
+        -3.8473722313351146
+      ]
+    ],
+    [
+      "annular ejector",
+      [
+        8.2,
+        5.254887949752086,
+        -3.511203872683886
+      ]
+    ],
+    [
+      "clamshell 0",
+      [
+        -39.03691359580105,
+        -8.585615470411451,
+        -22.19658172142933
+      ]
+    ],
+    [
+      "clamshell 0",
+      [
+        -1.055951873538386,
+        -12.322706404639135,
+        18.549311259805286
+      ]
+    ],
+    [
+      "clamshell 1",
+      [
+        -9.120000000000001,
+        11.828980256587164,
+        24.73322181071601
+      ]
+    ]
+  ],
+  "barycentric_weights": [
+    0.04106422808203474,
+    0.04377697464913436,
+    0.4657024180603597,
+    0.07342334203016046,
+    0.37603303717831077
+  ],
+  "center": [
+    -20.990840007426687,
+    -0.019089946327926464,
+    0.013759907650489404
+  ],
+  "label": "exploratory",
+  "nominal_upper_diameter": 59.86589581726009,
+  "note": "Common sphere, all listed stock and air reservations; conservative orthogonal translation endpoints. Lower via weighted squared distance of simultaneously installed material vertices at zero yaw. Curved-surface debit conditional, no build tolerances.",
+  "radius": 29.8721510238589,
+  "simultaneous_lower_diameter": 59.744301968652266,
+  "simultaneous_support": [
+    [
+      "annular ejector",
+      [
+        8.2,
+        5.013993110640606,
+        -3.8473722313351146
+      ]
+    ],
+    [
+      "annular ejector",
+      [
+        8.2,
+        5.254887949752086,
+        -3.511203872683886
+      ]
+    ],
+    [
+      "clamshell 0",
+      [
+        -39.03691359580105,
+        -8.585615470411451,
+        -22.19658172142933
+      ]
+    ],
+    [
+      "clamshell 0",
+      [
+        -1.055951873538386,
+        -12.322706404639135,
+        18.549311259805286
+      ]
+    ],
+    [
+      "clamshell 1",
+      [
+        -9.120000000000001,
+        11.828980256587164,
+        24.73322181071601
+      ]
+    ]
+  ],
+  "trial_surface_debit": 0.06,
+  "yaw_sagitta": 0.0007968847711458443
+}

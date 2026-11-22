@@ -1,0 +1,14 @@
+assigned density g/cc steel17-4PH 7.75, Al7075 2.81, Cu 8.96, steel density not motor part specification
+bare cell catalog mass 2.9 g
+boards, protection, tab/flex (copper upper) 11.311 g
+disk/posts/inserts steel 8.321 g
+leaf/slots/bearings/transmission steel 3.194 g
+motors and parking cartridge (solid copper upper) 17.721 g
+mounts, wall, body, feet aluminum-upper trial 8.933 g
+rotor 17-4PH net union BEFORE groove cuts 52.55 g
+shafts/gear blanks/races steel 15.445 g
+tail/port stock incl spring reserves steel 35.689 g
+all listed mass upper g (overlaps, blanks, uncut ports, empty motor & electronics envelope charged) 156.06419662656705 gross upper-model COM (NOT upper actual COM) [-3.92605366  1.0529905   0.45673832]
+certain installed steel rotor core + disk + 2.9g cell mass lower (this steel assignment) 29.564896621499358 5.756391029197763 38.22128765069712
+lower steel rotor (bounded swept cuts), bored lobe, 3 actual balls, disk steel and catalog cell, total lower (named parts only) 43.16609243133259 20.979136494395146 1.521708941582556 5.756391029197763 74.32332889650806
+conservative COM intervals mm, independent listed mass/position uncertainty [(np.float64(-11.324763196169323), np.float64(7.3560916320221)), (np.float64(-13.314771236126335), np.float64(14.189602829207194)), (np.float64(-12.715395387000711), np.float64(14.004824263680408))]

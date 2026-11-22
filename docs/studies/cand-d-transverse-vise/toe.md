@@ -1,0 +1,37 @@
+# Take 31 — oblique withdrawal of a finite toe
+
+**Exploratory: positive opening work is not terminal separation.** A single 20.50 mm slide, directed (−.8,+.6,0), carries the full horizontal Ø5 bearing flat behind x=1.45. Its six forward faces assist retraction. But a real tail shoulder can reach the parked underside, and a fixed guard confined to x≤3 cannot block this path without colliding with the moving toe. Use a measured release corridor or change the mechanism. No qualification, preload solve, R8 acquisition result or physical test.
+
+Run `python3 -B toe.py` in this directory ([source](toe.py)). All lengths mm. μ≤.23, face/trajectory mismatch ≤1°, and all specified clearance stacks are provisional loaded gauges. Head centre x15, separate own-tail centre −19.5, Q12 sphere centre (−.20,0,+.15) from packaging. The supporting joint, battery, drives and other Kin do not inherit the local component-radius test.
+
+## Machineable solid and fixed cuff
+
+Set X=x−15, Y=y−3.50, u=.8X−.6Y, w=.6X+.8Y. Intersect seven planes: Y≥0; 1.65≤x≤17.85; w+.32u≤2.60; −w+.32u≤1.05; ±z+.32u≤2.85. Erode by an R.20 ball and dilate by the same ball for tangent blends. The rear x1.65 machining face is not a release flank. Drive load comes through a captured rear fastening; do not expose a screw head or hole on the working skin. The long drafted back is needed if its sides can be touched — an exposed cylindrical rod behind a short pad has no such opening coefficient.
+
+| Global section x | y min..max | Max absolute z |
+|---:|---:|---:|
+| 1.65 | 7.071..26.572 | 10.698 |
+| 2.90 | 6.638..24.812 | 10.040 |
+| 4.15 | 6.204..23.052 | 9.382 |
+| 15.00 | 3.500..7.777 | 3.672 |
+| 17.85 | 3.500..3.764 | 2.172 |
+
+For outward toe normal m and d=(.8,−.6,0), the least opening force per N on the moving toe is m·d−μ sqrt(1−(m·d)²). After the 1° debit the flat, front and four flanks give .3995, .6482 and **.06786** respectively. Intermediate fillet normals are normalized positive combinations of incident faces and retain the least projection. Exclude every blend involving the aft face. A backing R.20 ball fits under every point of the R2.50 disk, not just its centre.
+
+Over the physical x=1.95..2.32 cuff, let H be the exact *yz polygon* of the toe at x=1.65. The aperture is H offset outward by .15+.46(x−1.65) with rounded corners. Use a .45 peripheral band and a forward-facing annular land; no credit for the external returns. The worst clearance to the moving polygon is .184 (nominal). Every forward half-space tightens at a fixed point on withdrawal, so its entire sweep in the cuff is contained in the home section. The inside flare gives positive Fx≥.2089 N/N nominal. Loaded alignment, bridges and surface finish must preserve the clearances; no binding guarantee. Cuff radius ≤29.716 about the common centre, moving toe ≤28.761 closed: each is below 30 incl .20. A fixed tube covering the *whole* rear sweep is not: upper rear reaches y38.872. The aft screw/rods may protrude at deployment; they are not checked by the closed Q12 test.
+
+The old y9.25 blade intersects the home toe by 3.046. Use y4.70, leaving 1.304 after .20. During withdrawal keep it parked; do not start axial eject until the upper is physically clear. At terminal, real stroke ≥20.30 and .12 x error put the toe aheadmost at x≤1.73. The main blade starts x3.35; the positive z wing comes back to x1.90 but y≤2.05. The high toe, cuff band and low wing are vertically separated even where x overlaps. Lower cheek tops y−1.70; master and roll rails are below y−7.8. Cell z≤−15; MCU z≥19.85; joint motor is below −14.9. The supplied attachment ending x1.68 has .27 nominal to the cuff; a z−12.75 guide centre is not by itself clearance for its diameter, bearings or carrier. Require an actual shaft/side-holder forward bound x≤3 or direct clearance of all moving parts. Fixed exterior returns, incline stiffness, off-axis guide drag and neighboring housings remain separate.
+
+## Contact regions left after opening
+
+* From the monitored Take 27 branch (site x≥14.95, tilt≤6°, yaw≤3°), even the R7 rear shoulder lies at x≥4.249 after .20 debit; all enumerated paddle surfaces are ahead of the cuff, shaft and rear toe plane. Only the six favorable toe surfaces can bear. Housing must be independently excluded.
+* With arbitrary unsupported attitude, a **measured site x>18.071** puts every paddle/arm through local +12 beyond x3 incl .20 in any orientation, using the 14.871 mm site-centred enclosing radius. This branch needs no maintained shoulder force. It is not a proof that the pusher delivered that displacement nor a bound for a distant foot.
+* A fixed R8 crown with centre local (0,−4.50,0), summit +3.50, cap radius 2.50, works on the same flat **at home**. Tilt changes summit height by 4.50(1−cosτ) and its lateral position by 4.50 sinτ. With tilt≤6°, .80 transverse error, .05 pad error and 200 N R8/flat patch, .961 of flat remains; after only 1.202 mm oblique travel that full-patch guarantee is spent. The spherical cap itself retains 1.395. At 50/100/200 N the provisional Hertz screens are 1.263/1.591/2.004 GPa (E*=115.38 GPa); full sliding friction, no rolling credit. The alternative R3 loose ball retains its own bed/wander assumptions. Neither variant imports an all-seat result.
+
+## Why a terminal fixed mask fails
+
+The R8 summit can reach the parked flat at (1.00,15.80,0) with an aligned site at (1.00,12.30,0). The true rear, web and partly entering lower bosses pass the flared cuff; the worst forward boss slice has .253 lateral reserve. This is a counterexample for the cuff, not a simulated whole machine. A proposed sill with .6x+.8y=6.39 could intercept a low boss for this crown case (at τ≤6°, any yaw, .213 projected margin before tolerances), but the packaged rear collar spans 5.300..8.808 in that coordinate and **cuts the sill**. Even an intact sill would not solve the next case.
+
+**Decisive swept-volume witness.** At zero tilt/yaw translate the site to (10.656867,13.508178,0). The R.45-rounded top of the cropped R7 rear shoulder touches the terminal underside at (.80,15.80,0); other aft stock is lower. The upper crown is still far forward. Entire paddle minimum .6x+.8y ≥9.8139: the proposed sill misses. Approach along −x at the same y after the toe is parked. All paddle material that enters x≤3 on this path lies in the prism x=.206867..3, y=10.508178..15.80, |z|≤3 (rear boss, web/stub, cropped butt only). For each such x choose a *preceding* toe travel s=max(0,(1.65−x)/.8)+.40. After undoing this motion, the whole prism section lies at least .320 inside every raw toe halfspace and .120 inside its R.20 eroded core. The check is affine on both closed x intervals, so corners suffice. No rigid stationary guard in x≤3 can occupy that blocking volume. The result concerns the actual finite mating parts; an unrelated grounded link can impose other conditions. A floor pinch is **possible only if the rest of the assembly supports it**, not asserted to have occurred.
+
+Stop if the pose corridor, gap, contact or travel cannot be observed independently. A distinct cam-driven straight shutter could cover the aperture after retraction: stow a shaped plate below the mast, physically clear the low blade's offset wing, then raise and latch the plate behind a fixed rim. Strength, terminal seam overlap, wing synchronization and a jammed leading shutter edge are unproved; do not claim its powered closure always succeeds. It is not part of the fixed-cuff result. No candidate, review, registered criterion or official run changed.

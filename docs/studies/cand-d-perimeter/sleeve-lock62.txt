@@ -1,0 +1,19 @@
+wheel turn at blocked input, deg, witness depth in wheel mm -3 0.0009206164083792601
+wheel turn at blocked input, deg, witness depth in wheel mm -2 -0.016881569400232888
+wheel turn at blocked input, deg, witness depth in wheel mm -1.5 -0.02722186176332686
+wheel turn at blocked input, deg, witness depth in wheel mm -1 -0.03852185537873298
+wheel turn at blocked input, deg, witness depth in wheel mm -0.5 -0.05078138105240049
+wheel turn at blocked input, deg, witness depth in wheel mm 0 -0.06399999999999961
+wheel turn at blocked input, deg, witness depth in wheel mm 0.5 -0.05078138105240049
+wheel turn at blocked input, deg, witness depth in wheel mm 1 -0.03852185537873298
+wheel turn at blocked input, deg, witness depth in wheel mm 1.5 -0.02722186176332686
+wheel turn at blocked input, deg, witness depth in wheel mm 2 -0.016881569400232443
+wheel turn at blocked input, deg, witness depth in wheel mm 3 0.0009206164083792601
+worst wheel-vs-sector sample depth, beta, wheel angle (np.float64(-0.06399999999999961), np.float64(180.0), 0)
+driver wheel axial overlap/OD 1.33 8.42 crank radius pin diameter 1.7422564253912158 0.74 slot radial reach 2.4004790160769125 4.21 slot radii tolerance 0.03999999999999998
+actual mid-index compress stroke barrel 9 0.59375 9.7412109375 0.01954914444882987 0.13638952804279064 103.8967773592425 175.45185693315497 28.621872711522954
+actual mid-index compress stroke barrel 10 0.65625 10.7666015625 0.036761974851723556 0.08793240593077382 100.66128292260834 231.69949033000927 37.79768100189931
+actual mid-index compress stroke short 10 0.65625 0.65625 5.82069776924321e-06 0.19140739572134657 107.57033445530652 1.4524963024767044 0.23694912672987464
+actual mid-index compress stroke short 15 0.96875 0.96875 0.015087036695842335 0.1489511402357014 104.73551941807474 71.62433553764494 11.684245756298361
+actual mid-index compress stroke short 16 1.03125 1.03125 0.021551219564778335 0.13075333712589013 103.52044745022964 84.42017825464671 13.77166157442918
+actual mid-index compress stroke short 17 1.09375 1.09375 0.029144787361685826 0.10937611830784055 102.09308508238988 96.56139869988532 15.75228732681751

@@ -104,3 +104,10 @@ Append-only record of Kinigami's engineering decisions (Q39).
 | Q91 | [cand-d version 4: revision decisions](Q091-cand-d-v4-revision.md) (agent decision under owner delegation) | accepted |
 | Q92 | [Gate 1 run 9 disposition (cand-d v4)](Q092-gate1-run9-disposition.md) (agent decision under owner delegation) | accepted |
 | Q93 | [cand-d version 5: revision decisions](Q093-cand-d-v5-revision.md) (agent decision under owner delegation) | accepted |
+| Q94 | [Gate 1 run 10 disposition (cand-d v5)](Q094-gate1-run10-disposition.md) (agent decision under owner delegation) | accepted |
+| Q95 | [Separate closing preload from the release drive in cand-d v6](Q095-cand-d-v6-servo-drive.md) (agent decision under owner delegation) | accepted design direction |
+| Q96 | [Size the release drive against moving torque](Q096-cand-d-rate-the-release-drive.md) (agent decision under owner delegation) | accepted design direction |
+| Q97 | [Gate 1 run 11 disposition (cand-d v6)](Q097-gate1-run11-disposition.md) (agent decision under owner delegation) | accepted |
+| Q98 | [Study disposition: do not freeze the captive-screw jaw layout](Q098-cand-d-internal-screw-study.md) (agent decision under owner delegation) | accepted |
+| Q99 | [Separate the six retention coordinates in cand-d v7](Q099-cand-d-six-coordinate-shutter.md) (agent decision under owner delegation) | accepted design direction |
+| Q100 | [Gate 1 run 12 disposition (cand-d v7)](Q100-gate1-run12-disposition.md) (agent decision under owner delegation) | accepted |

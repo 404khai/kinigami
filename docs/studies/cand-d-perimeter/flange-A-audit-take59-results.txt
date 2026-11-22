@@ -1,0 +1,48 @@
+straight stow home/closed and parked/open enclosures ((-1.7607462688467461, 0.2849491841346648, -0.0025694046981316228), np.float64(60.24393304233659), [(np.float64(30.121966521168297), 'computer'), (np.float64(30.097041285464257), 'clamp gearmotor'), (np.float64(29.399156126112153), 'motor base')]) ((-1.7607462688467461, 0.2849491841346648, -0.0025694046981316228), np.float64(60.24393304233659), [(np.float64(30.121966521168297), 'computer'), (np.float64(30.097041285464257), 'clamp gearmotor'), (np.float64(29.399156126112153), 'motor base')])
+minimum z all stock -23.5
+head-head two independent full motions, yaw ±15, neighbour uniformly held..following X, raw/net gap (-10.979991443243074, 'solid metal ejector plate', 'clamp gearmotor', -15) -11.455082435806219
+rim pair OD/material if retained clamp gearmotor 54.154407702617846 (13.489999999999998, 19.077778917121478, 8.896114409641722) (-29.019999999999996, -11.321891856218507, -5.297538766827489)
+rim pair OD/material if retained disk gearmotor 47.20413422984611 (13.489999999999998, -17.851412424092768, -11.15480051210896) (-2.7974245742535357, 19.65, 12.437447268156326)
+rim pair OD/material if retained yaw gearmotor 54.276001971703444 (13.489999999999998, -15.886636663689352, -13.81004256025017) (-9.582253156092326, 21.034152406647653, 18.599999999999998)
+new own tail vs head, all yaws, raw/net (-10.320464873982555, 'one-piece rolled flange and solid core', 'clamp gearmotor', 15) -10.720938321920102
+own tail actual flange inner vs cans -15 [(1.038784, 'one-piece rolled flange and solid core inner', 'clamp gearmotor', (-25.286770188262945, -6.691321357988948, -3.6332396975585417))]
+own tail actual flange inner vs cans 0 [(2.5, 'one-piece rolled flange and solid core inner', 'clamp gearmotor', (-23.21, -9.088452615637664, -3.919688222136064))]
+own tail actual flange inner vs cans 15 [(2.449244, 'one-piece rolled flange and solid core inner', 'clamp gearmotor', (-21.43338465312324, -8.909323473288502, -4.462956498248406))]
+registered stops vs clamp can []
+both drive cans []
+disk piston core vs fixed hinge []
+disk-drive motor vs steel fixed brackets []
+boards vs all other swept head (0.5349999999999997, 'cutoff', 'disk index wheel OD')
+disk vs jaw pedestal (inner check uses inner turned disk below), proxy gap 0.0 0.0 (2.945533905932738, 'solid metal ejector plate', 'Take58 contact shoe 30') []
+disk vs jaw pedestal (inner check uses inner turned disk below), proxy gap 0.0 1.45 (3.8575365606963636, 'solid metal ejector plate', 'Take58 contact shoe 30') []
+disk vs jaw pedestal (inner check uses inner turned disk below), proxy gap 7.495533905932738 0.0 (0.9343240903102277, 'solid metal ejector plate', 'Take58 contact shoe 150') []
+disk vs jaw pedestal (inner check uses inner turned disk below), proxy gap 7.495533905932738 1.45 (2.1889049150239757, 'solid metal ejector plate', 'Take58 contact shoe 150') []
+held at registry, cone penetration along normal at dq 0 0.0
+held at registry, cone penetration along normal at dq 0.05 0.035355339059327376
+held at registry, cone penetration along normal at dq 0.25 0.17677669529663687
+offset and stroke X, home/park disk; groove/ring/open radial stroke angle 17.04 -6.445533905932738 1.05 7.495533905932738 17.45 21.049999999999997 1.45 51.42857142857143
+radial groove edge bounds, inner/outer metal remaining 16.324999999999996 20.025 1.5749999999999957 1.0249999999999986
+cam peak dr/dangle, pressure-angle upper bound 3.0757575757575757 9.996343489949114
+total axial, routing fraction, jaw normal, radial, guide+radial, working roller N, required ring T and idealised geared input 40 0.333 95.09 96.658 117.937 119.755 483.66 74.362
+total axial, routing fraction, jaw normal, radial, guide+radial, working roller N, required ring T and idealised geared input 40 1 285.271 289.973 353.811 359.265 1450.981 223.086
+actual mid-fourth-step frictionless radial, ideal motor torque, torque with ONLY gearbox/quill efficiencies 40 105.26315789473685 27.86405055508279 48.37508776924096
+total axial, routing fraction, jaw normal, radial, guide+radial, working roller N, required ring T and idealised geared input 75 0.333 178.294 181.233 221.132 224.54 906.863 139.429
+total axial, routing fraction, jaw normal, radial, guide+radial, working roller N, required ring T and idealised geared input 75 1 534.883 543.7 663.395 673.621 2720.59 418.287
+actual mid-fourth-step frictionless radial, ideal motor torque, torque with ONLY gearbox/quill efficiencies 75 197.3684210526316 52.24509479078022 90.70328956732678
+total axial, routing fraction, jaw normal, radial, guide+radial, working roller N, required ring T and idealised geared input 113 0.333 268.63 273.058 333.172 338.308 1366.341 210.073
+total axial, routing fraction, jaw normal, radial, guide+radial, working roller N, required ring T and idealised geared input 113 1 805.891 819.175 999.515 1014.923 4099.022 630.219
+actual mid-fourth-step frictionless radial, ideal motor torque, torque with ONLY gearbox/quill efficiencies 113 297.3684210526316 78.71594281810887 136.6596229481057
+disk N, guide μ, screw thrust, screw torque, gearhead demand 8 0.05 9.975 2.835 1.831
+disk N, guide μ, screw thrust, screw torque, gearhead demand 8 0.15 19.698 5.598 3.615
+disk N, guide μ, screw thrust, screw torque, gearhead demand 8 0.23 89.498 25.436 16.425
+disk N, guide μ, screw thrust, screw torque, gearhead demand 40 0.05 49.873 14.174 9.153
+disk N, guide μ, screw thrust, screw torque, gearhead demand 40 0.15 98.492 27.992 18.076
+disk N, guide μ, screw thrust, screw torque, gearhead demand 40 0.23 447.489 127.179 82.125
+disk N, guide μ, screw thrust, screw torque, gearhead demand 75 0.05 93.511 26.576 17.162
+disk N, guide μ, screw thrust, screw torque, gearhead demand 75 0.15 184.673 52.485 33.892
+disk N, guide μ, screw thrust, screw torque, gearhead demand 75 0.23 839.041 238.46 153.984
+disk N, guide μ, screw thrust, screw torque, gearhead demand 113 0.05 140.891 40.042 25.857
+disk N, guide μ, screw thrust, screw torque, gearhead demand 113 0.15 278.241 79.078 51.064
+disk N, guide μ, screw thrust, screw torque, gearhead demand 113 0.23 1264.155 359.28 232.003
+cap and shoulder 0.06525050633883289 0.07925050633883224 0.5044477415082462
+disk motion/stations/home overtravel debit 7.495533905932738 119.9285424949238 0.004466094067262283

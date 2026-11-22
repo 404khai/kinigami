@@ -1,0 +1,23 @@
+sampled cutter disk radial end/radius enlargement 0.041650661976267406 radial core remaining 1.3383493380237308
+thinnest end-wall axial after overcut disk 0.17334933802372987
+sampled cutter leaf radial end/radius enlargement 0.04633155273868363 radial core remaining 1.9536684472613128
+thinnest end-wall axial after overcut leaf 0.23366844726131575
+finished cam outside all sampled tool cuts vs rear spine [(0.54483, 'finished drum core 33', 'rear spine', (-2.2448338256195477, -4.2948338256195475, -11.792365467082293))]
+index continuous ideal sample, max sector sample in registered wheel, beta, q (np.float64(-0.059999999999999165), np.float64(178.0), 0)
+180° blocked input; output trial rotation; maximum sampled material depth (mm) -4 0.021464693483403963
+180° blocked input; output trial rotation; maximum sampled material depth (mm) -3 0.004699189754226563
+180° blocked input; output trial rotation; maximum sampled material depth (mm) -2 -0.012526624811181719
+180° blocked input; output trial rotation; maximum sampled material depth (mm) 0 -0.05999999999999961
+180° blocked input; output trial rotation; maximum sampled material depth (mm) 2 -0.012526624811181719
+180° blocked input; output trial rotation; maximum sampled material depth (mm) 3 0.004699189754226563
+180° blocked input; output trial rotation; maximum sampled material depth (mm) 4 0.021464693483404407
+beta°, ideal q, nominal pin outside wheel rim? ring play diagnostic for ±3° wheel vs sector 180 0 True 0.004699189754226563 0.004699189754226563
+beta°, ideal q, nominal pin outside wheel rim? ring play diagnostic for ±3° wheel vs sector 115 0 True -0.1103146930675194 0.005660941958030685
+beta°, ideal q, nominal pin outside wheel rim? ring play diagnostic for ±3° wheel vs sector 100 0 True -0.16992301791009767 -0.23635938732836093
+beta°, ideal q, nominal pin outside wheel rim? ring play diagnostic for ±3° wheel vs sector 90 0 True -0.26692929176820934 -0.2605203654040763
+beta°, ideal q, nominal pin outside wheel rim? ring play diagnostic for ±3° wheel vs sector 80 0 False -0.3578854334285637 -0.3453809176969438
+beta°, ideal q, nominal pin outside wheel rim? ring play diagnostic for ±3° wheel vs sector 70 0 False -0.3733339867265432 -0.367011064118798
+beta°, ideal q, nominal pin outside wheel rim? ring play diagnostic for ±3° wheel vs sector 67.5 0 False -0.37100794225241884 -0.36526168275250925
+beta°, ideal q, nominal pin outside wheel rim? ring play diagnostic for ±3° wheel vs sector 62 -0.11377748406865962 False -0.3653163580720574 -0.3682045086075745
+beta°, ideal q, nominal pin outside wheel rim? ring play diagnostic for ±3° wheel vs sector 50 -1.2545019504450465 False -0.3960301374140087 -0.37393345287831875
+beta°, ideal q, nominal pin outside wheel rim? ring play diagnostic for ±3° wheel vs sector 0 -22.5 False -0.43174485564213994 -0.43174485564213927

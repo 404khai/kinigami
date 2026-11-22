@@ -1,0 +1,162 @@
+{
+  "label": "exploratory",
+  "fit": {
+    "offset": 0.02,
+    "normal_degrees": 0.6,
+    "box_radius": 0.023,
+    "map_bound": 0.02128808134218588,
+    "translation": 0.04113070794934222,
+    "rotation_deg": 0.30506355648964334,
+    "face_pole_shift": 0.12215147103889643,
+    "key_pole_shift": 0.08226345125554321,
+    "key_seventh_stroke": 0.25530721215422336,
+    "rank_seven": 7
+  },
+  "force": {
+    "key_force_line_y": 1.65,
+    "triangle_side_clearance": 3.5000000000000004,
+    "clean_normal_forces": [
+      1.0,
+      0.4364711857647865,
+      0.2212685812113002,
+      0.19264344639466968,
+      0.19264344639466954,
+      0.2212685812113002,
+      0.43647118576478655
+    ],
+    "clean_axial_seat_shares": [
+      0.38673139158576064,
+      0.22653721682847888,
+      0.38673139158576064
+    ],
+    "clean_first_loss_radius": 0.23963836741442282,
+    "clean_first_loss_pole": 4,
+    "clean_adverse_wrench": [
+      0.08884757190362516,
+      -7.212905653596063e-17,
+      -0.11985688789953018,
+      0.05992844394976506,
+      7.638265993990287e-17,
+      0.17769514380725038
+    ],
+    "nominal_stationary_first_loss_mu": [
+      0.15392578124999998,
+      0.154677734375
+    ],
+    "illustrative_robust": {
+      "mu": 0.08,
+      "min_nominal_projection_per_key": 0.06317286495161187,
+      "sufficient_external_wrench_radius": 0.08014602747114542,
+      "independent_face_debit": 0.12215147103889643,
+      "nominal_normal_cone_mu": 0.09054821859354177
+    },
+    "bad_gap": {
+      "recessed_pole": 2,
+      "recess": 0.02,
+      "mu": 0.19,
+      "normal_forces": [
+        0.9999999999999999,
+        0.46271573480354555,
+        0.0,
+        0.14249755975635162,
+        0.2193766678211094,
+        0.23621223258581936,
+        0.505331407497158
+      ],
+      "contact_forces": [
+        [
+          -0.8923432873639136,
+          -0.48971773247102657,
+          0.0
+        ],
+        [
+          0.3224422683154008,
+          0.31637614825385346,
+          -0.13331237333434434
+        ],
+        [
+          0.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.06846072022928533,
+          -0.02344723627799538,
+          0.12570577533229954
+        ],
+        [
+          0.13161751935342747,
+          -0.04026130193539306,
+          -0.17583893643924153
+        ],
+        [
+          0.16445042952285574,
+          -0.1591776409880985,
+          -0.07229667695892103
+        ],
+        [
+          0.20537234994294426,
+          0.39622776341865995,
+          0.25574221140020736
+        ]
+      ],
+      "residual": 1.6478959984131287e-16,
+      "key_drive_force": 0.48971773247102657,
+      "key_tension_per_normal": 0.8923432873639136
+    },
+    "shallow_trial": {
+      "taper_deg": 3.0,
+      "seat_deg": 65.0,
+      "minimum_seat_normal": 0.0,
+      "open_flank_assist": -0.17734883675060814
+    }
+  },
+  "stock": {
+    "lug_center": [
+      -5.9,
+      0.7727168201711528,
+      0.0
+    ],
+    "key_pole": [
+      -3.5223587092621167,
+      1.5452593061085214,
+      0.0
+    ],
+    "key_tip_y": 0.4952593061085213,
+    "shank_start_y": 3.5692710799791887,
+    "contact_face_inscribed_margin": 0.39798225867686665,
+    "seat_margin_after_tolerances": 0.2296509684808723,
+    "key_face_margin": 0.7686019805577905,
+    "shank_engagement_allowance": 0.5307289200208114,
+    "stem_to_key_path": 0.023355157814185533,
+    "wing_to_guide": 0.5626587736527413,
+    "opposite_wing_to_key": 4.2452593061085215,
+    "hub_to_drive": 0.92,
+    "seat_to_key": 4.195927363870727,
+    "stem_to_seat": 1.500000000000001,
+    "lug_to_seat": 5.677283179828848,
+    "rear_wall_to_lug": 0.1999999999999993,
+    "barrel_to_wings": 0.5499999999999989,
+    "park_lug_y_clearance": 1.3725424859373692,
+    "park_stem_y_clearance": 2.4225424859373694,
+    "postroll_wing_guide": 0.39169104965889945,
+    "postroll_caps": 1.4730968565843123,
+    "arm_to_guide_end": 0.20000000000000107,
+    "pocket_rear_end": 0.4499999999999993
+  },
+  "release": {
+    "flat_end_slide": 0.8081559480312318,
+    "toe_end_slide": 2.7774575140626316,
+    "air_after_park": 1.3725424859373687,
+    "tail_dx_at_edge": 2.9730968565843123,
+    "last_005_x_projection_travel": 0.003564729350059498,
+    "contact_open_assist_min": 0.09027399562706206,
+    "illustrative_guide_mu": 0.12,
+    "guide_sum_norm_per_normal": 10.36102480463095,
+    "max_motor_pull_per_normal": 1.1530489809286522,
+    "motor_at_20N": 23.060979618573043,
+    "guide_mu_for_assist_alone": 0.009991567351105525,
+    "at_last_x_contact": 0.0,
+    "minimum_tension_capacity_without_friction": 0.0
+  }
+}

@@ -1,0 +1,304 @@
+{
+  "label": "exploratory",
+  "note": "Upper working roller/sleeve and loaded roller/tail interfaces intentionally touch; see finite overlap residuals in local84.json, not classified as strictly separated. t-symmetric local trunnion pair uses 0\u00b0 station; whole assembly sampled independently. WALK over reset trajectory uses DRAW in reverse then UNLOCK sleeve segment. Only nominal, aligned, polygonal.",
+  "rows": [
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.002338395774762088,
+      "parts": [
+        "slotted sleeve and skirt",
+        "rail-free cage"
+      ],
+      "phase": "DRAW",
+      "strictly_separated_cells": 16,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.001010270774761608,
+      "parts": [
+        "slotted sleeve and skirt",
+        "rail-free cage"
+      ],
+      "phase": "UNLOCK",
+      "strictly_separated_cells": 256,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.00999464577476259,
+      "parts": [
+        "slotted sleeve and skirt",
+        "rail-free cage"
+      ],
+      "phase": "EJECT",
+      "strictly_separated_cells": 2,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.005000000767256978,
+      "parts": [
+        "slotted sleeve and skirt",
+        "pin extensions"
+      ],
+      "phase": "DRAW",
+      "strictly_separated_cells": 2,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.009176695714173504,
+      "parts": [
+        "slotted sleeve and skirt",
+        "pin extensions"
+      ],
+      "phase": "UNLOCK",
+      "strictly_separated_cells": 64,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.0600000031782555,
+      "parts": [
+        "slotted sleeve and skirt",
+        "pin extensions"
+      ],
+      "phase": "EJECT",
+      "strictly_separated_cells": 2,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.4999999999,
+      "parts": [
+        "slotted sleeve and skirt",
+        "guest tri-flat pin"
+      ],
+      "phase": "DRAW",
+      "strictly_separated_cells": 1,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.21249999989999946,
+      "parts": [
+        "slotted sleeve and skirt",
+        "guest tri-flat pin"
+      ],
+      "phase": "UNLOCK",
+      "strictly_separated_cells": 8,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.031249999899998215,
+      "parts": [
+        "slotted sleeve and skirt",
+        "guest tri-flat pin"
+      ],
+      "phase": "EJECT",
+      "strictly_separated_cells": 9,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.3774999999,
+      "parts": [
+        "rail-free cage",
+        "guest tri-flat pin"
+      ],
+      "phase": "DRAW",
+      "strictly_separated_cells": 1,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.4999999999,
+      "parts": [
+        "rail-free cage",
+        "guest tri-flat pin"
+      ],
+      "phase": "UNLOCK",
+      "strictly_separated_cells": 1,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.031249999899999104,
+      "parts": [
+        "rail-free cage",
+        "guest tri-flat pin"
+      ],
+      "phase": "EJECT",
+      "strictly_separated_cells": 9,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.11993575039716281,
+      "parts": [
+        "slotted sleeve and skirt",
+        "bonded bush and bridge set"
+      ],
+      "phase": "DRAW",
+      "strictly_separated_cells": 1,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.048060750397162136,
+      "parts": [
+        "slotted sleeve and skirt",
+        "bonded bush and bridge set"
+      ],
+      "phase": "UNLOCK",
+      "strictly_separated_cells": 32,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.11993575039716271,
+      "parts": [
+        "slotted sleeve and skirt",
+        "bonded bush and bridge set"
+      ],
+      "phase": "EJECT",
+      "strictly_separated_cells": 2,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.08999999990000075,
+      "parts": [
+        "slotted sleeve and skirt",
+        "V plate"
+      ],
+      "phase": "DRAW",
+      "strictly_separated_cells": 1,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.06624999989999661,
+      "parts": [
+        "slotted sleeve and skirt",
+        "V plate"
+      ],
+      "phase": "UNLOCK",
+      "strictly_separated_cells": 15,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.4999999999,
+      "parts": [
+        "slotted sleeve and skirt",
+        "V plate"
+      ],
+      "phase": "EJECT",
+      "strictly_separated_cells": 2,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.3774999999,
+      "parts": [
+        "rail-free cage",
+        "V plate"
+      ],
+      "phase": "DRAW",
+      "strictly_separated_cells": 1,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.4999999999,
+      "parts": [
+        "rail-free cage",
+        "V plate"
+      ],
+      "phase": "UNLOCK",
+      "strictly_separated_cells": 1,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.4999999999,
+      "parts": [
+        "rail-free cage",
+        "V plate"
+      ],
+      "phase": "EJECT",
+      "strictly_separated_cells": 2,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.3899999999,
+      "parts": [
+        "pin extensions",
+        "guest tri-flat pin"
+      ],
+      "phase": "DRAW",
+      "strictly_separated_cells": 1,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.09609230129326551,
+      "parts": [
+        "pin extensions",
+        "guest tri-flat pin"
+      ],
+      "phase": "UNLOCK",
+      "strictly_separated_cells": 5,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.031249999899999104,
+      "parts": [
+        "pin extensions",
+        "guest tri-flat pin"
+      ],
+      "phase": "EJECT",
+      "strictly_separated_cells": 9,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.3899999999,
+      "parts": [
+        "pin extensions",
+        "V plate"
+      ],
+      "phase": "DRAW",
+      "strictly_separated_cells": 1,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.09609230129326551,
+      "parts": [
+        "pin extensions",
+        "V plate"
+      ],
+      "phase": "UNLOCK",
+      "strictly_separated_cells": 5,
+      "unresolved_count": 0
+    },
+    {
+      "first_unresolved": [],
+      "lower_polygon_gap_mm": 0.4999999999,
+      "parts": [
+        "pin extensions",
+        "V plate"
+      ],
+      "phase": "EJECT",
+      "strictly_separated_cells": 2,
+      "unresolved_count": 0
+    }
+  ],
+  "slot_analytic": "At a station, |roller_x\u2212cheek_x|\u2264.025, roller y within 4.93066..7.04, capsule center segment y4.89..7.10. Therefore R.50 trunnion lies in R.525 capsule; equality possible at DRAW. No positive spacing claimed at bearing contact."
+}

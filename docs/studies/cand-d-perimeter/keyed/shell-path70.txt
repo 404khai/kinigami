@@ -1,0 +1,13 @@
+rejected root variants, actual spindle and pin balls [(np.float64(0.2597), 'old park bearing tie', 'park output spindle', [6.8935, 18.3017, 19.3])] [(np.float64(0.0171), 'old pin guide tie', 'dog polished pin', [2.8012, 19.4923, 12.29])]
+fixed tie clearance to unbounded rotating/sliding working cylinder park cam bearing tie 0.12000000000000122
+fixed tie clearance to unbounded rotating/sliding working cylinder pin guide outboard tie 0.11480537910173128
+park cam bearing tie union / conflict inscribed balls, radius and neighbor [(0.6623, 'cam bearing to foot tie', [10.3905, 10.4252, 11.5666]), (0.4873, 'stationary case (30.0, 10, -7.07)', [10.4573, 10.1728, 11.3127]), (0.108, 'park cam outboard bearing 15', [7.1657, 17.8624, 19.408]), (0.108, 'park cam outboard bearing 0', [7.1657, 17.8624, 19.192])]
+draw limit frame return union / conflict inscribed balls, radius and neighbor [(0.7222, 'aft cantilever -34.0', [-7.5042, 13.7577, -9.5121]), (0.6194, 'draw limit rear strut', [-6.9219, 4.5785, -12.9308])]
+park limit frame return union / conflict inscribed balls, radius and neighbor [(0.7297, 'upper yaw motor rail', [-7.5075, -12.9885, 10.15]), (0.6195, 'park limit rear strut', [-6.8309, 9.3284, 10.0046]), (0.0635, 'aft cantilever dogleg 143.0', [-7.0041, -12.2725, 9.6615])]
+motor rear saddle spine union / conflict inscribed balls, radius and neighbor [(1.0764, 'motor rear mount', [-7.4816, 16.4483, 9.6443]), (0.5881, 'clamp motor', [-4.3972, 20.88, 8.26])]
+pin frame bearing return union / conflict inscribed balls, radius and neighbor [(0.3974, 'pin guide axial return', [4.52, 19.01, 6.073]), (0.3395, 'worm independent bearing 9', [3.7669, 19.5529, 5.8548]), (0.0841, 'worm independent bearing 8', [3.4075, 19.3136, 5.8]), (0.0611, 'worm independent bearing 10', [4.2902, 19.5962, 5.9184])]
+true dog yoke, pin and roller vs unrelated stock, not cut star/track; z 16.18 []
+true dog yoke, pin and roller vs unrelated stock, not cut star/track; z 16.29 []
+true dog yoke, pin and roller vs unrelated stock, not cut star/track; z 17.16 []
+true dog yoke, pin and roller vs unrelated stock, not cut star/track; z 18.15 []
+A bearing outer ring alone does not establish tie strength, main-drive unloading, yoke antirotation, or power-off retention.

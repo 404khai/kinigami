@@ -1,0 +1,98 @@
+{
+  "label": "exploratory",
+  "g_start": 4.930660171779821,
+  "g_end": 7.04,
+  "knots": [
+    -3.7,
+    -1.5786796564403578,
+    -0.6994913472366788,
+    0.1490367901871783
+  ],
+  "straight_length": 1.2433600307557129,
+  "sleeve_profile_toe_R": 1.5,
+  "exit_R": 2.7,
+  "positive_lift_toe_R": 3.56,
+  "lift_exit_R": 0.6399999999999999,
+  "double_cam_min_normal_play": 0.06000000000000005,
+  "through_sleeve_slot": {
+    "u": [
+      -6,
+      1.48
+    ],
+    "abs_t": [
+      1.48,
+      4.25
+    ],
+    "y_top": 8.05
+  },
+  "slot_roof_min_ligament": 0.49697852358899297,
+  "roller_roof_min_ligament": 0.9327051509712678,
+  "cheek_side_clearance": 0.21000000000000085,
+  "strap_top_clearance": 0.14000000000000057,
+  "cheek_axial_slot_play": 0.025000000000000022,
+  "endcap_clearance": 0.06000000000000005,
+  "pin_tip_to_endplate": 0.06000000000000005,
+  "max_pin_rtop": 7.54,
+  "top_strap_above_pin": 0.17999999999999972,
+  "blade_side_to_cheek": 0.20000000000000018,
+  "blade_side_to_endplate": 0.1200000000000001,
+  "strap_above_cam": 1.2399999999999993,
+  "front_bridge_x_gap": 0.13500000000000045,
+  "slot_back_to_cheek": 0.7799999999999994,
+  "old_closed_slot_front_remaining": -0.09499999999999953,
+  "nominal_forward_cheek_overhang": 0.09499999999999953,
+  "cheek_min_rad": 5.145143341054746,
+  "cam_min_rad": 5.152708025883089,
+  "cheek_to_pin_full_OD": 0.5451433410547466,
+  "blade_to_pin_full_OD": 0.5527080258830894,
+  "shaft_to_bulk_shoulder_while_draw": 0.07768634666712071,
+  "minimum_park_center": 6.98,
+  "guaranteed_park_inner": 5.48,
+  "loaded_upper_park_inner": 5.54,
+  "rod_bush_to_scallop": 0.12,
+  "ball_to_widest_sector_side": 1.2814083110323953,
+  "slot_front_is_open": true,
+  "edge_relief": {
+    "abs_t": [
+      1.48,
+      1.64
+    ],
+    "y_top": 8.65
+  },
+  "edge_side_margin": 0.0799999999999999,
+  "edge_roof_margin": 0.11000000000000121,
+  "edge_roof_ligament": 0.7959043621732498,
+  "blade_clear_cage_toe_aft": "not included; Take84 scalloped plate",
+  "body_to_cheek": 1.3399999999999999,
+  "fixed_seat_slot_to_outer_sector": 0.07000000000000028,
+  "continuous_nominal": [
+    "upper surface and lower pin cam are signed normal offsets of the convex/concave center curve, maximum offset positive 1.5 < convex curvature radius 3, negative 0.56 < concave radius 1.2",
+    "circle at any u on center path cannot cross either offset: graph is monotone with slopes 0..1 and all normals are nonintersecting over offset interval",
+    "roof checks use largest radial height (PARK); slot and blade-side checks use absolute t and extremal u incl cage travel, not selected states"
+  ],
+  "shoulder_cut_inflation": 0.29813951756952284,
+  "shaft_to_retained_shoulder": 0.41504130664077543,
+  "centered_low_path_trunnion_r": 0.020894971451139277,
+  "hardened_sweep_proposal": {
+    "guide_slope": 0.011560693641618497,
+    "key_roll_rad": 0.00474537037037037,
+    "nose_drift": 0.17176352637063821,
+    "cheek_lane_drift": 0.13361323735329717,
+    "V_window_half": 4.46,
+    "minimum_V_land_to_new_cut": 1.5116774707549077,
+    "new_window_reserve": 0.03823647362936175,
+    "old_window_reserve": -0.10176352637063821,
+    "side_cut": 4.4,
+    "edge_relief": 1.78,
+    "blade_t": [
+      3.48,
+      3.72
+    ],
+    "side_roof_ligament": 0.4259877915930357,
+    "endwall_side_margin": 0.11638676264670283,
+    "blade_endwall_side_margin": 0.04638676264670255,
+    "edge_side_margin": 0.08638676264670286,
+    "edge_roof_ligament": 0.7687543347498238,
+    "blade_cheek_margin": 0.06638676264670301
+  }
+}

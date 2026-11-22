@@ -1,0 +1,6 @@
+world lip, stroke, y pads, crosshead X, rear roof Y, front wall X 17.04 1.8391 (16.05, 16.7, 20, 20.7) (-4.5, -2.04) 15.46 (-0.075, 0)
+swept bridge/spine/pads/roller vs fixed local stock; station and world axes -90 0.0029999999999992255
+swept bridge/spine/pads/roller vs fixed local stock; station and world axes 30 0.0029999999999952287
+swept bridge/spine/pads/roller vs fixed local stock; station and world axes 150 0.0029999999999930083
+conservative fixed row coverage at both ends 0.2900000000000009 0.10090000000000132 X gap and min intrinsic pitch 0.003 3.3000000000000007
+uninterrupted front wall, toe-to-guide bridge roof clearance full stroke 0.05 0.2599999999999998

@@ -1,0 +1,66 @@
+face trial R cone-flank rounding, nominal tangent, main normal [ 11.48         2.16506351 -10.3       ] [ 0.5       -0.8660254 -0.       ]
+exposed insert roll radius, tangent plane patch radius left 0.12 0.3967321939973341
+exposed insert roll radius, tangent plane patch radius left 0.25 0.296034626995941
+exposed insert roll radius, tangent plane patch radius left 0.5 -0.023605787401970422
+crest tangential flat and radial top width 0.1957873148729421 0.44833395016045907
+disc front/back radial nominal, belly clearance, button low axial margin 0.13400000000000034 0.23600000000000065 0.25 0.14000000000000057
+one flank axial N, reacted 3D moments Nmm, gross root equiv normal/shear MPa 40 [  713.60493272 -1037.8448439    412.        ] 35.69256621938214 11.063197899054371
+one flank axial N, reacted 3D moments Nmm, gross root equiv normal/shear MPa 75 [ 1338.00924885 -1945.9590823    772.5       ] 66.92356166134152 20.743496060726947
+one flank axial N, reacted 3D moments Nmm, gross root equiv normal/shear MPa 113 [ 2015.93393493 -2931.911684    1163.9       ] 100.83149956975454 31.2535340648286
+root section is fixed centreline through circular metal, no one-sided pad reaction
+biased jaw axial / upper normal / upper radial / moment from axial offset 33 235.34859251756745 239.228 183.58035460146115
+biased jaw axial / upper normal / upper radial / moment from axial offset 36 256.7439191100736 260.976 200.26947774704854
+biased jaw axial / upper normal / upper radial / moment from axial offset 39 278.13924570257973 282.72400000000005 216.9586008926359
+total spring length/stops 1.3 1.1800000000000002 1.048 3N guide friction threshold at Fr=250 0.012
+window free X at endpoints -0.009999999999999995 -0.022000000000000006
+bias bottom metal z -24.269999999999996
+seated spring shoe returns from rear stop at radial s 0.0456
+residual radial reaction from unverified dry guide drag μ=.10 25.0
+early true reseat sensitivity (short is hypothetic if biased) barrel coord, input x, heel shift, radial ratio 9.96148842797464 0.6071764375146448 0.060000000000000005 0.25128543443639345
+axial total, radial total, bare input thrust, conditional peak-index gearhead demand 99 260.5263157894737 65.46646844527093 10.679698462395663
+axial total, radial total, bare input thrust, conditional peak-index gearhead demand 99 717.684 180.34353572804858 29.419863740289568
+axial total, radial total, bare input thrust, conditional peak-index gearhead demand 117 307.89473684210526 77.36946270804745 12.621461819194868
+axial total, radial total, bare input thrust, conditional peak-index gearhead demand 117 848.172 213.13326949678472 34.76892987488768
+early true reseat sensitivity (short is hypothetic if biased) short coord, input x, heel shift, radial ratio 1.042197116137182 1.042197116137182 0.060000000000000005 0.11565479274451561
+axial total, radial total, bare input thrust, conditional peak-index gearhead demand 99 260.5263157894737 30.131117057123806 4.915359758167524
+axial total, radial total, bare input thrust, conditional peak-index gearhead demand 99 717.684 83.00359427605494 13.54057090927946
+axial total, radial total, bare input thrust, conditional peak-index gearhead demand 117 307.89473684210526 35.60950197660086 5.809061532379801
+axial total, radial total, bare input thrust, conditional peak-index gearhead demand 117 848.172 98.09515687170129 16.00249289278482
+16:30 bevel + 8slot Geneva + M3x.5 optimistic thrust limit at 23.9616 Nmm 146.884421486402
+short p, jaw, retreat, relative d, angle deg 0 0.0 0.0 0.0 35.440774528043804
+short p, jaw, retreat, relative d, angle deg 0.65 0.0 0.0 0.65 35.440774528043804
+short p, jaw, retreat, relative d, angle deg 1.5 0.10502149682112401 0.0 1.5 35.440774528043804
+short p, jaw, retreat, relative d, angle deg 3.1 0.7250000000000003 0.0 3.1 35.440774528043804
+short p, jaw, retreat, relative d, angle deg 5.55 1.45 0.0 5.55 35.440774528043804
+short p, jaw, retreat, relative d, angle deg 5.9 1.45 0.0 5.9 35.440774528043804
+short p, jaw, retreat, relative d, angle deg 6.9 1.45 0.5 6.4 30.69158768492234
+short p, jaw, retreat, relative d, angle deg 9.0 1.45 2.5999999999999996 6.4 12.635625093021122
+short p, jaw, retreat, relative d, angle deg 14.25 1.45 7.85 6.4 -30.69158768492234
+short p, jaw, retreat, relative d, angle deg 15.25 1.45 8.35 6.9 -35.440774528043804
+short p, jaw, retreat, relative d, angle deg 16 1.45 8.35 7.65 -35.440774528043804
+short axial terminal x relative plate flat 1.3999999999999995
+aligned flank at radial, axial following, flange radial gap at full opening only 0 0.0 -0.27104077017860995
+aligned flank at radial, axial following, flange radial gap at full opening only 0.02 0.05263157894736842 -0.2510407701786104
+aligned flank at radial, axial following, flange radial gap at full opening only 0.0456 0.12000000000000001 -0.22544077017860964
+aligned flank at radial, axial following, flange radial gap at full opening only 1.45 3.81578947368421 1.1789592298213893
+Geneva entry-to-mid angle deg, angular ratio, input rev / nut advance 67.5 2.4887954428896306e-17 6.636787847705682e-18
+Geneva entry-to-mid angle deg, angular ratio, input rev / nut advance 45.0 0.20512405816569326 0.05469974884418487
+Geneva entry-to-mid angle deg, angular ratio, input rev / nut advance 0.0 0.6199144044217749 0.16531050784580664
+index centers, pin radius, max slot inner radius at middle 4.552735441468129 1.7422564253912158 2.8104790160769126
+closed-to-park counts 236.0 256.0
+constant-speed 1:1 sleeve retreat F, extra drag, input T 40 0 6.525293767036628
+constant-speed 1:1 sleeve retreat F, extra drag, input T 40 25 10.603602371434521
+constant-speed 1:1 sleeve retreat F, extra drag, input T 75 0 12.234925813193676
+constant-speed 1:1 sleeve retreat F, extra drag, input T 75 25 16.31323441759157
+constant-speed 1:1 sleeve retreat F, extra drag, input T 113 0 18.43395489187847
+constant-speed 1:1 sleeve retreat F, extra drag, input T 113 25 22.51226349627636
+master carried load, guide span, μ, jamming ratio, screw x for 40N centre load 2.8 0.05 0.6785714285714287 124.4444444444445
+master carried load, guide span, μ, jamming ratio, screw x for 40N centre load 2.8 0.15 2.035714285714286 inf
+master carried load, guide span, μ, jamming ratio, screw x for 40N centre load 2.8 0.23 3.121428571428572 inf
+master carried load, guide span, μ, jamming ratio, screw x for 40N centre load 8 0.05 0.23750000000000002 52.459016393442624
+master carried load, guide span, μ, jamming ratio, screw x for 40N centre load 8 0.15 0.7125 139.13043478260872
+master carried load, guide span, μ, jamming ratio, screw x for 40N centre load 8 0.23 1.0925 inf
+master carried load, guide span, μ, jamming ratio, screw x for 40N centre load 14 0.05 0.13571428571428573 46.280991735537185
+master carried load, guide span, μ, jamming ratio, screw x for 40N centre load 14 0.15 0.40714285714285714 67.46987951807229
+master carried load, guide span, μ, jamming ratio, screw x for 40N centre load 14 0.23 0.6242857142857143 106.46387832699621
+mated held body displacement from sleeve work alone 0

@@ -1,0 +1,65 @@
+{
+  "label": "exploratory",
+  "rail": {
+    "x": -5.62,
+    "y": 4.094,
+    "ball_inside_both": 0.06400000000000006,
+    "head_radius": 4.6,
+    "rail_outer_at_y4p12": 4.384563832355506
+  },
+  "exit": {
+    "ring_home": 0.1,
+    "ring_max": 8.2,
+    "full_stroke": 8.1,
+    "head_back": -6.76066017177982,
+    "parked_tilt_contact_deg": 2.4370846106320343,
+    "ring_position": 2.45,
+    "catch_body_x": -6.484869170332706,
+    "head_full_crown": [
+      -6.76066017177982,
+      -6.01066017177982
+    ],
+    "roller_center_x": -4.2,
+    "max_radius_at_pilot_during_tilt": 4.805008240258675,
+    "max_extent_at_other_rollers": 4.6041643890513315,
+    "min_other_roller_gap_lower": 0.29583561094866884,
+    "min_registry_x_after_straight": 0.1703013194861943,
+    "boss_min_edge_left": 0.3242784915642565,
+    "strict_parked_roller_reserve_if_tube": 0.04948624628254272,
+    "pilot_reserve_if_tube": 0.249486246282542,
+    "boss_full_annulus_overlap_if_tube": 0.17878640108269558,
+    "nose_needed_if_tube": 7.53569840560603,
+    "min_actual_travel_if_tube": 7.43569840560603,
+    "terminal_pin_clear_if_tube": 0.6643015943939696,
+    "lip_contact": {
+      "d": 4.9,
+      "side": 0.5,
+      "crown_x": [
+        -1.86066017177982,
+        -1.11066017177982
+      ],
+      "edge_of_rearmost_roller": -2.7
+    },
+    "apothem_variant_corner": 4.976946855251721,
+    "flat_clock_roll_deg": 22.44275336529435,
+    "symmetric_free_return_under_20N": true
+  },
+  "drive": {
+    "nominal_cage_midpoint": -4.245,
+    "reset_to_nominal_contact": 0.245,
+    "illustrative_independent_gap_budget": 0.11572358207373627,
+    "illustrative_series_k": 150,
+    "illustrative_45N_compliance_travel": 0.3,
+    "trial_driven_stroke": 0.6607235820737363,
+    "axial_force_in_tail_per_normal_min": 0.5444722215136416,
+    "one_wall_each_release_outward_per_tail_N": 0.21597805476341525,
+    "sleeve_drag_if_driving_cage_conditional_muN": 0.23,
+    "max_table_side": 32.391574216916354,
+    "rim_only_side_at_20N": 4.6000000000000005,
+    "ring_cop_20N_M52": 2.6100000000000003,
+    "rod_triangle_inradius": 2.91,
+    "annulus_mean_radius": 5.86,
+    "rod_max_two_dim": 12.646048109965635,
+    "no_other_drag_straight_push": 20
+  }
+}

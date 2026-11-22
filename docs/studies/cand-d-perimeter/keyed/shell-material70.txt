@@ -1,0 +1,7 @@
+SCAD includes mating Al and finite steel rotor rings (hob tooth cut is analytical only in worm script), tail shell, cam groove and 12-hole dog. Tabbed steel in Al slots, no friction credit.
+one-tab-only 500Nmm edge average bearing disk 43.22716741017394 MPa; plus axial loads and slot corner concentration not rated
+one-tab-only 500Nmm edge average bearing face 26.210670888332057 MPa; plus axial loads and slot corner concentration not rated
+one-tab-only 500Nmm edge average bearing wheel 22.041936812644245 MPa; plus axial loads and slot corner concentration not rated
+dog cam radial wall out/in 0.08899999999999908 0.28900000000000214 min lift point, parked end z 16.18 16.29
+backdrive from extraction, at p=0 toward parked negative end flank, dx/dtheta -0.825 mm/rad. An inward load has the opposite sign: no unconditional hold.
+peak motion slope, worm dog extraction torque for clean 500/130/1.31 w mu .23 at pin 1.23125 0.8314371697005285 Nmm, vs optimistic 3V motor rated x4x.90= 0.5616 Nmm, no credit unloading absent load sensing.

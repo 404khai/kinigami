@@ -1,0 +1,17 @@
+assigned densities g/cc steel 7.75 Al 2.81 Cu 8.96. Rotor union, steel ring volume, tab positive allowance, cut upper mm3 6780.643620204058 3631.0962686614107 20.910432000000007 1217.7168444195415
+rotor lower/upper g 27.31899265820877 37.09452167404077 rolled shell volume, removed upper, stiffeners upper 992.138612524871 176.78249999999997 551.6731743553169
+finished mixed rotor before net cuts, with extra steel tab upper 37.09452167404077
+0.84 steel hollow tail and 3 radial ribs + cross-diaphragm 11.964541348321456
+steel drives, bearings, guides, covers, sprung elements 39.30902680616715
+7075 mounts, housing, feet 6.440825601155406
+motors copper-envelope upper (catalog typical smaller) 22.876424252168928
+catalog bare cell 2.9
+electronics copper-envelope upper 11.31147514528514
+selected disjoint-material minimum conditional on dimensions/densities + nominal bare catalog cell; listed gross upper (not as-built) g 54.823423362997794 131.89681482713885
+gross model representative COM [-2.35155057  0.13035662  0.49244559]
+independent COM intervals listed mass & support (no actual COM) [(np.float64(-11.770169675770793), np.float64(5.547287071908095)), (np.float64(-16.884016786501697), np.float64(17.023390765376195)), (np.float64(-16.122755131420682), np.float64(15.423685971198859))]
+level coplanar 4-foot hull X/Y, area, nominal gross CoP margin [-15.92  -8.87] [9.42 8.87] 449.5316 8.739643380968346
+all four possible tripod support hulls (missing index, area, gross-model signed mm margin) [(0, 269.3516, np.float64(2.124404937549648)), (1, 269.3516, np.float64(1.9083456506733047)), (2, 269.3516, np.float64(1.118756676626202)), (3, 269.35159999999996, np.float64(0.9026973897498582))] no 3-contact robust stability
+S at named lower / gross-listed upper, same 70g mass-proportional 26.8006 test ONLY 20.990009145462267 50.49876822080311 max mass for S28 73.13269105915539
+broader named component subtotal + typical motors (not a disjoint lower, not guaranteed) 73.33063172904957 g.
+Actual COM and total as-built upper unknown: loom, fasteners, closures, gearbox maxima and adhesives not a complete BOM. Catalog 0615 bare 2g ca, 06/1 256:1 ca.4g x2; 4:1 ca.2g. Not guaranteed bounds.

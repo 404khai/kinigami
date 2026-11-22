@@ -1,0 +1,3 @@
+trial spherical bowl sphere center (6.454999999999998, 0.0, 0.0) radius 0.33499999999999996 within fixed quill radial .335 <3.44 and inside its X stubs -10.920000000000002 -10.25
+one spring R2.03 mean +.32 wire; center x -14.89..-10.93 fully inside quill even with wire; plate needs angular travel, spring limiting and inclinations/load measurement unproved
+coupon fails at HOME alone; translating coupon all 8.53 mm cannot fix home. Does not exclude all sector or shallow architectures. Alternative only, not part of mass or rotor holds.

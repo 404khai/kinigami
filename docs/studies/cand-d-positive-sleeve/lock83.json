@@ -1,0 +1,134 @@
+{
+  "label": "exploratory",
+  "engagement": {
+    "dog_axis_R": 13.5,
+    "nose": -20.32,
+    "rear_bush_overlap": 0.37,
+    "full_both_sign_hole": [
+      -19.9,
+      -17.9
+    ],
+    "front_bush": [
+      -17.65,
+      -16.05
+    ],
+    "withdrawn_clearance": 0.2,
+    "diametral_dog_backlash_in_sleeve_x": 0.0005894627521922042,
+    "residual_thread_backlash_not_included": true,
+    "nut_index_holes": 20,
+    "stroke_index_pitches": 3.999999999999986,
+    "grounded_skirt_key_clocks": [
+      30,
+      150,
+      270
+    ],
+    "key_radial": [
+      8.64,
+      9.77
+    ],
+    "key_x": [
+      -15.83,
+      -15.45
+    ],
+    "key_side_play": 0.03999999999999998,
+    "gear_root_to_dog_hole": 0.5750000000000007,
+    "crossed_roller_gap": 0.08,
+    "cam_dwell_deg": 12,
+    "nominal_dwell_dog_play": 0.043999999999999984,
+    "residual_engaged_overlap_with_dwell_play": 0.326
+  },
+  "old_radial_groove_closest_to_follower_center": [
+    0.2760648616955947,
+    0.283079446475502
+  ],
+  "old_intersection": 0.10393513830440532,
+  "roller_center_offset_restraint_proposed": 0.424,
+  "minimum_local_curvature_radius": 0.5584652227699501,
+  "worst_slope": 1.0520218992909167,
+  "peak_motion_ratio_mm_per_rad": 4.094043881571155,
+  "worst_slope_at": 0.6190755273262987,
+  "conditional_pin_force": {
+    "33.524": {
+      "lossless": {
+        "flange_torque": 2.6677551561063497,
+        "side": 0.1976114930449148,
+        "withdraw_two_support": 0.10407392008917375,
+        "withdraw_one_support": 0.31655817360457006,
+        "single_support_max_normal": 1.0045250896449833,
+        "shaft_overhang_stress_MPa": 1.2039776957527548,
+        "edge_projected_MPa_at_5um": 24.70143663061435,
+        "isolated_cam_torque": 2.069548919174807,
+        "cam_worst_stroke_frac": 0.5122010744858353
+      },
+      "dry_raising_residual": {
+        "flange_torque": 81.54711881118338,
+        "side": 6.040527319346917,
+        "withdraw_two_support": 3.1812995683773035,
+        "withdraw_one_support": 9.676452853814295,
+        "single_support_max_normal": 30.70601387334682,
+        "shaft_overhang_stress_MPa": 36.8028197703353,
+        "edge_projected_MPa_at_5um": 755.0659149183646,
+        "isolated_cam_torque": 63.261334613563875,
+        "cam_worst_stroke_frac": 0.512201074485585
+      }
+    },
+    "45": {
+      "lossless": {
+        "flange_torque": 3.580986219567645,
+        "side": 0.2652582384864922,
+        "withdraw_two_support": 0.13970070409297275,
+        "withdraw_one_support": 0.4249229749494587,
+        "single_support_max_normal": 1.3483960456396684,
+        "shaft_overhang_stress_MPa": 1.616125650545101,
+        "edge_projected_MPa_at_5um": 33.157279810811524,
+        "isolated_cam_torque": 2.778000875875979,
+        "cam_worst_stroke_frac": 0.5122010744854042
+      },
+      "dry_raising_residual": {
+        "flange_torque": 109.46248498100621,
+        "side": 8.108332220815274,
+        "withdraw_two_support": 4.270328140346577,
+        "withdraw_one_support": 12.988914760220837,
+        "single_support_max_normal": 41.21735545581097,
+        "shaft_overhang_stress_MPa": 49.40123164494357,
+        "edge_projected_MPa_at_5um": 1013.5415276019093,
+        "isolated_cam_torque": 84.91707605328645,
+        "cam_worst_stroke_frac": 0.5122010744853942
+      }
+    },
+    "100": {
+      "lossless": {
+        "flange_torque": 7.957747154594767,
+        "side": 0.5894627521922049,
+        "withdraw_two_support": 0.31044600909549497,
+        "withdraw_one_support": 0.9442732776654637,
+        "single_support_max_normal": 2.9964356569770407,
+        "shaft_overhang_stress_MPa": 3.5913903345446685,
+        "edge_projected_MPa_at_5um": 73.68284402402561,
+        "isolated_cam_torque": 6.173335279724397,
+        "cam_worst_stroke_frac": 0.5122010744859239
+      },
+      "dry_raising_residual": {
+        "flange_torque": 243.24996662445824,
+        "side": 18.018516046256167,
+        "withdraw_two_support": 9.48961808965906,
+        "withdraw_one_support": 28.86425502271297,
+        "single_support_max_normal": 91.5941232351355,
+        "shaft_overhang_stress_MPa": 109.78051476654129,
+        "edge_projected_MPa_at_5um": 2252.3145057820207,
+        "isolated_cam_torque": 188.7046134517477,
+        "cam_worst_stroke_frac": 0.5122010744856533
+      }
+    }
+  },
+  "handoff": {
+    "flange_hole_R": 0.85,
+    "pin_R": 0.8,
+    "pin_contact_free_if_center_error_lt": 0.05,
+    "conservative_inspection_target_radial_mm": 0.025,
+    "full_index_angle_play_deg": 0.4244131815783876,
+    "required_T_retake_at_45N_dry": 109.46248498100621,
+    "fully_clear_last_overlap_when_nose_forward_of": -17.9
+  },
+  "caveat": "Loads are bounds conditional on stated contact modes. Remote, off-axis selector/yoke loads NOT included in isolated_cam_torque."
+}

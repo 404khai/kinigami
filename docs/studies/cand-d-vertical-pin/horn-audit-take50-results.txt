@@ -1,0 +1,38 @@
+version H (-5.9, 0, 0) pitch 37.5 rail shoe span 6.9
+bearing+mount own tail+allowance [(0.37880933480538187, 'metal bearing outer-1/180', 'eye320', 15), (0.37880933480538365, 'metal bearing outer1/180', 'eye30', -15)]
+idle rotor own tail+allowance [(0.6535920086342705, 'fork hub -1', 'eye330', 15), (0.6535920086342705, 'fork hub 1', 'eye20', -15)]
+upper drives+extra own tail+allowance [(0.18663989024898459, 'root motor 34T', 'heavy neck2/0', -11), (0.18663989024898459, 'root motor 34T', 'heavy neck2/0', -10)]
+upper links own tail+allowance [(0.7, 'all', 'separate', 0)]
+lower+moving own tail+allowance [(0.4040484442441965, 'face Y motor', 'heavy neck0/0', -15), (0.4040484442441965, 'face Y motor', 'heavy neck0/0', -14)]
+short cartridge bound / tail [(0.38942130801661584, 'outer bound-1', 'heavy neck2/2', 15)] yaw can [(2.9995917108985317, 'outer bound1', 'yaw gearmotor')]
+U skirt/backing thru X versus body [(1.25, 'axial crosshead', 'lower bridge'), (1.25, 'moving keel -1', 'lower bridge'), (1.25, 'moving keel 1', 'lower bridge')]
+U skirt/backing thru X versus own tail [(0.7, 'all', 'separate', 0)]
+cartridge support/pinned link [(0.3160000000000007, 'top rail saddle', 'buried pin head:14'), (0.3160000000000007, 'top rail saddle', 'buried pin head:15'), (0.3160000000000007, 'top rail saddle', 'buried pin head:16')]
+v3 gear and supporting return, nominal [(-0.9499999999999993, 'v3 cheek mounting return', 'compound upper bridge'), (-0.7041605082553151, 'v3 cheek mounting return', 'compound upper bush'), (0.14583949174468636, 'v3 cheek mounting return', 'compound shaft'), (0.7500000000000009, 'v3 cheek mounting return', 'compound output 18T')]
+point comparison centre rib vs hub +X relief v3 [ 0.31890791 -1.51491492 -5.83508508 -1.5        -1.51491492]
+aligned rail static gap 10.13
+held neighbour keel line onset by stroke 9.120763127703624 full endpoint common point (17.379848792627385, 4.72, -18.32) motor bore depth to OD 1.6499999999999986 keel box [(4.800000000000001, 22.380000000000003), (4.1499999999999995, 5.33), (-18.71, -17.8)]
+6-phase bar legacy example and foot / Y motor (NOT INCLUDED in geometry): 63.60665329979246 59.66607174161598 motor 3D far distance 67.54082185667913
+root T mu, ideal axial, link, transverse, guide friction, thrust, required gearhead @ .28/.75 246.0 0.1 15.507746308399904 15.684414282763212 6.032513313967563 3.3499453601601226 18.857691668560026 9.881228184305739
+root T mu, ideal axial, link, transverse, guide friction, thrust, required gearhead @ .28/.75 246.0 0.23 15.507746308399904 15.684414282763212 6.032513313967563 13.08358223104775 28.59132853944765 14.981549510736498
+opening lash arc @r18 (2x radial .025 and .08 dog gap), pin shank Euler etc separate 0.14815905503488924 link elastic shortening and arc 0.00010669669580111029 0.00012244940338145674
+dog key face bearing and nominal bracket moment, centre-line link contribution per short radial bearing upper bound 3.3136210060683555 124.06197046719923 8.95638092894199
+root T mu, ideal axial, link, transverse, guide friction, thrust, required gearhead @ .28/.75 1742.0 0.1 109.81501654159607 111.06605561208745 42.71804143468087 23.721970802434694 133.53698734403076 69.97194917504308
+root T mu, ideal axial, link, transverse, guide friction, thrust, required gearhead @ .28/.75 1742.0 0.23 109.81501654159607 111.06605561208745 42.71804143468087 92.64878148977718 202.46379803137324 106.08885873049994
+opening lash arc @r18 (2x radial .025 and .08 dog gap), pin shank Euler etc separate 0.14815905503488924 link elastic shortening and arc 0.0007555513987216833 0.0008671010597174701
+dog key face bearing and nominal bracket moment, centre-line link contribution per short radial bearing upper bound 23.464747124272666 878.5201323327685 63.422827553727416
+root T mu, ideal axial, link, transverse, guide friction, thrust, required gearhead @ .28/.75 2137.4233128834358 0.1 134.74235158478047 136.27736884918707 52.4147747664796 29.106712641024167 163.84906422580463 85.85515236201606
+root T mu, ideal axial, link, transverse, guide friction, thrust, required gearhead @ .28/.75 2137.4233128834358 0.23 134.74235158478047 136.27736884918707 52.4147747664796 113.67948649052414 248.4218380753046 130.17037881042938
+opening lash arc @r18 (2x radial .025 and .08 dog gap), pin shank Euler etc separate 0.14815905503488924 link elastic shortening and arc 0.0009270569309468509 0.0010639276806349328
+dog key face bearing and nominal bracket moment, centre-line link contribution per short radial bearing upper bound 28.791100765978733 1077.9388126782437 77.81942031132199
+radial external force term per end <= coefficient, side-force overturning term at R<=23.2, max nominal stub bent at y7.25 MPa/N 0.7661032434901781 1.235356762513312 0.8355634512324506
+thrust face gross annulus area mm2, projected radial area 12.365308684529422 11.92
+centred axial-only trial / broad gauged web MPa 111.0 143.65932921574264
+centred axial-only trial / broad gauged web MPa 155.0 200.60536962558655
+centred axial-only trial / broad gauged web MPa 163.0 210.95919515464908
+centred axial-only trial / broad gauged web MPa 200.0 258.84563822656327
+signed contact whole horn vs independent rod central stock: tangent plane s<=0, rod root eye minimum 1.7499999999999996 spoke maximum 1.65
+retracted required lift to clear moving block with 0.15 2.3 locating shaft end play 0.05000000000000071 0.0600000000000005
+closed dog register gap, back guide stem clearance and max rigid one-sided pole arc including pin radial play 0.08 0.11000000000000032 0.272977500931767
+released key lower to closed block upper 0.20000000000000284
+floor lower stock (-23.5, 'foot(-12.0, -8.5)')

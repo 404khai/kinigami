@@ -1,0 +1,9 @@
+finite stop first material contact angle, within actual capped cut park steel stop 105.40010827780318 (105.0, 106.5)
+finite stop first material contact angle, within actual capped cut draw steel stop -3.550108277803203 (-3.8, -3.0)
+dwell full backlash for sampled cutter mm (max) 0.2133020000000001
+dwell full backlash for sampled cutter mm (max) 0.21266399999999996
+disk radial home front/rear clearance 0.13400000000000034 0.23600000000000065
+parked flush analytic patch, centred work radial margin per Take61, 0.10 offset result 0.07412599999999969 -0.025874000000000313
+beta=90, wheel° -3 sector/material depth upper incl Lipschitz; pin-to-OD -0.2354522894449833 0.2829637180402669
+beta=90, wheel° 0 sector/material depth upper incl Lipschitz; pin-to-OD -0.2600049006535447 0.2829637180402669
+beta=90, wheel° 3 sector/material depth upper incl Lipschitz; pin-to-OD -0.23082328553232534 0.2829637180402669

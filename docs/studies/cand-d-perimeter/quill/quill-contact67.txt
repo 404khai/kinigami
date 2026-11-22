@@ -1,0 +1,18 @@
+finished cam core vs unrelated fixed stock []
+lug vs all fixed thru hard stops 0 [] direct anchored lug/core penetration [(np.float64(0.1025), 'ring stop lug', 'aft rotor bridge 39', [-4.0625, 5.266, -11.0345])]
+lug vs all fixed thru hard stops 45 [] direct anchored lug/core penetration [(np.float64(0.1025), 'ring stop lug', 'aft rotor bridge 45', [-4.0625, 11.7224, -3.475])]
+lug vs all fixed thru hard stops 85 [] direct anchored lug/core penetration [(np.float64(0.1025), 'ring stop lug', 'aft rotor bridge 3', [-4.0625, 11.2541, 4.7726])]
+lug vs all fixed thru hard stops 105 [] direct anchored lug/core penetration [(np.float64(0.1025), 'ring stop lug', 'aft rotor bridge 5', [-4.0625, 9.2955, 7.9425])]
+drive links vs flared wall and stop support at 0 []
+drive links vs flared wall and stop support at 20 []
+drive links vs flared wall and stop support at 42 []
+drive links vs flared wall and stop support at 75 []
+drive links vs flared wall and stop support at 105 []
+own tail (uncut lobe outer) vs frame/yaw motor -15 []
+own tail (uncut lobe outer) vs frame/yaw motor 0 []
+own tail (uncut lobe outer) vs frame/yaw motor 15 []
+park stub / lever vs outer supports (intended shaft bearings excluded) []
+disk rim home/bore gap 0.0804999999999989 plate rear/bore 0.1944999999999979
+parking plate vs motor and structure []
+opposed fixed thrust bearing face to rotating collar nominal gap .015 per side; collar R1.62 on R.93 shaft, fixed plain thrust washer ID.96/OD2.08. 500 and 1500 Nmm nominal average annular thrust pressure MPa [ 4.79315947 14.37947842]
+illustrative 1-side ring free angle deg for .025 wheel flank, .02 worm axial, .08 dog radial 0.14212543502995223

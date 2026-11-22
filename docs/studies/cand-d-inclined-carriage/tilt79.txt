@@ -1,0 +1,7 @@
+continuous 10.65 mm registered D draw advance XY [10.1287519   3.29103099  0.        ] new guide/ties to entire swept tail (-0.122582, 'nose guide 0 fore', 'integral lug', []) rear stock to swept tail (1.356764, 'foot forward tie 7.8', 'solid wing 300', [])
+support-refined minimum continuous D draw gap (0.18211303259030687, 'nose guide 0 fore', 'rolled fork hub')
+all original key shoe extensions: all stroke vs all draws conservative independent (3.09024898699786, 'shoe internal spigot', 'rolled fork hub')
+outer neighbor body vs outer receiver body and yaw shaft through D (5.5600000000000005, 'uncut cover blank for outer support', 'uncut cover blank for outer support')
+original key work-point support remains result of inclined 74, not a statement that tail is compelled to draw
+screw wheel, gear radial guide and cell vs upper parked metal (10.720191220169394, 'key pickup axle', 'screw 36T wheel')
+rear opening radial margin for inspection probe 0.929999999999999 ray ends x -29.621402559394685 gap other stock (-1.378597, 'probe R.20', 'rear cover back', [(np.float64(0.19903694533443783), 'probe R.20', 'rolled fork hub', [-36.31071, 9.72, -0.0])])

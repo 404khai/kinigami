@@ -1,0 +1,26 @@
+aligned mated full passive stock vs screw, actuated arms and positive sleeve bearings 0 (1.8867108526318122, 'guide tie to cone -24', 'one-piece rolled flange and solid core')
+aligned mated inner stock vs ancillary real material 0 []
+forwardmost full listed powered housing vs local lip 0 (np.float64(3.462975238558961), 'sequencer plate (96, 15)')
+aligned mated full passive stock vs screw, actuated arms and positive sleeve bearings 5.9 (1.8867108526318122, 'guide tie to cone -24', 'one-piece rolled flange and solid core')
+aligned mated inner stock vs ancillary real material 5.9 []
+forwardmost full listed powered housing vs local lip 5.9 (np.float64(0.870000000000001), 'screw front anchor')
+aligned mated full passive stock vs screw, actuated arms and positive sleeve bearings 10 (3.9159262864855027, 'guide tie to cone 216', 'one-piece rolled flange and solid core')
+aligned mated inner stock vs ancillary real material 10 []
+forwardmost full listed powered housing vs local lip 10 (np.float64(0.870000000000001), 'screw front anchor')
+aligned mated full passive stock vs screw, actuated arms and positive sleeve bearings 16 (3.9742264161454823, 'screw front anchor', 'one-piece rolled flange and solid core')
+aligned mated inner stock vs ancillary real material 16 []
+forwardmost full listed powered housing vs local lip 16 (np.float64(0.870000000000001), 'screw front anchor')
+trial yawed held/withdrawn passive tail vs subset at park -15 0 (4.263515500636714, 'screw front anchor', 'one-piece rolled flange and solid core')
+trial yawed held/withdrawn passive tail vs subset at park -15 1.4 (4.263515500636714, 'screw front anchor', 'one-piece rolled flange and solid core')
+trial yawed held/withdrawn passive tail vs subset at park -15 4.0 (4.263515500636714, 'screw front anchor', 'one-piece rolled flange and solid core')
+trial yawed held/withdrawn passive tail vs subset at park 0 0 (3.9742264161454823, 'screw front anchor', 'one-piece rolled flange and solid core')
+trial yawed held/withdrawn passive tail vs subset at park 0 1.4 (3.9742264161454823, 'screw front anchor', 'one-piece rolled flange and solid core')
+trial yawed held/withdrawn passive tail vs subset at park 0 4.0 (4.357265282300415, 'screw front anchor', 'one-piece rolled flange and solid core')
+trial yawed held/withdrawn passive tail vs subset at park 15 0 (4.263515500636714, 'screw front anchor', 'one-piece rolled flange and solid core')
+trial yawed held/withdrawn passive tail vs subset at park 15 1.4 (4.768316482550153, 'screw front anchor', 'one-piece rolled flange and solid core')
+trial yawed held/withdrawn passive tail vs subset at park 15 4.0 (5.931071830850046, 'screw front anchor', 'one-piece rolled flange and solid core')
+own fork steel vs clamp motor -15 [(0.747402, 'web fork -1', 'clamp gearmotor', (-11.990000000000002, 0.3205643614392588, -5.806389272364794))]
+own fork steel vs clamp motor 0 [(0.744634, 'web fork -1', 'clamp gearmotor', (-11.989999999999993, -1.3003042870547925, -5.803607501308386))]
+own fork steel vs clamp motor 15 [(0.747402, 'web fork -1', 'clamp gearmotor', (-11.990000000000002, -0.32056436143925804, -5.806389272364793))]
+straight complete all-motion common sphere upper ((0.1615444121478805, -1.0929707355306517, 2.4719818358158268), np.float64(64.89681029996441), [(np.float64(32.44840514998221), 'cell'), (np.float64(32.448254641609644), 'motor base'), (np.float64(32.41516347188171), 'computer')])
+short fixed pin offset, outboard wall nominal radial reserve 0.629999999999999

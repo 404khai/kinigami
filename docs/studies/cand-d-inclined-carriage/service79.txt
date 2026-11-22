@@ -1,0 +1,20 @@
+bare key insertion (0.02, 'inclined key 74', 'nose guide 0 aft', [])
+pickup axle left in key (0.02, 'inclined key 74', 'nose guide 0 aft', [])
+key with lid on (-1.21, 'inclined key 74', 'removable high roof', [(np.float64(0.17499999999999716), 'inclined key 74', 'removable high roof', [-3.01174, 24.315, -1.475])])
+pickup punch with removable cheek still present (-1.08, 'pickup pin punch OD2.30', 'hood cheek 1', [(np.float64(0.16500000000000004), 'pickup pin punch OD2.30', 'hood cheek 1', [-1.8501, 16.73471, 4.125])])
+pickup punch with cheek removed, excludes tool target (0.362113, 'pickup pin punch OD2.30', 'forward roof return', [])
+key motor straight Y insertion from above (-0.701557, 'key 0615 256', 'rear way support (1, 4.29)', [(np.float64(0.3362252617782299), 'key 0615 256', 'rear way support (1, 14.13)', [-18.98825, 13.53, 11.1452]), (np.float64(0.3362252617782299), 'key 0615 256', 'rear way support (1, 14.13)', [-18.98825, 13.53, 11.1452])])
+aux motor axial insertion −Z from below (-5.71, 'remote index 0615 256', 'cell bulk', [(np.float64(2.7), 'remote index 0615 256', 'cell bulk', [-27.57402, 11.70858, -17.6])])
+service cover split y=13 before motor/pin insertion; no cap or removable seam grants tool access to buried cross sections
+thread engagement before chamfers 0.0 2.6999999999999993 4.499999999999999 turns
+thread engagement before chamfers 8.07 2.700000000000003 4.500000000000005 turns
+capture retained until PARK? min y catch to input shoulder at LOCK, maximum obtainable closure at travel stop 3.2200000000000006 4.85
+lower Z-face flat width at park, row y 4.5 1.1404221831256485 mm
+lower Z-face flat width at park, row y 5.35 1.4166039249236189 mm
+independent pinion shaft: thrust tooth rear/front bush loads projections MPa and shaft bending, catalog motor bearing load NOT substituted 20.43 3.840468040609645 1.8902729221156693 1.9501951184939756 0.733801600200182 0.7523900920115645 8.414294375499548
+independent pinion shaft: thrust tooth rear/front bush loads projections MPa and shaft bending, catalog motor bearing load NOT substituted 56.3813 10.598657892218531 5.216644380992668 5.382013511225863 2.0250948683977743 2.0763941015531877 23.221187247839094
+independent pinion shaft: thrust tooth rear/front bush loads projections MPa and shaft bending, catalog motor bearing load NOT substituted 80 15.038543477668703 7.401949768441192 7.636593709227512 2.8734277051402137 2.94621670880691 32.94877875868643
+independent shaft stress torsion MPa at input, net tooth couple 23.721138141559663
+rolling output normalised stop drift: .72deg stable dwell play, smax opening with slot lash
+additional square-tenon angular play deg 1.0949923606936136
+actual moving-axle center potential mm (key + slot lash .016, excludes deformation/guide cocking) 0.06425998798790065

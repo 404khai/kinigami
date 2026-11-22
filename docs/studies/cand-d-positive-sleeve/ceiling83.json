@@ -1,0 +1,13 @@
+{
+  "label": "exploratory",
+  "parallel_common_offset_flat_land_upper_N": {
+    "tail45_service": 28.706987469711194,
+    "tail45_table": 30.894456847566676,
+    "tail45_fault": 28.750630134476076,
+    "cage45_service": 46.91906340050346,
+    "cage45_table": 48.89890352697468,
+    "cage45_fault": 46.99944768400257
+  },
+  "polygon_sides": 12,
+  "norm_facets": 24
+}

@@ -1,0 +1,24 @@
+two-row centered branch samples, per unit N (NOT a three-row upper), force sign +Y
+1 least and greatest actuator force, max guide sum (np.float64(-1.024176266368786), np.float64(0.01517257319936452), (0, 2), (-1, -1), np.float64(76.2), -1, 1) (np.float64(1.2613739228994332), np.float64(11.26373265438746), (1, 2), (-1, 1), 18, 1, 1) (np.float64(1.2613739228994332), np.float64(11.26373265438746), (1, 2), (-1, 1), 18, 1, 1)
+-1 least and greatest actuator force, max guide sum (np.float64(-1.6952795332991952), np.float64(9.729329501469689), (1, 2), (-1, 1), np.float64(18.0), -1, -1) (np.float64(-0.30180731189789856), np.float64(1.7627776355903044), (0, 2), (-1, 1), np.float64(18.0), 1, -1) (np.float64(-1.4739918794882354), np.float64(11.530982365509777), (1, 2), (-1, 1), 18, 1, -1)
+theta stroke pair directions feasible at mu ± 18 0.8935 [((0, 1), (-1, 1)), ((0, 2), (-1, 1)), ((1, 2), (-1, 1))]
+theta stroke pair directions feasible at mu ± 48 2.3918 [((0, 1), (-1, 1)), ((0, 2), (-1, 1)), ((1, 2), (-1, 1))]
+theta stroke pair directions feasible at mu ± 84 3.6311 [((0, 1), (-1, 1)), ((0, 2), (-1, 1)), ((1, 2), (-1, 1)), ((1, 2), (1, -1))]
+theta stroke pair directions feasible at mu ± 90 3.7435 [((0, 1), (-1, 1)), ((0, 2), (-1, 1)), ((1, 2), (-1, 1)), ((1, 2), (1, -1))]
+rear offset key positive load applied at pickup; guide normal per transmitted Y, added drag fraction 2.5850397316103755 0.3102047677932451
+conditional spring min length/solid plus .10/max force 6.37 5.6 56.38131049717721
+LOCK centered worst spring min/max under ±10% rates, free ±.10, installed ±.10, seating ±.12 and stop ±.05 16.386212695918392 24.91882070039367
+spring wire peak Wahl shear under conditional cap (not a rating) 1804.3386983565567
+thread torque coefficients driving / lowering Nmm per N 0.5596116919485158 0.3628740665076321 optimistic motor continuous via gear efficiencies, Nmm 42.172416 push max N before rails 75.36014098125716
+screw thrust N / screw torque Nmm / one-ended gearhead pinion radial N vs .5 N catalog 20.43 11.432866866508178 3.8404680539817972
+screw thrust N / screw torque Nmm / one-ended gearhead pinion radial N vs .5 N catalog 56.38131049717721 31.551640561599953 10.598659902400275
+screw thrust N / screw torque Nmm / one-ended gearhead pinion radial N vs .5 N catalog 80 44.76893535588126 15.03854353003151
+60N trunnion illustrative: bending MPa, shear MPa, projected roller contact MPa, crossbar root cantilever MPa 176.2697630437549 34.87690498726706 31.921685464992553 781.8988175658344
+nominal zero-motion latch contact N from 60N +Y ignoring friction 67.04830578821338
+angle, actual s, ds/dtheta, N, J, signed motor torque Nmm FOR seized rolling members and net 60N output; positive = drive 0 0.033592411325809035 -0.3802946739857404 60.26901822290003 1.490116161129145e-08 1.0021630398330662e-06
+angle, actual s, ds/dtheta, N, J, signed motor torque Nmm FOR seized rolling members and net 60N output; positive = drive 1 0.02776594565002677 -0.2868005838033117 60.58700871654778 0.2249454689633957 14.071126501663324
+angle, actual s, ds/dtheta, N, J, signed motor torque Nmm FOR seized rolling members and net 60N output; positive = drive 4 0.020517382494221303 0.015755252477923826 61.77479243263598 0.5373467477410963 25.53775942687443
+angle, actual s, ds/dtheta, N, J, signed motor torque Nmm FOR seized rolling members and net 60N output; positive = drive 8 0.03742129187234666 0.4822830782842954 64.05838890532998 0.8686072603979872 21.722841411891498
+angle, actual s, ds/dtheta, N, J, signed motor torque Nmm FOR seized rolling members and net 60N output; positive = drive 16 0.18826911515003486 1.7959149721067804 72.98750488508087 1.4303267779949829 -47.05906275509298
+index maximum geometric Jacobian 2.414213562373095 catalog continuous upper relay (.90 each) 19.408896000000002
+3 motors only (key,index,yaw); separately reserved ejector needs own drive & supply. 3V/16.2 armature nominal zero speed, converter .85, aux .28 0.9335947712418301

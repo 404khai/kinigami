@@ -1,0 +1,28 @@
+theta full/without electronics enclosure 0 ((-0.499097013112898, 0.1455555894850573, 0.7274337001028155), np.float64(61.49928502836611), [(np.float64(30.749642514183055), 'cell'), (np.float64(30.74928936995554), 'computer'), (np.float64(30.29891252300192), 'motor base')]) ((-1.3025928959520523, 0.6144691074245163, -0.29504212712650846), np.float64(58.23008360632042), [(np.float64(29.11504180316021), 'leaf link fork root 150.0'), (np.float64(29.114197482117934), 'motor base'), (np.float64(29.112937114442886), 'revised tail button 2')])
+floor 0 -23.72
+theta full/without electronics enclosure 44 ((-0.499097013112898, 0.1455555894850573, 0.7274337001028155), np.float64(61.49928502836611), [(np.float64(30.749642514183055), 'cell'), (np.float64(30.74928936995554), 'computer'), (np.float64(30.29891252300192), 'motor base')]) ((-2.217707589036383, 1.8052354607616685, -1.4696962792946144), np.float64(57.606472247477605), [(np.float64(28.803236123738802), 'yaw gearmotor'), (np.float64(28.803152296596533), 'foot(11.0, -8.5)'), (np.float64(28.801989371623105), 'revised tail button 1')])
+floor 44 -23.72
+theta full/without electronics enclosure 105 ((-0.499097013112898, 0.1455555894850573, 0.7274337001028155), np.float64(61.49928502836611), [(np.float64(30.749642514183055), 'cell'), (np.float64(30.74928936995554), 'computer'), (np.float64(30.29891252300192), 'motor base')]) ((-2.217707589036383, 1.8052354607616685, -1.4696962792946144), np.float64(57.606472247477605), [(np.float64(28.803236123738802), 'yaw gearmotor'), (np.float64(28.803152296596533), 'foot(11.0, -8.5)'), (np.float64(28.801989371623105), 'revised tail button 1')])
+floor 105 -23.72
+whole-stroke common enclosure (outer, incl chord allowance) ((-0.499097013112898, 0.1455555894850573, 0.7274337001028155), np.float64(61.49928502836611), [(np.float64(30.749642514183055), 'cell'), (np.float64(30.74928936995554), 'computer'), (np.float64(30.29891252300192), 'motor base')])
+complete power heads ±15, independent phase, axial held..following raw/net (2.8714780794876695, '65deg drafted seat (-30.0, -1)', 'compound input 42T', 15) 2.379675899827714
+own flange incl new cartridge stock vs head raw/net (0.019803861042916537, 'compound upper bush', 'button inner guide stem -30.0', -15) -0.3965483526186454
+boards versus head incl full motions (0.3500000000000001, 'connector', 'inner disk cam sleeve cylinder')
+new own tail actual cap, fork, spring return vs gearmotor / spine -15 []
+new own tail actual cap, fork, spring return vs gearmotor / spine 0 []
+new own tail actual cap, fork, spring return vs gearmotor / spine 15 []
+true disk cam core vs unrelated fixed stock [(0.54483, 'inner-drum core 33', 'rear spine', (-2.2448338256195477, -4.2948338256195475, -11.792365467082293)), (0.14735, 'inner-drum core 32', 'rear spine', (-2.952650542649624, -4.752650542649625, -11.088870709547338))]
+true wheel rim below working teeth vs unrelated fixed stock []
+disk post and key vs unrelated fixed stock 0 [(0.3093, 'disk guide rib 210.0', 'disk key support 210.0', (2.950000000000006, -6.3233846420629485, -3.6261782979202617)), (0.3093, 'disk guide rib -30.0', 'disk key support -30.0', (2.9500000000000157, 6.323384642062947, -3.6261782979202635)), (0.3074, 'disk guide rib 90.0', 'disk key support 90.0', (2.949999999999998, -0.0, 7.287404431690004))]
+wheel solid core vs positive jaw rods 0 []
+leaf drive rod vs fixed gearmotor/support 0 [(0.57, 'axial leaf rod -90.0', 'worm bearing pillar 1', (7.520423276312328, 4.693038862759173, -19.240000000000002))]
+disk post and key vs unrelated fixed stock 44 [(0.3093, 'disk guide rib 210.0', 'disk key support 210.0', (2.950000000000006, -6.3233846420629485, -3.6261782979202617)), (0.3093, 'disk guide rib -30.0', 'disk key support -30.0', (2.9500000000000157, 6.323384642062947, -3.6261782979202635)), (0.3074, 'disk guide rib 90.0', 'disk key support 90.0', (2.949999999999998, -0.0, 7.287404431690004))]
+wheel solid core vs positive jaw rods 44 []
+leaf drive rod vs fixed gearmotor/support 44 [(0.57, 'axial leaf rod -90.0', 'worm bearing pillar 1', (7.520423276312328, 4.693038862759173, -19.240000000000002)), (0.01413, 'axial leaf rod -90.0', 'clamp gearmotor', (1.7574160833728125, 3.9941335443728154, -18.684133544372816))]
+disk post and key vs unrelated fixed stock 76 [(0.3093, 'disk guide rib 210.0', 'disk key support 210.0', (2.950000000000006, -6.3233846420629485, -3.6261782979202617)), (0.3093, 'disk guide rib -30.0', 'disk key support -30.0', (2.9500000000000157, 6.323384642062947, -3.6261782979202635)), (0.3074, 'disk guide rib 90.0', 'disk key support 90.0', (2.9499999999999975, -0.0, 7.287404431690004))]
+wheel solid core vs positive jaw rods 76 []
+leaf drive rod vs fixed gearmotor/support 76 [(0.57, 'axial leaf rod -90.0', 'worm bearing pillar 1', (7.520423276312328, 4.693038862759173, -19.240000000000002)), (0.01413, 'axial leaf rod -90.0', 'clamp gearmotor', (1.7574160833728125, 3.9941335443728154, -18.684133544372816))]
+disk post and key vs unrelated fixed stock 105 []
+wheel solid core vs positive jaw rods 105 []
+leaf drive rod vs fixed gearmotor/support 105 [(0.57, 'axial leaf rod -90.0', 'worm bearing pillar 1', (7.520423276312328, 4.693038862759173, -19.240000000000002)), (0.01413, 'axial leaf rod -90.0', 'clamp gearmotor', (1.7574160833728125, 3.9941335443728154, -18.684133544372816))]
+occupied listed-stock corner pair 60.15534671469033 ('cell', [9.85, -15.33, 25.2]) ('motor base', (-10.101948478800807, 23.10856124081498, -16.55))

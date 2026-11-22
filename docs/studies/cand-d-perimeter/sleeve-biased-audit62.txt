@@ -1,0 +1,41 @@
+stow test th 0 full ((-7.4832932397300596, -0.036014484245963464, 0.48712318615509054), np.float64(68.73230825115816), [(np.float64(34.36615412557908), 'front T shoulder guide (0, 1)'), (np.float64(34.36417677791354), 'cell'), (np.float64(34.354624590142805), 'front T shoulder guide (0, -1)')]) mechanical only ((-0.17334067218687532, 3.0021154712027647, 1.7222362184965503), np.float64(62.32980534104626), [(np.float64(31.16490267052313), 'clamp gearmotor'), (np.float64(31.16476758462444), 'front T shoulder guide (2, 1)'), (np.float64(31.16226618782709), 'foot(-12.0, -8.5)')])
+min floor -23.5
+stow test th 44 full ((-7.329993318707377, -0.02886514213280752, 0.4663724159859257), np.float64(68.9636500081554), [(np.float64(34.4818250040777), 'cell'), (np.float64(34.479692595306375), 'front spring seat -90'), (np.float64(34.240166739677754), 'front T shoulder guide (0, 1)')]) mechanical only ((-3.8597113895380826, 0.02010429367661775, 0.0065365211977529885), np.float64(63.62523133321135), [(np.float64(31.812615666605677), 'clamp gearmotor'), (np.float64(31.812112733366284), 'front spring seat 150'), (np.float64(31.806309934767903), 'front spring seat -90')])
+min floor -24.269999999999996
+stow test th 105 full ((-7.913130261496578, -0.04937850518866449, 0.5987573967486794), np.float64(68.01879102942081), [(np.float64(34.009395514710405), 'fixed sleeve key rail return -90'), (np.float64(34.00736821072513), 'cell'), (np.float64(33.994872549550955), 'fixed sleeve key rail -90')]) mechanical only ((-4.431811262352089, 0.23344907365032327, -0.13054482039545978), np.float64(62.834282054374725), [(np.float64(31.417141027187363), 'fixed sleeve key rail return 150'), (np.float64(31.415614202129117), 'clamp gearmotor'), (np.float64(31.4077561910346), 'fixed sleeve key rail 150')])
+min floor -24.269999999999996
+head-head held pitch 38 raw / net lower (-8.410940388525244, 'key shoulder to annulus 150', 'computer', -12) -8.922772815090138
+own revised tail-head raw / net lower (-1.7604550718034044, 'clamp gearmotor', 'one-piece rolled flange and solid core', -15) -2.1737183753503615
+boards versus all head sweeps (0.42142093843654216, 'wire reserve', 'screw thrust frame')
+cell centre [-0.5 -0.5 19.5] size [20.7  30.66  5.4 ]
+computer centre [-8.  -0.5 12. ] size [17.8 22.   5.7]
+H-bridge centre [-3.5  7.   0. ] size [8.8  1.87 9.8 ]
+cutoff centre [-2. -8.  0.] size [6.2  1.95 6.85]
+joint driver centre [-2. 10.  0.] size [5.8  2.05 6.2 ]
+connector centre [-0.5 -6.5  6. ] size [3.35 2.8  2.9 ]
+wire reserve centre [-0.5 -6.5 -6. ] size [3.4 2.  3. ]
+bare control straight stow only closed/parked ((-0.6353725312178732, 1.1176267813934428, 0.662258250279419), np.float64(58.97386175736641), [(np.float64(29.486930878683204), 'motor base'), (np.float64(29.486757235614323), 'revised tail button 0'), (np.float64(29.482942494504204), 'foot(11.0, -8.5)')]) ((-0.6353725312178732, 1.1176267813934428, 0.662258250279419), np.float64(58.97386175736641), [(np.float64(29.486930878683204), 'motor base'), (np.float64(29.486757235614323), 'revised tail button 0'), (np.float64(29.482942494504204), 'foot(11.0, -8.5)')])
+head-head held pitch 38 raw / net lower (1.4583968921412627, 'conical lip outer cylinder', 'computer', -15) 0.9836135068628981
+own revised tail-head raw / net lower (0.08155320442824276, 'stationary central knuckle', 'web fork -1', -13) -0.3317100991187142
+true barrel core v original fixed joint, own ger/shaft 0 [] []
+true barrel core v frame truss 0 []
+own gearmotor and revised tail at test yaw 0 [(0.84851, 'clamp gearmotor', 'true flange inner', (-19.71392495000378, 9.916782859867569, 9.878145405524467))]
+station inserts v heel/rigid shoes at sequence 0 []
+true barrel core v original fixed joint, own ger/shaft 44 [] []
+true barrel core v frame truss 44 []
+own gearmotor and revised tail at test yaw 44 [(0.063884, 'clamp gearmotor', 'true flange inner', (-20.609395769679452, 4.246619263911646, 10.127166597376473))]
+station inserts v heel/rigid shoes at sequence 44 []
+true barrel core v original fixed joint, own ger/shaft 75 [(0.428722, 'barrel intact radial middle 42', 'compound input 42T', (-3.987173634439824, 13.751340454730258, -12.421277501275254)), (0.140628, 'barrel intact radial middle 43', 'compound input 42T', (-4.275267679726958, 14.580610701932473, -11.010837806624608))] []
+true barrel core v frame truss 75 [(0.58282, 'barrel intact radial middle 37', 'bearing pillar 0', (-3.8330766206391846, 4.439424187756667, -18.819998301912037)), (0.577392, 'barrel intact radial middle 21', 'bearing pillar 2', (-3.8385045119785492, -18.52531139468965, 5.561602019924422))]
+own gearmotor and revised tail at test yaw 75 [(0.237266, 'clamp gearmotor', 'true flange inner', (-20.438523243418818, -6.0292653275361685, 10.16115525609514))]
+station inserts v heel/rigid shoes at sequence 75 []
+true barrel core v original fixed joint, own ger/shaft 105 [(0.903643, 'barrel intact radial middle 47', 'yaw gearmotor', (-7.286357240694934, 18.94071855760919, -1.5821526471555414)), (0.903643, 'barrel intact radial middle 46', 'yaw gearmotor', (-7.286357240694932, 18.57216572412512, -4.0408769831677205))] []
+true barrel core v frame truss 105 [(0.721497, 'barrel intact radial middle 5', 'bearing pillar 1', (-5.163885596756814, 14.072246962747325, 13.051896425632561)), (0.714307, 'barrel intact radial middle 21', 'bearing pillar 2', (-5.000394943254684, -18.348672989403745, 5.656017214586332))]
+own gearmotor and revised tail at test yaw 105 [(0.696989, 'clamp gearmotor', 'true flange inner', (-19.985451166464234, -7.767757011970632, 10.25127689551583))]
+station inserts v heel/rigid shoes at sequence 105 []
+separate axial front seat vs intact wall []
+front seat vs rounded shoe, remove .12 from inner radius for blend [(0.235, 'front fixed metal seat 9', 'Take58 rounded shoe outer -90', (16.424999999999997, -2.965, -16.365000000000002)), (0.235, 'front fixed metal seat 8', 'Take58 rounded shoe outer -90', (16.424999999999997, -1.9526598128423205, -16.365000000000002))]
+rear seat vs own shoe: intentional rigid integration [(0.2, 'heel metal seat 9', 'Take58 rounded shoe outer -90', (14.809999999999999, -3.0, -16.400000000000002))]
+fixed lip vs shoe axially displaced forward/backward [(0.011, 'solid lip (-90, 5, -0.27)', 'Take58 rounded shoe outer -90', (16.781, 1.380916490256643, -15.657736863676698))] []
+central spine vs moving annulus key frame near park []
+motor v own hinge + forks []

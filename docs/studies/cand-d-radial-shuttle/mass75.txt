@@ -1,0 +1,12 @@
+assigned nominal g/mm3 17-4 PH .00775, 7075 .00281, polycarbonate .00127, Cu envelope .00896; not manufacturing bounds
+listed stock gross sums g {'steel': np.float64(53.03201200248605), '7075 mounts/covers': np.float64(7.501918898689176), 'four motor envelope (Cu)': np.float64(30.5018990028919), 'bare catalog cell': 2.9, 'electronics copper-envelope': np.float64(11.311475145285138), 'steel tail pierced shell + rib blanks': 11.965, 'uncut fixed polymer pods': np.float64(1.2514497283002626)}
+separately counted selected finished-stock minimums g {'other named': 2.930481588162256, 'plugs/ways': 0.8268553739999999, 'housing sectors': np.float64(3.8188714064143188), 'face cam/wheel': 6.75676094539576, 'rigid disk, posts, stud': 7.444712832340571, 'cell': 2.9, 'hollow lobe': 6.318885, 'tail cartridges, balls': 3.141294762276587, 'named': 0}
+partial lower including nominal bare catalog cell, gross-listed subtotal upper, representative bookkeeping COM home world 34.13786190858949 118.46375477765254 [-1.00080634 -0.60586994  1.56463816]
+listed COM intervals only home yaw0 [(np.float64(-10.094854780351099), np.float64(6.174673852862864)), (np.float64(-12.967198893179653), np.float64(12.158907932639867)), (np.float64(-11.31248719454389), np.float64(12.380649883814526))]
+level table foot and gross COM projection, all feet and four tripods
+-1 449.5316 8.264130059364287
+0 269.3516 2.2702307969318234
+1 269.3516 3.2744285759627307
+2 269.3516 -0.24732624866322395
+3 269.35159999999996 0.7568715303676827
+Catalog typical 0615 ~2 g + 06/1 gears 4,4,3.4,2 g = nominal 21.4 g not guaranteed lower/upper. Actual as-built total, CG, preload, torque/hard maxima unknown.

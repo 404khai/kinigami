@@ -1,0 +1,121 @@
+{
+  "label": "exploratory",
+  "carrier": {
+    "shift": 0.2795584412271571,
+    "min_gap": 0.10044155877284189,
+    "max_gap": 0.6595584412271561,
+    "inner_center_ahead": 1.9277037845774148,
+    "inner_min_x_work": 0.6448652628888201,
+    "island_cap_check": 0.09932533257546311,
+    "outer_trim_min_nx": 0.41036664329999206,
+    "outer_rim_min_x_work": 0.26051648026491314,
+    "front_graph_min_x_work": 0.23164851614026905,
+    "terminal_inner_back": 0.9077037845774143,
+    "terminal_outer_back": 0.11736537664903679,
+    "diagonal_barrier": 2.775211703636318,
+    "max_seam_diagonal": 0.8276577416988232,
+    "terminal_stroke_cases": [
+      {
+        "rim_plane": 1.43,
+        "carrier_travel": 8.38,
+        "inner_trailing_bound": 0.9077037845774143,
+        "outer_trailing_bound": 0.11736537664903679,
+        "rocked_tail_trailing_x": 1.0700000000000003
+      },
+      {
+        "rim_plane": 1.58,
+        "carrier_travel": 8.530000000000001,
+        "inner_trailing_bound": 1.0577037845774147,
+        "outer_trailing_bound": 0.26736537664903715,
+        "rocked_tail_trailing_x": 1.2200000000000006
+      },
+      {
+        "rim_plane": 1.73,
+        "carrier_travel": 8.68,
+        "inner_trailing_bound": 1.2077037845774146,
+        "outer_trailing_bound": 0.4173653766490366,
+        "rocked_tail_trailing_x": 1.3700000000000006
+      }
+    ]
+  },
+  "draw": {
+    "home": {
+      "boss_button": 0.47398113027888567,
+      "boss_hull": 1.0999999999999996,
+      "rim_button": 0.661834910301295,
+      "rim_if_tail_follows": 0.5170332359108758,
+      "cap_hull": 1.0500000000000007
+    },
+    "draw": {
+      "boss_button": 0.22334355524533667,
+      "boss_hull": 0.5999999999999996,
+      "rim_button": 0.2581152985326769,
+      "rim_if_tail_follows": 0.09084726423439493,
+      "cap_hull": 0.5500000000000007
+    },
+    "first_seat_early": 0.36453887021657955,
+    "home_plane_reserve": 0.07574890247101851,
+    "full_face_penetration": 0.203847549264355,
+    "projection_t": 2.149481226655388,
+    "projection_h": 1.356007844261664,
+    "remaining_finite_faces": 0.2939921557383358,
+    "centered_contact": [
+      -5.707982258676866,
+      10.3,
+      2.0725939313876043
+    ]
+  },
+  "sweep": {
+    "home_jaw_opening_cone_clearance": 0.11663825013348966,
+    "other_closed_sections": 0.6766834920241385,
+    "rotating_parked_bore_clearance": 0.2619932156543416,
+    "fork_min_x": 2.697943765167982,
+    "generator_radial_bound": 10.95
+  },
+  "faces": {
+    "inner_hull_to_highest_cap": 0.15434569056813707,
+    "loaded_button_rim": 0.24679958020706697,
+    "capsule_to_boss": 0.07713942105833685,
+    "other_V_slabs": 8.787312354150018,
+    "button_deck": 0.14000000000000057,
+    "own_V_min_gap": 0.0,
+    "boss_cap_capsule_centered": 0.08845512464907124,
+    "boss_cap_capsule_at_018": -0.025111056350998417,
+    "boss_cap_capsule_at_budget": -0.08792478944259985,
+    "alternate_R795_at_budget": 0.19599066305757562,
+    "terminal_trailing_ball": 1.0700000000000003
+  },
+  "force": {
+    "adverse_axial": 20.0,
+    "contact_magnitudes": [
+      6.750206772993566,
+      10.059013199465847
+    ],
+    "support_wrench_about_button_line": [
+      20.0,
+      0.0,
+      0.0,
+      0.0,
+      -3.552713678800501e-15,
+      -17.59163652056167
+    ],
+    "adverse_force_line_offset": 0.8795818260280837,
+    "max_stick_arm_sufficient": 1.5603195306955402
+  },
+  "conditional_clear": {
+    "leading_x_factor": 0.39600000000000046,
+    "trial_mass_kg": 0.07,
+    "min_inertia_kg_m2": 1e-05,
+    "external_lever_m": 0.01,
+    "max_generator_arm_m": 0.035,
+    "load_N": 0.6867,
+    "sufficient_acceleration_m_s2": 70.50318181818174,
+    "at_20N_m_s2": 2053.391053391051,
+    "trial_acceleration_m_s2": 100.0,
+    "pulse_seconds": 0.003,
+    "retraction_mm": 0.45,
+    "terminal_speed_mm_s": 300.0,
+    "guaranteed_material_gap_mm": 0.05256333000000019,
+    "stationary_hardware_gap_mm": 0.5476997499999999
+  }
+}

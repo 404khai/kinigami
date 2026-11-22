@@ -1,0 +1,19 @@
+disk cut inflation, sampled curvature R, walls inner/core, outer/front, back, closest repeated land 0.020196212733502004 2.498517220643546 1.4098037872664977 0.37380378726649943 0.2038037872664944 6.581011793398989
+disk max pressure angle, signed slope at work 52.578621491113374 0.0
+last draw theta ±3° local remained end wall minimum disk 0.2038037872664944
+leaf cut inflation, sampled curvature R, walls inner/core, outer/front, back, closest repeated land 0.024146568701587743 7.8289880668077485 3.0009940543366174 0.6169746740237243 0.5658534312984127 1.8815349434576647
+leaf max pressure angle, signed slope at work 20.528855016065982 0.9607291997085667
+last draw theta ±3° local remained end wall minimum leaf 0.5658534312984127
+ring, working pin, leaf roller rad, disk roller X, annulus groove axial shoulder length -3 (0.8569263198116284, 14.400354201831075) 16.846048394757254 -19.03 1.65
+ring, working pin, leaf roller rad, disk roller X, annulus groove axial shoulder length 0 (0.848955365791892, 14.448111949011444) 16.896302928706213 -19.03 1.65
+ring, working pin, leaf roller rad, disk roller X, annulus groove axial shoulder length 10 (0.816628977403608, 14.606216501125415) 17.06437282607285 -19.03 1.65
+ring, working pin, leaf roller rad, disk roller X, annulus groove axial shoulder length 42 (-0.9673230500000001, 16.64851293) 19.288878757274688 -19.03 1.65
+ring, working pin, leaf roller rad, disk roller X, annulus groove axial shoulder length 105 (-0.9673230500000001, 16.64851293) 19.288878757274688 -10.500000000000002 1.65
+actual first hard-stop common surface park ring steel limit 105.79420747961318
+actual first hard-stop common surface draw ring steel limit -3.2942074796127594
+bolt misalignment, offset, straight pass and lead with NO pilot 0 0.0 0.03 0.06999999999999998
+bolt misalignment, offset, straight pass and lead with NO pilot 0.5 0.011431870326036016 0.018568129673963985 0.058568129673963965
+bolt misalignment, offset, straight pass and lead with NO pilot 1.0 0.02286352300573971 0.007136476994260288 0.04713647699426027
+bolt misalignment, offset, straight pass and lead with NO pilot 1.5 0.03429474039692244 -0.004294740396922438 0.03570525960307754
+bolt misalignment, offset, straight pass and lead with NO pilot 15 0.34197862361653514 -0.31197862361653517 -0.27197862361653513
+straight overlap, retracted clearance, inside radial wall, circum land at mouth 1.2799999999999994 0.16999999999999993 0.10151854377036895 0.10810589816860439

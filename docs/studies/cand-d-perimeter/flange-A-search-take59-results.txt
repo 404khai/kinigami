@@ -1,0 +1,7 @@
+cell centre [-2.  -0.5 16.5] size [20.7  30.66  5.4 ]
+computer centre [ -0.5 -23.    0. ] size [17.8  5.7 22. ]
+H-bridge centre [-2. 10.  0.] size [8.8  1.87 9.8 ]
+cutoff centre [ 4. -2.  0.] size [6.2  1.95 6.85]
+joint driver centre [-2.  -6.5  3. ] size [6.2  2.05 5.8 ]
+connector centre [ 4.  -5.   1.5] size [2.9  2.8  3.35]
+wire reserve centre [ 1.   1.  -4.5] size [3.  3.4 2. ]

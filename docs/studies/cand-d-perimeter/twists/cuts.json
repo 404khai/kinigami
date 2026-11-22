@@ -1,0 +1,200 @@
+{
+  "label": "exploratory",
+  "lambda_mm_per_rad": 1.1,
+  "features": {
+    "roofface": {
+      "certified": true,
+      "boxes": 789,
+      "power": 324,
+      "penetrating": 71,
+      "depth": 14,
+      "lower_work": 0.15018057735227036
+    },
+    "toeface": {
+      "certified": true,
+      "boxes": 47,
+      "power": 24,
+      "penetrating": 0,
+      "depth": 8,
+      "lower_work": 0.16581563341248345
+    },
+    "sideface": {
+      "certified": true,
+      "boxes": 1,
+      "power": 0,
+      "penetrating": 1,
+      "depth": 0,
+      "lower_work": null
+    },
+    "back": {
+      "certified": true,
+      "boxes": 3669,
+      "power": 1128,
+      "penetrating": 707,
+      "depth": 15,
+      "lower_work": 0.15008286295680903
+    },
+    "toe": {
+      "certified": true,
+      "boxes": 93,
+      "power": 47,
+      "penetrating": 0,
+      "depth": 8,
+      "lower_work": 0.15555407752485123
+    },
+    "side": {
+      "certified": true,
+      "boxes": 177,
+      "power": 60,
+      "penetrating": 29,
+      "depth": 12,
+      "lower_work": 0.15021647402917102
+    },
+    "corner_back": {
+      "certified": true,
+      "boxes": 537,
+      "power": 126,
+      "penetrating": 143,
+      "depth": 13,
+      "lower_work": 0.15122092756855665
+    },
+    "corner_toe": {
+      "certified": true,
+      "boxes": 383,
+      "power": 133,
+      "penetrating": 59,
+      "depth": 14,
+      "lower_work": 0.15115947140292973
+    },
+    "toe_side": {
+      "certified": true,
+      "boxes": 317,
+      "power": 104,
+      "penetrating": 55,
+      "depth": 13,
+      "lower_work": 0.15087560786745574
+    },
+    "rear_side": {
+      "certified": true,
+      "boxes": 65,
+      "power": 0,
+      "penetrating": 33,
+      "depth": 7,
+      "lower_work": null
+    },
+    "fixed_side": {
+      "certified": true,
+      "boxes": 461,
+      "power": 106,
+      "penetrating": 125,
+      "depth": 13,
+      "lower_work": 0.09000508343920346
+    },
+    "fixed_sideface": {
+      "certified": true,
+      "boxes": 1,
+      "power": 0,
+      "penetrating": 1,
+      "depth": 0,
+      "lower_work": null
+    },
+    "fixed_corner_toe": {
+      "certified": true,
+      "boxes": 243,
+      "power": 65,
+      "penetrating": 57,
+      "depth": 14,
+      "lower_work": 0.09206495333943152
+    },
+    "fixed_toe_side": {
+      "certified": true,
+      "boxes": 39,
+      "power": 1,
+      "penetrating": 19,
+      "depth": 6,
+      "lower_work": 0.31075672732013254
+    }
+  },
+  "near": {
+    "roofface": {
+      "certified": true,
+      "boxes": 4775,
+      "power": 1332,
+      "penetrating": 1056,
+      "depth": 18,
+      "lower_work": 0.3600480273876178
+    },
+    "toeface": {
+      "certified": true,
+      "boxes": 73,
+      "power": 34,
+      "penetrating": 3,
+      "depth": 11,
+      "lower_work": 0.36026368398180436
+    },
+    "sideface": {
+      "certified": true,
+      "boxes": 1,
+      "power": 0,
+      "penetrating": 1,
+      "depth": 0,
+      "lower_work": null
+    },
+    "back": {
+      "certified": true,
+      "boxes": 6561,
+      "power": 1113,
+      "penetrating": 2168,
+      "depth": 19,
+      "lower_work": 0.36003470258992315
+    },
+    "toe": {
+      "certified": true,
+      "boxes": 153,
+      "power": 73,
+      "penetrating": 4,
+      "depth": 11,
+      "lower_work": 0.3608541084714807
+    },
+    "side": {
+      "certified": true,
+      "boxes": 381,
+      "power": 106,
+      "penetrating": 85,
+      "depth": 15,
+      "lower_work": 0.360785636155407
+    },
+    "corner_back": {
+      "certified": true,
+      "boxes": 741,
+      "power": 103,
+      "penetrating": 268,
+      "depth": 15,
+      "lower_work": 0.3620429104687393
+    },
+    "corner_toe": {
+      "certified": true,
+      "boxes": 213,
+      "power": 76,
+      "penetrating": 31,
+      "depth": 13,
+      "lower_work": 0.36012993018888545
+    },
+    "toe_side": {
+      "certified": true,
+      "boxes": 81,
+      "power": 26,
+      "penetrating": 15,
+      "depth": 12,
+      "lower_work": 0.36199865803161174
+    },
+    "rear_side": {
+      "certified": true,
+      "boxes": 5,
+      "power": 0,
+      "penetrating": 3,
+      "depth": 2,
+      "lower_work": null
+    }
+  }
+}

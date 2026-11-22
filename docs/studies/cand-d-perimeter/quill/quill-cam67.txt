@@ -1,0 +1,19 @@
+disk cut inflation, sampled curvature R, walls inner/core, outer/front, back, closest repeated land 0.020196212733502004 2.5523218095820517 1.4098037872664977 0.5538037872664991 0.2038037872664944 6.404465969070095
+disk max pressure angle, signed slope at work 51.98727433079625 0.0
+last draw theta ±3° local remained end wall minimum disk 0.2038037872664944
+leaf cut inflation, sampled curvature R, walls inner/core, outer/front, back, closest repeated land 0.024146568701587743 7.8289880668077485 3.0009940543366174 0.6169746740237243 0.5658534312984127 1.8815349434576647
+leaf max pressure angle, signed slope at work 20.528855016065982 0.9607291997085667
+last draw theta ±3° local remained end wall minimum leaf 0.5658534312984127
+ring, working pin, leaf roller rad, disk roller X, annulus groove axial shoulder length -3 (0.8569263198116284, 14.400354201831075) 16.846048394757254 -19.03 1.65
+ring, working pin, leaf roller rad, disk roller X, annulus groove axial shoulder length 0 (0.848955365791892, 14.448111949011444) 16.896302928706213 -19.03 1.65
+ring, working pin, leaf roller rad, disk roller X, annulus groove axial shoulder length 10 (0.816628977403608, 14.606216501125415) 17.06437282607285 -19.03 1.65
+ring, working pin, leaf roller rad, disk roller X, annulus groove axial shoulder length 42 (-0.9673230500000001, 16.64851293) 19.288878757274688 -19.03 1.65
+ring, working pin, leaf roller rad, disk roller X, annulus groove axial shoulder length 105 (-0.9673230500000001, 16.64851293) 19.288878757274688 -10.680000000000001 1.65
+actual first hard-stop common surface park ring steel limit 105.79420747961318
+actual first hard-stop common surface draw ring steel limit -3.2942074796127594
+bolt misalignment °, center shift, straight shank clearance, tip-to-mouth 0 0.0 0.06 0.4
+bolt misalignment °, center shift, straight shank clearance, tip-to-mouth 0.5 0.031066762107395587 0.02893323789260441 0.36893323789260446
+bolt misalignment °, center shift, straight shank clearance, tip-to-mouth 0.97 0.060268989975174166 -0.00026898997517416784 0.33973101002482586
+bolt misalignment °, center shift, straight shank clearance, tip-to-mouth 1.5 0.09319792046797243 -0.03319792046797243 0.3068020795320276
+bolt misalignment °, center shift, straight shank clearance, tip-to-mouth 11.25 0.6978820391464715 -0.6378820391464715 -0.2978820391464715
+extended straight shank overlap worst excluding chamfer, retracted nose X-clear 1.3900000000000006 0.21999999999999886

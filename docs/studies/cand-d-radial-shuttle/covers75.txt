@@ -1,0 +1,7 @@
+gross convex fixed clam cover volumes, uncut (inner/outer mm3) and farthest world distance at trial center [('jaw cover 0.35', 2260.2154888468353, 2568.6474889855176, np.float64(30.493903049360107)), ('brake cover 0.35', 3102.1701445533986, 3471.684219501483, np.float64(30.93547806650217)), ('eject cover 0.35', 2701.961473081429, 3009.408884845264, np.float64(20.28679491001022))]
+full stroke and analytic yaw incl cylinder circumscription one sphere 60.90039671097434 [-1.35153502  1.12477494  0.83541204] active [(np.float64(30.45019835548717), 'brake cover 0.35'), (np.float64(30.45019835548716), 'cell bulk'), (np.float64(30.450198355487153), 'jaw cover 0.35'), (np.float64(30.357869678203365), 'yaw motor body'), (np.float64(30.08724112514324), 'dog geared 64')] 30.017717061469465
+actual two-point reservation diameter lower 59.073153199970996 ('yaw motor body', array([-10.0280503 , -21.46007352, -17.5       ])) ('jaw geared 256', array([ 4.2780503, 22.6716386, 19.07     ]))
+gross covered neighbors (outer blanks, separation negative inconclusive)
+independent powered neighbors continuous ±15 broad -1.953678590058189 front cover high cell bulk
+continuous pair clearance of powered housings 0.2 (np.float64(0.6981632551430802), ('front cover high', 'cell bulk')) host-to-tail mating contacts not included
+foot floor -23.22 fixed pod zmin [('jaw cover 0.35', np.float64(4.939999999999998)), ('brake cover 0.35', np.float64(32.879999999999995)), ('eject cover 0.35', np.float64(12.284542604999999))] nose guard ground margin 0.2699999999999996

@@ -1,0 +1,12 @@
+reversible flank and fork free-motion transfer, leaf deg, possible true spring span under ideal contact [-47.43946936410112, -41.3729717851464] [np.float64(-5.021262736325466), np.float64(5.36313026094522)]
+full machined disk axial gap/tilt and edge excursion 0.21330132400000001 0.01331468938826467 0.1653684422022472
+bush midpoint/span/overhang and clean one-flank side reactions, μ.03 drag -1.195 7.93 3.1149999999999993 29.82391465166949 105.74803766538992 4.067158569511783
+illustrative gross minimum crossbar radius at shear limit 500MPa no safety factor, equal branches torsion and direct shear 410 0.4218891158880241 0.36125759969217835
+illustrative gross minimum crossbar radius at shear limit 500MPa no safety factor, equal branches torsion and direct shear 534 0.4607345578326265 0.41228325120254916
+conditional draw from true extended stop; ring°, F spring, Nnormal, drum torque 3 loaded -3 37.15988168654346 125.42129306841623 227.7306635365775
+conditional draw from true extended stop; ring°, F spring, Nnormal, drum torque 3 loaded 0 35.40399999770797 127.24804286449329 232.5233405312701
+conditional draw from true extended stop; ring°, F spring, Nnormal, drum torque 3 loaded 7.5 30.67475392221538 131.81978477044916 246.5929126665068
+conditional draw from true extended stop; ring°, F spring, Nnormal, drum torque 3 loaded 10 28.96994304284333 133.2480860101539 251.90835289664452
+conditional draw from true extended stop; ring°, F spring, Nnormal, drum torque 3 loaded 12 26.870482468856785 134.75666726660398 494.8317243368458
+conditional draw from true extended stop; ring°, F spring, Nnormal, drum torque 3 loaded 13.35 24.630704147056687 135.96176025846796 653.1806865190742
+symbolic roof sweep and yaw, no driven separation from motor commands

@@ -1,0 +1,11 @@
+key lock/park extents (array([-3.38211303, -0.8954915 , -1.65      ]), array([-0.70211303, 13.35      ,  1.65      ])) (array([-3.38211303,  3.9545085 , -1.65      ]), array([-0.70211303, 18.2       ,  1.65      ]))
+fillet core rear flat start 2.2339548251717303
+stroke, usable (-X,+X) flat lengths by fixed row (mm) 0 [[0.85, 0.85], [0.85, 0.85], [1.44, 1.44]]
+stroke, usable (-X,+X) flat lengths by fixed row (mm) 0.893475 [[0.85, 0.85], [0.85, 0.85], [1.44, 1.44]]
+stroke, usable (-X,+X) flat lengths by fixed row (mm) 2.266 [[0.85, 0.85], [0.85, 0.85], [0.74, 0.74]]
+stroke, usable (-X,+X) flat lengths by fixed row (mm) 3.116 [[4.5e-05, 0.85], [0.85, 0.85], [0.956, 0.956]]
+stroke, usable (-X,+X) flat lengths by fixed row (mm) 3.743475 [[0.0, 0.85], [0.85, 0.85], [1.44, 1.44]]
+stroke, usable (-X,+X) flat lengths by fixed row (mm) 4.85 [[0.0, 0.85], [0.85, 0.85], [1.44, 1.44]]
+independent mid-row and extra row rear length minima over FULL stroke 0.8499999999999996 0.740000000000002
+extra-to-middle adverse separation 2.460000000000001 max lost angular motion, whole-lock span, .020 each side 0.2794893905447436
+original roof at y18.60 obstructs extended shoe at park by 5.18 must revise enclosed pocket not datum of key toe

@@ -1,0 +1,22 @@
+station -90
+probe ring °, center and known boss touch world 1.8488601953803194 [ 30.5815382   1.8       -12.5450972] [ 18.58764486   1.8        -15.0054754 ]
+installed links separating-plane max/closest (negative inconclusive) (np.float64(-0.3028828028659767), ('centre clevis link (-90.0, 1)', 'rolled three-lobe hull'))
+shell inner void separation to probe center / witness radius 0.7362694683077109 0.08500324584973118
+outer material ball [world X,Y,Z,R]; outside clevis bores by [ 18.45220877   1.44499675 -15.41472952   0.08500325] 0.38522217094758415 outside tail port R2.66 by 8.433613242900925
+fixed hood and stop supports separating-plane max/closest (negative inconclusive) (np.float64(1.641795768750498), ('thin liner (-90.0, 1, -1.55, 0)', 'rolled three-lobe hull'))
+power/rear housing separating-plane max/closest (negative inconclusive) (np.float64(9.753539064760234), ('foot forward tie 7.8', 'rolled three-lobe hull'))
+adjacent yaw, broad powered gap, actual lowest foot, penetration -15.0 (0.02775746347137442, 'slider guide cheek (-90.0, -1, -3.72)', 'cell bulk') (np.float64(-52.89969086539719), 'foot (8.3, 7.8)') 29.67969086539719
+adjacent yaw, broad powered gap, actual lowest foot, penetration 0.0 (3.7927809278459677, 'slider guide cheek (-90.0, -1, -3.72)', 'cell bulk') (np.float64(-51.43446674987416), 'foot (8.3, -7.8)') 28.214466749874163
+adjacent yaw, broad powered gap, actual lowest foot, penetration 15.0 (1.1725428162141043, 'radial slide fork (-90.0, 1)', 'cell bulk') (np.float64(-52.89969086539719), 'foot (8.3, -7.8)') 29.67969086539719
+ALL powered hull & electronics vs floor continuous lower (+clear), nonmating head gap lower in fixed approach incl yaw debit -35.18405959020077 -0.12712254299503822 (np.float64(-15.0), (0.02775746347137442, 'slider guide cheek (-90.0, -1, -3.72)', 'cell bulk'))
+floor penetration lower across ALL independent adjacent yaws 28.072146278017165
+station 30
+probe ring °, center and known boss touch world 1.8488601953803194 [26.257771    3.73014003  3.42376794] [18.79364486 11.98786149  8.19136565]
+installed links separating-plane max/closest (negative inconclusive) (np.float64(-0.00395479612415528), ('centre clevis link (30.0, 1)', 'rolled three-lobe hull'))
+fixed hood and stop supports separating-plane max/closest (negative inconclusive) (np.float64(1.916413960513406), ('thin liner (30.0, 1, -1.55, 0)', 'rolled three-lobe hull'))
+power/rear housing separating-plane max/closest (negative inconclusive) (np.float64(11.337938030666717), ('foot forward tie 7.8', 'button near-mid sphere -30.0'))
+adjacent yaw, broad powered gap, actual lowest foot, penetration -15.0 (8.553158554224307, 'external park lever (30.0, 6.68)', 'park geared 4to1') (np.float64(-17.588113022305063), 'foot (-14.8, -7.8)') -5.631886977694936
+adjacent yaw, broad powered gap, actual lowest foot, penetration 0.0 (7.70672166921101, 'external park lever (30.0, 6.68)', 'park geared 4to1') (np.float64(-17.891084951652044), 'foot (-14.8, 7.8)') -5.328915048347955
+adjacent yaw, broad powered gap, actual lowest foot, penetration 15.0 (7.9393154723961885, 'external park lever (30.0, 6.68)', 'park geared 4to1') (np.float64(-18.319709303646206), 'foot (-14.8, 7.8)') -4.900290696353792
+ALL powered hull & electronics vs floor continuous lower (+clear), nonmating head gap lower in fixed approach incl yaw debit 4.74541068988738 7.369817110611035 (np.float64(5.5), (7.524697117077448, 'external park lever (30.0, 6.68)', 'park geared 4to1'))
+floor penetration lower across ALL independent adjacent yaws -5.882373696605144

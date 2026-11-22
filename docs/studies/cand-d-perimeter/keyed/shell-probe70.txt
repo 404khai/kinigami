@@ -1,0 +1,7 @@
+separate Take72 carrier probe p=1.43, phi 0..4, independent yaw ±15, lower fixed-X separation of adjacent POWER HEAD (not tail interface), floor all parts incl midpoint debits 3.3258759156397204 -0.3852412424891085 0.3852412424891089
+all named adjacent powered solids: lower d(world Z)/dphi from Rodrigues, mm/rad, over all independent yaw and phi; phi=0 exact floor 1.0674066655519356 (np.float64(0.0), 'foot (-14.8, -7.8)')
+actual lowest foot+rail vs floor at roll for all sampled yaws 0 (np.float64(-3.552713678800501e-15), 'foot (-14.8, -7.8)') (np.float64(-3.552713678800501e-15), 'foot (8.3, -7.8)')
+actual lowest foot+rail vs floor at roll for all sampled yaws 0.5 (np.float64(0.03160292776616558), 'foot (-14.8, 7.8)') (np.float64(0.04096939141896527), 'foot (-14.8, 7.8)')
+actual lowest foot+rail vs floor at roll for all sampled yaws 2 (np.float64(0.12873744949972732), 'foot (-14.8, 7.8)') (np.float64(0.16788990328118913), 'foot (-14.8, -7.8)')
+actual lowest foot+rail vs floor at roll for all sampled yaws 4 (np.float64(0.26358399792011156), 'foot (-14.8, 7.8)') (np.float64(0.3452042071995116), 'foot (-14.8, 7.8)')
+terminal 4deg core center local [ 5.98422778e+00  1.56243477e-01 -9.29811783e-16]

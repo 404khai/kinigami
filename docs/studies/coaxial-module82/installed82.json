@@ -1,0 +1,4097 @@
+[
+  {
+    "bbox_mm": [
+      -16.1,
+      -10.9,
+      -10.9,
+      -0.02,
+      10.9,
+      10.9
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "barrel",
+    "volume_polygon_mm3": 1247.8841713
+  },
+  {
+    "bbox_mm": [
+      -14.9,
+      -9.7,
+      -9.7,
+      -13.7,
+      9.7,
+      9.7
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "bronze",
+    "name": "sleeve guide 0",
+    "volume_polygon_mm3": 3.6447856
+  },
+  {
+    "bbox_mm": [
+      -7.45,
+      -9.7,
+      -9.7,
+      -6.25,
+      9.7,
+      9.7
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "bronze",
+    "name": "sleeve guide 1",
+    "volume_polygon_mm3": 3.6447856
+  },
+  {
+    "bbox_mm": [
+      -2.21,
+      -9.74,
+      -9.7195551,
+      0.0,
+      9.4619553,
+      9.74
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "V seat annulus",
+    "volume_polygon_mm3": 222.9789957
+  },
+  {
+    "bbox_mm": [
+      -2.0,
+      -5.34,
+      -5.34,
+      0.0,
+      5.34,
+      5.34
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "pilot",
+    "volume_polygon_mm3": 15.7319117
+  },
+  {
+    "bbox_mm": [
+      -15.15,
+      -9.6,
+      -9.6,
+      -0.03,
+      9.6,
+      9.6
+    ],
+    "group": "sleeve",
+    "kind": "solid",
+    "material": "steel",
+    "name": "sleeve",
+    "volume_polygon_mm3": 2128.389835
+  },
+  {
+    "bbox_mm": [
+      -22.6,
+      4.56,
+      -0.54,
+      -18.25,
+      5.64,
+      0.54
+    ],
+    "group": "cage",
+    "kind": "solid",
+    "material": "steel",
+    "name": "cage return stud 0",
+    "volume_polygon_mm3": 3.9821402
+  },
+  {
+    "bbox_mm": [
+      -5.7,
+      3.4106602,
+      -1.5,
+      -2.7,
+      6.4106602,
+      1.5
+    ],
+    "group": "r0",
+    "kind": "solid",
+    "material": "steel",
+    "name": "roller 0",
+    "volume_polygon_mm3": 21.1906139
+  },
+  {
+    "bbox_mm": [
+      -22.6,
+      -3.09,
+      3.8767296,
+      -18.25,
+      -2.01,
+      4.9567296
+    ],
+    "group": "cage",
+    "kind": "solid",
+    "material": "steel",
+    "name": "cage return stud 120",
+    "volume_polygon_mm3": 3.9821402
+  },
+  {
+    "bbox_mm": [
+      -5.7,
+      -4.5043682,
+      2.2037184,
+      -2.7,
+      -0.406292,
+      6.3017946
+    ],
+    "group": "r120",
+    "kind": "solid",
+    "material": "steel",
+    "name": "roller 120",
+    "volume_polygon_mm3": 21.1906139
+  },
+  {
+    "bbox_mm": [
+      -22.6,
+      -3.09,
+      -4.9567296,
+      -18.25,
+      -2.01,
+      -3.8767296
+    ],
+    "group": "cage",
+    "kind": "solid",
+    "material": "steel",
+    "name": "cage return stud 240",
+    "volume_polygon_mm3": 3.9821402
+  },
+  {
+    "bbox_mm": [
+      -5.7,
+      -4.5043682,
+      -6.3017946,
+      -2.7,
+      -0.406292,
+      -2.2037184
+    ],
+    "group": "r240",
+    "kind": "solid",
+    "material": "steel",
+    "name": "roller 240",
+    "volume_polygon_mm3": 21.1906139
+  },
+  {
+    "bbox_mm": [
+      -3.0,
+      2.23,
+      4.3602679,
+      -1.5,
+      3.59,
+      5.7202679
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "bronze",
+    "name": "rod bush (60, 0)",
+    "volume_polygon_mm3": 1.1327984
+  },
+  {
+    "bbox_mm": [
+      -10.9,
+      2.23,
+      4.3602679,
+      -9.4,
+      3.59,
+      5.7202679
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "bronze",
+    "name": "rod bush (60, 1)",
+    "volume_polygon_mm3": 1.1327984
+  },
+  {
+    "bbox_mm": [
+      -9.4,
+      2.305,
+      4.4352679,
+      -2.87,
+      3.515,
+      5.6452679
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "rod bush support tube 60",
+    "volume_polygon_mm3": 2.8781939
+  },
+  {
+    "bbox_mm": [
+      -1.5,
+      2.7643646,
+      5.13802,
+      -1.16,
+      3.7281089,
+      6.107274
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "bush anchor 60",
+    "volume_polygon_mm3": 0.1444949
+  },
+  {
+    "bbox_mm": [
+      -1.47,
+      0.8099527,
+      5.084762,
+      -1.17,
+      1.7120161,
+      6.7801684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "pilot web 60",
+    "volume_polygon_mm3": 0.28014
+  },
+  {
+    "bbox_mm": [
+      -31.72,
+      2.46,
+      4.5902679,
+      -0.73,
+      3.36,
+      5.4902679
+    ],
+    "group": "eject",
+    "kind": "solid",
+    "material": "steel",
+    "name": "ejector rod 60",
+    "volume_polygon_mm3": 19.7009137
+  },
+  {
+    "bbox_mm": [
+      -3.0,
+      -6.5,
+      -0.68,
+      -1.5,
+      -5.14,
+      0.68
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "bronze",
+    "name": "rod bush (180, 0)",
+    "volume_polygon_mm3": 1.1327984
+  },
+  {
+    "bbox_mm": [
+      -10.9,
+      -6.5,
+      -0.68,
+      -9.4,
+      -5.14,
+      0.68
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "bronze",
+    "name": "rod bush (180, 1)",
+    "volume_polygon_mm3": 1.1327984
+  },
+  {
+    "bbox_mm": [
+      -9.4,
+      -6.425,
+      -0.605,
+      -2.87,
+      -5.215,
+      0.605
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "rod bush support tube 180",
+    "volume_polygon_mm3": 2.8781939
+  },
+  {
+    "bbox_mm": [
+      -1.5,
+      -6.85,
+      -0.35,
+      -1.16,
+      -6.1349471,
+      0.35
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "bush anchor 180",
+    "volume_polygon_mm3": 0.1444949
+  },
+  {
+    "bbox_mm": [
+      -1.47,
+      -6.6233732,
+      -2.3987531,
+      -1.17,
+      -4.9129423,
+      -1.349623
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "pilot web 180",
+    "volume_polygon_mm3": 0.28014
+  },
+  {
+    "bbox_mm": [
+      -31.72,
+      -6.27,
+      -0.45,
+      -0.73,
+      -5.37,
+      0.45
+    ],
+    "group": "eject",
+    "kind": "solid",
+    "material": "steel",
+    "name": "ejector rod 180",
+    "volume_polygon_mm3": 19.7009137
+  },
+  {
+    "bbox_mm": [
+      -3.0,
+      2.23,
+      -5.7202679,
+      -1.5,
+      3.59,
+      -4.3602679
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "bronze",
+    "name": "rod bush (300, 0)",
+    "volume_polygon_mm3": 1.1327984
+  },
+  {
+    "bbox_mm": [
+      -10.9,
+      2.23,
+      -5.7202679,
+      -9.4,
+      3.59,
+      -4.3602679
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "bronze",
+    "name": "rod bush (300, 1)",
+    "volume_polygon_mm3": 1.1327984
+  },
+  {
+    "bbox_mm": [
+      -9.4,
+      2.305,
+      -5.6452679,
+      -2.87,
+      3.515,
+      -4.4352679
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "rod bush support tube 300",
+    "volume_polygon_mm3": 2.8781939
+  },
+  {
+    "bbox_mm": [
+      -1.5,
+      2.7643646,
+      -6.107274,
+      -1.16,
+      3.7281089,
+      -5.13802
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "bush anchor 300",
+    "volume_polygon_mm3": 0.1444949
+  },
+  {
+    "bbox_mm": [
+      -1.47,
+      3.7148939,
+      -4.8124393,
+      -1.17,
+      5.2994528,
+      -3.304115
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "pilot web 300",
+    "volume_polygon_mm3": 0.28014
+  },
+  {
+    "bbox_mm": [
+      -31.72,
+      2.46,
+      -5.4902679,
+      -0.73,
+      3.36,
+      -4.5902679
+    ],
+    "group": "eject",
+    "kind": "solid",
+    "material": "steel",
+    "name": "ejector rod 300",
+    "volume_polygon_mm3": 19.7009137
+  },
+  {
+    "bbox_mm": [
+      -18.5,
+      -4.7161133,
+      -6.1185479,
+      -2.41,
+      6.23,
+      6.1185479
+    ],
+    "group": "cage",
+    "kind": "solid",
+    "material": "steel",
+    "name": "roller cage",
+    "volume_polygon_mm3": 67.3474011
+  },
+  {
+    "bbox_mm": [
+      -0.85,
+      -6.32,
+      -6.32,
+      0.1,
+      6.32,
+      6.32
+    ],
+    "group": "eject",
+    "kind": "solid",
+    "material": "steel",
+    "name": "ejector lip",
+    "volume_polygon_mm3": 32.1572431
+  },
+  {
+    "bbox_mm": [
+      -32.26,
+      -6.37,
+      -6.37,
+      -31.67,
+      6.37,
+      6.37
+    ],
+    "group": "eject",
+    "kind": "solid",
+    "material": "steel",
+    "name": "ejector spider",
+    "volume_polygon_mm3": 61.2515071
+  },
+  {
+    "bbox_mm": [
+      -20.14,
+      -5.85,
+      -5.85,
+      -19.43,
+      5.85,
+      5.85
+    ],
+    "group": "cage",
+    "kind": "solid",
+    "material": "steel",
+    "name": "cage spring seat",
+    "volume_polygon_mm3": 76.2798527
+  },
+  {
+    "bbox_mm": [
+      -19.23,
+      5.44,
+      -0.66,
+      -18.96,
+      7.34,
+      0.66
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "cage reset stop 0",
+    "volume_polygon_mm3": 0.6345768
+  },
+  {
+    "bbox_mm": [
+      -26.77,
+      6.72,
+      -0.67,
+      -19.1,
+      7.34,
+      0.67
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "cage stop post 0",
+    "volume_polygon_mm3": 6.372236
+  },
+  {
+    "bbox_mm": [
+      -27.1,
+      6.72,
+      -0.72,
+      -26.72,
+      11.2,
+      0.72
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "cage stop ground 0",
+    "volume_polygon_mm3": 2.451456
+  },
+  {
+    "bbox_mm": [
+      -19.23,
+      -4.2415768,
+      4.3811782,
+      -18.96,
+      -2.1484232,
+      6.6866265
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "cage reset stop 120",
+    "volume_polygon_mm3": 0.6345768
+  },
+  {
+    "bbox_mm": [
+      -26.77,
+      -4.250237,
+      5.4846907,
+      -19.1,
+      -2.779763,
+      6.6916265
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "cage stop post 120",
+    "volume_polygon_mm3": 6.372236
+  },
+  {
+    "bbox_mm": [
+      -27.1,
+      -6.2235383,
+      5.4596907,
+      -26.72,
+      -2.7364617,
+      10.0594845
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "cage stop ground 120",
+    "volume_polygon_mm3": 2.451456
+  },
+  {
+    "bbox_mm": [
+      -19.23,
+      -4.2415768,
+      -6.6866265,
+      -18.96,
+      -2.1484232,
+      -4.3811782
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "cage reset stop 240",
+    "volume_polygon_mm3": 0.6345768
+  },
+  {
+    "bbox_mm": [
+      -26.77,
+      -4.250237,
+      -6.6916265,
+      -19.1,
+      -2.779763,
+      -5.4846907
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "cage stop post 240",
+    "volume_polygon_mm3": 6.372236
+  },
+  {
+    "bbox_mm": [
+      -27.1,
+      -6.2235383,
+      -10.0594845,
+      -26.72,
+      -2.7364617,
+      -5.4596907
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "cage stop ground 240",
+    "volume_polygon_mm3": 2.451456
+  },
+  {
+    "bbox_mm": [
+      -14.8,
+      -5.87,
+      -5.87,
+      -14.1,
+      5.87,
+      5.87
+    ],
+    "group": "draw",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw spring driver",
+    "volume_polygon_mm3": 72.5932732
+  },
+  {
+    "bbox_mm": [
+      -22.45,
+      1.75,
+      3.3971143,
+      -14.5,
+      2.75,
+      4.3971143
+    ],
+    "group": "draw",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw input rod 60",
+    "volume_polygon_mm3": 6.2394585
+  },
+  {
+    "bbox_mm": [
+      -22.45,
+      -5.0,
+      -0.5,
+      -14.5,
+      -4.0,
+      0.5
+    ],
+    "group": "draw",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw input rod 180",
+    "volume_polygon_mm3": 6.2394585
+  },
+  {
+    "bbox_mm": [
+      -22.45,
+      1.75,
+      -4.3971143,
+      -14.5,
+      2.75,
+      -3.3971143
+    ],
+    "group": "draw",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw input rod 300",
+    "volume_polygon_mm3": 6.2394585
+  },
+  {
+    "bbox_mm": [
+      -22.61,
+      -5.72,
+      -5.72,
+      -21.98,
+      5.72,
+      5.72
+    ],
+    "group": "draw",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw input spider",
+    "volume_polygon_mm3": 49.2060464
+  },
+  {
+    "bbox_mm": [
+      -20.92,
+      4.27,
+      -0.83,
+      -20.5,
+      5.93,
+      0.83
+    ],
+    "group": "cage",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw return head 0",
+    "volume_polygon_mm3": 0.9083333
+  },
+  {
+    "bbox_mm": [
+      -19.43,
+      1.275,
+      -1.575,
+      -14.8,
+      4.425,
+      1.575
+    ],
+    "group": "coil",
+    "kind": "reserve",
+    "material": "spring",
+    "name": "spring outside 0",
+    "volume_polygon_mm3": 19.2591287
+  },
+  {
+    "bbox_mm": [
+      -20.92,
+      -3.38,
+      3.5867296,
+      -20.5,
+      -1.72,
+      5.2467296
+    ],
+    "group": "cage",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw return head 120",
+    "volume_polygon_mm3": 0.9083333
+  },
+  {
+    "bbox_mm": [
+      -19.43,
+      -3.0,
+      0.8931724,
+      -14.8,
+      0.15,
+      4.0431724
+    ],
+    "group": "coil",
+    "kind": "reserve",
+    "material": "spring",
+    "name": "spring outside 120",
+    "volume_polygon_mm3": 19.2591287
+  },
+  {
+    "bbox_mm": [
+      -20.92,
+      -3.38,
+      -5.2467296,
+      -20.5,
+      -1.72,
+      -3.5867296
+    ],
+    "group": "cage",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw return head 240",
+    "volume_polygon_mm3": 0.9083333
+  },
+  {
+    "bbox_mm": [
+      -19.43,
+      -3.0,
+      -4.0431724,
+      -14.8,
+      0.15,
+      -0.8931724
+    ],
+    "group": "coil",
+    "kind": "reserve",
+    "material": "spring",
+    "name": "spring outside 240",
+    "volume_polygon_mm3": 19.2591287
+  },
+  {
+    "bbox_mm": [
+      -47.06,
+      -4.6,
+      -4.6,
+      -39.57,
+      4.6,
+      4.6
+    ],
+    "group": "yaw",
+    "kind": "solid",
+    "material": "steel",
+    "name": "own tri-flat pin",
+    "volume_polygon_mm3": 384.6038404
+  },
+  {
+    "bbox_mm": [
+      -39.6,
+      -6.65,
+      -6.65,
+      -38.6,
+      6.65,
+      6.65
+    ],
+    "group": "yaw",
+    "kind": "solid",
+    "material": "steel",
+    "name": "own eject boss",
+    "volume_polygon_mm3": 138.8299144
+  },
+  {
+    "bbox_mm": [
+      -41.8,
+      -1.5,
+      -9.7,
+      -38.57,
+      1.5,
+      -6.7
+    ],
+    "group": "yaw",
+    "kind": "solid",
+    "material": "steel",
+    "name": "own ball and stem -90",
+    "volume_polygon_mm3": 14.9700947
+  },
+  {
+    "bbox_mm": [
+      -41.8,
+      5.6014083,
+      2.6,
+      -38.57,
+      8.6014083,
+      5.6
+    ],
+    "group": "yaw",
+    "kind": "solid",
+    "material": "steel",
+    "name": "own ball and stem 30",
+    "volume_polygon_mm3": 14.9700947
+  },
+  {
+    "bbox_mm": [
+      -41.8,
+      -8.6014083,
+      2.6,
+      -38.57,
+      -5.6014083,
+      5.6
+    ],
+    "group": "yaw",
+    "kind": "solid",
+    "material": "steel",
+    "name": "own ball and stem 150",
+    "volume_polygon_mm3": 14.9700947
+  },
+  {
+    "bbox_mm": [
+      -38.6,
+      -10.35,
+      -10.35,
+      -37.35,
+      10.35,
+      10.35
+    ],
+    "group": "yaw",
+    "kind": "solid",
+    "material": "steel",
+    "name": "own flange",
+    "volume_polygon_mm3": 420.3688027
+  },
+  {
+    "bbox_mm": [
+      -6.76,
+      -4.6,
+      -4.6,
+      0.73,
+      4.6,
+      4.6
+    ],
+    "group": "guest",
+    "kind": "solid",
+    "material": "steel",
+    "name": "guest tri-flat pin",
+    "volume_polygon_mm3": 384.6038404
+  },
+  {
+    "bbox_mm": [
+      0.7,
+      -6.65,
+      -6.65,
+      1.7,
+      6.65,
+      6.65
+    ],
+    "group": "guest",
+    "kind": "solid",
+    "material": "steel",
+    "name": "guest eject boss",
+    "volume_polygon_mm3": 138.8299144
+  },
+  {
+    "bbox_mm": [
+      -1.5,
+      -1.5,
+      -9.7,
+      1.73,
+      1.5,
+      -6.7
+    ],
+    "group": "guest",
+    "kind": "solid",
+    "material": "steel",
+    "name": "guest ball and stem -90",
+    "volume_polygon_mm3": 14.9700947
+  },
+  {
+    "bbox_mm": [
+      -1.5,
+      5.6014083,
+      2.6,
+      1.73,
+      8.6014083,
+      5.6
+    ],
+    "group": "guest",
+    "kind": "solid",
+    "material": "steel",
+    "name": "guest ball and stem 30",
+    "volume_polygon_mm3": 14.9700947
+  },
+  {
+    "bbox_mm": [
+      -1.5,
+      -8.6014083,
+      2.6,
+      1.73,
+      -5.6014083,
+      5.6
+    ],
+    "group": "guest",
+    "kind": "solid",
+    "material": "steel",
+    "name": "guest ball and stem 150",
+    "volume_polygon_mm3": 14.9700947
+  },
+  {
+    "bbox_mm": [
+      1.7,
+      -10.35,
+      -10.35,
+      2.95,
+      10.35,
+      10.35
+    ],
+    "group": "guest",
+    "kind": "solid",
+    "material": "steel",
+    "name": "guest flange",
+    "volume_polygon_mm3": 420.3688027
+  },
+  {
+    "bbox_mm": [
+      -31.85,
+      11.5,
+      4.92,
+      0.95,
+      17.5,
+      10.92
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "catalog",
+    "name": "sleeve 0615 + 06/1",
+    "volume_polygon_mm3": 926.7361799
+  },
+  {
+    "bbox_mm": [
+      0.95,
+      13.5,
+      7.42,
+      2.35,
+      15.5,
+      8.42
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "wire",
+    "name": "sleeve motor lead exit",
+    "volume_polygon_mm3": 2.8
+  },
+  {
+    "bbox_mm": [
+      -36.55,
+      14.0,
+      7.42,
+      -31.85,
+      15.0,
+      8.42
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "sleeve motor shaft",
+    "volume_polygon_mm3": 3.6887365
+  },
+  {
+    "bbox_mm": [
+      -39.77,
+      13.75,
+      7.17,
+      -32.02,
+      15.25,
+      8.67
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "sleeve hollow pinion shaft",
+    "volume_polygon_mm3": 6.5992983
+  },
+  {
+    "bbox_mm": [
+      -35.8,
+      13.84,
+      7.74,
+      -35.18,
+      15.16,
+      8.1
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "sleeve coupling tang",
+    "volume_polygon_mm3": 0.294624
+  },
+  {
+    "bbox_mm": [
+      -39.18,
+      12.5,
+      5.92,
+      -37.98,
+      16.5,
+      9.92
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "bearing",
+    "name": "sleeve L415 0",
+    "volume_polygon_mm3": 12.9385029
+  },
+  {
+    "bbox_mm": [
+      -39.18,
+      12.0,
+      5.42,
+      -37.98,
+      17.0,
+      10.42
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "sleeve pinion bearing socket 0",
+    "volume_polygon_mm3": 8.4762455
+  },
+  {
+    "bbox_mm": [
+      -34.84,
+      12.5,
+      5.92,
+      -33.64,
+      16.5,
+      9.92
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "bearing",
+    "name": "sleeve L415 1",
+    "volume_polygon_mm3": 12.9385029
+  },
+  {
+    "bbox_mm": [
+      -34.84,
+      12.0,
+      5.42,
+      -33.64,
+      17.0,
+      10.42
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "sleeve pinion bearing socket 1",
+    "volume_polygon_mm3": 8.4762455
+  },
+  {
+    "bbox_mm": [
+      -37.46,
+      13.015,
+      6.435,
+      -35.36,
+      15.985,
+      9.405
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "sleeve pinion root",
+    "volume_polygon_mm3": 10.8199915
+  },
+  {
+    "bbox_mm": [
+      -37.46,
+      12.52,
+      5.94,
+      -35.36,
+      16.48,
+      9.9
+    ],
+    "group": "fixed",
+    "kind": "teeth",
+    "material": "steel",
+    "name": "sleeve pinion addendum sweep",
+    "volume_polygon_mm3": 11.3075235
+  },
+  {
+    "bbox_mm": [
+      -37.46,
+      8.615,
+      -5.885,
+      -35.36,
+      20.385,
+      5.885
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "sleeve wheel root",
+    "volume_polygon_mm3": 213.4710119
+  },
+  {
+    "bbox_mm": [
+      -37.46,
+      8.12,
+      -6.38,
+      -35.36,
+      20.88,
+      6.38
+    ],
+    "group": "fixed",
+    "kind": "teeth",
+    "material": "steel",
+    "name": "sleeve wheel addendum sweep",
+    "volume_polygon_mm3": 40.0250434
+  },
+  {
+    "bbox_mm": [
+      -41.4,
+      13.003,
+      -1.497,
+      -2.5,
+      15.997,
+      1.497
+    ],
+    "group": "fixed",
+    "kind": "thread",
+    "material": "steel",
+    "name": "sleeve M3 screw",
+    "volume_polygon_mm3": 273.6736391
+  },
+  {
+    "bbox_mm": [
+      -40.94,
+      11.0,
+      -3.5,
+      -37.94,
+      18.0,
+      3.5
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "bearing",
+    "name": "sleeve L730ZZ 0",
+    "volume_polygon_mm3": 94.1805061
+  },
+  {
+    "bbox_mm": [
+      -40.94,
+      10.5,
+      -4.0,
+      -37.94,
+      18.5,
+      4.0
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "sleeve radial bearing socket 0",
+    "volume_polygon_mm3": 35.3176898
+  },
+  {
+    "bbox_mm": [
+      -5.97,
+      11.0,
+      -3.5,
+      -2.97,
+      18.0,
+      3.5
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "bearing",
+    "name": "sleeve L730ZZ 1",
+    "volume_polygon_mm3": 94.1805061
+  },
+  {
+    "bbox_mm": [
+      -5.97,
+      10.5,
+      -4.0,
+      -2.97,
+      18.5,
+      4.0
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "sleeve radial bearing socket 1",
+    "volume_polygon_mm3": 35.3176898
+  },
+  {
+    "bbox_mm": [
+      -34.9,
+      10.5,
+      -4.0,
+      -31.4,
+      18.5,
+      4.0
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "thrust",
+    "name": "sleeve F3-8M 0",
+    "volume_polygon_mm3": 151.0812285
+  },
+  {
+    "bbox_mm": [
+      -34.9,
+      9.95,
+      -4.55,
+      -31.4,
+      19.05,
+      4.55
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "sleeve thrust socket 0",
+    "volume_polygon_mm3": 51.6697802
+  },
+  {
+    "bbox_mm": [
+      -30.6,
+      10.5,
+      -4.0,
+      -27.1,
+      18.5,
+      4.0
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "thrust",
+    "name": "sleeve F3-8M 1",
+    "volume_polygon_mm3": 151.0812285
+  },
+  {
+    "bbox_mm": [
+      -30.6,
+      9.95,
+      -4.55,
+      -27.1,
+      19.05,
+      4.55
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "sleeve thrust socket 1",
+    "volume_polygon_mm3": 51.6697802
+  },
+  {
+    "bbox_mm": [
+      -35.32,
+      9.95,
+      -4.55,
+      -34.9,
+      19.05,
+      4.55
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "sleeve seat shoulder 0",
+    "volume_polygon_mm3": 19.0560127
+  },
+  {
+    "bbox_mm": [
+      -27.1,
+      9.95,
+      -4.55,
+      -26.65,
+      19.05,
+      4.55
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "sleeve seat shoulder 1",
+    "volume_polygon_mm3": 20.4171565
+  },
+  {
+    "bbox_mm": [
+      -31.4,
+      11.44,
+      -3.06,
+      -30.6,
+      17.56,
+      3.06
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "sleeve shaft thrust flange",
+    "volume_polygon_mm3": 17.9407585
+  },
+  {
+    "bbox_mm": [
+      -19.75,
+      11.9,
+      -2.6,
+      -16.25,
+      17.1,
+      2.6
+    ],
+    "group": "sleeve",
+    "kind": "thread",
+    "material": "bronze",
+    "name": "sleeve nut",
+    "volume_polygon_mm3": 49.4556545
+  },
+  {
+    "bbox_mm": [
+      -18.2,
+      12.01,
+      -0.9,
+      -16.75,
+      12.65,
+      0.9
+    ],
+    "group": "sleeve",
+    "kind": "solid",
+    "material": "steel",
+    "name": "sleeve offset nut web",
+    "volume_polygon_mm3": 1.6704
+  },
+  {
+    "bbox_mm": [
+      -17.31,
+      8.92,
+      -0.85,
+      -16.59,
+      12.62,
+      0.85
+    ],
+    "group": "sleeve",
+    "kind": "solid",
+    "material": "steel",
+    "name": "sleeve output yoke",
+    "volume_polygon_mm3": 4.5288
+  },
+  {
+    "bbox_mm": [
+      -17.04,
+      8.9,
+      -0.85,
+      -15.08,
+      9.45,
+      0.85
+    ],
+    "group": "sleeve",
+    "kind": "solid",
+    "material": "steel",
+    "name": "sleeve aft tongue",
+    "volume_polygon_mm3": 1.8326
+  },
+  {
+    "bbox_mm": [
+      -23.35,
+      16.95,
+      -1.0,
+      -12.65,
+      18.15,
+      1.0
+    ],
+    "group": "sleeve",
+    "kind": "solid",
+    "material": "steel",
+    "name": "sleeve runner",
+    "volume_polygon_mm3": 25.68
+  },
+  {
+    "bbox_mm": [
+      -21.9,
+      16.8,
+      -1.44,
+      -20.9,
+      18.58,
+      1.44
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "bronze",
+    "name": "sleeve way 0",
+    "volume_polygon_mm3": 2.2836
+  },
+  {
+    "bbox_mm": [
+      -15.1,
+      16.8,
+      -1.44,
+      -14.1,
+      18.58,
+      1.44
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "bronze",
+    "name": "sleeve way 1",
+    "volume_polygon_mm3": 2.2836
+  },
+  {
+    "bbox_mm": [
+      -30.7,
+      11.05,
+      4.47,
+      -29.6,
+      17.95,
+      11.37
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "sleeve motor saddle 0",
+    "volume_polygon_mm3": 9.8156179
+  },
+  {
+    "bbox_mm": [
+      -3.55,
+      11.05,
+      4.47,
+      -2.45,
+      17.95,
+      11.37
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "sleeve motor saddle 1",
+    "volume_polygon_mm3": 9.8156179
+  },
+  {
+    "bbox_mm": [
+      -40.81,
+      10.22,
+      -3.5,
+      -40.17,
+      16.6,
+      9.28
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "sleeve bearing deck 0",
+    "volume_polygon_mm3": 12.26554
+  },
+  {
+    "bbox_mm": [
+      -34.46,
+      10.22,
+      -3.5,
+      -33.85,
+      16.6,
+      9.28
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "sleeve bearing deck 1",
+    "volume_polygon_mm3": 11.6905928
+  },
+  {
+    "bbox_mm": [
+      -5.72,
+      10.22,
+      -3.5,
+      -5.04,
+      16.6,
+      9.28
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "sleeve bearing deck 2",
+    "volume_polygon_mm3": 7.5400348
+  },
+  {
+    "bbox_mm": [
+      -41.5,
+      7.63,
+      -6.87,
+      -35.33,
+      21.37,
+      6.3805629
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "PA12",
+    "name": "sleeve gear dome",
+    "volume_polygon_mm3": 90.501494
+  },
+  {
+    "bbox_mm": [
+      -41.94,
+      7.63,
+      -6.87,
+      -41.51,
+      21.37,
+      6.87
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "PA12",
+    "name": "sleeve rear lid",
+    "volume_polygon_mm3": 59.9020511
+  },
+  {
+    "bbox_mm": [
+      -31.85,
+      -17.1089212,
+      5.5973684,
+      0.95,
+      -11.1089212,
+      11.5973684
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "catalog",
+    "name": "draw 0615 + 06/1",
+    "volume_polygon_mm3": 926.7361799
+  },
+  {
+    "bbox_mm": [
+      0.95,
+      -15.0419339,
+      7.481343,
+      2.35,
+      -13.1759085,
+      9.7133938
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "wire",
+    "name": "draw motor lead exit",
+    "volume_polygon_mm3": 2.8
+  },
+  {
+    "bbox_mm": [
+      -36.55,
+      -14.6089212,
+      8.0973684,
+      -31.85,
+      -13.6089212,
+      9.0973684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw motor shaft",
+    "volume_polygon_mm3": 3.6887365
+  },
+  {
+    "bbox_mm": [
+      -39.77,
+      -14.8589212,
+      7.8473684,
+      -32.02,
+      -13.3589212,
+      9.3473684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw hollow pinion shaft",
+    "volume_polygon_mm3": 6.5992983
+  },
+  {
+    "bbox_mm": [
+      -35.8,
+      -14.5948058,
+      7.9357916,
+      -35.18,
+      -13.6230366,
+      9.2589451
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw coupling tang",
+    "volume_polygon_mm3": 0.294624
+  },
+  {
+    "bbox_mm": [
+      -39.18,
+      -16.1089212,
+      6.5973684,
+      -37.98,
+      -12.1089212,
+      10.5973684
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "bearing",
+    "name": "draw L415 0",
+    "volume_polygon_mm3": 12.9385029
+  },
+  {
+    "bbox_mm": [
+      -39.18,
+      -16.6089212,
+      6.0973684,
+      -37.98,
+      -11.6089212,
+      11.0973684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "draw pinion bearing socket 0",
+    "volume_polygon_mm3": 8.4762455
+  },
+  {
+    "bbox_mm": [
+      -34.84,
+      -16.1089212,
+      6.5973684,
+      -33.64,
+      -12.1089212,
+      10.5973684
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "bearing",
+    "name": "draw L415 1",
+    "volume_polygon_mm3": 12.9385029
+  },
+  {
+    "bbox_mm": [
+      -34.84,
+      -16.6089212,
+      6.0973684,
+      -33.64,
+      -11.6089212,
+      11.0973684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "draw pinion bearing socket 1",
+    "volume_polygon_mm3": 8.4762455
+  },
+  {
+    "bbox_mm": [
+      -37.46,
+      -15.5939212,
+      7.1123684,
+      -35.36,
+      -12.6239212,
+      10.0823684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw pinion root",
+    "volume_polygon_mm3": 10.8199915
+  },
+  {
+    "bbox_mm": [
+      -37.46,
+      -16.0889212,
+      6.6173684,
+      -35.36,
+      -12.1289212,
+      10.5773684
+    ],
+    "group": "fixed",
+    "kind": "teeth",
+    "material": "steel",
+    "name": "draw pinion addendum sweep",
+    "volume_polygon_mm3": 11.3075235
+  },
+  {
+    "bbox_mm": [
+      -37.46,
+      -13.135,
+      6.6723684,
+      -35.36,
+      -1.365,
+      18.4423684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw wheel root",
+    "volume_polygon_mm3": 213.4710119
+  },
+  {
+    "bbox_mm": [
+      -37.46,
+      -13.63,
+      6.1773684,
+      -35.36,
+      -0.87,
+      18.9373684
+    ],
+    "group": "fixed",
+    "kind": "teeth",
+    "material": "steel",
+    "name": "draw wheel addendum sweep",
+    "volume_polygon_mm3": 40.0250434
+  },
+  {
+    "bbox_mm": [
+      -41.4,
+      -8.747,
+      11.0603684,
+      -2.5,
+      -5.753,
+      14.0543684
+    ],
+    "group": "fixed",
+    "kind": "thread",
+    "material": "steel",
+    "name": "draw M3 screw",
+    "volume_polygon_mm3": 273.6736391
+  },
+  {
+    "bbox_mm": [
+      -40.94,
+      -10.75,
+      9.0573684,
+      -37.94,
+      -3.75,
+      16.0573684
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "bearing",
+    "name": "draw L730ZZ 0",
+    "volume_polygon_mm3": 94.1805061
+  },
+  {
+    "bbox_mm": [
+      -40.94,
+      -11.25,
+      8.5573684,
+      -37.94,
+      -3.25,
+      16.5573684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "draw radial bearing socket 0",
+    "volume_polygon_mm3": 35.3176898
+  },
+  {
+    "bbox_mm": [
+      -5.97,
+      -10.75,
+      9.0573684,
+      -2.97,
+      -3.75,
+      16.0573684
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "bearing",
+    "name": "draw L730ZZ 1",
+    "volume_polygon_mm3": 94.1805061
+  },
+  {
+    "bbox_mm": [
+      -5.97,
+      -11.25,
+      8.5573684,
+      -2.97,
+      -3.25,
+      16.5573684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "draw radial bearing socket 1",
+    "volume_polygon_mm3": 35.3176898
+  },
+  {
+    "bbox_mm": [
+      -34.9,
+      -11.25,
+      8.5573684,
+      -31.4,
+      -3.25,
+      16.5573684
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "thrust",
+    "name": "draw F3-8M 0",
+    "volume_polygon_mm3": 151.0812285
+  },
+  {
+    "bbox_mm": [
+      -34.9,
+      -11.8,
+      8.0073684,
+      -31.4,
+      -2.7,
+      17.1073684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "draw thrust socket 0",
+    "volume_polygon_mm3": 51.6697802
+  },
+  {
+    "bbox_mm": [
+      -30.6,
+      -11.25,
+      8.5573684,
+      -27.1,
+      -3.25,
+      16.5573684
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "thrust",
+    "name": "draw F3-8M 1",
+    "volume_polygon_mm3": 151.0812285
+  },
+  {
+    "bbox_mm": [
+      -30.6,
+      -11.8,
+      8.0073684,
+      -27.1,
+      -2.7,
+      17.1073684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "draw thrust socket 1",
+    "volume_polygon_mm3": 51.6697802
+  },
+  {
+    "bbox_mm": [
+      -35.32,
+      -11.8,
+      8.0073684,
+      -34.9,
+      -2.7,
+      17.1073684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "draw seat shoulder 0",
+    "volume_polygon_mm3": 19.0560127
+  },
+  {
+    "bbox_mm": [
+      -27.1,
+      -11.8,
+      8.0073684,
+      -26.65,
+      -2.7,
+      17.1073684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "draw seat shoulder 1",
+    "volume_polygon_mm3": 20.4171565
+  },
+  {
+    "bbox_mm": [
+      -31.4,
+      -10.31,
+      9.4973684,
+      -30.6,
+      -4.19,
+      15.6173684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw shaft thrust flange",
+    "volume_polygon_mm3": 17.9407585
+  },
+  {
+    "bbox_mm": [
+      -21.6,
+      -9.85,
+      9.9573684,
+      -18.1,
+      -4.65,
+      15.1573684
+    ],
+    "group": "draw",
+    "kind": "thread",
+    "material": "bronze",
+    "name": "draw nut",
+    "volume_polygon_mm3": 49.4556545
+  },
+  {
+    "bbox_mm": [
+      -22.52,
+      -7.1044229,
+      9.9509651,
+      -19.65,
+      -5.2255771,
+      11.4052214
+    ],
+    "group": "draw",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw offset nut web",
+    "volume_polygon_mm3": 3.30624
+  },
+  {
+    "bbox_mm": [
+      -22.68,
+      -7.0461216,
+      3.6886207,
+      -21.96,
+      -1.6388784,
+      11.3542406
+    ],
+    "group": "draw",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw output yoke",
+    "volume_polygon_mm3": 9.63288
+  },
+  {
+    "bbox_mm": [
+      -25.2,
+      -9.9410254,
+      14.1791306,
+      -14.5,
+      -7.6089746,
+      16.2183611
+    ],
+    "group": "draw",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw runner",
+    "volume_polygon_mm3": 25.68
+  },
+  {
+    "bbox_mm": [
+      -23.75,
+      -10.5370766,
+      13.8292268,
+      -22.75,
+      -7.1529234,
+      16.810752
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "bronze",
+    "name": "draw way 0",
+    "volume_polygon_mm3": 2.2836
+  },
+  {
+    "bbox_mm": [
+      -16.95,
+      -10.5370766,
+      13.8292268,
+      -15.95,
+      -7.1529234,
+      16.810752
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "bronze",
+    "name": "draw way 1",
+    "volume_polygon_mm3": 2.2836
+  },
+  {
+    "bbox_mm": [
+      -30.7,
+      -17.5589212,
+      5.1473684,
+      -29.6,
+      -10.6589212,
+      12.0473684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "draw motor saddle 0",
+    "volume_polygon_mm3": 9.8156179
+  },
+  {
+    "bbox_mm": [
+      -3.55,
+      -17.5589212,
+      5.1473684,
+      -2.45,
+      -10.6589212,
+      12.0473684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "draw motor saddle 1",
+    "volume_polygon_mm3": 9.8156179
+  },
+  {
+    "bbox_mm": [
+      -40.81,
+      -14.220731,
+      4.2107796,
+      -40.17,
+      -2.0789111,
+      12.3477114
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "draw bearing deck 0",
+    "volume_polygon_mm3": 12.26554
+  },
+  {
+    "bbox_mm": [
+      -34.46,
+      -14.220731,
+      4.2107796,
+      -33.85,
+      -2.0789111,
+      12.3477114
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "draw bearing deck 1",
+    "volume_polygon_mm3": 11.6905928
+  },
+  {
+    "bbox_mm": [
+      -5.72,
+      -13.6745952,
+      4.2107796,
+      -5.04,
+      -2.0789111,
+      12.3477114
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "draw bearing deck 2",
+    "volume_polygon_mm3": 7.5400348
+  },
+  {
+    "bbox_mm": [
+      -41.5,
+      -14.12,
+      5.6873684,
+      -35.33,
+      -0.38,
+      19.4273684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "PA12",
+    "name": "draw gear dome",
+    "volume_polygon_mm3": 90.501494
+  },
+  {
+    "bbox_mm": [
+      -41.94,
+      -14.12,
+      5.6873684,
+      -41.51,
+      -0.38,
+      19.4273684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "PA12",
+    "name": "draw rear lid",
+    "volume_polygon_mm3": 59.9020511
+  },
+  {
+    "bbox_mm": [
+      -25.7,
+      -9.9350446,
+      14.2027908,
+      -25.2,
+      -7.6399554,
+      16.2380021
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw input aft stop",
+    "volume_polygon_mm3": 1.1931
+  },
+  {
+    "bbox_mm": [
+      -13.24,
+      -9.9350446,
+      14.2027908,
+      -12.85,
+      -7.6399554,
+      16.2380021
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "draw input fore stop",
+    "volume_polygon_mm3": 0.930618
+  },
+  {
+    "bbox_mm": [
+      -31.85,
+      -3.3910788,
+      -19.5173684,
+      0.95,
+      2.6089212,
+      -13.5173684
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "catalog",
+    "name": "eject 0615 + 06/1",
+    "volume_polygon_mm3": 926.7361799
+  },
+  {
+    "bbox_mm": [
+      0.95,
+      -1.3240915,
+      -17.6333938,
+      2.35,
+      0.5419339,
+      -15.401343
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "wire",
+    "name": "eject motor lead exit",
+    "volume_polygon_mm3": 2.8
+  },
+  {
+    "bbox_mm": [
+      -36.55,
+      -0.8910788,
+      -17.0173684,
+      -31.85,
+      0.1089212,
+      -16.0173684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "eject motor shaft",
+    "volume_polygon_mm3": 3.6887365
+  },
+  {
+    "bbox_mm": [
+      -39.77,
+      -1.1410788,
+      -17.2673684,
+      -32.02,
+      0.3589212,
+      -15.7673684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "eject hollow pinion shaft",
+    "volume_polygon_mm3": 6.5992983
+  },
+  {
+    "bbox_mm": [
+      -35.8,
+      -0.8769634,
+      -17.1789451,
+      -35.18,
+      0.0948058,
+      -15.8557916
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "eject coupling tang",
+    "volume_polygon_mm3": 0.294624
+  },
+  {
+    "bbox_mm": [
+      -39.18,
+      -2.3910788,
+      -18.5173684,
+      -37.98,
+      1.6089212,
+      -14.5173684
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "bearing",
+    "name": "eject L415 0",
+    "volume_polygon_mm3": 12.9385029
+  },
+  {
+    "bbox_mm": [
+      -39.18,
+      -2.8910788,
+      -19.0173684,
+      -37.98,
+      2.1089212,
+      -14.0173684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "eject pinion bearing socket 0",
+    "volume_polygon_mm3": 8.4762455
+  },
+  {
+    "bbox_mm": [
+      -34.84,
+      -2.3910788,
+      -18.5173684,
+      -33.64,
+      1.6089212,
+      -14.5173684
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "bearing",
+    "name": "eject L415 1",
+    "volume_polygon_mm3": 12.9385029
+  },
+  {
+    "bbox_mm": [
+      -34.84,
+      -2.8910788,
+      -19.0173684,
+      -33.64,
+      2.1089212,
+      -14.0173684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "eject pinion bearing socket 1",
+    "volume_polygon_mm3": 8.4762455
+  },
+  {
+    "bbox_mm": [
+      -37.46,
+      -1.8760788,
+      -18.0023684,
+      -35.36,
+      1.0939212,
+      -15.0323684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "eject pinion root",
+    "volume_polygon_mm3": 10.8199915
+  },
+  {
+    "bbox_mm": [
+      -37.46,
+      -2.3710788,
+      -18.4973684,
+      -35.36,
+      1.5889212,
+      -14.5373684
+    ],
+    "group": "fixed",
+    "kind": "teeth",
+    "material": "steel",
+    "name": "eject pinion addendum sweep",
+    "volume_polygon_mm3": 11.3075235
+  },
+  {
+    "bbox_mm": [
+      -37.46,
+      -13.135,
+      -18.4423684,
+      -35.36,
+      -1.365,
+      -6.6723684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "eject wheel root",
+    "volume_polygon_mm3": 213.4710119
+  },
+  {
+    "bbox_mm": [
+      -37.46,
+      -13.63,
+      -18.9373684,
+      -35.36,
+      -0.87,
+      -6.1773684
+    ],
+    "group": "fixed",
+    "kind": "teeth",
+    "material": "steel",
+    "name": "eject wheel addendum sweep",
+    "volume_polygon_mm3": 40.0250434
+  },
+  {
+    "bbox_mm": [
+      -41.4,
+      -8.747,
+      -14.0543684,
+      -2.5,
+      -5.753,
+      -11.0603684
+    ],
+    "group": "fixed",
+    "kind": "thread",
+    "material": "steel",
+    "name": "eject M3 screw",
+    "volume_polygon_mm3": 273.6736391
+  },
+  {
+    "bbox_mm": [
+      -40.94,
+      -10.75,
+      -16.0573684,
+      -37.94,
+      -3.75,
+      -9.0573684
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "bearing",
+    "name": "eject L730ZZ 0",
+    "volume_polygon_mm3": 94.1805061
+  },
+  {
+    "bbox_mm": [
+      -40.94,
+      -11.25,
+      -16.5573684,
+      -37.94,
+      -3.25,
+      -8.5573684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "eject radial bearing socket 0",
+    "volume_polygon_mm3": 35.3176898
+  },
+  {
+    "bbox_mm": [
+      -5.97,
+      -10.75,
+      -16.0573684,
+      -2.97,
+      -3.75,
+      -9.0573684
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "bearing",
+    "name": "eject L730ZZ 1",
+    "volume_polygon_mm3": 94.1805061
+  },
+  {
+    "bbox_mm": [
+      -5.97,
+      -11.25,
+      -16.5573684,
+      -2.97,
+      -3.25,
+      -8.5573684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "eject radial bearing socket 1",
+    "volume_polygon_mm3": 35.3176898
+  },
+  {
+    "bbox_mm": [
+      -34.9,
+      -11.25,
+      -16.5573684,
+      -31.4,
+      -3.25,
+      -8.5573684
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "thrust",
+    "name": "eject F3-8M 0",
+    "volume_polygon_mm3": 151.0812285
+  },
+  {
+    "bbox_mm": [
+      -34.9,
+      -11.8,
+      -17.1073684,
+      -31.4,
+      -2.7,
+      -8.0073684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "eject thrust socket 0",
+    "volume_polygon_mm3": 51.6697802
+  },
+  {
+    "bbox_mm": [
+      -30.6,
+      -11.25,
+      -16.5573684,
+      -27.1,
+      -3.25,
+      -8.5573684
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "thrust",
+    "name": "eject F3-8M 1",
+    "volume_polygon_mm3": 151.0812285
+  },
+  {
+    "bbox_mm": [
+      -30.6,
+      -11.8,
+      -17.1073684,
+      -27.1,
+      -2.7,
+      -8.0073684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "eject thrust socket 1",
+    "volume_polygon_mm3": 51.6697802
+  },
+  {
+    "bbox_mm": [
+      -35.32,
+      -11.8,
+      -17.1073684,
+      -34.9,
+      -2.7,
+      -8.0073684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "eject seat shoulder 0",
+    "volume_polygon_mm3": 19.0560127
+  },
+  {
+    "bbox_mm": [
+      -27.1,
+      -11.8,
+      -17.1073684,
+      -26.65,
+      -2.7,
+      -8.0073684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "eject seat shoulder 1",
+    "volume_polygon_mm3": 20.4171565
+  },
+  {
+    "bbox_mm": [
+      -31.4,
+      -10.31,
+      -15.6173684,
+      -30.6,
+      -4.19,
+      -9.4973684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "eject shaft thrust flange",
+    "volume_polygon_mm3": 17.9407585
+  },
+  {
+    "bbox_mm": [
+      -23.2,
+      -9.85,
+      -15.1573684,
+      -19.7,
+      -4.65,
+      -9.9573684
+    ],
+    "group": "eject",
+    "kind": "thread",
+    "material": "bronze",
+    "name": "eject nut",
+    "volume_polygon_mm3": 49.4556545
+  },
+  {
+    "bbox_mm": [
+      -32.16,
+      -7.1044229,
+      -11.4052214,
+      -21.25,
+      -5.2255771,
+      -9.9509651
+    ],
+    "group": "eject",
+    "kind": "solid",
+    "material": "steel",
+    "name": "eject offset nut web",
+    "volume_polygon_mm3": 12.56832
+  },
+  {
+    "bbox_mm": [
+      -32.32,
+      -7.0461216,
+      -11.3542406,
+      -31.6,
+      -2.2338784,
+      -4.7191909
+    ],
+    "group": "eject",
+    "kind": "solid",
+    "material": "steel",
+    "name": "eject output yoke",
+    "volume_polygon_mm3": 8.17632
+  },
+  {
+    "bbox_mm": [
+      -26.8,
+      -9.9410254,
+      -16.2183611,
+      -16.1,
+      -7.6089746,
+      -14.1791306
+    ],
+    "group": "eject",
+    "kind": "solid",
+    "material": "steel",
+    "name": "eject runner",
+    "volume_polygon_mm3": 25.68
+  },
+  {
+    "bbox_mm": [
+      -25.35,
+      -10.5370766,
+      -16.810752,
+      -24.35,
+      -7.1529234,
+      -13.8292268
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "bronze",
+    "name": "eject way 0",
+    "volume_polygon_mm3": 2.2836
+  },
+  {
+    "bbox_mm": [
+      -18.55,
+      -10.5370766,
+      -16.810752,
+      -17.55,
+      -7.1529234,
+      -13.8292268
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "bronze",
+    "name": "eject way 1",
+    "volume_polygon_mm3": 2.2836
+  },
+  {
+    "bbox_mm": [
+      -30.7,
+      -3.8410788,
+      -19.9673684,
+      -29.6,
+      3.0589212,
+      -13.0673684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "eject motor saddle 0",
+    "volume_polygon_mm3": 9.8156179
+  },
+  {
+    "bbox_mm": [
+      -3.55,
+      -3.8410788,
+      -19.9673684,
+      -2.45,
+      3.0589212,
+      -13.0673684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "eject motor saddle 1",
+    "volume_polygon_mm3": 9.8156179
+  },
+  {
+    "bbox_mm": [
+      -40.81,
+      -8.8135319,
+      -17.6307008,
+      -40.17,
+      2.9267157,
+      -7.1007796
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "eject bearing deck 0",
+    "volume_polygon_mm3": 12.26554
+  },
+  {
+    "bbox_mm": [
+      -34.46,
+      -8.8135319,
+      -17.6307008,
+      -33.85,
+      2.9267157,
+      -7.1007796
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "eject bearing deck 1",
+    "volume_polygon_mm3": 11.6905928
+  },
+  {
+    "bbox_mm": [
+      -5.72,
+      -8.8135319,
+      -16.9366662,
+      -5.04,
+      2.9267157,
+      -7.1007796
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "eject bearing deck 2",
+    "volume_polygon_mm3": 7.5400348
+  },
+  {
+    "bbox_mm": [
+      -41.5,
+      -14.12,
+      -19.4273684,
+      -35.33,
+      -0.38,
+      -5.6873684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "PA12",
+    "name": "eject gear dome",
+    "volume_polygon_mm3": 90.501494
+  },
+  {
+    "bbox_mm": [
+      -41.94,
+      -14.12,
+      -19.4273684,
+      -41.51,
+      -0.38,
+      -5.6873684
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "PA12",
+    "name": "eject rear lid",
+    "volume_polygon_mm3": 59.9020511
+  },
+  {
+    "bbox_mm": [
+      -32.5797837,
+      0.7568658,
+      -2.08,
+      -30.6688961,
+      2.9031144,
+      2.08
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw main steel knuckle 0",
+    "volume_polygon_mm3": 8.4856346
+  },
+  {
+    "bbox_mm": [
+      -31.3247236,
+      0.5196211,
+      -2.08,
+      -29.8679863,
+      2.5109561,
+      2.08
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw main steel knuckle 1",
+    "volume_polygon_mm3": 8.4856346
+  },
+  {
+    "bbox_mm": [
+      -29.933342,
+      0.5196211,
+      -2.08,
+      -28.4313468,
+      2.561974,
+      2.08
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw main steel knuckle 2",
+    "volume_polygon_mm3": 8.4856346
+  },
+  {
+    "bbox_mm": [
+      -29.2079359,
+      0.8579048,
+      -2.08,
+      -27.2335206,
+      2.9973831,
+      2.08
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw main steel knuckle 3",
+    "volume_polygon_mm3": 8.4856346
+  },
+  {
+    "bbox_mm": [
+      -28.6031144,
+      1.7202163,
+      -2.08,
+      -26.4568658,
+      3.6311039,
+      2.08
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw main steel knuckle 4",
+    "volume_polygon_mm3": 8.4856346
+  },
+  {
+    "bbox_mm": [
+      -28.2109561,
+      2.9752764,
+      -2.08,
+      -26.2196211,
+      4.4320137,
+      2.08
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw main steel knuckle 5",
+    "volume_polygon_mm3": 8.4856346
+  },
+  {
+    "bbox_mm": [
+      -28.261974,
+      4.366658,
+      -2.08,
+      -26.2196211,
+      5.8686532,
+      2.08
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw main steel knuckle 6",
+    "volume_polygon_mm3": 8.4856346
+  },
+  {
+    "bbox_mm": [
+      -28.6973831,
+      5.0920641,
+      -2.08,
+      -26.5579048,
+      7.0664794,
+      2.08
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw main steel knuckle 7",
+    "volume_polygon_mm3": 8.4856346
+  },
+  {
+    "bbox_mm": [
+      -29.3311039,
+      5.6968856,
+      -2.08,
+      -27.4202163,
+      7.8431342,
+      2.08
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw main steel knuckle 8",
+    "volume_polygon_mm3": 8.4856346
+  },
+  {
+    "bbox_mm": [
+      -30.1320137,
+      6.0890439,
+      -2.08,
+      -28.6752764,
+      8.0803789,
+      2.08
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw main steel knuckle 9",
+    "volume_polygon_mm3": 8.4856346
+  },
+  {
+    "bbox_mm": [
+      -31.5686532,
+      6.038026,
+      -2.08,
+      -30.066658,
+      8.0803789,
+      2.08
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw main steel knuckle 10",
+    "volume_polygon_mm3": 8.4856346
+  },
+  {
+    "bbox_mm": [
+      -32.7664794,
+      5.6026169,
+      -2.08,
+      -30.7920641,
+      7.7420952,
+      2.08
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw main steel knuckle 11",
+    "volume_polygon_mm3": 8.4856346
+  },
+  {
+    "bbox_mm": [
+      -33.5431342,
+      4.9688961,
+      -2.08,
+      -31.3968856,
+      6.8797837,
+      2.08
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw main steel knuckle 12",
+    "volume_polygon_mm3": 8.4856346
+  },
+  {
+    "bbox_mm": [
+      -33.7803789,
+      4.1679863,
+      -2.08,
+      -31.7890439,
+      5.6247236,
+      2.08
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw main steel knuckle 13",
+    "volume_polygon_mm3": 8.4856346
+  },
+  {
+    "bbox_mm": [
+      -33.7803789,
+      2.7313468,
+      -2.08,
+      -31.738026,
+      4.233342,
+      2.08
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw main steel knuckle 14",
+    "volume_polygon_mm3": 8.4856346
+  },
+  {
+    "bbox_mm": [
+      -33.4420952,
+      1.5335206,
+      -2.08,
+      -31.3026169,
+      3.5079359,
+      2.08
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw main steel knuckle 15",
+    "volume_polygon_mm3": 8.4856346
+  },
+  {
+    "bbox_mm": [
+      -35.2179614,
+      4.0972396,
+      -1.91,
+      -30.0331581,
+      9.3995086,
+      1.91
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "knuckle tang",
+    "volume_polygon_mm3": 47.16936
+  },
+  {
+    "bbox_mm": [
+      -22.3151079,
+      16.892919,
+      -17.5,
+      -16.318763,
+      22.8892639,
+      15.3
+    ],
+    "group": "fixed",
+    "kind": "envelope",
+    "material": "catalog",
+    "name": "yaw motor body",
+    "volume_polygon_mm3": 925.9091144
+  },
+  {
+    "bbox_mm": [
+      -21.4056623,
+      17.8023646,
+      15.99,
+      -17.2282086,
+      21.9798183,
+      17.25
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw pinion",
+    "volume_polygon_mm3": 17.2629544
+  },
+  {
+    "bbox_mm": [
+      -20.026503,
+      19.1815239,
+      15.18,
+      -18.607368,
+      20.6006589,
+      17.28
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw pinion shaft",
+    "volume_polygon_mm3": 3.3203816
+  },
+  {
+    "bbox_mm": [
+      -22.3984532,
+      17.67202,
+      -16.08,
+      -18.7210069,
+      21.4241718,
+      -10.77
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw motor lower saddle",
+    "volume_polygon_mm3": 27.4636819
+  },
+  {
+    "bbox_mm": [
+      -22.3984532,
+      17.67202,
+      12.52,
+      -18.7210069,
+      21.4241718,
+      15.28
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw motor upper saddle",
+    "volume_polygon_mm3": 18.5611117
+  },
+  {
+    "bbox_mm": [
+      -33.6428766,
+      6.6520694,
+      -13.13,
+      -20.0398909,
+      21.0244155,
+      -0.24
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "lower yaw motor rail",
+    "volume_polygon_mm3": 63.4308519
+  },
+  {
+    "bbox_mm": [
+      -33.6428766,
+      6.6520694,
+      0.24,
+      -20.0398909,
+      21.0244155,
+      14.88
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "steel",
+    "name": "upper yaw motor rail",
+    "volume_polygon_mm3": 66.4266975
+  },
+  {
+    "bbox_mm": [
+      -31.8188913,
+      2.4811087,
+      -6.52,
+      -28.1811087,
+      6.1188913,
+      17.28
+    ],
+    "group": "yaw",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw shaft",
+    "volume_polygon_mm3": 247.2701766
+  },
+  {
+    "bbox_mm": [
+      -32.7583187,
+      1.5416813,
+      -4.46,
+      -27.2416813,
+      7.0583187,
+      -2.23
+    ],
+    "group": "yaw",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw fork hub -1",
+    "volume_polygon_mm3": 53.2813271
+  },
+  {
+    "bbox_mm": [
+      -32.7583187,
+      1.5416813,
+      2.23,
+      -27.2416813,
+      7.0583187,
+      4.46
+    ],
+    "group": "yaw",
+    "kind": "solid",
+    "material": "steel",
+    "name": "yaw fork hub 1",
+    "volume_polygon_mm3": 53.2813271
+  },
+  {
+    "bbox_mm": [
+      -28.381455,
+      5.5218621,
+      15.98,
+      -15.839886,
+      15.3932546,
+      17.28
+    ],
+    "group": "yaw",
+    "kind": "envelope",
+    "material": "steel",
+    "name": "yaw 114T sector 0",
+    "volume_polygon_mm3": 13.5444389
+  },
+  {
+    "bbox_mm": [
+      -28.4787337,
+      5.6380255,
+      15.98,
+      -16.5810244,
+      16.3022924,
+      17.28
+    ],
+    "group": "yaw",
+    "kind": "envelope",
+    "material": "steel",
+    "name": "yaw 114T sector 1",
+    "volume_polygon_mm3": 13.5444389
+  },
+  {
+    "bbox_mm": [
+      -28.5834238,
+      5.7476701,
+      15.98,
+      -17.3875386,
+      17.1528562,
+      17.28
+    ],
+    "group": "yaw",
+    "kind": "envelope",
+    "material": "steel",
+    "name": "yaw 114T sector 2",
+    "volume_polygon_mm3": 13.5444389
+  },
+  {
+    "bbox_mm": [
+      -28.6950153,
+      5.8502618,
+      15.98,
+      -18.2554995,
+      17.9408022,
+      17.28
+    ],
+    "group": "yaw",
+    "kind": "envelope",
+    "material": "steel",
+    "name": "yaw 114T sector 3",
+    "volume_polygon_mm3": 13.5444389
+  },
+  {
+    "bbox_mm": [
+      -28.8129645,
+      5.9453008,
+      15.98,
+      -19.1806785,
+      18.6622916,
+      17.28
+    ],
+    "group": "yaw",
+    "kind": "envelope",
+    "material": "steel",
+    "name": "yaw 114T sector 4",
+    "volume_polygon_mm3": 13.5444389
+  },
+  {
+    "bbox_mm": [
+      -28.9366969,
+      6.0323241,
+      15.98,
+      -20.1585681,
+      19.3138094,
+      17.28
+    ],
+    "group": "yaw",
+    "kind": "envelope",
+    "material": "steel",
+    "name": "yaw 114T sector 5",
+    "volume_polygon_mm3": 13.5444389
+  },
+  {
+    "bbox_mm": [
+      -29.0656096,
+      6.1109077,
+      15.98,
+      -21.1844041,
+      19.8921814,
+      17.28
+    ],
+    "group": "yaw",
+    "kind": "envelope",
+    "material": "steel",
+    "name": "yaw 114T sector 6",
+    "volume_polygon_mm3": 13.5444389
+  },
+  {
+    "bbox_mm": [
+      -29.1990745,
+      6.1806686,
+      15.98,
+      -22.2531889,
+      20.3945899,
+      17.28
+    ],
+    "group": "yaw",
+    "kind": "envelope",
+    "material": "steel",
+    "name": "yaw 114T sector 7",
+    "volume_polygon_mm3": 13.5444389
+  },
+  {
+    "bbox_mm": [
+      -29.3364415,
+      6.2412672,
+      15.98,
+      -23.3597153,
+      20.8185871,
+      17.28
+    ],
+    "group": "yaw",
+    "kind": "envelope",
+    "material": "steel",
+    "name": "yaw 114T sector 8",
+    "volume_polygon_mm3": 13.5444389
+  },
+  {
+    "bbox_mm": [
+      -29.4770413,
+      6.2924081,
+      15.98,
+      -24.4985926,
+      21.1621074,
+      17.28
+    ],
+    "group": "yaw",
+    "kind": "envelope",
+    "material": "steel",
+    "name": "yaw 114T sector 9",
+    "volume_polygon_mm3": 13.5444389
+  },
+  {
+    "bbox_mm": [
+      -32.6483857,
+      1.6516143,
+      15.94,
+      -27.3516143,
+      6.9483857,
+      17.32
+    ],
+    "group": "yaw",
+    "kind": "envelope",
+    "material": "steel",
+    "name": "yaw keyed sector hub",
+    "volume_polygon_mm3": 30.3964482
+  },
+  {
+    "bbox_mm": [
+      -29.5373039,
+      -11.12,
+      -1.14,
+      -14.56,
+      7.1586812,
+      1.14
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "fixed hinge spine -1",
+    "volume_polygon_mm3": 87.5191746
+  },
+  {
+    "bbox_mm": [
+      -38.65,
+      -1.05,
+      -6.6,
+      -28.95,
+      5.35,
+      -2.55
+    ],
+    "group": "yaw",
+    "kind": "solid",
+    "material": "7075",
+    "name": "tail fork link -1",
+    "volume_polygon_mm3": 34.956404
+  },
+  {
+    "bbox_mm": [
+      -32.7426961,
+      1.4413188,
+      -1.14,
+      -14.56,
+      11.12,
+      1.14
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "fixed hinge spine 1",
+    "volume_polygon_mm3": 75.9843594
+  },
+  {
+    "bbox_mm": [
+      -38.65,
+      -1.05,
+      2.55,
+      -28.95,
+      5.35,
+      6.6
+    ],
+    "group": "yaw",
+    "kind": "solid",
+    "material": "7075",
+    "name": "tail fork link 1",
+    "volume_polygon_mm3": 34.956404
+  },
+  {
+    "bbox_mm": [
+      -33.7,
+      -9.35,
+      -20.15,
+      -30.3,
+      -6.65,
+      -19.4
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "PA12",
+    "name": "foot 0",
+    "volume_polygon_mm3": 6.885
+  },
+  {
+    "bbox_mm": [
+      -32.86,
+      -8.86,
+      -20.33,
+      -31.14,
+      -6.18,
+      -12.94
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "foot post 0",
+    "volume_polygon_mm3": 15.6422669
+  },
+  {
+    "bbox_mm": [
+      -33.7,
+      6.65,
+      -20.15,
+      -30.3,
+      9.35,
+      -19.4
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "PA12",
+    "name": "foot 1",
+    "volume_polygon_mm3": 6.885
+  },
+  {
+    "bbox_mm": [
+      -32.86,
+      6.18,
+      -20.33,
+      -31.14,
+      8.86,
+      -12.94
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "foot post 1",
+    "volume_polygon_mm3": 15.6422669
+  },
+  {
+    "bbox_mm": [
+      -8.7,
+      -9.35,
+      -20.15,
+      -5.3,
+      -6.65,
+      -19.4
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "PA12",
+    "name": "foot 2",
+    "volume_polygon_mm3": 6.885
+  },
+  {
+    "bbox_mm": [
+      -7.86,
+      -8.86,
+      -20.33,
+      -6.14,
+      -6.18,
+      -12.94
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "foot post 2",
+    "volume_polygon_mm3": 15.6422669
+  },
+  {
+    "bbox_mm": [
+      -8.7,
+      6.65,
+      -20.15,
+      -5.3,
+      9.35,
+      -19.4
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "PA12",
+    "name": "foot 3",
+    "volume_polygon_mm3": 6.885
+  },
+  {
+    "bbox_mm": [
+      -7.86,
+      6.18,
+      -20.33,
+      -6.14,
+      8.86,
+      -12.94
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "7075",
+    "name": "foot post 3",
+    "volume_polygon_mm3": 15.6422669
+  },
+  {
+    "bbox_mm": [
+      -34.0,
+      -20.4659075,
+      -11.9693228,
+      -3.2,
+      -11.9056126,
+      5.5595893
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "cell",
+    "name": "cell bulk",
+    "volume_polygon_mm3": 2794.176
+  },
+  {
+    "bbox_mm": [
+      -4.255,
+      -17.2533207,
+      -1.0052336,
+      -2.725,
+      -16.4972633,
+      1.5602817
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (-3.55, 0)",
+    "volume_polygon_mm3": 1.1474998
+  },
+  {
+    "bbox_mm": [
+      -3.035,
+      -17.2533207,
+      -1.0052336,
+      -2.1318407,
+      -16.3815236,
+      1.5831987
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (-3.55, 1)",
+    "volume_polygon_mm3": 0.66158
+  },
+  {
+    "bbox_mm": [
+      -2.4418407,
+      -17.1375811,
+      -0.9823166,
+      -1.6289845,
+      -16.0519249,
+      1.648461
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (-3.55, 2)",
+    "volume_polygon_mm3": 0.6615202
+  },
+  {
+    "bbox_mm": [
+      -1.9389845,
+      -16.8079823,
+      -0.9170543,
+      -1.2929867,
+      -15.5586455,
+      1.746133
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (-3.55, 3)",
+    "volume_polygon_mm3": 0.6615202
+  },
+  {
+    "bbox_mm": [
+      -1.6029867,
+      -16.3147029,
+      -0.8193823,
+      -1.175,
+      -14.9767828,
+      1.8613449
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (-3.55, 4)",
+    "volume_polygon_mm3": 0.66158
+  },
+  {
+    "bbox_mm": [
+      -1.6029867,
+      -15.7328403,
+      -0.7041704,
+      -1.175,
+      -14.3949201,
+      1.9765568
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (-3.55, 5)",
+    "volume_polygon_mm3": 0.66158
+  },
+  {
+    "bbox_mm": [
+      -1.9389845,
+      -15.1509776,
+      -0.5889585,
+      -1.2929867,
+      -13.9016407,
+      2.0742288
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (-3.55, 6)",
+    "volume_polygon_mm3": 0.6615202
+  },
+  {
+    "bbox_mm": [
+      -2.4418407,
+      -14.6576982,
+      -0.4912865,
+      -1.6289845,
+      -13.572042,
+      2.1394911
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (-3.55, 7)",
+    "volume_polygon_mm3": 0.6615202
+  },
+  {
+    "bbox_mm": [
+      -3.035,
+      -14.3280994,
+      -0.4260242,
+      -2.1318407,
+      -13.4563023,
+      2.1624082
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (-3.55, 8)",
+    "volume_polygon_mm3": 0.66158
+  },
+  {
+    "bbox_mm": [
+      -3.9455314,
+      -14.2123598,
+      -0.4031072,
+      -2.725,
+      -13.4563023,
+      2.1624082
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (-3.55, 9)",
+    "volume_polygon_mm3": 0.9037569
+  },
+  {
+    "bbox_mm": [
+      -4.255,
+      -15.8742568,
+      -7.9700153,
+      -2.725,
+      -15.1181994,
+      -5.4044999
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (3.55, 0)",
+    "volume_polygon_mm3": 1.1474998
+  },
+  {
+    "bbox_mm": [
+      -3.035,
+      -15.8742568,
+      -7.9700153,
+      -2.1318407,
+      -15.0024597,
+      -5.3815829
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (3.55, 1)",
+    "volume_polygon_mm3": 0.66158
+  },
+  {
+    "bbox_mm": [
+      -2.4418407,
+      -15.7585172,
+      -7.9470982,
+      -1.6289845,
+      -14.672861,
+      -5.3163206
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (3.55, 2)",
+    "volume_polygon_mm3": 0.6615202
+  },
+  {
+    "bbox_mm": [
+      -1.9389845,
+      -15.4289184,
+      -7.8818359,
+      -1.2929867,
+      -14.1795816,
+      -5.2186486
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (3.55, 3)",
+    "volume_polygon_mm3": 0.6615202
+  },
+  {
+    "bbox_mm": [
+      -1.6029867,
+      -14.9356391,
+      -7.7841639,
+      -1.175,
+      -13.5977189,
+      -5.1034367
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (3.55, 4)",
+    "volume_polygon_mm3": 0.66158
+  },
+  {
+    "bbox_mm": [
+      -1.6029867,
+      -14.3537764,
+      -7.668952,
+      -1.175,
+      -13.0158562,
+      -4.9882248
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (3.55, 5)",
+    "volume_polygon_mm3": 0.66158
+  },
+  {
+    "bbox_mm": [
+      -1.9389845,
+      -13.7719137,
+      -7.5537401,
+      -1.2929867,
+      -12.5225768,
+      -4.8905528
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (3.55, 6)",
+    "volume_polygon_mm3": 0.6615202
+  },
+  {
+    "bbox_mm": [
+      -2.4418407,
+      -13.2786343,
+      -7.4560681,
+      -1.6289845,
+      -12.1929781,
+      -4.8252905
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (3.55, 7)",
+    "volume_polygon_mm3": 0.6615202
+  },
+  {
+    "bbox_mm": [
+      -3.035,
+      -12.9490356,
+      -7.3908058,
+      -2.1318407,
+      -12.0772384,
+      -4.8023735
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (3.55, 8)",
+    "volume_polygon_mm3": 0.66158
+  },
+  {
+    "bbox_mm": [
+      -3.9455314,
+      -12.8332959,
+      -7.3678888,
+      -2.725,
+      -12.0772384,
+      -4.8023735
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "folded tab (3.55, 9)",
+    "volume_polygon_mm3": 0.9037569
+  },
+  {
+    "bbox_mm": [
+      -7.59,
+      -14.5974072,
+      -8.1777654,
+      -1.79,
+      -12.2709545,
+      2.8576866
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "tab insulator",
+    "volume_polygon_mm3": 9.7614
+  },
+  {
+    "bbox_mm": [
+      -8.2,
+      -14.0360269,
+      -8.1985585,
+      -2.69,
+      -10.7232812,
+      3.2960835
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "protection board",
+    "volume_polygon_mm3": 69.7015
+  },
+  {
+    "bbox_mm": [
+      -4.37,
+      -14.2297029,
+      -7.5583105,
+      -2.77,
+      -11.7950373,
+      2.4052732
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "spot joint reserve",
+    "volume_polygon_mm3": 7.88704
+  },
+  {
+    "bbox_mm": [
+      -27.7,
+      4.7369122,
+      -16.780023,
+      -11.7,
+      16.5196339,
+      -5.2317749
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "controller board incl LDO SWD",
+    "volume_polygon_mm3": 728.0
+  },
+  {
+    "bbox_mm": [
+      -28.21,
+      7.7471616,
+      -18.8247097,
+      -21.91,
+      18.4553521,
+      -8.3087876
+    ],
+    "group": "fixed",
+    "kind": "air",
+    "material": "electronics",
+    "name": "BMD antenna air reserve",
+    "volume_polygon_mm3": 259.2702
+  },
+  {
+    "bbox_mm": [
+      -11.54,
+      7.3246147,
+      -13.8245182,
+      -1.74,
+      14.9538161,
+      -6.3663591
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "coupler H-bridge",
+    "volume_polygon_mm3": 161.2688
+  },
+  {
+    "bbox_mm": [
+      -17.475,
+      10.3426566,
+      -18.6609658,
+      -15.525,
+      19.5770162,
+      -9.4426492
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "independent cutoff",
+    "volume_polygon_mm3": 82.8165
+  },
+  {
+    "bbox_mm": [
+      -34.1,
+      9.0357635,
+      -13.566611,
+      -28.3,
+      14.9197199,
+      -7.7850825
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "yaw H-bridge",
+    "volume_polygon_mm3": 73.718
+  },
+  {
+    "bbox_mm": [
+      -34.9,
+      4.0267385,
+      -17.0875935,
+      -30.5,
+      8.8283408,
+      -12.2033084
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "parking motor bridge",
+    "volume_polygon_mm3": 39.27
+  },
+  {
+    "bbox_mm": [
+      -9.9,
+      5.8373484,
+      -19.4671471,
+      -7.1,
+      10.2505394,
+      -15.0428495
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "bus connector",
+    "volume_polygon_mm3": 27.202
+  },
+  {
+    "bbox_mm": [
+      -33.95,
+      12.6733084,
+      -10.0397871,
+      -30.85,
+      19.1998491,
+      -3.3878648
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "interface flex reserve",
+    "volume_polygon_mm3": 47.3184
+  },
+  {
+    "bbox_mm": [
+      -11.15,
+      3.5537038,
+      -16.5631659,
+      -6.75,
+      7.7509139,
+      -12.4177868
+    ],
+    "group": "fixed",
+    "kind": "reserve",
+    "material": "electronics",
+    "name": "fourth H bridge",
+    "volume_polygon_mm3": 33.44
+  },
+  {
+    "bbox_mm": [
+      -35.1,
+      -21.1904447,
+      -12.7725321,
+      -0.91,
+      -9.5821186,
+      6.6794005
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "PA12",
+    "name": "cell tray",
+    "volume_polygon_mm3": 599.53698
+  },
+  {
+    "bbox_mm": [
+      -35.1,
+      -21.6024458,
+      -12.8541105,
+      -0.91,
+      -17.6553795,
+      5.0808518
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "PA12",
+    "name": "cell service lid",
+    "volume_polygon_mm3": 261.34836
+  },
+  {
+    "bbox_mm": [
+      -36.0,
+      1.9607863,
+      -20.143822,
+      -1.12,
+      19.8723263,
+      -2.4650279
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "PA12",
+    "name": "pcb tray",
+    "volume_polygon_mm3": 574.7238
+  },
+  {
+    "bbox_mm": [
+      -36.0,
+      7.4277477,
+      -20.4459447,
+      -1.12,
+      20.1640828,
+      -8.1262322
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "PA12",
+    "name": "pcb service lid",
+    "volume_polygon_mm3": 301.473588
+  },
+  {
+    "bbox_mm": [
+      -37.04,
+      -10.45,
+      -10.45,
+      -34.4,
+      10.45,
+      10.45
+    ],
+    "group": "yaw",
+    "kind": "solid",
+    "material": "PA12",
+    "name": "tail shroud",
+    "volume_polygon_mm3": 84.5364223
+  },
+  {
+    "bbox_mm": [
+      -41.98,
+      -23.9,
+      -19.96,
+      2.06,
+      -0.02,
+      23.65
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "PA12",
+    "name": "outer clamshell 0",
+    "volume_polygon_mm3": 1985.4430287
+  },
+  {
+    "bbox_mm": [
+      -41.98,
+      0.02,
+      -19.96,
+      2.06,
+      23.9,
+      23.65
+    ],
+    "group": "fixed",
+    "kind": "solid",
+    "material": "PA12",
+    "name": "outer clamshell 1",
+    "volume_polygon_mm3": 2028.6234764
+  }
+]

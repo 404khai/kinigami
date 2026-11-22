@@ -1,0 +1,13 @@
+index center [-10.13  11.99] analytic driver-center template before 270deg installation clock [-10.13   6.49] 4-slot radius/pin/bush 3.8890872965260113 0.42 2.72
+latch at LOCK pos/normal clearance [-11.46539572  10.11342036] 0.030000000000000693 peak cam approach vs pin, min radial clearance 0.012525225549405272 0.01747477445059542
+PARK swept trunnion vs retracted latch (0.4499999999999993, 'index arm outer strap 1', 'trunnion')
+max free out / in on TRUNNION, excluding twist, flex and slotted pin lash 0.033592411325809035 0.02
+two actual wheel interior points enter solid registered disk at degrees (x,y relative) [(0.7228778119133726, np.float64(1.5999999999999874), -3.251089152500695), (0.7228778119133469, np.float64(-1.6000000000000012), -3.251089152500705)]
+conditional nut/carriage spring stroke bounds and fit
+two spring .55 wire/3.35 mean/8 active, k each, free, solid, lock/park/early jam forces. units N
+0 0 11.4 20.430188179729562 5.9
+4.85 8.07 14.62 1.0815981977503974 9.12
+4.85 0 6.550000000000001 49.573250730226135 1.0500000000000007
+-0.3 0 11.700000000000001 18.627524516812244 6.200000000000001
+worst jam test before solid if margin <=0; no force limit after coil bind
+4.5-turn nut lead .60, 8.07 motion ACTUAL rev 13.450000000000001 guide parking allowances - self-lock not credited

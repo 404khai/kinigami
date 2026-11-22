@@ -1,0 +1,5 @@
+dog full LOCK shank, release clearance, nominal diametrical play, square/journal and total shaft play 1.4600000000000009 0.1999999999999993 0.064 1.0877468768522107 4.154906419119939
+12 hole phases, wheel deflection (deg) guaranteeing tooth obstruction, sign -1 [np.float64(0.23), np.float64(0.23), np.float64(0.24), np.float64(0.24), np.float64(0.24), np.float64(0.24), np.float64(0.24), np.float64(0.24), np.float64(0.24), np.float64(0.24), np.float64(0.24), np.float64(0.24)]
+12 hole phases, wheel deflection (deg) guaranteeing tooth obstruction, sign 1 [np.float64(0.24), np.float64(0.24), np.float64(0.24), np.float64(0.24), np.float64(0.24), np.float64(0.24), np.float64(0.24), np.float64(0.24), np.float64(0.24), np.float64(0.24), np.float64(0.24), np.float64(0.24)]
+registered park gear angle vs available [68,76] 72.04918032786885
+disk tooth/spline and self-lock not credited. Input shaft over/under travel & independent power-off unlocking unknown outside registered landed pin.

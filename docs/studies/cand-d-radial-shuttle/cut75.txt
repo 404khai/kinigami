@@ -1,0 +1,4 @@
+physical collar seat at actual disk throw, vs motor solid reservation 6.56 [(np.float64(0.07311), 'collar actual 27', 'disk geared 4', [1.897, -0.6371, 7.2331])]
+straight disk insertion at PARK analytical rigid circular-disk/bore radial minimum; piecewise linear min at knots 0.10684999999999967
+coaxial round guide bore radius minus post vs faceted conservative bush result 0.018000000000000016
+rod diameter, OC shank, body/slot radial clearance; front wall y=17.90, full lock toe y top=17.90 2.2 4.5 0.0042

@@ -1,0 +1,609 @@
+{
+  "accepted_width_degrees": [
+    0.9375,
+    15.0
+  ],
+  "circumferential_fairings": {
+    "guest_min_x": 3.1199999999999974,
+    "guest_min_x_conservative": -2.618416866508568,
+    "host_fairing_max_x": -33.67810677888674,
+    "host_max_x": -0.4
+  },
+  "fixed_exterior": [
+    "cell screw lug 0",
+    "cell M2 screw 0",
+    "cell screw lug 1",
+    "cell M2 screw 1",
+    "cell cassette",
+    "cell lid",
+    "pcb screw lug 0",
+    "pcb M2 screw 0",
+    "pcb screw lug 1",
+    "pcb M2 screw 1",
+    "pcb cassette",
+    "pcb lid",
+    "foot 0",
+    "foot 1",
+    "foot 2",
+    "foot 3",
+    "clamshell 0",
+    "clamshell 1"
+  ],
+  "label": "exploratory",
+  "method": "SAT separates every finite host triangle from the convex outer enclosure of a guest triangle, its complete +0..7.50 mm translation, and its entire yaw cell (XY pad 2*r*sin(cellwidth/4)). Strict separation at all cells proves no surface crossings; positive X ordering checked using the extended-ray repeat in code. Own host housing does not move with its rear hinge. No allowance for assemblies, wall deflection or off-axis escape. Sampled metal near nose includes intended joins.",
+  "sample_rows": [
+    [
+      "LOCK",
+      0,
+      -15.0,
+      -15.0,
+      []
+    ],
+    [
+      "LOCK",
+      0,
+      -15.0,
+      0.0,
+      []
+    ],
+    [
+      "LOCK",
+      0,
+      -15.0,
+      15.0,
+      [
+        [
+          0.371944,
+          "annular ejector",
+          "guest eject rear L730"
+        ],
+        [
+          0.329265,
+          "annular ejector",
+          "guest eject rear L730 seat"
+        ],
+        [
+          0.044051,
+          "pilot",
+          "guest eject rear L730"
+        ],
+        [
+          0.030217,
+          "pilot",
+          "guest eject rear L730 seat"
+        ]
+      ]
+    ],
+    [
+      "LOCK",
+      0,
+      0.0,
+      -15.0,
+      []
+    ],
+    [
+      "LOCK",
+      0,
+      0.0,
+      0.0,
+      []
+    ],
+    [
+      "LOCK",
+      0,
+      0.0,
+      15.0,
+      [
+        [
+          0.371944,
+          "annular ejector",
+          "guest eject rear L730"
+        ],
+        [
+          0.329265,
+          "annular ejector",
+          "guest eject rear L730 seat"
+        ],
+        [
+          0.044051,
+          "pilot",
+          "guest eject rear L730"
+        ],
+        [
+          0.030217,
+          "pilot",
+          "guest eject rear L730 seat"
+        ]
+      ]
+    ],
+    [
+      "LOCK",
+      0,
+      15.0,
+      -15.0,
+      []
+    ],
+    [
+      "LOCK",
+      0,
+      15.0,
+      0.0,
+      []
+    ],
+    [
+      "LOCK",
+      0,
+      15.0,
+      15.0,
+      [
+        [
+          0.371944,
+          "annular ejector",
+          "guest eject rear L730"
+        ],
+        [
+          0.329265,
+          "annular ejector",
+          "guest eject rear L730 seat"
+        ],
+        [
+          0.044051,
+          "pilot",
+          "guest eject rear L730"
+        ],
+        [
+          0.030217,
+          "pilot",
+          "guest eject rear L730 seat"
+        ]
+      ]
+    ],
+    [
+      "DRAW",
+      1,
+      -15.0,
+      -15.0,
+      []
+    ],
+    [
+      "DRAW",
+      1,
+      -15.0,
+      0.0,
+      []
+    ],
+    [
+      "DRAW",
+      1,
+      -15.0,
+      15.0,
+      [
+        [
+          0.371944,
+          "annular ejector",
+          "guest eject rear L730"
+        ],
+        [
+          0.329265,
+          "annular ejector",
+          "guest eject rear L730 seat"
+        ],
+        [
+          0.044051,
+          "pilot",
+          "guest eject rear L730"
+        ],
+        [
+          0.030217,
+          "pilot",
+          "guest eject rear L730 seat"
+        ]
+      ]
+    ],
+    [
+      "DRAW",
+      1,
+      0.0,
+      -15.0,
+      []
+    ],
+    [
+      "DRAW",
+      1,
+      0.0,
+      0.0,
+      []
+    ],
+    [
+      "DRAW",
+      1,
+      0.0,
+      15.0,
+      [
+        [
+          0.371944,
+          "annular ejector",
+          "guest eject rear L730"
+        ],
+        [
+          0.329265,
+          "annular ejector",
+          "guest eject rear L730 seat"
+        ],
+        [
+          0.044051,
+          "pilot",
+          "guest eject rear L730"
+        ],
+        [
+          0.030217,
+          "pilot",
+          "guest eject rear L730 seat"
+        ]
+      ]
+    ],
+    [
+      "DRAW",
+      1,
+      15.0,
+      -15.0,
+      []
+    ],
+    [
+      "DRAW",
+      1,
+      15.0,
+      0.0,
+      []
+    ],
+    [
+      "DRAW",
+      1,
+      15.0,
+      15.0,
+      [
+        [
+          0.371944,
+          "annular ejector",
+          "guest eject rear L730"
+        ],
+        [
+          0.329265,
+          "annular ejector",
+          "guest eject rear L730 seat"
+        ],
+        [
+          0.044051,
+          "pilot",
+          "guest eject rear L730"
+        ],
+        [
+          0.030217,
+          "pilot",
+          "guest eject rear L730 seat"
+        ]
+      ]
+    ],
+    [
+      "PARK",
+      0,
+      -15.0,
+      -15.0,
+      []
+    ],
+    [
+      "PARK",
+      0,
+      -15.0,
+      0.0,
+      []
+    ],
+    [
+      "PARK",
+      0,
+      -15.0,
+      15.0,
+      [
+        [
+          0.371944,
+          "annular ejector",
+          "guest eject rear L730"
+        ],
+        [
+          0.329265,
+          "annular ejector",
+          "guest eject rear L730 seat"
+        ],
+        [
+          0.044051,
+          "pilot",
+          "guest eject rear L730"
+        ],
+        [
+          0.030217,
+          "pilot",
+          "guest eject rear L730 seat"
+        ]
+      ]
+    ],
+    [
+      "PARK",
+      0,
+      0.0,
+      -15.0,
+      []
+    ],
+    [
+      "PARK",
+      0,
+      0.0,
+      0.0,
+      []
+    ],
+    [
+      "PARK",
+      0,
+      0.0,
+      15.0,
+      [
+        [
+          0.371944,
+          "annular ejector",
+          "guest eject rear L730"
+        ],
+        [
+          0.329265,
+          "annular ejector",
+          "guest eject rear L730 seat"
+        ],
+        [
+          0.044051,
+          "pilot",
+          "guest eject rear L730"
+        ],
+        [
+          0.030217,
+          "pilot",
+          "guest eject rear L730 seat"
+        ]
+      ]
+    ],
+    [
+      "PARK",
+      0,
+      15.0,
+      -15.0,
+      []
+    ],
+    [
+      "PARK",
+      0,
+      15.0,
+      0.0,
+      []
+    ],
+    [
+      "PARK",
+      0,
+      15.0,
+      15.0,
+      [
+        [
+          0.371944,
+          "annular ejector",
+          "guest eject rear L730"
+        ],
+        [
+          0.329265,
+          "annular ejector",
+          "guest eject rear L730 seat"
+        ],
+        [
+          0.044051,
+          "pilot",
+          "guest eject rear L730"
+        ],
+        [
+          0.030217,
+          "pilot",
+          "guest eject rear L730 seat"
+        ]
+      ]
+    ],
+    [
+      "EJECT",
+      0.25,
+      -15.0,
+      -15.0,
+      []
+    ],
+    [
+      "EJECT",
+      0.25,
+      -15.0,
+      0.0,
+      []
+    ],
+    [
+      "EJECT",
+      0.25,
+      -15.0,
+      15.0,
+      [
+        [
+          2.545744,
+          "annular ejector",
+          "guest eject rear L730"
+        ],
+        [
+          0.829321,
+          "annular ejector",
+          "guest eject rear L730 seat"
+        ]
+      ]
+    ],
+    [
+      "EJECT",
+      0.25,
+      0.0,
+      -15.0,
+      []
+    ],
+    [
+      "EJECT",
+      0.25,
+      0.0,
+      0.0,
+      []
+    ],
+    [
+      "EJECT",
+      0.25,
+      0.0,
+      15.0,
+      [
+        [
+          2.545744,
+          "annular ejector",
+          "guest eject rear L730"
+        ],
+        [
+          0.829321,
+          "annular ejector",
+          "guest eject rear L730 seat"
+        ]
+      ]
+    ],
+    [
+      "EJECT",
+      0.25,
+      15.0,
+      -15.0,
+      []
+    ],
+    [
+      "EJECT",
+      0.25,
+      15.0,
+      0.0,
+      []
+    ],
+    [
+      "EJECT",
+      0.25,
+      15.0,
+      15.0,
+      [
+        [
+          2.545744,
+          "annular ejector",
+          "guest eject rear L730"
+        ],
+        [
+          0.829321,
+          "annular ejector",
+          "guest eject rear L730 seat"
+        ]
+      ]
+    ],
+    [
+      "EJECT",
+      1,
+      -15.0,
+      -15.0,
+      []
+    ],
+    [
+      "EJECT",
+      1,
+      -15.0,
+      0.0,
+      []
+    ],
+    [
+      "EJECT",
+      1,
+      -15.0,
+      15.0,
+      [
+        [
+          2.545744,
+          "annular ejector",
+          "guest eject rear L730"
+        ],
+        [
+          0.829321,
+          "annular ejector",
+          "guest eject rear L730 seat"
+        ]
+      ]
+    ],
+    [
+      "EJECT",
+      1,
+      0.0,
+      -15.0,
+      []
+    ],
+    [
+      "EJECT",
+      1,
+      0.0,
+      0.0,
+      []
+    ],
+    [
+      "EJECT",
+      1,
+      0.0,
+      15.0,
+      [
+        [
+          2.545744,
+          "annular ejector",
+          "guest eject rear L730"
+        ],
+        [
+          0.829321,
+          "annular ejector",
+          "guest eject rear L730 seat"
+        ]
+      ]
+    ],
+    [
+      "EJECT",
+      1,
+      15.0,
+      -15.0,
+      []
+    ],
+    [
+      "EJECT",
+      1,
+      15.0,
+      0.0,
+      []
+    ],
+    [
+      "EJECT",
+      1,
+      15.0,
+      15.0,
+      [
+        [
+          2.545744,
+          "annular ejector",
+          "guest eject rear L730"
+        ],
+        [
+          0.829321,
+          "annular ejector",
+          "guest eject rear L730 seat"
+        ]
+      ]
+    ]
+  ],
+  "triangle_pair_tests": 1395,
+  "unresolved": 0,
+  "yaw_angle_intervals_closed": 6
+}

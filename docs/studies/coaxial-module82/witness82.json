@@ -1,0 +1,31 @@
+{
+  "bare_sleeve_nominal_radial_clearance": 0.05,
+  "bush_at_draw": {
+    "clock": 180,
+    "owns": "fixed aft liner OD and sleeve internal web away from all three working pockets",
+    "r": 6.415,
+    "radius": 0.08,
+    "remaining_bush_outer_depth": 0.08499999999999996,
+    "remaining_sleeve_inner_depth": 0.08499999999999996,
+    "t": 0,
+    "x": -10.1
+  },
+  "eject_at_axis": {
+    "analytic_ball_radius": 0.29,
+    "eject_stroke": 1.965,
+    "margins": [
+      0.295,
+      1.82,
+      1.5599999999999996,
+      2.0700000000000003
+    ],
+    "mesh_overlap_mm3": 18.770515504663482,
+    "point": [
+      -30.0,
+      4.3,
+      0.0
+    ],
+    "yaw": "all; own shaft rotates about its own symmetric axis"
+  },
+  "label": "exploratory"
+}

@@ -1,0 +1,7 @@
+cell centre [ 0.5  0.  16.5] size [30.66 20.7   5.4 ] rad 26.951
+MCU centre [  0.5 -19.5   3. ] size [22.   5.7 17.8] rad 27.81
+dual H-bridge centre [-4.   0.  10.5] size [8.8  9.8  1.87] rad 15.011
+cutoff centre [ 0.5 12.   0. ] size [6.2  1.95 6.85] rad 13.894
+joint driver centre [ 3.5  7.5 -6. ] size [6.2  5.8  2.05] rad 14.18
+connector centre [0.5 7.5 6. ] size [3.35 2.8  2.9 ] rad 11.809
+wire reserve centre [ 0.5 -6.   6. ] size [2.  3.  3.4] rad 10.853

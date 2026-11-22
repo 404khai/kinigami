@@ -1,0 +1,142 @@
+{
+  "drive": {
+    "GH_axial_N": 0.5,
+    "GH_continuous_speed_limit_rpm": 8000,
+    "GH_max_continuous_Nmm": 25,
+    "GH_max_eff": 0.6,
+    "GH_max_intermittent_Nmm": 35,
+    "GH_radial_N": 0.5,
+    "if_rated_2500rpm_eject_seconds": 348.3648,
+    "rated_motor_A": 0.142,
+    "rated_motor_Nmm": 0.156,
+    "ratio": 3.5,
+    "unverified_mesh_eff": 0.88
+  },
+  "force_cap": {
+    "G_Nmm2": 79000.0,
+    "absolute_min_length_mm": 4.359999999999999,
+    "active_turns": 4.2,
+    "conditional_draw_min_N": 27.39662727332919,
+    "conditional_jammed_reset_max_N": 44.95036770526775,
+    "count": 3,
+    "free_mm": 6.035,
+    "geometric_cage_travel_mm": 0.2,
+    "k_each_N_mm": 7.896419447565697,
+    "max_Wahl_shear_MPa": 1043.8336307092272,
+    "mean_D_mm": 2.65,
+    "nominal_LOCK_residual_N": 8.17279412823049,
+    "nominal_draw_N": 33.28340797148942,
+    "nominal_solid_height_mm": 3.1,
+    "stop_separation_travel_mm": 1.26,
+    "wire_mm": 0.5
+  },
+  "guide": {
+    "0.06": {
+      "eccentricity_factor": 4.64,
+      "friction_feedback": 0.2784,
+      "required_unlock_push_N": 26.46341463414634
+    },
+    "0.12": {
+      "eccentricity_factor": 4.64,
+      "friction_feedback": 0.5568,
+      "required_unlock_push_N": 43.08664259927797
+    },
+    "0.18": {
+      "eccentricity_factor": 4.64,
+      "friction_feedback": 0.8351999999999999,
+      "required_unlock_push_N": 115.87378640776696
+    },
+    "0.23": {
+      "eccentricity_factor": 4.64,
+      "friction_feedback": 1.0672,
+      "required_unlock_push_N": null
+    }
+  },
+  "label": "exploratory",
+  "power": {
+    "cell_continuous_A": 2.0,
+    "cell_min_voltage_V": 3.0,
+    "cell_side_at_four_starts_with_10pct_low_R_and_85pct_converter_A": 1.297700314693779,
+    "four_motors_22C_rated_A": 0.568,
+    "four_motors_3V_start_reference_A": 0.7407407407407408,
+    "no_pack_pulse_credit": true,
+    "trial_logic_drivers_extras_A": 0.28
+  },
+  "rod": {
+    "length_mm": 20.770000000000003,
+    "pinned_buckling_N": 147.36579265926076,
+    "stress_all_35N_MPa": 55.01652353793912
+  },
+  "thread_hold": {
+    "friction_angle_square_deg": {
+      "0.03": 1.7183580016554572,
+      "0.05": 2.862405226111748,
+      "0.08": 4.573921259900861,
+      "0.23": 12.95276451337552
+    },
+    "independent_restraint_installed": false,
+    "lead_deg": 3.398585529377964,
+    "lossless_lowering_Nmm_at_45N": 3.580986219567645,
+    "mu_threshold_ISO60": 0.0514299342744209,
+    "mu_threshold_square": 0.05938617279548333
+  },
+  "thread_model_80": {
+    "draw": {
+      "ISO60_with_plain_collar_Nmm": 48.73144579969378,
+      "baseline_Nmm": 46.069959655566905,
+      "catalogue_max_efficiency_rated_path_Nmm": 73.801728,
+      "gearhead_output_Nmm": 15.821897986913564,
+      "held_back_motor_eff_required": 0.3961813398165456,
+      "pinion_bearing_reactions_N": [
+        4.783327317061014,
+        4.78332731706103
+      ],
+      "pinion_mesh_resultant_N": 9.566654634122044,
+      "required_N": 54.0,
+      "thrust_static_demand_ratio": 0.05793991416309013,
+      "wheel_bearing_reactions_N": [
+        8.7377451819805,
+        0.8289094521415442
+      ],
+      "wheel_tangential_N": 8.989714765291799
+    },
+    "eject": {
+      "ISO60_with_plain_collar_Nmm": 31.585196351653376,
+      "baseline_Nmm": 29.860159036015588,
+      "catalogue_max_efficiency_rated_path_Nmm": 73.801728,
+      "gearhead_output_Nmm": 10.25493388040694,
+      "held_back_motor_eff_required": 0.2567842017329462,
+      "pinion_bearing_reactions_N": [
+        3.1003047425395462,
+        3.100304742539556
+      ],
+      "pinion_mesh_resultant_N": 6.200609485079102,
+      "required_N": 35.0,
+      "thrust_static_demand_ratio": 0.03755364806866953,
+      "wheel_bearing_reactions_N": [
+        5.663353358691064,
+        0.5372561263880379
+      ],
+      "wheel_tangential_N": 5.826666977503944
+    },
+    "unlock": {
+      "ISO60_with_plain_collar_Nmm": 17.232657520916717,
+      "baseline_Nmm": 16.29148948319985,
+      "catalogue_max_efficiency_rated_path_Nmm": 73.801728,
+      "gearhead_output_Nmm": 5.595018675622311,
+      "held_back_motor_eff_required": 0.14009962629262596,
+      "pinion_bearing_reactions_N": [
+        1.6915041224957017,
+        1.691504122495707
+      ],
+      "pinion_mesh_resultant_N": 3.3830082449914087,
+      "required_N": 19.095750000000002,
+      "thrust_static_demand_ratio": 0.02048900214592275,
+      "wheel_bearing_reactions_N": [
+        3.0898851399778553,
+        0.2931231050135537
+      ],
+      "wheel_tangential_N": 3.1789878838763133
+    }
+  }
+}

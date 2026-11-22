@@ -1,0 +1,13 @@
+cell fixed all physical stock (np.float64(0.28843492644582014), ('cell bulk', 'yaw motor body')) body/rotor/full stroke support (0.28843492644581836, 'cell bulk', 'yaw motor body')
+cell to independent own tail all yaws with half step debit (np.float64(4.945941835374871), 'rolled three-lobe hull', np.float64(-15.0))
+ring, guide reaction overlap with actual fixed cheeks -3.294 [] minimum axial face gap .040 per side; full registration inner and outer 0.45112910764258274
+ring, guide reaction overlap with actual fixed cheeks 0 [] minimum axial face gap .040 per side; full registration inner and outer 0.5063029287062122
+ring, guide reaction overlap with actual fixed cheeks 15 [] minimum axial face gap .040 per side; full registration inner and outer 0.9273445250781691
+ring, guide reaction overlap with actual fixed cheeks 30 [] minimum axial face gap .040 per side; full registration inner and outer 0.6149314083248107
+ring, guide reaction overlap with actual fixed cheeks 42 [] minimum axial face gap .040 per side; full registration inner and outer 0.21112124272531219
+opposite +/-X reactions per unit radial force, worst moment t (9.5mm) / shortest bearing pitch 2.065217391304348 each; minimum .65 x .82mm bearing; .05 sliding drag from BOTH rows per radial force 0.2065217391304348
+at nominal Take67 conditional 140N link load use conservative F_rad=140 N; X per row, one pad worst MPa, two-face drag 289.13043478260875 542.4586018435435 28.91304347826087
+fitted rear structure vs yaw bodies and fixed motors (nominal housing intersections; known mount contacts not removed) -15 []
+fitted rear structure vs yaw bodies and fixed motors (nominal housing intersections; known mount contacts not removed) 0 []
+fitted rear structure vs yaw bodies and fixed motors (nominal housing intersections; known mount contacts not removed) 15 []
+max TRUE adjacent intersection among named full stock with independent yaw, excluding clevis bores where applicable none, not all-pairs proof
