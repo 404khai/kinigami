@@ -575,3 +575,9 @@ Mechanics Graft. Test a seven-contact load path: one positively withdrawn tapere
 ## Take 75 — enclose the radial-plug drive
 
 Packaging Graft. Put two opposing X-bearing rows at different radii on each translating plug, drive all three with an enclosed face cam, and drive the terminal disk independently. Keep the finite front wall, check assembly access and guide loads at the actual actuator offset.
+
+## Take 76 — compatibility of elastic seat loads
+
+Lead elastic-seats Graft. Test the rigid disk with finite local compliance against simultaneous equilibrium, true contact poles and installation errors. Compute whether a zero-charge seat remains supportable as a function of measured draw, not just whether an arbitrary rigid contact-force vector exists.
+
+[Compatible states](docs/studies/cand-d-perimeter/elastic.md): at the same 100 N draw and 0.029421 mm disk advance, all seats can carry load or one recessed seat can have a 0.0138 mm gap. Both obey finite unilateral compliance and Coulomb friction. A separate six-pocket spring installation intersects all three disk posts.

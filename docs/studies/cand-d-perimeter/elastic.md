@@ -1,0 +1,22 @@
+# Take 76 — identical disk readings with different seat occupancy
+
+**Exploratory.** With a rigid, axially driven disk, finite local compliance does not by itself make either draw force or encoder travel a seating indicator. A finite equilibrium example gives the *same pair of readings* with all faces loaded and with one face open. This is not a measured stiffness, a reachability proof, or a failure of every compliant seat.
+
+Use the three 56° V pairs and three .60/.80 jaw normals from [Take 71](floating.md), clock the whole interface −60° for the [Take 73 plugs](plug.md), and keep the radial plugs locked. The disk is laterally and rotationally constrained; its guides carry the non-axial reaction, not a freely floating table. As a local constitutive example, put each flat on a unilateral, normal-directed linear support of provisional stiffness 5,000 N/mm and elastic stroke 0.020 mm, stiff in shear. Do not substitute this spring law for a measured Hertz/contact law or for an installed guide. Only the first seat differs between builds: nominal in one, recessed 0.020 mm along its normal in the other. No external tail wrench, no useful guide friction, no power-off holding claim.
+
+### Finite compatibility at the actual contact poles
+
+For forward disk advance `s`, pure forward tail translation `u`, and no spin, the seat approach is `(s−u)cos(56°)−recess`, the jaw approach `0.60u`. These expressions are exact for the trial normal-translating flats. The surrounding sphere-backed tail geometry does not rotate. Normal force is stiffness times the positive part of approach; negative approach is a gap and carries zero force. At 100 N draw, choose jaw compression 0.0110 mm and occupied seat compression 0.0062 mm. The calculations give:
+
+| First seat | Tail advances (mm) | Disk advances (mm) | Axial disk force (N) | First face gap (mm) |
+| --- | ---: | ---: | ---: | ---: |
+| Nominal | 0.018333 | 0.029421 | 100 | 0 |
+| Recessed | 0.018333 | 0.029421 | 100 | 0.013800 |
+
+The law gives 31 N on **each** unrecessed seat in this constructed pure-translation pose and 55 N on each jaw. These equalities follow from displacement, identical trial stiffness and symmetric geometry, **not** a sizing assumption about general load sharing. Each configuration has its own static shear forces. The script checks them with a 32-sided polygon *inside* μ=.19 (below .23); it recomputes the net tail force, all three moments using true surface poles, and the measured axial sum from the seat forces. Measuring ideal output force directly is more informative than reading motor current. A differently instrumented bearing could distinguish reactions this model does not measure.
+
+Scale positive displacements and tangential reactions with draw from 96 to 112 N. As the recess exceeds the occupied seat deflection throughout, the same counterexample persists across the interval; the largest tangent-plane pole shift is 0.01643 mm, below the earlier nominal seat and plug lands. All local compressions are below their trial stroke. For any common positive stiffness at 100 N the same force construction needs seat deflection `31/K` and jaw deflection `55/K`: the quoted 0.020 mm spring stroke requires K > 2,750 N/mm and the missing face stays open for K > 1,550 N/mm. This does not require impossibly large motion in a linearized six-coordinate model. Conversely a much softer independently sprung seat would need its own finite travel, hard stop, support, drift, and pressure checks. No drive is asserted to supply these loads.
+
+A separate trial to house six Ø3.40 × 3.50 mm spring pockets immediately behind the disk fails in the Take 75 arrangement. At each registry clock both proposed pocket axes (radial 10.30, tangential ±2.07) are 2.69134 mm from the Ø2.20 post axis at R8.58. Their swept cross-sections overlap by 0.10866 mm throughout the common local x=−12.05..−8.55 interval. The Take 75 disk is **not** cut. No claim about narrower springs or relocated posts.
+
+Reproduce from this directory with `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 PYTHONHASHSEED=0 python3 -B elastic.py` (NumPy, SciPy). This is a local static compatibility counterexample, not a simulation of either history, an arbitrary-pose collision check, or a proof that an unloaded seat means loss of geometric retention. A successor using allowable lost motion would have to bound it against real finite lands and strength; a successor requiring seven or nine preloaded faces needs evidence other than these two readings. No candidate, criterion or official result changed.
