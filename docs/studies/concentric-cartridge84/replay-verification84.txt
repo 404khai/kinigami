@@ -1,0 +1,14 @@
+Base e558dabdd3af5d3859d55a7c480765c33bf58733
+Fresh empty directory: scripts, three JSON inputs, C++ source, runner and pinned requirements only. Python 3.10.12, g++ 11.4.0, Linux x86_64. No cached outputs, no mesh caches.
+byte-identical installed84.json
+byte-identical interval84.json
+byte-identical local84.json
+byte-identical mass84.json
+byte-identical neighbor84.json
+byte-identical phase-pairs84.json
+byte-identical rating84.json
+byte-identical selector84.json
+byte-identical service84.json
+byte-identical sphere84.json
+byte-identical witness84.json
+Regression matched; scoped nominal improvements do not change rejection.

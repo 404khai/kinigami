@@ -1,0 +1,87 @@
+{
+  "label": "exploratory",
+  "nose_max": 8.2,
+  "stroke_needed": 7.445871982632063,
+  "park_if_supports_engaged_and_axis_within_2deg": 5.294037517592952,
+  "alternate_relief": {
+    "apothem": 4.3,
+    "clock_offset_deg": 40,
+    "at_t_ge_2p90_body_y_max": 3.179862413714686,
+    "lower_cheek_0clock_clear_through_deg": 8.519158148709268,
+    "gap_at_8": 0.06276057739099805,
+    "shoulder_footprint_box_plane_margin": 0.02381246906134038,
+    "axial_chamfer_only_deg": 5.976282938118073,
+    "note": "0-clock rim-pivot geometry only, no cross-clock/global release claim"
+  },
+  "parked_cheek": {
+    "angle": 5.343642818866296,
+    "point": [
+      -4.054554957016796,
+      4.25,
+      2.9
+    ],
+    "tail_body_x": -6.76066017177982,
+    "pilot_clearance": 0.008395321360917585,
+    "registry_front_gap": 0.07748653642547065,
+    "roller_gap": 0.206288974991502,
+    "blade_shadow": 0.06397283633661743,
+    "endwall_shadow": 0.77944959072732,
+    "other_station_y_bound": 1.4690054257054204,
+    "rod_bush_shadow": 0.2255784090140427,
+    "external_service": [
+      -1.7921772893666,
+      0.4786656551253786,
+      -0.0,
+      -0.0,
+      -0.0,
+      -13.415877861395295
+    ],
+    "ring_normal": 1.8,
+    "each_cheek_normal": 0.2,
+    "local_common_ball": {
+      "center": [
+        -3.9,
+        4.27,
+        2.92
+      ],
+      "angle": 6,
+      "radius": 0.019999999999999574
+    }
+  },
+  "no_roller_if_boss_shift_0p17_deg": 5.460864442406266,
+  "tube_radius": 4.870597387778387,
+  "roller_reserve": 0.6094026122216132,
+  "pilot_reserve": 0.2294026122216124,
+  "cheek_reserve": 0.274545953276359,
+  "blade_reserve": 0.2821106381047018,
+  "boss_overlap": 0.17223369173471062,
+  "rock_probe": {
+    "1.2": {
+      "first_contact": 7.089570176092993,
+      "min_gap": -0.2522920714218202,
+      "angle_at_min": 10.432396197494663
+    },
+    "1.5": {
+      "first_contact": 7.132235835742163,
+      "min_gap": -0.11144069579690408,
+      "angle_at_min": 9.40979024010537
+    },
+    "1.75": {
+      "first_contact": null,
+      "min_gap": 0.008316418022611627,
+      "angle_at_min": 8.562574697195936
+    },
+    "1.9": {
+      "first_contact": null,
+      "min_gap": 0.08119427707908655,
+      "angle_at_min": 8.056530743269459
+    },
+    "2.2": {
+      "first_contact": null,
+      "min_gap": 0.22921738084611376,
+      "angle_at_min": 7.049555816890287
+    }
+  },
+  "old_2p437_gap": 0.5871401969576917,
+  "old_2p818_gap": 0.5381769154454421
+}

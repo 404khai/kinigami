@@ -1,0 +1,25 @@
+{
+  "common_ball_R": 0.61,
+  "common_ball_center": [
+    -38.603492,
+    -5.004526,
+    2.23
+  ],
+  "label": "exploratory",
+  "minimum_face_clearances_mm": [
+    0.6250001528551792,
+    0.6249998471448208,
+    6.9974567028554775,
+    1.7765079999999998,
+    24.703492000000004,
+    1.045474
+  ],
+  "note": "Using the smaller cylindrical core avoids relying on M3 thread crest material. Rotation inverted into flange-local frame; rigid coordinates mm. Full analytic cylinders and planar end faces, not an AABB or hollow-bearing witness.",
+  "own_yaw_deg": 15,
+  "phase": "LOCK",
+  "polygon_overlap_mm3": 9.092204329775717,
+  "solids": [
+    "own solid tail flange",
+    "eject screw continuous R1.10 inner core of modeled R1.496 shaft"
+  ]
+}

@@ -623,3 +623,26 @@ Mechanics Graft. Revise Take 80–81 to eliminate every Take 81–82 mechanics f
 ## Take 84 — coaxial tri-roller v2 full-Kin packaging inside Ø60 mm
 
 Packaging Graft. Package Take 83's centered coaxial sleeve drive, slotted trunnion cage, forward-of-hinge ejector crosshead (clearing yaw shaft at `x = -30`), scalloped/slotted sleeve clearing fixed ejector guides, independent positive two-sign power-off restraint, and trimmed neighbor-clearing clamshells strictly inside Ø60.0 mm across all phases and ±15° × ±15° registered yaw pairs.
+
+### Take 83 — mechanics audit of centered coaxial sleeve drive, slotted end-trunnions, and positive power-off dog (exploratory)
+
+- **Graft:** `positive-sleeve` (from `e558dab`). Archive: `docs/studies/cand-d-positive-sleeve/` (11/11 JSON outputs reproduced byte-for-byte; `SHA256SUMS` verified).
+- **Outcome:** **Exploratory; centered drive fixes eccentric cocking, but loaded release is not yet established.**
+  - **Centered keyed M18 sleeve pull (`e = 0`):** With 45 N applied to the cage (not assumed at the tail) and both guide bands plus unequal antirotation-key reactions included (no equal load sharing assumed), aligned flat-land breakaway is strictly bracketed at **33.82 N** service, **43.17 N** table, and **34.66 N** fault.
+  - **Slotted end-trunnion cage:** Revised slots clear the centered tail, cheeks, and journals throughout LOCK, DRAW, UNLOCK, and PARK (does not certify a skewed assembly).
+  - **Crowned toe stress:** A 54.42 N loaded contact on the R1.50 toe reaches **1.293 GPa** aligned (0.0169 mm half-width), missing a sub-1 GPa target; skew sensitivity (3.07 GPa at 60 N, 0.25° tilt) remains tracked separately.
+  - **Positive two-sign power-off restraint:** The engaged dog holds both torque signs at zero friction, but residual thread torque can require **12.99 N** dog pull and **84.92 N·mm** at the selector before linkage losses, with torque handoff off the last loaded edge unproved.
+  - **Retention & tilted ejection:** A 0.020 mm recessed V-face still bounds motion to **0.1434 mm / 1.078°**; exact fixed-pole table peaks are 54.208 N frictionless / 65.941 N dry. Raised park eliminates the Take 81 2.44° roller catch, but a **5.344° rock** loads a lower cheek (optional head flats clear that specific path through 8°; neither a permanent jam nor guaranteed separation follows).
+
+### Take 84 — concentric ring-nut, rail-free cage, and registered two-Kin packaging (exploratory)
+
+- **Graft:** `concentric-cartridge` (from `e558dab`). Archive: `docs/studies/concentric-cartridge84/` (11/11 JSON outputs reproduced byte-for-byte in clean directory; 37/37 `SHA256SUMS` verified).
+- **Outcome:** **Exploratory; reject this installation.**
+  - **What improved over Take 82:** Listed covered Kin fits a nominal **Ø59.866 mm** sphere; forward crosshead clears the yaw shaft by **1.94 mm**; centered M18 sleeve drive, aligned slotted trunnion/guide paths, and cell-lid/driver service access clear nominally; modeled clamshells, cassettes, and lids **clear each other throughout registered two-Kin yaw (±15° × ±15°) and ejection**.
+  - **Remaining blockers:** (1) At +15° own yaw, an **R0.610 mm** ball lies inside both the own tail flange and the ejector screw core. (2) Positive index pin blocks both torque signs at an engaged dwell, but its dry-residual selector withdrawal needs **37.70 N·mm** before yoke feedback vs 25 N·mm continuous / 35 N·mm intermittent, without a proven torque-unload transfer. (3) Full service access remains blocked: the PCB lid hits a foot and the captive nut cannot be extracted through its installed bearing.
+  - No Gate 1 evaluation, declaration edit, or candidate promotion.
+
+### Next assigned workstreams (Takes 85–86, exploratory)
+
+- **Take 85 (mechanics):** Sequenced torque-unload handoff (M18 ring-nut back-drives against a fixed hard-stop before dog withdrawal so dog flank normal drops to zero, plus bounded residual-load verification), larger sleeve toe transition radius + adopted head flats (verifying <1.0 GPa aligned and cheek clearance through 8°), and skewed-assembly trunnion/sleeve clearance bounds.
+- **Take 86 (packaging):** Relocate/clearance-route the ejector screw to eliminate the +15° own-yaw tail-flange collision (R0.610), integrate Take 85's sequenced torque-unload hard-stop and dog withdrawal within ≤25 N·mm continuous motor rating, clear the PCB lid vs foot and make the ring-nut bearing seat serviceable, while preserving Ø≤60.0 mm and registered two-Kin clearance.

@@ -1,0 +1,77 @@
+{
+  "label": "exploratory",
+  "preload_nullspace_residual": 4.12167961557554e-15,
+  "retention_boxes_70g_provisional": {
+    "service": {
+      "min_axial_draw_all_seated_N": 9.642,
+      "max_single_roller_normal_at_cap_N": 47.827,
+      "max_single_seat_normal_at_cap_N": 45.672,
+      "worst_corner": [
+        -2.747,
+        0.687,
+        -0.687,
+        -31.588,
+        -34.884,
+        52.2
+      ]
+    },
+    "table": {
+      "min_axial_draw_all_seated_N": 27.289,
+      "max_single_roller_normal_at_cap_N": 59.079,
+      "max_single_seat_normal_at_cap_N": 75.515,
+      "worst_corner": [
+        -20.0,
+        -17.168,
+        -27.468,
+        -31.588,
+        -34.884,
+        47.061
+      ]
+    },
+    "fault": {
+      "min_axial_draw_all_seated_N": 11.554,
+      "max_single_roller_normal_at_cap_N": 48.845,
+      "max_single_seat_normal_at_cap_N": 47.432,
+      "worst_corner": [
+        -2.747,
+        2.747,
+        -2.747,
+        -31.588,
+        -34.884,
+        52.2
+      ]
+    }
+  },
+  "loaded_release_and_hertz": {
+    "draw_cap_N": 45.0,
+    "max_total_radial_on_sleeve_N": 55.35,
+    "sleeve_unlock_axial_N": 12.731,
+    "sleeve_unlock_axial_1p5x_ecc_N": 19.096,
+    "M3_unlock_torque_Nmm": 16.291,
+    "M3_draw_54N_torque_Nmm": 46.07,
+    "M3_eject_35N_torque_Nmm": 29.86,
+    "lead_angle_deg": 3.4,
+    "friction_angle_deg": 12.95,
+    "self_locking": true,
+    "hertz_roller_on_tail_flat_MPa": 694.4,
+    "hertz_contact_halfwidth_mm": 0.0181,
+    "hertz_roller_on_sleeve_flat_MPa": 647.6
+  },
+  "nonlinear_form_closure": {
+    "feasible_vertices": 27,
+    "max_translation_mm": 0.116,
+    "max_rotation_deg": 0.808,
+    "beta_margin_deg": 0.392,
+    "max_seat_disp_mm": 0.158,
+    "max_roller_disp_mm": 0.1258,
+    "min_H_margin_mm": 0.092
+  },
+  "envelope_screen": {
+    "sleeve_pocket_corner_r_mm": 8.119,
+    "sleeve_od_mm": 19.2,
+    "barrel_od_mm": 21.8,
+    "box_48x25p4x24_sphere_mm": 59.373,
+    "radial_margin_y_mm": 1.8,
+    "radial_margin_z_mm": 1.1
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "loaded": {
+    "label": "exploratory",
+    "eligible_azimuth_cells": 18,
+    "K": 48,
+    "continuous_parallel_flat_upper": {
+      "tail45_service": 19.784763584296204,
+      "tail45_table": 27.724733178482822,
+      "tail45_fault": 20.508921001095487,
+      "cage45_service": 30.202841693715094,
+      "cage45_table": 37.77527017264221,
+      "cage45_fault": 30.406107058418666
+    }
+  },
+  "reset": {
+    "label": "exploratory",
+    "eligible_azimuth_cells": 48,
+    "K": 48,
+    "continuous_parallel_flat_upper": {
+      "tail45_service": 1.3501152569827732,
+      "tail45_table": 0.5521744083693504,
+      "tail45_fault": 1.9793872655083398,
+      "cage45_service": 1.3501152569827735,
+      "cage45_table": 0.5521744083693503,
+      "cage45_fault": 1.97938726550834
+    }
+  },
+  "keyed_positive": {
+    "label": "exploratory",
+    "eligible_azimuth_cells": 18,
+    "K": 48,
+    "continuous_parallel_flat_upper": {
+      "tail45_service": 22.287362708190553,
+      "tail45_table": 31.338611847521815,
+      "tail45_fault": 23.103119688923062,
+      "cage45_service": 33.42405516146128,
+      "cage45_table": 43.02265398580001,
+      "cage45_fault": 34.25443501477347
+    }
+  },
+  "keyed_negative": {
+    "label": "exploratory",
+    "eligible_azimuth_cells": 18,
+    "K": 48,
+    "continuous_parallel_flat_upper": {
+      "tail45_service": 22.550745847350257,
+      "tail45_table": 31.045216907164317,
+      "tail45_fault": 23.37736811380212,
+      "cage45_service": 33.811105155645166,
+      "cage45_table": 43.169282310195435,
+      "cage45_fault": 34.652462263272575
+    }
+  },
+  "keyed_reset_positive": {
+    "label": "exploratory",
+    "eligible_azimuth_cells": 48,
+    "K": 48,
+    "continuous_parallel_flat_upper": {
+      "tail45_service": 1.5419229120850637,
+      "tail45_table": 0.6120081913917075,
+      "tail45_fault": 2.1982445581393963,
+      "cage45_service": 1.5419229120850633,
+      "cage45_table": 0.6120081913917075,
+      "cage45_fault": 2.198244558139397
+    }
+  },
+  "keyed_reset_negative": {
+    "label": "exploratory",
+    "eligible_azimuth_cells": 48,
+    "K": 48,
+    "continuous_parallel_flat_upper": {
+      "tail45_service": 1.5502692546771872,
+      "tail45_table": 0.6317301174487362,
+      "tail45_fault": 2.2747479668857946,
+      "cage45_service": 1.5502692546771875,
+      "cage45_table": 0.6317301174487361,
+      "cage45_fault": 2.274747966885793
+    }
+  }
+}

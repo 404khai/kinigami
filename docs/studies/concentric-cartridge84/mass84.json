@@ -1,0 +1,24 @@
+{
+  "COM_subtotal_mm": [
+    -21.34060722439099,
+    0.7654908045735671,
+    -0.5356586430469399
+  ],
+  "as_built_upper": null,
+  "groups": {
+    "7075": 6.41443779513738,
+    "PA12": 4.423694519651949,
+    "bearing": 21.791491839221795,
+    "bronze": 1.0290185268432495,
+    "catalog": 30.0,
+    "cell": 2.9,
+    "electronics": 11.60383575931351,
+    "spring": 0.2930120172028289,
+    "steel": 59.056375791320384,
+    "wire": 0.052319998601232764
+  },
+  "label": "exploratory",
+  "note": "5 motor+gearhead envelopes, IKO 14.8 g reference mass and four EZO axial bearings; other bearings, PCB, springs and teeth conservatively costed as gross solid stock. Overlapping attachments, missing drivers/wires/fasteners; neither a 70g unit nor an upper limit on real mass.",
+  "partial_nominal_g": 51.059999999999995,
+  "subtotal": 137.56418624729233
+}

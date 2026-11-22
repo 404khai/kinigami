@@ -1,0 +1,4214 @@
+{
+  "label": "exploratory",
+  "parts": [
+    {
+      "bbox_mm": [
+        -16.1,
+        -10.9,
+        -10.9,
+        -0.02,
+        10.9,
+        10.9
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 3.506555,
+      "material": "7075",
+      "name": "barrel",
+      "volume_mm3": 1247.884171
+    },
+    {
+      "bbox_mm": [
+        -14.9,
+        -9.7,
+        -9.7,
+        -13.7,
+        9.7,
+        9.7
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.032074,
+      "material": "bronze",
+      "name": "sleeve band 0",
+      "volume_mm3": 3.644786
+    },
+    {
+      "bbox_mm": [
+        -7.45,
+        -9.7,
+        -9.7,
+        -6.25,
+        9.7,
+        9.7
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.032074,
+      "material": "bronze",
+      "name": "sleeve band 1",
+      "volume_mm3": 3.644786
+    },
+    {
+      "bbox_mm": [
+        -2.21,
+        -9.7195551,
+        -9.74,
+        0.0,
+        8.654237,
+        9.74
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.897622,
+      "material": "steel",
+      "name": "V plate",
+      "volume_mm3": 114.346811
+    },
+    {
+      "bbox_mm": [
+        -2.0,
+        -5.34,
+        -5.34,
+        0.0,
+        5.34,
+        5.34
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.123496,
+      "material": "steel",
+      "name": "pilot",
+      "volume_mm3": 15.731912
+    },
+    {
+      "bbox_mm": [
+        -22.65,
+        -9.6,
+        -9.6,
+        1.48,
+        9.6,
+        9.6
+      ],
+      "group": "sleeve",
+      "kind": "thread",
+      "mass_ledger_g": 18.561036,
+      "material": "steel",
+      "name": "slotted sleeve and skirt",
+      "volume_mm3": 2364.463215
+    },
+    {
+      "bbox_mm": [
+        -15.83,
+        7.2874595,
+        3.9822501,
+        -15.45,
+        8.6560682,
+        5.2227499
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.002629,
+      "material": "steel",
+      "name": "spline 30",
+      "volume_mm3": 0.334932
+    },
+    {
+      "bbox_mm": [
+        -15.83,
+        -8.6560682,
+        3.9822501,
+        -15.45,
+        -7.2874595,
+        5.2227499
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.002629,
+      "material": "steel",
+      "name": "spline 150",
+      "volume_mm3": 0.334932
+    },
+    {
+      "bbox_mm": [
+        -15.83,
+        -0.39,
+        -9.77,
+        -15.45,
+        0.39,
+        -8.64
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.002629,
+      "material": "steel",
+      "name": "spline 270",
+      "volume_mm3": 0.334932
+    },
+    {
+      "bbox_mm": [
+        -5.72,
+        3.4306602,
+        -3.84,
+        -2.72,
+        6.4306602,
+        3.84
+      ],
+      "group": "r0",
+      "kind": "solid",
+      "mass_ledger_g": 0.19518,
+      "material": "steel",
+      "name": "roller 0",
+      "volume_mm3": 24.863654
+    },
+    {
+      "bbox_mm": [
+        -5.72,
+        -6.0408676,
+        1.9170643,
+        -2.72,
+        1.1102075,
+        6.6230897
+      ],
+      "group": "r120",
+      "kind": "solid",
+      "mass_ledger_g": 0.19518,
+      "material": "steel",
+      "name": "roller 120",
+      "volume_mm3": 24.863654
+    },
+    {
+      "bbox_mm": [
+        -5.72,
+        -6.0408676,
+        -6.6230897,
+        -2.72,
+        1.1102075,
+        -1.9170643
+      ],
+      "group": "r240",
+      "kind": "solid",
+      "mass_ledger_g": 0.19518,
+      "material": "steel",
+      "name": "roller 240",
+      "volume_mm3": 24.863654
+    },
+    {
+      "bbox_mm": [
+        -9.1,
+        -7.5040054,
+        -8.8702609,
+        -3.345,
+        7.91,
+        8.8702609
+      ],
+      "group": "cage",
+      "kind": "solid",
+      "mass_ledger_g": 0.707717,
+      "material": "steel",
+      "name": "rail-free cage",
+      "volume_mm3": 90.155075
+    },
+    {
+      "bbox_mm": [
+        -3.0,
+        2.23,
+        4.3602679,
+        -1.5,
+        3.59,
+        5.7202679
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.009969,
+      "material": "bronze",
+      "name": "eject bush (60, 0)",
+      "volume_mm3": 1.132798
+    },
+    {
+      "bbox_mm": [
+        -10.9,
+        2.23,
+        4.3602679,
+        -9.4,
+        3.59,
+        5.7202679
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.009969,
+      "material": "bronze",
+      "name": "eject bush (60, 1)",
+      "volume_mm3": 1.132798
+    },
+    {
+      "bbox_mm": [
+        -8.205,
+        1.8919873,
+        3.7770181,
+        -7.83,
+        3.5080127,
+        5.5760562
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.002525,
+      "material": "steel",
+      "name": "cage reset abutment 60",
+      "volume_mm3": 0.32164
+    },
+    {
+      "bbox_mm": [
+        -9.43,
+        2.31,
+        4.4402679,
+        -2.94,
+        3.51,
+        5.6402679
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.021492,
+      "material": "steel",
+      "name": "bush spine 60",
+      "volume_mm3": 2.737808
+    },
+    {
+      "bbox_mm": [
+        -1.5,
+        2.75071,
+        5.1243695,
+        -1.18,
+        3.9467691,
+        6.4760047
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.001861,
+      "material": "steel",
+      "name": "bush bridge 60",
+      "volume_mm3": 0.237113
+    },
+    {
+      "bbox_mm": [
+        -1.45,
+        0.9887042,
+        5.0238952,
+        -1.17,
+        1.9627429,
+        6.8137126
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.002167,
+      "material": "steel",
+      "name": "pilot web 60",
+      "volume_mm3": 0.27608
+    },
+    {
+      "bbox_mm": [
+        -25.53,
+        2.46,
+        4.5902679,
+        -0.73,
+        3.36,
+        5.4902679
+      ],
+      "group": "eject",
+      "kind": "solid",
+      "mass_ledger_g": 0.123762,
+      "material": "steel",
+      "name": "pushrod 60",
+      "volume_mm3": 15.765817
+    },
+    {
+      "bbox_mm": [
+        -3.0,
+        -6.5,
+        -0.68,
+        -1.5,
+        -5.14,
+        0.68
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.009969,
+      "material": "bronze",
+      "name": "eject bush (180, 0)",
+      "volume_mm3": 1.132798
+    },
+    {
+      "bbox_mm": [
+        -10.9,
+        -6.5,
+        -0.68,
+        -9.4,
+        -5.14,
+        0.68
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.009969,
+      "material": "bronze",
+      "name": "eject bush (180, 1)",
+      "volume_mm3": 1.132798
+    },
+    {
+      "bbox_mm": [
+        -8.205,
+        -6.15,
+        -0.5,
+        -7.83,
+        -4.65,
+        0.5
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.002525,
+      "material": "steel",
+      "name": "cage reset abutment 180",
+      "volume_mm3": 0.32164
+    },
+    {
+      "bbox_mm": [
+        -9.43,
+        -6.42,
+        -0.6,
+        -2.94,
+        -5.22,
+        0.6
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.021492,
+      "material": "steel",
+      "name": "bush spine 180",
+      "volume_mm3": 2.737808
+    },
+    {
+      "bbox_mm": [
+        -1.5,
+        -7.27,
+        -0.36,
+        -1.18,
+        -6.1249583,
+        0.36
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.001861,
+      "material": "steel",
+      "name": "bush bridge 180",
+      "volume_mm3": 0.237113
+    },
+    {
+      "bbox_mm": [
+        -1.45,
+        -6.7607036,
+        -2.1944455,
+        -1.17,
+        -4.9666891,
+        -1.1683302
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.002167,
+      "material": "steel",
+      "name": "pilot web 180",
+      "volume_mm3": 0.27608
+    },
+    {
+      "bbox_mm": [
+        -25.53,
+        -6.27,
+        -0.45,
+        -0.73,
+        -5.37,
+        0.45
+      ],
+      "group": "eject",
+      "kind": "solid",
+      "mass_ledger_g": 0.123762,
+      "material": "steel",
+      "name": "pushrod 180",
+      "volume_mm3": 15.765817
+    },
+    {
+      "bbox_mm": [
+        -3.0,
+        2.23,
+        -5.7202679,
+        -1.5,
+        3.59,
+        -4.3602679
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.009969,
+      "material": "bronze",
+      "name": "eject bush (300, 0)",
+      "volume_mm3": 1.132798
+    },
+    {
+      "bbox_mm": [
+        -10.9,
+        2.23,
+        -5.7202679,
+        -9.4,
+        3.59,
+        -4.3602679
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.009969,
+      "material": "bronze",
+      "name": "eject bush (300, 1)",
+      "volume_mm3": 1.132798
+    },
+    {
+      "bbox_mm": [
+        -8.205,
+        1.8919873,
+        -5.5760562,
+        -7.83,
+        3.5080127,
+        -3.7770181
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.002525,
+      "material": "steel",
+      "name": "cage reset abutment 300",
+      "volume_mm3": 0.32164
+    },
+    {
+      "bbox_mm": [
+        -9.43,
+        2.31,
+        -5.6402679,
+        -2.94,
+        3.51,
+        -4.4402679
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.021492,
+      "material": "steel",
+      "name": "bush spine 300",
+      "volume_mm3": 2.737808
+    },
+    {
+      "bbox_mm": [
+        -1.5,
+        2.75071,
+        -6.4760047,
+        -1.18,
+        3.9467691,
+        -5.1243695
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.001861,
+      "material": "steel",
+      "name": "bush bridge 300",
+      "volume_mm3": 0.237113
+    },
+    {
+      "bbox_mm": [
+        -1.45,
+        3.575083,
+        -5.0364842,
+        -1.17,
+        5.2008625,
+        -3.4383479
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.002167,
+      "material": "steel",
+      "name": "pilot web 300",
+      "volume_mm3": 0.27608
+    },
+    {
+      "bbox_mm": [
+        -25.53,
+        2.46,
+        -5.4902679,
+        -0.73,
+        3.36,
+        -4.5902679
+      ],
+      "group": "eject",
+      "kind": "solid",
+      "mass_ledger_g": 0.123762,
+      "material": "steel",
+      "name": "pushrod 300",
+      "volume_mm3": 15.765817
+    },
+    {
+      "bbox_mm": [
+        -0.85,
+        -6.32,
+        -6.32,
+        0.1,
+        6.32,
+        6.32
+      ],
+      "group": "eject",
+      "kind": "solid",
+      "mass_ledger_g": 0.252434,
+      "material": "steel",
+      "name": "annular ejector",
+      "volume_mm3": 32.157243
+    },
+    {
+      "bbox_mm": [
+        -26.24,
+        -6.89,
+        -6.48,
+        -24.46,
+        6.48,
+        6.48
+      ],
+      "group": "eject",
+      "kind": "thread",
+      "mass_ledger_g": 0.515656,
+      "material": "bronze",
+      "name": "eject crosshead",
+      "volume_mm3": 58.597272
+    },
+    {
+      "bbox_mm": [
+        -16.75,
+        -3.72,
+        -3.72,
+        -8.85,
+        3.98,
+        3.72
+      ],
+      "group": "cage",
+      "kind": "solid",
+      "mass_ledger_g": 0.240853,
+      "material": "steel",
+      "name": "cage return bell",
+      "volume_mm3": 30.681869
+    },
+    {
+      "bbox_mm": [
+        -34.52,
+        -3.48,
+        -3.48,
+        -10.96,
+        3.48,
+        3.48
+      ],
+      "group": "draw",
+      "kind": "solid",
+      "mass_ledger_g": 0.880812,
+      "material": "steel",
+      "name": "draw driver",
+      "volume_mm3": 112.205349
+    },
+    {
+      "bbox_mm": [
+        -18.28,
+        -1.78,
+        -1.78,
+        -17.795,
+        1.78,
+        1.78
+      ],
+      "group": "draw",
+      "kind": "solid",
+      "mass_ledger_g": 0.023928,
+      "material": "steel",
+      "name": "return shoulder",
+      "volume_mm3": 3.048215
+    },
+    {
+      "bbox_mm": [
+        -16.16,
+        -0.135,
+        0.6958777,
+        -11.53,
+        2.405,
+        3.2358777
+      ],
+      "group": "coil",
+      "kind": "reserve",
+      "mass_ledger_g": 0.097671,
+      "material": "spring",
+      "name": "series spring 60",
+      "volume_mm3": 12.442124
+    },
+    {
+      "bbox_mm": [
+        -16.16,
+        -3.54,
+        -1.27,
+        -11.53,
+        -1.0,
+        1.27
+      ],
+      "group": "coil",
+      "kind": "reserve",
+      "mass_ledger_g": 0.097671,
+      "material": "spring",
+      "name": "series spring 180",
+      "volume_mm3": 12.442124
+    },
+    {
+      "bbox_mm": [
+        -16.16,
+        -0.135,
+        -3.2358777,
+        -11.53,
+        2.405,
+        -0.6958777
+      ],
+      "group": "coil",
+      "kind": "reserve",
+      "mass_ledger_g": 0.097671,
+      "material": "spring",
+      "name": "series spring 300",
+      "volume_mm3": 12.442124
+    },
+    {
+      "bbox_mm": [
+        -49.48,
+        -4.6,
+        -4.6,
+        -41.99,
+        4.6,
+        4.6
+      ],
+      "group": "yaw",
+      "kind": "solid",
+      "mass_ledger_g": 3.01914,
+      "material": "steel",
+      "name": "own tri-flat pin",
+      "volume_mm3": 384.60384
+    },
+    {
+      "bbox_mm": [
+        -42.02,
+        -6.65,
+        -6.65,
+        -41.02,
+        6.65,
+        6.65
+      ],
+      "group": "yaw",
+      "kind": "solid",
+      "mass_ledger_g": 1.089815,
+      "material": "steel",
+      "name": "own eject boss",
+      "volume_mm3": 138.829914
+    },
+    {
+      "bbox_mm": [
+        -44.22,
+        2.6,
+        5.6014083,
+        -40.99,
+        5.6,
+        8.6014083
+      ],
+      "group": "yaw",
+      "kind": "solid",
+      "mass_ledger_g": 0.117515,
+      "material": "steel",
+      "name": "own ball and stem 60",
+      "volume_mm3": 14.970095
+    },
+    {
+      "bbox_mm": [
+        -44.22,
+        -9.7,
+        -1.5,
+        -40.99,
+        -6.7,
+        1.5
+      ],
+      "group": "yaw",
+      "kind": "solid",
+      "mass_ledger_g": 0.117515,
+      "material": "steel",
+      "name": "own ball and stem 180",
+      "volume_mm3": 14.970095
+    },
+    {
+      "bbox_mm": [
+        -44.22,
+        2.6,
+        -8.6014083,
+        -40.99,
+        5.6,
+        -5.6014083
+      ],
+      "group": "yaw",
+      "kind": "solid",
+      "mass_ledger_g": 0.117515,
+      "material": "steel",
+      "name": "own ball and stem 300",
+      "volume_mm3": 14.970095
+    },
+    {
+      "bbox_mm": [
+        -41.02,
+        -10.35,
+        -10.35,
+        -39.77,
+        10.35,
+        10.35
+      ],
+      "group": "yaw",
+      "kind": "solid",
+      "mass_ledger_g": 3.299895,
+      "material": "steel",
+      "name": "own flange",
+      "volume_mm3": 420.368803
+    },
+    {
+      "bbox_mm": [
+        -25.4,
+        -15.5,
+        -15.5,
+        -20.4,
+        15.5,
+        15.5
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 14.8,
+      "material": "bearing",
+      "name": "cross roller CRBT205A",
+      "volume_mm3": 2201.155379
+    },
+    {
+      "bbox_mm": [
+        -25.83,
+        -16.04,
+        -16.04,
+        -19.99,
+        16.04,
+        16.04
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 1.285413,
+      "material": "7075",
+      "name": "cross roller support split",
+      "volume_mm3": 457.442183
+    },
+    {
+      "bbox_mm": [
+        -25.78,
+        -14.925,
+        -14.925,
+        -17.9,
+        14.925,
+        14.925
+      ],
+      "group": "nut",
+      "kind": "thread",
+      "mass_ledger_g": 8.494075,
+      "material": "steel",
+      "name": "rotating hollow nut",
+      "volume_mm3": 1082.047749
+    },
+    {
+      "bbox_mm": [
+        -19.9,
+        -15.6,
+        -15.6,
+        -17.9,
+        15.6,
+        15.6
+      ],
+      "group": "fixed",
+      "kind": "teeth",
+      "mass_ledger_g": 1.015544,
+      "material": "steel",
+      "name": "102T teeth",
+      "volume_mm3": 129.368698
+    },
+    {
+      "bbox_mm": [
+        -35.65,
+        -8.9019487,
+        16.3116219,
+        -2.85,
+        -2.9019487,
+        22.3116219
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 6.0,
+      "material": "catalog",
+      "name": "sleeve 0615/06-1",
+      "volume_mm3": 926.73618
+    },
+    {
+      "bbox_mm": [
+        -2.85,
+        -6.7319487,
+        18.4816219,
+        -1.95,
+        -5.0719487,
+        20.1416219
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.01744,
+      "material": "wire",
+      "name": "sleeve wire",
+      "volume_mm3": 1.946429
+    },
+    {
+      "bbox_mm": [
+        -35.37,
+        -9.3019487,
+        15.9116219,
+        -34.27,
+        -2.5019487,
+        22.7116219
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.024258,
+      "material": "7075",
+      "name": "sleeve motor band 0",
+      "volume_mm3": 8.632868
+    },
+    {
+      "bbox_mm": [
+        -7.6,
+        -9.3019487,
+        15.9116219,
+        -6.5,
+        -2.5019487,
+        22.7116219
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.024258,
+      "material": "7075",
+      "name": "sleeve motor band 1",
+      "volume_mm3": 8.632868
+    },
+    {
+      "bbox_mm": [
+        -39.83,
+        -6.4019487,
+        18.8116219,
+        -35.65,
+        -5.4019487,
+        19.8116219
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.025753,
+      "material": "steel",
+      "name": "sleeve gearhead axle",
+      "volume_mm3": 3.280621
+    },
+    {
+      "bbox_mm": [
+        -39.85,
+        -6.6519487,
+        18.5616219,
+        -35.71,
+        -5.1519487,
+        20.0616219
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.02755,
+      "material": "steel",
+      "name": "sleeve floating torque tube",
+      "volume_mm3": 3.50959
+    },
+    {
+      "bbox_mm": [
+        -38.18,
+        -6.6219487,
+        19.1266219,
+        -37.82,
+        -5.1819487,
+        19.4966219
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.001506,
+      "material": "steel",
+      "name": "sleeve coupling key",
+      "volume_mm3": 0.191808
+    },
+    {
+      "bbox_mm": [
+        -39.74,
+        -7.9019487,
+        17.3116219,
+        -38.54,
+        -3.9019487,
+        21.3116219
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.101567,
+      "material": "bearing",
+      "name": "sleeve pinion L415 0",
+      "volume_mm3": 12.938503
+    },
+    {
+      "bbox_mm": [
+        -39.74,
+        -8.2819487,
+        16.9316219,
+        -38.54,
+        -3.5219487,
+        21.6916219
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.017619,
+      "material": "7075",
+      "name": "sleeve pinion L415 0 seat",
+      "volume_mm3": 6.270161
+    },
+    {
+      "bbox_mm": [
+        -36.91,
+        -7.9019487,
+        17.3116219,
+        -35.71,
+        -3.9019487,
+        21.3116219
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.101567,
+      "material": "bearing",
+      "name": "sleeve pinion L415 1",
+      "volume_mm3": 12.938503
+    },
+    {
+      "bbox_mm": [
+        -36.91,
+        -8.2819487,
+        16.9316219,
+        -35.71,
+        -3.5219487,
+        21.6916219
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.017619,
+      "material": "7075",
+      "name": "sleeve pinion L415 1 seat",
+      "volume_mm3": 6.270161
+    },
+    {
+      "bbox_mm": [
+        -38.39,
+        -8.4819487,
+        16.7316219,
+        -37.04,
+        -3.3219487,
+        21.8916219
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.20269,
+      "material": "steel",
+      "name": "sleeve transfer root 0",
+      "volume_mm3": 25.820335
+    },
+    {
+      "bbox_mm": [
+        -38.39,
+        -9.0219487,
+        16.1916219,
+        -37.04,
+        -2.7819487,
+        22.4316219
+      ],
+      "group": "fixed",
+      "kind": "teeth",
+      "mass_ledger_g": 0.102403,
+      "material": "steel",
+      "name": "sleeve transfer teeth 0",
+      "volume_mm3": 13.044942
+    },
+    {
+      "bbox_mm": [
+        -38.39,
+        -3.0506579,
+        14.8136334,
+        -37.04,
+        2.1093421,
+        19.9736334
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.20269,
+      "material": "steel",
+      "name": "sleeve transfer root 1",
+      "volume_mm3": 25.820335
+    },
+    {
+      "bbox_mm": [
+        -38.39,
+        -3.5906579,
+        14.2736334,
+        -37.04,
+        2.6493421,
+        20.5136334
+      ],
+      "group": "fixed",
+      "kind": "teeth",
+      "mass_ledger_g": 0.102403,
+      "material": "steel",
+      "name": "sleeve transfer teeth 1",
+      "volume_mm3": 13.044942
+    },
+    {
+      "bbox_mm": [
+        -39.84,
+        -1.2196579,
+        16.6446334,
+        -16.48,
+        0.2783421,
+        18.1426334
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.322958,
+      "material": "steel",
+      "name": "sleeve relay axle",
+      "volume_mm3": 41.141132
+    },
+    {
+      "bbox_mm": [
+        -39.82,
+        -2.4706579,
+        15.3936334,
+        -38.62,
+        1.5293421,
+        19.3936334
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.101612,
+      "material": "bearing",
+      "name": "relay L415 0",
+      "volume_mm3": 12.944165
+    },
+    {
+      "bbox_mm": [
+        -39.82,
+        -2.8506579,
+        15.0136334,
+        -38.62,
+        1.9093421,
+        19.7736334
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.017619,
+      "material": "7075",
+      "name": "relay L415 0 seat",
+      "volume_mm3": 6.270161
+    },
+    {
+      "bbox_mm": [
+        -36.9,
+        -2.4706579,
+        15.3936334,
+        -35.7,
+        1.5293421,
+        19.3936334
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.101612,
+      "material": "bearing",
+      "name": "relay L415 1",
+      "volume_mm3": 12.944165
+    },
+    {
+      "bbox_mm": [
+        -36.9,
+        -2.8506579,
+        15.0136334,
+        -35.7,
+        1.9093421,
+        19.7736334
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.017619,
+      "material": "7075",
+      "name": "relay L415 1 seat",
+      "volume_mm3": 6.270161
+    },
+    {
+      "bbox_mm": [
+        -17.7,
+        -2.4706579,
+        15.3936334,
+        -16.5,
+        1.5293421,
+        19.3936334
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.101612,
+      "material": "bearing",
+      "name": "relay L415 2",
+      "volume_mm3": 12.944165
+    },
+    {
+      "bbox_mm": [
+        -17.7,
+        -2.8506579,
+        15.0136334,
+        -16.5,
+        1.9093421,
+        19.7736334
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.017619,
+      "material": "7075",
+      "name": "relay L415 2 seat",
+      "volume_mm3": 6.270161
+    },
+    {
+      "bbox_mm": [
+        -19.9,
+        -2.1956579,
+        15.6686334,
+        -17.9,
+        1.2543421,
+        19.1186334
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.118864,
+      "material": "steel",
+      "name": "sleeve reduction root 0",
+      "volume_mm3": 15.141865
+    },
+    {
+      "bbox_mm": [
+        -19.9,
+        -2.8706579,
+        14.9936334,
+        -17.9,
+        1.9293421,
+        19.7936334
+      ],
+      "group": "fixed",
+      "kind": "teeth",
+      "mass_ledger_g": 0.137236,
+      "material": "steel",
+      "name": "sleeve reduction teeth 0",
+      "volume_mm3": 17.482256
+    },
+    {
+      "bbox_mm": [
+        -20.35,
+        5.952627,
+        9.9220527,
+        -19.95,
+        8.752627,
+        12.7220527
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.012612,
+      "material": "bearing",
+      "name": "sleeve lock bushing 0",
+      "volume_mm3": 1.606562
+    },
+    {
+      "bbox_mm": [
+        -20.35,
+        5.552627,
+        9.5220527,
+        -19.95,
+        9.152627,
+        13.1220527
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.004517,
+      "material": "7075",
+      "name": "sleeve lock bushing 0 seat",
+      "volume_mm3": 1.607347
+    },
+    {
+      "bbox_mm": [
+        -17.65,
+        5.952627,
+        9.9220527,
+        -16.05,
+        8.752627,
+        12.7220527
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.050446,
+      "material": "bearing",
+      "name": "sleeve lock bushing 1",
+      "volume_mm3": 6.42625
+    },
+    {
+      "bbox_mm": [
+        -17.65,
+        5.552627,
+        9.5220527,
+        -16.05,
+        9.152627,
+        13.1220527
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.018067,
+      "material": "7075",
+      "name": "sleeve lock bushing 1 seat",
+      "volume_mm3": 6.429389
+    },
+    {
+      "bbox_mm": [
+        -20.32,
+        6.552627,
+        10.5220527,
+        -14.62,
+        8.152627,
+        12.1220527
+      ],
+      "group": "spin",
+      "kind": "solid",
+      "mass_ledger_g": 0.089901,
+      "material": "steel",
+      "name": "sleeve index pin",
+      "volume_mm3": 11.45235
+    },
+    {
+      "bbox_mm": [
+        -34.45,
+        -14.4497554,
+        12.8463119,
+        -1.65,
+        -8.4497554,
+        18.8463119
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 6.0,
+      "material": "catalog",
+      "name": "eject 0615/06-1",
+      "volume_mm3": 926.73618
+    },
+    {
+      "bbox_mm": [
+        -1.65,
+        -12.2797554,
+        15.0163119,
+        -0.75,
+        -10.6197554,
+        16.6763119
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.01744,
+      "material": "wire",
+      "name": "eject wire",
+      "volume_mm3": 1.946429
+    },
+    {
+      "bbox_mm": [
+        -34.17,
+        -14.8497554,
+        12.4463119,
+        -33.07,
+        -8.0497554,
+        19.2463119
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.024258,
+      "material": "7075",
+      "name": "eject motor band 0",
+      "volume_mm3": 8.632868
+    },
+    {
+      "bbox_mm": [
+        -6.4,
+        -14.8497554,
+        12.4463119,
+        -5.3,
+        -8.0497554,
+        19.2463119
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.024258,
+      "material": "7075",
+      "name": "eject motor band 1",
+      "volume_mm3": 8.632868
+    },
+    {
+      "bbox_mm": [
+        -38.63,
+        -11.9497554,
+        15.3463119,
+        -34.45,
+        -10.9497554,
+        16.3463119
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.025753,
+      "material": "steel",
+      "name": "eject gearhead axle",
+      "volume_mm3": 3.280621
+    },
+    {
+      "bbox_mm": [
+        -38.65,
+        -12.1997554,
+        15.0963119,
+        -34.51,
+        -10.6997554,
+        16.5963119
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.02755,
+      "material": "steel",
+      "name": "eject floating torque tube",
+      "volume_mm3": 3.50959
+    },
+    {
+      "bbox_mm": [
+        -36.98,
+        -12.1697554,
+        15.6613119,
+        -36.62,
+        -10.7297554,
+        16.0313119
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.001506,
+      "material": "steel",
+      "name": "eject coupling key",
+      "volume_mm3": 0.191808
+    },
+    {
+      "bbox_mm": [
+        -38.54,
+        -13.4497554,
+        13.8463119,
+        -37.34,
+        -9.4497554,
+        17.8463119
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.101567,
+      "material": "bearing",
+      "name": "eject pinion L415 0",
+      "volume_mm3": 12.938503
+    },
+    {
+      "bbox_mm": [
+        -38.54,
+        -13.8297554,
+        13.4663119,
+        -37.34,
+        -9.0697554,
+        18.2263119
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.017619,
+      "material": "7075",
+      "name": "eject pinion L415 0 seat",
+      "volume_mm3": 6.270161
+    },
+    {
+      "bbox_mm": [
+        -35.71,
+        -13.4497554,
+        13.8463119,
+        -34.51,
+        -9.4497554,
+        17.8463119
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.101567,
+      "material": "bearing",
+      "name": "eject pinion L415 1",
+      "volume_mm3": 12.938503
+    },
+    {
+      "bbox_mm": [
+        -35.71,
+        -13.8297554,
+        13.4663119,
+        -34.51,
+        -9.0697554,
+        18.2263119
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.017619,
+      "material": "7075",
+      "name": "eject pinion L415 1 seat",
+      "volume_mm3": 6.270161
+    },
+    {
+      "bbox_mm": [
+        -37.2,
+        -9.69,
+        -2.51,
+        -35.84,
+        -0.21,
+        6.97
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.677506,
+      "material": "steel",
+      "name": "eject train root 0",
+      "volume_mm3": 86.306559
+    },
+    {
+      "bbox_mm": [
+        -37.2,
+        -10.23,
+        -3.05,
+        -35.84,
+        0.33,
+        7.51
+      ],
+      "group": "fixed",
+      "kind": "teeth",
+      "mass_ledger_g": 0.181347,
+      "material": "steel",
+      "name": "eject train teeth 0",
+      "volume_mm3": 23.101499
+    },
+    {
+      "bbox_mm": [
+        -37.2,
+        -15.8860013,
+        4.8686235,
+        -35.84,
+        -7.3660013,
+        13.3886235
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.589327,
+      "material": "steel",
+      "name": "eject train root 1",
+      "volume_mm3": 75.073462
+    },
+    {
+      "bbox_mm": [
+        -37.2,
+        -16.4260013,
+        4.3286235,
+        -35.84,
+        -6.8260013,
+        13.9286235
+      ],
+      "group": "fixed",
+      "kind": "teeth",
+      "mass_ledger_g": 0.163972,
+      "material": "steel",
+      "name": "eject train teeth 1",
+      "volume_mm3": 20.888181
+    },
+    {
+      "bbox_mm": [
+        -37.2,
+        -13.3097554,
+        13.9863119,
+        -35.84,
+        -9.5897554,
+        17.7063119
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.097048,
+      "material": "steel",
+      "name": "eject train root 2",
+      "volume_mm3": 12.362807
+    },
+    {
+      "bbox_mm": [
+        -37.2,
+        -13.8497554,
+        13.4463119,
+        -35.84,
+        -9.0497554,
+        18.2463119
+      ],
+      "group": "fixed",
+      "kind": "teeth",
+      "mass_ledger_g": 0.0771,
+      "material": "steel",
+      "name": "eject train teeth 2",
+      "volume_mm3": 9.821595
+    },
+    {
+      "bbox_mm": [
+        -38.72,
+        -12.3750013,
+        8.3796235,
+        -34.49,
+        -10.8770013,
+        9.8776235
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.058481,
+      "material": "steel",
+      "name": "eject relay axle",
+      "volume_mm3": 7.449785
+    },
+    {
+      "bbox_mm": [
+        -38.54,
+        -13.6260013,
+        7.1286235,
+        -37.34,
+        -9.6260013,
+        11.1286235
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.101612,
+      "material": "bearing",
+      "name": "eject idle L415 0",
+      "volume_mm3": 12.944165
+    },
+    {
+      "bbox_mm": [
+        -38.54,
+        -14.0060013,
+        6.7486235,
+        -37.34,
+        -9.2460013,
+        11.5086235
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.017619,
+      "material": "7075",
+      "name": "eject idle L415 0 seat",
+      "volume_mm3": 6.270161
+    },
+    {
+      "bbox_mm": [
+        -35.71,
+        -13.6260013,
+        7.1286235,
+        -34.51,
+        -9.6260013,
+        11.1286235
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.101612,
+      "material": "bearing",
+      "name": "eject idle L415 1",
+      "volume_mm3": 12.944165
+    },
+    {
+      "bbox_mm": [
+        -35.71,
+        -14.0060013,
+        6.7486235,
+        -34.51,
+        -9.2460013,
+        11.5086235
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.017619,
+      "material": "7075",
+      "name": "eject idle L415 1 seat",
+      "volume_mm3": 6.270161
+    },
+    {
+      "bbox_mm": [
+        -40.38,
+        -6.446,
+        0.734,
+        -13.9,
+        -3.454,
+        3.726
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 1.460463,
+      "material": "steel",
+      "name": "eject M3 screw",
+      "volume_mm3": 186.046255
+    },
+    {
+      "bbox_mm": [
+        -40.33,
+        -8.45,
+        -1.27,
+        -37.33,
+        -1.45,
+        5.73
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.739317,
+      "material": "bearing",
+      "name": "eject rear L730",
+      "volume_mm3": 94.180506
+    },
+    {
+      "bbox_mm": [
+        -40.33,
+        -8.83,
+        -1.65,
+        -37.33,
+        -1.07,
+        6.11
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.074218,
+      "material": "7075",
+      "name": "eject rear L730 seat",
+      "volume_mm3": 26.411981
+    },
+    {
+      "bbox_mm": [
+        -35.24,
+        -8.95,
+        -1.77,
+        -31.74,
+        -0.95,
+        6.23
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.84,
+      "material": "bearing",
+      "name": "eject F3-8M 0",
+      "volume_mm3": 151.081229
+    },
+    {
+      "bbox_mm": [
+        -35.24,
+        -9.33,
+        -2.15,
+        -31.74,
+        -0.57,
+        6.61
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.09832,
+      "material": "7075",
+      "name": "eject F3-8M 0 seat",
+      "volume_mm3": 34.989314
+    },
+    {
+      "bbox_mm": [
+        -31.04,
+        -8.95,
+        -1.77,
+        -27.54,
+        -0.95,
+        6.23
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.84,
+      "material": "bearing",
+      "name": "eject F3-8M 1",
+      "volume_mm3": 151.081229
+    },
+    {
+      "bbox_mm": [
+        -31.04,
+        -9.33,
+        -2.15,
+        -27.54,
+        -0.57,
+        6.61
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.09832,
+      "material": "7075",
+      "name": "eject F3-8M 1 seat",
+      "volume_mm3": 34.989314
+    },
+    {
+      "bbox_mm": [
+        -31.74,
+        -8.08,
+        -0.9,
+        -31.04,
+        -1.82,
+        5.36
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.130705,
+      "material": "steel",
+      "name": "eject thrust flange",
+      "volume_mm3": 16.65036
+    },
+    {
+      "bbox_mm": [
+        -35.6,
+        -9.32,
+        -2.14,
+        -35.24,
+        -0.58,
+        6.6
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.038345,
+      "material": "7075",
+      "name": "eject thrust abutment 0",
+      "volume_mm3": 13.646077
+    },
+    {
+      "bbox_mm": [
+        -27.54,
+        -9.32,
+        -2.14,
+        -27.18,
+        -0.58,
+        6.6
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.035123,
+      "material": "7075",
+      "name": "eject thrust abutment 1",
+      "volume_mm3": 12.499118
+    },
+    {
+      "bbox_mm": [
+        -27.54,
+        -6.9,
+        0.28,
+        -26.33,
+        -3.0,
+        4.18
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.050486,
+      "material": "bronze",
+      "name": "eject nose bronze bush",
+      "volume_mm3": 5.737062
+    },
+    {
+      "bbox_mm": [
+        -35.6,
+        -3.0212809,
+        -22.5168912,
+        -2.8,
+        2.9787191,
+        -16.5168912
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 6.0,
+      "material": "catalog",
+      "name": "draw 0615/06-1",
+      "volume_mm3": 926.73618
+    },
+    {
+      "bbox_mm": [
+        -2.8,
+        -0.8512809,
+        -20.3468912,
+        -1.9,
+        0.8087191,
+        -18.6868912
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.01744,
+      "material": "wire",
+      "name": "draw wire",
+      "volume_mm3": 1.946429
+    },
+    {
+      "bbox_mm": [
+        -35.32,
+        -3.4212809,
+        -22.9168912,
+        -34.22,
+        3.3787191,
+        -16.1168912
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.024258,
+      "material": "7075",
+      "name": "draw motor band 0",
+      "volume_mm3": 8.632868
+    },
+    {
+      "bbox_mm": [
+        -7.55,
+        -3.4212809,
+        -22.9168912,
+        -6.45,
+        3.3787191,
+        -16.1168912
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.024258,
+      "material": "7075",
+      "name": "draw motor band 1",
+      "volume_mm3": 8.632868
+    },
+    {
+      "bbox_mm": [
+        -39.78,
+        -0.5212809,
+        -20.0168912,
+        -35.6,
+        0.4787191,
+        -19.0168912
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.025753,
+      "material": "steel",
+      "name": "draw gearhead axle",
+      "volume_mm3": 3.280621
+    },
+    {
+      "bbox_mm": [
+        -39.8,
+        -0.7712809,
+        -20.2668912,
+        -35.66,
+        0.7287191,
+        -18.7668912
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.02755,
+      "material": "steel",
+      "name": "draw floating torque tube",
+      "volume_mm3": 3.50959
+    },
+    {
+      "bbox_mm": [
+        -38.13,
+        -0.7412809,
+        -19.7018912,
+        -37.77,
+        0.6987191,
+        -19.3318912
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.001506,
+      "material": "steel",
+      "name": "draw coupling key",
+      "volume_mm3": 0.191808
+    },
+    {
+      "bbox_mm": [
+        -39.69,
+        -2.0212809,
+        -21.5168912,
+        -38.49,
+        1.9787191,
+        -17.5168912
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.101567,
+      "material": "bearing",
+      "name": "draw pinion L415 0",
+      "volume_mm3": 12.938503
+    },
+    {
+      "bbox_mm": [
+        -39.69,
+        -2.4012809,
+        -21.8968912,
+        -38.49,
+        2.3587191,
+        -17.1368912
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.017619,
+      "material": "7075",
+      "name": "draw pinion L415 0 seat",
+      "volume_mm3": 6.270161
+    },
+    {
+      "bbox_mm": [
+        -36.86,
+        -2.0212809,
+        -21.5168912,
+        -35.66,
+        1.9787191,
+        -17.5168912
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.101567,
+      "material": "bearing",
+      "name": "draw pinion L415 1",
+      "volume_mm3": 12.938503
+    },
+    {
+      "bbox_mm": [
+        -36.86,
+        -2.4012809,
+        -21.8968912,
+        -35.66,
+        2.3587191,
+        -17.1368912
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.017619,
+      "material": "7075",
+      "name": "draw pinion L415 1 seat",
+      "volume_mm3": 6.270161
+    },
+    {
+      "bbox_mm": [
+        -38.35,
+        -13.5792386,
+        -22.5497546,
+        -36.99,
+        -0.8192386,
+        -9.7897546
+      ],
+      "group": "fixed",
+      "kind": "teeth",
+      "mass_ledger_g": 0.20348,
+      "material": "steel",
+      "name": "draw train teeth 0",
+      "volume_mm3": 25.92098
+    },
+    {
+      "bbox_mm": [
+        -38.35,
+        -1.5062809,
+        -21.0018912,
+        -36.99,
+        1.4637191,
+        -18.0318912
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.055007,
+      "material": "steel",
+      "name": "draw train root 1",
+      "volume_mm3": 7.007233
+    },
+    {
+      "bbox_mm": [
+        -38.35,
+        -2.0012809,
+        -21.4968912,
+        -36.99,
+        1.9587191,
+        -17.5368912
+      ],
+      "group": "fixed",
+      "kind": "teeth",
+      "mass_ledger_g": 0.057485,
+      "material": "steel",
+      "name": "draw train teeth 1",
+      "volume_mm3": 7.322968
+    },
+    {
+      "bbox_mm": [
+        -41.53,
+        -8.6952386,
+        -17.6657546,
+        -7.2,
+        -5.7032386,
+        -14.6737546
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 1.893418,
+      "material": "steel",
+      "name": "draw M3 screw",
+      "volume_mm3": 241.199696
+    },
+    {
+      "bbox_mm": [
+        -41.48,
+        -10.6992386,
+        -19.6697546,
+        -38.48,
+        -3.6992386,
+        -12.6697546
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.739317,
+      "material": "bearing",
+      "name": "draw rear L730",
+      "volume_mm3": 94.180506
+    },
+    {
+      "bbox_mm": [
+        -41.48,
+        -11.0792386,
+        -20.0497546,
+        -38.48,
+        -3.3192386,
+        -12.2897546
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.074218,
+      "material": "7075",
+      "name": "draw rear L730 seat",
+      "volume_mm3": 26.411981
+    },
+    {
+      "bbox_mm": [
+        -35.24,
+        -11.1992386,
+        -20.1697546,
+        -31.74,
+        -3.1992386,
+        -12.1697546
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.84,
+      "material": "bearing",
+      "name": "draw F3-8M 0",
+      "volume_mm3": 151.081229
+    },
+    {
+      "bbox_mm": [
+        -35.24,
+        -11.5792386,
+        -20.5497546,
+        -31.74,
+        -2.8192386,
+        -11.7897546
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.09832,
+      "material": "7075",
+      "name": "draw F3-8M 0 seat",
+      "volume_mm3": 34.989314
+    },
+    {
+      "bbox_mm": [
+        -31.04,
+        -11.1992386,
+        -20.1697546,
+        -27.54,
+        -3.1992386,
+        -12.1697546
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.84,
+      "material": "bearing",
+      "name": "draw F3-8M 1",
+      "volume_mm3": 151.081229
+    },
+    {
+      "bbox_mm": [
+        -31.04,
+        -11.5792386,
+        -20.5497546,
+        -27.54,
+        -2.8192386,
+        -11.7897546
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.09832,
+      "material": "7075",
+      "name": "draw F3-8M 1 seat",
+      "volume_mm3": 34.989314
+    },
+    {
+      "bbox_mm": [
+        -31.74,
+        -10.3292386,
+        -19.2997546,
+        -31.04,
+        -4.0692386,
+        -13.0397546
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.130705,
+      "material": "steel",
+      "name": "draw thrust flange",
+      "volume_mm3": 16.65036
+    },
+    {
+      "bbox_mm": [
+        -35.6,
+        -11.5692386,
+        -20.5397546,
+        -35.24,
+        -2.8292386,
+        -11.7997546
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.038345,
+      "material": "7075",
+      "name": "draw thrust abutment 0",
+      "volume_mm3": 13.646077
+    },
+    {
+      "bbox_mm": [
+        -27.54,
+        -11.5692386,
+        -20.5397546,
+        -27.18,
+        -2.8292386,
+        -11.7997546
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.038345,
+      "material": "7075",
+      "name": "draw thrust abutment 1",
+      "volume_mm3": 13.646077
+    },
+    {
+      "bbox_mm": [
+        -10.52,
+        -10.6992386,
+        -19.6697546,
+        -7.52,
+        -3.6992386,
+        -12.6697546
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.739317,
+      "material": "bearing",
+      "name": "draw nose L730",
+      "volume_mm3": 94.180506
+    },
+    {
+      "bbox_mm": [
+        -10.52,
+        -11.0792386,
+        -20.0497546,
+        -7.52,
+        -3.3192386,
+        -12.2897546
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.074218,
+      "material": "7075",
+      "name": "draw nose L730 seat",
+      "volume_mm3": 26.411981
+    },
+    {
+      "bbox_mm": [
+        -14.35,
+        -9.7392386,
+        -18.7097546,
+        -11.85,
+        -4.6592386,
+        -13.6297546
+      ],
+      "group": "draw",
+      "kind": "thread",
+      "mass_ledger_g": 0.289564,
+      "material": "bronze",
+      "name": "draw nut",
+      "volume_mm3": 32.905029
+    },
+    {
+      "bbox_mm": [
+        -41.85,
+        -15.75,
+        -16.3,
+        -12.76,
+        0.65,
+        0.65
+      ],
+      "group": "draw",
+      "kind": "solid",
+      "mass_ledger_g": 0.543769,
+      "material": "steel",
+      "name": "draw wrap yoke",
+      "volume_mm3": 69.269968
+    },
+    {
+      "bbox_mm": [
+        -29.6,
+        -13.3947223,
+        -15.1148881,
+        -28.3,
+        -10.9796068,
+        -12.6845684
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.024676,
+      "material": "bronze",
+      "name": "draw runner way 0",
+      "volume_mm3": 2.8041
+    },
+    {
+      "bbox_mm": [
+        -17.05,
+        -13.3947223,
+        -15.1148881,
+        -15.75,
+        -10.9796068,
+        -12.6845684
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.024676,
+      "material": "bronze",
+      "name": "draw runner way 1",
+      "volume_mm3": 2.8041
+    },
+    {
+      "bbox_mm": [
+        -14.55,
+        -13.282546,
+        -15.517462,
+        -14.15,
+        -12.2111161,
+        -14.4764406
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.002007,
+      "material": "steel",
+      "name": "draw input stop 0",
+      "volume_mm3": 0.25564
+    },
+    {
+      "bbox_mm": [
+        -12.46,
+        -13.282546,
+        -15.517462,
+        -12.06,
+        -12.2111161,
+        -14.4764406
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.002007,
+      "material": "steel",
+      "name": "draw input stop 1",
+      "volume_mm3": 0.25564
+    },
+    {
+      "bbox_mm": [
+        -18.71,
+        1.8228418,
+        16.1187867,
+        -6.39,
+        13.8406025,
+        21.8782357
+      ],
+      "group": "cam",
+      "kind": "solid",
+      "mass_ledger_g": 1.141825,
+      "material": "steel",
+      "name": "sleeve closed cam",
+      "volume_mm3": 145.455432
+    },
+    {
+      "bbox_mm": [
+        -18.37,
+        6.9931648,
+        18.6662795,
+        -17.61,
+        8.26174,
+        20.3950246
+      ],
+      "group": "spin",
+      "kind": "solid",
+      "mass_ledger_g": 0.005551,
+      "material": "steel",
+      "name": "spin follower",
+      "volume_mm3": 0.707183
+    },
+    {
+      "bbox_mm": [
+        -21.42,
+        6.8117212,
+        19.7464023,
+        -17.65,
+        7.8948806,
+        20.7432798
+      ],
+      "group": "spin",
+      "kind": "solid",
+      "mass_ledger_g": 0.019012,
+      "material": "steel",
+      "name": "spin slider shoe",
+      "volume_mm3": 2.421848
+    },
+    {
+      "bbox_mm": [
+        -22.64,
+        5.26,
+        10.9821,
+        -14.31,
+        7.7058,
+        20.69
+      ],
+      "group": "spin",
+      "kind": "solid",
+      "mass_ledger_g": 0.05152,
+      "material": "steel",
+      "name": "spin return fork",
+      "volume_mm3": 6.563096
+    },
+    {
+      "bbox_mm": [
+        -20.58,
+        6.3667067,
+        19.5556229,
+        -20.08,
+        8.2467195,
+        21.1767902
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.003475,
+      "material": "steel",
+      "name": "spin cam follower guide 0",
+      "volume_mm3": 0.4427
+    },
+    {
+      "bbox_mm": [
+        -18.6,
+        6.3667067,
+        19.5556229,
+        -18.1,
+        8.2467195,
+        21.1767902
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.003475,
+      "material": "steel",
+      "name": "spin cam follower guide 1",
+      "volume_mm3": 0.4427
+    },
+    {
+      "bbox_mm": [
+        -18.71,
+        0.7477379,
+        18.919528,
+        -6.39,
+        12.7654986,
+        24.678977
+      ],
+      "group": "cam",
+      "kind": "solid",
+      "mass_ledger_g": 1.141825,
+      "material": "steel",
+      "name": "draw closed cam",
+      "volume_mm3": 145.455432
+    },
+    {
+      "bbox_mm": [
+        -18.37,
+        5.918061,
+        21.4670208,
+        -17.61,
+        7.1866361,
+        23.1957659
+      ],
+      "group": "dpin",
+      "kind": "solid",
+      "mass_ledger_g": 0.005551,
+      "material": "steel",
+      "name": "dpin follower",
+      "volume_mm3": 0.707183
+    },
+    {
+      "bbox_mm": [
+        -38.74,
+        -12.7051852,
+        -18.6961006,
+        -34.24,
+        -11.3651852,
+        -17.3561006
+      ],
+      "group": "dpin",
+      "kind": "solid",
+      "mass_ledger_g": 0.049782,
+      "material": "steel",
+      "name": "draw index pin",
+      "volume_mm3": 6.341644
+    },
+    {
+      "bbox_mm": [
+        -38.35,
+        -13.0492386,
+        -22.0197546,
+        -36.99,
+        -1.3492386,
+        -10.3197546
+      ],
+      "group": "drot",
+      "kind": "solid",
+      "mass_ledger_g": 1.037189,
+      "material": "steel",
+      "name": "draw index disc",
+      "volume_mm3": 132.12595
+    },
+    {
+      "bbox_mm": [
+        -38.78,
+        -13.0851852,
+        -19.0761006,
+        -38.42,
+        -10.9851852,
+        -16.9761006
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.005434,
+      "material": "bearing",
+      "name": "draw lock bush 0",
+      "volume_mm3": 0.692227
+    },
+    {
+      "bbox_mm": [
+        -38.78,
+        -13.4651852,
+        -19.4561006,
+        -38.42,
+        -10.6051852,
+        -16.5961006
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.002993,
+      "material": "7075",
+      "name": "draw lock bush 0 seat",
+      "volume_mm3": 1.065069
+    },
+    {
+      "bbox_mm": [
+        -36.89,
+        -13.0851852,
+        -19.0761006,
+        -35.27,
+        -10.9851852,
+        -16.9761006
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.024453,
+      "material": "bearing",
+      "name": "draw lock bush 1",
+      "volume_mm3": 3.11502
+    },
+    {
+      "bbox_mm": [
+        -36.89,
+        -13.4651852,
+        -19.4561006,
+        -35.27,
+        -10.6051852,
+        -16.5961006
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.013468,
+      "material": "7075",
+      "name": "draw lock bush 1 seat",
+      "volume_mm3": 4.792808
+    },
+    {
+      "bbox_mm": [
+        -21.42,
+        5.7366174,
+        22.5471436,
+        -17.65,
+        6.8197768,
+        23.5440211
+      ],
+      "group": "dpin",
+      "kind": "solid",
+      "mass_ledger_g": 0.019012,
+      "material": "steel",
+      "name": "dpin slider shoe",
+      "volume_mm3": 2.421848
+    },
+    {
+      "bbox_mm": [
+        -34.72,
+        -12.76,
+        -18.3861,
+        -15.19,
+        6.6507,
+        23.3729
+      ],
+      "group": "dpin",
+      "kind": "solid",
+      "mass_ledger_g": 0.204002,
+      "material": "steel",
+      "name": "dpin return fork",
+      "volume_mm3": 25.987525
+    },
+    {
+      "bbox_mm": [
+        -20.58,
+        5.2916028,
+        22.3563642,
+        -20.08,
+        7.1716157,
+        23.9775314
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.003475,
+      "material": "steel",
+      "name": "dpin cam follower guide 0",
+      "volume_mm3": 0.4427
+    },
+    {
+      "bbox_mm": [
+        -18.6,
+        5.2916028,
+        22.3563642,
+        -18.1,
+        7.1716157,
+        23.9775314
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.003475,
+      "material": "steel",
+      "name": "dpin cam follower guide 1",
+      "volume_mm3": 0.4427
+    },
+    {
+      "bbox_mm": [
+        -15.55,
+        6.0057417,
+        -15.2373694,
+        -9.55,
+        23.361693,
+        17.5342763
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 6.0,
+      "material": "catalog",
+      "name": "selector 0615/06-1",
+      "volume_mm3": 926.73618
+    },
+    {
+      "bbox_mm": [
+        -13.05,
+        6.7628738,
+        16.2799885,
+        -12.05,
+        9.2732732,
+        20.7461103
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.027108,
+      "material": "steel",
+      "name": "selector motor key",
+      "volume_mm3": 3.453285
+    },
+    {
+      "bbox_mm": [
+        -13.3,
+        5.1425947,
+        16.3677768,
+        -11.8,
+        9.4385784,
+        24.4486585
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.081963,
+      "material": "steel",
+      "name": "cam spindle",
+      "volume_mm3": 10.441146
+    },
+    {
+      "bbox_mm": [
+        -14.55,
+        6.3874355,
+        16.0598539,
+        -10.55,
+        10.5517987,
+        18.6136222
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.101567,
+      "material": "bearing",
+      "name": "cam spindle L415 0",
+      "volume_mm3": 12.938503
+    },
+    {
+      "bbox_mm": [
+        -14.55,
+        4.0150396,
+        22.2401563,
+        -10.55,
+        8.1794029,
+        24.7939246
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 0.101567,
+      "material": "bearing",
+      "name": "cam spindle L415 1",
+      "volume_mm3": 12.938503
+    },
+    {
+      "bbox_mm": [
+        -32.5797837,
+        -0.4931342,
+        -2.08,
+        -30.6688961,
+        1.6531144,
+        2.08
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.066612,
+      "material": "steel",
+      "name": "yaw main steel knuckle 0",
+      "volume_mm3": 8.485635
+    },
+    {
+      "bbox_mm": [
+        -31.3247236,
+        -0.7303789,
+        -2.08,
+        -29.8679863,
+        1.2609561,
+        2.08
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.066612,
+      "material": "steel",
+      "name": "yaw main steel knuckle 1",
+      "volume_mm3": 8.485635
+    },
+    {
+      "bbox_mm": [
+        -29.933342,
+        -0.7303789,
+        -2.08,
+        -28.4313468,
+        1.311974,
+        2.08
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.066612,
+      "material": "steel",
+      "name": "yaw main steel knuckle 2",
+      "volume_mm3": 8.485635
+    },
+    {
+      "bbox_mm": [
+        -29.2079359,
+        -0.3920952,
+        -2.08,
+        -27.2335206,
+        1.7473831,
+        2.08
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.066612,
+      "material": "steel",
+      "name": "yaw main steel knuckle 3",
+      "volume_mm3": 8.485635
+    },
+    {
+      "bbox_mm": [
+        -28.6031144,
+        0.4702163,
+        -2.08,
+        -26.4568658,
+        2.3811039,
+        2.08
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.066612,
+      "material": "steel",
+      "name": "yaw main steel knuckle 4",
+      "volume_mm3": 8.485635
+    },
+    {
+      "bbox_mm": [
+        -28.2109561,
+        1.7252764,
+        -2.08,
+        -26.2196211,
+        3.1820137,
+        2.08
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.066612,
+      "material": "steel",
+      "name": "yaw main steel knuckle 5",
+      "volume_mm3": 8.485635
+    },
+    {
+      "bbox_mm": [
+        -28.261974,
+        3.116658,
+        -2.08,
+        -26.2196211,
+        4.6186532,
+        2.08
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.066612,
+      "material": "steel",
+      "name": "yaw main steel knuckle 6",
+      "volume_mm3": 8.485635
+    },
+    {
+      "bbox_mm": [
+        -28.6973831,
+        3.8420641,
+        -2.08,
+        -26.5579048,
+        5.8164794,
+        2.08
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.066612,
+      "material": "steel",
+      "name": "yaw main steel knuckle 7",
+      "volume_mm3": 8.485635
+    },
+    {
+      "bbox_mm": [
+        -29.3311039,
+        4.4468856,
+        -2.08,
+        -27.4202163,
+        6.5931342,
+        2.08
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.066612,
+      "material": "steel",
+      "name": "yaw main steel knuckle 8",
+      "volume_mm3": 8.485635
+    },
+    {
+      "bbox_mm": [
+        -30.1320137,
+        4.8390439,
+        -2.08,
+        -28.6752764,
+        6.8303789,
+        2.08
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.066612,
+      "material": "steel",
+      "name": "yaw main steel knuckle 9",
+      "volume_mm3": 8.485635
+    },
+    {
+      "bbox_mm": [
+        -31.5686532,
+        4.788026,
+        -2.08,
+        -30.066658,
+        6.8303789,
+        2.08
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.066612,
+      "material": "steel",
+      "name": "yaw main steel knuckle 10",
+      "volume_mm3": 8.485635
+    },
+    {
+      "bbox_mm": [
+        -32.7664794,
+        4.3526169,
+        -2.08,
+        -30.7920641,
+        6.4920952,
+        2.08
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.066612,
+      "material": "steel",
+      "name": "yaw main steel knuckle 11",
+      "volume_mm3": 8.485635
+    },
+    {
+      "bbox_mm": [
+        -33.5431342,
+        3.7188961,
+        -2.08,
+        -31.3968856,
+        5.6297837,
+        2.08
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.066612,
+      "material": "steel",
+      "name": "yaw main steel knuckle 12",
+      "volume_mm3": 8.485635
+    },
+    {
+      "bbox_mm": [
+        -33.7803789,
+        2.9179863,
+        -2.08,
+        -31.7890439,
+        4.3747236,
+        2.08
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.066612,
+      "material": "steel",
+      "name": "yaw main steel knuckle 13",
+      "volume_mm3": 8.485635
+    },
+    {
+      "bbox_mm": [
+        -33.7803789,
+        1.4813468,
+        -2.08,
+        -31.738026,
+        2.983342,
+        2.08
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.066612,
+      "material": "steel",
+      "name": "yaw main steel knuckle 14",
+      "volume_mm3": 8.485635
+    },
+    {
+      "bbox_mm": [
+        -33.4420952,
+        0.2835206,
+        -2.08,
+        -31.3026169,
+        2.2579359,
+        2.08
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.066612,
+      "material": "steel",
+      "name": "yaw main steel knuckle 15",
+      "volume_mm3": 8.485635
+    },
+    {
+      "bbox_mm": [
+        -35.2179614,
+        2.8472396,
+        -1.91,
+        -30.0331581,
+        8.1495086,
+        1.91
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.370279,
+      "material": "steel",
+      "name": "knuckle tang",
+      "volume_mm3": 47.16936
+    },
+    {
+      "bbox_mm": [
+        -22.3151079,
+        15.642919,
+        -17.5,
+        -16.318763,
+        21.6392639,
+        15.3
+      ],
+      "group": "fixed",
+      "kind": "envelope",
+      "mass_ledger_g": 6.0,
+      "material": "catalog",
+      "name": "yaw motor body",
+      "volume_mm3": 925.909114
+    },
+    {
+      "bbox_mm": [
+        -21.4056623,
+        16.5523646,
+        15.99,
+        -17.2282086,
+        20.7298183,
+        17.25
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.135514,
+      "material": "steel",
+      "name": "yaw pinion",
+      "volume_mm3": 17.262954
+    },
+    {
+      "bbox_mm": [
+        -20.026503,
+        17.9315239,
+        15.18,
+        -18.607368,
+        19.3506589,
+        17.28
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.026065,
+      "material": "steel",
+      "name": "yaw pinion shaft",
+      "volume_mm3": 3.320382
+    },
+    {
+      "bbox_mm": [
+        -22.3984532,
+        16.42202,
+        -16.08,
+        -18.7210069,
+        20.1741718,
+        -10.77
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.21559,
+      "material": "steel",
+      "name": "yaw motor lower saddle",
+      "volume_mm3": 27.463682
+    },
+    {
+      "bbox_mm": [
+        -22.3984532,
+        16.42202,
+        12.52,
+        -18.7210069,
+        20.1741718,
+        15.28
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.145705,
+      "material": "steel",
+      "name": "yaw motor upper saddle",
+      "volume_mm3": 18.561112
+    },
+    {
+      "bbox_mm": [
+        -33.6428766,
+        5.4020694,
+        -13.13,
+        -20.0398909,
+        19.7744155,
+        -0.24
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.497932,
+      "material": "steel",
+      "name": "lower yaw motor rail",
+      "volume_mm3": 63.430852
+    },
+    {
+      "bbox_mm": [
+        -33.6428766,
+        5.4020694,
+        0.24,
+        -20.0398909,
+        19.7744155,
+        14.88
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.52145,
+      "material": "steel",
+      "name": "upper yaw motor rail",
+      "volume_mm3": 66.426697
+    },
+    {
+      "bbox_mm": [
+        -31.8188913,
+        1.2311087,
+        -6.52,
+        -28.1811087,
+        4.8688913,
+        17.28
+      ],
+      "group": "yaw",
+      "kind": "solid",
+      "mass_ledger_g": 1.941071,
+      "material": "steel",
+      "name": "yaw shaft",
+      "volume_mm3": 247.270177
+    },
+    {
+      "bbox_mm": [
+        -32.7583187,
+        0.2916813,
+        -4.46,
+        -27.2416813,
+        5.8083187,
+        -2.23
+      ],
+      "group": "yaw",
+      "kind": "solid",
+      "mass_ledger_g": 0.418258,
+      "material": "steel",
+      "name": "yaw fork hub -1",
+      "volume_mm3": 53.281327
+    },
+    {
+      "bbox_mm": [
+        -32.7583187,
+        0.2916813,
+        2.23,
+        -27.2416813,
+        5.8083187,
+        4.46
+      ],
+      "group": "yaw",
+      "kind": "solid",
+      "mass_ledger_g": 0.418258,
+      "material": "steel",
+      "name": "yaw fork hub 1",
+      "volume_mm3": 53.281327
+    },
+    {
+      "bbox_mm": [
+        -28.381455,
+        4.2718621,
+        15.98,
+        -15.839886,
+        14.1432546,
+        17.28
+      ],
+      "group": "yaw",
+      "kind": "envelope",
+      "mass_ledger_g": 0.106324,
+      "material": "steel",
+      "name": "yaw 114T sector 0",
+      "volume_mm3": 13.544439
+    },
+    {
+      "bbox_mm": [
+        -28.4787337,
+        4.3880255,
+        15.98,
+        -16.5810244,
+        15.0522924,
+        17.28
+      ],
+      "group": "yaw",
+      "kind": "envelope",
+      "mass_ledger_g": 0.106324,
+      "material": "steel",
+      "name": "yaw 114T sector 1",
+      "volume_mm3": 13.544439
+    },
+    {
+      "bbox_mm": [
+        -28.5834238,
+        4.4976701,
+        15.98,
+        -17.3875386,
+        15.9028562,
+        17.28
+      ],
+      "group": "yaw",
+      "kind": "envelope",
+      "mass_ledger_g": 0.106324,
+      "material": "steel",
+      "name": "yaw 114T sector 2",
+      "volume_mm3": 13.544439
+    },
+    {
+      "bbox_mm": [
+        -28.6950153,
+        4.6002618,
+        15.98,
+        -18.2554995,
+        16.6908022,
+        17.28
+      ],
+      "group": "yaw",
+      "kind": "envelope",
+      "mass_ledger_g": 0.106324,
+      "material": "steel",
+      "name": "yaw 114T sector 3",
+      "volume_mm3": 13.544439
+    },
+    {
+      "bbox_mm": [
+        -28.8129645,
+        4.6953008,
+        15.98,
+        -19.1806785,
+        17.4122916,
+        17.28
+      ],
+      "group": "yaw",
+      "kind": "envelope",
+      "mass_ledger_g": 0.106324,
+      "material": "steel",
+      "name": "yaw 114T sector 4",
+      "volume_mm3": 13.544439
+    },
+    {
+      "bbox_mm": [
+        -28.9366969,
+        4.7823241,
+        15.98,
+        -20.1585681,
+        18.0638094,
+        17.28
+      ],
+      "group": "yaw",
+      "kind": "envelope",
+      "mass_ledger_g": 0.106324,
+      "material": "steel",
+      "name": "yaw 114T sector 5",
+      "volume_mm3": 13.544439
+    },
+    {
+      "bbox_mm": [
+        -29.0656096,
+        4.8609077,
+        15.98,
+        -21.1844041,
+        18.6421814,
+        17.28
+      ],
+      "group": "yaw",
+      "kind": "envelope",
+      "mass_ledger_g": 0.106324,
+      "material": "steel",
+      "name": "yaw 114T sector 6",
+      "volume_mm3": 13.544439
+    },
+    {
+      "bbox_mm": [
+        -29.1990745,
+        4.9306686,
+        15.98,
+        -22.2531889,
+        19.1445899,
+        17.28
+      ],
+      "group": "yaw",
+      "kind": "envelope",
+      "mass_ledger_g": 0.106324,
+      "material": "steel",
+      "name": "yaw 114T sector 7",
+      "volume_mm3": 13.544439
+    },
+    {
+      "bbox_mm": [
+        -29.3364415,
+        4.9912672,
+        15.98,
+        -23.3597153,
+        19.5685871,
+        17.28
+      ],
+      "group": "yaw",
+      "kind": "envelope",
+      "mass_ledger_g": 0.106324,
+      "material": "steel",
+      "name": "yaw 114T sector 8",
+      "volume_mm3": 13.544439
+    },
+    {
+      "bbox_mm": [
+        -29.4770413,
+        5.0424081,
+        15.98,
+        -24.4985926,
+        19.9121074,
+        17.28
+      ],
+      "group": "yaw",
+      "kind": "envelope",
+      "mass_ledger_g": 0.106324,
+      "material": "steel",
+      "name": "yaw 114T sector 9",
+      "volume_mm3": 13.544439
+    },
+    {
+      "bbox_mm": [
+        -32.6483857,
+        0.4016143,
+        15.94,
+        -27.3516143,
+        5.6983857,
+        17.32
+      ],
+      "group": "yaw",
+      "kind": "envelope",
+      "mass_ledger_g": 0.238612,
+      "material": "steel",
+      "name": "yaw keyed sector hub",
+      "volume_mm3": 30.396448
+    },
+    {
+      "bbox_mm": [
+        -36.88,
+        -23.1458947,
+        -14.0476597,
+        -6.08,
+        -13.324374,
+        3.5899785
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 2.9,
+      "material": "cell",
+      "name": "cell bulk",
+      "volume_mm3": 2794.176
+    },
+    {
+      "bbox_mm": [
+        -7.135,
+        -19.6856063,
+        -3.076789,
+        -5.605,
+        -18.7416876,
+        -0.5559343
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.010282,
+      "material": "electronics",
+      "name": "folded tab (-3.55, 0)",
+      "volume_mm3": 1.1475
+    },
+    {
+      "bbox_mm": [
+        -5.915,
+        -19.6856063,
+        -3.076789,
+        -5.0118407,
+        -18.6282715,
+        -0.5234127
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.005928,
+      "material": "electronics",
+      "name": "folded tab (-3.55, 1)",
+      "volume_mm3": 0.66158
+    },
+    {
+      "bbox_mm": [
+        -5.3218407,
+        -19.5721902,
+        -3.0442674,
+        -4.5089845,
+        -18.3052897,
+        -0.4307992
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.005927,
+      "material": "electronics",
+      "name": "folded tab (-3.55, 2)",
+      "volume_mm3": 0.66152
+    },
+    {
+      "bbox_mm": [
+        -4.8189845,
+        -19.2492084,
+        -2.9516539,
+        -4.1729867,
+        -17.8219133,
+        -0.2921932
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.005927,
+      "material": "electronics",
+      "name": "folded tab (-3.55, 3)",
+      "volume_mm3": 0.66152
+    },
+    {
+      "bbox_mm": [
+        -4.4829867,
+        -18.765832,
+        -2.8130479,
+        -4.055,
+        -17.251732,
+        -0.1286964
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.005928,
+      "material": "electronics",
+      "name": "folded tab (-3.55, 4)",
+      "volume_mm3": 0.66158
+    },
+    {
+      "bbox_mm": [
+        -4.4829867,
+        -18.1956507,
+        -2.6495511,
+        -4.055,
+        -16.6815507,
+        0.0348005
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.005928,
+      "material": "electronics",
+      "name": "folded tab (-3.55, 5)",
+      "volume_mm3": 0.66158
+    },
+    {
+      "bbox_mm": [
+        -4.8189845,
+        -17.6254694,
+        -2.4860542,
+        -4.1729867,
+        -16.1981743,
+        0.1734064
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.005927,
+      "material": "electronics",
+      "name": "folded tab (-3.55, 6)",
+      "volume_mm3": 0.66152
+    },
+    {
+      "bbox_mm": [
+        -5.3218407,
+        -17.142093,
+        -2.3474482,
+        -4.5089845,
+        -15.8751925,
+        0.26602
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.005927,
+      "material": "electronics",
+      "name": "folded tab (-3.55, 7)",
+      "volume_mm3": 0.66152
+    },
+    {
+      "bbox_mm": [
+        -5.915,
+        -16.8191112,
+        -2.2548347,
+        -5.0118407,
+        -15.7617764,
+        0.2985415
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.005928,
+      "material": "electronics",
+      "name": "folded tab (-3.55, 8)",
+      "volume_mm3": 0.66158
+    },
+    {
+      "bbox_mm": [
+        -6.8255314,
+        -16.7056951,
+        -2.2223132,
+        -5.605,
+        -15.7617764,
+        0.2985415
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.008098,
+      "material": "electronics",
+      "name": "folded tab (-3.55, 9)",
+      "volume_mm3": 0.903757
+    },
+    {
+      "bbox_mm": [
+        -7.135,
+        -17.7285811,
+        -9.901747,
+        -5.605,
+        -16.7846624,
+        -7.3808923
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.010282,
+      "material": "electronics",
+      "name": "folded tab (3.55, 0)",
+      "volume_mm3": 1.1475
+    },
+    {
+      "bbox_mm": [
+        -5.915,
+        -17.7285811,
+        -9.901747,
+        -5.0118407,
+        -16.6712463,
+        -7.3483708
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.005928,
+      "material": "electronics",
+      "name": "folded tab (3.55, 1)",
+      "volume_mm3": 0.66158
+    },
+    {
+      "bbox_mm": [
+        -5.3218407,
+        -17.615165,
+        -9.8692255,
+        -4.5089845,
+        -16.3482645,
+        -7.2557572
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.005927,
+      "material": "electronics",
+      "name": "folded tab (3.55, 2)",
+      "volume_mm3": 0.66152
+    },
+    {
+      "bbox_mm": [
+        -4.8189845,
+        -17.2921832,
+        -9.7766119,
+        -4.1729867,
+        -15.8648881,
+        -7.1171513
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.005927,
+      "material": "electronics",
+      "name": "folded tab (3.55, 3)",
+      "volume_mm3": 0.66152
+    },
+    {
+      "bbox_mm": [
+        -4.4829867,
+        -16.8088068,
+        -9.638006,
+        -4.055,
+        -15.2947068,
+        -6.9536544
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.005928,
+      "material": "electronics",
+      "name": "folded tab (3.55, 4)",
+      "volume_mm3": 0.66158
+    },
+    {
+      "bbox_mm": [
+        -4.4829867,
+        -16.2386255,
+        -9.4745091,
+        -4.055,
+        -14.7245254,
+        -6.7901575
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.005928,
+      "material": "electronics",
+      "name": "folded tab (3.55, 5)",
+      "volume_mm3": 0.66158
+    },
+    {
+      "bbox_mm": [
+        -4.8189845,
+        -15.6684441,
+        -9.3110122,
+        -4.1729867,
+        -14.241149,
+        -6.6515516
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.005927,
+      "material": "electronics",
+      "name": "folded tab (3.55, 6)",
+      "volume_mm3": 0.66152
+    },
+    {
+      "bbox_mm": [
+        -5.3218407,
+        -15.1850678,
+        -9.1724063,
+        -4.5089845,
+        -13.9181673,
+        -6.5589381
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.005927,
+      "material": "electronics",
+      "name": "folded tab (3.55, 7)",
+      "volume_mm3": 0.66152
+    },
+    {
+      "bbox_mm": [
+        -5.915,
+        -14.862086,
+        -9.0797927,
+        -5.0118407,
+        -13.8047511,
+        -6.5264165
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.005928,
+      "material": "electronics",
+      "name": "folded tab (3.55, 8)",
+      "volume_mm3": 0.66158
+    },
+    {
+      "bbox_mm": [
+        -6.8255314,
+        -14.7486699,
+        -9.0472712,
+        -5.605,
+        -13.8047511,
+        -6.5264165
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.008098,
+      "material": "electronics",
+      "name": "folded tab (3.55, 9)",
+      "volume_mm3": 0.903757
+    },
+    {
+      "bbox_mm": [
+        -10.47,
+        -17.1572155,
+        -9.8690288,
+        -4.67,
+        -13.9203751,
+        0.9576731
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.087462,
+      "material": "electronics",
+      "name": "tab insulator",
+      "volume_mm3": 9.7614
+    },
+    {
+      "bbox_mm": [
+        -11.08,
+        -16.6190477,
+        -9.838223,
+        -5.57,
+        -12.3918303,
+        1.5194876
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.624525,
+      "material": "electronics",
+      "name": "protection board",
+      "volume_mm3": 69.7015
+    },
+    {
+      "bbox_mm": [
+        -7.25,
+        -16.7474178,
+        -9.2398313,
+        -5.65,
+        -13.5034878,
+        0.5655237
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.070668,
+      "material": "electronics",
+      "name": "spot joint reserve",
+      "volume_mm3": 7.88704
+    },
+    {
+      "bbox_mm": [
+        -37.3,
+        4.480861,
+        -19.6684661,
+        -21.3,
+        17.2306937,
+        -9.5281774
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 6.52288,
+      "material": "electronics",
+      "name": "controller board incl LDO SWD",
+      "volume_mm3": 728.0
+    },
+    {
+      "bbox_mm": [
+        -37.81,
+        7.0954647,
+        -22.2274384,
+        -31.51,
+        18.5769148,
+        -12.8858145
+      ],
+      "group": "fixed",
+      "kind": "air",
+      "mass_ledger_g": 0,
+      "material": "electronics",
+      "name": "BMD antenna air reserve",
+      "volume_mm3": 259.2702
+    },
+    {
+      "bbox_mm": [
+        -29.33571,
+        7.2346179,
+        -21.7533724,
+        -19.53571,
+        15.587554,
+        -15.30403
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 1.444968,
+      "material": "electronics",
+      "name": "coupler H-bridge",
+      "volume_mm3": 161.2688
+    },
+    {
+      "bbox_mm": [
+        -18.02708,
+        3.3350262,
+        -22.4385153,
+        -16.07708,
+        12.4763026,
+        -13.4757866
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.742036,
+      "material": "electronics",
+      "name": "independent cutoff",
+      "volume_mm3": 82.8165
+    },
+    {
+      "bbox_mm": [
+        -21.05,
+        9.5745894,
+        -14.8129062,
+        -15.25,
+        15.8670991,
+        -9.6603553
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.660513,
+      "material": "electronics",
+      "name": "yaw H-bridge",
+      "volume_mm3": 73.718
+    },
+    {
+      "bbox_mm": [
+        -27.865,
+        3.197519,
+        -22.27429,
+        -22.765,
+        7.0994425,
+        -17.644441
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.351859,
+      "material": "electronics",
+      "name": "parking motor bridge",
+      "volume_mm3": 39.27
+    },
+    {
+      "bbox_mm": [
+        -18.6,
+        12.4614106,
+        -16.8068971,
+        -15.25,
+        16.4288933,
+        -12.8668833
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.24373,
+      "material": "electronics",
+      "name": "bus connector",
+      "volume_mm3": 27.202
+    },
+    {
+      "bbox_mm": [
+        -29.75,
+        14.5785591,
+        -16.7439303,
+        -22.55,
+        18.3339577,
+        -13.2577269
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.423973,
+      "material": "electronics",
+      "name": "interface flex reserve",
+      "volume_mm3": 47.3184
+    },
+    {
+      "bbox_mm": [
+        -20.46667,
+        6.0078296,
+        -19.1534573,
+        -18.56667,
+        11.7794682,
+        -13.2719432
+      ],
+      "group": "fixed",
+      "kind": "reserve",
+      "mass_ledger_g": 0.299622,
+      "material": "electronics",
+      "name": "fourth H bridge",
+      "volume_mm3": 33.44
+    },
+    {
+      "bbox_mm": [
+        -40.81,
+        -0.89,
+        -6.44,
+        -29.11,
+        3.94,
+        -2.71
+      ],
+      "group": "yaw",
+      "kind": "solid",
+      "mass_ledger_g": 0.080434,
+      "material": "7075",
+      "name": "turn fork -1",
+      "volume_mm3": 28.624365
+    },
+    {
+      "bbox_mm": [
+        -30.76,
+        4.24,
+        -13.46,
+        -25.07,
+        9.66,
+        -0.74
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.067567,
+      "material": "7075",
+      "name": "fixed hinge link -1",
+      "volume_mm3": 24.045045
+    },
+    {
+      "bbox_mm": [
+        -40.81,
+        -0.89,
+        2.71,
+        -29.11,
+        3.94,
+        6.44
+      ],
+      "group": "yaw",
+      "kind": "solid",
+      "mass_ledger_g": 0.080434,
+      "material": "7075",
+      "name": "turn fork 1",
+      "volume_mm3": 28.624365
+    },
+    {
+      "bbox_mm": [
+        -30.76,
+        4.24,
+        0.74,
+        -25.07,
+        9.66,
+        13.46
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.067567,
+      "material": "7075",
+      "name": "fixed hinge link 1",
+      "volume_mm3": 24.045045
+    },
+    {
+      "bbox_mm": [
+        -39.6,
+        -10.45,
+        -10.45,
+        -37.5,
+        10.45,
+        10.45
+      ],
+      "group": "yaw",
+      "kind": "solid",
+      "mass_ledger_g": 0.075264,
+      "material": "PA12",
+      "name": "tail fairing",
+      "volume_mm3": 73.788072
+    },
+    {
+      "bbox_mm": [
+        -28.56,
+        -18.6890721,
+        -17.4838108,
+        -25.44,
+        -15.1624275,
+        -13.8611788
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.045493,
+      "material": "7075",
+      "name": "cell screw lug 0",
+      "volume_mm3": 16.18969
+    },
+    {
+      "bbox_mm": [
+        -28.5,
+        -19.6750718,
+        -17.7841861,
+        -25.5,
+        -15.3084806,
+        -14.3397597
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.106302,
+      "material": "steel",
+      "name": "cell M2 screw 0",
+      "volume_mm3": 13.541663
+    },
+    {
+      "bbox_mm": [
+        -16.76,
+        -24.4223291,
+        2.5104325,
+        -13.64,
+        -20.8956845,
+        6.1330645
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.045493,
+      "material": "7075",
+      "name": "cell screw lug 1",
+      "volume_mm3": 16.18969
+    },
+    {
+      "bbox_mm": [
+        -16.7,
+        -25.4083288,
+        2.2100572,
+        -13.7,
+        -21.0417377,
+        5.6544836
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.106302,
+      "material": "steel",
+      "name": "cell M2 screw 1",
+      "volume_mm3": 13.541663
+    },
+    {
+      "bbox_mm": [
+        -38.04,
+        -23.6505445,
+        -14.792278,
+        -3.78,
+        -10.6857233,
+        4.9465117
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.474915,
+      "material": "PA12",
+      "name": "cell cassette",
+      "volume_mm3": 465.602925
+    },
+    {
+      "bbox_mm": [
+        -38.04,
+        -24.8014598,
+        -17.6983916,
+        -3.78,
+        -17.840109,
+        5.4711185
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.23284,
+      "material": "PA12",
+      "name": "cell lid",
+      "volume_mm3": 228.274146
+    },
+    {
+      "bbox_mm": [
+        -31.76,
+        18.2670233,
+        -14.2787798,
+        -28.64,
+        22.295491,
+        -10.2887686
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.045493,
+      "material": "7075",
+      "name": "pcb screw lug 0",
+      "volume_mm3": 16.18969
+    },
+    {
+      "bbox_mm": [
+        -31.7,
+        18.6839236,
+        -15.1375099,
+        -28.7,
+        22.8795322,
+        -10.5724447
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.106302,
+      "material": "steel",
+      "name": "pcb M2 screw 0",
+      "volume_mm3": 13.541663
+    },
+    {
+      "bbox_mm": [
+        -21.46,
+        1.6140946,
+        -25.4269439,
+        -18.34,
+        5.6425622,
+        -21.4369327
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.045493,
+      "material": "7075",
+      "name": "pcb screw lug 1",
+      "volume_mm3": 16.18969
+    },
+    {
+      "bbox_mm": [
+        -21.4,
+        2.0309948,
+        -26.285674,
+        -18.4,
+        6.2266034,
+        -21.7206089
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.106302,
+      "material": "steel",
+      "name": "pcb M2 screw 1",
+      "volume_mm3": 13.541663
+    },
+    {
+      "bbox_mm": [
+        -37.9,
+        1.5154022,
+        -23.8693162,
+        -14.7,
+        19.9687345,
+        -8.223304
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.250619,
+      "material": "PA12",
+      "name": "pcb cassette",
+      "volume_mm3": 245.704905
+    },
+    {
+      "bbox_mm": [
+        -38.26,
+        3.0831301,
+        -25.7928538,
+        -14.7,
+        22.5954755,
+        -12.5653893
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.150987,
+      "material": "PA12",
+      "name": "pcb lid",
+      "volume_mm3": 148.026011
+    },
+    {
+      "bbox_mm": [
+        -32.7,
+        -7.75,
+        -25.55,
+        -29.3,
+        -5.05,
+        -25.09
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.004307,
+      "material": "PA12",
+      "name": "foot 0",
+      "volume_mm3": 4.2228
+    },
+    {
+      "bbox_mm": [
+        -32.7,
+        5.05,
+        -25.55,
+        -29.3,
+        7.75,
+        -25.09
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.004307,
+      "material": "PA12",
+      "name": "foot 1",
+      "volume_mm3": 4.2228
+    },
+    {
+      "bbox_mm": [
+        -11.3,
+        -7.75,
+        -25.55,
+        -7.9,
+        -5.05,
+        -25.09
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.004307,
+      "material": "PA12",
+      "name": "foot 2",
+      "volume_mm3": 4.2228
+    },
+    {
+      "bbox_mm": [
+        -11.3,
+        5.05,
+        -25.55,
+        -7.9,
+        7.75,
+        -25.09
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 0.004307,
+      "material": "PA12",
+      "name": "foot 3",
+      "volume_mm3": 4.2228
+    },
+    {
+      "bbox_mm": [
+        -41.83,
+        -24.0,
+        -23.2668912,
+        -0.4,
+        -0.018,
+        25.25
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 1.496804,
+      "material": "PA12",
+      "name": "clamshell 0",
+      "volume_mm3": 1467.454723
+    },
+    {
+      "bbox_mm": [
+        -41.5072621,
+        0.018,
+        -23.2668912,
+        -1.55,
+        24.0,
+        25.25
+      ],
+      "group": "fixed",
+      "kind": "solid",
+      "mass_ledger_g": 1.725038,
+      "material": "PA12",
+      "name": "clamshell 1",
+      "volume_mm3": 1691.213429
+    }
+  ],
+  "pose": "DRAW end, zero yaw, no guest"
+}

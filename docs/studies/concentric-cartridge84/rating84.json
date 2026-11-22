@@ -1,0 +1,194 @@
+{
+  "bearings": {
+    "CRBT205A": [
+      20,
+      31,
+      5
+    ],
+    "L415": [
+      1.5,
+      4,
+      1.2,
+      125,
+      38
+    ],
+    "gearhead_native_radial_axial_N": [
+      0.5,
+      0.5
+    ],
+    "m3_thread_lambda_deg": 3.398585529377964,
+    "m3_thread_mu_threshold_ISO": 0.0514299342744209,
+    "ring_thread_lambda_deg": 0.5159072182062334,
+    "ring_thread_mu_threshold_ISO": 0.007798145621241755
+  },
+  "cam": {
+    "command_deg": 73,
+    "dwell_deg": 12,
+    "follower_R": 0.38,
+    "minimum_centerline_curvature_R": 0.5584652227699501,
+    "normal_groove_halfwidth": 0.424,
+    "radii": [
+      5.44,
+      2.82
+    ],
+    "ramp_deg": 55,
+    "rated_motor_times_GH_max_eff": 23.9616,
+    "rear_bush_tip_engagement": 0.37,
+    "rotary_torque_direct_max_cont_Nmm": 25,
+    "unbraked_selector_angular_disturbance_capacity": null,
+    "zero_lead_dwell_hypothesis": true
+  },
+  "centered_drive_friction_note": "Lossless when mu=0 both threads can backdrive. M18 torque excludes unknown crossed-roller preload, seal and joint breakaway. Mesh efficiency .88 sensitivity only.",
+  "coaxial_key": {
+    "count": 3,
+    "guide_band_span_mm": 8.65,
+    "nominal_key_side_clearance": 0.04,
+    "r_floor": 8.59,
+    "x": [
+      -15.83,
+      -15.45
+    ]
+  },
+  "drives": {
+    "M3 draw": {
+      "F3_8M_C0_N": 932,
+      "F3_8M_C_N": 994,
+      "F3_8M_axial_N": 54,
+      "L730_C0_N": 129,
+      "L730_C_N": 384,
+      "alloy_allowable_MPa": null,
+      "axial_N": 54,
+      "each_centered_pinion_L415_N": 4.783327317061022,
+      "eject_idler_sum_N_upper": null,
+      "gearbox_rated_speed_trial_rpm": 2500,
+      "gearhead_continuous_Nmm": 25,
+      "gearhead_intermittent_Nmm": 35,
+      "gearhead_required_Nmm": 15.821897986913564,
+      "minimum_efficiency_at_rated_motor": 0.3961813398165456,
+      "motor_rated_optimistic_output_Nmm": 73.801728,
+      "nominal_Lewis_MPa": 98.59677641286642,
+      "pinion_mesh_N_conservative": 9.566654634122044,
+      "pinion_tangential_N": 8.989714765291797,
+      "seconds_per_full_stroke_at_2500rpm": 55.480320000000006,
+      "spur_total_normal_reaction_N": 9.566654634122044,
+      "standard_undercut_risk": true,
+      "total_output_torque_Nmm": 48.73144579969378
+    },
+    "M3 eject": {
+      "F3_8M_C0_N": 932,
+      "F3_8M_C_N": 994,
+      "F3_8M_axial_N": 35,
+      "L730_C0_N": 129,
+      "L730_C_N": 384,
+      "alloy_allowable_MPa": null,
+      "axial_N": 35,
+      "each_centered_pinion_L415_N": 4.30597880908271,
+      "eject_idler_sum_N_upper": 16.19048032215099,
+      "gearbox_rated_speed_trial_rpm": 2500,
+      "gearhead_continuous_Nmm": 25,
+      "gearhead_intermittent_Nmm": 35,
+      "gearhead_required_Nmm": 17.480000932511828,
+      "minimum_efficiency_at_rated_motor": 0.43770034386297646,
+      "motor_rated_optimistic_output_Nmm": 43.29701376,
+      "nominal_Lewis_MPa": 76.37429923209743,
+      "pinion_mesh_N_conservative": 8.61195761816542,
+      "pinion_tangential_N": 8.09259302431103,
+      "seconds_per_full_stroke_at_2500rpm": 232.24320000000003,
+      "spur_total_normal_reaction_N": 7.57852270398557,
+      "standard_undercut_risk": false,
+      "total_output_torque_Nmm": 31.585196351653376
+    },
+    "sleeve centered sensitivity": {
+      "CRBT_C0_N": 1290,
+      "CRBT_C_N": 1400,
+      "CRBT_dynamic_equivalent_N": 37.76516138607915,
+      "CRBT_static_equivalent_N": 31.165912516536046,
+      "alloy_allowable_MPa": null,
+      "axial_N": 45,
+      "crossed_roller_moment_Nmm": 34.60665900557243,
+      "gearbox_rated_speed_trial_rpm": 2500,
+      "gearhead_continuous_Nmm": 25,
+      "gearhead_intermittent_Nmm": 35,
+      "gearhead_required_Nmm": 19.400910910494407,
+      "guide_feedback": 0,
+      "ideal_drive_offset_mm": 0,
+      "minimum_efficiency_at_rated_motor": 0.48580005284691524,
+      "motor_rated_optimistic_output_Nmm": 135.19271643428573,
+      "nominal_Lewis_MPa": 48.5391348207179,
+      "pinion_tangential_N": 8.129905524397655,
+      "rating_note": "Ring-centered AXIAL load only; one spur mesh still supplies transverse force and a tilting moment. Form errors, preload friction and actual loading open.",
+      "seconds_per_full_stroke_at_2500rpm": 411.8235428571428,
+      "spur_total_normal_reaction_N": 8.651664751393108,
+      "standard_undercut_risk": true,
+      "total_output_torque_Nmm": 109.46104798049004
+    },
+    "sleeve old breakaway sensitivity": {
+      "CRBT_C0_N": 1290,
+      "CRBT_C_N": 1400,
+      "CRBT_dynamic_equivalent_N": 18.51332133726458,
+      "CRBT_static_equivalent_N": 15.27822289143967,
+      "alloy_allowable_MPa": null,
+      "axial_N": 22.06,
+      "crossed_roller_moment_Nmm": 16.964953281398397,
+      "gearbox_rated_speed_trial_rpm": 2500,
+      "gearhead_continuous_Nmm": 25,
+      "gearhead_intermittent_Nmm": 35,
+      "gearhead_required_Nmm": 9.510757659677925,
+      "guide_feedback": 0,
+      "ideal_drive_offset_mm": 0,
+      "minimum_efficiency_at_rated_motor": 0.23814998146228777,
+      "motor_rated_optimistic_output_Nmm": 135.19271643428573,
+      "nominal_Lewis_MPa": 23.794962536556376,
+      "pinion_tangential_N": 3.9854603526269394,
+      "rating_note": "Ring-centered AXIAL load only; one spur mesh still supplies transverse force and a tilting moment. Form errors, preload friction and actual loading open.",
+      "seconds_per_full_stroke_at_2500rpm": 411.8235428571428,
+      "spur_total_normal_reaction_N": 4.241238320349599,
+      "standard_undercut_risk": true,
+      "total_output_torque_Nmm": 53.66023818776911
+    }
+  },
+  "label": "exploratory",
+  "power": {
+    "cell_continuous_A": 2,
+    "estimated_5_rated_A": 0.71,
+    "five_starts_scenario_A": 1.539772452190753,
+    "thermal_proof": false
+  },
+  "power_off": {
+    "dry residual": {
+      "last_005mm_nominal_bearing_MPa": 1013.5282220415744,
+      "max_feedback": 0.47006206735001155,
+      "max_same_plane_triangle_bound_Nmm": 57.61076266988058,
+      "max_selector_no_yoke_feedback_Nmm": 37.70083023682685,
+      "pin_side_N": 8.108225776332596,
+      "warning": "Single-bushing conservative surrogate even before loss of far support; friction .23 assumed, loading plane unknown. Divergence as remaining overlap tends to zero. Not a non-galling handoff or a global upper bound."
+    },
+    "lossless": {
+      "last_005mm_nominal_bearing_MPa": 33.157279810811524,
+      "max_feedback": 0.47006206735001155,
+      "max_same_plane_triangle_bound_Nmm": 1.8847192770929366,
+      "max_selector_no_yoke_feedback_Nmm": 1.2333716516984121,
+      "pin_side_N": 0.2652582384864922,
+      "warning": "Single-bushing conservative surrogate even before loss of far support; friction .23 assumed, loading plane unknown. Divergence as remaining overlap tends to zero. Not a non-galling handoff or a global upper bound."
+    }
+  },
+  "springs": {
+    "active_turns": 3.65,
+    "assumptions": "\u00b110% rate; free \u00b1.05, installed \u00b1.07, grounded cage stop and both drive stops intact; no equal roller load assumed.",
+    "fatigue_qualified": false,
+    "free": 6.17,
+    "max_jammed_N": 44.42749278278061,
+    "max_wahl_MPa": 1623.3301615104997,
+    "mean_D": 2.14,
+    "min_DRAW": 27.09536424547536,
+    "min_len": 4.3149999999999995,
+    "nominal_DRAW": 32.650125929602545,
+    "nominal_k_N_mm": 7.067126824589295,
+    "solid_height_assumed": 2.2600000000000002,
+    "wire": 0.4
+  },
+  "thread_engagement": {
+    "sleeve_full_turns_after_halfpitch_ends": 4.3,
+    "sleeve_min_nominal": 2.65
+  }
+}
